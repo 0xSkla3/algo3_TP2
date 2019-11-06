@@ -1,24 +1,30 @@
+package edu.fiuba.algo3.tp2;
+
+import java.util.Optional;
+
 public class Celda {
 
-	private boolean estaVacia;
-	private Ficha fichaActual;
+	private Optional<Ficha> fichaActual;
 
-	public Celda() {
-		this.estaVacia = false;
-	}
+	public Celda(){ this.fichaActual = Optional.empty();}
 
-	public void setVacia(boolean estado) {
-		this.estaVacia = estado;
-	}
+	public boolean estaVacia() {return this.fichaActual.isEmpty();}
 
-	public boolean estaVacia() {
-		return this.estaVacia;
-	}
+	public Ficha getFichaActual(){return this.fichaActual.get();}
 
-	//Replica el estado de la celda actual a la nueva celda y restaura los valores de la celda actual
+	public Optional<Ficha> getContenido(){return this.fichaActual;}
+
 	public void moverA(Celda nuevaCelda) {
-		nuevaCelda.estaVacia = this.estaVacia;
-		this.estaVacia = false;
+		nuevaCelda.fichaActual = this.fichaActual;
+		this.fichaActual = Optional.empty();
+	}
+
+	public void guardar(Ficha fichaActual) {
+		this.fichaActual = Optional.ofNullable(fichaActual);
+	}
+
+	public void eliminar() {
+		this.fichaActual = Optional.empty();
 	}
 
 }
