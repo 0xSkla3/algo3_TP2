@@ -14,7 +14,7 @@ public class Jinete extends Ficha {
 	public Jinete(){
 
 		super(3,100);
-		this.nombre = TipoFicha.JINETE;
+		//this.nombre = TipoFicha.JINETE;
 		this.ataqueCercano = 5;
 		this.ataqueLejano = 15;
 

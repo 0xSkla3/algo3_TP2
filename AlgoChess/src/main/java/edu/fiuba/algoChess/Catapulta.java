@@ -13,7 +13,7 @@ public class Catapulta extends Ficha {
 	public Catapulta(){
 
 		super(5,50);
-		this.nombre = TipoFicha.CATAPULTA;
+		//this.nombre = TipoFicha.CATAPULTA;
 		this.ataqueLejano = 20;
 
 	}

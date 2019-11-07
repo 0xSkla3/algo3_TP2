@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class MovibleTest {
 
-	@Test
+/*	@Test
 	public void testEntidadMoviblePuedeDesplazarse(){
 		Tablero unTablero = new Tablero();
 		unTablero.inicializarTablero();
@@ -26,7 +26,7 @@ public class MovibleTest {
 		assertEquals(fila1Columna1,unCurandero.getUbicacion());
 
 	}
-
+*/
 	@Test
 	public void testEntidadMovibleNoPuedeDesplazarseACasilleroOcupado(){
 

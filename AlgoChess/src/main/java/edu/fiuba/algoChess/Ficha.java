@@ -4,11 +4,11 @@ import java.util.Optional;
 
 public abstract class Ficha implements Movible {
 
-	protected TipoFicha nombre;
+	//protected TipoFicha nombre;
 	private int vida;
 	private int costo;
 	protected Ubicacion ubicacion;
-
+	protected Jugador jugadorDueño;
 
 	public Ficha(Ubicacion ubicacion, int costo, int vida) {
 
@@ -36,9 +36,13 @@ public abstract class Ficha implements Movible {
 
 	//public int getAtaque(){return this.ataque;}
 
+	public Jugador getJugador(){ return this.jugadorDueño;}
+
+	public void setJugador(Jugador jugador){ this.jugadorDueño = jugador;}
+
 	public int getCosto(){return this.costo;}
 
-	public TipoFicha getNombre(){return this.nombre;}
+	//public TipoFicha getNombre(){return this.nombre;}
 
 	public int getVida() {return this.vida;}
 

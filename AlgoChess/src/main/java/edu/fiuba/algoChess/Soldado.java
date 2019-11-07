@@ -12,7 +12,7 @@ public class Soldado extends Ficha implements Movible {
 	public Soldado(){
 
 		super(1,100);
-		this.nombre = TipoFicha.SOLDADO;
+		//this.nombre = TipoFicha.SOLDADO;
 		this.ataqueCercano = 10;
 
 	}

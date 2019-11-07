@@ -15,7 +15,7 @@ public class Curandero extends Ficha {
 	public Curandero(){
 
 		super(2,75);
-		this.nombre = TipoFicha.CURANDERO;
+		//this.nombre = TipoFicha.CURANDERO;
 		this.sanacion = 15;
 
 	}
@@ -23,7 +23,7 @@ public class Curandero extends Ficha {
 	public Curandero(Ubicacion ubicacion){
 
 		super(2,75);
-		this.nombre = TipoFicha.CURANDERO;
+		//this.nombre = TipoFicha.CURANDERO;
 		this.sanacion = 15;
 		this.ubicacion = ubicacion;
 

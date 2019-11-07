@@ -9,8 +9,8 @@ public class Tablero {
 	private Celda celdaActiva; //la celda en la que estoy parada
 	private Jugador jugadorActivo;
 
-	public void Tablero() {
-		//this.inicializarTablero();
+	public Tablero() {
+		this.inicializarTablero();
 		//this.celdaActiva=this.campoDeBatalla.get(new Ubicacion(1,1));
 	}
 
@@ -23,6 +23,15 @@ public class Tablero {
 		for (int i=1; i<=20; i++) {
 			for (int j=1; j<=20; j++) {
 				this.campoDeBatalla.put(new Ubicacion(i, j), new Celda());
+			}
+		}
+		setCeldaActiva(this.campoDeBatalla.get(new Ubicacion(1,1)));
+	}
+
+	public void asignarSectores(){
+		for (int i=1; i<=10; i++) {
+			for (int j=1; j<=20; j++) {
+				this.obtenerCelda(new Ubicacion(i, j)).setSectorDelJugador();
 			}
 		}
 		setCeldaActiva(this.campoDeBatalla.get(new Ubicacion(1,1)));
@@ -48,6 +57,10 @@ public class Tablero {
 			this.campoDeBatalla.get(ubicacion).guardar(ficha);
 			ficha.setUbicacion(ubicacion);
 		}
+		else {
+			throw new NoSePuedeUbicarPorqueEstaOcupadoException("No se puede ubicar porque esta ocupado la celda");
+
+		}
 	}
 
 	public void eliminarDeCelda(Ubicacion ubicacion) { this.obtenerCelda(ubicacion).eliminar();
@@ -55,6 +68,7 @@ public class Tablero {
 
 	public void eliminar(Ubicacion ubicacion) {
 	}
+
 }
 
 
