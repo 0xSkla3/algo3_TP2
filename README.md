@@ -3,14 +3,14 @@
 Este es el repositorio oficial de nuestro equipo de algoritmos 3
 ### Acuerdo de Prácticas 📋
 Para la ejecución de las entragas de este trabajo, se acordaron las siguientes prácticas
-#### Práctica 1: Diagramas actualizados en papel
-Todas las entregas tienen que venir con diagramas de clase y de secuencia actualizados. Deberaán ser en papel.
-#### Práctica 2: Participación 
-Cada entrega es una instancia de evaluación, como tal todos los integrantes deben prepararse y participar activamente de la entrega. Deben estar al tanto del estado del trabajo.
-#### Práctica 3: Supply Chain Management
-Se debe utilizar un sistema de versionado de códigos fuentes.
-#### Práctica 4: Continous Integration 
-- Deben tener configurado y los tests ejecutándose en CI.
+#### Diagramas actualizados en papel
+- Todas las entregas tienen que venir con diagramas de clase y de secuencia actualizados. Deberaán ser en papel.
+#### Participación 
+- Cada entrega es una instancia de evaluación, como tal todos los integrantes deben prepararse y participar activamente de la entrega. Deben estar al tanto del estado del trabajo.
+#### Supply Chain Management
+- Se debe utilizar un sistema de versionado de códigos fuentes.
+#### Continous Integration 
+- Deben tener configurado y los tests ejecutándose en CI. 
 ### Ejecución de Pruebas ⚙️
 Las pruebas pueden ser ejecutadas posicionandose en la carpeta raíz del proyecto y haciendo 
    ```bash
