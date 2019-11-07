@@ -3,12 +3,12 @@
 Este es el repositorio oficial de nuestro equipo de algoritmos 3
 ### Acuerdo de Prácticas 📋
 Para la ejecución de las entragas de este trabajo, se acordaron las siguientes prácticas
-### Ejecutando las pruebas ⚙️
+### Ejecución de Pruebas ⚙️
 Las pruebas pueden ser ejecutadas posicionandose en la carpeta raíz del proyecto y haciendo 
    ```bash
 mvn test
 ```
-### Construido con 🛠️
+### Construcción 🛠️
 * [Maven](https://maven.apache.org/) - Manejador de dependencias
 ### Integrantes ✒️
 - Alejandro Arenas(98199) - alearenas92@gmail.com  
