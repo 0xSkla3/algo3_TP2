@@ -12,7 +12,7 @@ public class CeldaTest {
 	public void celdaTestInicializaVacia(){
 
 		Celda celdaPrueba = new Celda();
-		assertTrue(celdaPrueba.getContenido().isEmpty());
+		assertTrue(celdaPrueba.isEmpty());
 	}
 
 	@Test
@@ -33,7 +33,7 @@ public class CeldaTest {
 
 		celda.guardar(ficha);
 		celda.eliminar();
-		assertTrue(celda.getContenido().isEmpty());
+		assertTrue(celda.isEmpty());
 	}
 
 	@Test
@@ -60,7 +60,7 @@ public class CeldaTest {
 		celdaOrigen.guardar(ficha);
 		celdaOrigen.moverA(celdaDestino);
 
-		assertTrue(celdaOrigen.getContenido().isEmpty());
+		assertTrue(celdaOrigen.isEmpty());
 	}
 
 

@@ -56,12 +56,12 @@ public abstract class Ficha implements Movible {
 
 	public void moverseALaDerecha(Tablero campoDeBatalla) {
 		Ubicacion ubicacionDerecha = this.ubicacion.getUbicacionDerecha();
-		mover(campoDeBatalla, ubicacionDerecha);
+		this.mover(campoDeBatalla, ubicacionDerecha);
 	}
 
 	public void moverseALaIzquierda(Tablero campoDeBatalla) {
 		Ubicacion ubicacionIzquierda = this.ubicacion.getUbicacionIzquierda();
-		mover(campoDeBatalla, ubicacionIzquierda);
+		this.mover(campoDeBatalla, ubicacionIzquierda);
 	}
 
 	public void moverseArriba(Tablero campoDeBatalla) {
@@ -71,11 +71,11 @@ public abstract class Ficha implements Movible {
 
 	public void moverseAbajo(Tablero campoDeBatalla) {
 		Ubicacion ubicacionAbajo = this.ubicacion.getUbicacionAbajo();
-		mover(campoDeBatalla, ubicacionAbajo);
+		this.mover(campoDeBatalla, ubicacionAbajo);
 	}
 
 	public void mover( Tablero campoDeBatalla, Ubicacion ubicacion) {
-		if(campoDeBatalla.obtenerCelda(ubicacion).getContenido().equals(Optional.empty())){
+		if(campoDeBatalla.obtenerCelda(ubicacion).isEmpty()){
 		campoDeBatalla.ubicarEnCelda(this, ubicacion);
 		campoDeBatalla.eliminar(this.ubicacion);
 		this.ubicacion = ubicacion;}

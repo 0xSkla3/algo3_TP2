@@ -15,8 +15,7 @@ public class Ubicacion {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Ubicacion ubicacion = (Ubicacion) o;
-        return x == ubicacion.x &&
-                y == ubicacion.y;
+        return x == ubicacion.x && y == ubicacion.y;
     }
 
 	@Override
@@ -29,8 +28,6 @@ public class Ubicacion {
 		return new Ubicacion(this.x-1, this.y);
 	}
 	public Ubicacion getUbicacionArriba() { return new Ubicacion(this.x, this.y+1);}
-	public Ubicacion getUbicacionAbajo() {
-		return new Ubicacion(this.x, this.y-1);
-	}
+	public Ubicacion getUbicacionAbajo() { return new Ubicacion(this.x, this.y-1);}
 
 }

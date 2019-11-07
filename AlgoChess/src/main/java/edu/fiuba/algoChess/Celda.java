@@ -11,7 +11,7 @@ public class Celda {
 		this.fichaActual = Optional.empty();
 	}
 
-	public boolean estaVacia() {return this.fichaActual.isEmpty();}
+	public boolean isEmpty() {return this.fichaActual.isEmpty();}
 
 	public Ficha getFichaActual(){return this.fichaActual.get();}
 

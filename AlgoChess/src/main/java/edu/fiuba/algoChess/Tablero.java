@@ -28,14 +28,14 @@ public class Tablero {
 		setCeldaActiva(this.campoDeBatalla.get(new Ubicacion(1,1)));
 	}
 
-	public void asignarSectores(){
+	/*public void asignarSectores(){
 		for (int i=1; i<=10; i++) {
 			for (int j=1; j<=20; j++) {
 				this.obtenerCelda(new Ubicacion(i, j)).setSectorDelJugador();
 			}
 		}
 		setCeldaActiva(this.campoDeBatalla.get(new Ubicacion(1,1)));
-	}
+	}*/
 
 	public void moverFicha(Celda nuevaActiva) {
 		this.celdaActiva.moverA(nuevaActiva);
@@ -63,11 +63,9 @@ public class Tablero {
 		}
 	}
 
-	public void eliminarDeCelda(Ubicacion ubicacion) { this.obtenerCelda(ubicacion).eliminar();
+	public void eliminar(Ubicacion ubicacion) { this.obtenerCelda(ubicacion).eliminar();
 	}
 
-	public void eliminar(Ubicacion ubicacion) {
-	}
 
 }
 

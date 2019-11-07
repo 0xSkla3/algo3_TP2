@@ -3,9 +3,9 @@ package edu.fiuba.algoChess;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-public class MovibleTest {
+public class EntidadTest {
 
-/*	@Test
+	@Test
 	public void testEntidadMoviblePuedeDesplazarse(){
 		Tablero unTablero = new Tablero();
 		unTablero.inicializarTablero();
@@ -22,11 +22,11 @@ public class MovibleTest {
 		assertEquals(fila2Columna2,unCurandero.getUbicacion());
 		unCurandero.moverseALaIzquierda(unTablero);
 		assertEquals(fila2Columna1,unCurandero.getUbicacion());
-		unCurandero.moverseAbajo(unTablero);
-		assertEquals(fila1Columna1,unCurandero.getUbicacion());
+		//unCurandero.moverseAbajo(unTablero);
+		//assertEquals(fila1Columna1,unCurandero.getUbicacion());
 
 	}
-*/
+
 	@Test
 	public void testEntidadMovibleNoPuedeDesplazarseACasilleroOcupado(){
 
@@ -101,6 +101,20 @@ public class MovibleTest {
 		UnCatapultaAtacante.Atacar(unCatapultaAtacado);
 
 		assertEquals(UnCatapultaAtacante.getVida()-UnCatapultaAtacante.getAtaqueLejano(),unCatapultaAtacado.getVida());
+
+	}
+
+	@Test
+	public void testJineteAtacaOtraFicha(){
+		Tablero unTablero = new Tablero();
+		unTablero.inicializarTablero();
+
+		Soldado UnJineteAtacante = new Soldado();
+		Soldado unJineteAtacado = new Soldado();
+
+		UnJineteAtacante.Atacar(unJineteAtacado);
+
+		assertEquals(UnJineteAtacante.getVida()-UnJineteAtacante.getAtaqueCercano(),unJineteAtacado.getVida());
 
 	}
 
