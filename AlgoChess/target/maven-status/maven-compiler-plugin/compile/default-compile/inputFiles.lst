@@ -1,1 +1,15 @@
-/Users/rgallo/my-app/src/main/java/com/mycompany/app/App.java
+/Users/rgallo/algo3_TP2/AlgoChess/src/main/java/edu/fiuba/algoChess/TipoFicha.java
+/Users/rgallo/algo3_TP2/AlgoChess/src/main/java/edu/fiuba/algoChess/Jugador.java
+/Users/rgallo/algo3_TP2/AlgoChess/src/main/java/edu/fiuba/algoChess/Soldado.java
+/Users/rgallo/algo3_TP2/AlgoChess/src/main/java/edu/fiuba/algoChess/Ficha.java
+/Users/rgallo/algo3_TP2/AlgoChess/src/main/java/edu/fiuba/algoChess/Ubicacion.java
+/Users/rgallo/algo3_TP2/AlgoChess/src/main/java/edu/fiuba/algoChess/Tablero.java
+/Users/rgallo/algo3_TP2/AlgoChess/src/main/java/edu/fiuba/algoChess/Movible.java
+/Users/rgallo/algo3_TP2/AlgoChess/src/main/java/edu/fiuba/algoChess/Catapulta.java
+/Users/rgallo/algo3_TP2/AlgoChess/src/main/java/edu/fiuba/algoChess/Celda.java
+/Users/rgallo/algo3_TP2/AlgoChess/src/main/java/edu/fiuba/algoChess/Curandero.java
+/Users/rgallo/algo3_TP2/AlgoChess/src/main/java/edu/fiuba/algoChess/Jinete.java
+/Users/rgallo/algo3_TP2/AlgoChess/src/main/java/edu/fiuba/algoChess/NoSePuedeUbicarPiezaEnSectoRival.java
+/Users/rgallo/algo3_TP2/AlgoChess/src/main/java/edu/fiuba/algoChess/NoSePuedeUbicarPorqueEstaOcupadoException.java
+/Users/rgallo/algo3_TP2/AlgoChess/src/main/java/edu/fiuba/algoChess/NoExisteNingunCasilleroParaLaUbicacionDadaException.java
+/Users/rgallo/algo3_TP2/AlgoChess/src/main/java/edu/fiuba/algoChess/JugadorStatus.java
