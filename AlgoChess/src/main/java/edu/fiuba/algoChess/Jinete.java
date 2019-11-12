@@ -1,6 +1,6 @@
 package edu.fiuba.algoChess;
 
-import org.jetbrains.annotations.NotNull;
+//import org.jetbrains.annotations.NotNull;
 
 public class Jinete extends Ficha {
 
@@ -20,7 +20,7 @@ public class Jinete extends Ficha {
 
 	}
 
-	public void mover(@NotNull Tablero campoDeBatalla, Ubicacion ubicacion) {
+	public void mover(Tablero campoDeBatalla, Ubicacion ubicacion) {
 		campoDeBatalla.ubicarEnCelda(this, ubicacion);
 		campoDeBatalla.eliminar(this.ubicacion);
 		this.ubicacion = ubicacion;
