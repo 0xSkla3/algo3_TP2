@@ -1,6 +1,6 @@
 package edu.fiuba.algoChess;
 
-import org.jetbrains.annotations.NotNull;
+//import org.jetbrains.annotations.NotNull;
 
 public class Catapulta extends Ficha {
 
@@ -26,7 +26,7 @@ public class Catapulta extends Ficha {
 	}
 
 
-	public void mover(@NotNull Tablero campoDeBatalla, Ubicacion ubicacion) {
+	public void mover( Tablero campoDeBatalla, Ubicacion ubicacion) {
 	}
 
 	public int getAtaqueLejano(){return this.ataqueLejano;};
