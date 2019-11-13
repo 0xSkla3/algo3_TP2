@@ -7,13 +7,13 @@ public class Jinete extends Ficha {
 	private int ataqueLejano;
 	private int ataqueCercano;
 
-	public Jinete(Ubicacion ubicacion,int costo, int vida) {
-		super(ubicacion,costo,vida);
+	public Jinete(Ubicacion ubicacion, int costo, int vida) {
+		super(ubicacion, costo, vida);
 	}
 
-	public Jinete(){
+	public Jinete() {
 
-		super(3,100);
+		super(3, 100);
 		//this.nombre = TipoFicha.JINETE;
 		this.ataqueCercano = 5;
 		this.ataqueLejano = 15;
@@ -25,4 +25,26 @@ public class Jinete extends Ficha {
 		campoDeBatalla.eliminar(this.ubicacion);
 		this.ubicacion = ubicacion;
 	}
+
+	public int getAtaqueCercano() {
+		return this.ataqueCercano;
+	}
+
+	public int getAtaqueLejano() {
+		return this.ataqueLejano;
+	}
+
+	public void atacarCercano(Ficha atacado) {
+
+		atacado.bajarVida(this.ataqueCercano);
+	}
+
+	;
+
+	public void atacarLejano(Ficha atacado) {
+
+		atacado.bajarVida(this.ataqueLejano);
+	}
+
+	;
 }

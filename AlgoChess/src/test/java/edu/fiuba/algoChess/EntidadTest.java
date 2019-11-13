@@ -63,61 +63,109 @@ public class EntidadTest {
 	}
 
 	@Test
-	public void testCuranderoCuraOtraFicha(){
+	public void testCuranderoCuraSoldado(){
 		Tablero unTablero = new Tablero();
 		unTablero.inicializarTablero();
 
 		Curandero unCuranderoSanador = new Curandero();
-		Curandero unCuranderoSanado = new Curandero();
+		Soldado soldado = new Soldado();
+		int vidaSoldadoTrasCuracion = soldado.getVida() + unCuranderoSanador.getSanacion();
+		unCuranderoSanador.Sanar(soldado);
 
-		unCuranderoSanador.Sanar(unCuranderoSanado);
-
-		assertEquals(unCuranderoSanador.getSanacion()+unCuranderoSanador.getVida(),unCuranderoSanado.getVida());
-
-	}
-
-	@Test
-	public void testSoldadoAtacaOtraFicha(){
-		Tablero unTablero = new Tablero();
-		unTablero.inicializarTablero();
-
-		Soldado UnSoldadoAtacante = new Soldado();
-		Soldado unSoldadoAtacado = new Soldado();
-
-		UnSoldadoAtacante.Atacar(unSoldadoAtacado);
-
-		assertEquals(UnSoldadoAtacante.getVida()-UnSoldadoAtacante.getAtaqueCercano(),unSoldadoAtacado.getVida());
+		assertEquals(vidaSoldadoTrasCuracion,soldado.getVida());
 
 	}
 
 	@Test
-	public void testCatapultaAtacaOtraFicha(){
+	public void testSoldadoAtacaOtraFichaCercana(){
 		Tablero unTablero = new Tablero();
 		unTablero.inicializarTablero();
 
-		Catapulta UnCatapultaAtacante = new Catapulta();
-		Catapulta unCatapultaAtacado = new Catapulta();
+		Soldado unSoldadoAtacante = new Soldado();
+		Soldado soldadoAtacado = new Soldado();
+		int vidaSoldadoTrasAtaque = soldadoAtacado.getVida() - unSoldadoAtacante.getAtaqueCercano();
 
-		UnCatapultaAtacante.Atacar(unCatapultaAtacado);
+		unSoldadoAtacante.atacar(soldadoAtacado);
 
-		assertEquals(UnCatapultaAtacante.getVida()-UnCatapultaAtacante.getAtaqueLejano(),unCatapultaAtacado.getVida());
-
-	}
+		assertEquals(vidaSoldadoTrasAtaque,soldadoAtacado.getVida());
+	};
 
 	@Test
-	public void testJineteAtacaOtraFicha(){
+	public void testSoldadoAtacaFichaLejanaYNoSeRestaVidaALaFichaAtacada() {
 		Tablero unTablero = new Tablero();
 		unTablero.inicializarTablero();
 
-		Soldado UnJineteAtacante = new Soldado();
-		Soldado unJineteAtacado = new Soldado();
+		Soldado unSoldadoAtacante = new Soldado();
+		Soldado soldadoAtacadoLejano = new Soldado();
+		int vidaSoldadoTrasAtaque = soldadoAtacadoLejano.getVida() - unSoldadoAtacante.getAtaqueLejano();
 
-		UnJineteAtacante.Atacar(unJineteAtacado);
+		unSoldadoAtacante.atacar(soldadoAtacadoLejano);
 
-		assertEquals(UnJineteAtacante.getVida()-UnJineteAtacante.getAtaqueCercano(),unJineteAtacado.getVida());
+		assertEquals(vidaSoldadoTrasAtaque, soldadoAtacadoLejano.getVida());
+	};
+
+	@Test
+	public void testCatapultaAtacaFichaLejana(){
+		Tablero unTablero = new Tablero();
+		unTablero.inicializarTablero();
+
+		Catapulta unaCatapultaAtacante = new Catapulta();
+		Catapulta unaCatapultaAtacada = new Catapulta();
+
+
+		int vidaTrasAtaque = unaCatapultaAtacada.getVida()-unaCatapultaAtacante.getAtaqueLejano();
+		unaCatapultaAtacante.atacar(unaCatapultaAtacada);
+		assertEquals(vidaTrasAtaque,unaCatapultaAtacada.getVida());
 
 	}
 
+	//@Test
+	//public void testCatapultaAtacaFichaCercana(){
+	//	Tablero unTablero = new Tablero();
+	//	unTablero.inicializarTablero();
+
+	//	Catapulta unaCatapultaAtacante = new Catapulta();
+	//	Soldado soldadoAtacadoCercano = new Soldado();
+
+
+	//	int vidaTrasAtaque = soldadoAtacadoCercano.getVida()-unaCatapultaAtacante.getAtaqueCercano();
+	//	unaCatapultaAtacante.atacar(soldadoAtacadoCercano);
+	//	assertEquals(vidaTrasAtaque,soldadoAtacadoCercano.getVida());
+
+	//}
+
+
+	@Test
+	public void testJineteAtacaFichaCercana(){
+		Tablero unTablero = new Tablero();
+		unTablero.inicializarTablero();
+
+		Jinete unJineteAtacante = new Jinete();
+		Soldado soldadoAtacado = new Soldado();
+
+		int vidaSoldadoTrasAtaque = soldadoAtacado.getVida() - unJineteAtacante.getAtaqueCercano();
+
+		unJineteAtacante.atacarCercano(soldadoAtacado);
+
+		assertEquals(vidaSoldadoTrasAtaque,soldadoAtacado.getVida());
+
+	};
+
+	@Test
+	public void testJineteAtacaFichaLejana(){
+		Tablero unTablero = new Tablero();
+		unTablero.inicializarTablero();
+
+		Jinete unJineteAtacante = new Jinete();
+		Soldado soldadoAtacado = new Soldado();
+
+		int vidaSoldadoTrasAtaque = soldadoAtacado.getVida() - unJineteAtacante.getAtaqueLejano();
+
+		unJineteAtacante.atacarLejano(soldadoAtacado);
+
+		assertEquals(vidaSoldadoTrasAtaque,soldadoAtacado.getVida());
+
+	}
 
 
 }
