@@ -34,27 +34,45 @@ public abstract class Ficha implements Movible {
 
 	}
 
-	//public int getAtaque(){return this.ataque;}
+	public void ejecutarComportamiento(){
+		return this.ataque;
+	}
 
-	public Jugador getJugador(){ return this.jugadorDueño;}
+	public Jugador getJugador() {
+			return this.jugadorDueño;
+		}
 
-	public void setJugador(Jugador jugador){ this.jugadorDueño = jugador;}
+	public void setJugador(Jugador jugador){
+			this.jugadorDueño = jugador;
+		}
 
-	public int getCosto(){return this.costo;}
+	public int getCosto(){
+		return this.costo;
+		}
 
 	//public TipoFicha getNombre(){return this.nombre;}
 
-	public int getVida() {return this.vida;}
+	public int getVida() {
+		return this.vida;
+		}
 
-	public Ubicacion getUbicacion() {return this.ubicacion;}
+	public Ubicacion getUbicacion() {
+		return this.ubicacion;
+		}
 
-	public void aumentarVida(int aumento) { this.vida = this.vida + aumento;}
+	public void aumentarVida(int aumento) {
+		this.vida = this.vida + aumento;
+		}
 
-	public void bajarVida(int disminucion) {this.vida = this.vida - disminucion;}
+	public void bajarVida(int disminucion){
+		this.vida = this.vida - disminucion;
+		}
 
-	public void setUbicacion(Ubicacion ubicacion) {this.ubicacion=ubicacion;}
+	public void setUbicacion(Ubicacion ubicacion){
+		this.ubicacion=ubicacion;
+		}
 
-	public void moverseALaDerecha(Tablero campoDeBatalla) {
+	public void moverseALaDerecha(Tablero campoDeBatalla){
 		Ubicacion ubicacionDerecha = this.ubicacion.getUbicacionDerecha();
 		this.mover(campoDeBatalla, ubicacionDerecha);
 	}

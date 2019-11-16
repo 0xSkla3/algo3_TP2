@@ -29,12 +29,16 @@ public class Curandero extends Ficha {
 
 	}
 
-	public int getSanacion(){return this.sanacion;}
+	public void ejecutarComportamiento {
+
+	}
+
+	public int getSanacion(){
+		return this.sanacion;
+	}
 
 	public void Sanar(Ficha sanado){
-
 		sanado.aumentarVida(this.sanacion);
-
 	}
 
 }

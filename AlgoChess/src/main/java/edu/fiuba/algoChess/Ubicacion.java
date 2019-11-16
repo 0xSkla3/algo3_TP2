@@ -30,4 +30,12 @@ public class Ubicacion {
 	public Ubicacion getUbicacionArriba() { return new Ubicacion(this.x, this.y+1);}
 	public Ubicacion getUbicacionAbajo() { return new Ubicacion(this.x, this.y-1);}
 
+	public int getCoordenadaX(){
+		return this.x;
+	};
+
+	public int getCoordenadaY(){
+		return this.y;
+	};
+
 }

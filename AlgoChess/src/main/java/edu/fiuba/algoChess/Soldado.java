@@ -7,6 +7,7 @@ public class Soldado extends Ficha implements Movible {
 	private int ataqueLejano;
 
 	public Soldado(Ubicacion ubicacion,int costo, int vida) {
+
 		super(ubicacion,costo,vida);
 	}
 
@@ -19,11 +20,18 @@ public class Soldado extends Ficha implements Movible {
 
 	}
 
-	public int getAtaqueCercano(){return this.ataqueCercano;}
-	public int getAtaqueLejano(){return this.ataqueCercano;}
+	public void ejecutarComportamiento {
+
+	}
+
+	public int getAtaqueCercano(){
+		return this.ataqueCercano;
+	}
+	public int getAtaqueLejano(){
+		return this.ataqueCercano;
+	}
 
 	public void atacar(Ficha atacado){
-
 		atacado.bajarVida(this.ataqueCercano);
 
 	}

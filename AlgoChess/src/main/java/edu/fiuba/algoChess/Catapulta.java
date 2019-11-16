@@ -21,21 +21,31 @@ public class Catapulta extends Ficha {
 	}
 
 	public Catapulta(int costo, int vida) {
-
 		super(costo,vida);
 	}
 
 
 	public void mover( Tablero campoDeBatalla, Ubicacion ubicacion) {
 	}
+	public void ejecutarComportamiento {
 
-	public int getAtaqueLejano(){return this.ataqueLejano;};
-	public int getAtaqueCercano(){return this.ataqueCercano;}
+	}
+
+
+	public void ejecutarComportamiento {
+
+	}
+
+	public int getAtaqueLejano(){
+		return this.ataqueLejano;
+	}
+
+	public int getAtaqueCercano(){
+		return this.ataqueCercano;
+	}
 
 	public void atacar(Ficha atacado){
-
 		atacado.bajarVida(this.ataqueLejano);
-
 	}
 
 }

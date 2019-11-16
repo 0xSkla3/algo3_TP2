@@ -26,25 +26,63 @@ public class Jinete extends Ficha {
 		this.ubicacion = ubicacion;
 	}
 
-	public int getAtaqueCercano() {
-		return this.ataqueCercano;
+	public Posicion getPosicionRelativa(Ficha ficha){
+		Ubicacion atacado = ficha.getUbicacion();
+		Ubicacion ubicacionAtacante = this.getUbicacion();
+	}//no veo como resolver esto
+
+	public void ejecutarComportamiento(Ficha atacado) {
+
+		Posicion posicion = getPosicionRelativa(atacado);
+		this.atacar(posicion);
+		Cercano posicion1 = getPosicionRelativa(atacado);
 	}
 
-	public int getAtaqueLejano() {
-		return this.ataqueLejano;
-	}
 
-	public void atacarCercano(Ficha atacado) {
 
-		atacado.bajarVida(this.ataqueCercano);
-	}
-
-	;
-
-	public void atacarLejano(Ficha atacado) {
-
+	public void atacar(Lejano posicion, Ficha atacado){
 		atacado.bajarVida(this.ataqueLejano);
 	}
+	public void atacar(Cercano posicion, Ficha atacado){
+		atacado.bajarVida(this.ataqueCercano);
+	}
+	public void atacar(Medio posicion, Ficha atacado){
+		atacado.bajarVida(this.ataqueLejano);
+	}
+
+
+
+
+
+	//public int getAtaqueCercano() {
+	//	return this.ataqueCercano;
+	//}
+
+	//public Posicion getPosicionRelativa(Ficha unaFicha){
+
+	//}
+
+	//public void atacarSegun(Posicion posicion){
+
+	//	if (posicion==Lejano){
+
+	//	}
+	//}
+
+	//public int getAtaqueLejano() {
+	//	return this.ataqueLejano;
+	//}
+
+	//public void atacarCercano(Ficha atacado) {
+	//	atacado.bajarVida(this.ataqueCercano);
+	//}
+
+	//;
+
+	//public void atacarLejano(Ficha atacado) {
+
+	//	atacado.bajarVida(this.ataqueLejano);
+	//}
 
 	;
 }
