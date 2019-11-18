@@ -12,6 +12,8 @@ import static junit.framework.TestCase.assertEquals;
 
 public class TableroTest {
 
+
+
 	@Test
 	public void testTableroSeColocaPiezaAliadaConExicitoEnSectorAliado() {
 		Tablero tableroTest = new Tablero();
@@ -57,7 +59,7 @@ public class TableroTest {
 
 
 /*	@Test
-	public void testTableroEsIgualATableroVacioConMismoTamanioEsFalse(){
+	public void testtableroEsIgualAtableroVacioConMismoTamanioEsFalse(){
 		tablero tablero = new tablero(10,10);
         tablero.ubicarEnCasilleroAleatorio(new ObjetoUbicable());
         tablero otrotablero = new tablero(10,10);
@@ -65,7 +67,7 @@ public class TableroTest {
 	}
 
 	@Test
-	public void testTableroEsIgualATableroVacioConTamanioDiferenteEsFalse(){
+	public void testtableroEsIgualAtableroVacioConTamanioDiferenteEsFalse(){
 		tablero tablero = new tablero(10,10);
 		tablero.ubicarEnCasilleroAleatorio(new ObjetoUbicable());
 		tablero otrotablero = new tablero(8,10);

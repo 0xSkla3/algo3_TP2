@@ -31,7 +31,7 @@ public class Tablero {
 	/*public void asignarSectores(){
 		for (int i=1; i<=10; i++) {
 			for (int j=1; j<=20; j++) {
-				this.obtenerCelda(new Ubicacion(i, j)).setSectorDelJugador();
+				//this.obtenerCelda(new Ubicacion(i, j)).setSectorDelJugador();
 			}
 		}
 		setCeldaActiva(this.campoDeBatalla.get(new Ubicacion(1,1)));
