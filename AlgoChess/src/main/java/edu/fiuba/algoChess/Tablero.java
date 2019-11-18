@@ -37,7 +37,7 @@ public class Tablero {
 		setCeldaActiva(this.campoDeBatalla.get(new Ubicacion(1,1)));
 	}*/
 
-	public void moverFicha(Celda nuevaActiva) {
+	public void moverPieza(Celda nuevaActiva) {
 		this.celdaActiva.moverA(nuevaActiva);
 	}
 
@@ -49,13 +49,13 @@ public class Tablero {
 		}
 	}
 
-	public void ubicarEnCelda(Ficha ficha, Ubicacion ubicacion) {
+	public void ubicarEnCelda(Pieza pieza, Ubicacion ubicacion) {
 
 		if (!this.campoDeBatalla.containsKey(ubicacion)) {
 			throw new NoExisteNingunCasilleroParaLaUbicacionDadaException("No existe una celda en esa ubicacion");
 		}else if (this.obtenerCelda(ubicacion).getContenido().equals(Optional.empty())) {
-			this.campoDeBatalla.get(ubicacion).guardar(ficha);
-			ficha.setUbicacion(ubicacion);
+			this.campoDeBatalla.get(ubicacion).guardar(pieza);
+			pieza.setUbicacion(ubicacion);
 		}
 		else {
 			throw new NoSePuedeUbicarPorqueEstaOcupadoException("No se puede ubicar porque esta ocupado la celda");

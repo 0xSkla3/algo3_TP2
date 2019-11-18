@@ -2,7 +2,7 @@ package edu.fiuba.algoChess;
 
 //import org.jetbrains.annotations.NotNull;
 
-public class Catapulta extends Ficha {
+public class Catapulta extends Pieza {
 
 	private int ataqueLejano;
 	private int ataqueCercano;
@@ -14,7 +14,7 @@ public class Catapulta extends Ficha {
 	public Catapulta(){
 
 		super(5,50);
-		//this.nombre = TipoFicha.CATAPULTA;
+		//this.nombre = TipoPieza.CATAPULTA;
 		this.ataqueLejano = 20;
 		this.ataqueCercano = 0;
 
@@ -27,14 +27,14 @@ public class Catapulta extends Ficha {
 
 	public void mover( Tablero campoDeBatalla, Ubicacion ubicacion) {
 	}
-	public void ejecutarComportamiento {
+	public void ejecutarComportamiento() {
 
 	}
 
 
-	public void ejecutarComportamiento {
+/*	public void ejecutarComportamiento() {
 
-	}
+	}*/
 
 	public int getAtaqueLejano(){
 		return this.ataqueLejano;
@@ -44,7 +44,7 @@ public class Catapulta extends Ficha {
 		return this.ataqueCercano;
 	}
 
-	public void atacar(Ficha atacado){
+	public void atacar(Pieza atacado){
 		atacado.bajarVida(this.ataqueLejano);
 	}
 

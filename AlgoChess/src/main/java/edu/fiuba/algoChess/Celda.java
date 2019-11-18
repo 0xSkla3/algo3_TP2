@@ -4,22 +4,22 @@ import java.util.Optional;
 
 public class Celda {
 
-	private Optional<Ficha> fichaActual;
+	private Optional<Pieza> piezaActual;
 	private Jugador sectorDelJugador;
 
 	public Celda(){
-		this.fichaActual = Optional.empty();
+		this.piezaActual = Optional.empty();
 	}
 
-	public boolean isEmpty() {return this.fichaActual.isEmpty();}
+	public boolean isEmpty() {return this.piezaActual.isEmpty();}
 
-	public Ficha getFichaActual(){return this.fichaActual.get();}
+	public Pieza getPiezaActual(){return this.piezaActual.get();}
 
-	public Optional<Ficha> getContenido(){return this.fichaActual;}
+	public Optional<Pieza> getContenido(){return this.piezaActual;}
 
 	public void moverA(Celda nuevaCelda) {
-		nuevaCelda.fichaActual = this.fichaActual;
-		this.fichaActual = Optional.empty();
+		nuevaCelda.piezaActual = this.piezaActual;
+		this.piezaActual = Optional.empty();
 	}
 
 	public void setSectorDelJugador(Jugador jugador){
@@ -28,20 +28,20 @@ public class Celda {
 
 	public Jugador getSectorDelJugador(){ return this.sectorDelJugador;}
 
-	public void guardar(Ficha fichaActual) {
-		if (this.sectorDelJugador != fichaActual.getJugador() ) {
+	public void guardar(Pieza piezaActual) {
+		if (this.sectorDelJugador != piezaActual.getJugador() ) {
 			throw new NoSePuedeUbicarPiezaEnSectoRival("No se puede ubicar pieza en sector rival");
 		} else {
-			this.fichaActual = Optional.of(fichaActual);
+			this.piezaActual = Optional.of(piezaActual);
 		}
 	}
 
-/*	public void ubicar(Ficha fichaActual) {
-		this.estado.ubicar(Optional.of(fichaActual), this);
+/*	public void ubicar(Pieza piezaActual) {
+		this.estado.ubicar(Optional.of(piezaActual), this);
 	} //capturar exception de ocupado o sectorEnemigo
 */
 	public void eliminar() {
-		this.fichaActual = Optional.empty();
+		this.piezaActual = Optional.empty();
 	}
 
 }

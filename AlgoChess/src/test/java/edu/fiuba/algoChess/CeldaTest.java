@@ -16,48 +16,48 @@ public class CeldaTest {
 	}
 
 	@Test
-	public void celdaTestGuardaFicha() {
+	public void celdaTestGuardaPieza() {
 		Ubicacion origen = new Ubicacion(0,0);
-		Curandero ficha = new Curandero(origen);
+		Curandero pieza = new Curandero(origen);
 		Celda celda = new Celda();
 
-		celda.guardar(ficha);
-		assertEquals(ficha, celda.getFichaActual());
+		celda.guardar(pieza);
+		assertEquals(pieza, celda.getPiezaActual());
 	}
 
 	@Test
-	public void celdaTestBorraFicha() {
+	public void celdaTestBorraPieza() {
 		Ubicacion origen = new Ubicacion(0,0);
-		Curandero ficha = new Curandero(origen);
+		Curandero pieza = new Curandero(origen);
 		Celda celda = new Celda();
 
-		celda.guardar(ficha);
+		celda.guardar(pieza);
 		celda.eliminar();
 		assertTrue(celda.isEmpty());
 	}
 
 	@Test
-	public void celdaTestMueveFicha() {
+	public void celdaTestMuevePieza() {
 		Ubicacion origen = new Ubicacion(0,0);
-		Curandero ficha = new Curandero(origen);
+		Curandero pieza = new Curandero(origen);
 		Celda celdaOrigen = new Celda();
 		Celda celdaDestino = new Celda();
-		Curandero fichaAux;
+		Curandero piezaAux;
 
-		celdaOrigen.guardar(ficha);
+		celdaOrigen.guardar(pieza);
 		celdaOrigen.moverA(celdaDestino);
 
-		assertEquals(ficha, celdaDestino.getFichaActual());
+		assertEquals(pieza, celdaDestino.getPiezaActual());
 	}
 
 	@Test
-	public void celdaTestBorraFichaLuegoDeMover() {
+	public void celdaTestBorraPiezaLuegoDeMover() {
 		Ubicacion origen = new Ubicacion(0,0);
-		Curandero ficha = new Curandero(origen);
+		Curandero pieza = new Curandero(origen);
 		Celda celdaOrigen = new Celda();
 		Celda celdaDestino = new Celda();
 
-		celdaOrigen.guardar(ficha);
+		celdaOrigen.guardar(pieza);
 		celdaOrigen.moverA(celdaDestino);
 
 		assertTrue(celdaOrigen.isEmpty());

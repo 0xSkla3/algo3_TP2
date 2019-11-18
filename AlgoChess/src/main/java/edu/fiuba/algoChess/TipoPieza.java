@@ -1,5 +1,5 @@
 package edu.fiuba.algoChess;
 
-public enum TipoFicha {
+public enum TipoPieza {
 	SOLDADO, CURANDERO, CATAPULTA, JINETE;
 }

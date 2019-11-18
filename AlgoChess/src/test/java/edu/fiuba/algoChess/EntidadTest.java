@@ -77,7 +77,7 @@ public class EntidadTest {
 	}
 
 	@Test
-	public void testSoldadoAtacaOtraFichaCercana(){
+	public void testSoldadoAtacaOtraPiezaCercana(){
 		Tablero unTablero = new Tablero();
 		unTablero.inicializarTablero();
 
@@ -91,7 +91,7 @@ public class EntidadTest {
 	};
 
 	@Test
-	public void testSoldadoAtacaFichaLejanaYNoSeRestaVidaALaFichaAtacada() {
+	public void testSoldadoAtacaPiezaLejanaYNoSeRestaVidaALaPiezaAtacada() {
 		Tablero unTablero = new Tablero();
 		unTablero.inicializarTablero();
 
@@ -105,7 +105,7 @@ public class EntidadTest {
 	};
 
 	@Test
-	public void testCatapultaAtacaFichaLejana(){
+	public void testCatapultaAtacaPiezaLejana(){
 		Tablero unTablero = new Tablero();
 		unTablero.inicializarTablero();
 
@@ -120,7 +120,7 @@ public class EntidadTest {
 	}
 
 	//@Test
-	//public void testCatapultaAtacaFichaCercana(){
+	//public void testCatapultaAtacaPiezaCercana(){
 	//	Tablero unTablero = new Tablero();
 	//	unTablero.inicializarTablero();
 
@@ -134,9 +134,9 @@ public class EntidadTest {
 
 	//}
 
-
+/*
 	@Test
-	public void testJineteAtacaFichaCercana(){
+	public void testJineteAtacaPiezaCercana(){
 		Tablero unTablero = new Tablero();
 		unTablero.inicializarTablero();
 
@@ -149,10 +149,10 @@ public class EntidadTest {
 
 		assertEquals(vidaSoldadoTrasAtaque,soldadoAtacado.getVida());
 
-	};
+	}
 
 	@Test
-	public void testJineteAtacaFichaLejana(){
+	public void testJineteAtacaPiezaLejana(){
 		Tablero unTablero = new Tablero();
 		unTablero.inicializarTablero();
 
@@ -165,7 +165,7 @@ public class EntidadTest {
 
 		assertEquals(vidaSoldadoTrasAtaque,soldadoAtacado.getVida());
 
-	}
+	}*/
 
 
 }

@@ -1,7 +1,11 @@
 package edu.fiuba.algoChess;
 
-public class Posicion {
+public enum PosicionRelativa {
 
+    CERCANO, MEDIO, LEJANO
+
+}
+    /*
         private int nombre;
 
         public Posicion (){
@@ -16,4 +20,5 @@ public class Posicion {
 
 
 
-}
+
+*/

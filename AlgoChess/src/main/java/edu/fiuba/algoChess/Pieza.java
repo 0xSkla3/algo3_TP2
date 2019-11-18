@@ -2,15 +2,15 @@ package edu.fiuba.algoChess;
 
 import java.util.Optional;
 
-public abstract class Ficha implements Movible {
+public abstract class Pieza implements Movible {
 
-	//protected TipoFicha nombre;
+	//protected TipoPieza nombre;
 	private int vida;
 	private int costo;
 	protected Ubicacion ubicacion;
 	protected Jugador jugadorDueño;
 
-	public Ficha(Ubicacion ubicacion, int costo, int vida) {
+	public Pieza(Ubicacion ubicacion, int costo, int vida) {
 
 		this.ubicacion = ubicacion;
 		this.vida = vida;
@@ -18,7 +18,7 @@ public abstract class Ficha implements Movible {
 
 	}
 
-	public Ficha(int costo, int vida) {
+	public Pieza(int costo, int vida) {
 
 		this.ubicacion = ubicacion;
 		this.vida = vida;
@@ -26,7 +26,7 @@ public abstract class Ficha implements Movible {
 
 	}
 
-	public Ficha() {
+	public Pieza() {
 
 		this.vida = 0;
 		this.costo = 0;
@@ -34,9 +34,9 @@ public abstract class Ficha implements Movible {
 
 	}
 
-	public void ejecutarComportamiento(){
+/*	public void ejecutarComportamiento(){
 		return this.ataque;
-	}
+	}*/
 
 	public Jugador getJugador() {
 			return this.jugadorDueño;
@@ -50,7 +50,7 @@ public abstract class Ficha implements Movible {
 		return this.costo;
 		}
 
-	//public TipoFicha getNombre(){return this.nombre;}
+	//public TipoPieza getNombre(){return this.nombre;}
 
 	public int getVida() {
 		return this.vida;

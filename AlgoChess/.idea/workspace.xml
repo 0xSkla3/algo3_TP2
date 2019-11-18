@@ -2,9 +2,41 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f9d6d6a5-cb00-457b-8bf9-53fa75de2e61" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Catapulta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Catapulta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Celda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Celda.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Cercano.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Cercano.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Curandero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Curandero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Ficha.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Pieza.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Jinete.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Jinete.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Jugador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Jugador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Lejano.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Lejano.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Medio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Medio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Posicion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/PosicionRelativa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Soldado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Soldado.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Tablero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Tablero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/TipoFicha.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/TipoPieza.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/CeldaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/CeldaTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/EntidadTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/EntidadTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/JugadorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/JugadorTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/TableroTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/TableroTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Catapulta.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Catapulta.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Celda.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Celda.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Curandero.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Curandero.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Ficha.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Jinete.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Jinete.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Jugador.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Jugador.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Soldado.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Soldado.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Tablero.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Tablero.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/TipoFicha.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Ubicacion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Ubicacion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/edu/fiuba/algoChess/CeldaTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/edu/fiuba/algoChess/CeldaTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/edu/fiuba/algoChess/EntidadTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/edu/fiuba/algoChess/EntidadTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/edu/fiuba/algoChess/JugadorTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/edu/fiuba/algoChess/JugadorTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/edu/fiuba/algoChess/TableroTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/edu/fiuba/algoChess/TableroTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/test.iml" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

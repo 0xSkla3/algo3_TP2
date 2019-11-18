@@ -8,14 +8,14 @@ public class Jugador {
 	private int puntaje;
 	private int creditos;
 	private JugadorStatus status;
-	private Set<Ficha> fichas;
+	private Set<Pieza> piezas;
 
 	public Jugador() {
 		this.nombre = "";
 		this.puntaje = 0;
 		this.creditos = 20;
 		this.status = JugadorStatus.INACTIVO;
-		this.fichas = Collections.emptySet();
+		this.piezas = Collections.emptySet();
 	}
 
 	public Jugador(String unNombre) {
@@ -23,7 +23,7 @@ public class Jugador {
 		this.nombre = unNombre;
 		this.creditos = 20;
 		this.status = JugadorStatus.INACTIVO;
-		this.fichas = Collections.emptySet();
+		this.piezas = Collections.emptySet();
 	}
 
 	public void sumarPuntaje(int unPuntaje){this.puntaje += unPuntaje;}
@@ -49,14 +49,14 @@ public class Jugador {
 	public JugadorStatus getStatus(){ return this.status;}
 
 	public void validarPerdedor(){
-		if(this.fichas.isEmpty())
+		if(this.piezas.isEmpty())
 			this.perdedor();
 	}
 
-	public void adquirirFicha(Ficha ficha){
-		if(ficha.getCosto() <= this.creditos){
-			this.creditos = this.creditos - ficha.getCosto();
-			//this.fichas.add(ficha);
+	public void adquirirPieza(Pieza pieza){
+		if(pieza.getCosto() <= this.creditos){
+			this.creditos = this.creditos - pieza.getCosto();
+			//this.piezas.add(pieza);
 		}else{
 			this.status = JugadorStatus.POR_COMENZAR;
 		}

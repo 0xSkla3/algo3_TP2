@@ -24,7 +24,7 @@ public class TableroTest {
 		Celda celdaTest = tableroTest.obtenerCelda(ubicacionTest);
 		celdaTest.setSectorDelJugador(jugador1);
 		tableroTest.ubicarEnCelda(curandero,ubicacionTest);
-		assertEquals(celdaTest.getFichaActual(), curandero);
+		assertEquals(celdaTest.getPiezaActual(), curandero);
 	}
 
 

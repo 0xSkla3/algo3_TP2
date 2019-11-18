@@ -4,7 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
 
-public class Curandero extends Ficha {
+public class Curandero extends Pieza {
 
 	private int sanacion;
 
@@ -15,7 +15,7 @@ public class Curandero extends Ficha {
 	public Curandero(){
 
 		super(2,75);
-		//this.nombre = TipoFicha.CURANDERO;
+		//this.nombre = TipoPieza.CURANDERO;
 		this.sanacion = 15;
 
 	}
@@ -23,21 +23,20 @@ public class Curandero extends Ficha {
 	public Curandero(Ubicacion ubicacion){
 
 		super(2,75);
-		//this.nombre = TipoFicha.CURANDERO;
+		//this.nombre = TipoPieza.CURANDERO;
 		this.sanacion = 15;
 		this.ubicacion = ubicacion;
 
 	}
 
-	public void ejecutarComportamiento {
-
+	public void ejecutarComportamiento() {
 	}
 
 	public int getSanacion(){
 		return this.sanacion;
 	}
 
-	public void Sanar(Ficha sanado){
+	public void Sanar(Pieza sanado){
 		sanado.aumentarVida(this.sanacion);
 	}
 

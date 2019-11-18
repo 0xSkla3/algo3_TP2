@@ -1,6 +1,8 @@
 package edu.fiuba.algoChess;
 
-public class Soldado extends Ficha implements Movible {
+import edu.fiuba.algoChess.PosicionRelativa;
+
+public class Soldado extends Pieza implements Movible {
 
 
 	private int ataqueCercano;
@@ -14,13 +16,13 @@ public class Soldado extends Ficha implements Movible {
 	public Soldado(){
 
 		super(1,100);
-		//this.nombre = TipoFicha.SOLDADO;
+		//this.nombre = TipoPieza.SOLDADO;
 		this.ataqueCercano = 10;
 		this.ataqueLejano = 0;
 
 	}
 
-	public void ejecutarComportamiento {
+	public void ejecutarComportamiento() {
 
 	}
 
@@ -31,7 +33,7 @@ public class Soldado extends Ficha implements Movible {
 		return this.ataqueCercano;
 	}
 
-	public void atacar(Ficha atacado){
+	public void atacar(Pieza atacado){
 		atacado.bajarVida(this.ataqueCercano);
 
 	}

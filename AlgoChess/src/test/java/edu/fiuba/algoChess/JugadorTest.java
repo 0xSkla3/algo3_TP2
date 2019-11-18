@@ -69,7 +69,7 @@ public class JugadorTest {
 	}
 
 	@Test
-	public void jugadorTestSinFichasPierde(){
+	public void jugadorTestSinPiezasPierde(){
 
 		Jugador jugadorPrueba = new Jugador("Ruben");
 		jugadorPrueba.validarPerdedor();
@@ -78,15 +78,15 @@ public class JugadorTest {
 
 
 	@Test
-	public void jugadorTestSinCreditoNoPuedeAdquirirMasFichas(){
+	public void jugadorTestSinCreditoNoPuedeAdquirirMasPiezas(){
 
 		Jugador jugadorPrueba = new Jugador("Ruben");
-		Ficha unaFichaCara = new Catapulta(20,20);
+		Pieza unaPiezaCara = new Catapulta(20,20);
 
-		jugadorPrueba.adquirirFicha(unaFichaCara);
+		jugadorPrueba.adquirirPieza(unaPiezaCara);
 		assertEquals(JugadorStatus.INACTIVO,jugadorPrueba.getStatus() );
 
-		jugadorPrueba.adquirirFicha(unaFichaCara);
+		jugadorPrueba.adquirirPieza(unaPiezaCara);
 		assertEquals(JugadorStatus.POR_COMENZAR,jugadorPrueba.getStatus() );
 
 	}

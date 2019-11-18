@@ -2,7 +2,7 @@ package edu.fiuba.algoChess;
 
 //import org.jetbrains.annotations.NotNull;
 
-public class Jinete extends Ficha {
+public class Jinete extends Pieza {
 
 	private int ataqueLejano;
 	private int ataqueCercano;
@@ -14,7 +14,7 @@ public class Jinete extends Ficha {
 	public Jinete() {
 
 		super(3, 100);
-		//this.nombre = TipoFicha.JINETE;
+		//this.nombre = TipoPieza.JINETE;
 		this.ataqueCercano = 5;
 		this.ataqueLejano = 15;
 
@@ -26,30 +26,30 @@ public class Jinete extends Ficha {
 		this.ubicacion = ubicacion;
 	}
 
-	public Posicion getPosicionRelativa(Ficha ficha){
-		Ubicacion atacado = ficha.getUbicacion();
+/*	public Posicion getPosicionRelativa(Pieza pieza){
+		Ubicacion atacado = pieza.getUbicacion();
 		Ubicacion ubicacionAtacante = this.getUbicacion();
 	}//no veo como resolver esto
 
-	public void ejecutarComportamiento(Ficha atacado) {
+	public void ejecutarComportamiento(Pieza atacado) {
 
 		Posicion posicion = getPosicionRelativa(atacado);
 		this.atacar(posicion);
 		Cercano posicion1 = getPosicionRelativa(atacado);
-	}
+	}*/
 
 
 
-	public void atacar(Lejano posicion, Ficha atacado){
+/*	public void atacar(Lejano posicion, Pieza atacado){
 		atacado.bajarVida(this.ataqueLejano);
 	}
-	public void atacar(Cercano posicion, Ficha atacado){
+	public void atacar(Cercano posicion, Pieza atacado){
 		atacado.bajarVida(this.ataqueCercano);
 	}
-	public void atacar(Medio posicion, Ficha atacado){
+	public void atacar(Medio posicion, Pieza atacado){
 		atacado.bajarVida(this.ataqueLejano);
 	}
-
+*/
 
 
 
@@ -58,7 +58,7 @@ public class Jinete extends Ficha {
 	//	return this.ataqueCercano;
 	//}
 
-	//public Posicion getPosicionRelativa(Ficha unaFicha){
+	//public Posicion getPosicionRelativa(Pieza unaPieza){
 
 	//}
 
@@ -73,13 +73,13 @@ public class Jinete extends Ficha {
 	//	return this.ataqueLejano;
 	//}
 
-	//public void atacarCercano(Ficha atacado) {
+	//public void atacarCercano(Pieza atacado) {
 	//	atacado.bajarVida(this.ataqueCercano);
 	//}
 
 	//;
 
-	//public void atacarLejano(Ficha atacado) {
+	//public void atacarLejano(Pieza atacado) {
 
 	//	atacado.bajarVida(this.ataqueLejano);
 	//}

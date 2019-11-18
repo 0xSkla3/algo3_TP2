@@ -1,7 +1,7 @@
-package edu.fiuba.algoChess;
+/*package edu.fiuba.algoChess;
 
 public class Lejano extends Posicion {
     public Lejano(){
 
     }
-}
+}*/
