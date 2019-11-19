@@ -76,9 +76,9 @@ public class EntidadTest {
 		unCuranderoPorMover.moverseAbajo(unTablero);
 		assertEquals(fila2Columna2,unCuranderoPorMover.getUbicacion());
 
-	}
+	};
 
-<<<<<<< HEAD
+
 //	@Test
 //	public void testCuranderoCuraSoldado(){
 //		Tablero unTablero = new Tablero();
@@ -135,18 +135,18 @@ public class EntidadTest {
 //		assertEquals(vidaTrasAtaque,unaCatapultaAtacada.getVida());
 //
 //	}
-=======
-	@Test
-	public void testCuranderoCuraSoldado(){
-		Jugador jugador1 = new Jugador();
-		Jugador jugador2 = new Jugador();
-		Tablero unTablero = new Tablero(jugador1, jugador2);
-		//unTablero.inicializarTablero();
->>>>>>> ce49863ec25cc3e6bf76d84782dd76d5c5fe105e
+
+//	@Test
+//	public void testCuranderoCuraSoldado(){
+//		Jugador jugador1 = new Jugador();
+//		Jugador jugador2 = new Jugador();
+//		Tablero unTablero = new Tablero(jugador1, jugador2);
+//		//unTablero.inicializarTablero();
 
 
+
 	@Test
-<<<<<<< HEAD
+
 	public void testJineteAtacaSoldadoCercano(){
 		Soldado soldado = new Soldado();
 		Ubicacion ubicacionSoldado = new Ubicacion(1,1);
@@ -175,28 +175,29 @@ public class EntidadTest {
 		jinete.ejecutarComportamiento(distanciaSoldadoAJinete,soldado);
 		assertEquals(vidaTrasAtaque,soldado.getVida());
 	};
-=======
-	public void testSoldadoAtacaOtraPiezaCercana(){
-		Jugador jugador1 = new Jugador();
-		Jugador jugador2 = new Jugador();
-		Tablero unTablero = new Tablero(jugador1, jugador2);
-//		unTablero.inicializarTablero();
 
-		Soldado unSoldadoAtacante = new Soldado();
-		Soldado soldadoAtacado = new Soldado();
-		int vidaSoldadoTrasAtaque = soldadoAtacado.getVida() - unSoldadoAtacante.getAtaqueCercano();
-
-		unSoldadoAtacante.atacar(soldadoAtacado);
-
-		assertEquals(vidaSoldadoTrasAtaque,soldadoAtacado.getVida());
-	};
-
-	@Test
-	public void testSoldadoAtacaPiezaLejanaYNoSeRestaVidaALaPiezaAtacada() {
-		Jugador jugador1 = new Jugador();
-		Jugador jugador2 = new Jugador();
-		Tablero unTablero = new Tablero(jugador1, jugador2);
->>>>>>> ce49863ec25cc3e6bf76d84782dd76d5c5fe105e
+//	@Test
+//	public void testSoldadoAtacaOtraPiezaCercana(){
+//		Jugador jugador1 = new Jugador();
+//		Jugador jugador2 = new Jugador();
+//		Tablero unTablero = new Tablero(jugador1, jugador2);
+////		unTablero.inicializarTablero();
+//
+//		Soldado unSoldadoAtacante = new Soldado();
+//		Soldado soldadoAtacado = new Soldado();
+//		int vidaSoldadoTrasAtaque = soldadoAtacado.getVida() - unSoldadoAtacante.getAtaqueCercano();
+//
+//		unSoldadoAtacante.atacar(soldadoAtacado);
+//
+//		assertEquals(vidaSoldadoTrasAtaque,soldadoAtacado.getVida());
+//	};
+//
+//	@Test
+//	public void testSoldadoAtacaPiezaLejanaYNoSeRestaVidaALaPiezaAtacada() {
+//		Jugador jugador1 = new Jugador();
+//		Jugador jugador2 = new Jugador();
+//		Tablero unTablero = new Tablero(jugador1, jugador2);
+//	};
 
 	@Test
 	public void testJineteAtacaSoldadoLejanoYNoSeDescuentaVidaDelSoldado(){
@@ -244,7 +245,7 @@ public class EntidadTest {
 	};
 
 	@Test
-<<<<<<< HEAD
+
 	public void testCatapultaAtacaASoldadoCercanoYNoSeRestaVidaDelAtacado(){
 		Soldado soldado = new Soldado();
 		Ubicacion ubicacionSoldado = new Ubicacion(1,1);
@@ -258,12 +259,12 @@ public class EntidadTest {
 		catapulta.ejecutarComportamiento(distanciaSoldadoACatapulta,soldado);
 		assertEquals(vidaTrasAtaque,soldado.getVida());
 	};
-=======
-	public void testCatapultaAtacaPiezaLejana(){
-		Jugador jugador1 = new Jugador();
-		Jugador jugador2 = new Jugador();
-		Tablero unTablero = new Tablero(jugador1,jugador2);
->>>>>>> ce49863ec25cc3e6bf76d84782dd76d5c5fe105e
+
+//	public void testCatapultaAtacaPiezaLejana() {
+//		Jugador jugador1 = new Jugador();
+//		Jugador jugador2 = new Jugador();
+//		Tablero unTablero = new Tablero(jugador1, jugador2);
+//	}
 
 	@Test
 	public void testCatapultaAtacaASoldadoADistanciaMediaYRestaVida(){

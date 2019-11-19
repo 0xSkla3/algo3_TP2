@@ -1,34 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-<<<<<<< HEAD
     <list default="true" id="9a543e5d-9f77-47b1-95c7-ad2cead8e227" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/$PRODUCT_WORKSPACE_FILE$" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/my-app.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Catapulta.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Catapulta.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/ConstantesJuego.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Curandero.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Curandero.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Jinete.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Jinete.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Pieza.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Pieza.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/PosicionRelativa.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Soldado.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Soldado.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/edu/fiuba/algoChess/EntidadTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/edu/fiuba/algoChess/EntidadTest.class" afterDir="false" />
-=======
-    <list default="true" id="f9d6d6a5-cb00-457b-8bf9-53fa75de2e61" name="Default Changelist" comment="se comentan cosas, se cambia nombre ficha por pieza, se agrega enum de PosicionRelativa">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Jinete.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Jinete.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/JineteTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/JineteTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Jinete.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Jinete.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/edu/fiuba/algoChess/JineteTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/edu/fiuba/algoChess/JineteTest.class" afterDir="false" />
->>>>>>> ce49863ec25cc3e6bf76d84782dd76d5c5fe105e
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -93,7 +71,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

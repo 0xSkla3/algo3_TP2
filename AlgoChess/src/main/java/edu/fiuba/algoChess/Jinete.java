@@ -8,13 +8,12 @@ public class Jinete extends Pieza {
 
 	private int ataqueMedio;
 	private int ataqueCercano;
-<<<<<<< HEAD
 	private int ataqueLejano;
-=======
+
 	public boolean piezaAliadaCercana;
 	public boolean piezaEnemigaCercana;
 	private int distanciaAReconocerEnTerreno;
->>>>>>> ce49863ec25cc3e6bf76d84782dd76d5c5fe105e
+
 
 	public Jinete(Ubicacion ubicacion, int costo, int vida) {
 		super(ubicacion, costo, vida);
@@ -25,15 +24,11 @@ public class Jinete extends Pieza {
 		super(3, 100);
 		//this.nombre = TipoPieza.JINETE;
 		this.ataqueCercano = 5;
-<<<<<<< HEAD
 		this.ataqueMedio = 15;
 		this.ataqueLejano = 0;
-=======
-		this.ataqueLejano = 15;
 		this.piezaEnemigaCercana = false;
 		this.piezaAliadaCercana = false;
 		this.distanciaAReconocerEnTerreno = 2;
->>>>>>> ce49863ec25cc3e6bf76d84782dd76d5c5fe105e
 
 	}
 
@@ -43,7 +38,7 @@ public class Jinete extends Pieza {
 		this.ubicacion = ubicacion;
 	}
 
-<<<<<<< HEAD
+
 	public void ejecutarComportamiento(DistanciaRelativa distancia, Pieza atacado){
 		if (distancia==DistanciaRelativa.LEJANO){
 			atacado.bajarVida(this.ataqueLejano);
@@ -55,7 +50,7 @@ public class Jinete extends Pieza {
 			atacado.bajarVida(this.ataqueMedio);
 		}
 			}
-=======
+
 	//@Override
 	public void reconocerTerreno(Pieza piezaCentral, Tablero campoDeBatalla){
 
@@ -128,7 +123,7 @@ public class Jinete extends Pieza {
 	//public int getAtaqueCercano() {
 	//	return this.ataqueCercano;
 	//}
->>>>>>> ce49863ec25cc3e6bf76d84782dd76d5c5fe105e
+
 
 
 
