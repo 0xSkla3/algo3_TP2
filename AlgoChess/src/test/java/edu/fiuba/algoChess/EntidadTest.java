@@ -62,62 +62,213 @@ public class EntidadTest {
 
 	}
 
-	@Test
-	public void testCuranderoCuraSoldado(){
-		Tablero unTablero = new Tablero();
-		unTablero.inicializarTablero();
+//	@Test
+//	public void testCuranderoCuraSoldado(){
+//		Tablero unTablero = new Tablero();
+//		unTablero.inicializarTablero();
+//
+//		Curandero unCuranderoSanador = new Curandero();
+//		Soldado soldado = new Soldado();
+//		int vidaSoldadoTrasCuracion = soldado.getVida() + unCuranderoSanador.getSanacion();
+//		unCuranderoSanador.Sanar(soldado);
+//
+//		assertEquals(vidaSoldadoTrasCuracion,soldado.getVida());
+//
+//	}
+//
+//	@Test
+//	public void testSoldadoAtacaOtraPiezaCercana(){
+//		Tablero unTablero = new Tablero();
+//		unTablero.inicializarTablero();
+//
+//		Soldado unSoldadoAtacante = new Soldado();
+//		Soldado soldadoAtacado = new Soldado();
+//		int vidaSoldadoTrasAtaque = soldadoAtacado.getVida() - unSoldadoAtacante.getAtaqueCercano();
+//
+//		unSoldadoAtacante.atacar(soldadoAtacado);
+//
+//		assertEquals(vidaSoldadoTrasAtaque,soldadoAtacado.getVida());
+//	};
+//
+//	@Test
+//	public void testSoldadoAtacaPiezaLejanaYNoSeRestaVidaALaPiezaAtacada() {
+//		Tablero unTablero = new Tablero();
+//		unTablero.inicializarTablero();
+//
+//		Soldado unSoldadoAtacante = new Soldado();
+//		Soldado soldadoAtacadoLejano = new Soldado();
+//		int vidaSoldadoTrasAtaque = soldadoAtacadoLejano.getVida() - unSoldadoAtacante.getAtaqueLejano();
+//
+//		unSoldadoAtacante.atacar(soldadoAtacadoLejano);
+//
+//		assertEquals(vidaSoldadoTrasAtaque, soldadoAtacadoLejano.getVida());
+//	};
+//
+//	@Test
+//	public void testCatapultaAtacaPiezaLejana(){
+//		Tablero unTablero = new Tablero();
+//		unTablero.inicializarTablero();
+//
+//		Catapulta unaCatapultaAtacante = new Catapulta();
+//		Catapulta unaCatapultaAtacada = new Catapulta();
+//
+//
+//		int vidaTrasAtaque = unaCatapultaAtacada.getVida()-unaCatapultaAtacante.getAtaqueLejano();
+//		unaCatapultaAtacante.atacar(unaCatapultaAtacada);
+//		assertEquals(vidaTrasAtaque,unaCatapultaAtacada.getVida());
+//
+//	}
 
-		Curandero unCuranderoSanador = new Curandero();
+
+	@Test
+	public void testJineteAtacaSoldadoCercano(){
 		Soldado soldado = new Soldado();
-		int vidaSoldadoTrasCuracion = soldado.getVida() + unCuranderoSanador.getSanacion();
-		unCuranderoSanador.Sanar(soldado);
-
-		assertEquals(vidaSoldadoTrasCuracion,soldado.getVida());
-
-	}
-
-	@Test
-	public void testSoldadoAtacaOtraPiezaCercana(){
-		Tablero unTablero = new Tablero();
-		unTablero.inicializarTablero();
-
-		Soldado unSoldadoAtacante = new Soldado();
-		Soldado soldadoAtacado = new Soldado();
-		int vidaSoldadoTrasAtaque = soldadoAtacado.getVida() - unSoldadoAtacante.getAtaqueCercano();
-
-		unSoldadoAtacante.atacar(soldadoAtacado);
-
-		assertEquals(vidaSoldadoTrasAtaque,soldadoAtacado.getVida());
+		Ubicacion ubicacionSoldado = new Ubicacion(1,1);
+		soldado.setUbicacion(ubicacionSoldado);
+		Jinete jinete = new Jinete();
+		Ubicacion ubicacionJinete = new Ubicacion(1,2);
+		jinete.setUbicacion(ubicacionJinete);
+		DistanciaRelativa distanciaSoldadoAJinete = jinete.getDistanciaRelativa(soldado);
+		//assertTrue(distanciaSoldadoAJinete instanceof DistanciaRelativa);
+		int vidaTrasAtaque = soldado.getVida() - jinete.getAtaqueCercano();
+		jinete.ejecutarComportamiento(distanciaSoldadoAJinete,soldado);
+		assertEquals(vidaTrasAtaque,soldado.getVida());
 	};
 
 	@Test
-	public void testSoldadoAtacaPiezaLejanaYNoSeRestaVidaALaPiezaAtacada() {
-		Tablero unTablero = new Tablero();
-		unTablero.inicializarTablero();
-
-		Soldado unSoldadoAtacante = new Soldado();
-		Soldado soldadoAtacadoLejano = new Soldado();
-		int vidaSoldadoTrasAtaque = soldadoAtacadoLejano.getVida() - unSoldadoAtacante.getAtaqueLejano();
-
-		unSoldadoAtacante.atacar(soldadoAtacadoLejano);
-
-		assertEquals(vidaSoldadoTrasAtaque, soldadoAtacadoLejano.getVida());
+	public void testJineteAtacaSoldadoADistanciaMedia(){
+		Soldado soldado = new Soldado();
+		Ubicacion ubicacionSoldado = new Ubicacion(4,2);
+		soldado.setUbicacion(ubicacionSoldado);
+		Jinete jinete = new Jinete();
+		Ubicacion ubicacionJinete = new Ubicacion(1,2);
+		jinete.setUbicacion(ubicacionJinete);
+		DistanciaRelativa distanciaSoldadoAJinete = jinete.getDistanciaRelativa(soldado);
+		//assertTrue(distanciaSoldadoAJinete instanceof DistanciaRelativa);
+		int vidaTrasAtaque = soldado.getVida() - jinete.getAtaqueMedio();
+		jinete.ejecutarComportamiento(distanciaSoldadoAJinete,soldado);
+		assertEquals(vidaTrasAtaque,soldado.getVida());
 	};
 
 	@Test
-	public void testCatapultaAtacaPiezaLejana(){
-		Tablero unTablero = new Tablero();
-		unTablero.inicializarTablero();
+	public void testJineteAtacaSoldadoLejanoYNoSeDescuentaVidaDelSoldado(){
+		Soldado soldado = new Soldado();
+		Ubicacion ubicacionSoldado = new Ubicacion(10,10);
+		soldado.setUbicacion(ubicacionSoldado);
+		Jinete jinete = new Jinete();
+		Ubicacion ubicacionJinete = new Ubicacion(1,2);
+		jinete.setUbicacion(ubicacionJinete);
+		DistanciaRelativa distanciaSoldadoAJinete = jinete.getDistanciaRelativa(soldado);
+		//assertTrue(distanciaSoldadoAJinete instanceof DistanciaRelativa);
+		int vidaTrasAtaque = soldado.getVida() - jinete.getAtaqueLejano();
+		jinete.ejecutarComportamiento(distanciaSoldadoAJinete,soldado);
+		assertEquals(vidaTrasAtaque,soldado.getVida());
+	};
 
-		Catapulta unaCatapultaAtacante = new Catapulta();
-		Catapulta unaCatapultaAtacada = new Catapulta();
+	@Test
+	public void testSoldadoAtacaJineteCercano(){
+		Soldado soldado = new Soldado();
+		Ubicacion ubicacionSoldado = new Ubicacion(1,1);
+		soldado.setUbicacion(ubicacionSoldado);
+		Jinete jinete = new Jinete();
+		Ubicacion ubicacionJinete = new Ubicacion(1,2);
+		jinete.setUbicacion(ubicacionJinete);
+		DistanciaRelativa distanciaJineteASoldado = soldado.getDistanciaRelativa(jinete);
+	//	assertTrue(distanciaJineteASoldado instanceof DistanciaRelativa);
+		int vidaTrasAtaque = jinete.getVida() - soldado.getAtaqueCercano();
+		soldado.ejecutarComportamiento(distanciaJineteASoldado,jinete);
+		assertEquals(vidaTrasAtaque,jinete.getVida());
+	};
 
+	@Test
+	public void testSoldadoAtacaJineteLejanoYNoSeQuitaVidaAJineteAtacado(){
+		Soldado soldado = new Soldado();
+		Ubicacion ubicacionSoldado = new Ubicacion(1,1);
+		soldado.setUbicacion(ubicacionSoldado);
+		Jinete jinete = new Jinete();
+		Ubicacion ubicacionJinete = new Ubicacion(10,20);
+		jinete.setUbicacion(ubicacionJinete);
+		DistanciaRelativa distanciaJineteASoldado = soldado.getDistanciaRelativa(jinete);
+	//	assertTrue(distanciaJineteASoldado instanceof DistanciaRelativa);
+		int vidaTrasAtaque = jinete.getVida() - soldado.getAtaqueLejano();
+		soldado.ejecutarComportamiento(distanciaJineteASoldado,jinete);
+		assertEquals(vidaTrasAtaque,jinete.getVida());
+	};
 
-		int vidaTrasAtaque = unaCatapultaAtacada.getVida()-unaCatapultaAtacante.getAtaqueLejano();
-		unaCatapultaAtacante.atacar(unaCatapultaAtacada);
-		assertEquals(vidaTrasAtaque,unaCatapultaAtacada.getVida());
+	@Test
+	public void testCatapultaAtacaASoldadoCercanoYNoSeRestaVidaDelAtacado(){
+		Soldado soldado = new Soldado();
+		Ubicacion ubicacionSoldado = new Ubicacion(1,1);
+		soldado.setUbicacion(ubicacionSoldado);
+		Catapulta catapulta = new Catapulta();
+		Ubicacion ubicacionCatapulta = new Ubicacion(1,2);
+		catapulta.setUbicacion(ubicacionCatapulta);
+		DistanciaRelativa distanciaSoldadoACatapulta = catapulta.getDistanciaRelativa(soldado);
+		//	assertTrue(distanciaJineteASoldado instanceof DistanciaRelativa);
+		int vidaTrasAtaque = soldado.getVida() - catapulta.getAtaqueCercano();
+		catapulta.ejecutarComportamiento(distanciaSoldadoACatapulta,soldado);
+		assertEquals(vidaTrasAtaque,soldado.getVida());
+	};
 
-	}
+	@Test
+	public void testCatapultaAtacaASoldadoADistanciaMediaYRestaVida(){
+		Soldado soldado = new Soldado();
+		Ubicacion ubicacionSoldado = new Ubicacion(1,1);
+		soldado.setUbicacion(ubicacionSoldado);
+		Catapulta catapulta = new Catapulta();
+		Ubicacion ubicacionCatapulta = new Ubicacion(1,4);
+		catapulta.setUbicacion(ubicacionCatapulta);
+		DistanciaRelativa distanciaSoldadoACatapulta = catapulta.getDistanciaRelativa(soldado);
+		//	assertTrue(distanciaJineteASoldado instanceof DistanciaRelativa);
+		int vidaTrasAtaque = soldado.getVida() - catapulta.getAtaqueMedio();
+		catapulta.ejecutarComportamiento(distanciaSoldadoACatapulta,soldado);
+		assertEquals(vidaTrasAtaque,soldado.getVida());
+	};
+
+	@Test
+	public void testCuranderoPuedeCurarSoldadoCercano(){
+		Soldado soldado = new Soldado();
+		Ubicacion ubicacionSoldado = new Ubicacion(1,1);
+		soldado.setUbicacion(ubicacionSoldado);
+		Curandero curandero = new Curandero();
+		Ubicacion ubicacionCurandero = new Ubicacion(1,2);
+		curandero.setUbicacion(ubicacionCurandero);
+		DistanciaRelativa distanciaSoldadoACurandero = curandero.getDistanciaRelativa(soldado);
+		//	assertTrue(distanciaJineteASoldado instanceof DistanciaRelativa);
+		int vidaTrasCuracion = soldado.getVida() + curandero.getSanacion();
+		curandero.ejecutarComportamiento(distanciaSoldadoACurandero,soldado);
+		assertEquals(vidaTrasCuracion,soldado.getVida());
+	};
+
+	@Test
+	public void testCuranderoNoPuedeCurarSoldadoLejano(){
+		Soldado soldado = new Soldado();
+		Ubicacion ubicacionSoldado = new Ubicacion(1,10);
+		soldado.setUbicacion(ubicacionSoldado);
+		Curandero curandero = new Curandero();
+		Ubicacion ubicacionCurandero = new Ubicacion(1,2);
+		curandero.setUbicacion(ubicacionCurandero);
+		DistanciaRelativa distanciaSoldadoACurandero = curandero.getDistanciaRelativa(soldado);
+		//	assertTrue(distanciaJineteASoldado instanceof DistanciaRelativa);
+		int vidaSoldadoSinSerAlcanzadoPorCuracion = soldado.getVida();
+		curandero.ejecutarComportamiento(distanciaSoldadoACurandero,soldado);
+		assertEquals(vidaSoldadoSinSerAlcanzadoPorCuracion,soldado.getVida());
+	};
+
+	@Test
+	public void testCuranderoNoPuedeCurarCatapultaCercana(){
+		Catapulta catapulta = new Catapulta();
+		Ubicacion ubicacionCatapulta = new Ubicacion(1,1);
+		catapulta.setUbicacion(ubicacionCatapulta);
+		Curandero curandero = new Curandero();
+		Ubicacion ubicacionCurandero = new Ubicacion(1,2);
+		curandero.setUbicacion(ubicacionCurandero);
+		DistanciaRelativa distanciaCatapultaACurandero = curandero.getDistanciaRelativa(catapulta);
+		//	assertTrue(distanciaJineteASoldado instanceof DistanciaRelativa);
+		int vidaCatapultaSinSerAlcanzadoPorCuracion = catapulta.getVida();
+		curandero.ejecutarComportamiento(distanciaCatapultaACurandero,catapulta);
+		assertEquals(vidaCatapultaSinSerAlcanzadoPorCuracion,catapulta.getVida());
+	};
 
 	//@Test
 	//public void testCatapultaAtacaPiezaCercana(){

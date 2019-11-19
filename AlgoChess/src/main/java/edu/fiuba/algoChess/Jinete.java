@@ -2,10 +2,12 @@ package edu.fiuba.algoChess;
 
 //import org.jetbrains.annotations.NotNull;
 
+import static java.lang.Math.abs;
 public class Jinete extends Pieza {
 
-	private int ataqueLejano;
+	private int ataqueMedio;
 	private int ataqueCercano;
+	private int ataqueLejano;
 
 	public Jinete(Ubicacion ubicacion, int costo, int vida) {
 		super(ubicacion, costo, vida);
@@ -16,7 +18,8 @@ public class Jinete extends Pieza {
 		super(3, 100);
 		//this.nombre = TipoPieza.JINETE;
 		this.ataqueCercano = 5;
-		this.ataqueLejano = 15;
+		this.ataqueMedio = 15;
+		this.ataqueLejano = 0;
 
 	}
 
@@ -26,63 +29,44 @@ public class Jinete extends Pieza {
 		this.ubicacion = ubicacion;
 	}
 
-/*	public Posicion getPosicionRelativa(Pieza pieza){
-		Ubicacion atacado = pieza.getUbicacion();
-		Ubicacion ubicacionAtacante = this.getUbicacion();
-	}//no veo como resolver esto
-
-	public void ejecutarComportamiento(Pieza atacado) {
-
-		Posicion posicion = getPosicionRelativa(atacado);
-		this.atacar(posicion);
-		Cercano posicion1 = getPosicionRelativa(atacado);
-	}*/
-
-
-
-/*	public void atacar(Lejano posicion, Pieza atacado){
-		atacado.bajarVida(this.ataqueLejano);
-	}
-	public void atacar(Cercano posicion, Pieza atacado){
-		atacado.bajarVida(this.ataqueCercano);
-	}
-	public void atacar(Medio posicion, Pieza atacado){
-		atacado.bajarVida(this.ataqueLejano);
-	}
-*/
+	public void ejecutarComportamiento(DistanciaRelativa distancia, Pieza atacado){
+		if (distancia==DistanciaRelativa.LEJANO){
+			atacado.bajarVida(this.ataqueLejano);
+		};
+		if (distancia==DistanciaRelativa.CERCANO){
+			atacado.bajarVida(this.ataqueCercano);
+		};
+		if (distancia==DistanciaRelativa.MEDIO){
+			atacado.bajarVida(this.ataqueMedio);
+		}
+			}
 
 
 
 
-	//public int getAtaqueCercano() {
-	//	return this.ataqueCercano;
-	//}
 
-	//public Posicion getPosicionRelativa(Pieza unaPieza){
+//	public void atacar(DistanciaRelativa.LEJANO distancia, Pieza atacado){
+//		atacado.bajarVida(this.ataqueLejano);
+//	}
+//	public void atacar(DistanciaRelativa.CERCANO distancia, Pieza atacado){
+//		atacado.bajarVida(this.ataqueCercano);
+//	}
+//	public void atacar(DistanciaRelativa.MEDIO distancia, Pieza atacado){
+//		atacado.bajarVida(this.ataqueLejano);
+//	}
 
-	//}
 
-	//public void atacarSegun(Posicion posicion){
+	public int getAtaqueMedio(){
+		return this.ataqueMedio;
+	};
 
-	//	if (posicion==Lejano){
+	public int getAtaqueCercano(){
+		return this.ataqueCercano;
+	};
 
-	//	}
-	//}
-
-	//public int getAtaqueLejano() {
-	//	return this.ataqueLejano;
-	//}
-
-	//public void atacarCercano(Pieza atacado) {
-	//	atacado.bajarVida(this.ataqueCercano);
-	//}
-
-	//;
-
-	//public void atacarLejano(Pieza atacado) {
-
-	//	atacado.bajarVida(this.ataqueLejano);
-	//}
-
-	;
+	public int getAtaqueLejano(){
+		return this.ataqueLejano;
+	};
 }
+
+

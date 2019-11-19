@@ -34,16 +34,42 @@ public abstract class Pieza implements Movible {
 
 	}
 
-/*	public void ejecutarComportamiento(){
-		return this.ataque;
-	}*/
+	public void ejecutarComportamiento(DistanciaRelativa distancia, Pieza pieza){
+
+	};
+
+	public DistanciaRelativa getDistanciaRelativa (Pieza pieza){
+		Ubicacion ubicacionPiezaAfectada = pieza.getUbicacion();
+		Ubicacion ubicacionPiezaAfectante = this.getUbicacion();
+		int coordenadaXAtacado = ubicacionPiezaAfectada.getCoordenadaX();
+		int coordenadaYAtacado = ubicacionPiezaAfectada.getCoordenadaY();
+		int coordenadaXAtacante = ubicacionPiezaAfectante.getCoordenadaX();
+		int coordenadaYAtacante = ubicacionPiezaAfectante.getCoordenadaY();
+
+		DistanciaRelativa distanciaRelativa = DistanciaRelativa.LEJANO;
+
+		//DistanciaRelativa distanciaRelativa = DistanciaRelativa.LEJANO;
+		if ((Math.abs(coordenadaXAtacado-coordenadaXAtacante)+(Math.abs(coordenadaYAtacado-coordenadaYAtacante)))<3) {
+			distanciaRelativa = DistanciaRelativa.CERCANO;
+		}
+		if (((Math.abs(coordenadaXAtacado-coordenadaXAtacante)+(Math.abs(coordenadaYAtacado-coordenadaYAtacante)))>2)&&
+				((Math.abs(coordenadaXAtacado-coordenadaXAtacante)+(Math.abs(coordenadaYAtacado-coordenadaYAtacante)))<6)){
+			distanciaRelativa = DistanciaRelativa.MEDIO;
+		}
+//		if ((Math.abs(coordenadaXAtacado-coordenadaXAtacante)+(Math.abs(coordenadaYAtacado-coordenadaYAtacante)))>5){
+//			distanciaRelativa = DistanciaRelativa.LEJANO;
+//		};
+		return distanciaRelativa;
+	};
+
+
 
 	public Jugador getJugador() {
-			return this.jugadorDueño;
+		return this.jugadorDueño;
 		}
 
 	public void setJugador(Jugador jugador){
-			this.jugadorDueño = jugador;
+		this.jugadorDueño = jugador;
 		}
 
 	public int getCosto(){

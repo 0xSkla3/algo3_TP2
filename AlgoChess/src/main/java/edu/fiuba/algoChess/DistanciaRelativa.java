@@ -1,6 +1,6 @@
 package edu.fiuba.algoChess;
 
-public enum PosicionRelativa {
+public enum DistanciaRelativa {
 
     CERCANO, MEDIO, LEJANO
 
