@@ -9,6 +9,7 @@ public abstract class Pieza implements Movible {
 	private int costo;
 	protected Ubicacion ubicacion;
 	protected Jugador jugadorDueño;
+	private System system;
 
 	public Pieza(Ubicacion ubicacion, int costo, int vida) {
 
@@ -57,6 +58,7 @@ public abstract class Pieza implements Movible {
 		}
 
 	public Ubicacion getUbicacion() {
+		//system.out.println(this.ubicacion);
 		return this.ubicacion;
 		}
 
@@ -94,10 +96,12 @@ public abstract class Pieza implements Movible {
 
 	public void mover( Tablero campoDeBatalla, Ubicacion ubicacion) {
 		if(campoDeBatalla.obtenerCelda(ubicacion).isEmpty()){
-		campoDeBatalla.ubicarEnCelda(this, ubicacion);
-		campoDeBatalla.eliminar(this.ubicacion);
-		this.ubicacion = ubicacion;}
+			Ubicacion ubicacionVieja = this.getUbicacion();
+			campoDeBatalla.ubicarEnCelda(this, ubicacion);
+			campoDeBatalla.eliminar(ubicacionVieja);
+			this.ubicacion = ubicacion;}
 	}
 
+	//public abstract void reconocerTerreno(int distanciaAReconocer, Pieza piezaCentral, Tablero campoDeBatalla);
 }
 

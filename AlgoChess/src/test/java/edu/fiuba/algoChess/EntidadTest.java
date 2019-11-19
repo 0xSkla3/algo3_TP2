@@ -1,20 +1,25 @@
 package edu.fiuba.algoChess;
 
 import static org.junit.Assert.*;
+
 import org.junit.Test;
 
 public class EntidadTest {
+	private System system;
+
 
 	@Test
 	public void testEntidadMoviblePuedeDesplazarse(){
-		Tablero unTablero = new Tablero();
-		unTablero.inicializarTablero();
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
+		Tablero unTablero = new Tablero(jugador1, jugador2);
+		//unTablero.inicializarTablero();
 		Ubicacion fila1Columna1 = new Ubicacion(1,1);
 		Ubicacion fila1Columna2 = new Ubicacion(2,1);
 		Ubicacion fila2Columna2 = new Ubicacion(2,2);
 		Ubicacion fila2Columna1 = new Ubicacion(1,2);
 		Curandero unCurandero = new Curandero();
-
+		unCurandero.setJugador(jugador1);
 		unTablero.ubicarEnCelda(unCurandero,fila1Columna1);
 		unCurandero.moverseALaDerecha(unTablero);
 		assertEquals(fila1Columna2,unCurandero.getUbicacion());
@@ -22,16 +27,18 @@ public class EntidadTest {
 		assertEquals(fila2Columna2,unCurandero.getUbicacion());
 		unCurandero.moverseALaIzquierda(unTablero);
 		assertEquals(fila2Columna1,unCurandero.getUbicacion());
-		//unCurandero.moverseAbajo(unTablero);
-		//assertEquals(fila1Columna1,unCurandero.getUbicacion());
+		unCurandero.moverseAbajo(unTablero);
+		assertEquals(fila1Columna1,unCurandero.getUbicacion());
 
 	}
 
 	@Test
 	public void testEntidadMovibleNoPuedeDesplazarseACasilleroOcupado(){
 
-		Tablero unTablero = new Tablero();
-		unTablero.inicializarTablero();
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
+		Tablero unTablero = new Tablero(jugador1, jugador2);
+		//unTablero.inicializarTablero();
 		Ubicacion fila2Columna2 = new Ubicacion(2,2);
 
 		Ubicacion fila3Columna2 = new Ubicacion(2,3);
@@ -40,10 +47,19 @@ public class EntidadTest {
 		Ubicacion fila2Columna3 = new Ubicacion(3,2);
 
 		Curandero unCuranderoPorMover = new Curandero();
+		unCuranderoPorMover.setJugador(jugador1);
+
 		Curandero unCuranderoObstaculoArriba = new Curandero();
+		unCuranderoObstaculoArriba.setJugador(jugador1);
+
 		Curandero unCuranderoObstaculoAbajo = new Curandero();
+		unCuranderoObstaculoAbajo.setJugador(jugador1);
+
 		Curandero unCuranderoObstaculoIzquierda = new Curandero();
+		unCuranderoObstaculoIzquierda.setJugador(jugador1);
+
 		Curandero unCuranderoObstaculoDerecha = new Curandero();
+		unCuranderoObstaculoDerecha.setJugador(jugador1);
 
 		unTablero.ubicarEnCelda(unCuranderoPorMover,fila2Columna2);
 		unTablero.ubicarEnCelda(unCuranderoObstaculoArriba,fila3Columna2);
@@ -64,8 +80,10 @@ public class EntidadTest {
 
 	@Test
 	public void testCuranderoCuraSoldado(){
-		Tablero unTablero = new Tablero();
-		unTablero.inicializarTablero();
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
+		Tablero unTablero = new Tablero(jugador1, jugador2);
+		//unTablero.inicializarTablero();
 
 		Curandero unCuranderoSanador = new Curandero();
 		Soldado soldado = new Soldado();
@@ -78,8 +96,10 @@ public class EntidadTest {
 
 	@Test
 	public void testSoldadoAtacaOtraPiezaCercana(){
-		Tablero unTablero = new Tablero();
-		unTablero.inicializarTablero();
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
+		Tablero unTablero = new Tablero(jugador1, jugador2);
+//		unTablero.inicializarTablero();
 
 		Soldado unSoldadoAtacante = new Soldado();
 		Soldado soldadoAtacado = new Soldado();
@@ -92,8 +112,9 @@ public class EntidadTest {
 
 	@Test
 	public void testSoldadoAtacaPiezaLejanaYNoSeRestaVidaALaPiezaAtacada() {
-		Tablero unTablero = new Tablero();
-		unTablero.inicializarTablero();
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
+		Tablero unTablero = new Tablero(jugador1, jugador2);
 
 		Soldado unSoldadoAtacante = new Soldado();
 		Soldado soldadoAtacadoLejano = new Soldado();
@@ -106,8 +127,9 @@ public class EntidadTest {
 
 	@Test
 	public void testCatapultaAtacaPiezaLejana(){
-		Tablero unTablero = new Tablero();
-		unTablero.inicializarTablero();
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
+		Tablero unTablero = new Tablero(jugador1,jugador2);
 
 		Catapulta unaCatapultaAtacante = new Catapulta();
 		Catapulta unaCatapultaAtacada = new Catapulta();
