@@ -56,9 +56,9 @@ public class Jinete extends Pieza {
 			Celda celda = campoDeBatalla.obtenerCelda(ubicacion);
 			if (!celda.isEmpty() && (celda.getPiezaActual().getJugador() == this.getJugador())){
 				piezaAliadaCercana = true;
-				return;
+				continue;
 			}
-			if (!celda.isEmpty() && (celda.getPiezaActual().getJugador() != this.getJugador())){
+			else if (!celda.isEmpty() && (celda.getPiezaActual().getJugador() != this.getJugador())){
 				piezaEnemigaCercana = true;
 				continue;
 			}

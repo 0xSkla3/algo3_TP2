@@ -112,6 +112,27 @@ public class JineteTest {
         assertFalse(jinete.getPiezaEnemigaCercana());
     }
 
+    @Test
+    public void test07jineteReconoceAPiezaAliadaYPiezaEnemigaEnTerrenoCercanoAdistancia2(){
+        Jugador jugador1 = new Jugador();
+        Jugador jugador2 = new Jugador();
+        Tablero tableroTest = new Tablero(jugador1, jugador2);
+        Jinete jineteJugador1 = new Jinete();
+        Curandero curanderoJugador1 = new Curandero();
+        Curandero curanderoJugador2 = new Curandero();
+        jineteJugador1.setJugador(jugador1);
+        curanderoJugador1.setJugador(jugador1);
+        curanderoJugador2.setJugador(jugador2);
+        Ubicacion ubicacionJineteJugador1 = new Ubicacion(10,5);
+        Ubicacion ubicacionCuranderoJugador1 = new Ubicacion(10,4);
+        Ubicacion ubicacionCuranderoJugador2 = new Ubicacion(12,5);
+        tableroTest.ubicarEnCelda(jineteJugador1,ubicacionJineteJugador1);
+        tableroTest.ubicarEnCelda(curanderoJugador1,ubicacionCuranderoJugador1);
+        tableroTest.ubicarEnCelda(curanderoJugador2,ubicacionCuranderoJugador2);
+        jineteJugador1.reconocerTerreno(jineteJugador1,tableroTest);
+        assertTrue((jineteJugador1.getPiezaAliadaCercana() && jineteJugador1.getPiezaEnemigaCercana()));
+    }
+
 }
 
 
