@@ -16,10 +16,11 @@ public class TableroTest {
 
 	@Test
 	public void testTableroSeColocaPiezaAliadaConExicitoEnSectorAliado() {
-		Tablero tableroTest = new Tablero();
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
+		Tablero tableroTest = new Tablero(jugador1,jugador2);
 		Ubicacion ubicacionTest = new Ubicacion(1,2);
 		Curandero curandero = new Curandero();
-		Jugador jugador1 = new Jugador();
 		curandero.setJugador(jugador1);
 		Celda celdaTest = tableroTest.obtenerCelda(ubicacionTest);
 		celdaTest.setSectorDelJugador(jugador1);
@@ -30,11 +31,13 @@ public class TableroTest {
 
 	@Test (expected = NoSePuedeUbicarPiezaEnSectoRival.class)
 	public void testTableroSeColocaPiezaAliadaEnSectorRivalTiraException() {
-		Tablero tableroTest = new Tablero();
-		Ubicacion ubicacionTest = new Ubicacion(1,2);
-		Curandero curandero = new Curandero();
+		//si bien el tablero al crearlo ya se inicializa con 2 sectores de celdas preestablecidas
+		//en este test se muestra explicitamente que un jugador no puede colocar una pieza en sector rival
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
+		Tablero tableroTest = new Tablero(jugador1, jugador2);
+		Ubicacion ubicacionTest = new Ubicacion(1,2);
+		Curandero curandero = new Curandero();
 		curandero.setJugador(jugador1);
 		Celda celdaTest = tableroTest.obtenerCelda(ubicacionTest);
 		celdaTest.setSectorDelJugador(jugador2);
@@ -44,15 +47,16 @@ public class TableroTest {
 
 	@Test (expected = NoSePuedeUbicarPorqueEstaOcupadoException.class)
 	public void testTableroUbicarEnUnCeldaOcupadaLanzaExcepcion(){
-		Tablero tableroTest = new Tablero();
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
+		Tablero tableroTest = new Tablero(jugador1, jugador2);
 		Ubicacion ubicacionTest = new Ubicacion(4,4);
 		Curandero curandero1 = new Curandero();
 		Curandero curandero2 = new Curandero();
-		Jugador jugadorTest = new Jugador();
-		curandero1.setJugador(jugadorTest);
-		curandero2.setJugador(jugadorTest);
+		curandero1.setJugador(jugador1);
+		curandero2.setJugador(jugador1);
 		Celda celdaTest = tableroTest.obtenerCelda(ubicacionTest);
-		celdaTest.setSectorDelJugador(jugadorTest);
+		celdaTest.setSectorDelJugador(jugador1);
 		tableroTest.ubicarEnCelda(curandero1, ubicacionTest);
 		tableroTest.ubicarEnCelda(curandero2, ubicacionTest);
 	}

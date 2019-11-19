@@ -29,7 +29,7 @@ public class Celda {
 	public Jugador getSectorDelJugador(){ return this.sectorDelJugador;}
 
 	public void guardar(Pieza piezaActual) {
-		if (this.sectorDelJugador != piezaActual.getJugador() ) {
+		if (this.sectorDelJugador != piezaActual.getJugador() ) { //ESTA LINEA SOLO VALE EN LA PRIMERA ETAPA DEL JUEGO!!! AGREGAR OTRA CONDICION AL IF!!!
 			throw new NoSePuedeUbicarPiezaEnSectoRival("No se puede ubicar pieza en sector rival");
 		} else {
 			this.piezaActual = Optional.of(piezaActual);

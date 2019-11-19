@@ -1,13 +1,20 @@
 package edu.fiuba.algoChess;
 
-//import org.jetbrains.annotations.NotNull;
+import edu.fiuba.algoChess.*;
+import org.jetbrains.annotations.NotNull;
 
 import static java.lang.Math.abs;
 public class Jinete extends Pieza {
 
 	private int ataqueMedio;
 	private int ataqueCercano;
+<<<<<<< HEAD
 	private int ataqueLejano;
+=======
+	public boolean piezaAliadaCercana;
+	public boolean piezaEnemigaCercana;
+	private int distanciaAReconocerEnTerreno;
+>>>>>>> ce49863ec25cc3e6bf76d84782dd76d5c5fe105e
 
 	public Jinete(Ubicacion ubicacion, int costo, int vida) {
 		super(ubicacion, costo, vida);
@@ -18,8 +25,15 @@ public class Jinete extends Pieza {
 		super(3, 100);
 		//this.nombre = TipoPieza.JINETE;
 		this.ataqueCercano = 5;
+<<<<<<< HEAD
 		this.ataqueMedio = 15;
 		this.ataqueLejano = 0;
+=======
+		this.ataqueLejano = 15;
+		this.piezaEnemigaCercana = false;
+		this.piezaAliadaCercana = false;
+		this.distanciaAReconocerEnTerreno = 2;
+>>>>>>> ce49863ec25cc3e6bf76d84782dd76d5c5fe105e
 
 	}
 
@@ -29,6 +43,7 @@ public class Jinete extends Pieza {
 		this.ubicacion = ubicacion;
 	}
 
+<<<<<<< HEAD
 	public void ejecutarComportamiento(DistanciaRelativa distancia, Pieza atacado){
 		if (distancia==DistanciaRelativa.LEJANO){
 			atacado.bajarVida(this.ataqueLejano);
@@ -40,6 +55,80 @@ public class Jinete extends Pieza {
 			atacado.bajarVida(this.ataqueMedio);
 		}
 			}
+=======
+	//@Override
+	public void reconocerTerreno(Pieza piezaCentral, Tablero campoDeBatalla){
+
+	Ubicacion ubicacionPiezaCentral = piezaCentral.getUbicacion();
+	int posicionXPiezaCentral = ubicacionPiezaCentral.getCoordenadaX();
+	int posicionYPiezaCentral = ubicacionPiezaCentral.getCoordenadaY();
+
+
+	for (int i = posicionXPiezaCentral-distanciaAReconocerEnTerreno; i <= posicionXPiezaCentral+distanciaAReconocerEnTerreno; i++) {
+		if (i<1 || i>20){
+			continue;
+		}
+		for (int j = posicionYPiezaCentral-distanciaAReconocerEnTerreno; j <= posicionXPiezaCentral+distanciaAReconocerEnTerreno; j++) {
+			if (j<1 || j>20){
+				continue;
+			}
+			Ubicacion ubicacion = new Ubicacion(i,j);
+			if (ubicacion.equals(piezaCentral.getUbicacion()) ){
+				continue;
+			}
+			Celda celda = campoDeBatalla.obtenerCelda(ubicacion);
+			if (!celda.isEmpty() && (celda.getPiezaActual().getJugador() == this.getJugador())){
+				piezaAliadaCercana = true;
+				continue;
+			}
+			else if (!celda.isEmpty() && (celda.getPiezaActual().getJugador() != this.getJugador())){
+				piezaEnemigaCercana = true;
+				continue;
+			}
+		}
+	}
+}
+
+	public boolean getPiezaAliadaCercana(){
+			return this.piezaAliadaCercana;
+	}
+
+	public boolean getPiezaEnemigaCercana(){
+		return this.piezaEnemigaCercana;
+	}
+
+/*	public Posicion getPosicionRelativa(Pieza pieza){
+		Ubicacion atacado = pieza.getUbicacion();
+		Ubicacion ubicacionAtacante = this.getUbicacion();
+	}//no veo como resolver esto
+
+	public void ejecutarComportamiento(Pieza atacado) {
+
+		Posicion posicion = getPosicionRelativa(atacado);
+		this.atacar(posicion);
+		Cercano posicion1 = getPosicionRelativa(atacado);
+	}*/
+
+
+
+/*	public void atacar(Lejano posicion, Pieza atacado){
+		atacado.bajarVida(this.ataqueLejano);
+	}
+	public void atacar(Cercano posicion, Pieza atacado){
+		atacado.bajarVida(this.ataqueCercano);
+	}
+	public void atacar(Medio posicion, Pieza atacado){
+		atacado.bajarVida(this.ataqueLejano);
+	}
+*/
+
+
+
+
+	//public int getAtaqueCercano() {
+	//	return this.ataqueCercano;
+	//}
+>>>>>>> ce49863ec25cc3e6bf76d84782dd76d5c5fe105e
 
 
 
