@@ -2,16 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff8a5046-5952-4a73-be95-a9c89709633e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/RangoSoldadoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Batallon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Batallon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/RangoSoldado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/RangoSoldado.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Soldado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Soldado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/BatallonTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/BatallonTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Batallon.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Batallon.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/RangoSoldado.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/RangoSoldado.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/SoldadoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/SoldadoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Soldado.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Soldado.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/edu/fiuba/algoChess/BatallonTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/edu/fiuba/algoChess/BatallonTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/edu/fiuba/algoChess/SoldadoTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/edu/fiuba/algoChess/SoldadoTest.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,7 +54,22 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.BatallonTest.batallonAsociadoONullCreaBatallon">
+  <component name="RunManager" selected="JUnit.SoldadoTest.testVerificaBatallon">
+    <configuration name="BatallonTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AlgoChess" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.fiuba.algoChess.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.fiuba.algoChess" />
+      <option name="MAIN_CLASS_NAME" value="edu.fiuba.algoChess.BatallonTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BatallonTest.batallonAsociadoONullCreaBatallon" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgoChess" />
       <extension name="coverage">
@@ -76,7 +86,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BatallonTest.batallonAsociadoONullDaNull" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BatallonTest.batallonSeMueveEnLaMismaDireccion" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgoChess" />
       <extension name="coverage">
         <pattern>
@@ -86,39 +96,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="edu.fiuba.algoChess" />
       <option name="MAIN_CLASS_NAME" value="edu.fiuba.algoChess.BatallonTest" />
-      <option name="METHOD_NAME" value="batallonAsociadoONullDaNull" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BatallonTest.esBatallonNotaQueHayBatallon" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AlgoChess" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="edu.fiuba.algoChess.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="edu.fiuba.algoChess" />
-      <option name="MAIN_CLASS_NAME" value="edu.fiuba.algoChess.BatallonTest" />
-      <option name="METHOD_NAME" value="esBatallonNotaQueHayBatallon" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BatallonTest.noEsBatallonNotaQueNoHayBatallon" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AlgoChess" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="edu.fiuba.algoChess.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="edu.fiuba.algoChess" />
-      <option name="MAIN_CLASS_NAME" value="edu.fiuba.algoChess.BatallonTest" />
-      <option name="METHOD_NAME" value="noEsBatallonNotaQueNoHayBatallon" />
+      <option name="METHOD_NAME" value="batallonSeMueveEnLaMismaDireccion" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -140,13 +118,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SoldadoTest.tresSoldadosContiguosSeMuevenEnLaMismaDireccion" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AlgoChess" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.fiuba.algoChess.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.fiuba.algoChess" />
+      <option name="MAIN_CLASS_NAME" value="edu.fiuba.algoChess.SoldadoTest" />
+      <option name="METHOD_NAME" value="tresSoldadosContiguosSeMuevenEnLaMismaDireccion" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.BatallonTest.batallonAsociadoONullCreaBatallon" />
-        <item itemvalue="JUnit.BatallonTest.batallonAsociadoONullDaNull" />
         <item itemvalue="JUnit.SoldadoTest.testVerificaBatallon" />
-        <item itemvalue="JUnit.BatallonTest.noEsBatallonNotaQueNoHayBatallon" />
-        <item itemvalue="JUnit.BatallonTest.esBatallonNotaQueHayBatallon" />
+        <item itemvalue="JUnit.SoldadoTest.tresSoldadosContiguosSeMuevenEnLaMismaDireccion" />
+        <item itemvalue="JUnit.BatallonTest.batallonSeMueveEnLaMismaDireccion" />
+        <item itemvalue="JUnit.BatallonTest" />
+        <item itemvalue="JUnit.BatallonTest.batallonAsociadoONullCreaBatallon" />
       </list>
     </recent_temporary>
   </component>
@@ -167,7 +161,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1574193301089</updated>
-      <workItem from="1574193302334" duration="27008000" />
+      <workItem from="1574193302334" duration="28224000" />
     </task>
     <servers />
   </component>
@@ -189,11 +183,6 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/SoldadoTest.java</url>
-          <line>21</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Tablero.java</url>
           <line>74</line>
           <option name="timeStamp" value="3" />
@@ -207,14 +196,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Tablero.java</url>
           <line>95</line>
           <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Soldado.java</url>
-          <line>76</line>
-          <properties>
-            <option name="lambda-ordinal" value="-1" />
-          </properties>
-          <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/BatallonTest.java</url>
@@ -243,61 +224,68 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/BatallonTest.java</url>
-          <line>143</line>
-          <option name="timeStamp" value="34" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/BatallonTest.java</url>
-          <line>141</line>
-          <option name="timeStamp" value="36" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Batallon.java</url>
-          <line>102</line>
-          <option name="timeStamp" value="41" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Batallon.java</url>
-          <line>103</line>
-          <option name="timeStamp" value="42" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Batallon.java</url>
-          <line>105</line>
-          <option name="timeStamp" value="43" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Batallon.java</url>
-          <line>106</line>
-          <option name="timeStamp" value="44" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Batallon.java</url>
-          <line>107</line>
-          <option name="timeStamp" value="45" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Batallon.java</url>
-          <line>100</line>
-          <option name="timeStamp" value="46" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/BatallonTest.java</url>
           <line>163</line>
           <option name="timeStamp" value="47" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Soldado.java</url>
+          <line>68</line>
+          <option name="timeStamp" value="52" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Batallon.java</url>
           <line>109</line>
-          <option name="timeStamp" value="48" />
+          <option name="timeStamp" value="53" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/BatallonTest.java</url>
-          <line>148</line>
-          <properties class="edu.fiuba.algoChess.BatallonTest" method="batallonAsociadoONullCreaBatallon">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="49" />
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Batallon.java</url>
+          <line>106</line>
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Batallon.java</url>
+          <line>100</line>
+          <option name="timeStamp" value="55" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Batallon.java</url>
+          <line>99</line>
+          <option name="timeStamp" value="56" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/RangoSoldado.java</url>
+          <line>55</line>
+          <option name="timeStamp" value="58" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/RangoSoldado.java</url>
+          <line>61</line>
+          <option name="timeStamp" value="59" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/RangoSoldado.java</url>
+          <line>64</line>
+          <option name="timeStamp" value="60" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/SoldadoTest.java</url>
+          <line>47</line>
+          <option name="timeStamp" value="61" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/SoldadoTest.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="63" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Batallon.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="64" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Batallon.java</url>
+          <line>63</line>
+          <option name="timeStamp" value="65" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -1,10 +1,8 @@
 package edu.fiuba.algoChess;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Collection;
 import java.util.Optional;
 import java.util.stream.Stream;
 
@@ -67,36 +65,10 @@ public class Soldado extends Pieza implements Movible {
 		}
 	}
 
-	public Stream<Soldado> verificaBatallon(Tablero tablero) {
-
-		Stream<Optional<Pieza>> contiguos = null;
-		Stream<Optional<Pieza>> soldadosContiguos = null;
-		Stream<Soldado> batallon = null;
-		Soldado segundoSoldado = null;
-		contiguos = tablero.mapeaEntornoCercano(tablero.getCelda(this.getUbicacion()));
-		soldadosContiguos = contiguos.filter(contiguo -> contiguo.getClass().equals(Soldado.class));
-
-		if(soldadosContiguos.count() == 4){
-			Stream.concat(batallon, Stream.of(this));
-			Stream.concat(batallon,soldadosContiguos.skip(2));
-		} else if (soldadosContiguos.count() == 3){
-			Stream.concat(batallon, Stream.of(this));
-			Stream.concat(batallon,soldadosContiguos.skip(1));
-		} else if(soldadosContiguos.count() == 2) {
-			Stream.concat(batallon, Stream.of(this));
-			Stream.concat(batallon,soldadosContiguos);
-		} else if(soldadosContiguos.count() == 1) {
-			Stream.concat(batallon, Stream.of(this));
-			Stream.concat(batallon,soldadosContiguos);
-			segundoSoldado = (Soldado) soldadosContiguos.findFirst().get().get();
-			contiguos = tablero.mapeaEntornoCercano(tablero.getCelda(segundoSoldado.getUbicacion()),Optional.of(this));
-			soldadosContiguos = contiguos.filter(contiguo -> contiguo.getClass().equals(Soldado.class));
-			if(soldadosContiguos.count() > 0){
-				Stream.concat(batallon, Stream.of(soldadosContiguos.findFirst().get().get()));
-			}
-		}
-		return batallon;
+	public Batallon verificaBatallonONull(Tablero tablero) {
+		return Batallon.batallonAsociadoONull(this,tablero);
 	}
+
 
 	/*public Stream<Soldado> verificaBatallon(Soldado soldado, Tablero tablero) {
 

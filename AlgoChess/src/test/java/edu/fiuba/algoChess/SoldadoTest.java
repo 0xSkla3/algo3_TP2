@@ -2,6 +2,9 @@ package edu.fiuba.algoChess;
 
 import org.junit.Test;
 
+import static junit.framework.TestCase.*;
+import static org.junit.Assert.assertEquals;
+
 public class SoldadoTest {
 
 	@Test
@@ -19,7 +22,7 @@ public class SoldadoTest {
 		tableroTest.ubicarEnCelda(soldado2, soldado2.getUbicacion());
 		tableroTest.ubicarEnCelda(soldado3, soldado3.getUbicacion());
 
-		assert(!soldado1.verificaBatallon(tableroTest).equals(null));
+		assertTrue(Batallon.esBatallon(soldado1,soldado2,soldado3,tableroTest));
 
 	}
 
@@ -31,10 +34,20 @@ public class SoldadoTest {
 		Soldado soldado1 = new Soldado(new Ubicacion(2,2));
 		Soldado soldado2 = new Soldado(new Ubicacion(3,2));
 		Soldado soldado3 = new Soldado(new Ubicacion(4,2));
-		Batallon batallon = new Batallon();
-		soldado1.verificaBatallon(tableroTest);
+		soldado1.setJugador(jugador1);
+		soldado2.setJugador(jugador1);
+		soldado3.setJugador(jugador1);
+		tableroTest.ubicarEnCelda(soldado1, soldado1.getUbicacion());
+		tableroTest.ubicarEnCelda(soldado2, soldado2.getUbicacion());
+		tableroTest.ubicarEnCelda(soldado3, soldado3.getUbicacion());
 
+		Batallon batallon = soldado1.verificaBatallonONull(tableroTest);
 
+		batallon.moverseArriba(tableroTest);
+
+		assertEquals(batallon.getSoldado1().getUbicacion(), new Ubicacion(4,3));
+		assertEquals(batallon.getSoldado2().getUbicacion(), new Ubicacion(3,3));
+		assertEquals(batallon.getSoldado3().getUbicacion(), new Ubicacion(2,3));
 
 	}
 
