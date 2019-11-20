@@ -1,7 +1,5 @@
 package edu.fiuba.algoChess;
 
-import java.util.Optional;
-
 public abstract class Pieza implements Movible {
 
 	//protected TipoPieza nombre;
@@ -32,6 +30,14 @@ public abstract class Pieza implements Movible {
 		this.vida = 0;
 		this.costo = 0;
 		this.ubicacion = null;
+
+	}
+
+	public Pieza(Ubicacion ubicacion) {
+
+		this.vida = 0;
+		this.costo = 0;
+		this.ubicacion = ubicacion;
 
 	}
 
@@ -121,7 +127,7 @@ public abstract class Pieza implements Movible {
 	}
 
 	public void mover( Tablero campoDeBatalla, Ubicacion ubicacion) {
-		if(campoDeBatalla.obtenerCelda(ubicacion).isEmpty()){
+		if(campoDeBatalla.getCelda(ubicacion).isEmpty()){
 			Ubicacion ubicacionVieja = this.getUbicacion();
 			campoDeBatalla.ubicarEnCelda(this, ubicacion);
 			campoDeBatalla.eliminar(ubicacionVieja);

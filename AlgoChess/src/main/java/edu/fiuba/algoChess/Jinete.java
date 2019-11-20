@@ -1,8 +1,5 @@
 package edu.fiuba.algoChess;
 
-import edu.fiuba.algoChess.*;
-import org.jetbrains.annotations.NotNull;
-
 import static java.lang.Math.abs;
 public class Jinete extends Pieza {
 
@@ -30,6 +27,10 @@ public class Jinete extends Pieza {
 		this.piezaAliadaCercana = false;
 		this.distanciaAReconocerEnTerreno = 2;
 
+	}
+
+	public Jinete(Ubicacion ubicacion) {
+		super(ubicacion);
 	}
 
 	public void mover(Tablero campoDeBatalla, Ubicacion ubicacion) {
@@ -71,7 +72,7 @@ public class Jinete extends Pieza {
 			if (ubicacion.equals(piezaCentral.getUbicacion()) ){
 				continue;
 			}
-			Celda celda = campoDeBatalla.obtenerCelda(ubicacion);
+			Celda celda = campoDeBatalla.getCelda(ubicacion);
 			if (!celda.isEmpty() && (celda.getPiezaActual().getJugador() == this.getJugador())){
 				piezaAliadaCercana = true;
 				continue;
@@ -118,15 +119,9 @@ public class Jinete extends Pieza {
 */
 
 
-
-
 	//public int getAtaqueCercano() {
 	//	return this.ataqueCercano;
 	//}
-
-
-
-
 
 
 //	public void atacar(DistanciaRelativa.LEJANO distancia, Pieza atacado){

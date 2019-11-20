@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="6" failures="0" name="edu.fiuba.algoChess.EntidadTest" time="0" errors="0" skipped="0">
+<testsuite tests="12" failures="0" name="edu.fiuba.algoChess.EntidadTest" time="0.001" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="11.0.4+11"/>
@@ -45,7 +45,7 @@
     <property name="java.class.path" value="/usr/local/Cellar/maven/3.6.2/libexec/boot/plexus-classworlds-2.6.0.jar"/>
     <property name="java.vm.specification.version" value="11"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher package"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test"/>
     <property name="java.home" value="/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
@@ -65,9 +65,15 @@
     <property name="sun.cpu.isalist" value=""/>
   </properties>
   <testcase classname="edu.fiuba.algoChess.EntidadTest" name="testEntidadMoviblePuedeDesplazarse" time="0"/>
-  <testcase classname="edu.fiuba.algoChess.EntidadTest" name="testCuranderoCuraOtraFicha" time="0"/>
-  <testcase classname="edu.fiuba.algoChess.EntidadTest" name="testCatapultaAtacaOtraFicha" time="0"/>
-  <testcase classname="edu.fiuba.algoChess.EntidadTest" name="testSoldadoAtacaOtraFicha" time="0"/>
-  <testcase classname="edu.fiuba.algoChess.EntidadTest" name="testEntidadMovibleNoPuedeDesplazarseACasilleroOcupado" time="0"/>
-  <testcase classname="edu.fiuba.algoChess.EntidadTest" name="testJineteAtacaOtraFicha" time="0"/>
+  <testcase classname="edu.fiuba.algoChess.EntidadTest" name="testCuranderoNoPuedeCurarCatapultaCercana" time="0"/>
+  <testcase classname="edu.fiuba.algoChess.EntidadTest" name="testCatapultaAtacaASoldadoCercanoYNoSeRestaVidaDelAtacado" time="0"/>
+  <testcase classname="edu.fiuba.algoChess.EntidadTest" name="testCatapultaAtacaASoldadoADistanciaMediaYRestaVida" time="0"/>
+  <testcase classname="edu.fiuba.algoChess.EntidadTest" name="testSoldadoAtacaJineteLejanoYNoSeQuitaVidaAJineteAtacado" time="0"/>
+  <testcase classname="edu.fiuba.algoChess.EntidadTest" name="testCuranderoNoPuedeCurarSoldadoLejano" time="0"/>
+  <testcase classname="edu.fiuba.algoChess.EntidadTest" name="testJineteAtacaSoldadoLejanoYNoSeDescuentaVidaDelSoldado" time="0"/>
+  <testcase classname="edu.fiuba.algoChess.EntidadTest" name="testSoldadoAtacaJineteCercano" time="0"/>
+  <testcase classname="edu.fiuba.algoChess.EntidadTest" name="testJineteAtacaSoldadoCercano" time="0"/>
+  <testcase classname="edu.fiuba.algoChess.EntidadTest" name="testEntidadMovibleNoPuedeDesplazarseACasilleroOcupado" time="0.001"/>
+  <testcase classname="edu.fiuba.algoChess.EntidadTest" name="testCuranderoPuedeCurarSoldadoCercano" time="0"/>
+  <testcase classname="edu.fiuba.algoChess.EntidadTest" name="testJineteAtacaSoldadoADistanciaMedia" time="0"/>
 </testsuite>

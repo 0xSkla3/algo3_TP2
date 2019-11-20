@@ -1,9 +1,6 @@
 package edu.fiuba.algoChess;
-import static org.junit.Assert.*;
 import org.junit.Test;
 
-import edu.fiuba.algoChess.NoSePuedeUbicarPorqueEstaOcupadoException;
-import edu.fiuba.algoChess.NoSePuedeEliminarPorqueEstaVacioException;
 //import modelo.juego.ObjetoUbicable;
 
 import static junit.framework.TestCase.assertFalse;
@@ -22,7 +19,7 @@ public class TableroTest {
 		Ubicacion ubicacionTest = new Ubicacion(1,2);
 		Curandero curandero = new Curandero();
 		curandero.setJugador(jugador1);
-		Celda celdaTest = tableroTest.obtenerCelda(ubicacionTest);
+		Celda celdaTest = tableroTest.getCelda(ubicacionTest);
 		celdaTest.setSectorDelJugador(jugador1);
 		tableroTest.ubicarEnCelda(curandero,ubicacionTest);
 		assertEquals(celdaTest.getPiezaActual(), curandero);
@@ -39,7 +36,7 @@ public class TableroTest {
 		Ubicacion ubicacionTest = new Ubicacion(1,2);
 		Curandero curandero = new Curandero();
 		curandero.setJugador(jugador1);
-		Celda celdaTest = tableroTest.obtenerCelda(ubicacionTest);
+		Celda celdaTest = tableroTest.getCelda(ubicacionTest);
 		celdaTest.setSectorDelJugador(jugador2);
 		tableroTest.ubicarEnCelda(curandero,ubicacionTest);
 	}
@@ -55,7 +52,7 @@ public class TableroTest {
 		Curandero curandero2 = new Curandero();
 		curandero1.setJugador(jugador1);
 		curandero2.setJugador(jugador1);
-		Celda celdaTest = tableroTest.obtenerCelda(ubicacionTest);
+		Celda celdaTest = tableroTest.getCelda(ubicacionTest);
 		celdaTest.setSectorDelJugador(jugador1);
 		tableroTest.ubicarEnCelda(curandero1, ubicacionTest);
 		tableroTest.ubicarEnCelda(curandero2, ubicacionTest);

@@ -45,7 +45,7 @@
     <property name="java.class.path" value="/usr/local/Cellar/maven/3.6.2/libexec/boot/plexus-classworlds-2.6.0.jar"/>
     <property name="java.vm.specification.version" value="11"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher package"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test"/>
     <property name="java.home" value="/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
@@ -64,14 +64,14 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
+  <testcase classname="edu.fiuba.algoChess.JugadorTest" name="jugadorTestSinCreditoNoPuedeAdquirirMasPiezas" time="0"/>
   <testcase classname="edu.fiuba.algoChess.JugadorTest" name="jugadorTestCreadoConNombre" time="0"/>
   <testcase classname="edu.fiuba.algoChess.JugadorTest" name="jugadorTestSumaPuntaje" time="0"/>
+  <testcase classname="edu.fiuba.algoChess.JugadorTest" name="jugadorTestSinPiezasPierde" time="0"/>
   <testcase classname="edu.fiuba.algoChess.JugadorTest" name="jugadorTestIniciaPuntaje" time="0"/>
   <testcase classname="edu.fiuba.algoChess.JugadorTest" name="jugadorTestActivaTurno" time="0"/>
-  <testcase classname="edu.fiuba.algoChess.JugadorTest" name="jugadorTestSinFichasPierde" time="0"/>
   <testcase classname="edu.fiuba.algoChess.JugadorTest" name="jugadorTestInicializaInactivo" time="0"/>
   <testcase classname="edu.fiuba.algoChess.JugadorTest" name="jugadorTestPoneEnEspera" time="0"/>
   <testcase classname="edu.fiuba.algoChess.JugadorTest" name="jugadorTestInicializaSinNombre" time="0"/>
   <testcase classname="edu.fiuba.algoChess.JugadorTest" name="jugadorTestHabilitaYDeshabilita" time="0"/>
-  <testcase classname="edu.fiuba.algoChess.JugadorTest" name="jugadorTestSinCreditoNoPuedeAdquirirMasFichas" time="0"/>
 </testsuite>

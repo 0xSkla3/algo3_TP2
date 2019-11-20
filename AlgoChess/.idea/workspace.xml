@@ -1,12 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9a543e5d-9f77-47b1-95c7-ad2cead8e227" name="Default Changelist" comment="">
+    <list default="true" id="ff8a5046-5952-4a73-be95-a9c89709633e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/SoldadoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Jinete.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Jinete.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/JineteTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/JineteTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Pieza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Pieza.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Soldado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Soldado.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Tablero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Tablero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/TableroTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/TableroTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/AlgoChess-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/AlgoChess-1.0.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Jinete.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Jinete.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/edu/fiuba/algoChess/JineteTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/edu/fiuba/algoChess/JineteTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Pieza.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Pieza.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Soldado.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Soldado.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Tablero.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Tablero.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.mycompany.app.AppTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-edu.fiuba.algoChess.CeldaTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-edu.fiuba.algoChess.CeldaTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-edu.fiuba.algoChess.EntidadTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-edu.fiuba.algoChess.EntidadTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-edu.fiuba.algoChess.JugadorTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-edu.fiuba.algoChess.JugadorTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-edu.fiuba.algoChess.TableroTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-edu.fiuba.algoChess.TableroTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.mycompany.app.AppTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/edu.fiuba.algoChess.CeldaTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/edu.fiuba.algoChess.CeldaTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/edu.fiuba.algoChess.EntidadTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/edu.fiuba.algoChess.EntidadTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/edu.fiuba.algoChess.TableroTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/edu.fiuba.algoChess.TableroTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/edu/fiuba/algoChess/TableroTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/edu/fiuba/algoChess/TableroTest.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,11 +37,34 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="1TntAB5IziTVbeGLwuKmx6OwZKH" />
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1TqgzT02bBIYajWKWTkKgWNBYrF" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -32,7 +78,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="EntidadTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SoldadoTest.testVerificaBatallon" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgoChess" />
       <extension name="coverage">
         <pattern>
@@ -41,42 +87,86 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="edu.fiuba.algoChess" />
-      <option name="MAIN_CLASS_NAME" value="edu.fiuba.algoChess.EntidadTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="edu.fiuba.algoChess.SoldadoTest" />
+      <option name="METHOD_NAME" value="testVerificaBatallon" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.EntidadTest" />
+        <item itemvalue="JUnit.SoldadoTest.testVerificaBatallon" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SbtLocalSettings">
+    <option name="projectSyncType">
+      <map>
+        <entry key="$USER_HOME$/social-kraken" value="PREVIEW" />
+      </map>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="9a543e5d-9f77-47b1-95c7-ad2cead8e227" name="Default Changelist" comment="" />
-      <created>1574107541930</created>
+      <changelist id="ff8a5046-5952-4a73-be95-a9c89709633e" name="Default Changelist" comment="" />
+      <created>1574193301089</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1574107541930</updated>
+      <updated>1574193301089</updated>
+      <workItem from="1574193302334" duration="15852000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/SoldadoTest.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Tablero.java</url>
+          <line>74</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Tablero.java</url>
+          <line>94</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Tablero.java</url>
+          <line>95</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Soldado.java</url>
+          <line>65</line>
+          <properties>
+            <option name="lambda-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

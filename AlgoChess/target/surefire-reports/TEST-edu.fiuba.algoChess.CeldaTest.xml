@@ -45,7 +45,7 @@
     <property name="java.class.path" value="/usr/local/Cellar/maven/3.6.2/libexec/boot/plexus-classworlds-2.6.0.jar"/>
     <property name="java.vm.specification.version" value="11"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher package"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test"/>
     <property name="java.home" value="/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
@@ -64,9 +64,9 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="edu.fiuba.algoChess.CeldaTest" name="celdaTestGuardaFicha" time="0"/>
-  <testcase classname="edu.fiuba.algoChess.CeldaTest" name="celdaTestMueveFicha" time="0"/>
+  <testcase classname="edu.fiuba.algoChess.CeldaTest" name="celdaTestGuardaPieza" time="0"/>
+  <testcase classname="edu.fiuba.algoChess.CeldaTest" name="celdaTestMuevePieza" time="0"/>
   <testcase classname="edu.fiuba.algoChess.CeldaTest" name="celdaTestInicializaVacia" time="0"/>
-  <testcase classname="edu.fiuba.algoChess.CeldaTest" name="celdaTestBorraFichaLuegoDeMover" time="0"/>
-  <testcase classname="edu.fiuba.algoChess.CeldaTest" name="celdaTestBorraFicha" time="0"/>
+  <testcase classname="edu.fiuba.algoChess.CeldaTest" name="celdaTestBorraPiezaLuegoDeMover" time="0"/>
+  <testcase classname="edu.fiuba.algoChess.CeldaTest" name="celdaTestBorraPieza" time="0"/>
 </testsuite>
