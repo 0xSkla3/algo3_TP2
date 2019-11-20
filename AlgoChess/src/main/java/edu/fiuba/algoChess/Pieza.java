@@ -1,5 +1,8 @@
 package edu.fiuba.algoChess;
 
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
 public abstract class Pieza implements Movible {
 
 	//protected TipoPieza nombre;
@@ -22,14 +25,6 @@ public abstract class Pieza implements Movible {
 		this.ubicacion = ubicacion;
 		this.vida = vida;
 		this.costo = costo;
-
-	}
-
-	public Pieza() {
-
-		this.vida = 0;
-		this.costo = 0;
-		this.ubicacion = null;
 
 	}
 

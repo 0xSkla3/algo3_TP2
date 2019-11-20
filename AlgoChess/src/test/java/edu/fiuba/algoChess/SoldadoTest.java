@@ -31,6 +31,9 @@ public class SoldadoTest {
 		Soldado soldado1 = new Soldado(new Ubicacion(2,2));
 		Soldado soldado2 = new Soldado(new Ubicacion(3,2));
 		Soldado soldado3 = new Soldado(new Ubicacion(4,2));
+		Batallon batallon = new Batallon();
+		soldado1.verificaBatallon(tableroTest);
+
 
 
 	}
