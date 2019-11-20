@@ -2,6 +2,8 @@ package edu.fiuba.algoChess;
 
 import lombok.*;
 
+import java.util.*;
+
 @AllArgsConstructor
 @NoArgsConstructor
 public class Batallon implements Movible{
@@ -67,6 +69,63 @@ public class Batallon implements Movible{
 		getSoldado2().mover(campoDeBatalla,ubicacion2);
 		getSoldado3().mover(campoDeBatalla,ubicacion3);
 
+	}
+
+	public static boolean esBatallon(Soldado soldado1, Soldado soldado2, Soldado soldado3, Tablero tablero){
+		RangoSoldado rango1 = new RangoSoldado();
+		RangoSoldado rango2 = new RangoSoldado();
+		RangoSoldado rango3 = new RangoSoldado();
+		Set<Soldado> ctoAuxiliar = null;
+		List<Soldado> listaAuxiliar = new java.util.ArrayList<>(Collections.emptyList());
+
+		rango1.actualizaRango(soldado1,tablero);
+		rango2.actualizaRango(soldado2,tablero);
+		rango3.actualizaRango(soldado3,tablero);
+
+		listaAuxiliar.addAll(rango1.getSoldadosContiguos());
+		listaAuxiliar.addAll(rango2.getSoldadosContiguos());
+		listaAuxiliar.addAll(rango3.getSoldadosContiguos());
+
+ 		ctoAuxiliar = new HashSet<Soldado>(listaAuxiliar);
+
+ 		if (ctoAuxiliar.size()>2) {
+ 			return true;
+		}else {
+ 			return  false;
+		}
+
+	}
+
+	public static Batallon batallonAsociadoONull(Soldado soldado1, Tablero tablero){
+		soldado1.actualizaRango(tablero);
+		ArrayList<Soldado> contiguosA1 = soldado1.getRango().getSoldadosContiguos();
+
+		if(contiguosA1.size() > 1) {
+			return new Batallon(soldado1, contiguosA1.get(0),contiguosA1.get(1));
+		} else if (contiguosA1.size() == 1) {
+			Soldado soldado2 = contiguosA1.get(0);
+			soldado2.actualizaRango(tablero);
+			ArrayList<Soldado> contiguosA2 = soldado2.getRango().getSoldadosContiguos();
+			if(contiguosA2.size() > 1) {
+				return new Batallon(contiguosA2.get(0), soldado2,contiguosA2.get(1));
+			}
+		}
+		return null;
+	}
+
+	public Boolean equals(Batallon batallon){
+		Set<Soldado> itemsBatallonActual = new HashSet<>();
+		Set<Soldado>itemsBatallonAComparar = new HashSet<>();
+
+		itemsBatallonActual.add(this.getSoldado1());
+		itemsBatallonActual.add(this.getSoldado2());
+		itemsBatallonActual.add(this.getSoldado3());
+
+		itemsBatallonAComparar.add(batallon.getSoldado1());
+		itemsBatallonAComparar.add(batallon.getSoldado2());
+		itemsBatallonAComparar.add(batallon.getSoldado3());
+
+		return itemsBatallonActual.equals(itemsBatallonAComparar);
 	}
 
 

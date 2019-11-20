@@ -1,15 +1,31 @@
 package edu.fiuba.algoChess;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.Collection;
 import java.util.Optional;
 import java.util.stream.Stream;
 
+
 public class Soldado extends Pieza implements Movible {
 
-
+	@Getter
+	@Setter
 	private int ataqueCercano;
+
+	@Getter
+	@Setter
 	private int ataqueMedio;
+
+	@Getter
+	@Setter
 	private int ataqueLejano;
+
+	@Getter
+	@Setter
+	private RangoSoldado rango;
 
 	public Soldado(Ubicacion ubicacion,int costo, int vida) {
 
@@ -29,6 +45,13 @@ public class Soldado extends Pieza implements Movible {
 	public Soldado(Ubicacion ubicacion){
 
 		super(ubicacion);
+		this.rango = new RangoSoldado();
+
+	}
+
+	public void actualizaRango(Tablero tablero){
+
+		this.getRango().actualizaRango(this,tablero);
 
 	}
 
@@ -42,18 +65,6 @@ public class Soldado extends Pieza implements Movible {
 		if (distancia==DistanciaRelativa.MEDIO){
 			atacado.bajarVida(this.ataqueMedio);
 		}
-	}
-
-	public int getAtaqueCercano(){
-		return this.ataqueCercano;
-	};
-
-	public int getAtaqueLejano(){
-		return this.ataqueLejano;
-	};
-
-	public int getAtaqueMedio(){
-		return this.ataqueMedio;
 	}
 
 	public Stream<Soldado> verificaBatallon(Tablero tablero) {
@@ -111,9 +122,5 @@ public class Soldado extends Pieza implements Movible {
 		}
 		return batallon;
 	} */
-//	public void atacar(Pieza atacado){
-//		atacado.bajarVida(this.ataqueCercano);
-//
-//	}
 
 }
