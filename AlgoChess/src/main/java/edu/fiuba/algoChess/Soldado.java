@@ -54,15 +54,19 @@ public class Soldado extends Pieza implements Movible {
 	}
 
 	public void ejecutarComportamiento(DistanciaRelativa distancia, Pieza atacado){
-		if (distancia==DistanciaRelativa.LEJANO){
-			atacado.bajarVida(this.ataqueLejano);
-		};
-		if (distancia==DistanciaRelativa.CERCANO){
-			atacado.bajarVida(this.ataqueCercano);
-		};
-		if (distancia==DistanciaRelativa.MEDIO){
-			atacado.bajarVida(this.ataqueMedio);
+
+		if(this.getJugador()!=atacado.getJugador()){
+			if (distancia==DistanciaRelativa.CERCANO){
+				atacado.bajarVida(this.ataqueCercano);
+			};
 		}
+//		if (distancia==DistanciaRelativa.LEJANO){
+//			atacado.bajarVida(this.ataqueLejano);
+//		};
+
+//		if (distancia==DistanciaRelativa.MEDIO){
+//			atacado.bajarVida(this.ataqueMedio);
+//		}
 	}
 
 	public Batallon verificaBatallonONull(Tablero tablero) {
