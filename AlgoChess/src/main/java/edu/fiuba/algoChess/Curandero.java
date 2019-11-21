@@ -30,9 +30,10 @@ public class Curandero extends Pieza {
 	}
 
 	public void ejecutarComportamiento(DistanciaRelativa distancia, Pieza atacado){
-		if ((distancia==DistanciaRelativa.CERCANO)&&(!(atacado instanceof Catapulta))){
+
+		if ((distancia==DistanciaRelativa.CERCANO)&&(!(atacado instanceof Catapulta))&&(this.getJugador()==atacado.getJugador())){
 			atacado.aumentarVida(this.sanacion);
-		}
+		};
 	};
 
 	public int getSanacion(){
