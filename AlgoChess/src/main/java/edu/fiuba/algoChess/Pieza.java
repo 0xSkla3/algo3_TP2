@@ -129,6 +129,18 @@ public abstract class Pieza implements Movible {
 			this.ubicacion = ubicacion;}
 	}
 
+	//COMENTARIO IMPORTANTE: DECIDI MOVER EL METODO DE JINETE
+
+
+
+
+
+
+
+
+
+
+
 	//public abstract void reconocerTerreno(int distanciaAReconocer, Pieza piezaCentral, Tablero campoDeBatalla);
 }
 

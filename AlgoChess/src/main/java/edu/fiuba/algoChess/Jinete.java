@@ -44,32 +44,33 @@ public class Jinete extends Pieza {
 		if (distancia==DistanciaRelativa.LEJANO){
 			atacado.bajarVida(this.ataqueLejano);
 		};
-		if (distancia==DistanciaRelativa.CERCANO){
+		if ((distancia==DistanciaRelativa.CERCANO)&&(!(this.getPiezaAliadaCercana()))){
 			atacado.bajarVida(this.ataqueCercano);
 		};
-		if (distancia==DistanciaRelativa.MEDIO){
+		if ((distancia==DistanciaRelativa.MEDIO)&&((this.getPiezaAliadaCercana())||(!(this.getPiezaEnemigaCercana())))){
 			atacado.bajarVida(this.ataqueMedio);
 		}
 			}
 
+			//COMENTARIO: EL JINETE DEBERIA CORRER EL METODO RECONOCERTERRENO CADA VEZ QUE SE MUEVE PARA ACTUALIZAR LOS VALORES DE SUS ATRIBUTOS
+			//PIEZAALIADACERCA Y PIEZAENEMIGACERCANA. DE OTRO MODO, LOS VALORES QUEDARIAN SETEADOS HACIENDO REFERENCIA A LA POSICION ANTERIOR
+			//LO CUAL PUEDE DEJAR DE SER VALIDO EN LA NUEVA POSICION
 	//@Override
-	public void reconocerTerreno(Pieza piezaCentral, Tablero campoDeBatalla){
+	public void reconocerTerreno(Tablero campoDeBatalla){
 
-	Ubicacion ubicacionPiezaCentral = piezaCentral.getUbicacion();
-	int posicionXPiezaCentral = ubicacionPiezaCentral.getCoordenadaX();
-	int posicionYPiezaCentral = ubicacionPiezaCentral.getCoordenadaY();
+	int coordenadaX = this.ubicacion.getCoordenadaX();
+	int coordenadaY = this.ubicacion.getCoordenadaY();
 
-
-	for (int i = posicionXPiezaCentral-distanciaAReconocerEnTerreno; i <= posicionXPiezaCentral+distanciaAReconocerEnTerreno; i++) {
+	for (int i = coordenadaX-distanciaAReconocerEnTerreno; i <= coordenadaX+distanciaAReconocerEnTerreno; i++) {
 		if (i<1 || i>20){
 			continue;
 		}
-		for (int j = posicionYPiezaCentral-distanciaAReconocerEnTerreno; j <= posicionXPiezaCentral+distanciaAReconocerEnTerreno; j++) {
+		for (int j = coordenadaY-distanciaAReconocerEnTerreno; j <= coordenadaX+distanciaAReconocerEnTerreno; j++) {
 			if (j<1 || j>20){
 				continue;
 			}
 			Ubicacion ubicacion = new Ubicacion(i,j);
-			if (ubicacion.equals(piezaCentral.getUbicacion()) ){
+			if (ubicacion.equals(this.getUbicacion()) ){
 				continue;
 			}
 			Celda celda = campoDeBatalla.getCelda(ubicacion);

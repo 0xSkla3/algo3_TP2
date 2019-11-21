@@ -2,6 +2,7 @@ package edu.fiuba.algoChess;
 
 import org.junit.Test;
 
+import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertFalse;
 
@@ -20,7 +21,7 @@ public class JineteTest {
         Ubicacion ubicacionCurandero = new Ubicacion(5,4);
         tableroTest.ubicarEnCelda(jinete,ubicacionJinete);
         tableroTest.ubicarEnCelda(curandero,ubicacionCurandero);
-        jinete.reconocerTerreno(jinete,tableroTest);
+        jinete.reconocerTerreno(tableroTest);
         assertTrue(jinete.getPiezaAliadaCercana());
     }
 
@@ -38,7 +39,7 @@ public class JineteTest {
         Ubicacion ubicacionCurandero = new Ubicacion(5,3);
         tableroTest.ubicarEnCelda(jinete,ubicacionJinete);
         tableroTest.ubicarEnCelda(curandero,ubicacionCurandero);
-        jinete.reconocerTerreno(jinete,tableroTest);
+        jinete.reconocerTerreno(tableroTest);
         assertTrue(jinete.getPiezaAliadaCercana());
     }
 
@@ -55,7 +56,7 @@ public class JineteTest {
         Ubicacion ubicacionCurandero = new Ubicacion(5,2);
         tableroTest.ubicarEnCelda(jinete,ubicacionJinete);
         tableroTest.ubicarEnCelda(curandero,ubicacionCurandero);
-        jinete.reconocerTerreno(jinete,tableroTest);
+        jinete.reconocerTerreno(tableroTest);
         assertFalse(jinete.getPiezaAliadaCercana());
     }
 
@@ -73,7 +74,7 @@ public class JineteTest {
         Ubicacion ubicacionCurandero = new Ubicacion(11,4);
         tableroTest.ubicarEnCelda(jinete,ubicacionJinete);
         tableroTest.ubicarEnCelda(curandero,ubicacionCurandero);
-        jinete.reconocerTerreno(jinete,tableroTest);
+        jinete.reconocerTerreno(tableroTest);
         assertTrue(jinete.getPiezaEnemigaCercana());
     }
 
@@ -91,7 +92,7 @@ public class JineteTest {
         Ubicacion ubicacionCurandero = new Ubicacion(12,5);
         tableroTest.ubicarEnCelda(jinete,ubicacionJinete);
         tableroTest.ubicarEnCelda(curandero,ubicacionCurandero);
-        jinete.reconocerTerreno(jinete,tableroTest);
+        jinete.reconocerTerreno(tableroTest);
         assertTrue(jinete.getPiezaEnemigaCercana());
     }
 
@@ -108,7 +109,7 @@ public class JineteTest {
         Ubicacion ubicacionCurandero = new Ubicacion(13,4);
         tableroTest.ubicarEnCelda(jinete,ubicacionJinete);
         tableroTest.ubicarEnCelda(curandero,ubicacionCurandero);
-        jinete.reconocerTerreno(jinete,tableroTest);
+        jinete.reconocerTerreno(tableroTest);
         assertFalse(jinete.getPiezaEnemigaCercana());
     }
 
@@ -129,9 +130,133 @@ public class JineteTest {
         tableroTest.ubicarEnCelda(jineteJugador1,ubicacionJineteJugador1);
         tableroTest.ubicarEnCelda(curanderoJugador1,ubicacionCuranderoJugador1);
         tableroTest.ubicarEnCelda(curanderoJugador2,ubicacionCuranderoJugador2);
-        jineteJugador1.reconocerTerreno(jineteJugador1,tableroTest);
+        jineteJugador1.reconocerTerreno(tableroTest);
         assertTrue((jineteJugador1.getPiezaAliadaCercana() && jineteJugador1.getPiezaEnemigaCercana()));
-    }
+    };
+
+    @Test
+    public void test08JineteAtacaAEnemigoEnDistanciaMediaCuandoHayUnSoldadoAliadoCerca(){
+        Jugador enemigo = new Jugador();
+        Jugador aliado = new Jugador();
+        Tablero tablero = new Tablero(enemigo,aliado);
+
+        Soldado soldadoEnemigo = new Soldado();
+        Ubicacion ubicacionSoldadoEnemigo = new Ubicacion(8,1);
+        soldadoEnemigo.setJugador(enemigo);
+
+        Soldado soldadoAliado = new Soldado();
+        Ubicacion ubicacionSoldadoAliado = new Ubicacion(11,2);
+        soldadoAliado.setJugador(aliado);
+
+        Jinete jineteAliado = new Jinete();
+        Ubicacion ubicacionJineteAliado = new Ubicacion(11,1);
+        jineteAliado.setJugador(aliado);
+
+        tablero.ubicarEnCelda(soldadoEnemigo, ubicacionSoldadoEnemigo);
+        tablero.ubicarEnCelda(soldadoAliado,ubicacionSoldadoAliado);
+        tablero.ubicarEnCelda(jineteAliado,ubicacionJineteAliado);
+        jineteAliado.reconocerTerreno(tablero);
+
+        DistanciaRelativa distanciaSoldadoEnemigoAJineteAliado = jineteAliado.getDistanciaRelativa(soldadoEnemigo);
+        //assertTrue(distanciaSoldadoAJinete instanceof DistanciaRelativa);
+        int vidaTrasAtaque = soldadoEnemigo.getVida() - jineteAliado.getAtaqueMedio();
+        jineteAliado.ejecutarComportamiento(distanciaSoldadoEnemigoAJineteAliado,soldadoEnemigo);
+        assertEquals(vidaTrasAtaque,soldadoEnemigo.getVida());
+
+    };
+
+    @Test
+    public void test09JineteNoPuedeAtacarConAtaqueMedioAEnemigoEnDistanciaCortaAunCuandoHayUnSoldadoAliadoCerca(){
+        Jugador enemigo = new Jugador();
+        Jugador aliado = new Jugador();
+        Tablero tablero = new Tablero(enemigo,aliado);
+
+        Soldado soldadoEnemigo = new Soldado();
+        Ubicacion ubicacionSoldadoEnemigo = new Ubicacion(10,1);
+        soldadoEnemigo.setJugador(enemigo);
+
+        Soldado soldadoAliado = new Soldado();
+        Ubicacion ubicacionSoldadoAliado = new Ubicacion(11,2);
+        soldadoAliado.setJugador(aliado);
+
+        Jinete jineteAliado = new Jinete();
+        Ubicacion ubicacionJineteAliado = new Ubicacion(11,1);
+        jineteAliado.setJugador(aliado);
+
+        tablero.ubicarEnCelda(soldadoEnemigo, ubicacionSoldadoEnemigo);
+        tablero.ubicarEnCelda(soldadoAliado,ubicacionSoldadoAliado);
+        tablero.ubicarEnCelda(jineteAliado,ubicacionJineteAliado);
+        jineteAliado.reconocerTerreno(tablero);
+
+        DistanciaRelativa distanciaSoldadoEnemigoAJineteAliado = jineteAliado.getDistanciaRelativa(soldadoEnemigo);
+        //assertTrue(distanciaSoldadoAJinete instanceof DistanciaRelativa);
+        int vidaTrasAtaque = soldadoEnemigo.getVida();
+        jineteAliado.ejecutarComportamiento(distanciaSoldadoEnemigoAJineteAliado,soldadoEnemigo);
+        assertEquals(vidaTrasAtaque,soldadoEnemigo.getVida());
+
+    };
+
+    @Test
+    public void test10JineteAtacaConAtaqueCercanoAEnemigoEnDistanciaCortaCuandoNoHayUnSoldadoAliadoCerca(){
+        Jugador enemigo = new Jugador();
+        Jugador aliado = new Jugador();
+        Tablero tablero = new Tablero(enemigo,aliado);
+
+        Soldado soldadoEnemigo = new Soldado();
+        Ubicacion ubicacionSoldadoEnemigo = new Ubicacion(10,1);
+        soldadoEnemigo.setJugador(enemigo);
+
+        Soldado soldadoAliado = new Soldado();
+        Ubicacion ubicacionSoldadoAliado = new Ubicacion(15,2);
+        soldadoAliado.setJugador(aliado);
+
+        Jinete jineteAliado = new Jinete();
+        Ubicacion ubicacionJineteAliado = new Ubicacion(11,1);
+        jineteAliado.setJugador(aliado);
+
+        tablero.ubicarEnCelda(soldadoEnemigo, ubicacionSoldadoEnemigo);
+        tablero.ubicarEnCelda(soldadoAliado,ubicacionSoldadoAliado);
+        tablero.ubicarEnCelda(jineteAliado,ubicacionJineteAliado);
+        jineteAliado.reconocerTerreno(tablero);
+
+        DistanciaRelativa distanciaSoldadoEnemigoAJineteAliado = jineteAliado.getDistanciaRelativa(soldadoEnemigo);
+        //assertTrue(distanciaSoldadoAJinete instanceof DistanciaRelativa);
+        int vidaTrasAtaque = soldadoEnemigo.getVida() - jineteAliado.getAtaqueCercano();
+        jineteAliado.ejecutarComportamiento(distanciaSoldadoEnemigoAJineteAliado,soldadoEnemigo);
+        assertEquals(vidaTrasAtaque,soldadoEnemigo.getVida());
+
+    };
+
+    @Test
+    public void test11JineteNoPuedeAtacarConAtaqueCercanoAEnemigoEnDistanciaCortaCuandoHayUnSoldadoAliadoCerca(){
+        Jugador enemigo = new Jugador();
+        Jugador aliado = new Jugador();
+        Tablero tablero = new Tablero(enemigo,aliado);
+
+        Soldado soldadoEnemigo = new Soldado();
+        Ubicacion ubicacionSoldadoEnemigo = new Ubicacion(10,1);
+        soldadoEnemigo.setJugador(enemigo);
+
+        Soldado soldadoAliado = new Soldado();
+        Ubicacion ubicacionSoldadoAliado = new Ubicacion(11,2);
+        soldadoAliado.setJugador(aliado);
+
+        Jinete jineteAliado = new Jinete();
+        Ubicacion ubicacionJineteAliado = new Ubicacion(11,1);
+        jineteAliado.setJugador(aliado);
+
+        tablero.ubicarEnCelda(soldadoEnemigo, ubicacionSoldadoEnemigo);
+        tablero.ubicarEnCelda(soldadoAliado,ubicacionSoldadoAliado);
+        tablero.ubicarEnCelda(jineteAliado,ubicacionJineteAliado);
+        jineteAliado.reconocerTerreno(tablero);
+
+        DistanciaRelativa distanciaSoldadoEnemigoAJineteAliado = jineteAliado.getDistanciaRelativa(soldadoEnemigo);
+        //assertTrue(distanciaSoldadoAJinete instanceof DistanciaRelativa);
+        int vidaTrasAtaque = soldadoEnemigo.getVida();
+        jineteAliado.ejecutarComportamiento(distanciaSoldadoEnemigoAJineteAliado,soldadoEnemigo);
+        assertEquals(vidaTrasAtaque,soldadoEnemigo.getVida());
+
+    };
 
 }
 
