@@ -1,5 +1,6 @@
 package edu.fiuba.algoChess;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
@@ -256,6 +257,52 @@ public class JineteTest {
         jineteAliado.ejecutarComportamiento(distanciaSoldadoEnemigoAJineteAliado,soldadoEnemigo);
         assertEquals(vidaTrasAtaque,soldadoEnemigo.getVida());
 
+    };
+
+    @Test
+
+    public void test12JineteAtacaSoldadoCercano(){
+        Soldado soldado = new Soldado();
+        Ubicacion ubicacionSoldado = new Ubicacion(1,1);
+        soldado.setUbicacion(ubicacionSoldado);
+        Jinete jinete = new Jinete();
+        Ubicacion ubicacionJinete = new Ubicacion(1,2);
+        jinete.setUbicacion(ubicacionJinete);
+        DistanciaRelativa distanciaSoldadoAJinete = jinete.getDistanciaRelativa(soldado);
+        //assertTrue(distanciaSoldadoAJinete instanceof DistanciaRelativa);
+        int vidaTrasAtaque = soldado.getVida() - jinete.getAtaqueCercano();
+        jinete.ejecutarComportamiento(distanciaSoldadoAJinete,soldado);
+        Assert.assertEquals(vidaTrasAtaque,soldado.getVida());
+    };
+
+    @Test
+    public void test13JineteAtacaSoldadoADistanciaMedia(){
+        Soldado soldado = new Soldado();
+        Ubicacion ubicacionSoldado = new Ubicacion(4,2);
+        soldado.setUbicacion(ubicacionSoldado);
+        Jinete jinete = new Jinete();
+        Ubicacion ubicacionJinete = new Ubicacion(1,2);
+        jinete.setUbicacion(ubicacionJinete);
+        DistanciaRelativa distanciaSoldadoAJinete = jinete.getDistanciaRelativa(soldado);
+        //assertTrue(distanciaSoldadoAJinete instanceof DistanciaRelativa);
+        int vidaTrasAtaque = soldado.getVida() - jinete.getAtaqueMedio();
+        jinete.ejecutarComportamiento(distanciaSoldadoAJinete,soldado);
+        Assert.assertEquals(vidaTrasAtaque,soldado.getVida());
+    };
+
+    @Test
+    public void test14JineteAtacaSoldadoLejanoYNoSeDescuentaVidaDelSoldado(){
+        Soldado soldado = new Soldado();
+        Ubicacion ubicacionSoldado = new Ubicacion(10,10);
+        soldado.setUbicacion(ubicacionSoldado);
+        Jinete jinete = new Jinete();
+        Ubicacion ubicacionJinete = new Ubicacion(1,2);
+        jinete.setUbicacion(ubicacionJinete);
+        DistanciaRelativa distanciaSoldadoAJinete = jinete.getDistanciaRelativa(soldado);
+        //assertTrue(distanciaSoldadoAJinete instanceof DistanciaRelativa);
+        int vidaTrasAtaque = soldado.getVida() - jinete.getAtaqueLejano();
+        jinete.ejecutarComportamiento(distanciaSoldadoAJinete,soldado);
+        Assert.assertEquals(vidaTrasAtaque,soldado.getVida());
     };
 
 }

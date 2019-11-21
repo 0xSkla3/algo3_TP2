@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 public class SoldadoTest {
 
 	@Test
-	public void testVerificaBatallon(){
+	public void test00SeVerificaBatallon(){
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
 		Tablero tableroTest = new Tablero(jugador1, jugador2);
@@ -27,7 +27,7 @@ public class SoldadoTest {
 	}
 
 	@Test
-	public void tresSoldadosContiguosSeMuevenEnLaMismaDireccion(){
+	public void test01TresSoldadosContiguosSeMuevenEnLaMismaDireccion(){
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
 		Tablero tableroTest = new Tablero(jugador1, jugador2);
@@ -52,7 +52,7 @@ public class SoldadoTest {
 	}
 
 	@Test
-	public void tresSoldadosConObstaculoSeMuevenDos(){
+	public void test02TresSoldadosConObstaculoSeMuevenDos(){
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
 		Tablero tableroTest = new Tablero(jugador1, jugador2);
@@ -65,7 +65,7 @@ public class SoldadoTest {
 	}
 
 	@Test
-	public void tresSoldadosConObstaculoDisuelveBatallon(){
+	public void test03TresSoldadosConObstaculoDisuelveBatallon(){
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
 		Tablero tableroTest = new Tablero(jugador1, jugador2);
@@ -76,7 +76,7 @@ public class SoldadoTest {
 	}
 
 	@Test
-	public void CuatroSoldadosContiguosMuevenTres(){
+	public void test04CuatroSoldadosContiguosMuevenTres(){
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
 		Tablero tableroTest = new Tablero(jugador1, jugador2);
@@ -85,6 +85,36 @@ public class SoldadoTest {
 		Soldado soldado3 = new Soldado(new Ubicacion(4,2));
 		Soldado soldado4 = new Soldado(new Ubicacion(5,2));
 
-	}
+	};
+
+	@Test
+	public void test05SoldadoAtacaJineteCercano(){
+		Soldado soldado = new Soldado();
+		Ubicacion ubicacionSoldado = new Ubicacion(1,1);
+		soldado.setUbicacion(ubicacionSoldado);
+		Jinete jinete = new Jinete();
+		Ubicacion ubicacionJinete = new Ubicacion(1,2);
+		jinete.setUbicacion(ubicacionJinete);
+		DistanciaRelativa distanciaJineteASoldado = soldado.getDistanciaRelativa(jinete);
+		//	assertTrue(distanciaJineteASoldado instanceof DistanciaRelativa);
+		int vidaTrasAtaque = jinete.getVida() - soldado.getAtaqueCercano();
+		soldado.ejecutarComportamiento(distanciaJineteASoldado,jinete);
+		assertEquals(vidaTrasAtaque,jinete.getVida());
+	};
+
+	@Test
+	public void test06SoldadoAtacaJineteLejanoYNoSeQuitaVidaAJineteAtacado(){
+		Soldado soldado = new Soldado();
+		Ubicacion ubicacionSoldado = new Ubicacion(1,1);
+		soldado.setUbicacion(ubicacionSoldado);
+		Jinete jinete = new Jinete();
+		Ubicacion ubicacionJinete = new Ubicacion(10,20);
+		jinete.setUbicacion(ubicacionJinete);
+		DistanciaRelativa distanciaJineteASoldado = soldado.getDistanciaRelativa(jinete);
+		//	assertTrue(distanciaJineteASoldado instanceof DistanciaRelativa);
+		int vidaTrasAtaque = jinete.getVida() - soldado.getAtaqueLejano();
+		soldado.ejecutarComportamiento(distanciaJineteASoldado,jinete);
+		assertEquals(vidaTrasAtaque,jinete.getVida());
+	};
 
 }
