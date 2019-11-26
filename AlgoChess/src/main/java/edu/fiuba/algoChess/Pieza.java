@@ -10,7 +10,6 @@ public abstract class Pieza implements Movible, Atacable {
 	private int costo;
 	protected Ubicacion ubicacion;
 	protected Bando bando;
-	protected Jugador jugadorDueño;
 
 /*	public Pieza(Ubicacion ubicacion, int costo, int vida, Bando bando) {
 
@@ -74,14 +73,6 @@ public abstract class Pieza implements Movible, Atacable {
 	};
 
 
-
-	public Jugador getJugador() {
-		return this.jugadorDueño;
-		}
-
-	public void setJugador(Jugador jugador){
-		this.jugadorDueño = jugador;
-		}
 
 	public int getCosto(){
 		return this.costo;

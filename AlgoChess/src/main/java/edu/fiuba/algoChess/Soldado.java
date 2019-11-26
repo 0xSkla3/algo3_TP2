@@ -18,10 +18,6 @@ public class Soldado extends Pieza implements Movible {
 	private RangoSoldado rango;
 
 	@Getter
-	@Setter
-	private Bando bando;
-
-	@Getter
 	private int danioCercano;
 
 	public Soldado(Ubicacion ubicacion,int costo, int vida, Bando bando) {
@@ -29,13 +25,20 @@ public class Soldado extends Pieza implements Movible {
 		super(costo,vida,ubicacion,bando);
 	}
 
-	public Soldado(){
+/*	public Soldado(){
 
 		super(1,100);
-		//this.nombre = TipoPieza.SOLDADO;
 		danioCercano = 10;
 		this.ataque = new AtaqueCercano(danioCercano);
 
+
+	}*/
+
+	public Soldado(Ubicacion ubicacion,Bando bando){
+
+		super(2,75,ubicacion,bando);
+		danioCercano = 10;
+		this.ataque = new AtaqueCercano(danioCercano);
 
 	}
 
@@ -52,7 +55,7 @@ public class Soldado extends Pieza implements Movible {
 
 	}
 
-	public void ejecutarComportamiento(DistanciaRelativa distancia, Pieza atacado){
+	public void atacar(DistanciaRelativa distancia, Pieza atacado){
 
 		this.bando.atacar(atacado, this.ataque, atacado.getBando());
 

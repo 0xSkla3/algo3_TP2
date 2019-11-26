@@ -20,7 +20,6 @@ public class Jinete extends Pieza {
 	public Jinete() {
 
 		super(3, 100);
-		//this.nombre = TipoPieza.JINETE;
 		this.ataqueCercano = new AtaqueCercano(danioCercano);
 		this.ataqueMedio = new AtaqueMedio(danioMedio);
 		this.piezaEnemigaCercana = false;
@@ -28,6 +27,19 @@ public class Jinete extends Pieza {
 		this.distanciaAReconocerEnTerreno = 2;
 
 	}
+
+	public Jinete(Ubicacion ubicacion,Bando bando){
+
+		super(3, 100,ubicacion,bando);
+		this.ataqueCercano = new AtaqueCercano(danioCercano);
+		this.ataqueMedio = new AtaqueMedio(danioMedio);
+		this.piezaEnemigaCercana = false;
+		this.piezaAliadaCercana = false;
+		this.distanciaAReconocerEnTerreno = 2;
+
+
+	}
+
 
 	public Jinete(Ubicacion ubicacion) {
 		super(ubicacion);
@@ -40,7 +52,7 @@ public class Jinete extends Pieza {
 	}
 
 
-	public void ejecutarComportamiento(DistanciaRelativa distancia, Pieza atacado){
+	public void atacar(DistanciaRelativa distancia, Pieza atacado){
 		//if (distancia==DistanciaRelativa.LEJANO){
 		//	atacado.recibirAtaque(this.ataque);
 		//};
@@ -74,11 +86,11 @@ public class Jinete extends Pieza {
 				continue;
 			}
 			Celda celda = campoDeBatalla.getCelda(ubicacion);
-			if (!celda.isEmpty() && (celda.getPiezaActual().getJugador() == this.getJugador())){
+			if (!celda.isEmpty() && (celda.getPiezaActual().getBando().equals(this.bando) )){
 				piezaAliadaCercana = true;
 				continue;
 			}
-			else if (!celda.isEmpty() && (celda.getPiezaActual().getJugador() != this.getJugador())){
+			else if (!celda.isEmpty() && !(celda.getPiezaActual().getBando().equals(this.bando))){
 				piezaEnemigaCercana = true;
 				continue;
 			}

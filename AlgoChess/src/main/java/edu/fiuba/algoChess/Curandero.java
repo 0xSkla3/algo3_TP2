@@ -15,22 +15,21 @@ public class Curandero extends Pieza {
 	public Curandero(){
 
 		super(2,75);
-		//this.nombre = TipoPieza.CURANDERO;
 		this.sanacion = 15;
 
 	}
+
 	public Curandero(Ubicacion ubicacion,Bando bando){
 
 		super(2,75,ubicacion,bando);
 		this.sanacion = 15;
 
-
 	}
 
-	public void ejecutarComportamiento(DistanciaRelativa distancia, Pieza atacado){
+	public void curar(DistanciaRelativa distancia, Pieza aCurar){
 
-		if ((distancia==DistanciaRelativa.CERCANO)&&(!(atacado instanceof Catapulta))&&(this.getJugador()==atacado.getJugador())){
-			atacado.aumentarVida(this.sanacion);
+		if ((distancia==DistanciaRelativa.CERCANO)&&(!(aCurar instanceof Catapulta))&&(this.bando.equals(aCurar.getBando()))){
+			aCurar.aumentarVida(this.sanacion);
 		};
 	};
 

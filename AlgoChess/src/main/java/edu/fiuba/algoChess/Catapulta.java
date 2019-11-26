@@ -6,10 +6,16 @@ public class Catapulta extends Pieza {
 
 	private AtaqueLejano ataque;
 	private int danio = 20;
+//	public int costo = 5;
+//	private int vida = 50;     no puedo pasar estos parametros en el constructor super, averiguar como hacer
 
-	public Catapulta(Ubicacion ubicacion,int costo, int vida, Bando bando) {
-		super(costo,vida,ubicacion,bando);
+	public Catapulta(Ubicacion ubicacion,Bando bando){
+
+		super(5,50,ubicacion,bando);
+		ataque = new AtaqueLejano(danio);
+
 	}
+
 
 	public Catapulta(){
 
@@ -29,7 +35,7 @@ public class Catapulta extends Pieza {
 
 	public void ejecutarComportamiento(DistanciaRelativa distancia, Pieza atacado){
 
-		if(this.getJugador()!=atacado.getJugador()){
+		if(!this.bando.equals(atacado.getBando())){
 			if (distancia==DistanciaRelativa.CERCANO){
 				atacado.recibirAtaque(this.ataque);
 			};
