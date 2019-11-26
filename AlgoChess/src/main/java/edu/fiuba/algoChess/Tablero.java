@@ -8,8 +8,8 @@ public class Tablero {
 	private Celda celdaActiva; //la celda en la que estoy parada
 	private Jugador jugadorActivo;
 
-	public Tablero(Jugador jugador1, Jugador  jugador2) {
-		this.inicializarTablero(jugador1, jugador2);
+	public Tablero(Bando bandoJugador1, Bando  bandoJugador2) {
+		this.inicializarTablero(bandoJugador1, bandoJugador2);
 		//this.celdaActiva=this.campoDeBatalla.get(new Ubicacion(1,1));
 	}
 
@@ -17,35 +17,35 @@ public class Tablero {
 		this.celdaActiva = celda;
 	}
 
-	public void inicializarTablero(Jugador jugador1, Jugador  jugador2) {
+	public void inicializarTablero(Bando bandoJugador1, Bando  bandoJugador2) {
 		this.campoDeBatalla = new HashMap<>();
 		for (int i = 1; i <= 20; i++) {
 			for (int j = 1; j <= 20; j++) {
 				this.campoDeBatalla.put(new Ubicacion(i, j), new Celda());
 			}
 		}
-		this.asignarSectores(jugador1, jugador2);
+		this.asignarSectores(bandoJugador1, bandoJugador2);
 	//	setCeldaActiva(this.campoDeBatalla.get(new Ubicacion(1,1)));
 	}
 
-	public void asignarSectores(Jugador jugador1,Jugador jugador2){
+	public void asignarSectores(Bando bandoJugador1,Bando bandoJugador2){
 		for (int i = 1; i <= 10; i++) {
 			for (int j = 1; j <= 20; j++) {
-				this.getCelda(new Ubicacion(i, j)).setSectorDelJugador(jugador1);
+				this.getCelda(new Ubicacion(i, j)).setSectorDelJugador(bandoJugador1);
 			}
 		}
 		for (int i = 11; i <= 20; i++) {
 			for (int j = 1; j <= 20; j++) {
-				this.getCelda(new Ubicacion(i, j)).setSectorDelJugador(jugador2);
+				this.getCelda(new Ubicacion(i, j)).setSectorDelJugador(bandoJugador2);
 			}
 		}
 		//setCeldaActiva(this.campoDeBatalla.get(new Ubicacion(1,1)));
 	}
-
+/*
 	public void moverPieza(Celda nuevaActiva) {
 		this.celdaActiva.moverA(nuevaActiva);
 	}
-
+*/
 	public Celda getCelda(Ubicacion ubicacion) {
 		if (!this.campoDeBatalla.containsKey(ubicacion)) {
 			throw new NoExisteNingunCasilleroParaLaUbicacionDadaException("No existe una celda en esa ubicacion");

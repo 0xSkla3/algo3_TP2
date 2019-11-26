@@ -11,32 +11,31 @@ public class Soldado extends Pieza implements Movible {
 
 	@Getter
 	@Setter
-	private int ataqueCercano;
-
-	@Getter
-	@Setter
-	private int ataqueMedio;
-
-	@Getter
-	@Setter
-	private int ataqueLejano;
+	private Ataque ataque;
 
 	@Getter
 	@Setter
 	private RangoSoldado rango;
 
-	public Soldado(Ubicacion ubicacion,int costo, int vida) {
+	@Getter
+	@Setter
+	private Bando bando;
 
-		super(ubicacion,costo,vida);
+	@Getter
+	private int danioCercano;
+
+	public Soldado(Ubicacion ubicacion,int costo, int vida, Bando bando) {
+
+		super(costo,vida,ubicacion,bando);
 	}
 
 	public Soldado(){
 
 		super(1,100);
 		//this.nombre = TipoPieza.SOLDADO;
-		this.ataqueCercano = 10;
-		this.ataqueLejano = 0;
-		this.ataqueMedio=0;
+		danioCercano = 10;
+		this.ataque = new AtaqueCercano(danioCercano);
+
 
 	}
 
@@ -55,17 +54,19 @@ public class Soldado extends Pieza implements Movible {
 
 	public void ejecutarComportamiento(DistanciaRelativa distancia, Pieza atacado){
 
-		if(this.getJugador()!=atacado.getJugador()){
+		this.bando.atacar(atacado, this.ataque, atacado.getBando());
+
+	/*	if(this.getJugador()!=atacado.getJugador()){
 			if (distancia==DistanciaRelativa.CERCANO){
-				atacado.bajarVida(this.ataqueCercano);
+				atacado.recibirAtaque(this.ataque);
 			};
-		}
+		}*/
 //		if (distancia==DistanciaRelativa.LEJANO){
-//			atacado.bajarVida(this.ataqueLejano);
+//			atacado.recibirAtaque(this.ataqueLejano);
 //		};
 
 //		if (distancia==DistanciaRelativa.MEDIO){
-//			atacado.bajarVida(this.ataqueMedio);
+//			atacado.recibirAtaque(this.ataqueMedio);
 //		}
 	}
 

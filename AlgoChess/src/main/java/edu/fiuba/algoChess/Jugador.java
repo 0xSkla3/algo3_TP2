@@ -7,6 +7,7 @@ public class Jugador {
 	private String nombre;
 	private int puntaje;
 	private int creditos;
+	private Bando bando;
 	private JugadorStatus status;
 	private Set<Pieza> piezas;
 

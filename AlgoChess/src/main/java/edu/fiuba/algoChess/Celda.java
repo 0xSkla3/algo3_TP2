@@ -5,11 +5,17 @@ import java.util.Optional;
 public class Celda {
 
 	private Optional<Pieza> piezaActual;
-	private Jugador sectorDelJugador;
+	private Bando sectorDelJugador;
 
 	public Celda(){
 		this.piezaActual = Optional.empty();
 	}
+
+	public Celda(Bando bando){
+		this.piezaActual = Optional.empty();
+		this.sectorDelJugador = bando;
+	}
+
 
 	public boolean isEmpty() {return this.piezaActual.isEmpty();}
 
@@ -17,19 +23,20 @@ public class Celda {
 
 	public Optional<Pieza> getContenido(){return this.piezaActual;}
 
-	public void moverA(Celda nuevaCelda) {
+/*	public void moverA(Celda nuevaCelda) {
 		nuevaCelda.piezaActual = this.piezaActual;
 		this.piezaActual = Optional.empty();
 	}
+*/
 
-	public void setSectorDelJugador(Jugador jugador){
-		this.sectorDelJugador = jugador;
+	public void setSectorDelJugador(Bando bandoJugador){
+		this.sectorDelJugador = bandoJugador;
 	}
 
-	public Jugador getSectorDelJugador(){ return this.sectorDelJugador;}
+	public Bando getSectorDelJugador(){ return this.sectorDelJugador;}
 
 	public void guardar(Pieza piezaActual) {
-		if (this.sectorDelJugador != piezaActual.getJugador() ) { //ESTA LINEA SOLO VALE EN LA PRIMERA ETAPA DEL JUEGO!!! AGREGAR OTRA CONDICION AL IF!!!
+		if (!this.sectorDelJugador.equals(piezaActual.getBando())  ) { //ESTA LINEA SOLO VALE EN LA PRIMERA ETAPA DEL JUEGO!!! AGREGAR OTRA CONDICION AL IF!!!
 			throw new NoSePuedeUbicarPiezaEnSectoRival("No se puede ubicar pieza en sector rival");
 		} else {
 			this.piezaActual = Optional.of(piezaActual);

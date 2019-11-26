@@ -3,26 +3,26 @@ package edu.fiuba.algoChess;
 import static java.lang.Math.abs;
 public class Jinete extends Pieza {
 
-	private int ataqueMedio;
-	private int ataqueCercano;
-	private int ataqueLejano;
+	private AtaqueMedio ataqueMedio;
+	private AtaqueCercano ataqueCercano;
+	private int danioCercano = 5;
+	private int danioMedio = 15;
 
 	public boolean piezaAliadaCercana;
 	public boolean piezaEnemigaCercana;
 	private int distanciaAReconocerEnTerreno;
 
 
-	public Jinete(Ubicacion ubicacion, int costo, int vida) {
-		super(ubicacion, costo, vida);
+	public Jinete(Ubicacion ubicacion, int costo, int vida, Bando bando) {
+		super(costo, vida, ubicacion, bando);
 	}
 
 	public Jinete() {
 
 		super(3, 100);
 		//this.nombre = TipoPieza.JINETE;
-		this.ataqueCercano = 5;
-		this.ataqueMedio = 15;
-		this.ataqueLejano = 0;
+		this.ataqueCercano = new AtaqueCercano(danioCercano);
+		this.ataqueMedio = new AtaqueMedio(danioMedio);
 		this.piezaEnemigaCercana = false;
 		this.piezaAliadaCercana = false;
 		this.distanciaAReconocerEnTerreno = 2;
@@ -41,14 +41,14 @@ public class Jinete extends Pieza {
 
 
 	public void ejecutarComportamiento(DistanciaRelativa distancia, Pieza atacado){
-		if (distancia==DistanciaRelativa.LEJANO){
-			atacado.bajarVida(this.ataqueLejano);
-		};
+		//if (distancia==DistanciaRelativa.LEJANO){
+		//	atacado.recibirAtaque(this.ataque);
+		//};
 		if ((distancia==DistanciaRelativa.CERCANO)&&(!(this.getPiezaAliadaCercana()))){
-			atacado.bajarVida(this.ataqueCercano);
+			atacado.recibirAtaque(this.ataqueCercano);
 		};
 		if ((distancia==DistanciaRelativa.MEDIO)&&((this.getPiezaAliadaCercana())||(!(this.getPiezaEnemigaCercana())))){
-			atacado.bajarVida(this.ataqueMedio);
+			atacado.recibirAtaque(this.ataqueMedio);
 		}
 			}
 
@@ -109,13 +109,13 @@ public class Jinete extends Pieza {
 
 
 /*	public void atacar(Lejano posicion, Pieza atacado){
-		atacado.bajarVida(this.ataqueLejano);
+		atacado.recibirAtaque(this.ataqueLejano);
 	}
 	public void atacar(Cercano posicion, Pieza atacado){
-		atacado.bajarVida(this.ataqueCercano);
+		atacado.recibirAtaque(this.ataqueCercano);
 	}
 	public void atacar(Medio posicion, Pieza atacado){
-		atacado.bajarVida(this.ataqueLejano);
+		atacado.recibirAtaque(this.ataqueLejano);
 	}
 */
 
@@ -126,27 +126,32 @@ public class Jinete extends Pieza {
 
 
 //	public void atacar(DistanciaRelativa.LEJANO distancia, Pieza atacado){
-//		atacado.bajarVida(this.ataqueLejano);
+//		atacado.recibirAtaque(this.ataqueLejano);
 //	}
 //	public void atacar(DistanciaRelativa.CERCANO distancia, Pieza atacado){
-//		atacado.bajarVida(this.ataqueCercano);
+//		atacado.recibirAtaque(this.ataqueCercano);
 //	}
 //	public void atacar(DistanciaRelativa.MEDIO distancia, Pieza atacado){
-//		atacado.bajarVida(this.ataqueLejano);
+//		atacado.recibirAtaque(this.ataqueLejano);
 //	}
 
 
-	public int getAtaqueMedio(){
+	public int getDanioMedio(){
+		return this.danioMedio;
+	};
+
+	public int getDanioCercano(){
+		return this.danioCercano;
+	};
+
+	public Ataque getAtaqueMedio(){
 		return this.ataqueMedio;
 	};
 
-	public int getAtaqueCercano(){
+	public Ataque getAtaqueCercano(){
 		return this.ataqueCercano;
 	};
 
-	public int getAtaqueLejano(){
-		return this.ataqueLejano;
-	};
 }
 
 

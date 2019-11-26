@@ -128,5 +128,4 @@ public class Batallon implements Movible{
 		return itemsBatallonActual.equals(itemsBatallonAComparar);
 	}
 
-
 }

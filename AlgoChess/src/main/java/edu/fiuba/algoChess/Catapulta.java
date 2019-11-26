@@ -4,21 +4,18 @@ package edu.fiuba.algoChess;
 
 public class Catapulta extends Pieza {
 
-	private int ataqueLejano;
-	private int ataqueCercano;
-	private int ataqueMedio;
+	private AtaqueLejano ataque;
+	private int danio = 20;
 
-	public Catapulta(Ubicacion ubicacion,int costo, int vida) {
-		super(ubicacion,costo,vida);
+	public Catapulta(Ubicacion ubicacion,int costo, int vida, Bando bando) {
+		super(costo,vida,ubicacion,bando);
 	}
 
 	public Catapulta(){
 
 		super(5,50);
-		//this.nombre = TipoPieza.CATAPULTA;
-		this.ataqueLejano = 0;
-		this.ataqueCercano = 0;
-		this.ataqueMedio = 20;
+
+		ataque = new AtaqueLejano(danio);
 
 	}
 
@@ -34,29 +31,22 @@ public class Catapulta extends Pieza {
 
 		if(this.getJugador()!=atacado.getJugador()){
 			if (distancia==DistanciaRelativa.CERCANO){
-				atacado.bajarVida(this.ataqueCercano);
+				atacado.recibirAtaque(this.ataque);
 			};
 			if (distancia==DistanciaRelativa.MEDIO){
-				atacado.bajarVida(this.ataqueMedio);
+				atacado.recibirAtaque(this.ataque);
 			};
 //			if (distancia==DistanciaRelativa.LEJANO){
-//				atacado.bajarVida(this.ataqueLejano);
+//				atacado.recibirAtaque(this.ataqueLejano);
 //		};
 		}
 	}
 
 
-	public int getAtaqueLejano(){
-		return this.ataqueLejano;
+	public Ataque getAtaqueLejano(){
+		return this.ataque;
 	};
 
-	public int getAtaqueCercano(){
-		return this.ataqueCercano;
-	};
-
-	public int getAtaqueMedio(){
-		return this.ataqueMedio;
-	}
 
 /*	public void ejecutarComportamiento() {
 
@@ -65,7 +55,7 @@ public class Catapulta extends Pieza {
 
 
 //	public void atacar(Pieza atacado){
-//		atacado.bajarVida(this.ataqueLejano);
+//		atacado.recibirAtaque(this.ataqueLejano);
 //	}
 
 }

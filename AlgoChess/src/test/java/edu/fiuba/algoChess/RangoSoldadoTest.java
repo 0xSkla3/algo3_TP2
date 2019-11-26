@@ -9,13 +9,15 @@ public class RangoSoldadoTest {
 	public void rangoActualizaSoldadosContiguosCorrectamente(){
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
-		Tablero tableroTest = new Tablero(jugador1, jugador2);
+		BandoJugador1 bandoJugador1 = new BandoJugador1();
+		BandoJugador2 bandoJugador2 = new BandoJugador2();
+		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
 		Soldado soldado1 = new Soldado(new Ubicacion(2,2));
 		Soldado soldado2 = new Soldado(new Ubicacion(3,2));
 		Soldado soldado3 = new Soldado(new Ubicacion(4,2));
-		soldado1.setJugador(jugador1);
-		soldado2.setJugador(jugador1);
-		soldado3.setJugador(jugador1);
+		soldado1.setBando(bandoJugador1);
+		soldado2.setBando(bandoJugador1);
+		soldado3.setBando(bandoJugador1);
 		tableroTest.ubicarEnCelda(soldado1, soldado1.getUbicacion());
 		tableroTest.ubicarEnCelda(soldado2, soldado2.getUbicacion());
 		tableroTest.ubicarEnCelda(soldado3, soldado3.getUbicacion());
@@ -31,15 +33,17 @@ public class RangoSoldadoTest {
 	public void rangoActualizaObstaculosContiguosCorrectamente(){
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
-		Tablero tableroTest = new Tablero(jugador1, jugador2);
+		BandoJugador1 bandoJugador1 = new BandoJugador1();
+		BandoJugador2 bandoJugador2 = new BandoJugador2();
+		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
 		Soldado soldado1 = new Soldado(new Ubicacion(2,2));
 		Soldado soldado2 = new Soldado(new Ubicacion(3,2));
 		Soldado soldado3 = new Soldado(new Ubicacion(4,2));
 		Jinete jinete = new Jinete(new Ubicacion(3,3));
-		soldado1.setJugador(jugador1);
-		soldado2.setJugador(jugador1);
-		soldado3.setJugador(jugador1);
-		jinete.setJugador(jugador1);
+		soldado1.setBando(bandoJugador1);
+		soldado2.setBando(bandoJugador1);
+		soldado3.setBando(bandoJugador1);
+		jinete.setBando(bandoJugador1);
 		tableroTest.ubicarEnCelda(soldado1, soldado1.getUbicacion());
 		tableroTest.ubicarEnCelda(soldado2, soldado2.getUbicacion());
 		tableroTest.ubicarEnCelda(soldado3, soldado3.getUbicacion());

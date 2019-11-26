@@ -12,14 +12,16 @@ public class EntidadTest {
 	public void testEntidadMoviblePuedeDesplazarse(){
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
-		Tablero unTablero = new Tablero(jugador1, jugador2);
+		BandoJugador1 bandoJugador1 = new BandoJugador1();
+		BandoJugador2 bandoJugador2 = new BandoJugador2();
+		Tablero unTablero = new Tablero(bandoJugador1, bandoJugador2);
 		//unTablero.inicializarTablero();
 		Ubicacion fila1Columna1 = new Ubicacion(1,1);
 		Ubicacion fila1Columna2 = new Ubicacion(2,1);
 		Ubicacion fila2Columna2 = new Ubicacion(2,2);
 		Ubicacion fila2Columna1 = new Ubicacion(1,2);
 		Curandero unCurandero = new Curandero();
-		unCurandero.setJugador(jugador1);
+		unCurandero.setBando(new BandoJugador1());
 		unTablero.ubicarEnCelda(unCurandero,fila1Columna1);
 		unCurandero.moverseALaDerecha(unTablero);
 		assertEquals(fila1Columna2,unCurandero.getUbicacion());
@@ -37,7 +39,9 @@ public class EntidadTest {
 
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
-		Tablero unTablero = new Tablero(jugador1, jugador2);
+		BandoJugador1 bandoJugador1 = new BandoJugador1();
+		BandoJugador2 bandoJugador2 = new BandoJugador2();
+		Tablero unTablero = new Tablero(bandoJugador1, bandoJugador2);
 		//unTablero.inicializarTablero();
 		Ubicacion fila2Columna2 = new Ubicacion(2,2);
 
@@ -47,19 +51,19 @@ public class EntidadTest {
 		Ubicacion fila2Columna3 = new Ubicacion(3,2);
 
 		Curandero unCuranderoPorMover = new Curandero();
-		unCuranderoPorMover.setJugador(jugador1);
+		unCuranderoPorMover.setBando(new BandoJugador1());
 
 		Curandero unCuranderoObstaculoArriba = new Curandero();
-		unCuranderoObstaculoArriba.setJugador(jugador1);
+		unCuranderoObstaculoArriba.setBando(new BandoJugador1());
 
 		Curandero unCuranderoObstaculoAbajo = new Curandero();
-		unCuranderoObstaculoAbajo.setJugador(jugador1);
+		unCuranderoObstaculoAbajo.setBando(new BandoJugador1());
 
 		Curandero unCuranderoObstaculoIzquierda = new Curandero();
-		unCuranderoObstaculoIzquierda.setJugador(jugador1);
+		unCuranderoObstaculoIzquierda.setBando(new BandoJugador1());
 
 		Curandero unCuranderoObstaculoDerecha = new Curandero();
-		unCuranderoObstaculoDerecha.setJugador(jugador1);
+		unCuranderoObstaculoDerecha.setBando(new BandoJugador1());
 
 		unTablero.ubicarEnCelda(unCuranderoPorMover,fila2Columna2);
 		unTablero.ubicarEnCelda(unCuranderoObstaculoArriba,fila3Columna2);
@@ -79,19 +83,6 @@ public class EntidadTest {
 	};
 
 
-//	@Test
-//	public void testCuranderoCuraSoldado(){
-//		Tablero unTablero = new Tablero();
-//		unTablero.inicializarTablero();
-//
-//		Curandero unCuranderoSanador = new Curandero();
-//		Soldado soldado = new Soldado();
-//		int vidaSoldadoTrasCuracion = soldado.getVida() + unCuranderoSanador.getSanacion();
-//		unCuranderoSanador.Sanar(soldado);
-//
-//		assertEquals(vidaSoldadoTrasCuracion,soldado.getVida());
-//
-//	}
 //
 //	@Test
 //	public void testSoldadoAtacaOtraPiezaCercana(){

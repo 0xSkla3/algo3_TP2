@@ -15,12 +15,14 @@ public class TableroTest {
 	public void testTableroSeColocaPiezaAliadaConExicitoEnSectorAliado() {
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
-		Tablero tableroTest = new Tablero(jugador1,jugador2);
+		BandoJugador1 bandoJugador1 = new BandoJugador1();
+		BandoJugador2 bandoJugador2 = new BandoJugador2();
+		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
 		Ubicacion ubicacionTest = new Ubicacion(1,2);
 		Curandero curandero = new Curandero();
-		curandero.setJugador(jugador1);
+		curandero.setBando(bandoJugador1);
 		Celda celdaTest = tableroTest.getCelda(ubicacionTest);
-		celdaTest.setSectorDelJugador(jugador1);
+		celdaTest.setSectorDelJugador(bandoJugador1);
 		tableroTest.ubicarEnCelda(curandero,ubicacionTest);
 		assertEquals(celdaTest.getPiezaActual(), curandero);
 	}
@@ -32,12 +34,14 @@ public class TableroTest {
 		//en este test se muestra explicitamente que un jugador no puede colocar una pieza en sector rival
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
-		Tablero tableroTest = new Tablero(jugador1, jugador2);
+		BandoJugador1 bandoJugador1 = new BandoJugador1();
+		BandoJugador2 bandoJugador2 = new BandoJugador2();
+		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
 		Ubicacion ubicacionTest = new Ubicacion(1,2);
 		Curandero curandero = new Curandero();
-		curandero.setJugador(jugador1);
+		curandero.setBando(new BandoJugador1());
 		Celda celdaTest = tableroTest.getCelda(ubicacionTest);
-		celdaTest.setSectorDelJugador(jugador2);
+		celdaTest.setSectorDelJugador(bandoJugador2);
 		tableroTest.ubicarEnCelda(curandero,ubicacionTest);
 	}
 
@@ -46,14 +50,16 @@ public class TableroTest {
 	public void testTableroUbicarEnUnCeldaOcupadaLanzaExcepcion(){
 		Jugador jugador1 = new Jugador();
 		Jugador jugador2 = new Jugador();
-		Tablero tableroTest = new Tablero(jugador1, jugador2);
+		BandoJugador1 bandoJugador1 = new BandoJugador1();
+		BandoJugador2 bandoJugador2 = new BandoJugador2();
+		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
 		Ubicacion ubicacionTest = new Ubicacion(4,4);
 		Curandero curandero1 = new Curandero();
 		Curandero curandero2 = new Curandero();
-		curandero1.setJugador(jugador1);
-		curandero2.setJugador(jugador1);
+		curandero1.setBando(new BandoJugador1());
+		curandero2.setBando(new BandoJugador1());
 		Celda celdaTest = tableroTest.getCelda(ubicacionTest);
-		celdaTest.setSectorDelJugador(jugador1);
+		celdaTest.setSectorDelJugador(bandoJugador1);
 		tableroTest.ubicarEnCelda(curandero1, ubicacionTest);
 		tableroTest.ubicarEnCelda(curandero2, ubicacionTest);
 	}

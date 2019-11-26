@@ -3,25 +3,34 @@ package edu.fiuba.algoChess;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
-public abstract class Pieza implements Movible {
+public abstract class Pieza implements Movible, Atacable {
 
 	//protected TipoPieza nombre;
 	private int vida;
 	private int costo;
 	protected Ubicacion ubicacion;
+	protected Bando bando;
 	protected Jugador jugadorDueño;
-	private System system;
 
-	public Pieza(Ubicacion ubicacion, int costo, int vida) {
+/*	public Pieza(Ubicacion ubicacion, int costo, int vida, Bando bando) {
 
+		this.bando = bando;
 		this.ubicacion = ubicacion;
 		this.vida = vida;
 		this.costo = costo;
 
 	}
-
+*/
 	public Pieza(int costo, int vida) {
 
+		this.vida = vida;
+		this.costo = costo;
+
+	}
+
+	public Pieza(int costo, int vida, Ubicacion ubicacion,Bando bando) {
+
+		this.bando = bando;
 		this.ubicacion = ubicacion;
 		this.vida = vida;
 		this.costo = costo;
@@ -89,12 +98,20 @@ public abstract class Pieza implements Movible {
 		return this.ubicacion;
 		}
 
+	public void setBando(Bando bando){
+		this.bando = bando;
+	}
+
+	public Bando getBando(){
+		return this.bando;
+	}
+
 	public void aumentarVida(int aumento) {
 		this.vida = this.vida + aumento;
 		}
 
-	public void bajarVida(int disminucion){
-		this.vida = this.vida - disminucion;
+	public void recibirAtaque(Ataque ataque){
+		this.vida = this.vida - ataque.getDanio();
 		}
 
 	public void setUbicacion(Ubicacion ubicacion){

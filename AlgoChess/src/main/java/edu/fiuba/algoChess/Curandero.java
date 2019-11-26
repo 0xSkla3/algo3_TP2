@@ -8,8 +8,8 @@ public class Curandero extends Pieza {
 
 	private int sanacion;
 
-	public Curandero(Ubicacion ubicacion,int costo, int vida) {
-		super(ubicacion,costo,vida);
+	public Curandero(Ubicacion ubicacion,int costo, int vida, Bando bando) {
+		super(costo,vida,ubicacion,bando);
 	}
 
 	public Curandero(){
@@ -19,13 +19,11 @@ public class Curandero extends Pieza {
 		this.sanacion = 15;
 
 	}
+	public Curandero(Ubicacion ubicacion,Bando bando){
 
-	public Curandero(Ubicacion ubicacion){
-
-		super(2,75);
-		//this.nombre = TipoPieza.CURANDERO;
+		super(2,75,ubicacion,bando);
 		this.sanacion = 15;
-		this.ubicacion = ubicacion;
+
 
 	}
 
