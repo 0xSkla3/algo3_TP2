@@ -19,7 +19,7 @@ public class CuranderoTest {
         Curandero curandero = new Curandero(ubicacionCurandero,bandoJugador1);
 
         DistanciaRelativa distanciaSoldadoACurandero = curandero.getDistanciaRelativa(soldado);
-        int vidaTrasCuracion = soldado.getVida() + curandero.getSanacion();
+        Salud vidaTrasCuracion = soldado.getVida();
         curandero.curar(distanciaSoldadoACurandero,soldado);
 
         assertEquals(vidaTrasCuracion,soldado.getVida());
@@ -37,7 +37,7 @@ public class CuranderoTest {
 
         DistanciaRelativa distanciaSoldadoACurandero = curandero.getDistanciaRelativa(soldado);
         //	assertTrue(distanciaJineteASoldado instanceof DistanciaRelativa);
-        int vidaSoldadoSinSerAlcanzadoPorCuracion = soldado.getVida();
+        Salud vidaSoldadoSinSerAlcanzadoPorCuracion = soldado.getVida();
         curandero.curar(distanciaSoldadoACurandero,soldado);
         assertEquals(vidaSoldadoSinSerAlcanzadoPorCuracion,soldado.getVida());
     };
@@ -54,7 +54,7 @@ public class CuranderoTest {
 
         DistanciaRelativa distanciaCatapultaACurandero = curandero.getDistanciaRelativa(catapulta);
         //	assertTrue(distanciaJineteASoldado instanceof DistanciaRelativa);
-        int vidaCatapultaSinSerAlcanzadoPorCuracion = catapulta.getVida();
+        Salud vidaCatapultaSinSerAlcanzadoPorCuracion = catapulta.getVida();
         curandero.curar(distanciaCatapultaACurandero,catapulta);
         assertEquals(vidaCatapultaSinSerAlcanzadoPorCuracion,catapulta.getVida());
     };
@@ -71,7 +71,7 @@ public class CuranderoTest {
 
         DistanciaRelativa distanciaCatapultaACurandero = curandero.getDistanciaRelativa(catapulta);
         //	assertTrue(distanciaJineteASoldado instanceof DistanciaRelativa);
-        int vidaCatapultaSinSerAlcanzadoPorCuracion = catapulta.getVida();
+        Salud vidaCatapultaSinSerAlcanzadoPorCuracion = catapulta.getVida();
         curandero.curar(distanciaCatapultaACurandero,catapulta);
         assertEquals(vidaCatapultaSinSerAlcanzadoPorCuracion,catapulta.getVida());
     };
@@ -90,7 +90,7 @@ public class CuranderoTest {
 
         DistanciaRelativa distanciaSoldadoACurandero = curandero.getDistanciaRelativa(soldadoEnemigo);
         //	assertTrue(distanciaJineteASoldado instanceof DistanciaRelativa);
-        int vidaTrasCuracion = soldadoEnemigo.getVida();
+        Salud vidaTrasCuracion = soldadoEnemigo.getVida();
         curandero.curar(distanciaSoldadoACurandero,soldadoEnemigo);
         assertEquals(vidaTrasCuracion,soldadoEnemigo.getVida());
     };

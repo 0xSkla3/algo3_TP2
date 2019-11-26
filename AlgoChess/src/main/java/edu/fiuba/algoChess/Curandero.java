@@ -1,14 +1,10 @@
 package edu.fiuba.algoChess;
 
-import org.jetbrains.annotations.NotNull;
-
-import java.util.Optional;
-
 public class Curandero extends Pieza {
 
 	private int sanacion;
 
-	public Curandero(Ubicacion ubicacion,int costo, int vida, Bando bando) {
+	public Curandero(Ubicacion ubicacion, int costo, int vida, Bando bando) {
 		super(costo,vida,ubicacion,bando);
 	}
 
@@ -36,6 +32,7 @@ public class Curandero extends Pieza {
 	public int getSanacion(){
 		return this.sanacion;
 	};
+
 
 //	public void Sanar(Pieza sanado){
 //		sanado.aumentarVida(this.sanacion);
