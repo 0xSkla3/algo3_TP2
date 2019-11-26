@@ -26,6 +26,10 @@ public class Curandero extends Pieza {
 
 	}
 
+	public void recibirAtaque(Ataque ataque){
+		this.vida = this.vida - ataque.getDanio();
+	}
+
 	public void curar(DistanciaRelativa distancia, Pieza aCurar){
 
 		if ((distancia==DistanciaRelativa.CERCANO)&&(!(aCurar instanceof Catapulta))&&(this.bando.equals(aCurar.getBando()))){

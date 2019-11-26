@@ -6,8 +6,8 @@ import lombok.NoArgsConstructor;
 public abstract class Pieza implements Movible, Atacable {
 
 	//protected TipoPieza nombre;
-	private int vida;
-	private int costo;
+	protected int vida;
+	protected int costo;
 	protected Ubicacion ubicacion;
 	protected Bando bando;
 
@@ -102,7 +102,6 @@ public abstract class Pieza implements Movible, Atacable {
 		}
 
 	public void recibirAtaque(Ataque ataque){
-		this.vida = this.vida - ataque.getDanio();
 		}
 
 	public void setUbicacion(Ubicacion ubicacion){
@@ -130,12 +129,40 @@ public abstract class Pieza implements Movible, Atacable {
 	}
 
 	public void mover( Tablero campoDeBatalla, Ubicacion ubicacion) {
+		try {
+			Ubicacion ubicacionVieja = this.getUbicacion();
+			campoDeBatalla.ubicarEnCelda(this, ubicacion);
+			campoDeBatalla.eliminar(ubicacionVieja);
+			this.ubicacion = ubicacion;
+		}catch (NoSePuedeUbicarPorqueEstaOcupadoException ex){
+			//mensaje de error en vista y darle el turno al mismo jugador
+		}
+
+	}
+
+/*
+	public void mover( Tablero campoDeBatalla, Ubicacion ubicacion) {
 		if(campoDeBatalla.getCelda(ubicacion).isEmpty()){
 			Ubicacion ubicacionVieja = this.getUbicacion();
 			campoDeBatalla.ubicarEnCelda(this, ubicacion);
 			campoDeBatalla.eliminar(ubicacionVieja);
 			this.ubicacion = ubicacion;}
 	}
+
+
+	public void moverse(Mapa mapa, Ubicacion ubicacion) {
+		try {
+			mapa.ubicarEnCasillero(this, ubicacion);
+			mapa.eliminarDeCasillero(this.ubicacion);
+			this.ubicacion = ubicacion;
+		} catch (NoSePuedeUbicarPorqueEstaOcupadoException e) {
+			Material material = (Material) mapa.obtenerCasillero(ubicacion).obtenerUbicable();
+			this.herramientaActual.usar(material);
+		}
+	}
+*/
+
+
 
 	//COMENTARIO IMPORTANTE: DECIDI MOVER EL METODO DE JINETE
 
