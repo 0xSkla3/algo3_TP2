@@ -111,7 +111,7 @@ public class SoldadoTest {
 
 		DistanciaRelativa distanciaJineteASoldado = soldadoAliado.getDistanciaRelativa(jineteEnemigo);
 		//	assertTrue(distanciaJineteASoldado instanceof DistanciaRelativa);
-		int vidaTrasAtaque = jineteEnemigo.getVida() - soldadoAliado.getDanioCercano();
+		Salud vidaTrasAtaque = jineteEnemigo.getVida();
 		soldadoAliado.atacar(distanciaJineteASoldado,jineteEnemigo);
 		assertEquals(vidaTrasAtaque,jineteEnemigo.getVida());
 
@@ -145,7 +145,7 @@ public class SoldadoTest {
 
 		DistanciaRelativa distanciaJineteASoldado = soldadoAliado.getDistanciaRelativa(jineteAliado);
 		//	assertTrue(distanciaJineteASoldado instanceof DistanciaRelativa);
-		int vidaTrasAtaque = jineteAliado.getVida();
+		Salud vidaTrasAtaque = jineteAliado.getVida();
 		soldadoAliado.atacar(distanciaJineteASoldado,jineteAliado);
 		assertEquals(vidaTrasAtaque,jineteAliado.getVida());
 	};
