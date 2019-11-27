@@ -1,5 +1,6 @@
 package edu.fiuba.algoChess;
 
+import edu.fiuba.algoChess.Salud.Salud;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

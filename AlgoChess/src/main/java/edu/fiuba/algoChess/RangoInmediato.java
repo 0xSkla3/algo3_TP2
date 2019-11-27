@@ -23,6 +23,10 @@ public class RangoInmediato extends Rango{
 	@Setter
 	Celda derecha;
 
+	@Getter
+	@Setter
+	ArrayList<Pieza> piezasEnEntorno;
+
 	public void actualizaRango(Pieza piezaCentral, Tablero tablero){
 		setArriba(tablero.getCelda(piezaCentral.getUbicacion().getUbicacionArriba()));
 		setAbajo(tablero.getCelda(piezaCentral.getUbicacion().getUbicacionAbajo()));

@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @NoArgsConstructor
-public class RangoSoldado extends RangoInmediate implements Rango {
+public class RangoSoldado extends RangoInmediato implements Rango {
 
 	@Getter
 	@Setter

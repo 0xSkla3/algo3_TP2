@@ -1,4 +1,4 @@
-package edu.fiuba.algoChess;
+package edu.fiuba.algoChess.Salud;
 
 public class SaludLlena extends Salud {
 

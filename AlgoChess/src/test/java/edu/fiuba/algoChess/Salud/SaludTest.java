@@ -1,5 +1,9 @@
-package edu.fiuba.algoChess;
+package edu.fiuba.algoChess.Salud;
 
+import edu.fiuba.algoChess.Salud.Salud;
+import edu.fiuba.algoChess.Salud.SaludLlena;
+import edu.fiuba.algoChess.Salud.SaludMedia;
+import edu.fiuba.algoChess.Salud.SaludMuerto;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.Assert.*;

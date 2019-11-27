@@ -1,5 +1,8 @@
 package edu.fiuba.algoChess;
 
+import edu.fiuba.algoChess.Salud.Salud;
+import edu.fiuba.algoChess.Salud.SaludLlena;
+import edu.fiuba.algoChess.Salud.SaludMuerto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

@@ -5,11 +5,7 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 
-public abstract class Rango {
-
-	@Getter
-	@Setter
-	ArrayList<Pieza> piezasEnEntorno;
+public interface Rango {
 
 	public abstract void actualizaRango(Pieza piezaCentral, Tablero tablero);
 	public abstract void actualizaEntornoInmediato(Pieza piezaCentral);

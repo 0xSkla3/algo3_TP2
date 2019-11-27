@@ -1,4 +1,4 @@
-package edu.fiuba.algoChess;
+package edu.fiuba.algoChess.Salud;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
