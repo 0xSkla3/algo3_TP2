@@ -1,4 +1,6 @@
 package edu.fiuba.algoChess;
+import org.junit.Assert;
+
 import java.util.*;
 import java.util.stream.Stream;
 
@@ -58,6 +60,22 @@ public class Tablero {
 
 		if (!this.campoDeBatalla.containsKey(ubicacion)) {
 			throw new NoExisteNingunCasilleroParaLaUbicacionDadaException("No existe una celda en esa ubicacion");
+		}
+
+		try {
+			//Assert.fail();
+			this.campoDeBatalla.get(ubicacion).guardar(pieza);
+			pieza.setUbicacion(ubicacion);
+		} catch (NoSePuedeUbicarPorqueEstaOcupadoException e) {
+			//devolver turno al jugador activo
+		}
+
+	}
+
+/*	public void ubicarEnCelda(Pieza pieza, Ubicacion ubicacion) {
+
+		if (!this.campoDeBatalla.containsKey(ubicacion)) {
+			throw new NoExisteNingunCasilleroParaLaUbicacionDadaException("No existe una celda en esa ubicacion");
 		}else if (this.getCelda(ubicacion).getPiezaActual().equals(Optional.empty())) {
 			this.campoDeBatalla.get(ubicacion).guardar(pieza);
 			pieza.setUbicacion(ubicacion);
@@ -66,7 +84,8 @@ public class Tablero {
 			throw new NoSePuedeUbicarPorqueEstaOcupadoException("No se puede ubicar porque esta ocupado la celda");
 
 		}
-	}
+	}*/
+
 
 	public void eliminar(Ubicacion ubicacion) { this.getCelda(ubicacion).eliminar();
 	}

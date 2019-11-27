@@ -4,7 +4,6 @@ public class PiezaNull extends Pieza {
 
     public PiezaNull(Ubicacion ubicacion) {
         super(ubicacion);
-        this.bando = new BandoNull();
     }
 
     @Override

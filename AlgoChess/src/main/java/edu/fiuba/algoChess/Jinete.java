@@ -150,10 +150,6 @@ public class Jinete extends Pieza {
 //		atacado.recibirAtaque(this.ataqueLejano);
 //	}
 
-    @Override
-    public void pisar(Celda celda,Pieza pieza){
-        //lanzar exception casillero ocupado
-    }
 
 	public int getDanioMedio(){
 		return this.danioMedio;

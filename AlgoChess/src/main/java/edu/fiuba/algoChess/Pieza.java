@@ -104,7 +104,9 @@ public abstract class Pieza implements Movible, Atacable {
 	public void recibirAtaque(Ataque ataque){
 		}
 
-	public void pisar(Celda celda, Pieza pieza){}
+	public void pisar(Celda celda, Pieza pieza){
+		throw new NoSePuedeUbicarPorqueEstaOcupadoException("No se puede ubicar porque esta ocupado la celda");
+	}
 
 	public void setUbicacion(Ubicacion ubicacion){
 		this.ubicacion=ubicacion;

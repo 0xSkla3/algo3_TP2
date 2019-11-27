@@ -37,11 +37,6 @@ public class Curandero extends Pieza {
 		};
 	};
 
-    @Override
-    public void pisar(Celda celda, Pieza pieza){
-        //lanzar exception casillero ocupado
-    }
-
 
     public int getSanacion(){
 		return this.sanacion;

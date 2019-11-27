@@ -73,11 +73,6 @@ public class Soldado extends Pieza implements Movible {
 //		}
 	}
 
-    @Override
-    public void pisar(Celda celda, Pieza pieza){
-        //lanzar exception casillero ocupado
-    }
-
 
     public void recibirAtaque(Ataque ataque){
 		this.vida = this.vida - ataque.getDanio();
