@@ -9,6 +9,7 @@
 */modules.xml
 *.ipr
 */.idea/
+.idea
 
 ### macOS ###
 # General
