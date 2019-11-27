@@ -48,9 +48,9 @@ public class SoldadoTest {
 
 		batallon.moverseArriba(tableroTest);
 
-		assertEquals(batallon.getSoldado1().getUbicacion(), new Ubicacion(4,3));
-		assertEquals(batallon.getSoldado2().getUbicacion(), new Ubicacion(3,3));
-		assertEquals(batallon.getSoldado3().getUbicacion(), new Ubicacion(2,3));
+		assertEquals(batallon.getPieza1().getUbicacion(), new Ubicacion(4,3));
+		assertEquals(batallon.getPieza2().getUbicacion(), new Ubicacion(3,3));
+		assertEquals(batallon.getPieza3().getUbicacion(), new Ubicacion(2,3));
 
 	}
 

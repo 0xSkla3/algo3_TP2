@@ -1,16 +1,29 @@
 package edu.fiuba.algoChess;
 
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.ArrayList;
 
 @NoArgsConstructor
 public abstract class Pieza implements Movible, Atacable {
 
 	//protected TipoPieza nombre;
 	@Setter
+	@Getter
 	private Salud vida;
+
+	@Setter
+	@Getter
 	private int costo;
+
+	@Setter
+	@Getter
 	protected Ubicacion ubicacion;
+
+	@Setter
+	@Getter
 	protected Bando bando;
 
 /*	public Pieza(Ubicacion ubicacion, int costo, int vida, Bando bando) {
@@ -74,29 +87,7 @@ public abstract class Pieza implements Movible, Atacable {
 		return distanciaRelativa;
 	};
 
-
-	public int getCosto(){
-		return this.costo;
-		}
-
 	//public TipoPieza getNombre(){return this.nombre;}
-
-	public Salud getVida() {
-		return this.vida;
-		}
-
-	public Ubicacion getUbicacion() {
-		//system.out.println(this.ubicacion);
-		return this.ubicacion;
-		}
-
-	public void setBando(Bando bando){
-		this.bando = bando;
-	}
-
-	public Bando getBando(){
-		return this.bando;
-	}
 
 	public void aumentarVida(int aumento) {this.setVida(this.vida.curar(aumento));
 		}
@@ -136,6 +127,15 @@ public abstract class Pieza implements Movible, Atacable {
 			campoDeBatalla.eliminar(ubicacionVieja);
 			this.ubicacion = ubicacion;}
 	}
+
+	public ArrayList<Pieza> unirAInmediato(ArrayList<Pieza> piezasInmediatas) {
+		piezasInmediatas.add(this);
+		return piezasInmediatas;
+	}
+
+	public abstract void actualizaRango(Tablero tablero);
+
+	public abstract Object getRango();
 
 	//COMENTARIO IMPORTANTE: DECIDI MOVER EL METODO DE JINETE
 

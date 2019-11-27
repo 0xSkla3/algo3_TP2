@@ -3,6 +3,8 @@ package edu.fiuba.algoChess;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+
 
 public class Soldado extends Pieza implements Movible {
 
@@ -44,6 +46,12 @@ public class Soldado extends Pieza implements Movible {
 		super(ubicacion);
 		this.rango = new RangoSoldado();
 
+	}
+
+	@Override
+	public ArrayList<Pieza> unirAInmediato(ArrayList<Pieza> piezasInmediatas) {
+		piezasInmediatas.add(this);
+		return piezasInmediatas;
 	}
 
 	public void actualizaRango(Tablero tablero){
