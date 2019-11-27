@@ -59,7 +59,7 @@ public class Tablero {
 		if (!this.campoDeBatalla.containsKey(ubicacion)) {
 			throw new NoExisteNingunCasilleroParaLaUbicacionDadaException("No existe una celda en esa ubicacion");
 		}else if (this.getCelda(ubicacion).getContenido().equals(Optional.empty())) {
-			this.campoDeBatalla.get(ubicacion).guardar(pieza);
+			this.campoDeBatalla.get(ubicacion).ubicarEnCelda(pieza);
 			pieza.setUbicacion(ubicacion);
 		}
 		else {

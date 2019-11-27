@@ -2,8 +2,6 @@ package edu.fiuba.algoChess;
 
 import static org.junit.Assert.*;
 
-import edu.fiuba.algoChess.Celda;
-import edu.fiuba.algoChess.Ubicacion;
 import org.junit.Test;
 
 public class CeldaTest {
@@ -22,7 +20,7 @@ public class CeldaTest {
 		Curandero pieza = new Curandero(origen,bandoTest);
 		Celda celda = new Celda(bandoTest);
 
-		celda.guardar(pieza);
+		celda.ubicarEnCelda(pieza);
 		assertEquals(pieza, celda.getPiezaActual());
 	}
 
@@ -33,7 +31,7 @@ public class CeldaTest {
 		Curandero pieza = new Curandero(origen,bandoTest);
 		Celda celda = new Celda(bandoTest);
 
-		celda.guardar(pieza);
+		celda.ubicarEnCelda(pieza);
 		celda.eliminar();
 		assertTrue(celda.isEmpty());
 	}

@@ -10,6 +10,11 @@ public class PiezaNull extends Pieza {
 
     }
 
+    @Override
+    public void pisar(Celda celda, Pieza piezaAGuardar){
+        celda.guardar(piezaAGuardar);
+    }
+
     public void recibirAtaque(Ataque ataque){
     // lanza exception "no se puede atacar a casillero vacio
     }

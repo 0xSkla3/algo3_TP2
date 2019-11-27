@@ -34,7 +34,7 @@ public class Celda {
 	}
 
 	public Bando getSectorDelJugador(){ return this.sectorDelJugador;}
-
+/*
 	public void guardar(Pieza piezaActual) {
 		if (!this.sectorDelJugador.equals(piezaActual.getBando())  ) { //ESTA LINEA SOLO VALE EN LA PRIMERA ETAPA DEL JUEGO!!! AGREGAR OTRA CONDICION AL IF!!!
 			throw new NoSePuedeUbicarPiezaEnSectoRival("No se puede ubicar pieza en sector rival");
@@ -42,6 +42,17 @@ public class Celda {
 			this.piezaActual = piezaActual;
 		}
 	}
+*/
+    public void ubicarEnCelda(Pieza piezaAUbicar) {
+        if (!this.sectorDelJugador.equals(piezaAUbicar.getBando())  ) { //ESTA LINEA SOLO VALE EN LA PRIMERA ETAPA DEL JUEGO!!! AGREGAR OTRA CONDICION AL IF!!!
+            throw new NoSePuedeUbicarPiezaEnSectoRival("No se puede ubicar pieza en sector rival");
+        } else {
+            this.piezaActual.pisar(this, piezaAUbicar);
+        }
+    }
+
+
+
 
 /*	public void ubicar(Pieza piezaActual) {
 		this.estado.ubicar(Optional.of(piezaActual), this);
@@ -51,4 +62,7 @@ public class Celda {
 		this.piezaActual = new PiezaNull(null);
 	}
 
+    public void guardar(Pieza piezaAGuardar) {
+	    this.piezaActual = piezaAGuardar
+    }
 }

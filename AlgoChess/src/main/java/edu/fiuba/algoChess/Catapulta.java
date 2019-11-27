@@ -56,6 +56,12 @@ public class Catapulta extends Pieza {
 		return this.ataque;
 	};
 
+	@Override
+	public void pisar(Celda celda, Pieza pieza){
+		//lanzar exception casillero ocupado
+	}
+
+
 
 /*	public void ejecutarComportamiento() {
 

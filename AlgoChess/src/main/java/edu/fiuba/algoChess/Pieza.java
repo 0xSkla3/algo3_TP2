@@ -104,6 +104,8 @@ public abstract class Pieza implements Movible, Atacable {
 	public void recibirAtaque(Ataque ataque){
 		}
 
+	public void pisar(Celda celda, Pieza pieza){}
+
 	public void setUbicacion(Ubicacion ubicacion){
 		this.ubicacion=ubicacion;
 		}

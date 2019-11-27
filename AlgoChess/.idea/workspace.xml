@@ -2,26 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6fbf8ede-d789-4635-8759-32e895bbff9d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/PiezaNull.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Catapulta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Catapulta.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Celda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Celda.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Curandero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Curandero.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Jinete.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Jinete.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Pieza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Pieza.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/PiezaNull.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/PiezaNull.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Soldado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Soldado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Bando.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/BandoJugador1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/BandoJugador2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Catapulta.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Celda.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Curandero.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Jinete.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Jugador.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Tablero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Tablero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/CeldaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/CeldaTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Pieza.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/RangoSoldado.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Soldado.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Tablero.class" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -196,22 +187,13 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Jinete.java</url>
-          <line>62</line>
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/AlgoChess$CuranderoTest_test00CuranderoPuedeCurarSoldadoAliadoCercano.ic" NAME="CuranderoTest.test00CuranderoPuedeCurarSoldadoAliadoCercano Coverage Results" MODIFIED="1574751643704" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
