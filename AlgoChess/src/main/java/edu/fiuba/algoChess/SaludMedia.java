@@ -1,10 +1,6 @@
 package edu.fiuba.algoChess;
 
-import lombok.AllArgsConstructor;
-
-
 public class SaludMedia extends Salud {
-
 
 	public SaludMedia(int valorCompleto, int valorActual) {
 		super(valorCompleto, valorActual);

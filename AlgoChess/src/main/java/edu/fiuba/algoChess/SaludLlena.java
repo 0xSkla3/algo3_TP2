@@ -6,10 +6,6 @@ public class SaludLlena extends Salud {
 		super(salud,salud);
 	}
 
-	public SaludLlena(int valorCompleto, int valorActual) {
-		super(valorCompleto, valorActual);
-	}
-
 	@Override
 	public Salud curar(int salud) {
 		return this;

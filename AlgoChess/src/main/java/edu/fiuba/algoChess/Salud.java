@@ -15,10 +15,6 @@ public abstract class Salud implements Curable, Herible {
 	@Setter
 	int valorActual;
 
-	Salud Salud(int salud){
-		return new SaludLlena(salud);
-	}
-
 	@Override
 	public abstract Salud curar(int salud);
 
