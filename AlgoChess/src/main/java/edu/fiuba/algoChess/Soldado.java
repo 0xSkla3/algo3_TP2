@@ -3,9 +3,6 @@ package edu.fiuba.algoChess;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Optional;
-import java.util.stream.Stream;
-
 
 public class Soldado extends Pieza implements Movible {
 
@@ -20,7 +17,7 @@ public class Soldado extends Pieza implements Movible {
 	@Getter
 	private int danioCercano;
 
-	public Soldado(Ubicacion ubicacion,int costo, int vida, Bando bando) {
+	public Soldado(Ubicacion ubicacion, int costo, int vida, Bando bando) {
 
 		super(costo,vida,ubicacion,bando);
 	}

@@ -1,12 +1,14 @@
 package edu.fiuba.algoChess;
 
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @NoArgsConstructor
 public abstract class Pieza implements Movible, Atacable {
 
 	//protected TipoPieza nombre;
-	private int vida;
+	@Setter
+	private Salud vida;
 	private int costo;
 	protected Ubicacion ubicacion;
 	protected Bando bando;
@@ -20,25 +22,25 @@ public abstract class Pieza implements Movible, Atacable {
 
 	}
 */
-	public Pieza(int costo, int vida) {
+	Pieza(int costo, int vida) {
 
-		this.vida = vida;
+		this.vida = new SaludLlena(vida);
 		this.costo = costo;
 
 	}
 
-	public Pieza(int costo, int vida, Ubicacion ubicacion,Bando bando) {
+	public Pieza(int costo, int vida, Ubicacion ubicacion, Bando bando) {
 
 		this.bando = bando;
 		this.ubicacion = ubicacion;
-		this.vida = vida;
+		this.vida = new SaludLlena(vida);
 		this.costo = costo;
 
 	}
 
 	public Pieza(Ubicacion ubicacion) {
 
-		this.vida = 0;
+		this.vida = new SaludMuerto();
 		this.costo = 0;
 		this.ubicacion = ubicacion;
 
@@ -73,14 +75,13 @@ public abstract class Pieza implements Movible, Atacable {
 	};
 
 
-
 	public int getCosto(){
 		return this.costo;
 		}
 
 	//public TipoPieza getNombre(){return this.nombre;}
 
-	public int getVida() {
+	public Salud getVida() {
 		return this.vida;
 		}
 
@@ -97,12 +98,11 @@ public abstract class Pieza implements Movible, Atacable {
 		return this.bando;
 	}
 
-	public void aumentarVida(int aumento) {
-		this.vida = this.vida + aumento;
+	public void aumentarVida(int aumento) {this.setVida(this.vida.curar(aumento));
 		}
 
 	public void recibirAtaque(Ataque ataque){
-		this.vida = this.vida - ataque.getDanio();
+		this.vida.herir(ataque.getDanio());
 		}
 
 	public void setUbicacion(Ubicacion ubicacion){
