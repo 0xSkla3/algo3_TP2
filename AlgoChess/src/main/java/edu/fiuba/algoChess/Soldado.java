@@ -49,12 +49,12 @@ public class Soldado extends Pieza implements Movible {
 
 	}
 
-	public void actualizaRango(Tablero tablero){
+/*	public void actualizaRango(Tablero tablero){
 
 		this.getRango().actualizaRango(this,tablero);
 
 	}
-
+*/
 	public void atacar(DistanciaRelativa distancia, Pieza atacado){
 
 		this.bando.atacar(atacado, this.ataque, atacado.getBando());
@@ -83,15 +83,15 @@ public class Soldado extends Pieza implements Movible {
 		this.vida = this.vida - ataque.getDanio();
 	}
 
-	public Batallon verificaBatallonONull(Tablero tablero) {
-		return Batallon.batallonAsociadoONull(this,tablero);
-	}
+//	public Batallon verificaBatallonONull(Tablero tablero) {
+//		return Batallon.batallonAsociadoONull(this,tablero);
+//	}
 
 
 	/*public Stream<Soldado> verificaBatallon(Soldado soldado, Tablero tablero) {
 
-		Stream<Optional<Pieza>> contiguos = null;
-		Stream<Optional<Pieza>> soldadosContiguos = null;
+		Stream<Pieza> contiguos = null;
+		Stream<Pieza> soldadosContiguos = null;
 		Stream<Soldado> batallon = null;
 		Soldado segundoSoldado = null;
 		contiguos = tablero.mapeaEntornoCercano(tablero.getCelda(soldado.getUbicacion()));

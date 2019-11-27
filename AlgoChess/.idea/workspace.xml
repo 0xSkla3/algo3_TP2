@@ -2,17 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6fbf8ede-d789-4635-8759-32e895bbff9d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/BandoNull.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Catapulta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Catapulta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Batallon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Batallon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Celda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Celda.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Curandero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Curandero.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Jinete.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Jinete.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Pieza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Pieza.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/PiezaNull.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/PiezaNull.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/RangoSoldado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/RangoSoldado.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Soldado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Soldado.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Tablero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Tablero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/BatallonTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/BatallonTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/CeldaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/CeldaTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Pieza.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/JineteTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/JineteTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/RangoSoldadoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/RangoSoldadoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/SoldadoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/SoldadoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/edu/fiuba/algoChess/BatallonTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/edu/fiuba/algoChess/CeldaTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/edu/fiuba/algoChess/CeldaTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/edu/fiuba/algoChess/JineteTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/edu/fiuba/algoChess/JineteTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/edu/fiuba/algoChess/RangoSoldadoTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/edu/fiuba/algoChess/SoldadoTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/edu/fiuba/algoChess/SoldadoTest.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -69,7 +77,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.All in AlgoChess">
+  <component name="RunManager" selected="JUnit.TableroTest.testTableroSeColocaPiezaAliadaEnSectorRivalTiraException">
     <configuration name="All in AlgoChess" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgoChess" />
       <option name="PACKAGE_NAME" value="" />
@@ -94,38 +102,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="JineteTest.test10JineteAtacaConAtaqueCercanoAEnemigoEnDistanciaCortaCuandoNoHayUnSoldadoAliadoCerca" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AlgoChess" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="edu.fiuba.algoChess.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="edu.fiuba.algoChess" />
-      <option name="MAIN_CLASS_NAME" value="edu.fiuba.algoChess.JineteTest" />
-      <option name="METHOD_NAME" value="test10JineteAtacaConAtaqueCercanoAEnemigoEnDistanciaCortaCuandoNoHayUnSoldadoAliadoCerca" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="JineteTest.test11JineteNoPuedeAtacarConAtaqueCercanoAEnemigoEnDistanciaCortaCuandoHayUnSoldadoAliadoCerca" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AlgoChess" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="edu.fiuba.algoChess.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="edu.fiuba.algoChess" />
-      <option name="MAIN_CLASS_NAME" value="edu.fiuba.algoChess.JineteTest" />
-      <option name="METHOD_NAME" value="test11JineteNoPuedeAtacarConAtaqueCercanoAEnemigoEnDistanciaCortaCuandoHayUnSoldadoAliadoCerca" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="SoldadoTest.test05SoldadoAliadoAtacaJineteEnemigoCercano" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgoChess" />
       <extension name="coverage">
@@ -142,13 +118,45 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TableroTest.testTableroSeColocaPiezaAliadaConExicitoEnSectorAliado" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AlgoChess" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.fiuba.algoChess.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.fiuba.algoChess" />
+      <option name="MAIN_CLASS_NAME" value="edu.fiuba.algoChess.TableroTest" />
+      <option name="METHOD_NAME" value="testTableroSeColocaPiezaAliadaConExicitoEnSectorAliado" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TableroTest.testTableroSeColocaPiezaAliadaEnSectorRivalTiraException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AlgoChess" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.fiuba.algoChess.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.fiuba.algoChess" />
+      <option name="MAIN_CLASS_NAME" value="edu.fiuba.algoChess.TableroTest" />
+      <option name="METHOD_NAME" value="testTableroSeColocaPiezaAliadaEnSectorRivalTiraException" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TableroTest.testTableroSeColocaPiezaAliadaEnSectorRivalTiraException" />
+        <item itemvalue="JUnit.TableroTest.testTableroSeColocaPiezaAliadaConExicitoEnSectorAliado" />
         <item itemvalue="JUnit.All in AlgoChess" />
         <item itemvalue="JUnit.SoldadoTest.test05SoldadoAliadoAtacaJineteEnemigoCercano" />
         <item itemvalue="JUnit.JineteTest.test09JineteNoPuedeAtacarConAtaqueMedioAEnemigoEnDistanciaCortaAunCuandoHayUnSoldadoAliadoCerca" />
-        <item itemvalue="JUnit.JineteTest.test10JineteAtacaConAtaqueCercanoAEnemigoEnDistanciaCortaCuandoNoHayUnSoldadoAliadoCerca" />
-        <item itemvalue="JUnit.JineteTest.test11JineteNoPuedeAtacarConAtaqueCercanoAEnemigoEnDistanciaCortaCuandoHayUnSoldadoAliadoCerca" />
       </list>
     </recent_temporary>
   </component>

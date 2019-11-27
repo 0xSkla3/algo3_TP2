@@ -33,7 +33,7 @@ public class RangoSoldado {
 	@Getter
 	@Setter
 	ArrayList<Pieza> obstaculos;
-
+/*
 	public RangoSoldado(Soldado soldado, Tablero tablero){
 		RangoSoldado rango = new RangoSoldado();
 		rango.actualizaRango(soldado,tablero);
@@ -53,17 +53,17 @@ public class RangoSoldado {
 	public void actualizaSoldadosCercanos(Soldado soldado){
 
 		setSoldadosContiguos(new ArrayList<Soldado>());
-		if(arriba.getContenido().isPresent() && arriba.getContenido().get().getClass().equals(Soldado.class)){
-			getSoldadosContiguos().add((Soldado) arriba.getContenido().get());
+		if(arriba.getPiezaActual().isPresent() && arriba.getPiezaActual().get().getClass().equals(Soldado.class)){
+			getSoldadosContiguos().add((Soldado) arriba.getPiezaActual().get());
 		}
-		if(abajo.getContenido().isPresent() && abajo.getContenido().get().getClass().equals(Soldado.class)){
-			getSoldadosContiguos().add((Soldado) abajo.getContenido().get());
+		if(abajo.getPiezaActual().isPresent() && abajo.getPiezaActual().get().getClass().equals(Soldado.class)){
+			getSoldadosContiguos().add((Soldado) abajo.getPiezaActual().get());
 		}
-		if(izquierda.getContenido().isPresent() && izquierda.getContenido().get().getClass().equals(Soldado.class)){
-			getSoldadosContiguos().add((Soldado) izquierda.getContenido().get());
+		if(izquierda.getPiezaActual().isPresent() && izquierda.getPiezaActual().get().getClass().equals(Soldado.class)){
+			getSoldadosContiguos().add((Soldado) izquierda.getPiezaActual().get());
 		}
-		if(derecha.getContenido().isPresent() && derecha.getContenido().get().getClass().equals(Soldado.class)){
-			getSoldadosContiguos().add((Soldado) derecha.getContenido().get());
+		if(derecha.getPiezaActual().isPresent() && derecha.getPiezaActual().get().getClass().equals(Soldado.class)){
+			getSoldadosContiguos().add((Soldado) derecha.getPiezaActual().get());
 		}
 
 	}
@@ -72,18 +72,20 @@ public class RangoSoldado {
 
 		setObstaculos(new ArrayList<Pieza>());
 
-		if(arriba.getContenido().isPresent() && !arriba.getContenido().get().getClass().equals(Soldado.class)){
-			getObstaculos().add(arriba.getContenido().get());
+		if(arriba.getPiezaActual().isPresent() && !arriba.getPiezaActual().get().getClass().equals(Soldado.class)){
+			getObstaculos().add(arriba.getPiezaActual().get());
 		}
-		if(abajo.getContenido().isPresent() && abajo.getContenido().get().getClass().equals(Soldado.class)){
-			getObstaculos().add(abajo.getContenido().get());
+		if(abajo.getPiezaActual().isPresent() && abajo.getPiezaActual().get().getClass().equals(Soldado.class)){
+			getObstaculos().add(abajo.getPiezaActual().get());
 		}
-		if(izquierda.getContenido().isPresent() && izquierda.getContenido().get().getClass().equals(Soldado.class)){
-			getObstaculos().add(izquierda.getContenido().get());
+		if(izquierda.getPiezaActual().isPresent() && izquierda.getPiezaActual().get().getClass().equals(Soldado.class)){
+			getObstaculos().add(izquierda.getPiezaActual().get());
 		}
-		if(derecha.getContenido().isPresent() && derecha.getContenido().get().getClass().equals(Soldado.class)){
-			getObstaculos().add(derecha.getContenido().get());
+		if(derecha.getPiezaActual().isPresent() && derecha.getPiezaActual().get().getClass().equals(Soldado.class)){
+			getObstaculos().add(derecha.getPiezaActual().get());
 		}
 
 	}
+*/
 }
+

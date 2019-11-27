@@ -4,15 +4,12 @@ public class PiezaNull extends Pieza {
 
     public PiezaNull(Ubicacion ubicacion) {
         super(ubicacion);
-    }
-
-    public PiezaNull() {
-
+        this.bando = new BandoNull();
     }
 
     @Override
     public void pisar(Celda celda, Pieza piezaAGuardar){
-        celda.guardar(piezaAGuardar);
+        celda.ubicar(piezaAGuardar);
     }
 
     public void recibirAtaque(Ataque ataque){

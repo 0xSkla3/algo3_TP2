@@ -6,7 +6,7 @@ import static junit.framework.TestCase.*;
 import static org.junit.Assert.assertEquals;
 
 public class SoldadoTest {
-
+/*
 	@Test
 	public void test00SeVerificaBatallon(){
 		Jugador jugador1 = new Jugador();
@@ -96,7 +96,7 @@ public class SoldadoTest {
 		Soldado soldado4 = new Soldado(new Ubicacion(5,2));
 		//falta assert
 	};
-
+*/
 	@Test
 	public void test05SoldadoAliadoAtacaJineteEnemigoCercano(){
 

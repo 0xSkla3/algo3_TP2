@@ -21,7 +21,6 @@ public class Celda {
 
 	public Pieza getPiezaActual(){return this.piezaActual;}
 
-	public Pieza getContenido(){return this.piezaActual;}
 
 /*	public void moverA(Celda nuevaCelda) {
 		nuevaCelda.piezaActual = this.piezaActual;
@@ -34,16 +33,9 @@ public class Celda {
 	}
 
 	public Bando getSectorDelJugador(){ return this.sectorDelJugador;}
-/*
-	public void guardar(Pieza piezaActual) {
-		if (!this.sectorDelJugador.equals(piezaActual.getBando())  ) { //ESTA LINEA SOLO VALE EN LA PRIMERA ETAPA DEL JUEGO!!! AGREGAR OTRA CONDICION AL IF!!!
-			throw new NoSePuedeUbicarPiezaEnSectoRival("No se puede ubicar pieza en sector rival");
-		} else {
-			this.piezaActual = piezaActual;
-		}
-	}
-*/
-    public void ubicarEnCelda(Pieza piezaAUbicar) {
+
+
+    public void guardar(Pieza piezaAUbicar) {
         if (!this.sectorDelJugador.equals(piezaAUbicar.getBando())  ) { //ESTA LINEA SOLO VALE EN LA PRIMERA ETAPA DEL JUEGO!!! AGREGAR OTRA CONDICION AL IF!!!
             throw new NoSePuedeUbicarPiezaEnSectoRival("No se puede ubicar pieza en sector rival");
         } else {
@@ -58,11 +50,13 @@ public class Celda {
 		this.estado.ubicar(Optional.of(piezaActual), this);
 	} //capturar exception de ocupado o sectorEnemigo
 */
+
+
 	public void eliminar() {
 		this.piezaActual = new PiezaNull(null);
 	}
 
-    public void guardar(Pieza piezaAGuardar) {
-	    this.piezaActual = piezaAGuardar
+    public void ubicar(Pieza piezaAGuardar) {
+	    this.piezaActual = piezaAGuardar;
     }
 }
