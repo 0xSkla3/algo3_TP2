@@ -51,9 +51,6 @@ public class Jinete extends Pieza {
 		this.ubicacion = ubicacion;
 	}
 
-	public void recibirAtaque(Ataque ataque){
-		this.vida = this.vida - ataque.getDanio();
-	}
 
 	public void atacar(DistanciaRelativa distancia, Pieza atacado){
 		//if (distancia==DistanciaRelativa.LEJANO){

@@ -7,14 +7,10 @@ import lombok.Setter;
 public abstract class Pieza implements Movible, Atacable {
 
 	//protected TipoPieza nombre;
-<<<<<<< HEAD
 	@Setter
 	private Salud vida;
 	private int costo;
-=======
-	protected int vida;
-	protected int costo;
->>>>>>> ale-refactor
+
 	protected Ubicacion ubicacion;
 	protected Bando bando;
 
@@ -107,10 +103,8 @@ public abstract class Pieza implements Movible, Atacable {
 		}
 
 	public void recibirAtaque(Ataque ataque){
-<<<<<<< HEAD
 		this.vida.herir(ataque.getDanio());
-=======
->>>>>>> ale-refactor
+
 		}
 
 	public void pisar(Celda celda, Pieza pieza){

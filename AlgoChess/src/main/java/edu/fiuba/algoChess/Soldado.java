@@ -71,10 +71,6 @@ public class Soldado extends Pieza implements Movible {
 	}
 
 
-    public void recibirAtaque(Ataque ataque){
-		this.vida = this.vida - ataque.getDanio();
-	}
-
 //	public Batallon verificaBatallonONull(Tablero tablero) {
 //		return Batallon.batallonAsociadoONull(this,tablero);
 //	}

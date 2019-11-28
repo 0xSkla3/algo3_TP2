@@ -2,9 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="03e7be5e-4207-4b31-890d-b83ceb4e78c3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Salud.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Salud.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/SaludLlena.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/SaludLlena.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/SaludMedia.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/SaludMedia.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Catapulta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Catapulta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Curandero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Curandero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Pieza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Pieza.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Soldado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/fiuba/algoChess/Soldado.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Atacable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Ataque.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/AtaqueMedio.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Bando.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/BandoJugador1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/BandoJugador2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Celda.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Curable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/DistanciaRelativa.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Herible.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Jugador.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/JugadorStatus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Movible.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Pieza.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/RangoSoldado.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Salud.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/SaludMedia.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Tablero.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/fiuba/algoChess/Ubicacion.class" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

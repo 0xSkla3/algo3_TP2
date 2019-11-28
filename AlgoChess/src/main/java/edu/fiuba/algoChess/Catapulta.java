@@ -48,9 +48,6 @@ public class Catapulta extends Pieza {
 		}
 	}
 
-	public void recibirAtaque(Ataque ataque){
-		this.vida = this.vida - ataque.getDanio();
-	}
 
 	public Ataque getAtaqueLejano(){
 		return this.ataque;
