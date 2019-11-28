@@ -24,6 +24,7 @@ public class Curandero extends Pieza {
 
 	}
 
+
 	public void curar(DistanciaRelativa distancia, Pieza aCurar){
 
 		if ((distancia==DistanciaRelativa.CERCANO)&&(!(aCurar instanceof Catapulta))&&(this.bando.equals(aCurar.getBando()))){

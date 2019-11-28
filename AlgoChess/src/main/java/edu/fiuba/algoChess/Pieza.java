@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 @NoArgsConstructor
 public abstract class Pieza implements Movible, Atacable {
@@ -96,14 +95,41 @@ public abstract class Pieza implements Movible, Atacable {
 		return distanciaRelativa;
 	};
 
+
+	public int getCosto(){
+		return this.costo;
+		}
+
 	//public TipoPieza getNombre(){return this.nombre;}
+
+	public Salud getVida() {
+		return this.vida;
+		}
+
+	public Ubicacion getUbicacion() {
+		//system.out.println(this.ubicacion);
+		return this.ubicacion;
+		}
+
+	public void setBando(Bando bando){
+		this.bando = bando;
+	}
+
+	public Bando getBando(){
+		return this.bando;
+	}
 
 	public void aumentarVida(int aumento) {this.setVida(this.vida.curar(aumento));
 		}
 
 	public void recibirAtaque(Ataque ataque){
 		this.vida.herir(ataque.getDanio());
+
 		}
+
+	public void pisar(Celda celda, Pieza pieza){
+		throw new NoSePuedeUbicarPorqueEstaOcupadoException("No se puede ubicar porque esta ocupado la celda");
+	}
 
 	public void setUbicacion(Ubicacion ubicacion){
 		this.ubicacion=ubicacion;
@@ -130,6 +156,19 @@ public abstract class Pieza implements Movible, Atacable {
 	}
 
 	public void mover( Tablero campoDeBatalla, Ubicacion ubicacion) {
+		try {
+			Ubicacion ubicacionVieja = this.getUbicacion();
+			campoDeBatalla.ubicarEnCelda(this, ubicacion);
+			campoDeBatalla.eliminar(ubicacionVieja);
+			this.ubicacion = ubicacion;
+		}catch (NoSePuedeUbicarPorqueEstaOcupadoException ex){
+			//mensaje de error en vista y darle el turno al mismo jugador
+		}
+
+	}
+
+/*
+	public void mover( Tablero campoDeBatalla, Ubicacion ubicacion) {
 		if(campoDeBatalla.getCelda(ubicacion).isEmpty()){
 			Ubicacion ubicacionVieja = this.getUbicacion();
 			campoDeBatalla.ubicarEnCelda(this, ubicacion);
@@ -137,10 +176,18 @@ public abstract class Pieza implements Movible, Atacable {
 			this.ubicacion = ubicacion;}
 	}
 
-	public ArrayList<Pieza> unirAInmediato(ArrayList<Pieza> piezasInmediatas) {
-		piezasInmediatas.add(this);
-		return piezasInmediatas;
+
+	public void moverse(Mapa mapa, Ubicacion ubicacion) {
+		try {
+			mapa.ubicarEnCasillero(this, ubicacion);
+			mapa.eliminarDeCasillero(this.ubicacion);
+			this.ubicacion = ubicacion;
+		} catch (NoSePuedeUbicarPorqueEstaOcupadoException e) {
+			Material material = (Material) mapa.obtenerCasillero(ubicacion).obtenerUbicable();
+			this.herramientaActual.usar(material);
+		}
 	}
+*/
 
 	public abstract Rango actualizaRango(Tablero tablero);
 

@@ -8,6 +8,8 @@ public class BatallonTest {
 
 	@Test
 	public void batallonSeMueveEnLaMismaDireccion(){
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
 		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
@@ -32,6 +34,8 @@ public class BatallonTest {
 
 	@Test
 	public void batallonSeMueveEnLaMismaDireccionOcupandoEspaciosPreviamenteOcupados(){
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
 		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
@@ -56,6 +60,8 @@ public class BatallonTest {
 
 	@Test
 	public void batallonNoSeMueveCompletoDeEncontrarObstaculos(){
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
 		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
@@ -84,6 +90,8 @@ public class BatallonTest {
 
 	@Test
 	public void esBatallonNotaQueHayBatallon(){
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
 		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
@@ -105,6 +113,8 @@ public class BatallonTest {
 
 	@Test
 	public void noEsBatallonNotaQueNoHayBatallon(){
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
 		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
@@ -126,6 +136,8 @@ public class BatallonTest {
 
 	@Test
 	public void batallonAsociadoONullDaNull(){
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
 		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
@@ -147,6 +159,8 @@ public class BatallonTest {
 
 	@Test
 	public void batallonAsociadoONullCreaBatallon(){
+		Jugador jugador1 = new Jugador();
+		Jugador jugador2 = new Jugador();
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
 		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
@@ -168,3 +182,4 @@ public class BatallonTest {
 	}
 
 }
+

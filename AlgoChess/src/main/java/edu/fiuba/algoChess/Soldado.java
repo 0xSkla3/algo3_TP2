@@ -19,10 +19,21 @@ public class Soldado extends Pieza implements Movible {
 	private int danioCercano;
 
 	public Soldado(Ubicacion ubicacion, int costo, int vida, Bando bando) {
+
 		super(costo,vida,ubicacion,bando);
 	}
 
+/*	public Soldado(){
+
+		super(1,100);
+		danioCercano = 10;
+		this.ataque = new AtaqueCercano(danioCercano);
+
+
+	}*/
+
 	public Soldado(Ubicacion ubicacion,Bando bando){
+
 		super(2,75,ubicacion,bando);
 		danioCercano = 10;
 		this.ataque = new AtaqueCercano(danioCercano);
@@ -31,12 +42,6 @@ public class Soldado extends Pieza implements Movible {
 	public Soldado(Ubicacion ubicacion, Tablero tablero){
 		super(ubicacion);
 		this.rango = new RangoSoldado(this, tablero);
-	}
-
-	@Override
-	public ArrayList<Pieza> unirAInmediato(ArrayList<Pieza> piezasInmediatas) {
-		piezasInmediatas.add(this);
-		return piezasInmediatas;
 	}
 
 	public Rango actualizaRango(Tablero tablero){
@@ -83,6 +88,5 @@ public class Soldado extends Pieza implements Movible {
 	Batallon unirSoldados(){
 		return this.getRango().darDeAltaBatallon();
 	}
-
 
 }

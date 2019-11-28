@@ -8,7 +8,6 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.Collection;
 
-
 public interface Batallon extends Agrupable, Movible {
 
 	@Override
@@ -36,3 +35,4 @@ public interface Batallon extends Agrupable, Movible {
 
 	Pieza getPieza3();
 }
+

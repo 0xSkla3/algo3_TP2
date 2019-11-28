@@ -111,7 +111,7 @@ public class Jinete extends Pieza {
 			//PIEZAALIADACERCA Y PIEZAENEMIGACERCANA. DE OTRO MODO, LOS VALORES QUEDARIAN SETEADOS HACIENDO REFERENCIA A LA POSICION ANTERIOR
 			//LO CUAL PUEDE DEJAR DE SER VALIDO EN LA NUEVA POSICION
 	//@Override
-	public void reconocerTerreno(Tablero campoDeBatalla){
+/*	public void reconocerTerreno(Tablero campoDeBatalla){
 
 	int coordenadaX = this.ubicacion.getCoordenadaX();
 	int coordenadaY = this.ubicacion.getCoordenadaY();
@@ -139,7 +139,7 @@ public class Jinete extends Pieza {
 			}
 		}
 	}
-}
+}*/
 
 	public boolean getPiezaAliadaCercana(){
 			return this.piezaAliadaCercana;

@@ -1,5 +1,9 @@
-package edu.fiuba.algoChess.Salud;
+package edu.fiuba.algoChess;
 
+import edu.fiuba.algoChess.Salud.Salud;
+import edu.fiuba.algoChess.Salud.SaludLlena;
+import edu.fiuba.algoChess.Salud.SaludMedia;
+import edu.fiuba.algoChess.Salud.SaludMuerto;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.Assert.*;
@@ -13,7 +17,7 @@ public class SaludTest {
 		final Salud unaSalud = new SaludLlena(saludValorTotal);
 		unaSalud.herir(saludValorHerir);
 
-		assertEquals(unaSalud.valorActual, saludValorTotal- saludValorHerir);
+		assertEquals(unaSalud.getValorActual(), saludValorTotal- saludValorHerir);
 	}
 
 	@Test

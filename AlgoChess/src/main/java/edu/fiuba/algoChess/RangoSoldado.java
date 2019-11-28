@@ -2,10 +2,10 @@ package edu.fiuba.algoChess;
 
 import java.util.ArrayList;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 
 public class RangoSoldado extends RangoInmediato implements Rango {
 
