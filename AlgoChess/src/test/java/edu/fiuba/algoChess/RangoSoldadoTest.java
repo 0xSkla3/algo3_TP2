@@ -2,7 +2,7 @@ package edu.fiuba.algoChess;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
-
+/*
 public class RangoSoldadoTest {
 
 	@Test
@@ -57,3 +57,4 @@ public class RangoSoldadoTest {
 
 
 }
+*/

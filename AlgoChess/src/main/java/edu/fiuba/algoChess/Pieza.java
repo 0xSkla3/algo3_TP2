@@ -7,9 +7,14 @@ import lombok.Setter;
 public abstract class Pieza implements Movible, Atacable {
 
 	//protected TipoPieza nombre;
+<<<<<<< HEAD
 	@Setter
 	private Salud vida;
 	private int costo;
+=======
+	protected int vida;
+	protected int costo;
+>>>>>>> ale-refactor
 	protected Ubicacion ubicacion;
 	protected Bando bando;
 
@@ -102,8 +107,15 @@ public abstract class Pieza implements Movible, Atacable {
 		}
 
 	public void recibirAtaque(Ataque ataque){
+<<<<<<< HEAD
 		this.vida.herir(ataque.getDanio());
+=======
+>>>>>>> ale-refactor
 		}
+
+	public void pisar(Celda celda, Pieza pieza){
+		throw new NoSePuedeUbicarPorqueEstaOcupadoException("No se puede ubicar porque esta ocupado la celda");
+	}
 
 	public void setUbicacion(Ubicacion ubicacion){
 		this.ubicacion=ubicacion;
@@ -130,12 +142,40 @@ public abstract class Pieza implements Movible, Atacable {
 	}
 
 	public void mover( Tablero campoDeBatalla, Ubicacion ubicacion) {
+		try {
+			Ubicacion ubicacionVieja = this.getUbicacion();
+			campoDeBatalla.ubicarEnCelda(this, ubicacion);
+			campoDeBatalla.eliminar(ubicacionVieja);
+			this.ubicacion = ubicacion;
+		}catch (NoSePuedeUbicarPorqueEstaOcupadoException ex){
+			//mensaje de error en vista y darle el turno al mismo jugador
+		}
+
+	}
+
+/*
+	public void mover( Tablero campoDeBatalla, Ubicacion ubicacion) {
 		if(campoDeBatalla.getCelda(ubicacion).isEmpty()){
 			Ubicacion ubicacionVieja = this.getUbicacion();
 			campoDeBatalla.ubicarEnCelda(this, ubicacion);
 			campoDeBatalla.eliminar(ubicacionVieja);
 			this.ubicacion = ubicacion;}
 	}
+
+
+	public void moverse(Mapa mapa, Ubicacion ubicacion) {
+		try {
+			mapa.ubicarEnCasillero(this, ubicacion);
+			mapa.eliminarDeCasillero(this.ubicacion);
+			this.ubicacion = ubicacion;
+		} catch (NoSePuedeUbicarPorqueEstaOcupadoException e) {
+			Material material = (Material) mapa.obtenerCasillero(ubicacion).obtenerUbicable();
+			this.herramientaActual.usar(material);
+		}
+	}
+*/
+
+
 
 	//COMENTARIO IMPORTANTE: DECIDI MOVER EL METODO DE JINETE
 

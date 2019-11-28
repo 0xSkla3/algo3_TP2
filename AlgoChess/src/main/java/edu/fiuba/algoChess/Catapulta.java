@@ -33,7 +33,7 @@ public class Catapulta extends Pieza {
 	public void mover( Tablero campoDeBatalla, Ubicacion ubicacion) {
 	};
 
-	public void ejecutarComportamiento(DistanciaRelativa distancia, Pieza atacado){
+	public void atacar(DistanciaRelativa distancia, Pieza atacado){
 
 		if(!this.bando.equals(atacado.getBando())){
 			if (distancia==DistanciaRelativa.CERCANO){
@@ -48,6 +48,9 @@ public class Catapulta extends Pieza {
 		}
 	}
 
+	public void recibirAtaque(Ataque ataque){
+		this.vida = this.vida - ataque.getDanio();
+	}
 
 	public Ataque getAtaqueLejano(){
 		return this.ataque;

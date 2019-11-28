@@ -3,10 +3,10 @@ package edu.fiuba.algoChess;
 import lombok.*;
 
 import java.util.*;
-
+/*
 @AllArgsConstructor
 @NoArgsConstructor
-public class Batallon implements Movible{
+public class Batallon implements Movible {
 
 	@Setter
 	@Getter
@@ -127,5 +127,5 @@ public class Batallon implements Movible{
 
 		return itemsBatallonActual.equals(itemsBatallonAComparar);
 	}
-
 }
+*/

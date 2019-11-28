@@ -1,4 +1,5 @@
 package edu.fiuba.algoChess;
+
 import java.util.*;
 import java.util.stream.Stream;
 
@@ -58,44 +59,46 @@ public class Tablero {
 
 		if (!this.campoDeBatalla.containsKey(ubicacion)) {
 			throw new NoExisteNingunCasilleroParaLaUbicacionDadaException("No existe una celda en esa ubicacion");
-		}else if (this.getCelda(ubicacion).getContenido().equals(Optional.empty())) {
+		}
+
+		try {
 			this.campoDeBatalla.get(ubicacion).guardar(pieza);
 			pieza.setUbicacion(ubicacion);
+		} catch (NoSePuedeUbicarPorqueEstaOcupadoException e) {
+			throw new NoSePuedeUbicarPorqueEstaOcupadoException("no se puede ubicar pieza por estar el casillero ocupado");
 		}
-		else {
-			throw new NoSePuedeUbicarPorqueEstaOcupadoException("No se puede ubicar porque esta ocupado la celda");
 
-		}
 	}
+
 
 	public void eliminar(Ubicacion ubicacion) { this.getCelda(ubicacion).eliminar();
 	}
 
-	public Stream<Optional<Pieza>> mapeaEntornoCercano(Celda celda){
+	public Stream<Pieza> mapeaEntornoCercano(Celda celda){
 		return mapeaEntornoCercano(celda, null);
 	}
 
-	public Stream<Optional<Pieza>> mapeaEntornoCercano(Celda celda, Optional<Pieza> aEvitar){
-		aEvitar = aEvitar == null? Optional.empty() : aEvitar;
-		final Optional<Pieza> finalAEvitar = aEvitar;
-		Stream<Optional<Pieza>> ret;
-		List<Optional<Pieza>> aux = new ArrayList<>(Collections.emptyList());
+	public Stream<Pieza> mapeaEntornoCercano(Celda celda, Pieza aEvitar){
+	//	aEvitar = aEvitar == null? Optional.empty() : aEvitar;
+		final Pieza finalAEvitar = aEvitar;
+		Stream<Pieza> ret;
+		List<Pieza> aux = new ArrayList<>(Collections.emptyList());
 		Ubicacion arriba = celda.getPiezaActual().getUbicacion().getUbicacionArriba();
 		Ubicacion abajo = celda.getPiezaActual().getUbicacion().getUbicacionAbajo();
 		Ubicacion derecha = celda.getPiezaActual().getUbicacion().getUbicacionDerecha();
 		Ubicacion izquierda = celda.getPiezaActual().getUbicacion().getUbicacionIzquierda();
 
-		aux.add(this.getCelda(arriba).getContenido());
-		aux.add(this.getCelda(abajo).getContenido());
-		aux.add(this.getCelda(derecha).getContenido());
-		aux.add(this.getCelda(izquierda).getContenido());
+		aux.add(this.getCelda(arriba).getPiezaActual());
+		aux.add(this.getCelda(abajo).getPiezaActual());
+		aux.add(this.getCelda(derecha).getPiezaActual());
+		aux.add(this.getCelda(izquierda).getPiezaActual());
 
 		ret = aux.stream();
 
-		/*Stream.concat(ret ,Stream.of(this.getCelda(arriba).getContenido()));
-		Stream.concat(ret ,Stream.of(this.getCelda(abajo).getContenido()));
-		Stream.concat(ret ,Stream.of(this.getCelda(derecha).getContenido()));
-		Stream.concat(ret ,Stream.of(this.getCelda(izquierda).getContenido()));*/
+		/*Stream.concat(ret ,Stream.of(this.getCelda(arriba).getPiezaActual()));
+		Stream.concat(ret ,Stream.of(this.getCelda(abajo).getPiezaActual()));
+		Stream.concat(ret ,Stream.of(this.getCelda(derecha).getPiezaActual()));
+		Stream.concat(ret ,Stream.of(this.getCelda(izquierda).getPiezaActual()));*/
 
 		if(!aEvitar.getClass().equals(Optional.empty())){
 			ret.filter(pieza -> !pieza.equals(finalAEvitar));
