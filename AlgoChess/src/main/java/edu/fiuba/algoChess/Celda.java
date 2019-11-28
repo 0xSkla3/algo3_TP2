@@ -42,6 +42,7 @@ public class Celda {
 			try {
 				this.piezaActual.pisar(this, piezaAUbicar);
 			} catch (NoSePuedeUbicarPorqueEstaOcupadoException e) {
+				throw new NoSePuedeUbicarPorqueEstaOcupadoException("no se puede ubicar pieza por estar el casillero ocupado");
 			}
 		}
     }

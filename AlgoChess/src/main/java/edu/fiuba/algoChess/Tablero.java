@@ -67,7 +67,7 @@ public class Tablero {
 			this.campoDeBatalla.get(ubicacion).guardar(pieza);
 			pieza.setUbicacion(ubicacion);
 		} catch (NoSePuedeUbicarPorqueEstaOcupadoException e) {
-			//devolver turno al jugador activo
+			throw new NoSePuedeUbicarPorqueEstaOcupadoException("no se puede ubicar pieza por estar el casillero ocupado");
 		}
 
 	}
