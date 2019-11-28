@@ -2,90 +2,68 @@ package edu.fiuba.algoChess;
 
 import java.util.ArrayList;
 
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@NoArgsConstructor
-public class RangoSoldado {
+
+public class RangoSoldado extends RangoInmediato implements Rango {
 
 	@Getter
 	@Setter
-	Celda arriba;
-
-	@Getter
-	@Setter
-	Celda abajo;
-
-	@Getter
-	@Setter
-	Celda izquierda;
-
-	@Getter
-	@Setter
-	Celda derecha;
-
-	@Getter
-	@Setter
-	ArrayList<Soldado> soldadosContiguos;
+	ArrayList<Pieza> soldadosEquipo;
 
 	@Getter
 	@Setter
 	ArrayList<Pieza> obstaculos;
-/*
-	public RangoSoldado(Soldado soldado, Tablero tablero){
-		RangoSoldado rango = new RangoSoldado();
-		rango.actualizaRango(soldado,tablero);
+
+	public RangoSoldado(Pieza soldado, Tablero tableroActual){
+		super(soldado,tableroActual);
+		this.actualizaSoldadosCercanos(soldado);
+		this.actualizaObstaculosInmediatos(soldado);
 	}
 
 	public void actualizaRango(Soldado soldado, Tablero tablero){
-		setArriba(tablero.getCelda(soldado.getUbicacion().getUbicacionArriba()));
-		setAbajo(tablero.getCelda(soldado.getUbicacion().getUbicacionAbajo()));
-		setDerecha(tablero.getCelda(soldado.getUbicacion().getUbicacionIzquierda()));
-		setIzquierda(tablero.getCelda(soldado.getUbicacion().getUbicacionDerecha()));
+		super.actualizaRangoInmediato(soldado,tablero);
+		this.actualizaSoldadosCercanos(soldado);
+		this.actualizaObstaculosInmediatos(soldado);
+	}
 
-		actualizaSoldadosCercanos(soldado);
-		actualizaObstaculosCercanos(soldado);
+	public void actualizaSoldadosCercanos(Pieza piezaCentral){
+
+		ArrayList<Pieza> piezas = piezaCentral.getRango().getPiezasEnRango();
+		ArrayList<Pieza> soldados = new ArrayList<>();
+		piezas.forEach(pieza-> pieza.aniadirSoldadoAlStack(soldados));
+		this.setSoldadosEquipo(soldados);
 
 	}
 
-	public void actualizaSoldadosCercanos(Soldado soldado){
+	public void actualizaObstaculosInmediatos(Pieza piezaCentral){
 
-		setSoldadosContiguos(new ArrayList<Soldado>());
-		if(arriba.getPiezaActual().isPresent() && arriba.getPiezaActual().get().getClass().equals(Soldado.class)){
-			getSoldadosContiguos().add((Soldado) arriba.getPiezaActual().get());
-		}
-		if(abajo.getPiezaActual().isPresent() && abajo.getPiezaActual().get().getClass().equals(Soldado.class)){
-			getSoldadosContiguos().add((Soldado) abajo.getPiezaActual().get());
-		}
-		if(izquierda.getPiezaActual().isPresent() && izquierda.getPiezaActual().get().getClass().equals(Soldado.class)){
-			getSoldadosContiguos().add((Soldado) izquierda.getPiezaActual().get());
-		}
-		if(derecha.getPiezaActual().isPresent() && derecha.getPiezaActual().get().getClass().equals(Soldado.class)){
-			getSoldadosContiguos().add((Soldado) derecha.getPiezaActual().get());
-		}
+		ArrayList<Pieza> piezas = piezaCentral.getRango().getPiezasEnRango();
+		ArrayList<Pieza> obstaculos = new ArrayList<>();
+		piezas.forEach(pieza-> pieza.aniadirTodoMenosSoldadoAlStack(obstaculos));
+		this.setSoldadosEquipo(obstaculos);
 
 	}
 
-	public void actualizaObstaculosCercanos(Soldado soldado){
+	public Batallon darDeAltaBatallon(){
+		ArrayList<Pieza> soldadosBatallon = new ArrayList<>();
+		this.getPiezasEnRango().forEach(pieza -> {if(pieza.soldadosInmediatosSePuedenUnir()){
+			soldadosBatallon.add(this.getPiezasEnRango().get(1));
+			soldadosBatallon.add(this.getPiezasEnRango().get(2));
+			soldadosBatallon.add(this.getPiezasEnRango().get(3));
+		}});
 
-		setObstaculos(new ArrayList<Pieza>());
-
-		if(arriba.getPiezaActual().isPresent() && !arriba.getPiezaActual().get().getClass().equals(Soldado.class)){
-			getObstaculos().add(arriba.getPiezaActual().get());
+		if (soldadosBatallon.size() >= 1){
+			return new BatallonUtil(soldadosBatallon.get(1), soldadosBatallon.get(2), soldadosBatallon.get(3));
 		}
-		if(abajo.getPiezaActual().isPresent() && abajo.getPiezaActual().get().getClass().equals(Soldado.class)){
-			getObstaculos().add(abajo.getPiezaActual().get());
-		}
-		if(izquierda.getPiezaActual().isPresent() && izquierda.getPiezaActual().get().getClass().equals(Soldado.class)){
-			getObstaculos().add(izquierda.getPiezaActual().get());
-		}
-		if(derecha.getPiezaActual().isPresent() && derecha.getPiezaActual().get().getClass().equals(Soldado.class)){
-			getObstaculos().add(derecha.getPiezaActual().get());
-		}
-
+		return new BatallonNull();
 	}
-*/
+
+	@Override
+	public ArrayList<Pieza> getPiezasEnRango() {
+		return getSoldadosEquipo();
+	}
+
 }
-

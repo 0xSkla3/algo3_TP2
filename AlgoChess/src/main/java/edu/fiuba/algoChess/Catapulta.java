@@ -2,6 +2,8 @@ package edu.fiuba.algoChess;
 
 //import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+
 public class Catapulta extends Pieza {
 
 	private AtaqueLejano ataque;
@@ -31,9 +33,51 @@ public class Catapulta extends Pieza {
 
 
 	public void mover( Tablero campoDeBatalla, Ubicacion ubicacion) {
-	};
+	}
 
-	public void atacar(DistanciaRelativa distancia, Pieza atacado){
+	@Override
+	public Rango actualizaRango(Tablero tablero) {
+
+		return null;
+	}
+
+	@Override
+	public Rango getRango() {
+		return null;
+	}
+
+	@Override
+	public void unirABatallonDeSoldado(ArrayList<Pieza> stackDeUnion) {
+	}
+
+	@Override
+	public void aniadirPiezaAlStack(ArrayList<Pieza> stack) {
+
+	}
+
+	@Override
+	public void aniadirSoldadoAlStack(ArrayList<Pieza> stack) {
+
+	}
+
+	@Override
+	public void aniadirTodoMenosSoldadoAlStack(ArrayList<Pieza> stack) {
+
+	}
+
+	@Override
+	public ArrayList<Pieza> getSoldadosContiguos() {
+		return null;
+	}
+
+	@Override
+	public boolean soldadosInmediatosSePuedenUnir() {
+		return false;
+	}
+
+	;
+
+	public void ejecutarComportamiento(DistanciaRelativa distancia, Pieza atacado){
 
 		if(!this.bando.equals(atacado.getBando())){
 			if (distancia==DistanciaRelativa.CERCANO){

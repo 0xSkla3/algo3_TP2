@@ -1,5 +1,6 @@
 package edu.fiuba.algoChess;
 
+import edu.fiuba.algoChess.Salud.Salud;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -8,7 +9,7 @@ import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertFalse;
 
 public class JineteTest {
-/*
+
     @Test
     public void test01JineteReconoceAPiezaAliadaEnTerrenoCercanoCeldaContigua(){
         Jugador jugador1 = new Jugador();
@@ -287,7 +288,7 @@ public class JineteTest {
         jinete.atacar(distanciaSoldadoAJinete,soldado);
         Assert.assertEquals(vidaTrasAtaque,soldado.getVida());
     };
-*/
+
     @Test
     public void test13JineteAtacaSoldadoADistanciaMedia() {
 

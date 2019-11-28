@@ -1,20 +1,41 @@
 package edu.fiuba.algoChess;
 
+import edu.fiuba.algoChess.Salud.Salud;
+import edu.fiuba.algoChess.Salud.SaludLlena;
+import edu.fiuba.algoChess.Salud.SaludMuerto;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 @NoArgsConstructor
 public abstract class Pieza implements Movible, Atacable {
 
 	//protected TipoPieza nombre;
 	@Setter
+	@Getter
 	private Salud vida;
+
+	@Setter
+	@Getter
 	private int costo;
 
+	@Setter
+	@Getter
 	protected Ubicacion ubicacion;
+
+	@Setter
+	@Getter
 	protected Bando bando;
 
-/*	public Pieza(Ubicacion ubicacion, int costo, int vida, Bando bando) {
+	@Setter
+	@Getter
+	protected Rango rango;
+
+
+	/*	public Pieza(Ubicacion ubicacion, int costo, int vida, Bando bando) {
 
 		this.bando = bando;
 		this.ubicacion = ubicacion;
@@ -75,41 +96,14 @@ public abstract class Pieza implements Movible, Atacable {
 		return distanciaRelativa;
 	};
 
-
-	public int getCosto(){
-		return this.costo;
-		}
-
 	//public TipoPieza getNombre(){return this.nombre;}
-
-	public Salud getVida() {
-		return this.vida;
-		}
-
-	public Ubicacion getUbicacion() {
-		//system.out.println(this.ubicacion);
-		return this.ubicacion;
-		}
-
-	public void setBando(Bando bando){
-		this.bando = bando;
-	}
-
-	public Bando getBando(){
-		return this.bando;
-	}
 
 	public void aumentarVida(int aumento) {this.setVida(this.vida.curar(aumento));
 		}
 
 	public void recibirAtaque(Ataque ataque){
 		this.vida.herir(ataque.getDanio());
-
 		}
-
-	public void pisar(Celda celda, Pieza pieza){
-		throw new NoSePuedeUbicarPorqueEstaOcupadoException("No se puede ubicar porque esta ocupado la celda");
-	}
 
 	public void setUbicacion(Ubicacion ubicacion){
 		this.ubicacion=ubicacion;
@@ -136,19 +130,6 @@ public abstract class Pieza implements Movible, Atacable {
 	}
 
 	public void mover( Tablero campoDeBatalla, Ubicacion ubicacion) {
-		try {
-			Ubicacion ubicacionVieja = this.getUbicacion();
-			campoDeBatalla.ubicarEnCelda(this, ubicacion);
-			campoDeBatalla.eliminar(ubicacionVieja);
-			this.ubicacion = ubicacion;
-		}catch (NoSePuedeUbicarPorqueEstaOcupadoException ex){
-			//mensaje de error en vista y darle el turno al mismo jugador
-		}
-
-	}
-
-/*
-	public void mover( Tablero campoDeBatalla, Ubicacion ubicacion) {
 		if(campoDeBatalla.getCelda(ubicacion).isEmpty()){
 			Ubicacion ubicacionVieja = this.getUbicacion();
 			campoDeBatalla.ubicarEnCelda(this, ubicacion);
@@ -156,20 +137,26 @@ public abstract class Pieza implements Movible, Atacable {
 			this.ubicacion = ubicacion;}
 	}
 
-
-	public void moverse(Mapa mapa, Ubicacion ubicacion) {
-		try {
-			mapa.ubicarEnCasillero(this, ubicacion);
-			mapa.eliminarDeCasillero(this.ubicacion);
-			this.ubicacion = ubicacion;
-		} catch (NoSePuedeUbicarPorqueEstaOcupadoException e) {
-			Material material = (Material) mapa.obtenerCasillero(ubicacion).obtenerUbicable();
-			this.herramientaActual.usar(material);
-		}
+	public ArrayList<Pieza> unirAInmediato(ArrayList<Pieza> piezasInmediatas) {
+		piezasInmediatas.add(this);
+		return piezasInmediatas;
 	}
-*/
 
+	public abstract Rango actualizaRango(Tablero tablero);
 
+	public abstract Rango getRango();
+
+	public abstract void unirABatallonDeSoldado(ArrayList<Pieza> stackDeUnion);
+
+	public abstract void aniadirPiezaAlStack(ArrayList<Pieza> stack);
+
+	public abstract void aniadirSoldadoAlStack(ArrayList<Pieza> stack);
+
+	public abstract void aniadirTodoMenosSoldadoAlStack(ArrayList<Pieza> stack);
+
+	public abstract ArrayList<Pieza>  getSoldadosContiguos();
+
+	public abstract boolean soldadosInmediatosSePuedenUnir();
 
 	//COMENTARIO IMPORTANTE: DECIDI MOVER EL METODO DE JINETE
 
