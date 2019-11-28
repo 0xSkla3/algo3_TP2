@@ -1,5 +1,7 @@
 package edu.fiuba.algoChess;
 
+import java.util.ArrayList;
+
 import static java.lang.Math.abs;
 public class Jinete extends Pieza {
 
@@ -49,6 +51,46 @@ public class Jinete extends Pieza {
 		campoDeBatalla.ubicarEnCelda(this, ubicacion);
 		campoDeBatalla.eliminar(this.ubicacion);
 		this.ubicacion = ubicacion;
+	}
+
+	@Override
+	public void actualizaRango(Tablero tablero) {
+
+	}
+
+	@Override
+	public Rango getRango() {
+		return null;
+	}
+
+	@Override
+	public void unirABatallonDeSoldado(ArrayList<Pieza> stackDeUnion) {
+		//throw new IllegalStateException("Un jinete no se puede unir a un batallon de Soldado");
+	}
+
+	@Override
+	public void aniadirPiezaAlStack(ArrayList<Pieza> stack) {
+		stack.add(this);
+	}
+
+	@Override
+	public void aniadirSoldadoAlStack(ArrayList<Pieza> stack) {
+
+	}
+
+	@Override
+	public void aniadirTodoMenosSoldadoAlStack(ArrayList<Pieza> stack) {
+
+	}
+
+	@Override
+	public ArrayList<Pieza> getSoldadosContiguos() {
+		return null;
+	}
+
+	@Override
+	public boolean soldadosInmediatosSePuedenUnir() {
+		return false;
 	}
 
 

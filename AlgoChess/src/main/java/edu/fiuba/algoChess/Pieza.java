@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 @NoArgsConstructor
 public abstract class Pieza implements Movible, Atacable {
@@ -29,7 +30,12 @@ public abstract class Pieza implements Movible, Atacable {
 	@Getter
 	protected Bando bando;
 
-/*	public Pieza(Ubicacion ubicacion, int costo, int vida, Bando bando) {
+	@Setter
+	@Getter
+	protected Rango rango;
+
+
+	/*	public Pieza(Ubicacion ubicacion, int costo, int vida, Bando bando) {
 
 		this.bando = bando;
 		this.ubicacion = ubicacion;
@@ -138,7 +144,19 @@ public abstract class Pieza implements Movible, Atacable {
 
 	public abstract void actualizaRango(Tablero tablero);
 
-	public abstract Object getRango();
+	public abstract Rango getRango();
+
+	public abstract void unirABatallonDeSoldado(ArrayList<Pieza> stackDeUnion);
+
+	public abstract void aniadirPiezaAlStack(ArrayList<Pieza> stack);
+
+	public abstract void aniadirSoldadoAlStack(ArrayList<Pieza> stack);
+
+	public abstract void aniadirTodoMenosSoldadoAlStack(ArrayList<Pieza> stack);
+
+	public abstract ArrayList<Pieza>  getSoldadosContiguos();
+
+	public abstract boolean soldadosInmediatosSePuedenUnir();
 
 	//COMENTARIO IMPORTANTE: DECIDI MOVER EL METODO DE JINETE
 

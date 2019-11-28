@@ -19,7 +19,7 @@ public class BatallonTest {
 		soldado1.setBando(bandoJugador1);
 		soldado2.setBando(bandoJugador1);
 		soldado3.setBando(bandoJugador1);
-		Batallon batallon = new Batallon(soldado1,soldado2,soldado3);
+		BatallonUtil batallon = new BatallonUtil(soldado1,soldado2,soldado3);
 		tableroTest.ubicarEnCelda(soldado1, soldado1.getUbicacion());
 		tableroTest.ubicarEnCelda(soldado2, soldado2.getUbicacion());
 		tableroTest.ubicarEnCelda(soldado3, soldado3.getUbicacion());
@@ -45,7 +45,7 @@ public class BatallonTest {
 		soldado1.setBando(bandoJugador1);
 		soldado2.setBando(bandoJugador1);
 		soldado3.setBando(bandoJugador1);
-		Batallon batallon = new Batallon(soldado1,soldado2,soldado3);
+		BatallonUtil batallon = new BatallonUtil(soldado1,soldado2,soldado3);
 		tableroTest.ubicarEnCelda(soldado1, soldado1.getUbicacion());
 		tableroTest.ubicarEnCelda(soldado2, soldado2.getUbicacion());
 		tableroTest.ubicarEnCelda(soldado3, soldado3.getUbicacion());
@@ -74,7 +74,7 @@ public class BatallonTest {
 		soldado2.setBando(bandoJugador1);
 		soldado3.setBando(bandoJugador1);
 		jinete.setBando(bandoJugador1);
-		Batallon batallon = new Batallon(soldado1,soldado2,soldado3);
+		BatallonUtil batallon = new BatallonUtil(soldado1,soldado2,soldado3);
 		tableroTest.ubicarEnCelda(soldado1, soldado1.getUbicacion());
 		tableroTest.ubicarEnCelda(soldado2, soldado2.getUbicacion());
 		tableroTest.ubicarEnCelda(soldado3, soldado3.getUbicacion());
@@ -105,7 +105,7 @@ public class BatallonTest {
 		tableroTest.ubicarEnCelda(soldado2, soldado2.getUbicacion());
 		tableroTest.ubicarEnCelda(soldado3, soldado3.getUbicacion());
 
-		Boolean esBatallon = Batallon.esBatallon(soldado1,soldado2,soldado3,tableroTest);
+		Boolean esBatallon = BatallonUtil.esBatallon(soldado1,soldado2,soldado3);
 
 		assertTrue(esBatallon);
 
@@ -128,7 +128,7 @@ public class BatallonTest {
 		tableroTest.ubicarEnCelda(soldado2, soldado2.getUbicacion());
 		tableroTest.ubicarEnCelda(soldado3, soldado3.getUbicacion());
 
-		Boolean esBatallon = Batallon.esBatallon(soldado1,soldado2,soldado3,tableroTest);
+		Boolean esBatallon = BatallonUtil.esBatallon(soldado1,soldado2,soldado3);
 
 		assertFalse(esBatallon);
 
@@ -151,7 +151,7 @@ public class BatallonTest {
 		tableroTest.ubicarEnCelda(soldado2, soldado2.getUbicacion());
 		tableroTest.ubicarEnCelda(soldado3, soldado3.getUbicacion());
 
-		Batallon batallonGenerado = Batallon.batallonAsociadoONull(soldado1,tableroTest);
+		BatallonUtil batallonGenerado = BatallonUtil.batallonAsociadoONull(soldado1,tableroTest);
 
 		assertEquals(null, batallonGenerado);
 
@@ -174,8 +174,8 @@ public class BatallonTest {
 		tableroTest.ubicarEnCelda(soldado2, soldado2.getUbicacion());
 		tableroTest.ubicarEnCelda(soldado3, soldado3.getUbicacion());
 
-		Batallon batallonPatron = new Batallon(soldado1,soldado2,soldado3);
-		Batallon batallonGenerado = Batallon.batallonAsociadoONull(soldado1,tableroTest);
+		BatallonUtil batallonPatron = new BatallonUtil(soldado1,soldado2,soldado3);
+		BatallonUtil batallonGenerado = BatallonUtil.batallonAsociadoONull(soldado1,tableroTest);
 
 		assertTrue(batallonPatron.equals(batallonGenerado));
 

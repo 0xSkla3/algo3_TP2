@@ -1,7 +1,7 @@
 package edu.fiuba.algoChess;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.stream.Stream;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +12,7 @@ public class RangoSoldado extends RangoInmediato implements Rango {
 
 	@Getter
 	@Setter
-	ArrayList<Pieza> soldadosContiguos;
+	ArrayList<Pieza> soldadosEquipo;
 
 	@Getter
 	@Setter
@@ -20,46 +20,45 @@ public class RangoSoldado extends RangoInmediato implements Rango {
 
 	public void actualizaRango(Soldado soldado, Tablero tablero){
 		super.actualizaRango(soldado,tablero);
-		ArrayList<Pieza> piezasInmediatas = new ArrayList<>();
-		this.getPiezasEnEntorno().forEach(pieza -> pieza.unirAInmediato(piezasInmediatas));
-
-		this.setSoldadosContiguos( piezasInmediatas);
+		this.actualizaSoldadosCercanos(soldado);
+		this.actualizaObstaculosInmediatos(soldado);
 	}
 
-	public void actualizaSoldadosCercanos(Soldado soldado){
+	public void actualizaSoldadosCercanos(Pieza piezaCentral){
 
-		setSoldadosContiguos(new ArrayList<>());
-		if(arriba.getContenido().isPresent() && arriba.getContenido().get().getClass().equals(Soldado.class)){
-			getSoldadosContiguos().add(arriba.getContenido().get());
-		}
-		if(abajo.getContenido().isPresent() && abajo.getContenido().get().getClass().equals(Soldado.class)){
-			getSoldadosContiguos().add(abajo.getContenido().get());
-		}
-		if(izquierda.getContenido().isPresent() && izquierda.getContenido().get().getClass().equals(Soldado.class)){
-			getSoldadosContiguos().add(izquierda.getContenido().get());
-		}
-		if(derecha.getContenido().isPresent() && derecha.getContenido().get().getClass().equals(Soldado.class)){
-			getSoldadosContiguos().add(derecha.getContenido().get());
-		}
+		ArrayList<Pieza> piezas = piezaCentral.getRango().getPiezasEnRango();
+		ArrayList<Pieza> soldados = new ArrayList<>();
+		piezas.forEach(pieza-> pieza.aniadirSoldadoAlStack(soldados));
+		this.setSoldadosEquipo(soldados);
 
 	}
 
 	public void actualizaObstaculosInmediatos(Pieza piezaCentral){
 
-		setObstaculos(new ArrayList<>());
-
-		if(arriba.getContenido().isPresent() && !arriba.getContenido().get().getClass().equals(Soldado.class)){
-			getObstaculos().add(arriba.getContenido().get());
-		}
-		if(abajo.getContenido().isPresent() && abajo.getContenido().get().getClass().equals(Soldado.class)){
-			getObstaculos().add(abajo.getContenido().get());
-		}
-		if(izquierda.getContenido().isPresent() && izquierda.getContenido().get().getClass().equals(Soldado.class)){
-			getObstaculos().add(izquierda.getContenido().get());
-		}
-		if(derecha.getContenido().isPresent() && derecha.getContenido().get().getClass().equals(Soldado.class)){
-			getObstaculos().add(derecha.getContenido().get());
-		}
+		ArrayList<Pieza> piezas = piezaCentral.getRango().getPiezasEnRango();
+		ArrayList<Pieza> obstaculos = new ArrayList<>();
+		piezas.forEach(pieza-> pieza.aniadirTodoMenosSoldadoAlStack(obstaculos));
+		this.setSoldadosEquipo(obstaculos);
 
 	}
+
+	public Batallon darDeAltaBatallon(){
+		ArrayList<Pieza> soldadosBatallon = new ArrayList<>();
+		this.getPiezasEnRango().forEach(pieza -> {if(pieza.soldadosInmediatosSePuedenUnir()){
+			soldadosBatallon.add(this.getPiezasEnRango().get(1));
+			soldadosBatallon.add(this.getPiezasEnRango().get(2));
+			soldadosBatallon.add(this.getPiezasEnRango().get(3));
+		}});
+
+		if (soldadosBatallon.size() >= 1){
+			return new BatallonUtil(soldadosBatallon.get(1), soldadosBatallon.get(2), soldadosBatallon.get(3));
+		}
+		return new BatallonNull();
+	}
+
+	@Override
+	public ArrayList<Pieza> getPiezasEnRango() {
+		return getSoldadosEquipo();
+	}
+
 }

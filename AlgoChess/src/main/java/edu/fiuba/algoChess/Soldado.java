@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
-
+import java.util.stream.Stream;
 
 public class Soldado extends Pieza implements Movible {
 
@@ -20,32 +20,18 @@ public class Soldado extends Pieza implements Movible {
 	private int danioCercano;
 
 	public Soldado(Ubicacion ubicacion, int costo, int vida, Bando bando) {
-
 		super(costo,vida,ubicacion,bando);
 	}
 
-/*	public Soldado(){
-
-		super(1,100);
-		danioCercano = 10;
-		this.ataque = new AtaqueCercano(danioCercano);
-
-
-	}*/
-
 	public Soldado(Ubicacion ubicacion,Bando bando){
-
 		super(2,75,ubicacion,bando);
 		danioCercano = 10;
 		this.ataque = new AtaqueCercano(danioCercano);
-
 	}
 
 	public Soldado(Ubicacion ubicacion){
-
 		super(ubicacion);
 		this.rango = new RangoSoldado();
-
 	}
 
 	@Override
@@ -55,57 +41,49 @@ public class Soldado extends Pieza implements Movible {
 	}
 
 	public void actualizaRango(Tablero tablero){
-
 		this.getRango().actualizaRango(this,tablero);
+	}
 
+	@Override
+	public void unirABatallonDeSoldado(ArrayList<Pieza> stackDeUnion) {
+		stackDeUnion.add(this);
+	}
+
+	@Override
+	public void aniadirPiezaAlStack(ArrayList<Pieza> stack) {
+		stack.add(this);
+	}
+
+	@Override
+	public void aniadirSoldadoAlStack(ArrayList<Pieza> stack) {
+		stack.add(this);
+	}
+
+	@Override
+	public void aniadirTodoMenosSoldadoAlStack(ArrayList<Pieza> stack) {
 	}
 
 	public void atacar(DistanciaRelativa distancia, Pieza atacado){
-
 		this.bando.atacar(atacado, this.ataque, atacado.getBando());
-
-	/*	if(this.getJugador()!=atacado.getJugador()){
-			if (distancia==DistanciaRelativa.CERCANO){
-				atacado.recibirAtaque(this.ataque);
-			};
-		}*/
-//		if (distancia==DistanciaRelativa.LEJANO){
-//			atacado.recibirAtaque(this.ataqueLejano);
-//		};
-
-//		if (distancia==DistanciaRelativa.MEDIO){
-//			atacado.recibirAtaque(this.ataqueMedio);
-//		}
 	}
 
-	public Batallon verificaBatallonONull(Tablero tablero) {
-		return Batallon.batallonAsociadoONull(this,tablero);
+	public Batallon verificaBatallonONull() {
+		return this.rango.darDeAltaBatallon();
 	}
 
+	@Override
+	public ArrayList<Pieza> getSoldadosContiguos(){
+		return this.getRango().getSoldadosEquipo();
+	}
 
-	/*public Stream<Soldado> verificaBatallon(Soldado soldado, Tablero tablero) {
+	@Override
+	public boolean soldadosInmediatosSePuedenUnir() {
+		return this.getRango().getSoldadosEquipo().size() == 3;
+	}
 
-		Stream<Optional<Pieza>> contiguos = null;
-		Stream<Optional<Pieza>> soldadosContiguos = null;
-		Stream<Soldado> batallon = null;
-		Soldado segundoSoldado = null;
-		contiguos = tablero.mapeaEntornoCercano(tablero.getCelda(soldado.getUbicacion()));
-		soldadosContiguos = contiguos.filter(contiguo -> contiguo.getClass().equals(Soldado.class));
+	Batallon unirSoldados(){
+		return this.getRango().darDeAltaBatallon();
+	}
 
-		if(soldadosContiguos.count() > 1){
-			Stream.concat(batallon, Stream.of(soldado));
-			Stream.concat(batallon, soldadosContiguos.iterate(0, n -> n+1).limit(2));
-		} else if(soldadosContiguos.count() == 1) {
-			Stream.concat(batallon, Stream.of(soldado));
-			Stream.concat(batallon,soldadosContiguos);
-			segundoSoldado = (Soldado) soldadosContiguos.findFirst().get().get();
-			contiguos = tablero.mapeaEntornoCercano(tablero.getCelda(segundoSoldado.getUbicacion()),Optional.of(soldado));
-			soldadosContiguos = contiguos.filter(contiguo -> contiguo.getClass().equals(Soldado.class));
-			if(soldadosContiguos.count() > 0){
-				Stream.concat(batallon, Stream.of(soldadosContiguos.findFirst().get().get()));
-			}
-		}
-		return batallon;
-	} */
 
 }

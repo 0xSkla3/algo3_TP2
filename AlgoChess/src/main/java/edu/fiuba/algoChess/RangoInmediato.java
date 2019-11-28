@@ -5,7 +5,7 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 
-public class RangoInmediato extends Rango{
+public class RangoInmediato implements Rango {
 
 	@Getter
 	@Setter
@@ -25,7 +25,7 @@ public class RangoInmediato extends Rango{
 
 	@Getter
 	@Setter
-	ArrayList<Pieza> piezasEnEntorno;
+	ArrayList<Pieza> piezasEnRango;
 
 	public void actualizaRango(Pieza piezaCentral, Tablero tablero){
 		setArriba(tablero.getCelda(piezaCentral.getUbicacion().getUbicacionArriba()));
@@ -33,26 +33,26 @@ public class RangoInmediato extends Rango{
 		setDerecha(tablero.getCelda(piezaCentral.getUbicacion().getUbicacionIzquierda()));
 		setIzquierda(tablero.getCelda(piezaCentral.getUbicacion().getUbicacionDerecha()));
 
-		actualizaEntornoInmediato(piezaCentral);
+		actualizaPiezasEnRango(piezaCentral);
 	}
 
-	public void actualizaEntornoInmediato(Pieza piezaCentral){
+	public void actualizaPiezasEnRango(Pieza piezaCentral){
 
-		setPiezasEnEntorno(new ArrayList<>());
+		ArrayList<Pieza> nuevoEntorno = new ArrayList<>();
 
-		if(arriba.getContenido().isPresent()){
-			getPiezasEnEntorno().add(this.getArriba().getContenido().get());
-		}
-		if(abajo.getContenido().isPresent()){
-			getPiezasEnEntorno().add(this.getAbajo().getContenido().get());
-		}
-		if(izquierda.getContenido().isPresent()){
-			getPiezasEnEntorno().add(this.getIzquierda().getContenido().get());
-		}
-		if(derecha.getContenido().isPresent()){
-			getPiezasEnEntorno().add(this.getDerecha().getContenido().get());
-		}
+		this.getArriba().getPiezaActual().aniadirPiezaAlStack(nuevoEntorno);
+		this.getAbajo().getPiezaActual().aniadirPiezaAlStack(nuevoEntorno);
+		this.getIzquierda().getPiezaActual().aniadirPiezaAlStack(nuevoEntorno);
+		this.getDerecha().getPiezaActual().aniadirPiezaAlStack(nuevoEntorno);
+		this.setPiezasEnRango(this.getPiezasEnRango());
 
+		setPiezasEnRango(nuevoEntorno);
+
+	}
+
+	@Override
+	public ArrayList<Pieza> getPiezasEnRango() {
+		return this.getPiezasEnRango();
 	}
 
 }

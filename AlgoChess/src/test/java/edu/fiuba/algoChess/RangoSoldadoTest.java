@@ -24,8 +24,8 @@ public class RangoSoldadoTest {
 		RangoSoldado rango = new RangoSoldado();
 		rango.actualizaRango(soldado2,tableroTest);
 
-		assertTrue(rango.getSoldadosContiguos().contains(soldado1));
-		assertTrue(rango.getSoldadosContiguos().contains(soldado3));
+		assertTrue(rango.getSoldadosEquipo().contains(soldado1));
+		assertTrue(rango.getSoldadosEquipo().contains(soldado3));
 
 	}
 

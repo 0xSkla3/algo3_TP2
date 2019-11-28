@@ -2,7 +2,7 @@ package edu.fiuba.algoChess.Salud;
 
 public class SaludMuerto extends Salud {
 
-	SaludMuerto(){
+	public SaludMuerto(){
 		super(0,0);
 	}
 

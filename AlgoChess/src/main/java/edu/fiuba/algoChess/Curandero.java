@@ -1,5 +1,7 @@
 package edu.fiuba.algoChess;
 
+import java.util.ArrayList;
+
 public class Curandero extends Pieza {
 
 	private int sanacion;
@@ -32,6 +34,45 @@ public class Curandero extends Pieza {
 	public int getSanacion(){
 		return this.sanacion;
 	};
+
+	@Override
+	public void actualizaRango(Tablero tablero) {
+
+	}
+
+	@Override
+	public Rango getRango() {
+		return null;
+	}
+
+	@Override
+	public void unirABatallonDeSoldado(ArrayList<Pieza> stackDeUnion) {
+	}
+
+	@Override
+	public void aniadirPiezaAlStack(ArrayList<Pieza> stack) {
+
+	}
+
+	@Override
+	public void aniadirSoldadoAlStack(ArrayList<Pieza> stack) {
+
+	}
+
+	@Override
+	public void aniadirTodoMenosSoldadoAlStack(ArrayList<Pieza> stack) {
+
+	}
+
+	@Override
+	public ArrayList<Pieza> getSoldadosContiguos() {
+		return null;
+	}
+
+	@Override
+	public boolean soldadosInmediatosSePuedenUnir() {
+		return false;
+	}
 
 
 //	public void Sanar(Pieza sanado){

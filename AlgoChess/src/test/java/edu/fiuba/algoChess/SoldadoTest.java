@@ -3,8 +3,8 @@ package edu.fiuba.algoChess;
 import edu.fiuba.algoChess.Salud.Salud;
 import org.junit.Test;
 
-import static junit.framework.TestCase.*;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class SoldadoTest {
 
@@ -25,8 +25,7 @@ public class SoldadoTest {
 		tableroTest.ubicarEnCelda(soldado2, soldado2.getUbicacion());
 		tableroTest.ubicarEnCelda(soldado3, soldado3.getUbicacion());
 
-			assertTrue(Batallon.esBatallon(soldado1,soldado2,soldado3,tableroTest));
-
+			assertTrue(BatallonUtil.esBatallon(soldado1,soldado2,soldado3));
 	}
 
 	@Test
@@ -45,7 +44,7 @@ public class SoldadoTest {
 		tableroTest.ubicarEnCelda(soldado2, soldado2.getUbicacion());
 		tableroTest.ubicarEnCelda(soldado3, soldado3.getUbicacion());
 
-		Batallon batallon = soldado1.verificaBatallonONull(tableroTest);
+		Batallon batallon = soldado1.verificaBatallonONull();
 
 		batallon.moverseArriba(tableroTest);
 
