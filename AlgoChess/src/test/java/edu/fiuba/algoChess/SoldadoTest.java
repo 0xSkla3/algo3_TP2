@@ -15,9 +15,9 @@ public class SoldadoTest {
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
 		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
-		Soldado soldado1 = new Soldado(new Ubicacion(2,2));
-		Soldado soldado2 = new Soldado(new Ubicacion(3,2));
-		Soldado soldado3 = new Soldado(new Ubicacion(4,2));
+		Soldado soldado1 = new Soldado(new Ubicacion(2,2),tableroTest);
+		Soldado soldado2 = new Soldado(new Ubicacion(3,2),tableroTest);
+		Soldado soldado3 = new Soldado(new Ubicacion(4,2),tableroTest);
 		soldado1.setBando(new BandoJugador1());
 		soldado2.setBando(new BandoJugador1());
 		soldado3.setBando(new BandoJugador1());
@@ -75,9 +75,9 @@ public class SoldadoTest {
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
 		Tablero unTablero = new Tablero(bandoJugador1, bandoJugador2);
 
-		Soldado soldado1 = new Soldado(new Ubicacion(2,2));
-		Soldado soldado2 = new Soldado(new Ubicacion(3,2));
-		Soldado soldado3 = new Soldado(new Ubicacion(4,2));
+		Soldado soldado1 = new Soldado(new Ubicacion(2,2),unTablero);
+		Soldado soldado2 = new Soldado(new Ubicacion(3,2),unTablero);
+		Soldado soldado3 = new Soldado(new Ubicacion(4,2),unTablero);
 		Jinete jinete = new Jinete(new Ubicacion(1,2));
 
 		//falta assert
@@ -90,10 +90,10 @@ public class SoldadoTest {
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
 		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
 
-		Soldado soldado1 = new Soldado(new Ubicacion(2,2));
-		Soldado soldado2 = new Soldado(new Ubicacion(3,2));
-		Soldado soldado3 = new Soldado(new Ubicacion(4,2));
-		Soldado soldado4 = new Soldado(new Ubicacion(5,2));
+		Soldado soldado1 = new Soldado(new Ubicacion(2,2),tableroTest);
+		Soldado soldado2 = new Soldado(new Ubicacion(3,2),tableroTest);
+		Soldado soldado3 = new Soldado(new Ubicacion(4,2),tableroTest);
+		Soldado soldado4 = new Soldado(new Ubicacion(5,2),tableroTest);
 		//falta assert
 	};
 

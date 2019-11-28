@@ -8,14 +8,12 @@ public class BatallonTest {
 
 	@Test
 	public void batallonSeMueveEnLaMismaDireccion(){
-		Jugador jugador1 = new Jugador();
-		Jugador jugador2 = new Jugador();
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
 		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
-		Soldado soldado1 = new Soldado(new Ubicacion(2,2));
-		Soldado soldado2 = new Soldado(new Ubicacion(3,2));
-		Soldado soldado3 = new Soldado(new Ubicacion(4,2));
+		Soldado soldado1 = new Soldado(new Ubicacion(2,2),tableroTest);
+		Soldado soldado2 = new Soldado(new Ubicacion(3,2),tableroTest);
+		Soldado soldado3 = new Soldado(new Ubicacion(4,2),tableroTest);
 		soldado1.setBando(bandoJugador1);
 		soldado2.setBando(bandoJugador1);
 		soldado3.setBando(bandoJugador1);
@@ -34,14 +32,12 @@ public class BatallonTest {
 
 	@Test
 	public void batallonSeMueveEnLaMismaDireccionOcupandoEspaciosPreviamenteOcupados(){
-		Jugador jugador1 = new Jugador();
-		Jugador jugador2 = new Jugador();
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
 		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
-		Soldado soldado1 = new Soldado(new Ubicacion(2,2));
-		Soldado soldado2 = new Soldado(new Ubicacion(3,2));
-		Soldado soldado3 = new Soldado(new Ubicacion(4,2));
+		Soldado soldado1 = new Soldado(new Ubicacion(2,2),tableroTest);
+		Soldado soldado2 = new Soldado(new Ubicacion(3,2),tableroTest);
+		Soldado soldado3 = new Soldado(new Ubicacion(4,2),tableroTest);
 		soldado1.setBando(bandoJugador1);
 		soldado2.setBando(bandoJugador1);
 		soldado3.setBando(bandoJugador1);
@@ -60,14 +56,12 @@ public class BatallonTest {
 
 	@Test
 	public void batallonNoSeMueveCompletoDeEncontrarObstaculos(){
-		Jugador jugador1 = new Jugador();
-		Jugador jugador2 = new Jugador();
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
 		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
-		Soldado soldado1 = new Soldado(new Ubicacion(2,2));
-		Soldado soldado2 = new Soldado(new Ubicacion(3,2));
-		Soldado soldado3 = new Soldado(new Ubicacion(4,2));
+		Soldado soldado1 = new Soldado(new Ubicacion(2,2),tableroTest);
+		Soldado soldado2 = new Soldado(new Ubicacion(3,2),tableroTest);
+		Soldado soldado3 = new Soldado(new Ubicacion(4,2),tableroTest);
 		Jinete jinete = new Jinete(new Ubicacion(3,3));
 
 		soldado1.setBando(bandoJugador1);
@@ -90,14 +84,12 @@ public class BatallonTest {
 
 	@Test
 	public void esBatallonNotaQueHayBatallon(){
-		Jugador jugador1 = new Jugador();
-		Jugador jugador2 = new Jugador();
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
 		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
-		Soldado soldado1 = new Soldado(new Ubicacion(2,2));
-		Soldado soldado2 = new Soldado(new Ubicacion(3,2));
-		Soldado soldado3 = new Soldado(new Ubicacion(4,2));
+		Soldado soldado1 = new Soldado(new Ubicacion(2,2),tableroTest);
+		Soldado soldado2 = new Soldado(new Ubicacion(3,2),tableroTest);
+		Soldado soldado3 = new Soldado(new Ubicacion(4,2),tableroTest);
 		soldado1.setBando(bandoJugador1);
 		soldado2.setBando(bandoJugador1);
 		soldado3.setBando(bandoJugador1);
@@ -113,14 +105,12 @@ public class BatallonTest {
 
 	@Test
 	public void noEsBatallonNotaQueNoHayBatallon(){
-		Jugador jugador1 = new Jugador();
-		Jugador jugador2 = new Jugador();
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
 		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
-		Soldado soldado1 = new Soldado(new Ubicacion(2,2));
-		Soldado soldado2 = new Soldado(new Ubicacion(2,3));
-		Soldado soldado3 = new Soldado(new Ubicacion(4,2));
+		Soldado soldado1 = new Soldado(new Ubicacion(2,2),tableroTest);
+		Soldado soldado2 = new Soldado(new Ubicacion(2,3),tableroTest);
+		Soldado soldado3 = new Soldado(new Ubicacion(4,2),tableroTest);
 		soldado1.setBando(bandoJugador1);
 		soldado2.setBando(bandoJugador1);
 		soldado3.setBando(bandoJugador1);
@@ -136,14 +126,12 @@ public class BatallonTest {
 
 	@Test
 	public void batallonAsociadoONullDaNull(){
-		Jugador jugador1 = new Jugador();
-		Jugador jugador2 = new Jugador();
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
 		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
-		Soldado soldado1 = new Soldado(new Ubicacion(2,2));
-		Soldado soldado2 = new Soldado(new Ubicacion(2,3));
-		Soldado soldado3 = new Soldado(new Ubicacion(4,2));
+		Soldado soldado1 = new Soldado(new Ubicacion(2,2),tableroTest);
+		Soldado soldado2 = new Soldado(new Ubicacion(2,3),tableroTest);
+		Soldado soldado3 = new Soldado(new Ubicacion(4,2),tableroTest);
 		soldado1.setBando(bandoJugador1);
 		soldado2.setBando(bandoJugador1);
 		soldado3.setBando(bandoJugador1);
@@ -151,22 +139,20 @@ public class BatallonTest {
 		tableroTest.ubicarEnCelda(soldado2, soldado2.getUbicacion());
 		tableroTest.ubicarEnCelda(soldado3, soldado3.getUbicacion());
 
-		BatallonUtil batallonGenerado = BatallonUtil.batallonAsociadoONull(soldado1,tableroTest);
+		Batallon batallonGenerado = BatallonUtil.batallonAsociadoONull(soldado1);
 
-		assertEquals(null, batallonGenerado);
+		assertEquals(new BatallonNull(), batallonGenerado);
 
 	}
 
 	@Test
 	public void batallonAsociadoONullCreaBatallon(){
-		Jugador jugador1 = new Jugador();
-		Jugador jugador2 = new Jugador();
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
 		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
-		Soldado soldado1 = new Soldado(new Ubicacion(2,2));
-		Soldado soldado2 = new Soldado(new Ubicacion(3,2));
-		Soldado soldado3 = new Soldado(new Ubicacion(4,2));
+		Soldado soldado1 = new Soldado(new Ubicacion(2,2),tableroTest);
+		Soldado soldado2 = new Soldado(new Ubicacion(3,2),tableroTest);
+		Soldado soldado3 = new Soldado(new Ubicacion(4,2),tableroTest);
 		soldado1.setBando(bandoJugador1);
 		soldado2.setBando(bandoJugador1);
 		soldado3.setBando(bandoJugador1);
@@ -174,8 +160,8 @@ public class BatallonTest {
 		tableroTest.ubicarEnCelda(soldado2, soldado2.getUbicacion());
 		tableroTest.ubicarEnCelda(soldado3, soldado3.getUbicacion());
 
-		BatallonUtil batallonPatron = new BatallonUtil(soldado1,soldado2,soldado3);
-		BatallonUtil batallonGenerado = BatallonUtil.batallonAsociadoONull(soldado1,tableroTest);
+		Batallon batallonPatron = new BatallonUtil(soldado1,soldado2,soldado3);
+		Batallon batallonGenerado = BatallonUtil.batallonAsociadoONull(soldado1);
 
 		assertTrue(batallonPatron.equals(batallonGenerado));
 

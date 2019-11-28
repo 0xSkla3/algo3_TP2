@@ -142,7 +142,7 @@ public abstract class Pieza implements Movible, Atacable {
 		return piezasInmediatas;
 	}
 
-	public abstract void actualizaRango(Tablero tablero);
+	public abstract Rango actualizaRango(Tablero tablero);
 
 	public abstract Rango getRango();
 

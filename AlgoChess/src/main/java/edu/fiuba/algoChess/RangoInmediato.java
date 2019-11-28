@@ -27,13 +27,19 @@ public class RangoInmediato implements Rango {
 	@Setter
 	ArrayList<Pieza> piezasEnRango;
 
-	public void actualizaRango(Pieza piezaCentral, Tablero tablero){
-		setArriba(tablero.getCelda(piezaCentral.getUbicacion().getUbicacionArriba()));
-		setAbajo(tablero.getCelda(piezaCentral.getUbicacion().getUbicacionAbajo()));
-		setDerecha(tablero.getCelda(piezaCentral.getUbicacion().getUbicacionIzquierda()));
-		setIzquierda(tablero.getCelda(piezaCentral.getUbicacion().getUbicacionDerecha()));
+	public RangoInmediato(Pieza piezaCentral, Tablero tablero) {
+		this.actualizaRangoInmediato(piezaCentral,tablero);
+	}
 
+	public Rango actualizaRangoInmediato(Pieza piezaCentral, Tablero tablero){
+
+		this.setArriba(tablero.getCelda(piezaCentral.getUbicacion().getUbicacionArriba()));
+		this.setAbajo(tablero.getCelda(piezaCentral.getUbicacion().getUbicacionAbajo()));
+		this.setDerecha(tablero.getCelda(piezaCentral.getUbicacion().getUbicacionIzquierda()));
+		this.setIzquierda(tablero.getCelda(piezaCentral.getUbicacion().getUbicacionDerecha()));
 		actualizaPiezasEnRango(piezaCentral);
+
+		return this;
 	}
 
 	public void actualizaPiezasEnRango(Pieza piezaCentral){

@@ -20,19 +20,12 @@ public class BatallonUtil implements Movible, Batallon, Agrupable {
 	@Getter
 	Pieza pieza3;
 
-	/*public static boolean esBatallon(Soldado soldado1, Soldado soldado2, Soldado soldado3) {
-		Batallon unBatallon = crearBatallon(soldado1, soldado2, soldado3);
-		return unBatallon.getPieza1() != null;
-	}*/
-
 	@Override
 	public void moverseALaDerecha(Tablero campoDeBatalla) {
-
 		Ubicacion ubicacionDerecha1 = getPieza1().ubicacion.getUbicacionDerecha();
 		Ubicacion ubicacionDerecha2 = getPieza2().ubicacion.getUbicacionDerecha();
 		Ubicacion ubicacionDerecha3 = getPieza3().ubicacion.getUbicacionDerecha();
 		this.mover(campoDeBatalla, ubicacionDerecha1, ubicacionDerecha2, ubicacionDerecha3);
-
 	}
 
 	@Override
@@ -116,7 +109,8 @@ public class BatallonUtil implements Movible, Batallon, Agrupable {
 		return null;
 	}*/
 
-	public Boolean equals(BatallonUtil batallon){
+
+	public boolean equals(Batallon batallon){
 		Set<Pieza> itemsBatallonActual = new HashSet<>();
 		Set<Pieza>itemsBatallonAComparar = new HashSet<>();
 
@@ -133,7 +127,6 @@ public class BatallonUtil implements Movible, Batallon, Agrupable {
 
 	@Override
 	public BatallonUtil agrupar(Pieza pieza1, Pieza pieza2, Pieza pieza3) {
-
 		return null;
 	}
 
@@ -143,8 +136,9 @@ public class BatallonUtil implements Movible, Batallon, Agrupable {
 	}
 
 	@Override
-	public void actualizaRango(Pieza piezaCentral, Tablero tablero) {
+	public Rango actualizaRangoInmediato(Pieza piezaCentral, Tablero tablero) {
 
+		return piezaCentral.actualizaRango(tablero);
 	}
 
 	@Override
@@ -154,6 +148,7 @@ public class BatallonUtil implements Movible, Batallon, Agrupable {
 
 	@Override
 	public ArrayList<Pieza> getPiezasEnRango() {
+
 		return null;
 	}
 
@@ -162,5 +157,18 @@ public class BatallonUtil implements Movible, Batallon, Agrupable {
 		return new BatallonUtil(pieza1, pieza2, pieza3);
 	}
 
+
+	//------------------Utilidades para testing-----------------------------
+
+	public static Batallon batallonAsociadoONull(Soldado soldado1) {
+		return soldado1.getRango().darDeAltaBatallon();
+	}
+
+	public static boolean esBatallon(Soldado soldado1, Soldado soldado2, Soldado soldado3) {
+		Batallon unBatallon = soldado1.getRango().darDeAltaBatallon();
+		return unBatallon.equals(new BatallonUtil(soldado1,soldado2,soldado3));
+	}
+
+	//-----------------------------------------------------------------------
 
 }

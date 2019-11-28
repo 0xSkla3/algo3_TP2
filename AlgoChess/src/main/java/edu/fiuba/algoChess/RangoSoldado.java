@@ -1,13 +1,12 @@
 package edu.fiuba.algoChess;
 
 import java.util.ArrayList;
-import java.util.stream.Stream;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@NoArgsConstructor
+
 public class RangoSoldado extends RangoInmediato implements Rango {
 
 	@Getter
@@ -18,8 +17,14 @@ public class RangoSoldado extends RangoInmediato implements Rango {
 	@Setter
 	ArrayList<Pieza> obstaculos;
 
+	public RangoSoldado(Pieza soldado, Tablero tableroActual){
+		super(soldado,tableroActual);
+		this.actualizaSoldadosCercanos(soldado);
+		this.actualizaObstaculosInmediatos(soldado);
+	}
+
 	public void actualizaRango(Soldado soldado, Tablero tablero){
-		super.actualizaRango(soldado,tablero);
+		super.actualizaRangoInmediato(soldado,tablero);
 		this.actualizaSoldadosCercanos(soldado);
 		this.actualizaObstaculosInmediatos(soldado);
 	}

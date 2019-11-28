@@ -12,16 +12,16 @@ public class RangoSoldadoTest {
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
 		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
-		Soldado soldado1 = new Soldado(new Ubicacion(2,2));
-		Soldado soldado2 = new Soldado(new Ubicacion(3,2));
-		Soldado soldado3 = new Soldado(new Ubicacion(4,2));
+		Soldado soldado1 = new Soldado(new Ubicacion(2,2),tableroTest);
+		Soldado soldado2 = new Soldado(new Ubicacion(3,2),tableroTest);
+		Soldado soldado3 = new Soldado(new Ubicacion(4,2),tableroTest);
 		soldado1.setBando(bandoJugador1);
 		soldado2.setBando(bandoJugador1);
 		soldado3.setBando(bandoJugador1);
 		tableroTest.ubicarEnCelda(soldado1, soldado1.getUbicacion());
 		tableroTest.ubicarEnCelda(soldado2, soldado2.getUbicacion());
 		tableroTest.ubicarEnCelda(soldado3, soldado3.getUbicacion());
-		RangoSoldado rango = new RangoSoldado();
+		RangoSoldado rango = new RangoSoldado(soldado2,tableroTest);
 		rango.actualizaRango(soldado2,tableroTest);
 
 		assertTrue(rango.getSoldadosEquipo().contains(soldado1));
@@ -36,9 +36,9 @@ public class RangoSoldadoTest {
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
 		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
-		Soldado soldado1 = new Soldado(new Ubicacion(2,2));
-		Soldado soldado2 = new Soldado(new Ubicacion(3,2));
-		Soldado soldado3 = new Soldado(new Ubicacion(4,2));
+		Soldado soldado1 = new Soldado(new Ubicacion(2,2),tableroTest);
+		Soldado soldado2 = new Soldado(new Ubicacion(3,2),tableroTest);
+		Soldado soldado3 = new Soldado(new Ubicacion(4,2),tableroTest);
 		Jinete jinete = new Jinete(new Ubicacion(3,3));
 		soldado1.setBando(bandoJugador1);
 		soldado2.setBando(bandoJugador1);
@@ -48,7 +48,7 @@ public class RangoSoldadoTest {
 		tableroTest.ubicarEnCelda(soldado2, soldado2.getUbicacion());
 		tableroTest.ubicarEnCelda(soldado3, soldado3.getUbicacion());
 		tableroTest.ubicarEnCelda(jinete, jinete.getUbicacion());
-		RangoSoldado rango = new RangoSoldado();
+		RangoSoldado rango = new RangoSoldado(soldado2,tableroTest);
 		rango.actualizaRango(soldado2,tableroTest);
 
 		assertTrue(rango.getObstaculos().contains(jinete));

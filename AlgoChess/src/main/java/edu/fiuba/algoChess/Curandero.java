@@ -36,8 +36,9 @@ public class Curandero extends Pieza {
 	};
 
 	@Override
-	public void actualizaRango(Tablero tablero) {
+	public Rango actualizaRango(Tablero tablero) {
 
+		return null;
 	}
 
 	@Override

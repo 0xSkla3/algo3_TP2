@@ -1,12 +1,12 @@
 package edu.fiuba.algoChess;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 public class BatallonNull implements Batallon {
 
@@ -66,8 +66,9 @@ public class BatallonNull implements Batallon {
 	}
 
 	@Override
-	public void actualizaRango(Pieza piezaCentral, Tablero tablero) {
+	public Rango actualizaRangoInmediato(Pieza piezaCentral, Tablero tablero) {
 
+		return null;
 	}
 
 	@Override
@@ -84,4 +85,22 @@ public class BatallonNull implements Batallon {
 	public Batallon crearBatallon(Pieza pieza1, Pieza pieza2, Pieza pieza3) {
 		return null;
 	}
+
+	@Override
+	public boolean equals(Batallon batallon){
+		Set<Pieza> itemsBatallonActual = new HashSet<>();
+		Set<Pieza>itemsBatallonAComparar = new HashSet<>();
+
+		itemsBatallonActual.add(this.getPieza1());
+		itemsBatallonActual.add(this.getPieza2());
+		itemsBatallonActual.add(this.getPieza3());
+
+		itemsBatallonAComparar.add(batallon.getPieza1());
+		itemsBatallonAComparar.add(batallon.getPieza2());
+
+		itemsBatallonAComparar.add(batallon.getPieza3());
+
+		return itemsBatallonActual.equals(itemsBatallonAComparar);
+	}
+
 }

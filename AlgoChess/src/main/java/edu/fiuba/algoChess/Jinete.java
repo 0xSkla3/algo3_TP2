@@ -54,8 +54,9 @@ public class Jinete extends Pieza {
 	}
 
 	@Override
-	public void actualizaRango(Tablero tablero) {
+	public Rango actualizaRango(Tablero tablero) {
 
+		return null;
 	}
 
 	@Override

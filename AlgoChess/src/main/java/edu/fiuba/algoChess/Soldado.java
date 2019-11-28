@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
-import java.util.stream.Stream;
 
 public class Soldado extends Pieza implements Movible {
 
@@ -29,9 +28,9 @@ public class Soldado extends Pieza implements Movible {
 		this.ataque = new AtaqueCercano(danioCercano);
 	}
 
-	public Soldado(Ubicacion ubicacion){
+	public Soldado(Ubicacion ubicacion, Tablero tablero){
 		super(ubicacion);
-		this.rango = new RangoSoldado();
+		this.rango = new RangoSoldado(this, tablero);
 	}
 
 	@Override
@@ -40,8 +39,8 @@ public class Soldado extends Pieza implements Movible {
 		return piezasInmediatas;
 	}
 
-	public void actualizaRango(Tablero tablero){
-		this.getRango().actualizaRango(this,tablero);
+	public Rango actualizaRango(Tablero tablero){
+		return this.getRango().actualizaRangoInmediato(this,tablero);
 	}
 
 	@Override

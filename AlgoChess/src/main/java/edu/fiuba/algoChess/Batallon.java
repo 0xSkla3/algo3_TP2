@@ -18,7 +18,7 @@ public interface Batallon extends Agrupable, Movible {
 	Collection<Pieza> desagrupar(Agrupable grupo);
 
 	@Override
-	void actualizaRango(Pieza piezaCentral, Tablero tablero);
+	Rango actualizaRangoInmediato(Pieza piezaCentral, Tablero tablero);
 
 	@Override
 	void actualizaPiezasEnRango(Pieza piezaCentral);
@@ -27,6 +27,8 @@ public interface Batallon extends Agrupable, Movible {
 	ArrayList<Pieza> getPiezasEnRango();
 
 	Batallon crearBatallon(Pieza pieza1, Pieza pieza2, Pieza pieza3);
+
+	boolean equals(Batallon batallon);
 
 	Pieza getPieza1();
 
