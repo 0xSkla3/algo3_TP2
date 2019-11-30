@@ -8,6 +8,8 @@ public abstract class Pieza implements Movible, Atacable {
 	//protected TipoPieza nombre;
 	private int vida;
 	private int costo;
+	protected DistanciaRelativa calculadorDistancia = new DistanciaRelativa();
+	//protected Tablero campoDeBatalla;//lo agrego LIO@@@@
 	protected Ubicacion ubicacion;
 	protected Bando bando;
 
@@ -44,35 +46,6 @@ public abstract class Pieza implements Movible, Atacable {
 
 	}
 
-	public void ejecutarComportamiento(DistanciaRelativa distancia, Pieza pieza){
-
-	};
-
-	public DistanciaRelativa getDistanciaRelativa (Pieza pieza){
-		Ubicacion ubicacionPiezaAfectada = pieza.getUbicacion();
-		Ubicacion ubicacionPiezaAfectante = this.getUbicacion();
-		int coordenadaXAtacado = ubicacionPiezaAfectada.getCoordenadaX();
-		int coordenadaYAtacado = ubicacionPiezaAfectada.getCoordenadaY();
-		int coordenadaXAtacante = ubicacionPiezaAfectante.getCoordenadaX();
-		int coordenadaYAtacante = ubicacionPiezaAfectante.getCoordenadaY();
-
-		DistanciaRelativa distanciaRelativa = DistanciaRelativa.LEJANO;
-
-		//DistanciaRelativa distanciaRelativa = DistanciaRelativa.LEJANO;
-		if ((Math.abs(coordenadaXAtacado-coordenadaXAtacante)+(Math.abs(coordenadaYAtacado-coordenadaYAtacante)))<3) {
-			distanciaRelativa = DistanciaRelativa.CERCANO;
-		}
-		if (((Math.abs(coordenadaXAtacado-coordenadaXAtacante)+(Math.abs(coordenadaYAtacado-coordenadaYAtacante)))>2)&&
-				((Math.abs(coordenadaXAtacado-coordenadaXAtacante)+(Math.abs(coordenadaYAtacado-coordenadaYAtacante)))<6)){
-			distanciaRelativa = DistanciaRelativa.MEDIO;
-		}
-//		if ((Math.abs(coordenadaXAtacado-coordenadaXAtacante)+(Math.abs(coordenadaYAtacado-coordenadaYAtacante)))>5){
-//			distanciaRelativa = DistanciaRelativa.LEJANO;
-//		};
-		return distanciaRelativa;
-	};
-
-
 
 	public int getCosto(){
 		return this.costo;
@@ -97,13 +70,37 @@ public abstract class Pieza implements Movible, Atacable {
 		return this.bando;
 	}
 
-	public void aumentarVida(int aumento) {
-		this.vida = this.vida + aumento;
+
+	////@@@@@
+//	public void aplicarCuracionAPieza (Curandero curandero){
+//	}
+
+	////@@@@@@
+	public void aumentarVida(Comportamiento comportamiento) {
+		this.vida = this.vida + comportamiento.getValorComportamiento();
 		}
 
-	public void recibirAtaque(Ataque ataque){
-		this.vida = this.vida - ataque.getDanio();
+	public void recibirAtaque(Comportamiento comportamiento){
+		//comportamiento.ejecutarComportamiento()
+		this.vida = this.vida - comportamiento.getValorComportamiento();//getDanio();
 		}
+
+//	public void recibirAtaquePosta(Comportamiento comportamiento){
+//		this.vida = this.vida - comportamiento.ejecutarComportamiento();
+//	}
+
+//	public abstract void ejecutarComportamientoPorDistancia(DistanciaRelativa distancia, Pieza pieza);
+	public void ejecutarComportamientoPorDistancia(DistanciaRelativa distancia, Pieza pieza) { }
+
+	public abstract void ejecutarComportamientoPorDistancia(DistanciaCercana distancia, Pieza pieza);
+	public abstract void ejecutarComportamientoPorDistancia(DistanciaMedia distancia, Pieza pieza);
+	public abstract void ejecutarComportamientoPorDistancia(DistanciaLejana distancia, Pieza pieza);
+
+
+
+	public DistanciaRelativa getCalculadorDistancia(){
+		return this.calculadorDistancia;
+	}
 
 	public void setUbicacion(Ubicacion ubicacion){
 		this.ubicacion=ubicacion;
@@ -137,16 +134,29 @@ public abstract class Pieza implements Movible, Atacable {
 			this.ubicacion = ubicacion;}
 	}
 
-	//COMENTARIO IMPORTANTE: DECIDI MOVER EL METODO DE JINETE
-
-
-
-
-
-
-
-
-
+	//	public DistanciaRelativa getDistanciaRelativa (Pieza pieza){
+//		Ubicacion ubicacionPiezaAfectada = pieza.getUbicacion();
+//		Ubicacion ubicacionPiezaAfectante = this.getUbicacion();
+//		int coordenadaXAtacado = ubicacionPiezaAfectada.getCoordenadaX();
+//		int coordenadaYAtacado = ubicacionPiezaAfectada.getCoordenadaY();
+//		int coordenadaXAtacante = ubicacionPiezaAfectante.getCoordenadaX();
+//		int coordenadaYAtacante = ubicacionPiezaAfectante.getCoordenadaY();
+//
+//		DistanciaRelativa distanciaRelativa = DistanciaRelativa.LEJANO;
+//
+//		//DistanciaRelativa distanciaRelativa = DistanciaRelativa.LEJANO;
+//		if ((Math.abs(coordenadaXAtacado-coordenadaXAtacante)+(Math.abs(coordenadaYAtacado-coordenadaYAtacante)))<3) {
+//			distanciaRelativa = DistanciaRelativa.CERCANO;
+//		}
+//		if (((Math.abs(coordenadaXAtacado-coordenadaXAtacante)+(Math.abs(coordenadaYAtacado-coordenadaYAtacante)))>2)&&
+//				((Math.abs(coordenadaXAtacado-coordenadaXAtacante)+(Math.abs(coordenadaYAtacado-coordenadaYAtacante)))<6)){
+//			distanciaRelativa = DistanciaRelativa.MEDIO;
+//		}
+////		if ((Math.abs(coordenadaXAtacado-coordenadaXAtacante)+(Math.abs(coordenadaYAtacado-coordenadaYAtacante)))>5){
+////			distanciaRelativa = DistanciaRelativa.LEJANO;
+////		};
+//		return distanciaRelativa;
+//	};
 
 
 	//public abstract void reconocerTerreno(int distanciaAReconocer, Pieza piezaCentral, Tablero campoDeBatalla);

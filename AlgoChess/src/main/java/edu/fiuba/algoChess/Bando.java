@@ -4,11 +4,20 @@ package edu.fiuba.algoChess;
 
 public abstract class Bando {
 
-    public abstract void atacar(Pieza pieza, Ataque ataque, Bando bando);
+    public abstract void atacar(Pieza pieza, Comportamiento comportamiento, Bando bando);
 
-    public abstract void atacar(Pieza pieza, Ataque ataque, BandoJugador1 bandojugador1);
+    public abstract void atacar(Pieza pieza, Comportamiento comportamiento, BandoJugador1 bandojugador1);
 
-    public abstract void atacar(Pieza pieza, Ataque ataque, BandoJugador2 bandojugador2);
+    public abstract void atacar(Pieza pieza, Comportamiento comportamiento, BandoJugador2 bandojugador2);
+
+
+    public abstract void curar(Pieza pieza, Comportamiento comportamiento, Bando bando);
+
+    public abstract void curar(Pieza pieza, Comportamiento comportamiento, BandoJugador1 bandojugador1);//
+
+    public abstract void curar(Pieza pieza, Comportamiento comportamiento, BandoJugador2 bandojugador2);
+
+
 
     @Override
     public boolean equals(Object o) {

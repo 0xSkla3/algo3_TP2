@@ -6,94 +6,56 @@ import static org.junit.Assert.assertEquals;
 
 public class CuranderoTest {
 
-    // este test deberia dar expection, una pieza no puede tener mas que su vida maxima
+
     @Test
-    public void test00CuranderoPuedeCurarSoldadoAliadoCercano(){
-
+    public void test001CuranderoPuedeCurarSoldadoAliadoCercano(){
         BandoJugador1 bandoJugador1 = new BandoJugador1();
-
-        Ubicacion ubicacionSoldado = new Ubicacion(1,1);
+        Ubicacion ubicacionSoldado = new Ubicacion(1,3);
         Soldado soldado = new Soldado(ubicacionSoldado,bandoJugador1);
-
         Ubicacion ubicacionCurandero = new Ubicacion(1,2);
         Curandero curandero = new Curandero(ubicacionCurandero,bandoJugador1);
-
-        DistanciaRelativa distanciaSoldadoACurandero = curandero.getDistanciaRelativa(soldado);
-        int vidaTrasCuracion = soldado.getVida() + curandero.getSanacion();
-        curandero.curar(distanciaSoldadoACurandero,soldado);
-
-        assertEquals(vidaTrasCuracion,soldado.getVida());
+        Comportamiento comportamiento = new AtaqueMedioJinete(15);
+        soldado.recibirAtaque(comportamiento);
+        int vidaSoldadoCurado = soldado.getVida() + curandero.getCuracion().getValorComportamiento();
+        curandero.curar(soldado);
+        assertEquals(vidaSoldadoCurado,soldado.getVida());
     };
 
-    @Test
-    public void test01CuranderoNoPuedeCurarSoldadoLejano(){
-
-        BandoJugador1 bandoJugador1 = new BandoJugador1();
-        Ubicacion ubicacionSoldado = new Ubicacion(1,10);
-        Soldado soldado = new Soldado(ubicacionSoldado,bandoJugador1);
-
-        Ubicacion ubicacionCurandero = new Ubicacion(1,2);
-        Curandero curandero = new Curandero(ubicacionCurandero,bandoJugador1);
-
-        DistanciaRelativa distanciaSoldadoACurandero = curandero.getDistanciaRelativa(soldado);
-        //	assertTrue(distanciaJineteASoldado instanceof DistanciaRelativa);
-        int vidaSoldadoSinSerAlcanzadoPorCuracion = soldado.getVida();
-        curandero.curar(distanciaSoldadoACurandero,soldado);
-        assertEquals(vidaSoldadoSinSerAlcanzadoPorCuracion,soldado.getVida());
-    };
-
-    @Test
-    public void test02CuranderoNoPuedeCurarCatapultaCercana(){
-
-        BandoJugador1 bandoJugador1 = new BandoJugador1();
-        Ubicacion ubicacionCatapulta = new Ubicacion(1,1);
-        Catapulta catapulta = new Catapulta(ubicacionCatapulta,bandoJugador1);
-
-        Ubicacion ubicacionCurandero = new Ubicacion(1,2);
-        Curandero curandero = new Curandero(ubicacionCurandero,bandoJugador1);
-
-        DistanciaRelativa distanciaCatapultaACurandero = curandero.getDistanciaRelativa(catapulta);
-        //	assertTrue(distanciaJineteASoldado instanceof DistanciaRelativa);
-        int vidaCatapultaSinSerAlcanzadoPorCuracion = catapulta.getVida();
-        curandero.curar(distanciaCatapultaACurandero,catapulta);
-        assertEquals(vidaCatapultaSinSerAlcanzadoPorCuracion,catapulta.getVida());
-    };
-
-    @Test
-    public void test03CuranderoNoPuedeCurarCatapultaLejana(){
-
-        BandoJugador1 bandoJugador1 = new BandoJugador1();
-        Ubicacion ubicacionCatapulta = new Ubicacion(1,9);
-        Catapulta catapulta = new Catapulta(ubicacionCatapulta,bandoJugador1);
-
-        Ubicacion ubicacionCurandero = new Ubicacion(1,2);
-        Curandero curandero = new Curandero(ubicacionCurandero,bandoJugador1);
-
-        DistanciaRelativa distanciaCatapultaACurandero = curandero.getDistanciaRelativa(catapulta);
-        //	assertTrue(distanciaJineteASoldado instanceof DistanciaRelativa);
-        int vidaCatapultaSinSerAlcanzadoPorCuracion = catapulta.getVida();
-        curandero.curar(distanciaCatapultaACurandero,catapulta);
-        assertEquals(vidaCatapultaSinSerAlcanzadoPorCuracion,catapulta.getVida());
-    };
-
-    @Test
-    public void test04CuranderoNoPuedeCurarSoldadoEnemigoCercano(){
-
+    @Test (expected = NoSePuedeCurarUnaUnidadEnemigaException.class)
+    public void test002SeLanzaExceptionCuandoCuranderoIntentaCurarSoldadoEnemigoCercano(){
         BandoJugador1 bandoJugador1 = new BandoJugador1();
         BandoJugador2 bandoJugador2 = new BandoJugador2();
-
+        Ubicacion ubicacionSoldado = new Ubicacion(1,3);
+        Soldado soldado = new Soldado(ubicacionSoldado,bandoJugador1);
         Ubicacion ubicacionCurandero = new Ubicacion(1,2);
-        Curandero curandero = new Curandero(ubicacionCurandero,bandoJugador1);
-
-        Ubicacion ubicacionSoldado = new Ubicacion(1,1);
-        Soldado soldadoEnemigo = new Soldado(ubicacionSoldado,bandoJugador2);
-
-        DistanciaRelativa distanciaSoldadoACurandero = curandero.getDistanciaRelativa(soldadoEnemigo);
-        //	assertTrue(distanciaJineteASoldado instanceof DistanciaRelativa);
-        int vidaTrasCuracion = soldadoEnemigo.getVida();
-        curandero.curar(distanciaSoldadoACurandero,soldadoEnemigo);
-        assertEquals(vidaTrasCuracion,soldadoEnemigo.getVida());
+        Curandero curandero = new Curandero(ubicacionCurandero,bandoJugador2);
+        Comportamiento comportamiento = new AtaqueMedioJinete(15);
+        soldado.recibirAtaque(comportamiento);
+        curandero.curar(soldado);
     };
 
+
+    @Test (expected = FueraDeRangoParaEjecutarComportamientoException.class)
+    public void test03SeLanzaExceptionCuandoCuranderoIntentaCurarSoldadoAliadoLejano(){
+        BandoJugador1 bandoJugador1 = new BandoJugador1();
+        Ubicacion ubicacionSoldado = new Ubicacion(1,8);
+        Soldado soldado = new Soldado(ubicacionSoldado,bandoJugador1);
+        Ubicacion ubicacionCurandero = new Ubicacion(1,2);
+        Curandero curandero = new Curandero(ubicacionCurandero,bandoJugador1);
+        Comportamiento comportamiento = new AtaqueMedioJinete(15);
+        soldado.recibirAtaque(comportamiento);
+        curandero.curar(soldado);
+    };
+    @Test (expected = NoSePuedeCurarUnaCatapultaException.class)
+    public void test04SeLanzaExceptionCuandoCuranderoIntentaCurarUnaCatapulta(){
+        BandoJugador1 bandoJugador1 = new BandoJugador1();
+        Ubicacion ubicacionCatapulta = new Ubicacion(1,3);
+        Catapulta catapulta = new Catapulta(ubicacionCatapulta,bandoJugador1);
+        Ubicacion ubicacionCurandero = new Ubicacion(1,2);
+        Curandero curandero = new Curandero(ubicacionCurandero,bandoJugador1);
+        Comportamiento comportamiento = new AtaqueMedioJinete(15);
+        catapulta.recibirAtaque(comportamiento);
+        curandero.curar(catapulta);
+    };
 
 }

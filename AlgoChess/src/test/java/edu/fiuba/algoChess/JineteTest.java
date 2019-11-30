@@ -150,39 +150,9 @@ public class JineteTest {
     };
 
     @Test
-    public void test08JineteAtacaAEnemigoEnDistanciaMediaCuandoHayUnSoldadoAliadoCerca(){ //este test no tiene sentido, deberia atacarlo en distancia corta, no negar la distancia media
+    public void test08JineteAtacaAEnemigoCercanoConAtaqueMedioCuandoHayUnSoldadoAliadoCerca(){
         Jugador jugador1 = new Jugador();
         Jugador jugador2 = new Jugador();
-        BandoJugador1 bandoJugador1 = new BandoJugador1();
-        BandoJugador2 bandoJugador2 = new BandoJugador2();
-        Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
-
-        Ubicacion ubicacionSoldadoEnemigo = new Ubicacion(15,1);
-        Soldado soldadoEnemigo = new Soldado(ubicacionSoldadoEnemigo,bandoJugador2);
-
-        Ubicacion ubicacionSoldadoAliado = new Ubicacion(10,2);
-        Soldado soldadoAliado = new Soldado(ubicacionSoldadoAliado,bandoJugador1);
-
-        Ubicacion ubicacionJineteAliado = new Ubicacion(10,1);
-        Jinete jineteAliado = new Jinete(ubicacionJineteAliado,bandoJugador1);
-
-
-        tableroTest.ubicarEnCelda(soldadoEnemigo, ubicacionSoldadoEnemigo);
-        tableroTest.ubicarEnCelda(soldadoAliado,ubicacionSoldadoAliado);
-        tableroTest.ubicarEnCelda(jineteAliado,ubicacionJineteAliado);
-        jineteAliado.reconocerTerreno(tableroTest);
-
-        DistanciaRelativa distanciaSoldadoEnemigoAJineteAliado = jineteAliado.getDistanciaRelativa(soldadoEnemigo);
-        //assertTrue(distanciaSoldadoAJinete instanceof DistanciaRelativa);
-        int vidaTrasAtaque = soldadoEnemigo.getVida() - jineteAliado.getDanioMedio();
-        jineteAliado.atacar(distanciaSoldadoEnemigoAJineteAliado,soldadoEnemigo);
-        assertEquals(vidaTrasAtaque,soldadoEnemigo.getVida());
-
-    };
-
-    @Test
-    public void test09JineteNoPuedeAtacarConAtaqueMedioAEnemigoEnDistanciaCortaAunCuandoHayUnSoldadoAliadoCerca(){
-
         BandoJugador1 bandoJugador1 = new BandoJugador1();
         BandoJugador2 bandoJugador2 = new BandoJugador2();
         Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
@@ -196,21 +166,43 @@ public class JineteTest {
         Ubicacion ubicacionJineteAliado = new Ubicacion(10,1);
         Jinete jineteAliado = new Jinete(ubicacionJineteAliado,bandoJugador1);
 
+
         tableroTest.ubicarEnCelda(soldadoEnemigo, ubicacionSoldadoEnemigo);
         tableroTest.ubicarEnCelda(soldadoAliado,ubicacionSoldadoAliado);
         tableroTest.ubicarEnCelda(jineteAliado,ubicacionJineteAliado);
         jineteAliado.reconocerTerreno(tableroTest);
 
-        DistanciaRelativa distanciaSoldadoEnemigoAJineteAliado = jineteAliado.getDistanciaRelativa(soldadoEnemigo);
-        //assertTrue(distanciaSoldadoAJinete instanceof DistanciaRelativa);
-        int vidaTrasAtaque = soldadoEnemigo.getVida();
-        jineteAliado.atacar(distanciaSoldadoEnemigoAJineteAliado,soldadoEnemigo);
+        int vidaTrasAtaque = soldadoEnemigo.getVida() - (jineteAliado.getAtaqueMedio().getValorComportamiento());
+        jineteAliado.atacar(soldadoEnemigo);
         assertEquals(vidaTrasAtaque,soldadoEnemigo.getVida());
 
     };
 
     @Test
-    public void test10JineteAtacaConAtaqueCercanoAEnemigoEnDistanciaCortaCuandoNoHayUnSoldadoAliadoCerca(){
+    public void test09JineteAtacaConAtaqueMedioAEnemigoADistanciaMedia(){
+        BandoJugador1 bandoJugador1 = new BandoJugador1();
+        BandoJugador2 bandoJugador2 = new BandoJugador2();
+        Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
+
+        Ubicacion ubicacionSoldadoEnemigo = new Ubicacion(11,4);
+        Soldado soldadoEnemigo = new Soldado(ubicacionSoldadoEnemigo,bandoJugador2);
+
+        Ubicacion ubicacionJineteAliado = new Ubicacion(10,1);
+        Jinete jineteAliado = new Jinete(ubicacionJineteAliado,bandoJugador1);
+
+        tableroTest.ubicarEnCelda(soldadoEnemigo, ubicacionSoldadoEnemigo);
+        tableroTest.ubicarEnCelda(jineteAliado,ubicacionJineteAliado);
+        jineteAliado.reconocerTerreno(tableroTest);
+
+        int vidaTrasAtaque = soldadoEnemigo.getVida() - jineteAliado.getAtaqueMedio().getValorComportamiento();
+
+        jineteAliado.atacar(soldadoEnemigo);
+        assertEquals(vidaTrasAtaque, soldadoEnemigo.getVida());
+
+    }
+
+    @Test
+    public void test10JineteAtacaConAtaqueCercanoAEnemigoCercanoCuandoNoHayUnSoldadoAliadoCerca(){
 
         BandoJugador1 bandoJugador1 = new BandoJugador1();
         BandoJugador2 bandoJugador2 = new BandoJugador2();
@@ -230,97 +222,43 @@ public class JineteTest {
         tableroTest.ubicarEnCelda(jineteAliado,ubicacionJineteAliado);
         jineteAliado.reconocerTerreno(tableroTest);
 
-        DistanciaRelativa distanciaSoldadoEnemigoAJineteAliado = jineteAliado.getDistanciaRelativa(soldadoEnemigo);
-        //assertTrue(distanciaSoldadoAJinete instanceof DistanciaRelativa);
-        int vidaTrasAtaque = soldadoEnemigo.getVida() - jineteAliado.getDanioCercano();
-        jineteAliado.atacar(distanciaSoldadoEnemigoAJineteAliado,soldadoEnemigo);
-        assertEquals(vidaTrasAtaque,soldadoEnemigo.getVida());
+        int vidaTrasAtaque = soldadoEnemigo.getVida() - jineteAliado.getAtaqueCercano().getValorComportamiento();
 
+        jineteAliado.atacar(soldadoEnemigo);
+        assertEquals(vidaTrasAtaque, soldadoEnemigo.getVida());
     };
 
-    @Test
-    public void test11JineteNoPuedeAtacarConAtaqueCercanoAEnemigoEnDistanciaCortaCuandoHayUnSoldadoAliadoCerca(){
+    @Test (expected = FueraDeRangoParaEjecutarComportamientoException.class)
+    public void SeArrojaExceptionCuandoSeQuiereAtacarAUnEnemigoLejano(){
 
         BandoJugador1 bandoJugador1 = new BandoJugador1();
         BandoJugador2 bandoJugador2 = new BandoJugador2();
         Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
-
-        Ubicacion ubicacionSoldadoEnemigo = new Ubicacion(11,1);
+        Ubicacion ubicacionSoldadoEnemigo = new Ubicacion(15,7);
         Soldado soldadoEnemigo = new Soldado(ubicacionSoldadoEnemigo,bandoJugador2);
-
-        Ubicacion ubicacionSoldadoAliado = new Ubicacion(10,2);
-        Soldado soldadoAliado = new Soldado(ubicacionSoldadoAliado,bandoJugador1);
-
         Ubicacion ubicacionJineteAliado = new Ubicacion(10,1);
         Jinete jineteAliado = new Jinete(ubicacionJineteAliado,bandoJugador1);
-
         tableroTest.ubicarEnCelda(soldadoEnemigo, ubicacionSoldadoEnemigo);
-        tableroTest.ubicarEnCelda(soldadoAliado,ubicacionSoldadoAliado);
         tableroTest.ubicarEnCelda(jineteAliado,ubicacionJineteAliado);
         jineteAliado.reconocerTerreno(tableroTest);
+        jineteAliado.atacar(soldadoEnemigo);
+    }
 
-        DistanciaRelativa distanciaSoldadoEnemigoAJineteAliado = jineteAliado.getDistanciaRelativa(soldadoEnemigo);
-        //assertTrue(distanciaSoldadoAJinete instanceof DistanciaRelativa);
-        int vidaTrasAtaque = soldadoEnemigo.getVida();
-        jineteAliado.atacar(distanciaSoldadoEnemigoAJineteAliado,soldadoEnemigo);
-        assertEquals(vidaTrasAtaque,soldadoEnemigo.getVida());
-
-    };
-
-    @Test
-
-    public void test12JineteAtacaSoldadoCercano(){
+    @Test (expected = NoSePuedeAtacarUnAliadoException.class)
+    public void SeArrojaExceptionCuandoSeQuiereAtacarUnAliado(){
 
         BandoJugador1 bandoJugador1 = new BandoJugador1();
         BandoJugador2 bandoJugador2 = new BandoJugador2();
-
-        Ubicacion ubicacionJinete = new Ubicacion(1,2);
-        Jinete jinete = new Jinete(ubicacionJinete,bandoJugador1);
-
-        Ubicacion ubicacionSoldado = new Ubicacion(1,1);
-        Soldado soldado = new Soldado(ubicacionSoldado,bandoJugador2);
-
-
-        DistanciaRelativa distanciaSoldadoAJinete = jinete.getDistanciaRelativa(soldado);
-        //assertTrue(distanciaSoldadoAJinete instanceof DistanciaRelativa);
-        int vidaTrasAtaque = soldado.getVida() - jinete.getDanioCercano();
-        jinete.atacar(distanciaSoldadoAJinete,soldado);
-        Assert.assertEquals(vidaTrasAtaque,soldado.getVida());
-    };
-
-    @Test
-    public void test13JineteAtacaSoldadoADistanciaMedia() {
-
-        BandoJugador1 bandoJugador1 = new BandoJugador1();
-        BandoJugador2 bandoJugador2 = new BandoJugador2();
-
-        Ubicacion ubicacionJinete = new Ubicacion(1,2);
-        Jinete jinete = new Jinete(ubicacionJinete,bandoJugador1);
-
-        Ubicacion ubicacionSoldado = new Ubicacion(4,2);
-        Soldado soldado = new Soldado(ubicacionSoldado,bandoJugador2);
-
-        DistanciaRelativa distanciaSoldadoAJinete = jinete.getDistanciaRelativa(soldado);
-        //assertTrue(distanciaSoldadoAJinete instanceof DistanciaRelativa);
-        int vidaTrasAtaque = soldado.getVida() - jinete.getDanioMedio();
-        jinete.atacar(distanciaSoldadoAJinete,soldado);
-        Assert.assertEquals(vidaTrasAtaque,soldado.getVida());
-    };
-
-/*    @Test    ESTE TEST DEBE TIRAR FUERA_DE_RANGO_EXCEPT
-    public void test14JineteAtacaSoldadoLejanoYNoSeDescuentaVidaDelSoldado(){
-        Soldado soldado = new Soldado();
-        Ubicacion ubicacionSoldado = new Ubicacion(10,10);
-        soldado.setUbicacion(ubicacionSoldado);
-        Jinete jinete = new Jinete();
-        Ubicacion ubicacionJinete = new Ubicacion(1,2);
-        jinete.setUbicacion(ubicacionJinete);
-        DistanciaRelativa distanciaSoldadoAJinete = jinete.getDistanciaRelativa(soldado);
-        //assertTrue(distanciaSoldadoAJinete instanceof DistanciaRelativa);
-        int vidaTrasAtaque = soldado.getVida() - jinete.getDanioCercano();
-        jinete.ejecutarComportamiento(distanciaSoldadoAJinete,soldado);
-        Assert.assertEquals(vidaTrasAtaque,soldado.getVida());
-    };*/
+        Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
+        Ubicacion ubicacionSoldadoAliado = new Ubicacion(10,2);
+        Soldado soldadoAliado = new Soldado(ubicacionSoldadoAliado,bandoJugador1);
+        Ubicacion ubicacionJineteAliado = new Ubicacion(10,1);
+        Jinete jineteAliado = new Jinete(ubicacionJineteAliado,bandoJugador1);
+        tableroTest.ubicarEnCelda(soldadoAliado, ubicacionSoldadoAliado);
+        tableroTest.ubicarEnCelda(jineteAliado,ubicacionJineteAliado);
+        jineteAliado.reconocerTerreno(tableroTest);
+        jineteAliado.atacar(soldadoAliado);
+    }
 
 }
 

@@ -1,18 +1,20 @@
 package edu.fiuba.algoChess;
 
-//import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.NotNull;
+import java.util.Optional;
 
 public class Catapulta extends Pieza {
 
-	private AtaqueLejano ataque;
-	private int danio = 20;
+	private ComportamientoLejano ataque;// quitar
+	private int danio = 20;// quitar
+	private Comportamiento ataqueMedio = new AtaqueLejanoCatapulta(20);
 //	public int costo = 5;
 //	private int vida = 50;     no puedo pasar estos parametros en el constructor super, averiguar como hacer
 
 	public Catapulta(Ubicacion ubicacion,Bando bando){
 
 		super(5,50,ubicacion,bando);
-		ataque = new AtaqueLejano(danio);
+		ataque = new ComportamientoLejano(danio);
 
 	}
 
@@ -21,7 +23,7 @@ public class Catapulta extends Pieza {
 
 		super(5,50);
 
-		ataque = new AtaqueLejano(danio);
+		ataque = new ComportamientoLejano(danio);
 
 	}
 
@@ -30,28 +32,84 @@ public class Catapulta extends Pieza {
 	}
 
 
+
+
 	public void mover( Tablero campoDeBatalla, Ubicacion ubicacion) {
 	};
 
-	public void ejecutarComportamiento(DistanciaRelativa distancia, Pieza atacado){
 
-		if(!this.bando.equals(atacado.getBando())){
-			if (distancia==DistanciaRelativa.CERCANO){
-				atacado.recibirAtaque(this.ataque);
-			};
-			if (distancia==DistanciaRelativa.MEDIO){
-				atacado.recibirAtaque(this.ataque);
-			};
-//			if (distancia==DistanciaRelativa.LEJANO){
-//				atacado.recibirAtaque(this.ataqueLejano);
-//		};
-		}
+
+	//DOUBLE DISPATCH
+
+//	@Override
+//	public void ejecutarComportamientoPorDistancia(DistanciaRelativa distancia) {
+//
+//	}
+	@Override
+	public void ejecutarComportamientoPorDistancia(DistanciaCercana distancia, Pieza pieza) {
+		throw new FueraDeRangoParaEjecutarComportamientoException("Pieza fuera de rango");
+ 	};
+	@Override
+	public void ejecutarComportamientoPorDistancia(DistanciaMedia distancia, Pieza pieza) {
+		this.bando.atacar(pieza, this.ataqueMedio, pieza.getBando());
+	};
+	@Override
+	public void ejecutarComportamientoPorDistancia(DistanciaLejana distancia, Pieza pieza) {
+		throw new FueraDeRangoParaEjecutarComportamientoException("Pieza fuera de rango");
+		};
+
+	public void atacar(Pieza atacado){
+		DistanciaRelativa distanciaEntrePiezas = this.calculadorDistancia.getDistanciaRelativa(this,atacado);
+		distanciaEntrePiezas.ejecutarComportamientoPorDistancia(this, atacado);
+	};
+
+
+
+	public Comportamiento getAtaqueLejano(){
+		return this.ataque;
+	};
+	public Comportamiento getAtaqueMedio(){
+		return this.ataqueMedio;
 	}
 
 
-	public Ataque getAtaqueLejano(){
-		return this.ataque;
-	};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//	//@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+//	public void ejecutarComportamiento(DistanciaRelativa distancia, Pieza atacado){
+//
+//		if(!this.bando.equals(atacado.getBando())){
+//			if (distancia==DistanciaRelativa.CERCANO){
+//				atacado.recibirAtaque(this.ataque);
+//			};
+//			if (distancia==DistanciaRelativa.MEDIO){
+//				atacado.recibirAtaque(this.ataque);
+//			};
+////			if (distancia==DistanciaRelativa.LEJANO){
+////				atacado.recibirAtaque(this.ataqueLejano);
+////		};
+//		}
+//	}
+
+
+
 
 
 /*	public void ejecutarComportamiento() {

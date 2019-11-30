@@ -28,31 +28,31 @@ public class SoldadoTest {
 
 	}
 
-	@Test
-	public void test01TresSoldadosContiguosSeMuevenEnLaMismaDireccion(){
-
-
-		BandoJugador1 bandoJugador1 = new BandoJugador1();
-		BandoJugador2 bandoJugador2 = new BandoJugador2();
-		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
-
-		Soldado soldado1 = new Soldado(new Ubicacion(2,2),bandoJugador1);
-		Soldado soldado2 = new Soldado(new Ubicacion(3,2),bandoJugador1);
-		Soldado soldado3 = new Soldado(new Ubicacion(4,2),bandoJugador1);
-
-		tableroTest.ubicarEnCelda(soldado1, soldado1.getUbicacion());
-		tableroTest.ubicarEnCelda(soldado2, soldado2.getUbicacion());
-		tableroTest.ubicarEnCelda(soldado3, soldado3.getUbicacion());
-
-		Batallon batallon = soldado1.verificaBatallonONull(tableroTest);
-
-		batallon.moverseArriba(tableroTest);
-
-		assertEquals(batallon.getSoldado1().getUbicacion(), new Ubicacion(4,3));
-		assertEquals(batallon.getSoldado2().getUbicacion(), new Ubicacion(3,3));
-		assertEquals(batallon.getSoldado3().getUbicacion(), new Ubicacion(2,3));
-
-	}
+//	@Test
+//	public void test01TresSoldadosContiguosSeMuevenEnLaMismaDireccion(){
+//
+//
+//		BandoJugador1 bandoJugador1 = new BandoJugador1();
+//		BandoJugador2 bandoJugador2 = new BandoJugador2();
+//		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
+//
+//		Soldado soldado1 = new Soldado(new Ubicacion(2,2),bandoJugador1);
+//		Soldado soldado2 = new Soldado(new Ubicacion(3,2),bandoJugador1);
+//		Soldado soldado3 = new Soldado(new Ubicacion(4,2),bandoJugador1);
+//
+//		tableroTest.ubicarEnCelda(soldado1, soldado1.getUbicacion());
+//		tableroTest.ubicarEnCelda(soldado2, soldado2.getUbicacion());
+//		tableroTest.ubicarEnCelda(soldado3, soldado3.getUbicacion());
+//
+//		Batallon batallon = soldado1.verificaBatallonONull(tableroTest);
+//
+//		batallon.moverseArriba(tableroTest);
+//
+//		assertEquals(batallon.getSoldado1().getUbicacion(), new Ubicacion(4,3));
+//		assertEquals(batallon.getSoldado2().getUbicacion(), new Ubicacion(3,3));
+//		assertEquals(batallon.getSoldado3().getUbicacion(), new Ubicacion(2,3));
+//
+//	}
 
 	@Test
 	public void test02TresSoldadosConObstaculoSeMuevenDos(){
@@ -74,7 +74,6 @@ public class SoldadoTest {
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
 		Tablero unTablero = new Tablero(bandoJugador1, bandoJugador2);
-
 		Soldado soldado1 = new Soldado(new Ubicacion(2,2));
 		Soldado soldado2 = new Soldado(new Ubicacion(3,2));
 		Soldado soldado3 = new Soldado(new Ubicacion(4,2));
@@ -85,11 +84,9 @@ public class SoldadoTest {
 
 	@Test
 	public void test04CuatroSoldadosContiguosMuevenTres(){
-
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
 		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
-
 		Soldado soldado1 = new Soldado(new Ubicacion(2,2));
 		Soldado soldado2 = new Soldado(new Ubicacion(3,2));
 		Soldado soldado3 = new Soldado(new Ubicacion(4,2));
@@ -97,57 +94,64 @@ public class SoldadoTest {
 		//falta assert
 	};
 
+
 	@Test
 	public void test05SoldadoAliadoAtacaJineteEnemigoCercano(){
+		BandoJugador1 bandoJugador1 = new BandoJugador1();
+		BandoJugador2 bandoJugador2 = new BandoJugador2();
+		Tablero tablero = new Tablero(bandoJugador1, bandoJugador2);
+		Ubicacion ubicacionSoldado = new Ubicacion(10,1);
+		Soldado soldadoAliado = new Soldado(ubicacionSoldado,bandoJugador1);
+		Ubicacion ubicacionJinete = new Ubicacion(11,1);
+		Jinete jineteEnemigo = new Jinete(ubicacionJinete,bandoJugador2);
+		tablero.ubicarEnCelda(jineteEnemigo,ubicacionJinete);
+		tablero.ubicarEnCelda(soldadoAliado, ubicacionSoldado);
+		int vidaTrasAtaque = jineteEnemigo.getVida() - soldadoAliado.getAtaqueCercano().getValorComportamiento();
+		soldadoAliado.atacar(jineteEnemigo);
+		assertEquals(vidaTrasAtaque,jineteEnemigo.getVida());
+	};
+
+	@Test (expected = FueraDeRangoParaEjecutarComportamientoException.class)
+	public void test06SeArrojaExceptionCuandoSeQuiereAtacarAUnEnemigoLejano(){
+		BandoJugador1 bandoJugador1 = new BandoJugador1();
+		BandoJugador2 bandoJugador2 = new BandoJugador2();
+		Tablero tablero = new Tablero(bandoJugador1, bandoJugador2);
+		Ubicacion ubicacionSoldado = new Ubicacion(10,1);
+		Soldado soldadoAliado = new Soldado(ubicacionSoldado,bandoJugador1);
+		Ubicacion ubicacionJinete = new Ubicacion(11,10);
+		Jinete jineteEnemigo = new Jinete(ubicacionJinete,bandoJugador2);
+		tablero.ubicarEnCelda(jineteEnemigo,ubicacionJinete);
+		tablero.ubicarEnCelda(soldadoAliado, ubicacionSoldado);
+		soldadoAliado.atacar(jineteEnemigo);
+	};
+
+	@Test (expected = FueraDeRangoParaEjecutarComportamientoException.class)
+	public void test07SeArrojaExceptionCuandoSeQuiereAtacarAUnEnemigoADistanciaMedia(){
 
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
-
-		Ubicacion ubicacionSoldado = new Ubicacion(1,1);
+		Tablero tablero = new Tablero(bandoJugador1, bandoJugador2);
+		Ubicacion ubicacionSoldado = new Ubicacion(10,1);
 		Soldado soldadoAliado = new Soldado(ubicacionSoldado,bandoJugador1);
-
-		Ubicacion ubicacionJinete = new Ubicacion(1,2);
+		Ubicacion ubicacionJinete = new Ubicacion(11,3);
 		Jinete jineteEnemigo = new Jinete(ubicacionJinete,bandoJugador2);
-
-		DistanciaRelativa distanciaJineteASoldado = soldadoAliado.getDistanciaRelativa(jineteEnemigo);
-		//	assertTrue(distanciaJineteASoldado instanceof DistanciaRelativa);
-		int vidaTrasAtaque = jineteEnemigo.getVida() - soldadoAliado.getDanioCercano();
-		soldadoAliado.atacar(distanciaJineteASoldado,jineteEnemigo);
-		assertEquals(vidaTrasAtaque,jineteEnemigo.getVida());
-
+		tablero.ubicarEnCelda(jineteEnemigo,ubicacionJinete);
+		tablero.ubicarEnCelda(soldadoAliado, ubicacionSoldado);
+		soldadoAliado.atacar(jineteEnemigo);
 	};
 
-/*	@Test  ESTE TEST DEBE TIRAR FUERA_DE_RANGO_EXCEPT
-	public void test06SoldadoAtacaJineteLejanoYNoSeQuitaVidaAJineteAtacado(){
-		Soldado soldado = new Soldado();
-		Ubicacion ubicacionSoldado = new Ubicacion(1,1);
-		soldado.setUbicacion(ubicacionSoldado);
-		Jinete jinete = new Jinete();
-		Ubicacion ubicacionJinete = new Ubicacion(10,20);
-		jinete.setUbicacion(ubicacionJinete);
-		DistanciaRelativa distanciaJineteASoldado = soldado.getDistanciaRelativa(jinete);
-		//	assertTrue(distanciaJineteASoldado instanceof DistanciaRelativa);
-		int vidaTrasAtaque = jinete.getVida() - soldado.getAtaqueLejano();
-		soldado.ejecutarComportamiento(distanciaJineteASoldado,jinete);
-		assertEquals(vidaTrasAtaque,jinete.getVida());
-	};*/
-
-	@Test
-	public void test07SoldadoAliadoNoPuedeAtacaaAJineteAliadoCercano(){
-
-		BandoJugador1 bandoTest = new BandoJugador1();
-
-		Ubicacion ubicacionSoldado = new Ubicacion(1,1);
-		Soldado soldadoAliado = new Soldado(ubicacionSoldado,bandoTest);
-
-		Ubicacion ubicacionJinete = new Ubicacion(1,2);
-		Jinete jineteAliado = new Jinete(ubicacionJinete,bandoTest);
-
-		DistanciaRelativa distanciaJineteASoldado = soldadoAliado.getDistanciaRelativa(jineteAliado);
-		//	assertTrue(distanciaJineteASoldado instanceof DistanciaRelativa);
-		int vidaTrasAtaque = jineteAliado.getVida();
-		soldadoAliado.atacar(distanciaJineteASoldado,jineteAliado);
-		assertEquals(vidaTrasAtaque,jineteAliado.getVida());
+	@Test (expected = NoSePuedeAtacarUnAliadoException.class)
+	public void test08SeArrojaExceptionCuandoSeQuiereAtacarUnAliado(){
+		BandoJugador1 bandoJugador1 = new BandoJugador1();
+		BandoJugador2 bandoJugador2 = new BandoJugador2();
+		Tablero tablero = new Tablero(bandoJugador1, bandoJugador2);
+		Ubicacion ubicacionSoldado = new Ubicacion(10,1);
+		Soldado soldadoAliado = new Soldado(ubicacionSoldado,bandoJugador1);
+		Ubicacion ubicacionJinete = new Ubicacion(10,2);
+		Jinete jineteAliado = new Jinete(ubicacionJinete,bandoJugador1);
+		tablero.ubicarEnCelda(jineteAliado,ubicacionJinete);
+		tablero.ubicarEnCelda(soldadoAliado, ubicacionSoldado);
+		soldadoAliado.atacar(jineteAliado);
 	};
 
 }
