@@ -4,7 +4,9 @@ import lombok.Getter;
 import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 
+
 import java.util.Optional;
+import java.util.ArrayList;
 
 public class Soldado extends Pieza implements Movible {
 
@@ -20,7 +22,7 @@ public class Soldado extends Pieza implements Movible {
 	private int danioCercano;
 	private Comportamiento ataqueCercano = new AtaqueCercanoSoldado(10);
 
-	public Soldado(Ubicacion ubicacion,int costo, int vida, Bando bando) {
+	public Soldado(Ubicacion ubicacion, int costo, int vida, Bando bando) {
 
 		super(costo,vida,ubicacion,bando);
 	}
@@ -37,23 +39,34 @@ public class Soldado extends Pieza implements Movible {
 	public Soldado(Ubicacion ubicacion,Bando bando){
 
 		super(2,75,ubicacion,bando);
-//		danioCercano = 10;
-//		this.comportamiento = new ComportamientoCercano(danioCercano);
 
 
+		danioCercano = 10;
+		this.ataque = new AtaqueCercano(danioCercano);
 	}
 
-	public Soldado(Ubicacion ubicacion){
-
+	public Soldado(Ubicacion ubicacion, Tablero tablero){
 		super(ubicacion);
-		this.rango = new RangoSoldado();
-
+		this.rango = new RangoSoldado(this, tablero);
 	}
 
-	public void actualizaRango(Tablero tablero){
+	public Rango actualizaRango(Tablero tablero){
+		return this.getRango().actualizaRangoInmediato(this,tablero);
+	}
 
-		this.getRango().actualizaRango(this,tablero);
+	@Override
+	public void unirABatallonDeSoldado(ArrayList<Pieza> stackDeUnion) {
+		stackDeUnion.add(this);
+	}
 
+	@Override
+	public void aniadirPiezaAlStack(ArrayList<Pieza> stack) {
+		stack.add(this);
+	}
+
+	@Override
+	public void aniadirSoldadoAlStack(ArrayList<Pieza> stack) {
+		stack.add(this);
 	}
 
 
@@ -82,8 +95,32 @@ public class Soldado extends Pieza implements Movible {
 
 	public Batallon verificaBatallonONull(Tablero tablero) {
 		return Batallon.batallonAsociadoONull(this,tablero);
+
+	@Override
+	public void aniadirTodoMenosSoldadoAlStack(ArrayList<Pieza> stack) {
 	}
 
+	public void atacar(DistanciaRelativa distancia, Pieza atacado){
+		this.bando.atacar(atacado, this.ataque, atacado.getBando());
+	}
+
+	public Batallon verificaBatallonONull() {
+		return this.rango.darDeAltaBatallon();
+	}
+
+	@Override
+	public ArrayList<Pieza> getSoldadosContiguos(){
+		return this.getRango().getSoldadosEquipo();
+	}
+
+	@Override
+	public boolean soldadosInmediatosSePuedenUnir() {
+		return this.getRango().getSoldadosEquipo().size() == 3;
+	}
+
+	Batallon unirSoldados(){
+		return this.getRango().darDeAltaBatallon();
+	}
 
 	/*public Stream<Soldado> verificaBatallon(Soldado soldado, Tablero tablero) {
 
@@ -110,23 +147,4 @@ public class Soldado extends Pieza implements Movible {
 		return batallon;
 	} */
 
-	//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-//	public void atacar(DistanciaRelativa distancia, Pieza atacado){
-//
-//		this.bando.atacar(atacado, this.comportamiento, atacado.getBando());
-//
-//	/*	if(this.getJugador()!=atacado.getJugador()){
-//			if (distancia==DistanciaRelativa.CERCANO){
-//				atacado.recibirAtaque(this.ataque);
-//			};
-//		}*/
-////		if (distancia==DistanciaRelativa.LEJANO){
-////			atacado.recibirAtaque(this.ataqueLejano);
-////		};
-//
-////		if (distancia==DistanciaRelativa.MEDIO){
-////			atacado.recibirAtaque(this.ataqueMedio);
-////		}
-//	}
-
-}
+  }

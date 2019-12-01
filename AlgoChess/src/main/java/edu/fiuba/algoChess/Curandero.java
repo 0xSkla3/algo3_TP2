@@ -1,15 +1,13 @@
 package edu.fiuba.algoChess;
 
-import org.jetbrains.annotations.NotNull;
-
-import java.util.Optional;
+import java.util.ArrayList;
 
 public class Curandero extends Pieza {
 
 	private int sanacion;
 	private Comportamiento curacion;
 
-	public Curandero(Ubicacion ubicacion,int costo, int vida, Bando bando) {
+	public Curandero(Ubicacion ubicacion, int costo, int vida, Bando bando) {
 		super(costo,vida,ubicacion,bando);
 	}
 
@@ -30,7 +28,6 @@ public class Curandero extends Pieza {
 
 	@Override
 	public void ejecutarComportamientoPorDistancia(DistanciaCercana distancia, Pieza pieza) {
-	//	pieza.aplicarCuracionAPieza(this);//pieza es la pieza a curar y this es el curandero
 		this.bando.curar(pieza, this.curacion, pieza.getBando());
 	};
 	@Override
@@ -48,15 +45,6 @@ public class Curandero extends Pieza {
 	};
 
 
-	///////@@@@@@@@@@@@@@@@
-
-//	public void curar(DistanciaRelativa distancia, Pieza aCurar){
-//
-//		if ((distancia==DistanciaRelativa.CERCANO)&&(!(aCurar instanceof Catapulta))&&(this.bando.equals(aCurar.getBando()))){
-//			aCurar.aumentarVida(this.sanacion);
-//		};
-//	};
-
 	public int getSanacion(){
 		return this.sanacion;
 	};
@@ -65,8 +53,39 @@ public class Curandero extends Pieza {
 		return this.curacion;
 	}
 
-//	public void Sanar(Pieza sanado){
-//		sanado.aumentarVida(this.sanacion);
-//	}
+	@Override
+	public Rango actualizaRango(Tablero tablero) {
+		return null;
+	}
 
+	@Override
+	public Rango getRango() {
+		return null;
+	}
+
+	@Override
+	public void unirABatallonDeSoldado(ArrayList<Pieza> stackDeUnion) {
+	}
+
+	@Override
+	public void aniadirPiezaAlStack(ArrayList<Pieza> stack) {
+	}
+
+	@Override
+	public void aniadirSoldadoAlStack(ArrayList<Pieza> stack) {
+	}
+
+	@Override
+	public void aniadirTodoMenosSoldadoAlStack(ArrayList<Pieza> stack) {
+	}
+
+	@Override
+	public ArrayList<Pieza> getSoldadosContiguos() {
+		return null;
+	}
+
+	@Override
+	public boolean soldadosInmediatosSePuedenUnir() {
+		return false;
+	}
 }

@@ -1,0 +1,17 @@
+
+#head{
+	-fx-spacing:10;
+	-fx-alignment:center;	
+}
+
+#name{
+	-fx-font-size:20px;
+}
+
+#player{
+	
+	-fx-background-color:#DBDBDF;
+	-fx-background-radius:8;
+	-fx-min-width:300px;
+	-fx-position-shape:true;
+}

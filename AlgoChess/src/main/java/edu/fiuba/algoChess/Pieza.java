@@ -1,19 +1,42 @@
 package edu.fiuba.algoChess;
 
+import edu.fiuba.algoChess.Salud.Salud;
+import edu.fiuba.algoChess.Salud.SaludLlena;
+import edu.fiuba.algoChess.Salud.SaludMuerto;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.ArrayList;
 
 @NoArgsConstructor
 public abstract class Pieza implements Movible, Atacable {
 
 	//protected TipoPieza nombre;
-	private int vida;
+	@Setter
+	@Getter
+	private Salud vida;
+
+	@Setter
+	@Getter
 	private int costo;
+
 	protected DistanciaRelativa calculadorDistancia = new DistanciaRelativa();
-	//protected Tablero campoDeBatalla;//lo agrego LIO@@@@
+
+	@Setter
+	@Getter
 	protected Ubicacion ubicacion;
+
+	@Setter
+	@Getter
 	protected Bando bando;
 
-/*	public Pieza(Ubicacion ubicacion, int costo, int vida, Bando bando) {
+	@Setter
+	@Getter
+	protected Rango rango;
+
+
+	/*	public Pieza(Ubicacion ubicacion, int costo, int vida, Bando bando) {
 
 		this.bando = bando;
 		this.ubicacion = ubicacion;
@@ -22,38 +45,60 @@ public abstract class Pieza implements Movible, Atacable {
 
 	}
 */
-	public Pieza(int costo, int vida) {
+	Pieza(int costo, int vida) {
 
-		this.vida = vida;
+		this.vida = new SaludLlena(vida);
 		this.costo = costo;
 
 	}
 
-	public Pieza(int costo, int vida, Ubicacion ubicacion,Bando bando) {
+	public Pieza(int costo, int vida, Ubicacion ubicacion, Bando bando) {
 
 		this.bando = bando;
 		this.ubicacion = ubicacion;
-		this.vida = vida;
+		this.vida = new SaludLlena(vida);
 		this.costo = costo;
 
 	}
 
 	public Pieza(Ubicacion ubicacion) {
 
-		this.vida = 0;
+		this.vida = new SaludMuerto();
 		this.costo = 0;
 		this.ubicacion = ubicacion;
 
 	}
+
+	public void ejecutarComportamiento(DistanciaRelativa distancia, Pieza pieza){
+	};
+
+	public DistanciaRelativa getDistanciaRelativa (Pieza pieza){
+		Ubicacion ubicacionPiezaAfectada = pieza.getUbicacion();
+		Ubicacion ubicacionPiezaAfectante = this.getUbicacion();
+		int coordenadaXAtacado = ubicacionPiezaAfectada.getCoordenadaX();
+		int coordenadaYAtacado = ubicacionPiezaAfectada.getCoordenadaY();
+		int coordenadaXAtacante = ubicacionPiezaAfectante.getCoordenadaX();
+		int coordenadaYAtacante = ubicacionPiezaAfectante.getCoordenadaY();
+
+		DistanciaRelativa distanciaRelativa = DistanciaRelativa.LEJANO;
+
+		if ((Math.abs(coordenadaXAtacado-coordenadaXAtacante)+(Math.abs(coordenadaYAtacado-coordenadaYAtacante)))<3) {
+			distanciaRelativa = DistanciaRelativa.CERCANO;
+		}
+		if (((Math.abs(coordenadaXAtacado-coordenadaXAtacante)+(Math.abs(coordenadaYAtacado-coordenadaYAtacante)))>2)&&
+				((Math.abs(coordenadaXAtacado-coordenadaXAtacante)+(Math.abs(coordenadaYAtacado-coordenadaYAtacante)))<6)){
+			distanciaRelativa = DistanciaRelativa.MEDIO;
+		}
+		return distanciaRelativa;
+	};
 
 
 	public int getCosto(){
 		return this.costo;
 		}
 
-	//public TipoPieza getNombre(){return this.nombre;}
 
-	public int getVida() {
+	public Salud getVida() {
 		return this.vida;
 		}
 
@@ -71,25 +116,15 @@ public abstract class Pieza implements Movible, Atacable {
 	}
 
 
-	////@@@@@
-//	public void aplicarCuracionAPieza (Curandero curandero){
-//	}
-
-	////@@@@@@
 	public void aumentarVida(Comportamiento comportamiento) {
 		this.vida = this.vida + comportamiento.getValorComportamiento();
 		}
 
 	public void recibirAtaque(Comportamiento comportamiento){
-		//comportamiento.ejecutarComportamiento()
-		this.vida = this.vida - comportamiento.getValorComportamiento();//getDanio();
+		this.vida = this.vida - comportamiento.getValorComportamiento();
 		}
 
-//	public void recibirAtaquePosta(Comportamiento comportamiento){
-//		this.vida = this.vida - comportamiento.ejecutarComportamiento();
-//	}
 
-//	public abstract void ejecutarComportamientoPorDistancia(DistanciaRelativa distancia, Pieza pieza);
 	public void ejecutarComportamientoPorDistancia(DistanciaRelativa distancia, Pieza pieza) { }
 
 	public abstract void ejecutarComportamientoPorDistancia(DistanciaCercana distancia, Pieza pieza);
@@ -100,6 +135,17 @@ public abstract class Pieza implements Movible, Atacable {
 
 	public DistanciaRelativa getCalculadorDistancia(){
 		return this.calculadorDistancia;
+
+	public void aumentarVida(int aumento) {this.setVida(this.vida.curar(aumento));
+		}
+
+	public void recibirAtaque(Ataque ataque){
+		this.vida.herir(ataque.getDanio());
+
+		}
+
+	public void pisar(Celda celda, Pieza pieza){
+		throw new NoSePuedeUbicarPorqueEstaOcupadoException("No se puede ubicar porque esta ocupado la celda");
 	}
 
 	public void setUbicacion(Ubicacion ubicacion){
@@ -127,6 +173,19 @@ public abstract class Pieza implements Movible, Atacable {
 	}
 
 	public void mover( Tablero campoDeBatalla, Ubicacion ubicacion) {
+		try {
+			Ubicacion ubicacionVieja = this.getUbicacion();
+			campoDeBatalla.ubicarEnCelda(this, ubicacion);
+			campoDeBatalla.eliminar(ubicacionVieja);
+			this.ubicacion = ubicacion;
+		}catch (NoSePuedeUbicarPorqueEstaOcupadoException ex){
+			//mensaje de error en vista y darle el turno al mismo jugador
+		}
+
+	}
+
+
+	public void mover( Tablero campoDeBatalla, Ubicacion ubicacion) {
 		if(campoDeBatalla.getCelda(ubicacion).isEmpty()){
 			Ubicacion ubicacionVieja = this.getUbicacion();
 			campoDeBatalla.ubicarEnCelda(this, ubicacion);
@@ -134,29 +193,36 @@ public abstract class Pieza implements Movible, Atacable {
 			this.ubicacion = ubicacion;}
 	}
 
-	//	public DistanciaRelativa getDistanciaRelativa (Pieza pieza){
-//		Ubicacion ubicacionPiezaAfectada = pieza.getUbicacion();
-//		Ubicacion ubicacionPiezaAfectante = this.getUbicacion();
-//		int coordenadaXAtacado = ubicacionPiezaAfectada.getCoordenadaX();
-//		int coordenadaYAtacado = ubicacionPiezaAfectada.getCoordenadaY();
-//		int coordenadaXAtacante = ubicacionPiezaAfectante.getCoordenadaX();
-//		int coordenadaYAtacante = ubicacionPiezaAfectante.getCoordenadaY();
-//
-//		DistanciaRelativa distanciaRelativa = DistanciaRelativa.LEJANO;
-//
-//		//DistanciaRelativa distanciaRelativa = DistanciaRelativa.LEJANO;
-//		if ((Math.abs(coordenadaXAtacado-coordenadaXAtacante)+(Math.abs(coordenadaYAtacado-coordenadaYAtacante)))<3) {
-//			distanciaRelativa = DistanciaRelativa.CERCANO;
-//		}
-//		if (((Math.abs(coordenadaXAtacado-coordenadaXAtacante)+(Math.abs(coordenadaYAtacado-coordenadaYAtacante)))>2)&&
-//				((Math.abs(coordenadaXAtacado-coordenadaXAtacante)+(Math.abs(coordenadaYAtacado-coordenadaYAtacante)))<6)){
-//			distanciaRelativa = DistanciaRelativa.MEDIO;
-//		}
-////		if ((Math.abs(coordenadaXAtacado-coordenadaXAtacante)+(Math.abs(coordenadaYAtacado-coordenadaYAtacante)))>5){
-////			distanciaRelativa = DistanciaRelativa.LEJANO;
-////		};
-//		return distanciaRelativa;
-//	};
+
+	public void moverse(Mapa mapa, Ubicacion ubicacion) {
+		try {
+			mapa.ubicarEnCasillero(this, ubicacion);
+			mapa.eliminarDeCasillero(this.ubicacion);
+			this.ubicacion = ubicacion;
+		} catch (NoSePuedeUbicarPorqueEstaOcupadoException e) {
+			Material material = (Material) mapa.obtenerCasillero(ubicacion).obtenerUbicable();
+			this.herramientaActual.usar(material);
+		}
+	}
+
+	public abstract Rango actualizaRango(Tablero tablero);
+
+	public abstract Rango getRango();
+
+	public abstract void unirABatallonDeSoldado(ArrayList<Pieza> stackDeUnion);
+
+	public abstract void aniadirPiezaAlStack(ArrayList<Pieza> stack);
+
+	public abstract void aniadirSoldadoAlStack(ArrayList<Pieza> stack);
+
+	public abstract void aniadirTodoMenosSoldadoAlStack(ArrayList<Pieza> stack);
+
+	public abstract ArrayList<Pieza>  getSoldadosContiguos();
+
+	public abstract boolean soldadosInmediatosSePuedenUnir();
+
+
+
 
 
 	//public abstract void reconocerTerreno(int distanciaAReconocer, Pieza piezaCentral, Tablero campoDeBatalla);
