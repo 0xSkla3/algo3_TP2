@@ -94,8 +94,8 @@ public abstract class Pieza implements Movible, Atacable {
 		this.setVida(this.getVida().curar(aumento));
 	}
 
-	public void recibirAtaque(Ataque ataque){
-		this.setVida(this.getVida().herir(ataque.getDanio()));
+	public void recibirAtaque(int ataque){
+		this.setVida(this.getVida().herir(ataque));
 	}
 
 	public void pisar(Celda celda, Pieza pieza){

@@ -120,6 +120,11 @@ public class Curandero extends Pieza {
 
 	}
 
+	@Override
+	public void recibirAtaque(Ataque ataque) {
+
+	}
+
 
 //	public void Sanar(Pieza sanado){
 //		sanado.aumentarVida(this.sanacion);

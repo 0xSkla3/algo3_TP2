@@ -99,7 +99,7 @@ public class Soldado extends Pieza implements Movible {
 	}
 
 	public void atacar(DistanciaRelativa distancia, Pieza atacado){
-		this.getBando().atacar(atacado, this.getAtaque(), atacado.getBando());
+		//this.getBando().atacar(atacado, this.getAtaque(), atacado.getBando()); //ROCHI
 	}
 
 	public Batalloneable verificaBatallonONull() {
@@ -160,5 +160,10 @@ public class Soldado extends Pieza implements Movible {
 	public void moverPiezaDeBatallon(Tablero campoDeBatalla, Ubicacion ubicacion) {
 		this.setUbicacion(ubicacion);
 		campoDeBatalla.ubicarEnCelda(this,ubicacion);
+	}
+
+	@Override
+	public void recibirAtaque(Ataque ataque) {
+
 	}
 }
