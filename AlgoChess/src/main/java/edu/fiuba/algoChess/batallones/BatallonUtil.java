@@ -1,7 +1,8 @@
-package edu.fiuba.algoChess.Batallones;
+package edu.fiuba.algoChess.batallones;
 
 import edu.fiuba.algoChess.*;
-import edu.fiuba.algoChess.Rangos.Agrupable;
+import edu.fiuba.algoChess.rangos.Agrupable;
+import edu.fiuba.algoChess.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;
 import lombok.*;
 
 import java.util.*;

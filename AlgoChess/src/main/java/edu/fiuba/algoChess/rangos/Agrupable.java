@@ -1,4 +1,4 @@
-package edu.fiuba.algoChess.Rangos;
+package edu.fiuba.algoChess.rangos;
 
 import edu.fiuba.algoChess.Pieza;
 

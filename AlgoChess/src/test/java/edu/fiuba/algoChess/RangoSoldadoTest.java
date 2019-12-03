@@ -1,9 +1,8 @@
 package edu.fiuba.algoChess;
 
-import edu.fiuba.algoChess.Rangos.RangoSoldado;
+import edu.fiuba.algoChess.rangos.RangoSoldado;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import java.util.*;
 
 public class RangoSoldadoTest {
 

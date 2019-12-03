@@ -1,10 +1,10 @@
 package edu.fiuba.algoChess;
 
-import edu.fiuba.algoChess.Batallones.Batalloneable;
-import edu.fiuba.algoChess.Rangos.Rango;
-import edu.fiuba.algoChess.Salud.Salud;
-import edu.fiuba.algoChess.Salud.SaludLlena;
-import edu.fiuba.algoChess.Salud.SaludMuerto;
+import edu.fiuba.algoChess.rangos.Rango;
+import edu.fiuba.algoChess.salud.Salud;
+import edu.fiuba.algoChess.salud.SaludLlena;
+import edu.fiuba.algoChess.salud.SaludMuerto;
+import edu.fiuba.algoChess.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

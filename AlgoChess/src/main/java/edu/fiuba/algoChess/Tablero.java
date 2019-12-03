@@ -1,11 +1,12 @@
 package edu.fiuba.algoChess;
 
+import edu.fiuba.algoChess.excepciones.NoExisteNingunCasilleroParaLaUbicacionDadaException;
+import edu.fiuba.algoChess.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.*;
-import java.util.stream.Stream;
 
 @NoArgsConstructor
 public class Tablero {

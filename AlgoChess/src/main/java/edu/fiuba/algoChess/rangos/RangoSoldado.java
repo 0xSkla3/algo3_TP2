@@ -1,12 +1,11 @@
-package edu.fiuba.algoChess.Rangos;
+package edu.fiuba.algoChess.rangos;
 
 import java.util.ArrayList;
 
 import edu.fiuba.algoChess.*;
-import edu.fiuba.algoChess.Batallones.BatallonUtil;
-import edu.fiuba.algoChess.Batallones.Batalloneable;
-import edu.fiuba.algoChess.Batallones.BatallonNull;
-import edu.fiuba.algoChess.Batallones.BatallonUtil;
+import edu.fiuba.algoChess.batallones.BatallonUtil;
+import edu.fiuba.algoChess.batallones.Batalloneable;
+import edu.fiuba.algoChess.batallones.BatallonNull;
 import lombok.Getter;
 import lombok.Setter;
 

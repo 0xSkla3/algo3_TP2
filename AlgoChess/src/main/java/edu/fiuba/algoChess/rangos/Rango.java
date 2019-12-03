@@ -1,6 +1,6 @@
-package edu.fiuba.algoChess.Rangos;
+package edu.fiuba.algoChess.rangos;
 
-import edu.fiuba.algoChess.Batallones.Batalloneable;
+import edu.fiuba.algoChess.batallones.Batalloneable;
 import edu.fiuba.algoChess.Pieza;
 import edu.fiuba.algoChess.Tablero;
 
