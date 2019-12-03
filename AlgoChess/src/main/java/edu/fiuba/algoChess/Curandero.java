@@ -28,6 +28,13 @@ public class Curandero extends Pieza {
 
 	}
 
+	public Curandero(Ubicacion ubicacion, Bando bando, Tablero tablero){
+
+		super(2,75,ubicacion,bando);
+		tablero.getCelda(ubicacion).setPiezaActual(this);
+		this.sanacion = 15;
+
+	}
 
 	public void curar(DistanciaRelativa distancia, Pieza aCurar){
 

@@ -22,6 +22,12 @@ public class Catapulta extends Pieza {
 
 	}
 
+	public Catapulta(Ubicacion ubicacion, Bando bando, Tablero tablero){
+		super(5,50,ubicacion,bando);
+		tablero.getCelda(ubicacion).setPiezaActual(this);
+		ataque = new AtaqueLejano(danio);
+
+	}
 
 	public Catapulta(){
 

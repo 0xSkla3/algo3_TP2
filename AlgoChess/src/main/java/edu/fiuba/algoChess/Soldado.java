@@ -6,10 +6,12 @@ import edu.fiuba.algoChess.Batallones.Batalloneable;
 import edu.fiuba.algoChess.Rangos.Rango;
 import edu.fiuba.algoChess.Rangos.RangoInmediato;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
 
+@NoArgsConstructor
 public class Soldado extends Pieza implements Movible {
 
 	@Getter
