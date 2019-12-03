@@ -1,32 +1,36 @@
 package edu.fiuba.algoChess;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.*;
 import java.util.stream.Stream;
 
+@NoArgsConstructor
 public class Tablero {
 
+	@Getter
+	@Setter
 	private Map<Ubicacion, Celda> campoDeBatalla;
-	private Celda celdaActiva; //la celda en la que estoy parada
+
+	@Getter
+	@Setter
 	private Jugador jugadorActivo;
 
 	public Tablero(Bando bandoJugador1, Bando  bandoJugador2) {
+		this.campoDeBatalla = new HashMap<>();
 		this.inicializarTablero(bandoJugador1, bandoJugador2);
 		//this.celdaActiva=this.campoDeBatalla.get(new Ubicacion(1,1));
 	}
 
-	public void setCeldaActiva(Celda celda){
-		this.celdaActiva = celda;
-	}
-
 	public void inicializarTablero(Bando bandoJugador1, Bando  bandoJugador2) {
-		this.campoDeBatalla = new HashMap<>();
 		for (int i = 1; i <= 20; i++) {
 			for (int j = 1; j <= 20; j++) {
-				this.campoDeBatalla.put(new Ubicacion(i, j), new Celda());
+				this.getCampoDeBatalla().put(new Ubicacion(i, j), new Celda());
 			}
 		}
 		this.asignarSectores(bandoJugador1, bandoJugador2);
-	//	setCeldaActiva(this.campoDeBatalla.get(new Ubicacion(1,1)));
 	}
 
 	public void asignarSectores(Bando bandoJugador1,Bando bandoJugador2){
@@ -40,13 +44,8 @@ public class Tablero {
 				this.getCelda(new Ubicacion(i, j)).setSectorDelJugador(bandoJugador2);
 			}
 		}
-		//setCeldaActiva(this.campoDeBatalla.get(new Ubicacion(1,1)));
 	}
-/*
-	public void moverPieza(Celda nuevaActiva) {
-		this.celdaActiva.moverA(nuevaActiva);
-	}
-*/
+
 	public Celda getCelda(Ubicacion ubicacion) {
 		if (!this.campoDeBatalla.containsKey(ubicacion)) {
 			throw new NoExisteNingunCasilleroParaLaUbicacionDadaException("No existe una celda en esa ubicacion");
@@ -61,53 +60,24 @@ public class Tablero {
 			throw new NoExisteNingunCasilleroParaLaUbicacionDadaException("No existe una celda en esa ubicacion");
 		}
 
-		try {
-			this.campoDeBatalla.get(ubicacion).guardar(pieza);
-			pieza.setUbicacion(ubicacion);
-		} catch (NoSePuedeUbicarPorqueEstaOcupadoException e) {
+		//Revisar Rochi
+		if (this.campoDeBatalla.get(ubicacion).getPiezaActual().notEqualsNull()) {
 			throw new NoSePuedeUbicarPorqueEstaOcupadoException("no se puede ubicar pieza por estar el casillero ocupado");
 		}
 
-	}
-
-
-	public void eliminar(Ubicacion ubicacion) { this.getCelda(ubicacion).eliminar();
-	}
-
-	public Stream<Pieza> mapeaEntornoCercano(Celda celda){
-		return mapeaEntornoCercano(celda, null);
-	}
-
-	public Stream<Pieza> mapeaEntornoCercano(Celda celda, Pieza aEvitar){
-	//	aEvitar = aEvitar == null? Optional.empty() : aEvitar;
-		final Pieza finalAEvitar = aEvitar;
-		Stream<Pieza> ret;
-		List<Pieza> aux = new ArrayList<>(Collections.emptyList());
-		Ubicacion arriba = celda.getPiezaActual().getUbicacion().getUbicacionArriba();
-		Ubicacion abajo = celda.getPiezaActual().getUbicacion().getUbicacionAbajo();
-		Ubicacion derecha = celda.getPiezaActual().getUbicacion().getUbicacionDerecha();
-		Ubicacion izquierda = celda.getPiezaActual().getUbicacion().getUbicacionIzquierda();
-
-		aux.add(this.getCelda(arriba).getPiezaActual());
-		aux.add(this.getCelda(abajo).getPiezaActual());
-		aux.add(this.getCelda(derecha).getPiezaActual());
-		aux.add(this.getCelda(izquierda).getPiezaActual());
-
-		ret = aux.stream();
-
-		/*Stream.concat(ret ,Stream.of(this.getCelda(arriba).getPiezaActual()));
-		Stream.concat(ret ,Stream.of(this.getCelda(abajo).getPiezaActual()));
-		Stream.concat(ret ,Stream.of(this.getCelda(derecha).getPiezaActual()));
-		Stream.concat(ret ,Stream.of(this.getCelda(izquierda).getPiezaActual()));*/
-
-		if(!aEvitar.getClass().equals(Optional.empty())){
-			ret.filter(pieza -> !pieza.equals(finalAEvitar));
+		try {
+			this.campoDeBatalla.get(ubicacion).guardar(pieza);
+			pieza.setUbicacion(ubicacion);
+			//pieza.getRango().actualizaPiezasEnRango(pieza);
+		} catch (NoSePuedeUbicarPorqueEstaOcupadoException e) {
+			throw new NoSePuedeUbicarPorqueEstaOcupadoException("no se puede ubicar pieza por estar el casillero ocupado");
 		}
-
-		return ret;
 	}
 
+	public void eliminar(Ubicacion ubicacion) {
+
+		this.getCelda(ubicacion).eliminar();
+	}
 
 }
-
 
