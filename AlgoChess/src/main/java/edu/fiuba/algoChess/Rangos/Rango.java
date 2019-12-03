@@ -6,7 +6,7 @@ import edu.fiuba.algoChess.Tablero;
 
 import java.util.ArrayList;
 
-public interface Rango{
+public interface Rango {
 
 	public abstract Rango actualizaRangoInmediato(Pieza piezaCentral, Tablero tablero);
 	public abstract void actualizaPiezasEnRango(Pieza piezaCentral);

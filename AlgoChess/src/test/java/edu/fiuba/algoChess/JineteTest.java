@@ -300,7 +300,7 @@ public class JineteTest {
         Jinete jinete = new Jinete(ubicacionJinete,bandoJugador1);
 
         Ubicacion ubicacionSoldado = new Ubicacion(4,2);
-        Soldado soldado = new Soldado(ubicacionSoldado,bandoJugador2);
+        Soldado soldado = new Soldado(ubicacionSoldado,bandoJugador2, tableroTest);
 
         DistanciaRelativa distanciaSoldadoAJinete = jinete.getDistanciaRelativa(soldado);
         //assertTrue(distanciaSoldadoAJinete instanceof DistanciaRelativa);

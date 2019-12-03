@@ -159,6 +159,7 @@ public class Soldado extends Pieza implements Movible {
 
 	@Override
 	public void moverPiezaDeBatallon(Tablero campoDeBatalla, Ubicacion ubicacion) {
-
+		this.setUbicacion(ubicacion);
+		campoDeBatalla.ubicarEnCelda(this,ubicacion);
 	}
 }

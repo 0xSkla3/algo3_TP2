@@ -31,5 +31,6 @@ public abstract class Salud implements Curable, Herible {
 	// Herramienta para testing
 	public boolean igualA(Salud salud) {
 		return (this.getValorCompleto() == salud.getValorCompleto() && this.getValorActual() == salud.getValorActual());
-	}
+ }
+
 }

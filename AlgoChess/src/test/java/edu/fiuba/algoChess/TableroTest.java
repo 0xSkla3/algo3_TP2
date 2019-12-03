@@ -54,10 +54,8 @@ public class TableroTest {
 		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
 
 		Ubicacion ubicacionTest = new Ubicacion(4,4);
-		Curandero curandero1 = new Curandero(ubicacionTest, bandoJugador1);
-		Curandero curandero2 = new Curandero(ubicacionTest, bandoJugador1);
-		curandero1.setBando(bandoJugador1);
-		curandero2.setBando(bandoJugador1);
+		Curandero curandero1 = new Curandero(ubicacionTest, bandoJugador1, tableroTest);
+		Curandero curandero2 = new Curandero(ubicacionTest, bandoJugador1, tableroTest);
 
 		Celda celdaTest = tableroTest.getCelda(ubicacionTest);
 		celdaTest.setSectorDelJugador(bandoJugador1);

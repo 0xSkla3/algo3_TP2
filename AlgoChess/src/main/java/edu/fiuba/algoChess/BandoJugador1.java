@@ -5,7 +5,7 @@ public class BandoJugador1 extends Bando{
 
     @Override
     public void atacar(Pieza pieza, Ataque ataque, Bando bando){
-         bando.atacar(pieza, ataque, this);
+        bando.atacar(pieza, ataque, this);
     };
 
     @Override
