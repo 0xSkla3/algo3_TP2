@@ -1,4 +1,6 @@
 package edu.fiuba.algoChess;
+import edu.fiuba.algoChess.excepciones.NoSePuedeUbicarPiezaEnSectoRival;
+import edu.fiuba.algoChess.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;
 import org.junit.Test;
 
 //import modelo.juego.ObjetoUbicable;

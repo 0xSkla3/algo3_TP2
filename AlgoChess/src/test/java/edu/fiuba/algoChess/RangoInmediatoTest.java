@@ -1,7 +1,5 @@
 package edu.fiuba.algoChess;
 
-import edu.fiuba.algoChess.Rangos.RangoInmediato;
-import edu.fiuba.algoChess.Rangos.RangoSoldado;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;

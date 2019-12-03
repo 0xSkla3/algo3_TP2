@@ -1,10 +1,10 @@
 package edu.fiuba.algoChess;
 
-import edu.fiuba.algoChess.Batallones.Batallon;
-import edu.fiuba.algoChess.Batallones.BatallonNull;
-import edu.fiuba.algoChess.Batallones.BatallonUtil;
-import edu.fiuba.algoChess.Batallones.Batalloneable;
-import edu.fiuba.algoChess.Salud.Salud;
+import edu.fiuba.algoChess.batallones.Batallon;
+import edu.fiuba.algoChess.batallones.BatallonNull;
+import edu.fiuba.algoChess.batallones.BatallonUtil;
+import edu.fiuba.algoChess.batallones.Batalloneable;
+import edu.fiuba.algoChess.salud.Salud;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

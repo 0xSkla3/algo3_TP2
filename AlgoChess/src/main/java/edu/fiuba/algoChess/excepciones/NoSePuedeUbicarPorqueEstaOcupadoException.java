@@ -1,4 +1,4 @@
-package edu.fiuba.algoChess;
+package edu.fiuba.algoChess.excepciones;
 
 public class NoSePuedeUbicarPorqueEstaOcupadoException extends RuntimeException {
     public NoSePuedeUbicarPorqueEstaOcupadoException(String s) {

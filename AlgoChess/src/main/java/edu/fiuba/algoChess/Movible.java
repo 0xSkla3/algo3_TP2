@@ -1,6 +1,6 @@
 package edu.fiuba.algoChess;
 
-import edu.fiuba.algoChess.Batallones.Batalloneable;
+import edu.fiuba.algoChess.batallones.Batalloneable;
 
 public interface Movible {
 

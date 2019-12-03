@@ -1,7 +1,7 @@
 package edu.fiuba.algoChess;
-import edu.fiuba.algoChess.Batallones.Batalloneable;
-import edu.fiuba.algoChess.Rangos.Rango;
-import edu.fiuba.algoChess.Salud.Salud;
+import edu.fiuba.algoChess.batallones.Batalloneable;
+import edu.fiuba.algoChess.rangos.Rango;
+import edu.fiuba.algoChess.salud.Salud;
 
 import java.util.ArrayList;
 

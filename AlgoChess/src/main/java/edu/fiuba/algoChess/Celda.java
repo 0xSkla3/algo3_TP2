@@ -1,5 +1,7 @@
 package edu.fiuba.algoChess;
 
+import edu.fiuba.algoChess.excepciones.NoSePuedeUbicarPiezaEnSectoRival;
+import edu.fiuba.algoChess.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;

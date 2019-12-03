@@ -1,4 +1,4 @@
-package edu.fiuba.algoChess.Salud;
+package edu.fiuba.algoChess.salud;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
