@@ -294,6 +294,7 @@ public class JineteTest {
 
         BandoJugador1 bandoJugador1 = new BandoJugador1();
         BandoJugador2 bandoJugador2 = new BandoJugador2();
+        Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
 
         Ubicacion ubicacionJinete = new Ubicacion(1,2);
         Jinete jinete = new Jinete(ubicacionJinete,bandoJugador1);

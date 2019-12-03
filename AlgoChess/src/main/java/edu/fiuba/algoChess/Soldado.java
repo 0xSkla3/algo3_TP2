@@ -18,9 +18,9 @@ public class Soldado extends Pieza implements Movible {
 	@Setter
 	private Ataque ataque;
 
-	@Getter
+	/*@Getter
 	@Setter
-	private RangoSoldado rango;
+	private RangoSoldado rango;*/
 
 	@Getter
 	@Setter
@@ -48,6 +48,11 @@ public class Soldado extends Pieza implements Movible {
 	public Rango actualizaRango(Tablero tablero) {
 		this.getRango().actualizaRangoSoldado(this,tablero);
 		return this.getRango();
+	}
+
+	@Override
+	public Rango getRango() {
+		return this.rango;
 	}
 
 	@Override
@@ -99,6 +104,10 @@ public class Soldado extends Pieza implements Movible {
 
 	public Batalloneable verificaBatallonONull() {
 		return this.getRango().darDeAltaBatallon();
+	}
+
+	public void setRango(Rango rango) {
+		super.setRango(rango);
 	}
 
 	@Override

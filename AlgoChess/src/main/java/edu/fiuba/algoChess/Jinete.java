@@ -68,6 +68,29 @@ public class Jinete extends Pieza {
 
 	}
 
+	public Jinete(Ubicacion ubicacion, Tablero tablero){
+
+		super(ubicacion);
+		tablero.getCelda(ubicacion).setPiezaActual(this);
+		this.ataqueCercano = new AtaqueCercano(danioCercano);
+		this.ataqueMedio = new AtaqueMedio(danioMedio);
+		this.piezaEnemigaCercana = false;
+		this.piezaAliadaCercana = false;
+		this.distanciaAReconocerEnTerreno = 2;
+
+	}
+
+
+	public Jinete(Ubicacion ubicacion) {
+		super(ubicacion);
+	}
+
+	public void mover(Tablero campoDeBatalla, Ubicacion ubicacion) {
+		campoDeBatalla.ubicarEnCelda(this, ubicacion);
+		campoDeBatalla.eliminar(this.ubicacion);
+		this.ubicacion = ubicacion;
+	}
+
 	@Override
 	public Batalloneable moverBatallonDerecha(Tablero campoDeBatalla) {
 		return null;
@@ -111,7 +134,8 @@ public class Jinete extends Pieza {
 
 	@Override
 	public ArrayList<Pieza> unirABatallonDeSoldado(ArrayList<Pieza> stackDeUnion) {
-		throw new IllegalStateException("Un jinete no se puede unir a un batallon de Soldado");
+		//throw new IllegalStateException("Un jinete no se puede unir a un batallon de Soldado");
+		return stackDeUnion;
 	}
 
 	@Override
