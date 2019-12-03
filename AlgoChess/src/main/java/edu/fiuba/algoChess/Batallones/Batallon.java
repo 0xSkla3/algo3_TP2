@@ -35,10 +35,9 @@ public abstract class Batallon implements Batalloneable {
 		return null;
 	}
 
-	/*@Override
+	@Override
 	public void actualizaRangoSoldado(Pieza piezaCentral, Tablero tablero) {
-
-	}//ROCHI*/
+	}
 
 	@Override
 	public Batalloneable crearBatallon(Pieza pieza1, Pieza pieza2, Pieza pieza3) {

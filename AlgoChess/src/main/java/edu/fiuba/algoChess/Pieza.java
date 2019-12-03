@@ -1,7 +1,7 @@
 package edu.fiuba.algoChess;
 
+import edu.fiuba.algoChess.Batallones.Batalloneable;
 import edu.fiuba.algoChess.Rangos.Rango;
-import edu.fiuba.algoChess.Rangos.RangoInmediato;
 import edu.fiuba.algoChess.Salud.Salud;
 import edu.fiuba.algoChess.Salud.SaludLlena;
 import edu.fiuba.algoChess.Salud.SaludMuerto;
@@ -99,7 +99,7 @@ public abstract class Pieza implements Movible, Atacable {
 	}
 
 	public void pisar(Celda celda, Pieza pieza){
-		//celda.setPiezaActual(pieza); //Rochiƒ
+		celda.setPiezaActual(pieza);
 		//throw new NoSePuedeUbicarPorqueEstaOcupadoException("No se puede ubicar porque esta ocupado la celda");
 	}
 
@@ -153,11 +153,11 @@ public abstract class Pieza implements Movible, Atacable {
 
 	public abstract ArrayList<Pieza> unirABatallonDeSoldado(ArrayList<Pieza> stackDeUnion);
 
-	public abstract void aniadirPiezaAlStack(ArrayList<Pieza> stack);
+	public abstract ArrayList<Pieza> aniadirPiezaAlStack(ArrayList<Pieza> stack);
 
-	public abstract void aniadirSoldadoAlStack(ArrayList<Pieza> stack);
+	public abstract ArrayList<Pieza> aniadirSoldadoAlStack(ArrayList<Pieza> stack);
 
-	public abstract void aniadirTodoMenosSoldadoAlStack(ArrayList<Pieza> stack);
+	public abstract ArrayList<Pieza> aniadirTodoMenosSoldadoAlStack(ArrayList<Pieza> stack);
 
 	public abstract ArrayList<Pieza>  getSoldadosContiguos();
 
@@ -170,22 +170,7 @@ public abstract class Pieza implements Movible, Atacable {
 
 		return condicion1 && condicion2 && condicion3;
 
-	};
-
-	public abstract void setRango(RangoInmediato rangoInmediato);
-
-	//COMENTARIO IMPORTANTE: DECIDI MOVER EL METODO DE JINETE
-
-
-
-
-
-
-
-
-
-
-
-	//public abstract void reconocerTerreno(int distanciaAReconocer, Pieza piezaCentral, Tablero campoDeBatalla);
+	}
 }
+
 

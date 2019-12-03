@@ -38,9 +38,9 @@ public class RangoSoldado extends RangoInmediato implements Rango {
 	private void actualizaSoldadosCercanos(Pieza piezaCentral){
 
 		this.actualizaPiezasEnRango(piezaCentral);
-		//ArrayList<Pieza> piezas = piezaCentral.getRango().getPiezasEnRango();//rochi
+		ArrayList<Pieza> piezas = piezaCentral.getRango().getPiezasEnRango();
 		ArrayList<Pieza> nuevosSoldadosCercanos = new ArrayList<>();
-		//if (piezas.size() == 0) return;
+		if (piezas.size() == 0) return;
 
 		this.getArriba().getPiezaActual().aniadirSoldadoAlStack(nuevosSoldadosCercanos);
 		this.getAbajo().getPiezaActual().aniadirSoldadoAlStack(nuevosSoldadosCercanos);
@@ -54,9 +54,9 @@ public class RangoSoldado extends RangoInmediato implements Rango {
 	public void actualizaObstaculosInmediatos(Pieza piezaCentral){
 
 		this.actualizaPiezasEnRango(piezaCentral);
-		//ArrayList<Pieza> piezas = piezaCentral.getRango().getPiezasEnRango(); /ROCHI
+		ArrayList<Pieza> piezas = piezaCentral.getRango().getPiezasEnRango();
 		ArrayList<Pieza> nuevosObstaculosCercanos = new ArrayList<>();
-		//if (piezas.size() == 0) return;
+		if (piezas.size() == 0) return;
 
 		this.getArriba().getPiezaActual().aniadirTodoMenosSoldadoAlStack(nuevosObstaculosCercanos);
 		this.getAbajo().getPiezaActual().aniadirTodoMenosSoldadoAlStack(nuevosObstaculosCercanos);
@@ -64,7 +64,6 @@ public class RangoSoldado extends RangoInmediato implements Rango {
 		this.getDerecha().getPiezaActual().aniadirTodoMenosSoldadoAlStack(nuevosObstaculosCercanos);
 
 		this.setObstaculos(nuevosObstaculosCercanos);
-
 	}
 
 	@Override

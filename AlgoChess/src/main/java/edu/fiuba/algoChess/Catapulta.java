@@ -1,10 +1,7 @@
 package edu.fiuba.algoChess;
-
-//import org.jetbrains.annotations.NotNull;
-
 import edu.fiuba.algoChess.Batallones.Batalloneable;
 import edu.fiuba.algoChess.Rangos.Rango;
-import edu.fiuba.algoChess.Rangos.RangoInmediato;
+import edu.fiuba.algoChess.Salud.Salud;
 
 import java.util.ArrayList;
 
@@ -12,8 +9,8 @@ public class Catapulta extends Pieza {
 
 	private AtaqueLejano ataque;
 	private int danio = 20;
-//	public int costo = 5;
-//	private int vida = 50;     no puedo pasar estos parametros en el constructor super, averiguar como hacer
+	public int costo = 5;
+	private Salud vida;
 
 	public Catapulta(Ubicacion ubicacion,Bando bando){
 
@@ -92,18 +89,21 @@ public class Catapulta extends Pieza {
 	}
 
 	@Override
-	public void aniadirPiezaAlStack(ArrayList<Pieza> stack) {
-
+	public ArrayList<Pieza> aniadirPiezaAlStack(ArrayList<Pieza> stack) {
+		stack.add(this);
+		return stack;
 	}
 
 	@Override
-	public void aniadirSoldadoAlStack(ArrayList<Pieza> stack) {
+	public ArrayList<Pieza> aniadirSoldadoAlStack(ArrayList<Pieza> stack) {
 
+		return stack;
 	}
 
 	@Override
-	public void aniadirTodoMenosSoldadoAlStack(ArrayList<Pieza> stack) {
-
+	public ArrayList<Pieza> aniadirTodoMenosSoldadoAlStack(ArrayList<Pieza> stack) {
+		stack.add(this);
+		return stack;
 	}
 
 	@Override
@@ -116,25 +116,15 @@ public class Catapulta extends Pieza {
 		return false;
 	}
 
-	@Override
-	public void setRango(RangoInmediato rangoInmediato) {
-
-	}
-
-	;
-
 	public void ejecutarComportamiento(DistanciaRelativa distancia, Pieza atacado){
 
 		if(!this.bando.equals(atacado.getBando())){
 			if (distancia==DistanciaRelativa.CERCANO){
 				atacado.recibirAtaque(this.ataque);
-			};
+			}
 			if (distancia==DistanciaRelativa.MEDIO){
 				atacado.recibirAtaque(this.ataque);
-			};
-//			if (distancia==DistanciaRelativa.LEJANO){
-//				atacado.recibirAtaque(this.ataqueLejano);
-//		};
+			}
 		}
 	}
 
@@ -142,16 +132,5 @@ public class Catapulta extends Pieza {
 	public Ataque getAtaqueLejano(){
 		return this.ataque;
 	};
-
-
-/*	public void ejecutarComportamiento() {
-
-	}*/
-
-
-
-//	public void atacar(Pieza atacado){
-//		atacado.recibirAtaque(this.ataqueLejano);
-//	}
 
 }

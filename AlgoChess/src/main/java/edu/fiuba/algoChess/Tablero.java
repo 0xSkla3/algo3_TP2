@@ -60,7 +60,6 @@ public class Tablero {
 			throw new NoExisteNingunCasilleroParaLaUbicacionDadaException("No existe una celda en esa ubicacion");
 		}
 
-		//Revisar Rochi
 		if (this.campoDeBatalla.get(ubicacion).getPiezaActual().notEqualsNull()) {
 			throw new NoSePuedeUbicarPorqueEstaOcupadoException("no se puede ubicar pieza por estar el casillero ocupado");
 		}

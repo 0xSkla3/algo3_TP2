@@ -115,17 +115,20 @@ public class Jinete extends Pieza {
 	}
 
 	@Override
-	public void aniadirPiezaAlStack(ArrayList<Pieza> stack) {
+	public ArrayList<Pieza> aniadirPiezaAlStack(ArrayList<Pieza> stack) {
 		stack.add(this);
+		return stack;
 	}
 
 	@Override
-	public void aniadirSoldadoAlStack(ArrayList<Pieza> stack) {
+	public ArrayList<Pieza> aniadirSoldadoAlStack(ArrayList<Pieza> stack) {
+		return stack;
 	}
 
 	@Override
-	public void aniadirTodoMenosSoldadoAlStack(ArrayList<Pieza> stack) {
+	public ArrayList<Pieza> aniadirTodoMenosSoldadoAlStack(ArrayList<Pieza> stack) {
 		stack.add(this);
+		return stack;
 	}
 
 	@Override
@@ -138,16 +141,8 @@ public class Jinete extends Pieza {
 		return false;
 	}
 
-	@Override
-	public void setRango(RangoInmediato rangoInmediato) {
-
-	}
-
-
 	public void atacar(DistanciaRelativa distancia, Pieza atacado){
-		//if (distancia==DistanciaRelativa.LEJANO){
-		//	atacado.recibirAtaque(this.ataque);
-		//};
+
 		if ((distancia==DistanciaRelativa.CERCANO)&&(!(this.getPiezaAliadaCercana()))){
 			atacado.recibirAtaque(this.ataqueCercano);
 		};
@@ -156,39 +151,6 @@ public class Jinete extends Pieza {
 		}
 			}
 
-			//COMENTARIO: EL JINETE DEBERIA CORRER EL METODO RECONOCERTERRENO CADA VEZ QUE SE MUEVE PARA ACTUALIZAR LOS VALORES DE SUS ATRIBUTOS
-			//PIEZAALIADACERCA Y PIEZAENEMIGACERCANA. DE OTRO MODO, LOS VALORES QUEDARIAN SETEADOS HACIENDO REFERENCIA A LA POSICION ANTERIOR
-			//LO CUAL PUEDE DEJAR DE SER VALIDO EN LA NUEVA POSICION
-	//@Override
-/*	public void reconocerTerreno(Tablero campoDeBatalla){
-
-	int coordenadaX = this.ubicacion.getCoordenadaX();
-	int coordenadaY = this.ubicacion.getCoordenadaY();
-
-	for (int i = coordenadaX-distanciaAReconocerEnTerreno; i <= coordenadaX+distanciaAReconocerEnTerreno; i++) {
-		if (i<1 || i>20){
-			continue;
-		}
-		for (int j = coordenadaY-distanciaAReconocerEnTerreno; j <= coordenadaX+distanciaAReconocerEnTerreno; j++) {
-			if (j<1 || j>20){
-				continue;
-			}
-			Ubicacion ubicacion = new Ubicacion(i,j);
-			if (ubicacion.equals(this.getUbicacion()) ){
-				continue;
-			}
-			Celda celda = campoDeBatalla.getCelda(ubicacion);
-			if (!celda.isEmpty() && (celda.getPiezaActual().getBando().equals(this.bando) )){
-				piezaAliadaCercana = true;
-				continue;
-			}
-			else if (!celda.isEmpty() && !(celda.getPiezaActual().getBando().equals(this.bando))){
-				piezaEnemigaCercana = true;
-				continue;
-			}
-		}
-	}
-}*/
 
 	public boolean getPiezaAliadaCercana(){
 			return this.piezaAliadaCercana;
@@ -197,48 +159,6 @@ public class Jinete extends Pieza {
 	public boolean getPiezaEnemigaCercana(){
 		return this.piezaEnemigaCercana;
 	}
-
-/*	public Posicion getPosicionRelativa(Pieza pieza){
-		Ubicacion atacado = pieza.getUbicacion();
-		Ubicacion ubicacionAtacante = this.getUbicacion();
-	}//no veo como resolver esto
-
-	public void ejecutarComportamiento(Pieza atacado) {
-
-		Posicion posicion = getPosicionRelativa(atacado);
-		this.atacar(posicion);
-		Cercano posicion1 = getPosicionRelativa(atacado);
-	}*/
-
-
-
-/*	public void atacar(Lejano posicion, Pieza atacado){
-		atacado.recibirAtaque(this.ataqueLejano);
-	}
-	public void atacar(Cercano posicion, Pieza atacado){
-		atacado.recibirAtaque(this.ataqueCercano);
-	}
-	public void atacar(Medio posicion, Pieza atacado){
-		atacado.recibirAtaque(this.ataqueLejano);
-	}
-*/
-
-
-	//public int getAtaqueCercano() {
-	//	return this.ataqueCercano;
-	//}
-
-
-//	public void atacar(DistanciaRelativa.LEJANO distancia, Pieza atacado){
-//		atacado.recibirAtaque(this.ataqueLejano);
-//	}
-//	public void atacar(DistanciaRelativa.CERCANO distancia, Pieza atacado){
-//		atacado.recibirAtaque(this.ataqueCercano);
-//	}
-//	public void atacar(DistanciaRelativa.MEDIO distancia, Pieza atacado){
-//		atacado.recibirAtaque(this.ataqueLejano);
-//	}
-
 
 	public int getDanioMedio(){
 		return this.danioMedio;

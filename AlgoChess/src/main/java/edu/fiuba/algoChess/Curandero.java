@@ -64,18 +64,21 @@ public class Curandero extends Pieza {
 	}
 
 	@Override
-	public void aniadirPiezaAlStack(ArrayList<Pieza> stack) {
-
+	public ArrayList<Pieza> aniadirPiezaAlStack(ArrayList<Pieza> stack) {
+		stack.add(this);
+		return stack;
 	}
 
 	@Override
-	public void aniadirSoldadoAlStack(ArrayList<Pieza> stack) {
+	public ArrayList<Pieza> aniadirSoldadoAlStack(ArrayList<Pieza> stack) {
 
+		return stack;
 	}
 
 	@Override
-	public void aniadirTodoMenosSoldadoAlStack(ArrayList<Pieza> stack) {
-
+	public ArrayList<Pieza> aniadirTodoMenosSoldadoAlStack(ArrayList<Pieza> stack) {
+		stack.add(this);
+		return stack;
 	}
 
 	@Override
@@ -86,11 +89,6 @@ public class Curandero extends Pieza {
 	@Override
 	public boolean soldadosInmediatosSePuedenUnir() {
 		return false;
-	}
-
-	@Override
-	public void setRango(RangoInmediato rangoInmediato) {
-
 	}
 
 	@Override
