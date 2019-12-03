@@ -5,6 +5,7 @@ import edu.fiuba.algoChess.Batallones.BatallonNull;
 import edu.fiuba.algoChess.Batallones.Batalloneable;
 import edu.fiuba.algoChess.Rangos.Rango;
 import edu.fiuba.algoChess.Rangos.RangoInmediato;
+import edu.fiuba.algoChess.Rangos.RangoSoldado;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

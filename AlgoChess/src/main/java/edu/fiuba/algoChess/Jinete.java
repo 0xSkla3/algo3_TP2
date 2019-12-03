@@ -80,17 +80,6 @@ public class Jinete extends Pieza {
 
 	}
 
-
-	public Jinete(Ubicacion ubicacion) {
-		super(ubicacion);
-	}
-
-	public void mover(Tablero campoDeBatalla, Ubicacion ubicacion) {
-		campoDeBatalla.ubicarEnCelda(this, ubicacion);
-		campoDeBatalla.eliminar(this.ubicacion);
-		this.ubicacion = ubicacion;
-	}
-
 	@Override
 	public Batalloneable moverBatallonDerecha(Tablero campoDeBatalla) {
 		return null;

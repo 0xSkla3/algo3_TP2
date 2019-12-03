@@ -1,5 +1,8 @@
 package edu.fiuba.algoChess;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Objects;
 
 public class Ubicacion {

@@ -1,6 +1,7 @@
 package edu.fiuba.algoChess;
 
 import edu.fiuba.algoChess.Batallones.Batallon;
+import edu.fiuba.algoChess.Batallones.BatallonNull;
 import edu.fiuba.algoChess.Batallones.BatallonUtil;
 import edu.fiuba.algoChess.Batallones.Batalloneable;
 import edu.fiuba.algoChess.Salud.Salud;
