@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="03e7be5e-4207-4b31-890d-b83ceb4e78c3" name="Default Changelist" comment="" />
+    <list default="true" id="9dd26281-f571-4088-9f4e-65bcf39d3db8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/Salud/SaludTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/Salud/SaludTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/edu/fiuba/algoChess/SaludTest.java" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +42,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.edu.fiuba.algoChess in AlgoChess">
     <configuration name="All in AlgoChess" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AlgoChess" />
       <option name="PACKAGE_NAME" value="" />
@@ -47,8 +51,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="edu.fiuba.algoChess in AlgoChess" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AlgoChess" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.fiuba.algoChess.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.fiuba.algoChess" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.edu.fiuba.algoChess in AlgoChess" />
         <item itemvalue="JUnit.All in AlgoChess" />
       </list>
     </recent_temporary>

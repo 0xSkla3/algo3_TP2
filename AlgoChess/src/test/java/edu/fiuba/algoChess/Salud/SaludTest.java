@@ -1,13 +1,15 @@
 package edu.fiuba.algoChess.Salud;
 
-import org.junit.jupiter.api.Test;
+
+
+import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class SaludTest {
 
 	@Test
-	void saludLlenaSeHiereCorrectamente(){
+	public void saludLlenaSeHiereCorrectamente(){
 		final int saludValorTotal = 50;
 		final int saludValorHerir = 5;
 		final Salud unaSalud = new SaludLlena(saludValorTotal);
@@ -17,7 +19,7 @@ public class SaludTest {
 	}
 
 	@Test
-	void saludLlenaHeridaDevuelveSaludMedia(){
+	public void saludLlenaHeridaDevuelveSaludMedia(){
 		final int saludValorTotal = 50;
 		final int saludValorHerir = 5;
 		Salud unaSalud = new SaludLlena(saludValorTotal);
@@ -27,7 +29,7 @@ public class SaludTest {
 	}
 
 	@Test
-	void saludMediaCuradaDevuelveSaludLlena(){
+	public void saludMediaCuradaDevuelveSaludLlena(){
 		final int saludValorTotal = 50;
 		final int saludValorHerido = 5;
 		Salud unaSalud = new SaludMedia(saludValorTotal,saludValorTotal-saludValorHerido);
@@ -37,7 +39,7 @@ public class SaludTest {
 	}
 
 	@Test
-	void saludLlenaNoSeLlenaMas(){
+	public void saludLlenaNoSeLlenaMas(){
 		final int saludValorTotal = 50;
 		final int saludValorCurar = 5;
 		Salud unaSalud = new SaludLlena(saludValorTotal);
@@ -47,7 +49,7 @@ public class SaludTest {
 	}
 
 	@Test
-	void saludMediaMuere(){
+	public void saludMediaMuere(){
 		final int saludValorTotal = 50;
 		final int saludValorHerido = 5;
 		Salud unaSalud = new SaludMedia(saludValorTotal,saludValorTotal-saludValorHerido);
@@ -57,7 +59,7 @@ public class SaludTest {
 	}
 
 	@Test
-	void saludMediaSeLLena(){
+	public void saludMediaSeLLena(){
 		final int saludValorTotal = 50;
 		final int saludValorHerir = 5;
 		Salud unaSalud = new SaludMedia(saludValorTotal,saludValorTotal-saludValorHerir);
@@ -67,7 +69,7 @@ public class SaludTest {
 	}
 
 	@Test
-	void saludMuertoNoSeLlena(){
+	public void saludMuertoNoSeLlena(){
 		final int saludValorTotal = 50;
 		final int saludValorCurar = 5;
 		Salud unaSalud = new SaludMuerto();
