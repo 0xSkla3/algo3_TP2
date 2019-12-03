@@ -1,5 +1,7 @@
 package edu.fiuba.algoChess;
 
+import edu.fiuba.algoChess.Batallones.Batallon;
+import edu.fiuba.algoChess.Batallones.BatallonUtil;
 import edu.fiuba.algoChess.Salud.Salud;
 import org.junit.Test;
 

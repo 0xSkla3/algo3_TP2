@@ -1,4 +1,6 @@
-package edu.fiuba.algoChess;
+package edu.fiuba.algoChess.Rangos;
+
+import edu.fiuba.algoChess.Pieza;
 
 import java.util.Collection;
 

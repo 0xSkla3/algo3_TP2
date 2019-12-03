@@ -1,11 +1,15 @@
-package edu.fiuba.algoChess;
+package edu.fiuba.algoChess.Rangos;
 
+import edu.fiuba.algoChess.Batallones.Batalloneable;
+import edu.fiuba.algoChess.Celda;
+import edu.fiuba.algoChess.Pieza;
+import edu.fiuba.algoChess.Tablero;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
 
-public class RangoInmediato implements Rango {
+public abstract class RangoInmediato implements Rango{
 
 	@Getter
 	@Setter
@@ -28,7 +32,12 @@ public class RangoInmediato implements Rango {
 	ArrayList<Pieza> piezasEnRango;
 
 	public RangoInmediato(Pieza piezaCentral, Tablero tablero) {
+		this.piezasEnRango = new ArrayList<>();
 		this.actualizaRangoInmediato(piezaCentral,tablero);
+	}
+
+	public RangoInmediato() {
+		this.piezasEnRango = new ArrayList<>();
 	}
 
 	public Rango actualizaRangoInmediato(Pieza piezaCentral, Tablero tablero){
@@ -37,7 +46,10 @@ public class RangoInmediato implements Rango {
 		this.setAbajo(tablero.getCelda(piezaCentral.getUbicacion().getUbicacionAbajo()));
 		this.setDerecha(tablero.getCelda(piezaCentral.getUbicacion().getUbicacionIzquierda()));
 		this.setIzquierda(tablero.getCelda(piezaCentral.getUbicacion().getUbicacionDerecha()));
-		actualizaPiezasEnRango(piezaCentral);
+
+		this.actualizaPiezasEnRango(piezaCentral);
+
+		piezaCentral.setRango(this);
 
 		return this;
 	}
@@ -50,15 +62,23 @@ public class RangoInmediato implements Rango {
 		this.getAbajo().getPiezaActual().aniadirPiezaAlStack(nuevoEntorno);
 		this.getIzquierda().getPiezaActual().aniadirPiezaAlStack(nuevoEntorno);
 		this.getDerecha().getPiezaActual().aniadirPiezaAlStack(nuevoEntorno);
-		this.setPiezasEnRango(this.getPiezasEnRango());
 
-		setPiezasEnRango(nuevoEntorno);
+		this.setPiezasEnRango(nuevoEntorno);
+	}
+
+	@Override
+	public void actualizaRangoSoldado(Pieza piezaCentral, Tablero tablero) {
 
 	}
 
 	@Override
-	public ArrayList<Pieza> getPiezasEnRango() {
-		return this.getPiezasEnRango();
+	public Batalloneable darDeAltaBatallon(){
+		return null;
+	}
+
+	@Override
+	public ArrayList<Pieza> getSoldadosEquipo() {
+		return null;
 	}
 
 }

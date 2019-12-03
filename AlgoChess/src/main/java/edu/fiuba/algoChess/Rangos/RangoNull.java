@@ -1,4 +1,4 @@
-package edu.fiuba.algoChess;
+package edu.fiuba.algoChess.Rangos;
 
 public interface RangoNull extends Rango {
 }

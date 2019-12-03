@@ -1,5 +1,7 @@
 package edu.fiuba.algoChess;
 
+import edu.fiuba.algoChess.Rangos.Rango;
+import edu.fiuba.algoChess.Rangos.RangoInmediato;
 import edu.fiuba.algoChess.Salud.Salud;
 import edu.fiuba.algoChess.Salud.SaludLlena;
 import edu.fiuba.algoChess.Salud.SaludMuerto;
@@ -204,6 +206,8 @@ public abstract class Pieza implements Movible, Atacable {
 	public abstract ArrayList<Pieza>  getSoldadosContiguos();
 
 	public abstract boolean soldadosInmediatosSePuedenUnir();
+
+	public abstract void setRango(RangoInmediato rangoInmediato);
 
 	//COMENTARIO IMPORTANTE: DECIDI MOVER EL METODO DE JINETE
 

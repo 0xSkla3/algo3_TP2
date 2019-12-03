@@ -1,6 +1,8 @@
 package edu.fiuba.algoChess.Batallones;
 
 import edu.fiuba.algoChess.*;
+import edu.fiuba.algoChess.Rangos.Agrupable;
+import edu.fiuba.algoChess.Rangos.Rango;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -13,7 +15,6 @@ public interface Batalloneable extends Movible, Agrupable {
 	@Override
 	Collection<Pieza> desagrupar(Agrupable grupo);
 
-	@Override
 	Rango actualizaRangoInmediato(Pieza piezaCentral, Tablero tablero);
 
 	@Override
