@@ -6,13 +6,13 @@ import edu.fiuba.algoChess.*;
 import edu.fiuba.algoChess.Batallones.BatallonUtil;
 import edu.fiuba.algoChess.Batallones.Batalloneable;
 import edu.fiuba.algoChess.Batallones.BatallonNull;
+import edu.fiuba.algoChess.Batallones.BatallonUtil;
 import lombok.Getter;
 import lombok.Setter;
 
 public class RangoSoldado extends RangoInmediato implements Rango {
 
 	@Getter
-	@Setter
 	ArrayList<Pieza> soldadosEquipo;
 
 	@Getter

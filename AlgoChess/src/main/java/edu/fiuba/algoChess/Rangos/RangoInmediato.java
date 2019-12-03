@@ -9,7 +9,7 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 
-public abstract class RangoInmediato implements Rango{
+public abstract class RangoInmediato implements Rango {
 
 	@Getter
 	@Setter

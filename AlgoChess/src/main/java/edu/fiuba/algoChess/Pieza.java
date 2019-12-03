@@ -128,7 +128,7 @@ public abstract class Pieza implements Movible, Atacable {
 			Ubicacion ubicacionVieja = this.getUbicacion();
 			campoDeBatalla.ubicarEnCelda(this, ubicacion);
 			campoDeBatalla.eliminar(ubicacionVieja);
-			this.ubicacion = ubicacion;
+			this.setUbicacion(ubicacion);
 		}catch (NoSePuedeUbicarPorqueEstaOcupadoException ex){
 			//mensaje de error en vista y darle el turno al mismo jugador
 		}
@@ -140,7 +140,7 @@ public abstract class Pieza implements Movible, Atacable {
 			Ubicacion ubicacionVieja = this.getUbicacion();
 			campoDeBatalla.ubicarEnCelda(this, ubicacion);
 			campoDeBatalla.eliminar(ubicacionVieja);
-			this.ubicacion = ubicacion;
+			this.setUbicacion(ubicacion);
 		}catch (NoSePuedeUbicarPorqueEstaOcupadoException ex){
 			throw new NoSePuedeUbicarPorqueEstaOcupadoException("no se puede ubicar pieza por estar el casillero ocupado");
 			//mensaje de error en vista y darle el turno al mismo jugador
