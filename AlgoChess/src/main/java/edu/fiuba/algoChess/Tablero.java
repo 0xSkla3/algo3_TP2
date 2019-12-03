@@ -75,7 +75,9 @@ public class Tablero {
 	}
 
 	public void eliminar(Ubicacion ubicacion) {
+
 		this.getCelda(ubicacion).eliminar();
 	}
 
 }
+
