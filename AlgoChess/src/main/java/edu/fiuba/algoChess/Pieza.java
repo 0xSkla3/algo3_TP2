@@ -14,7 +14,6 @@ import java.util.ArrayList;
 @NoArgsConstructor
 public abstract class Pieza implements Movible, Atacable {
 
-	//protected TipoPieza nombre;
 	@Setter
 	@Getter
 	private Salud vida;
@@ -35,16 +34,6 @@ public abstract class Pieza implements Movible, Atacable {
 	@Getter
 	protected Rango rango;
 
-
-	/*	public Pieza(Ubicacion ubicacion, int costo, int vida, Bando bando) {
-
-		this.bando = bando;
-		this.ubicacion = ubicacion;
-		this.vida = vida;
-		this.costo = costo;
-
-	}
-*/
 	Pieza(int costo, int vida) {
 
 		this.vida = new SaludLlena(vida);
@@ -53,24 +42,28 @@ public abstract class Pieza implements Movible, Atacable {
 	}
 
 	public Pieza(int costo, int vida, Ubicacion ubicacion, Bando bando) {
-
 		this.bando = bando;
 		this.ubicacion = ubicacion;
 		this.vida = new SaludLlena(vida);
 		this.costo = costo;
-
 	}
 
 	public Pieza(Ubicacion ubicacion) {
-
 		this.vida = new SaludMuerto();
 		this.costo = 0;
 		this.ubicacion = ubicacion;
+		this.bando = null;
+	}
+
+	boolean equals(Pieza pieza){
+
+		boolean condicion1 = pieza.getVida().igualA(this.getVida());
+		boolean condicion2 = pieza.getCosto() == this.getCosto();
+		return condicion1 && condicion2 ;
 
 	}
 
 	public void ejecutarComportamiento(DistanciaRelativa distancia, Pieza pieza){
-
 	};
 
 	public DistanciaRelativa getDistanciaRelativa (Pieza pieza){
@@ -97,45 +90,18 @@ public abstract class Pieza implements Movible, Atacable {
 		return distanciaRelativa;
 	};
 
-
-	public int getCosto(){
-		return this.costo;
-		}
-
-	//public TipoPieza getNombre(){return this.nombre;}
-
-	public Salud getVida() {
-		return this.vida;
-		}
-
-	public Ubicacion getUbicacion() {
-		//system.out.println(this.ubicacion);
-		return this.ubicacion;
-		}
-
-	public void setBando(Bando bando){
-		this.bando = bando;
+	public void aumentarVida(int aumento) {
+		this.setVida(this.getVida().curar(aumento));
 	}
-
-	public Bando getBando(){
-		return this.bando;
-	}
-
-	public void aumentarVida(int aumento) {this.setVida(this.vida.curar(aumento));
-		}
 
 	public void recibirAtaque(Ataque ataque){
-		this.vida.herir(ataque.getDanio());
-
-		}
-
-	public void pisar(Celda celda, Pieza pieza){
-		throw new NoSePuedeUbicarPorqueEstaOcupadoException("No se puede ubicar porque esta ocupado la celda");
+		this.setVida(this.getVida().herir(ataque.getDanio()));
 	}
 
-	public void setUbicacion(Ubicacion ubicacion){
-		this.ubicacion=ubicacion;
-		}
+	public void pisar(Celda celda, Pieza pieza){
+		//celda.setPiezaActual(pieza); //Rochiƒ
+		//throw new NoSePuedeUbicarPorqueEstaOcupadoException("No se puede ubicar porque esta ocupado la celda");
+	}
 
 	public void moverseALaDerecha(Tablero campoDeBatalla){
 		Ubicacion ubicacionDerecha = this.ubicacion.getUbicacionDerecha();
@@ -169,33 +135,23 @@ public abstract class Pieza implements Movible, Atacable {
 
 	}
 
-/*
-	public void mover( Tablero campoDeBatalla, Ubicacion ubicacion) {
-		if(campoDeBatalla.getCelda(ubicacion).isEmpty()){
+	public void moverPiezaDeBatallon( Tablero campoDeBatalla, Ubicacion ubicacion){
+		try {
 			Ubicacion ubicacionVieja = this.getUbicacion();
 			campoDeBatalla.ubicarEnCelda(this, ubicacion);
 			campoDeBatalla.eliminar(ubicacionVieja);
-			this.ubicacion = ubicacion;}
-	}
-
-
-	public void moverse(Mapa mapa, Ubicacion ubicacion) {
-		try {
-			mapa.ubicarEnCasillero(this, ubicacion);
-			mapa.eliminarDeCasillero(this.ubicacion);
 			this.ubicacion = ubicacion;
-		} catch (NoSePuedeUbicarPorqueEstaOcupadoException e) {
-			Material material = (Material) mapa.obtenerCasillero(ubicacion).obtenerUbicable();
-			this.herramientaActual.usar(material);
+		}catch (NoSePuedeUbicarPorqueEstaOcupadoException ex){
+			throw new NoSePuedeUbicarPorqueEstaOcupadoException("no se puede ubicar pieza por estar el casillero ocupado");
+			//mensaje de error en vista y darle el turno al mismo jugador
 		}
 	}
-*/
 
 	public abstract Rango actualizaRango(Tablero tablero);
 
 	public abstract Rango getRango();
 
-	public abstract void unirABatallonDeSoldado(ArrayList<Pieza> stackDeUnion);
+	public abstract ArrayList<Pieza> unirABatallonDeSoldado(ArrayList<Pieza> stackDeUnion);
 
 	public abstract void aniadirPiezaAlStack(ArrayList<Pieza> stack);
 
@@ -206,6 +162,15 @@ public abstract class Pieza implements Movible, Atacable {
 	public abstract ArrayList<Pieza>  getSoldadosContiguos();
 
 	public abstract boolean soldadosInmediatosSePuedenUnir();
+
+	public boolean notEqualsNull(){
+		boolean condicion1 = !this.getVida().igualA(new SaludMuerto());
+		boolean condicion2 = this.getCosto() != 0;
+		boolean condicion3 = this.getBando() != null;
+
+		return condicion1 && condicion2 && condicion3;
+
+	};
 
 	public abstract void setRango(RangoInmediato rangoInmediato);
 

@@ -43,7 +43,6 @@ public class Jinete extends Pieza {
 		this.piezaAliadaCercana = false;
 		this.distanciaAReconocerEnTerreno = 2;
 
-
 	}
 
 
@@ -99,8 +98,8 @@ public class Jinete extends Pieza {
 	}
 
 	@Override
-	public void unirABatallonDeSoldado(ArrayList<Pieza> stackDeUnion) {
-		//throw new IllegalStateException("Un jinete no se puede unir a un batallon de Soldado");
+	public ArrayList<Pieza> unirABatallonDeSoldado(ArrayList<Pieza> stackDeUnion) {
+		throw new IllegalStateException("Un jinete no se puede unir a un batallon de Soldado");
 	}
 
 	@Override
@@ -110,12 +109,11 @@ public class Jinete extends Pieza {
 
 	@Override
 	public void aniadirSoldadoAlStack(ArrayList<Pieza> stack) {
-
 	}
 
 	@Override
 	public void aniadirTodoMenosSoldadoAlStack(ArrayList<Pieza> stack) {
-
+		stack.add(this);
 	}
 
 	@Override
