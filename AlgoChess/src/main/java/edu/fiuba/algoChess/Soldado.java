@@ -5,6 +5,7 @@ import edu.fiuba.algoChess.batallones.BatallonNull;
 import edu.fiuba.algoChess.batallones.Batalloneable;
 import edu.fiuba.algoChess.rangos.Rango;
 import edu.fiuba.algoChess.rangos.RangoSoldado;
+import edu.fiuba.algoChess.salud.SaludLlena;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,11 +17,7 @@ public class Soldado extends Pieza implements Movible {
 
 	@Getter
 	@Setter
-	private Ataque ataque;
-
-	/*@Getter
-	@Setter
-	private RangoSoldado rango;*/
+	private Comportamiento ataqueCercano;
 
 	@Getter
 	@Setter
@@ -34,15 +31,24 @@ public class Soldado extends Pieza implements Movible {
 	public Soldado(Ubicacion ubicacion, Bando bando, Tablero tablero){
 		super(2,75,ubicacion,bando);
 		this.danioCercano = 10;
-		this.ataque = new AtaqueCercano(danioCercano);
+		this.ataqueCercano = new AtaqueCercanoSoldado(10);
 		this.rango = new RangoSoldado(this, tablero);
 		tablero.ubicarEnCelda(this, ubicacion);
 	}
 
 	public Soldado(Ubicacion ubicacion, Tablero tablero) {
-		//this.setVida(new SaludLlena());
 		super(ubicacion);
+		this.setVida(new SaludLlena(75));
+		this.ataqueCercano = new AtaqueCercanoSoldado(10);
 		this.rango = new RangoSoldado(this, tablero);
+	}
+
+
+	public Soldado(Ubicacion ubicacion,Bando bando){
+
+		super(2,75,ubicacion,bando);
+		danioCercano = 10;
+		this.ataqueCercano = new AtaqueCercanoSoldado(10);
 	}
 
 	public Rango actualizaRango(Tablero tablero) {
@@ -160,13 +166,6 @@ public class Soldado extends Pieza implements Movible {
 		return new BatallonNull();
 	}
 
-	public Soldado(Ubicacion ubicacion,Bando bando){
-
-		super(2,75,ubicacion,bando);
-		danioCercano = 10;
-		this.ataque = new AtaqueCercano(danioCercano);
-	}
-
 	Batallon unirSoldados(){
 		return (Batallon) this.getRango().darDeAltaBatallon();
 	}
@@ -180,5 +179,9 @@ public class Soldado extends Pieza implements Movible {
 	@Override
 	public void recibirAtaque(Ataque ataque) {
 
+	}
+
+	public void atacar(Pieza pieza) {
+		//ROCHI
 	}
 }

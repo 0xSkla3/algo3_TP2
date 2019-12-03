@@ -4,6 +4,8 @@ import edu.fiuba.algoChess.batallones.Batallon;
 import edu.fiuba.algoChess.batallones.BatallonNull;
 import edu.fiuba.algoChess.batallones.BatallonUtil;
 import edu.fiuba.algoChess.batallones.Batalloneable;
+import edu.fiuba.algoChess.excepciones.FueraDeRangoParaEjecutarComportamientoException;
+import edu.fiuba.algoChess.excepciones.NoSePuedeAtacarUnAliadoException;
 import edu.fiuba.algoChess.salud.Salud;
 import org.junit.Test;
 
@@ -138,5 +140,63 @@ public class SoldadoTest {
 		assertEquals(soldado4.getUbicacion(), new Ubicacion(5,2));
 	};
 
+	@Test
+	public void test05SoldadoAliadoAtacaJineteEnemigoCercano(){
+		BandoJugador1 bandoJugador1 = new BandoJugador1();
+		BandoJugador2 bandoJugador2 = new BandoJugador2();
+		Tablero tablero = new Tablero(bandoJugador1, bandoJugador2);
+		Ubicacion ubicacionSoldado = new Ubicacion(10,1);
+		Soldado soldadoAliado = new Soldado(ubicacionSoldado,bandoJugador1);
+		Ubicacion ubicacionJinete = new Ubicacion(11,1);
+		Jinete jineteEnemigo = new Jinete(ubicacionJinete,bandoJugador2);
+		tablero.ubicarEnCelda(jineteEnemigo,ubicacionJinete);
+		tablero.ubicarEnCelda(soldadoAliado, ubicacionSoldado);
+		int vidaTrasAtaque = jineteEnemigo.getVida().getValorActual() - soldadoAliado.getAtaqueCercano().getValorComportamiento();
+		soldadoAliado.atacar(jineteEnemigo);
+		assertEquals(vidaTrasAtaque,jineteEnemigo.getVida());
+	};
+
+	@Test (expected = FueraDeRangoParaEjecutarComportamientoException.class)
+	public void test06SeArrojaExceptionCuandoSeQuiereAtacarAUnEnemigoLejano(){
+		BandoJugador1 bandoJugador1 = new BandoJugador1();
+		BandoJugador2 bandoJugador2 = new BandoJugador2();
+		Tablero tablero = new Tablero(bandoJugador1, bandoJugador2);
+		Ubicacion ubicacionSoldado = new Ubicacion(10,1);
+		Soldado soldadoAliado = new Soldado(ubicacionSoldado,bandoJugador1);
+		Ubicacion ubicacionJinete = new Ubicacion(11,10);
+		Jinete jineteEnemigo = new Jinete(ubicacionJinete,bandoJugador2);
+		tablero.ubicarEnCelda(jineteEnemigo,ubicacionJinete);
+		tablero.ubicarEnCelda(soldadoAliado, ubicacionSoldado);
+		soldadoAliado.atacar(jineteEnemigo);
+	};
+
+	@Test (expected = FueraDeRangoParaEjecutarComportamientoException.class)
+	public void test07SeArrojaExceptionCuandoSeQuiereAtacarAUnEnemigoADistanciaMedia(){
+
+		BandoJugador1 bandoJugador1 = new BandoJugador1();
+		BandoJugador2 bandoJugador2 = new BandoJugador2();
+		Tablero tablero = new Tablero(bandoJugador1, bandoJugador2);
+		Ubicacion ubicacionSoldado = new Ubicacion(10,1);
+		Soldado soldadoAliado = new Soldado(ubicacionSoldado,bandoJugador1);
+		Ubicacion ubicacionJinete = new Ubicacion(11,3);
+		Jinete jineteEnemigo = new Jinete(ubicacionJinete,bandoJugador2);
+		tablero.ubicarEnCelda(jineteEnemigo,ubicacionJinete);
+		tablero.ubicarEnCelda(soldadoAliado, ubicacionSoldado);
+		soldadoAliado.atacar(jineteEnemigo);
+	};
+
+	@Test (expected = NoSePuedeAtacarUnAliadoException.class)
+	public void test08SeArrojaExceptionCuandoSeQuiereAtacarUnAliado(){
+		BandoJugador1 bandoJugador1 = new BandoJugador1();
+		BandoJugador2 bandoJugador2 = new BandoJugador2();
+		Tablero tablero = new Tablero(bandoJugador1, bandoJugador2);
+		Ubicacion ubicacionSoldado = new Ubicacion(10,1);
+		Soldado soldadoAliado = new Soldado(ubicacionSoldado,bandoJugador1);
+		Ubicacion ubicacionJinete = new Ubicacion(10,2);
+		Jinete jineteAliado = new Jinete(ubicacionJinete,bandoJugador1);
+		tablero.ubicarEnCelda(jineteAliado,ubicacionJinete);
+		tablero.ubicarEnCelda(soldadoAliado, ubicacionSoldado);
+		soldadoAliado.atacar(jineteAliado);
+	};
 
 }
