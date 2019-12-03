@@ -9,11 +9,11 @@ public abstract class Salud implements Curable, Herible {
 
 	@Getter
 	@Setter
-	int valorCompleto;
+	private int valorCompleto;
 
 	@Getter
 	@Setter
-	int valorActual;
+	private int valorActual;
 
 	@Override
 	public abstract Salud curar(int salud);

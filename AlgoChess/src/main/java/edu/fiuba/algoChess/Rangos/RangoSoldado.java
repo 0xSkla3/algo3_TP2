@@ -12,6 +12,7 @@ import lombok.Setter;
 public class RangoSoldado extends RangoInmediato implements Rango {
 
 	@Getter
+	@Setter
 	ArrayList<Pieza> soldadosEquipo;
 
 	@Getter

@@ -12,7 +12,7 @@ public class SaludTest {
 		final Salud unaSalud = new SaludLlena(saludValorTotal);
 		unaSalud.herir(saludValorHerir);
 
-		assertEquals(unaSalud.valorActual, saludValorTotal- saludValorHerir);
+		assertEquals(unaSalud.getValorActual(), saludValorTotal- saludValorHerir);
 	}
 
 	@Test

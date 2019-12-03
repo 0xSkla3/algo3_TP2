@@ -1,8 +1,12 @@
 package edu.fiuba.algoChess;
 
+import edu.fiuba.algoChess.Batallones.BatallonNull;
 import edu.fiuba.algoChess.Batallones.Batalloneable;
 import edu.fiuba.algoChess.Rangos.Rango;
-import edu.fiuba.algoChess.Rangos.RangoInmediato;
+import edu.fiuba.algoChess.Salud.Salud;
+import edu.fiuba.algoChess.Salud.SaludMuerto;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 
@@ -76,27 +80,27 @@ public class PiezaNull extends Pieza {
 
     @Override
     public Batalloneable moverBatallonDerecha(Tablero campoDeBatalla) {
-        return null;
+        return new BatallonNull();
     }
 
     @Override
     public Batalloneable moverBatallonIzquierda(Tablero campoDeBatalla) {
-        return null;
+        return new BatallonNull();
     }
 
     @Override
     public Batalloneable moverBatallonArriba(Tablero campoDeBatalla) {
-        return null;
+        return new BatallonNull();
     }
 
     @Override
     public Batalloneable moverBatallonAbajo(Tablero campoDeBatalla) {
-        return null;
+        return new BatallonNull();
     }
 
     @Override
     public Batalloneable moverBatallon(Tablero campoDeBatalla, Ubicacion ubicacion1, Ubicacion ubicacion2, Ubicacion ubicacion3) {
-        return null;
+        return new BatallonNull();
     }
 
     @Override
