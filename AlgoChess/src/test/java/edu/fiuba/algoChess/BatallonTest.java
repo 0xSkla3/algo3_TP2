@@ -1,5 +1,8 @@
 package edu.fiuba.algoChess;
 
+import edu.fiuba.algoChess.Batallones.Batallon;
+import edu.fiuba.algoChess.Batallones.BatallonNull;
+import edu.fiuba.algoChess.Batallones.BatallonUtil;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -151,7 +154,7 @@ public class BatallonTest {
 		tableroTest.ubicarEnCelda(soldado2, soldado2.getUbicacion());
 		tableroTest.ubicarEnCelda(soldado3, soldado3.getUbicacion());
 
-		Batallon batallonGenerado = BatallonUtil.batallonAsociadoONull(soldado1);
+		Batallon batallonGenerado = (Batallon) BatallonUtil.batallonAsociadoONull(soldado1);
 
 		assertEquals(new BatallonNull(), batallonGenerado);
 
@@ -175,7 +178,7 @@ public class BatallonTest {
 		tableroTest.ubicarEnCelda(soldado3, soldado3.getUbicacion());
 
 		Batallon batallonPatron = new BatallonUtil(soldado1,soldado2,soldado3);
-		Batallon batallonGenerado = BatallonUtil.batallonAsociadoONull(soldado1);
+		Batallon batallonGenerado = (Batallon) BatallonUtil.batallonAsociadoONull(soldado1);
 
 		assertTrue(batallonPatron.equals(batallonGenerado));
 

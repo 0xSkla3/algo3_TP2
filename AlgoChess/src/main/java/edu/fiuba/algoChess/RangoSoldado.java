@@ -2,6 +2,11 @@ package edu.fiuba.algoChess;
 
 import java.util.ArrayList;
 
+import edu.fiuba.algoChess.Batallones.Batallon;
+import edu.fiuba.algoChess.Batallones.BatallonNull;
+import edu.fiuba.algoChess.Batallones.BatallonUtil;
+import edu.fiuba.algoChess.Rangos.Rango;
+import edu.fiuba.algoChess.Rangos.RangoInmediato;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

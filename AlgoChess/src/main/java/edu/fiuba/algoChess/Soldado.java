@@ -1,5 +1,9 @@
 package edu.fiuba.algoChess;
 
+import edu.fiuba.algoChess.Batallones.Batallon;
+import edu.fiuba.algoChess.Batallones.Batalloneable;
+import edu.fiuba.algoChess.Rangos.Rango;
+import edu.fiuba.algoChess.Rangos.RangoInmediato;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -85,8 +89,42 @@ public class Soldado extends Pieza implements Movible {
 		return this.getRango().getSoldadosEquipo().size() == 3;
 	}
 
+	@Override
+	public void setRango(RangoInmediato rangoInmediato) {
+
+	}
+
 	Batallon unirSoldados(){
 		return this.getRango().darDeAltaBatallon();
 	}
 
+	@Override
+	public Batalloneable moverBatallonDerecha(Tablero campoDeBatalla) {
+		return null;
+	}
+
+	@Override
+	public Batalloneable moverBatallonIzquierda(Tablero campoDeBatalla) {
+		return null;
+	}
+
+	@Override
+	public Batalloneable moverBatallonArriba(Tablero campoDeBatalla) {
+		return null;
+	}
+
+	@Override
+	public Batalloneable moverBatallonAbajo(Tablero campoDeBatalla) {
+		return null;
+	}
+
+	@Override
+	public Batalloneable moverBatallon(Tablero campoDeBatalla, Ubicacion ubicacion1, Ubicacion ubicacion2, Ubicacion ubicacion3) {
+		return null;
+	}
+
+	@Override
+	public void moverPiezaDeBatallon(Tablero campoDeBatalla, Ubicacion ubicacion) {
+
+	}
 }
