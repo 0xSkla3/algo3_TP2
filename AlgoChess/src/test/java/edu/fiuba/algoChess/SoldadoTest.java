@@ -138,57 +138,5 @@ public class SoldadoTest {
 		assertEquals(soldado4.getUbicacion(), new Ubicacion(5,2));
 	};
 
-	@Test
-	public void test05SoldadoAliadoAtacaJineteEnemigoCercano(){
-
-		BandoJugador1 bandoJugador1 = new BandoJugador1();
-		BandoJugador2 bandoJugador2 = new BandoJugador2();
-
-		Ubicacion ubicacionSoldado = new Ubicacion(1,1);
-		Soldado soldadoAliado = new Soldado(ubicacionSoldado,bandoJugador1);
-
-		Ubicacion ubicacionJinete = new Ubicacion(1,2);
-		Jinete jineteEnemigo = new Jinete(ubicacionJinete,bandoJugador2);
-
-		DistanciaRelativa distanciaJineteASoldado = soldadoAliado.getDistanciaRelativa(jineteEnemigo);
-		//	assertTrue(distanciaJineteASoldado instanceof DistanciaRelativa);
-		Salud vidaTrasAtaque = jineteEnemigo.getVida();
-		soldadoAliado.atacar(distanciaJineteASoldado,jineteEnemigo);
-		assertEquals(vidaTrasAtaque,jineteEnemigo.getVida());
-
-	};
-
-/*	@Test  ESTE TEST DEBE TIRAR FUERA_DE_RANGO_EXCEPT
-	public void test06SoldadoAtacaJineteLejanoYNoSeQuitaVidaAJineteAtacado(){
-		Soldado soldado = new Soldado();
-		Ubicacion ubicacionSoldado = new Ubicacion(1,1);
-		soldado.setUbicacion(ubicacionSoldado);
-		Jinete jinete = new Jinete();
-		Ubicacion ubicacionJinete = new Ubicacion(10,20);
-		jinete.setUbicacion(ubicacionJinete);
-		DistanciaRelativa distanciaJineteASoldado = soldado.getDistanciaRelativa(jinete);
-		//	assertTrue(distanciaJineteASoldado instanceof DistanciaRelativa);
-		int vidaTrasAtaque = jinete.getVida() - soldado.getAtaqueLejano();
-		soldado.ejecutarComportamiento(distanciaJineteASoldado,jinete);
-		assertEquals(vidaTrasAtaque,jinete.getVida());
-	};*/
-
-	@Test
-	public void test07SoldadoAliadoNoPuedeAtacaaAJineteAliadoCercano(){
-
-		BandoJugador1 bandoTest = new BandoJugador1();
-
-		Ubicacion ubicacionSoldado = new Ubicacion(1,1);
-		Soldado soldadoAliado = new Soldado(ubicacionSoldado,bandoTest);
-
-		Ubicacion ubicacionJinete = new Ubicacion(1,2);
-		Jinete jineteAliado = new Jinete(ubicacionJinete,bandoTest);
-
-		DistanciaRelativa distanciaJineteASoldado = soldadoAliado.getDistanciaRelativa(jineteAliado);
-		//	assertTrue(distanciaJineteASoldado instanceof DistanciaRelativa);
-		Salud vidaTrasAtaque = jineteAliado.getVida();
-		soldadoAliado.atacar(distanciaJineteASoldado,jineteAliado);
-		assertEquals(vidaTrasAtaque,jineteAliado.getVida());
-	};
 
 }

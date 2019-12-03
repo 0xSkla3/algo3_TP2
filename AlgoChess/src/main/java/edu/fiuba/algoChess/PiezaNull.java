@@ -70,6 +70,21 @@ public class PiezaNull extends Pieza {
         return false;
     }
 
+    @Override
+    public void ejecutarComportamientoPorDistancia(DistanciaCercana distancia, Pieza pieza) {
+
+    }
+
+    @Override
+    public void ejecutarComportamientoPorDistancia(DistanciaMedia distancia, Pieza pieza) {
+
+    }
+
+    @Override
+    public void ejecutarComportamientoPorDistancia(DistanciaLejana distancia, Pieza pieza) {
+
+    }
+
     public void recibirAtaque(Ataque ataque){
     // lanza exception "no se puede atacar a casillero vacio
     }

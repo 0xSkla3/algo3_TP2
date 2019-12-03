@@ -121,6 +121,21 @@ public class Soldado extends Pieza implements Movible {
 	}
 
 	@Override
+	public void ejecutarComportamientoPorDistancia(DistanciaCercana distancia, Pieza pieza) {
+
+	}
+
+	@Override
+	public void ejecutarComportamientoPorDistancia(DistanciaMedia distancia, Pieza pieza) {
+
+	}
+
+	@Override
+	public void ejecutarComportamientoPorDistancia(DistanciaLejana distancia, Pieza pieza) {
+
+	}
+
+	@Override
 	public Batalloneable moverBatallonDerecha(Tablero campoDeBatalla) {
 		return new BatallonNull();
 	}
