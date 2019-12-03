@@ -143,4 +143,8 @@ public class Catapulta extends Pieza {
 
 	}
 
+	public void atacar(Pieza pieza) {
+		//ROCHI
+	}
+
 }
