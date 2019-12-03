@@ -56,6 +56,18 @@ public class Jinete extends Pieza {
 		this.ubicacion = ubicacion;
 	}
 
+	public Jinete(Ubicacion ubicacion, Bando bando, Tablero tablero){
+
+		super(3, 100,ubicacion,bando);
+		this.ataqueCercano = new AtaqueCercano(danioCercano);
+		this.ataqueMedio = new AtaqueMedio(danioMedio);
+		this.piezaEnemigaCercana = false;
+		this.piezaAliadaCercana = false;
+		this.distanciaAReconocerEnTerreno = 2;
+		tablero.ubicarEnCelda(this,ubicacion);
+
+	}
+
 	@Override
 	public Batalloneable moverBatallonDerecha(Tablero campoDeBatalla) {
 		return null;
