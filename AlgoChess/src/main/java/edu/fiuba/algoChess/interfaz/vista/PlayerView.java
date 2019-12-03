@@ -1,4 +1,4 @@
-package edu.fiuba.algoChess.vista;
+package edu.fiuba.algoChess.interfaz.vista;
 
 
 import javafx.scene.image.ImageView;

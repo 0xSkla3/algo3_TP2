@@ -1,4 +1,4 @@
-package edu.fiuba.algoChess.vista;
+package edu.fiuba.algoChess.interfaz.vista;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -13,7 +13,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class InitialPhaseView {
+public class PantallaPrincipal {
 	private Stage stage;
 	private PieceView pieceView;
 	private MapView mapView;
@@ -21,11 +21,12 @@ public class InitialPhaseView {
 	private PlayerView player2;
 	private PlayerView turn;
 	
-	public InitialPhaseView() {
-		this.stage = new Stage();
+	public PantallaPrincipal(String jugador1, Stage stage) {
+		this.stage = stage;
+		//this.stage = new Stage();
 		this.pieceView = new PieceView();
 		this.mapView = new MapView();//tamanio del tablero
-		player1 =  new PlayerView("Jugador 1");
+		player1 =  new PlayerView(jugador1);
 		player2 =  new PlayerView("Jugador 2");
 		initialPhase();
 	}
@@ -47,6 +48,7 @@ public class InitialPhaseView {
 	    theScene.getStylesheets().add("css/estilo.css");
 	    this.stage.setScene(theScene);
 	    this.stage.show();
+	    stage.setFullScreen(true);
 	}
 	
 	public HBox head() {
@@ -102,7 +104,7 @@ public class InitialPhaseView {
             	    @Override 
             	    public void handle(ActionEvent e) {
             	    	pieceView.setPieceMap(mapView,namePiece, Integer.parseInt(x.getText()),Integer.parseInt(y.getText()));
-            	    	changeShift(head,namePiece);
+            	    	cambioTurno(head,namePiece);
             	    	stage.close();
             	    }
             	});
@@ -117,7 +119,7 @@ public class InitialPhaseView {
         });	
 	}
 	
-	public void changeShift(HBox head,String namePiece) {
+	public void cambioTurno(HBox head, String namePiece) {
 		head.getChildren().remove(4);
 		
 		this.turn.setPiece(pieceView.getImageViewMax(namePiece));
@@ -137,5 +139,13 @@ public class InitialPhaseView {
 		button.setStyle("-fx-background-color:#F7CF32");
 		head.getChildren().add(button);
 	}
+/*
+	public Scene getEscena() {
+		Scene escenaJuego = new Scene(this);
+		escenaJuego.setOnKeyPressed(new EntradaTecladoHandler(this.tablero, this.juego.obtenerMapa(),
+				this.juego.obtenerJugador(), this.parteInferior));
+		return escenaJuego;
+	}
+*/
 }
 

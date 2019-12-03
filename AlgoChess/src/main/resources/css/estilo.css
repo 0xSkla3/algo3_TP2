@@ -1,3 +1,6 @@
+.root{
+    -fx-background-image: url("../imagenes/pantalla_inicio_prueba.jpg");
+}
 
 #head{
 	-fx-spacing:10;

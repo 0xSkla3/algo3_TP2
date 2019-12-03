@@ -177,5 +177,3 @@ public abstract class Pieza implements Movible, Atacable {
 	}
 
 }
-
-

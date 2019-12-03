@@ -1,20 +1,18 @@
-package edu.fiuba.algoChess.vista;
+package edu.fiuba.algoChess.interfaz.vista;
 
 
 import java.util.HashMap;
 
 //import fiuba.algo3.AlgoChess.entidades.Unidad;
-import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 
 //import main.java.com.fiuba.algo3.modelo.Observer;
 //import main.java.com.fiuba.algo3.modelo.Player;
 //import fiuba.algo3.AlgoChess.vista.MapView;
 
 public class PieceView{
-    private double playerScale = 1;
+    private double piezaEscala = 1;
     //private Tablero tablero;
     private HashMap<String,String> listaImage;
 
@@ -33,8 +31,8 @@ public class PieceView{
     
     public ImageView getImageViewMin(String piece) {
     	ImageView pieceImage = new ImageView(new Image(searchImage(piece)));
-        pieceImage.setScaleX(playerScale);
-        pieceImage.setScaleY(playerScale);
+        pieceImage.setScaleX(piezaEscala);
+        pieceImage.setScaleY(piezaEscala);
         pieceImage.setFitHeight(28);
         pieceImage.setFitWidth(28);
         
@@ -48,7 +46,7 @@ public class PieceView{
     
     private void listaView() {
     	this.listaImage = new HashMap<String,String>();
-    	this.listaImage.put("soldado", "imagenes/soldado.jpg");
+    	this.listaImage.put("soldado", "imagenes/soldado.jpg"); //aca se remplaza el nombre de la pieza con Soldado.geteclass() para linkear
     	this.listaImage.put("jinete", "imagenes/jinete.jpg");
     	this.listaImage.put("curandero", "imagenes/curandero.jpg");
     	this.listaImage.put("catapulta", "imagenes/catapulta.jpg");
