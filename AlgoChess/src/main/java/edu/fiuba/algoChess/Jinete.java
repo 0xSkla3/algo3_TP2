@@ -153,14 +153,23 @@ public class Jinete extends Pieza {
 		return false;
 	}
 
+	@Override
+	public void ejecutarComportamientoPorDistancia(DistanciaCercana distancia, Pieza pieza) {
+
+	}
+
+	@Override
+	public void ejecutarComportamientoPorDistancia(DistanciaMedia distancia, Pieza pieza) {
+
+	}
+
+	@Override
+	public void ejecutarComportamientoPorDistancia(DistanciaLejana distancia, Pieza pieza) {
+
+	}
+
 	public void atacar(DistanciaRelativa distancia, Pieza atacado){
 
-		if ((distancia==DistanciaRelativa.CERCANO)&&(!(this.getPiezaAliadaCercana()))){
-			atacado.recibirAtaque(this.ataqueCercano);
-		};
-		if ((distancia==DistanciaRelativa.MEDIO)&&((this.getPiezaAliadaCercana())||(!(this.getPiezaEnemigaCercana())))){
-			atacado.recibirAtaque(this.ataqueMedio);
-		}
 			}
 
 

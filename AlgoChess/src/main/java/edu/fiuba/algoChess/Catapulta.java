@@ -116,16 +116,22 @@ public class Catapulta extends Pieza {
 		return false;
 	}
 
-	public void ejecutarComportamiento(DistanciaRelativa distancia, Pieza atacado) {
+	@Override
+	public void ejecutarComportamientoPorDistancia(DistanciaCercana distancia, Pieza pieza) {
 
-		if (!this.bando.equals(atacado.getBando())) {
-			if (distancia == DistanciaRelativa.CERCANO) {
-				atacado.recibirAtaque(this.ataque);
-			}
-			if (distancia == DistanciaRelativa.MEDIO) {
-				atacado.recibirAtaque(this.ataque);
-			}
-		}
+	}
+
+	@Override
+	public void ejecutarComportamientoPorDistancia(DistanciaMedia distancia, Pieza pieza) {
+
+	}
+
+	@Override
+	public void ejecutarComportamientoPorDistancia(DistanciaLejana distancia, Pieza pieza) {
+
+	}
+
+	public void ejecutarComportamiento(DistanciaRelativa distancia, Pieza atacado) {
 	}
 
 	public Ataque getAtaqueLejano(){

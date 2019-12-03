@@ -2,12 +2,16 @@ package edu.fiuba.algoChess;
 
 import edu.fiuba.algoChess.batallones.Batalloneable;
 import edu.fiuba.algoChess.rangos.Rango;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 
 public class Curandero extends Pieza {
 
-	private int sanacion;
+	@Getter
+	@Setter
+	private Comportamiento curacion;
 
 	public Curandero(Ubicacion ubicacion, int costo, int vida, Bando bando) {
 		super(costo,vida,ubicacion,bando);
@@ -16,34 +20,26 @@ public class Curandero extends Pieza {
 	public Curandero(){
 
 		super(2,75);
-		this.sanacion = 15;
+		this.curacion = new CuracionCercanaCurandero(15);
 
 	}
 
 	public Curandero(Ubicacion ubicacion,Bando bando){
 
 		super(2,75,ubicacion,bando);
-		this.sanacion = 15;
-
+		this.curacion = new CuracionCercanaCurandero(15);
 	}
 
 	public Curandero(Ubicacion ubicacion, Bando bando, Tablero tablero){
 
 		super(2,75,ubicacion,bando);
 		tablero.getCelda(ubicacion).setPiezaActual(this);
-		this.sanacion = 15;
+		this.curacion = new CuracionCercanaCurandero(15);
 
 	}
 
 	public void curar(DistanciaRelativa distancia, Pieza aCurar){
 
-		if ((distancia==DistanciaRelativa.CERCANO)&&(!(aCurar instanceof Catapulta))&&(this.bando.equals(aCurar.getBando()))){
-			aCurar.aumentarVida(this.sanacion);
-		};
-	};
-
-	public int getSanacion(){
-		return this.sanacion;
 	};
 
 	@Override
@@ -91,6 +87,21 @@ public class Curandero extends Pieza {
 	}
 
 	@Override
+	public void ejecutarComportamientoPorDistancia(DistanciaCercana distancia, Pieza pieza) {
+
+	}
+
+	@Override
+	public void ejecutarComportamientoPorDistancia(DistanciaMedia distancia, Pieza pieza) {
+
+	}
+
+	@Override
+	public void ejecutarComportamientoPorDistancia(DistanciaLejana distancia, Pieza pieza) {
+
+	}
+
+	@Override
 	public Batalloneable moverBatallonDerecha(Tablero campoDeBatalla) {
 		return null;
 	}
@@ -125,9 +136,10 @@ public class Curandero extends Pieza {
 
 	}
 
+	public void curar(Pieza aCurar) {
+		//aCurar.getVida().curar(curacion.getValorComportamiento());
+	}
 
-//	public void Sanar(Pieza sanado){
-//		sanado.aumentarVida(this.sanacion);
-//	}
+
 
 }
