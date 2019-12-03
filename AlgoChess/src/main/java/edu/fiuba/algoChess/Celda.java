@@ -1,8 +1,16 @@
 package edu.fiuba.algoChess;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class Celda {
 
+	@Getter
+	@Setter
 	private Pieza piezaActual;
+
+	@Setter
+	@Getter
 	private Bando sectorDelJugador;
 
 	public Celda(){
@@ -13,8 +21,6 @@ public class Celda {
 		this.piezaActual = new PiezaNull(null);
 		this.sectorDelJugador = bando;
 	}
-
-
 
 	public Pieza getPiezaActual(){return this.piezaActual;}
 

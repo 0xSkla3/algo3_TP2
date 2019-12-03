@@ -1,59 +1,52 @@
 package edu.fiuba.algoChess;
 
+import edu.fiuba.algoChess.Rangos.RangoSoldado;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import java.util.*;
 
 public class RangoSoldadoTest {
 
 	@Test
 	public void rangoActualizaSoldadosContiguosCorrectamente(){
-		Jugador jugador1 = new Jugador();
-		Jugador jugador2 = new Jugador();
+
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
 		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
-		Soldado soldado1 = new Soldado(new Ubicacion(2,2),tableroTest);
-		Soldado soldado2 = new Soldado(new Ubicacion(3,2),tableroTest);
-		Soldado soldado3 = new Soldado(new Ubicacion(4,2),tableroTest);
-		soldado1.setBando(bandoJugador1);
-		soldado2.setBando(bandoJugador1);
-		soldado3.setBando(bandoJugador1);
-		tableroTest.ubicarEnCelda(soldado1, soldado1.getUbicacion());
-		tableroTest.ubicarEnCelda(soldado2, soldado2.getUbicacion());
-		tableroTest.ubicarEnCelda(soldado3, soldado3.getUbicacion());
-		RangoSoldado rango = new RangoSoldado(soldado2,tableroTest);
-		rango.actualizaRango(soldado2,tableroTest);
-
-		assertTrue(rango.getSoldadosEquipo().contains(soldado1));
-		assertTrue(rango.getSoldadosEquipo().contains(soldado3));
+		Soldado soldado1 = new Soldado(new Ubicacion(2,2), bandoJugador1, tableroTest);
+		Soldado soldado2 = new Soldado(new Ubicacion(3,2), bandoJugador1, tableroTest);
+		Soldado soldado3 = new Soldado(new Ubicacion(4,2), bandoJugador1, tableroTest);
+		soldado2.getRango().actualizaRangoInmediato(soldado2,tableroTest);
+		soldado2.getRango().actualizaRangoSoldado(soldado2, tableroTest);
+		assertTrue(soldado2.getRango().getSoldadosEquipo().contains(soldado1));
+		assertTrue(soldado2.getRango().getSoldadosEquipo().contains(soldado3));
 
 	}
 
 	@Test
 	public void rangoActualizaObstaculosContiguosCorrectamente(){
-		Jugador jugador1 = new Jugador();
-		Jugador jugador2 = new Jugador();
+
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
 		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
-		Soldado soldado1 = new Soldado(new Ubicacion(2,2),tableroTest);
-		Soldado soldado2 = new Soldado(new Ubicacion(3,2),tableroTest);
-		Soldado soldado3 = new Soldado(new Ubicacion(4,2),tableroTest);
-		Jinete jinete = new Jinete(new Ubicacion(3,3));
-		soldado1.setBando(bandoJugador1);
-		soldado2.setBando(bandoJugador1);
-		soldado3.setBando(bandoJugador1);
-		jinete.setBando(bandoJugador1);
-		tableroTest.ubicarEnCelda(soldado1, soldado1.getUbicacion());
-		tableroTest.ubicarEnCelda(soldado2, soldado2.getUbicacion());
-		tableroTest.ubicarEnCelda(soldado3, soldado3.getUbicacion());
-		tableroTest.ubicarEnCelda(jinete, jinete.getUbicacion());
+		Soldado soldado1 = new Soldado(new Ubicacion(2,2), bandoJugador1, tableroTest);
+		Soldado soldado2 = new Soldado(new Ubicacion(3,2), bandoJugador1,tableroTest);
+		Soldado soldado3 = new Soldado(new Ubicacion(4,2), bandoJugador1,tableroTest);
+		Jinete jinete = new Jinete(new Ubicacion(3,3), bandoJugador1, tableroTest);
 		RangoSoldado rango = new RangoSoldado(soldado2,tableroTest);
-		rango.actualizaRango(soldado2,tableroTest);
+		soldado2.getRango().actualizaPiezasEnRango(soldado2);
+		soldado2.actualizaRango(tableroTest);
+		rango.actualizaObstaculosInmediatos(soldado2);
 
 		assertTrue(rango.getObstaculos().contains(jinete));
-
 	}
 
+	@Test
+	public void RangoSoldadoDevuelvePiezasEnEquipo() {
+		RangoSoldado rango = new RangoSoldado();
+		Soldado soldado = new Soldado();
+		rango.getSoldadosEquipo().add(soldado);
+		assertTrue(rango.getSoldadosEquipo().contains(soldado));
+	}
 
 }
