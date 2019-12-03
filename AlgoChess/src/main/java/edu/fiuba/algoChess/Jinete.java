@@ -188,6 +188,11 @@ public class Jinete extends Pieza {
 		return this.ataqueCercano;
 	};
 
+	@Override
+	public void recibirAtaque(Ataque ataque) {
+
+	}
+
 }
 
 
