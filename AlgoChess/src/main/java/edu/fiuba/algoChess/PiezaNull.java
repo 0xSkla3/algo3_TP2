@@ -34,18 +34,30 @@ public class PiezaNull extends Pieza {
     }
 
     @Override
-    public void aniadirPiezaAlStack(ArrayList<Pieza> stack) {
-
+    public ArrayList<Pieza> aniadirPiezaAlStack(ArrayList<Pieza> stack){
+        if (stack == null){
+            ArrayList<Pieza> nuevoStack = new ArrayList<Pieza>();
+            return  nuevoStack;
+        }
+        return stack;
     }
 
     @Override
-    public void aniadirSoldadoAlStack(ArrayList<Pieza> stack) {
-
+    public ArrayList<Pieza> aniadirSoldadoAlStack(ArrayList<Pieza> stack){
+        if (stack == null){
+            ArrayList<Pieza> nuevoStack = new ArrayList<Pieza>();
+            return  nuevoStack;
+        }
+        return stack;
     }
 
     @Override
-    public void aniadirTodoMenosSoldadoAlStack(ArrayList<Pieza> stack) {
-
+    public ArrayList<Pieza> aniadirTodoMenosSoldadoAlStack(ArrayList<Pieza> stack){
+        if (stack == null){
+            ArrayList<Pieza> nuevoStack = new ArrayList<Pieza>();
+            return  nuevoStack;
+        }
+        return stack;
     }
 
     @Override
@@ -56,11 +68,6 @@ public class PiezaNull extends Pieza {
     @Override
     public boolean soldadosInmediatosSePuedenUnir() {
         return false;
-    }
-
-    @Override
-    public void setRango(RangoInmediato rangoInmediato) {
-
     }
 
     public void recibirAtaque(Ataque ataque){

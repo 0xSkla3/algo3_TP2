@@ -51,11 +51,6 @@ public class Soldado extends Pieza implements Movible {
 	}
 
 	@Override
-	public Rango getRango() {
-		return this.rango;
-	}
-
-	@Override
 	public ArrayList<Pieza> unirABatallonDeSoldado(ArrayList<Pieza> stackDeUnion) {
 		/*if (stackDeUnion == null){
 			ArrayList<Pieza> nuevoStackDeUnion = new ArrayList<>();
@@ -67,17 +62,35 @@ public class Soldado extends Pieza implements Movible {
 	}
 
 	@Override
-	public void aniadirPiezaAlStack(ArrayList<Pieza> stack) {
+	public ArrayList<Pieza> aniadirPiezaAlStack(ArrayList<Pieza> stack) {
+
+		if (stack == null){
+			ArrayList<Pieza> nuevoStack = new ArrayList<>();
+			nuevoStack.add(this);
+			return  nuevoStack;
+		}
+
 		stack.add(this);
+		return stack;
 	}
 
 	@Override
-	public void aniadirSoldadoAlStack(ArrayList<Pieza> stack) {
+	public ArrayList<Pieza> aniadirSoldadoAlStack(ArrayList<Pieza> stack) {
+
+		if (stack == null){
+			ArrayList<Pieza> nuevoStack = new ArrayList<>();
+			nuevoStack.add(this);
+			return  nuevoStack;
+		}
+
 		stack.add(this);
+		return stack;
 	}
 
 	@Override
-	public void aniadirTodoMenosSoldadoAlStack(ArrayList<Pieza> stack) {
+	public ArrayList<Pieza> aniadirTodoMenosSoldadoAlStack(ArrayList<Pieza> stack) {
+		if (stack == null) return new ArrayList<>();
+		return stack;
 	}
 
 	public void atacar(DistanciaRelativa distancia, Pieza atacado){
@@ -88,10 +101,6 @@ public class Soldado extends Pieza implements Movible {
 		return this.getRango().darDeAltaBatallon();
 	}
 
-	public void setRango(Rango rango) {
-		//super.setRango(rango);//ROCHI
-	}
-
 	@Override
 	public ArrayList<Pieza> getSoldadosContiguos(){
 		return this.getRango().getSoldadosEquipo();
@@ -100,11 +109,6 @@ public class Soldado extends Pieza implements Movible {
 	@Override
 	public boolean soldadosInmediatosSePuedenUnir() {
 		return this.getRango().getSoldadosEquipo().size() == 3;
-	}
-
-	@Override
-	public void setRango(RangoInmediato rangoInmediato) {
-
 	}
 
 	@Override

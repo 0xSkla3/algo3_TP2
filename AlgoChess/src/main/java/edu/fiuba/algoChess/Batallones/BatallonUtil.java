@@ -111,16 +111,5 @@ public class BatallonUtil extends Batallon implements Movible, Agrupable {
 	public ArrayList<Pieza> getSoldadosEquipo() {
 		return null;
 	}
-
-	/*@Override
-	public Batalloneable darDeAltaBatallon() {
-		return null;
-	}
-
-	@Override
-	public ArrayList<Pieza> getSoldadosEquipo() {
-		return null;
-	} //ROCHI*/
-
-	//-----------------------------------------------------------------------
 }
+
