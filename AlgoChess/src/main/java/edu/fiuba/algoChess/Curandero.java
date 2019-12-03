@@ -52,7 +52,8 @@ public class Curandero extends Pieza {
 	}
 
 	@Override
-	public void unirABatallonDeSoldado(ArrayList<Pieza> stackDeUnion) {
+	public ArrayList<Pieza> unirABatallonDeSoldado(ArrayList<Pieza> stackDeUnion) {
+		return stackDeUnion;
 	}
 
 	@Override

@@ -2,6 +2,7 @@ package edu.fiuba.algoChess;
 
 import edu.fiuba.algoChess.Batallones.Batallon;
 import edu.fiuba.algoChess.Batallones.BatallonUtil;
+import edu.fiuba.algoChess.Batallones.Batalloneable;
 import edu.fiuba.algoChess.Salud.Salud;
 import org.junit.Test;
 
@@ -46,7 +47,7 @@ public class SoldadoTest {
 		tableroTest.ubicarEnCelda(soldado2, soldado2.getUbicacion());
 		tableroTest.ubicarEnCelda(soldado3, soldado3.getUbicacion());
 
-		Batallon batallon = soldado1.verificaBatallonONull();
+		Batalloneable batallon = soldado1.verificaBatallonONull();
 
 		batallon.moverseArriba(tableroTest);
 
