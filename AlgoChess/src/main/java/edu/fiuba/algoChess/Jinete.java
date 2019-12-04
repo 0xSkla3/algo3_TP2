@@ -1,6 +1,7 @@
 package edu.fiuba.algoChess;
 
 import edu.fiuba.algoChess.batallones.Batalloneable;
+import edu.fiuba.algoChess.excepciones.FueraDeRangoParaEjecutarComportamientoException;
 import edu.fiuba.algoChess.rangos.Rango;
 import lombok.Getter;
 import lombok.Setter;
@@ -46,9 +47,9 @@ public class Jinete extends Pieza {
 
 	}
 
-	public Jinete(Ubicacion ubicacion,Bando bando){
+	public Jinete(Ubicacion ubicacion, Bando bando) {
 
-		super(3, 100,ubicacion,bando);
+		super(3, 100, ubicacion, bando);
 		this.ataqueCercano = new AtaqueCercanoJinete(5);
 		this.ataqueMedio = new AtaqueMedioJinete(15);
 		this.piezaEnemigaCercana = false;
@@ -68,19 +69,19 @@ public class Jinete extends Pieza {
 		this.ubicacion = ubicacion;
 	}
 
-	public Jinete(Ubicacion ubicacion, Bando bando, Tablero tablero){
+	public Jinete(Ubicacion ubicacion, Bando bando, Tablero tablero) {
 
-		super(3, 100,ubicacion,bando);
+		super(3, 100, ubicacion, bando);
 		this.ataqueCercano = new AtaqueCercanoJinete(5);
 		this.ataqueMedio = new AtaqueMedioJinete(15);
 		this.piezaEnemigaCercana = false;
 		this.piezaAliadaCercana = false;
 		this.distanciaAReconocerEnTerreno = 2;
-		tablero.ubicarEnCelda(this,ubicacion);
+		tablero.ubicarEnCelda(this, ubicacion);
 
 	}
 
-	public Jinete(Ubicacion ubicacion, Tablero tablero){
+	public Jinete(Ubicacion ubicacion, Tablero tablero) {
 
 		super(ubicacion);
 		tablero.getCelda(ubicacion).setPiezaActual(this);
@@ -166,22 +167,8 @@ public class Jinete extends Pieza {
 		return false;
 	}
 
-	@Override
-	public void ejecutarComportamientoPorDistancia(DistanciaCercana distancia, Pieza pieza) {
 
-	}
-
-	@Override
-	public void ejecutarComportamientoPorDistancia(DistanciaMedia distancia, Pieza pieza) {
-
-	}
-
-	@Override
-	public void ejecutarComportamientoPorDistancia(DistanciaLejana distancia, Pieza pieza) {
-
-	}
-
-	public void atacar(DistanciaRelativa distancia, Pieza atacado){
+	public void atacar(DistanciaRelativa distancia, Pieza atacado) {
 	}
 
 	public void reconocerTerreno(Tablero campoDeBatalla) {
@@ -214,11 +201,11 @@ public class Jinete extends Pieza {
 	}
 
 
-	public boolean getPiezaAliadaCercana(){
-			return this.piezaAliadaCercana;
+	public boolean getPiezaAliadaCercana() {
+		return this.piezaAliadaCercana;
 	}
 
-	public boolean getPiezaEnemigaCercana(){
+	public boolean getPiezaEnemigaCercana() {
 		return this.piezaEnemigaCercana;
 	}
 
@@ -227,10 +214,30 @@ public class Jinete extends Pieza {
 
 	}
 
-	public void atacar(Pieza pieza) {
-
+	@Override
+	public void ejecutarComportamientoPorDistancia(DistanciaCercana distancia, Pieza pieza) {
+		if (this.getPiezaAliadaCercana()) {
+			this.bando.atacar(pieza, this.ataqueMedio, pieza.getBando());
+		} else {
+			this.bando.atacar(pieza, this.ataqueCercano, pieza.getBando());
+		}
 	}
 
+	@Override
+	public void ejecutarComportamientoPorDistancia(DistanciaMedia distancia, Pieza pieza) {
+		this.bando.atacar(pieza, this.ataqueMedio, pieza.getBando());
+	}
+
+	@Override
+	public void ejecutarComportamientoPorDistancia(DistanciaLejana distancia, Pieza pieza) {
+		throw new FueraDeRangoParaEjecutarComportamientoException("Pieza fuera de rango");
+	}
+
+	public void atacar(Pieza atacado) {
+		DistanciaRelativa distanciaEntrePiezas = this.calculadorDistancia.getDistanciaRelativa(this, atacado);
+		distanciaEntrePiezas.ejecutarComportamientoPorDistancia(this, atacado);
+
+	}
 }
 
 

@@ -1,6 +1,7 @@
 package edu.fiuba.algoChess;
 
 import edu.fiuba.algoChess.batallones.Batalloneable;
+import edu.fiuba.algoChess.excepciones.FueraDeRangoParaEjecutarComportamientoException;
 import edu.fiuba.algoChess.rangos.Rango;
 import lombok.Getter;
 import lombok.Setter;
@@ -87,21 +88,6 @@ public class Curandero extends Pieza {
 	}
 
 	@Override
-	public void ejecutarComportamientoPorDistancia(DistanciaCercana distancia, Pieza pieza) {
-
-	}
-
-	@Override
-	public void ejecutarComportamientoPorDistancia(DistanciaMedia distancia, Pieza pieza) {
-
-	}
-
-	@Override
-	public void ejecutarComportamientoPorDistancia(DistanciaLejana distancia, Pieza pieza) {
-
-	}
-
-	@Override
 	public Batalloneable moverBatallonDerecha(Tablero campoDeBatalla) {
 		return null;
 	}
@@ -136,10 +122,24 @@ public class Curandero extends Pieza {
 
 	}
 
-	public void curar(Pieza aCurar) {
-		//aCurar.getVida().curar(curacion.getValorComportamiento());
-	}
+	@Override
+	public void ejecutarComportamientoPorDistancia(DistanciaCercana distancia, Pieza pieza) {
+		//	pieza.aplicarCuracionAPieza(this);//pieza es la pieza a curar y this es el curandero
+		this.bando.curar(pieza, this.curacion, pieza.getBando());
+	};
+	@Override
+	public void ejecutarComportamientoPorDistancia(DistanciaMedia distancia, Pieza pieza) {
+		throw new FueraDeRangoParaEjecutarComportamientoException("Pieza fuera de rango");
+	};
+	@Override
+	public void ejecutarComportamientoPorDistancia(DistanciaLejana distancia, Pieza pieza) {
+		throw new FueraDeRangoParaEjecutarComportamientoException("Pieza fuera de rango");
+	};
 
+	public void curar(Pieza piezaACurar){
+		DistanciaRelativa distanciaEntrePiezas = this.calculadorDistancia.getDistanciaRelativa(this,piezaACurar);
+		distanciaEntrePiezas.ejecutarComportamientoPorDistancia(this, piezaACurar);
+	};
 
 
 }
