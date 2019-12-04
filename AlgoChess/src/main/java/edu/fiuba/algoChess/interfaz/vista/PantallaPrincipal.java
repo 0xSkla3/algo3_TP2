@@ -21,13 +21,13 @@ public class PantallaPrincipal {
 	private PlayerView player2;
 	private PlayerView turn;
 	
-	public PantallaPrincipal(String jugador1, Stage stage) {
+	public PantallaPrincipal(String jugador1, String jugador2, Stage stage) {
 		this.stage = stage;
 		//this.stage = new Stage();
 		this.pieceView = new PieceView();
 		this.mapView = new MapView();//tamanio del tablero
 		player1 =  new PlayerView(jugador1);
-		player2 =  new PlayerView("Jugador 2");
+		player2 =  new PlayerView(jugador2);
 		initialPhase();
 	}
 	
