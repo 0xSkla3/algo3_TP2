@@ -17,7 +17,7 @@ public class AceptarNombresHandler implements EventHandler<ActionEvent> {
     private final TextField TFnombreJugador2;
 
 
-    public AceptarNombresHandler(TextField TFnombreJugador1, TextField TFnombreJugador2, Stage stage, Popup popupNombres) {
+    public AceptarNombresHandler(TextField TFnombreJugador1, TextField TFnombreJugador2, Stage stage, Popup popupNombres){
         this.stage = stage;
         this.TFnombreJugador1 = TFnombreJugador1;
         this.TFnombreJugador2 = TFnombreJugador2;

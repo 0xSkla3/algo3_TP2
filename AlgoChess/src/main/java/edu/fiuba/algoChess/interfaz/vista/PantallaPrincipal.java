@@ -27,8 +27,8 @@ public class PantallaPrincipal {
 		this.pieceView = new PieceView();
 		this.mapView = new MapView();//tamanio del tablero
 
-		player1 =  new PlayerView("jugador 1 ");
-		player2 =  new PlayerView("Jugador 2");
+		player1 =  new PlayerView(jugador1 );
+		player2 =  new PlayerView(jugador2);
 
 		initialPhase();
 	}
