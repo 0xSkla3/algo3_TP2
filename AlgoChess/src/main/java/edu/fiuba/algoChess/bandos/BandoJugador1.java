@@ -24,9 +24,8 @@ public class BandoJugador1 extends Bando{
     @Override
     public void atacar(Pieza pieza, Comportamiento comportamiento, BandoJugador2 bandojugador2){
         pieza.recibirAtaque(comportamiento.getValorComportamiento());
-    };
+    }
 
-    /////////@@@@@@@@@@@@@@@@
     @Override
     public void curar(Pieza pieza, Comportamiento comportamiento, Bando bando) {
         if (!(pieza instanceof Catapulta)){
@@ -40,12 +39,12 @@ public class BandoJugador1 extends Bando{
     @Override
     public void curar(Pieza pieza, Comportamiento comportamiento, BandoJugador1 bandojugador1){
         pieza.aumentarVida(comportamiento.getValorComportamiento());
-    };
+    }
 
     @Override
     public void curar(Pieza pieza, Comportamiento comportamiento, BandoJugador2 bandojugador2){
         throw new NoSePuedeCurarUnaUnidadEnemigaException("No se puede curar un enemigo");
-    };
+    }
 
 
 
