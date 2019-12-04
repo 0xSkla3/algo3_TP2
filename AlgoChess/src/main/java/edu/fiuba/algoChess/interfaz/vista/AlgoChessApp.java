@@ -1,61 +1,48 @@
-package edu.fiuba.algoChess;
+package edu.fiuba.algoChess.interfaz.vista;
 
-
-//import fiuba.algo3.AlgoChess.entidades.Soldado;
-import edu.fiuba.algoChess.interfaz.vista.Inicio;
-import edu.fiuba.algoChess.interfaz.vista.PantallaPrincipal;
-import edu.fiuba.algoChess.interfaz.vista.MapView;
-import edu.fiuba.algoChess.interfaz.vista.PieceView;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-/*import main.java.com.fiuba.algo3.controller.MainKeyboardController;
-import main.java.com.fiuba.algo3.modelo.Player;
-import main.java.com.fiuba.algo3.modelo.Position;
-import main.java.com.fiuba.algo3.modelo.Map;*/
-public class AlgoChessApp extends Application {
+public class AlgoChessApp extends Application implements EventHandler<ActionEvent> {
 
 
     private PieceView player;
     private MapView mapView;
-/*
-  public static void main(String[] args) {
-      launch(args);
-  }
-
-  public void start(Stage theStage) {
-	  //inicio
-	  //ingresar datos jugador
-
-      PantallaPrincipal pantallaPrincipal = new PantallaPrincipal();//jugador1 y jugador2
-      
-
-      //jugar
-  }
-
-}
-*/
-
-
-    // public static class AlgoCraftApp extends Application {
     private Inicio inicio;
-    //private static Juego juego;
-   // private static final int ANCHO = 564;
-   // private static final int ALTO = 564;
+    private Button button;
 
     @Override
-    public void start(Stage stage) {
-        stage.setTitle("AlgoChess");
-        inicio = new Inicio(stage);
+    public void start(Stage firstStage) {
+        firstStage.setTitle("AlgoChess");
+        inicio = new Inicio(firstStage);
+
+        button = new Button();
+        button.setText("Soy un boton");
+
+        button.setOnAction(this);
+
+        StackPane layout = new StackPane();
+        layout.getChildren().add(button);
+
         Scene scene = new Scene(inicio, Color.BLACK);
-        stage.setScene(scene);
-        stage.show();
+        firstStage.setScene(scene);
+        firstStage.show();
     }
 
     public static void main(String[] args) {
         launch(args);
     }
 
+    @Override
+    public void handle(ActionEvent actionEvent) {
+        if(actionEvent.getSource() == button){
+            System.out.println("log de consola");
+        }
+    }
 }

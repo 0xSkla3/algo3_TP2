@@ -26,12 +26,13 @@ public class PantallaPrincipal {
 		//this.stage = new Stage();
 		this.pieceView = new PieceView();
 		this.mapView = new MapView();//tamanio del tablero
-		player1 =  new PlayerView(jugador1);
+		player1 =  new PlayerView("jugador 1 ");
 		player2 =  new PlayerView("Jugador 2");
 		initialPhase();
 	}
 	
 	public void initialPhase(){//player1 and player2
+
 		this.stage.setTitle("Phase Initial");
 		VBox vbox = new VBox();
 		HBox hbox = new HBox();
@@ -84,7 +85,6 @@ public class PantallaPrincipal {
             public void handle(MouseEvent event) {
             	Stage stage = new Stage();
         		VBox vbox = new VBox();
-        		
             	
             	Label labelx = new Label("Posicion x:");
             	TextField x = new TextField ();
@@ -134,7 +134,6 @@ public class PantallaPrincipal {
 	
 	public void turnOf(HBox head,PlayerView player){
 		this.turn = player;
-		Button asd = new Button();
 		Button button = new Button("TURNO DE: "+player.getName());
 		button.setStyle("-fx-background-color:#F7CF32");
 		head.getChildren().add(button);

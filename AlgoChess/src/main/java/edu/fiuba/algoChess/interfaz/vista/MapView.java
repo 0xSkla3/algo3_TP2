@@ -48,6 +48,7 @@ public class MapView extends Group {
     public void addViewOnMap(Node view, int x, int y) {
 
         panes[x-1][y-1].getChildren().add(0, view);
+
     }
 
     public void addView(Node view) {

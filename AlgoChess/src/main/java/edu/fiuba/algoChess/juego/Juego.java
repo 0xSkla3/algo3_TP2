@@ -1,10 +1,32 @@
 package edu.fiuba.algoChess.juego;
 
-import edu.fiuba.algoChess.entidades.Pieza;
+import edu.fiuba.algoChess.entidades.*;
+import edu.fiuba.algoChess.entorno.Tablero;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Juego {
+
+	private Tablero tablero;
+	private Jugador jugador1;
+	private Jugador jugador2;
+	private HashMap<Pieza, Integer> equipoJugador1;
+	private HashMap<Pieza, Integer> equipoJugador2;
+
+	public static final Soldado soldado = new Soldado();
+	public static final Catapulta catapulta = new Catapulta();
+	public static final Jinete jinete = new Jinete();
+	public static final Curandero curandero = new Curandero();
+
+
+	public Juego(){
+	this.tablero = new Tablero();
+	this.jugador1 = new Jugador();
+	this.jugador2 = new Jugador();
+	this.equipoJugador1 = new HashMap<>();
+	this.equipoJugador2 = new HashMap<>();
+	}
 
 	public static void main(String[] args) {
 
