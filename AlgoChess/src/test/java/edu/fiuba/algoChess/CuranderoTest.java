@@ -21,7 +21,7 @@ public class CuranderoTest {
         soldado.recibirAtaque(comportamiento);
         int vidaSoldadoCurado = soldado.getVida().getValorActual() + curandero.getCuracion().getValorComportamiento();
         curandero.curar(soldado);
-        assertEquals(vidaSoldadoCurado,soldado.getVida());
+        assertEquals(vidaSoldadoCurado,soldado.getVida().getValorActual());
     };
 
     @Test (expected = NoSePuedeCurarUnaUnidadEnemigaException.class)
