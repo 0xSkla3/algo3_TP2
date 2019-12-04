@@ -49,6 +49,7 @@ public class JugarHandler implements EventHandler<ActionEvent> {
 
     public JugarHandler(Stage stage) {
         this.stage = stage;
+
     }
 
     @Override
@@ -70,8 +71,7 @@ public class JugarHandler implements EventHandler<ActionEvent> {
         VBox vboxNombres = new VBox();
         Label tituloDeCuadroNombres = new Label("Agregar Nombres");
         vboxNombres.getChildren().addAll(HBnombreJugador1,HBnombreJugador2);
-
-        AceptarNombresHandler aceptarNombresHandler = new AceptarNombresHandler(areaTextoNombreJugador1.getText(),areaTextoNombreJugador2.getText(),stage, popupNombresJugador);
+        AceptarNombresHandler aceptarNombresHandler = new AceptarNombresHandler(areaTextoNombreJugador1, areaTextoNombreJugador2, stage, popupNombresJugador);
         Button aceptarNombresButton = new Button("Aceptar");
         aceptarNombresButton.setOnAction(aceptarNombresHandler);
 
@@ -100,4 +100,6 @@ public class JugarHandler implements EventHandler<ActionEvent> {
         popupNombresJugador.show(this.stage);
 
     }
+
+
 }

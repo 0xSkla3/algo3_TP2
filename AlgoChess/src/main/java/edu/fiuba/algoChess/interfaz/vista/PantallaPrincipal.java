@@ -51,7 +51,7 @@ public class PantallaPrincipal {
 	    theScene.getStylesheets().add("css/estilo.css");
 	    this.stage.setScene(theScene);
 	    this.stage.show();
-	    stage.setFullScreen(true);
+	   // stage.setFullScreen(true);
 	}
 	
 	public HBox head() {

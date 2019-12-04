@@ -49,7 +49,6 @@ public class Juego {
 
 			}
 
-
 		} while (creditodJugador1 > 1 || creditodJugador2 > 1);
 
 	}
