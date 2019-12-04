@@ -159,7 +159,7 @@ public abstract class Pieza implements Movible, Atacable {
 	}
 
 	public void recibirAtaque(Comportamiento comportamiento){
-		getVida().herir(comportamiento.getValorComportamiento());
+		this.setVida(getVida().herir(comportamiento.getValorComportamiento()));
 	}
 
 	public void ejecutarComportamientoPorDistancia(DistanciaRelativa distancia, Pieza pieza) { }
