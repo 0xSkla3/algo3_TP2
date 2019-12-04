@@ -1,10 +1,16 @@
 package edu.fiuba.algoChess.entidades;
 
+import edu.fiuba.algoChess.bandos.Bando;
 import edu.fiuba.algoChess.batallones.BatallonNull;
 import edu.fiuba.algoChess.batallones.Batalloneable;
 import edu.fiuba.algoChess.comportamientos.Ataque;
 import edu.fiuba.algoChess.entorno.*;
 import edu.fiuba.algoChess.rangos.Rango;
+import edu.fiuba.algoChess.rangos.RangoNull;
+import edu.fiuba.algoChess.salud.Salud;
+import edu.fiuba.algoChess.salud.SaludMuerto;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 
@@ -13,6 +19,14 @@ public class PiezaNull extends Pieza {
     public PiezaNull(Ubicacion ubicacion) {
         super(ubicacion);
     }
+
+    public PiezaNull() {
+        this.vida = new SaludMuerto();
+        this.costo = 0;
+        this.ubicacion = null;
+        this.bando = null;
+        this.rango = null;
+        }
 
     @Override
     public void pisar(Celda celda, Pieza piezaAGuardar){
@@ -31,7 +45,6 @@ public class PiezaNull extends Pieza {
 
     @Override
     public ArrayList<Pieza> unirABatallonDeSoldado(ArrayList<Pieza> stackDeUnion) {
-
         return stackDeUnion;
     }
 

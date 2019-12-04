@@ -25,6 +25,16 @@ public class RangoInmediatoNull implements RangoNull {
 	}
 
 	@Override
+	public void actualizaRangoMedio(Pieza piezaCentral, Tablero tablero) {
+
+	}
+
+	@Override
+	public void actualizaRangoCercano(Pieza piezaCentral, Tablero tablero) {
+
+	}
+
+	@Override
 	public void actualizaRangoSoldado(Pieza piezaCentral, Tablero tablero) {
 
 	}

@@ -91,6 +91,16 @@ public class BatallonNull extends Batallon {
 
 	}
 
+	@Override
+	public void actualizaRangoMedio(Pieza piezaCentral, Tablero tablero) {
+
+	}
+
+	@Override
+	public void actualizaRangoCercano(Pieza piezaCentral, Tablero tablero) {
+
+	}
+
 
 	public void actualizaRangoSoldado(Pieza piezaCentral, Tablero tablero) {
 

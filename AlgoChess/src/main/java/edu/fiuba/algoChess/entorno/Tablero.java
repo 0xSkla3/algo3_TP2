@@ -29,6 +29,13 @@ public class Tablero {
 	}
 
 	public void inicializarTablero(Bando bandoJugador1, Bando  bandoJugador2) {
+
+		for (int i = -6; i <= 26; i++) {
+			for (int j = -6; j <= 26; j++) {
+				this.getCampoDeBatalla().put(new Ubicacion(i, j), new CeldaNull());
+			}
+		}
+
 		for (int i = 1; i <= 20; i++) {
 			for (int j = 1; j <= 20; j++) {
 				this.getCampoDeBatalla().put(new Ubicacion(i, j), new Celda());
@@ -58,6 +65,14 @@ public class Tablero {
 		}
 	}
 
+	public Celda getCeldaONull(Ubicacion ubicacion) {
+		if (!this.campoDeBatalla.containsKey(ubicacion)) {
+			return new CeldaNull();
+		}else {
+			return this.campoDeBatalla.get(ubicacion);
+		}
+	}
+
 	public void ubicarEnCelda(Pieza pieza, Ubicacion ubicacion) {
 
 		if (!this.campoDeBatalla.containsKey(ubicacion)) {
@@ -69,7 +84,7 @@ public class Tablero {
 		}
 
 		try {
-			this.campoDeBatalla.get(ubicacion).guardar(pieza);
+			this.campoDeBatalla.get(ubicacion).guardarComienzo(pieza);
 			pieza.setUbicacion(ubicacion);
 			//pieza.getRango().actualizaPiezasEnRango(pieza);
 		} catch (NoSePuedeUbicarPorqueEstaOcupadoException e) {

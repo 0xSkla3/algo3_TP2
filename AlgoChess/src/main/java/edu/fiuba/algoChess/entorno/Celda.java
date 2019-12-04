@@ -14,11 +14,11 @@ public class Celda {
 
 	@Getter
 	@Setter
-	private Pieza piezaActual;
+	protected Pieza piezaActual;
 
 	@Setter
 	@Getter
-	private Bando sectorDelJugador;
+	protected Bando sectorDelJugador;
 
 	public Celda(){
 		this.piezaActual = new PiezaNull(null);
@@ -38,7 +38,7 @@ public class Celda {
 
 	public Bando getSectorDelJugador(){ return this.sectorDelJugador;}
 
-    public void guardar(Pieza piezaAUbicar) {
+    public void guardarComienzo(Pieza piezaAUbicar) {
         if (!this.sectorDelJugador.equals(piezaAUbicar.getBando())  ) { //ESTA LINEA SOLO VALE EN LA PRIMERA ETAPA DEL JUEGO!!! AGREGAR OTRA CONDICION AL IF!!!
             throw new NoSePuedeUbicarPiezaEnSectoRival("No se puede ubicar pieza en sector rival");
         } else {
@@ -50,7 +50,13 @@ public class Celda {
 		}
     }
 
-
+	public void guardarEnJuego(Pieza piezaAUbicar) {
+		try {
+			this.piezaActual.pisar(this, piezaAUbicar);
+		} catch (NoSePuedeUbicarPorqueEstaOcupadoException e) {
+			throw new NoSePuedeUbicarPorqueEstaOcupadoException("no se puede ubicar pieza por estar el casillero ocupado");
+		}
+	}
 
 	public void eliminar() {
 		this.piezaActual = new PiezaNull(null);

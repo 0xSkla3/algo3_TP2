@@ -20,11 +20,11 @@ public abstract class Pieza implements Movible, Atacable {
 
 	@Setter
 	@Getter
-	private Salud vida;
+	protected Salud vida;
 
 	@Setter
 	@Getter
-	private int costo;
+	protected int costo;
 
 	@Setter
 	@Getter
@@ -87,7 +87,6 @@ public abstract class Pieza implements Movible, Atacable {
 
 	public void pisar(Celda celda, Pieza pieza){
 		celda.setPiezaActual(pieza);
-		//throw new NoSePuedeUbicarPorqueEstaOcupadoException("No se puede ubicar porque esta ocupado la celda");
 	}
 
 	public void moverseALaDerecha(Tablero campoDeBatalla){
