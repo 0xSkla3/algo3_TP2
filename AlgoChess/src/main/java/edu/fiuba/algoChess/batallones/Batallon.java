@@ -1,6 +1,8 @@
 package edu.fiuba.algoChess.batallones;
 
-import edu.fiuba.algoChess.*;
+import edu.fiuba.algoChess.entidades.Pieza;
+import edu.fiuba.algoChess.entorno.Tablero;
+import edu.fiuba.algoChess.entorno.Ubicacion;
 import edu.fiuba.algoChess.rangos.Agrupable;
 import edu.fiuba.algoChess.rangos.Rango;
 import edu.fiuba.algoChess.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;

@@ -6,9 +6,7 @@ import edu.fiuba.algoChess.entorno.Tablero;
 
 import java.util.ArrayList;
 
-public class RangoInmediatoNull implements RangoNull {
-
-
+public class RangoJinete implements Rango{
 	@Override
 	public Rango actualizaRangoInmediato(Pieza piezaCentral, Tablero tablero) {
 		return null;

@@ -1,6 +1,6 @@
 package edu.fiuba.algoChess.rangos;
 
-import edu.fiuba.algoChess.Pieza;
+import edu.fiuba.algoChess.entidades.Pieza;
 
 import java.util.Collection;
 

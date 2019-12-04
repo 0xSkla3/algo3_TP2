@@ -1,6 +1,13 @@
 package edu.fiuba.algoChess;
+import edu.fiuba.algoChess.bandos.BandoJugador1;
+import edu.fiuba.algoChess.bandos.BandoJugador2;
+import edu.fiuba.algoChess.entidades.Curandero;
+import edu.fiuba.algoChess.entorno.Celda;
+import edu.fiuba.algoChess.entorno.Tablero;
+import edu.fiuba.algoChess.entorno.Ubicacion;
 import edu.fiuba.algoChess.excepciones.NoSePuedeUbicarPiezaEnSectoRival;
 import edu.fiuba.algoChess.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;
+import edu.fiuba.algoChess.juego.Jugador;
 import org.junit.Test;
 
 //import modelo.juego.ObjetoUbicable;

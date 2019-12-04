@@ -1,12 +1,17 @@
 package edu.fiuba.algoChess;
 
+import edu.fiuba.algoChess.bandos.BandoJugador1;
+import edu.fiuba.algoChess.bandos.BandoJugador2;
 import edu.fiuba.algoChess.batallones.Batallon;
 import edu.fiuba.algoChess.batallones.BatallonNull;
 import edu.fiuba.algoChess.batallones.BatallonUtil;
 import edu.fiuba.algoChess.batallones.Batalloneable;
+import edu.fiuba.algoChess.entidades.Jinete;
+import edu.fiuba.algoChess.entidades.Soldado;
+import edu.fiuba.algoChess.entorno.Tablero;
+import edu.fiuba.algoChess.entorno.Ubicacion;
 import edu.fiuba.algoChess.excepciones.FueraDeRangoParaEjecutarComportamientoException;
 import edu.fiuba.algoChess.excepciones.NoSePuedeAtacarUnAliadoException;
-import edu.fiuba.algoChess.salud.Salud;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

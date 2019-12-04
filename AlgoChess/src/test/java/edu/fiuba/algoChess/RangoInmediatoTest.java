@@ -1,5 +1,13 @@
 package edu.fiuba.algoChess;
 
+import edu.fiuba.algoChess.bandos.BandoJugador1;
+import edu.fiuba.algoChess.bandos.BandoJugador2;
+import edu.fiuba.algoChess.entidades.Catapulta;
+import edu.fiuba.algoChess.entidades.Curandero;
+import edu.fiuba.algoChess.entidades.Jinete;
+import edu.fiuba.algoChess.entidades.Soldado;
+import edu.fiuba.algoChess.entorno.Tablero;
+import edu.fiuba.algoChess.entorno.Ubicacion;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;

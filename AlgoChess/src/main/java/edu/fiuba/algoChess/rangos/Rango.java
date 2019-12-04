@@ -1,8 +1,8 @@
 package edu.fiuba.algoChess.rangos;
 
 import edu.fiuba.algoChess.batallones.Batalloneable;
-import edu.fiuba.algoChess.Pieza;
-import edu.fiuba.algoChess.Tablero;
+import edu.fiuba.algoChess.entidades.Pieza;
+import edu.fiuba.algoChess.entorno.Tablero;
 
 import java.util.ArrayList;
 

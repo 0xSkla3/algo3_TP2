@@ -1,10 +1,10 @@
 package edu.fiuba.algoChess.batallones;
 
-import edu.fiuba.algoChess.Pieza;
+import edu.fiuba.algoChess.entidades.Pieza;
 import edu.fiuba.algoChess.rangos.Rango;
 import edu.fiuba.algoChess.rangos.RangoInmediatoNull;
-import edu.fiuba.algoChess.Tablero;
-import edu.fiuba.algoChess.Ubicacion;
+import edu.fiuba.algoChess.entorno.Tablero;
+import edu.fiuba.algoChess.entorno.Ubicacion;
 import lombok.Getter;
 import lombok.Setter;
 

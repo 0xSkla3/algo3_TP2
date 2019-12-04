@@ -2,6 +2,12 @@ package edu.fiuba.algoChess;
 
 import static org.junit.Assert.*;
 
+import edu.fiuba.algoChess.bandos.BandoJugador1;
+import edu.fiuba.algoChess.bandos.BandoJugador2;
+import edu.fiuba.algoChess.entidades.Curandero;
+import edu.fiuba.algoChess.entorno.Tablero;
+import edu.fiuba.algoChess.entorno.Ubicacion;
+import edu.fiuba.algoChess.juego.Jugador;
 import org.junit.Test;
 
 public class EntidadTest {
