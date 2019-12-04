@@ -3,6 +3,7 @@ package edu.fiuba.algoChess;
 import edu.fiuba.algoChess.batallones.Batallon;
 import edu.fiuba.algoChess.batallones.BatallonNull;
 import edu.fiuba.algoChess.batallones.Batalloneable;
+import edu.fiuba.algoChess.excepciones.FueraDeRangoParaEjecutarComportamientoException;
 import edu.fiuba.algoChess.rangos.Rango;
 import edu.fiuba.algoChess.rangos.RangoSoldado;
 import edu.fiuba.algoChess.salud.SaludLlena;
@@ -42,7 +43,6 @@ public class Soldado extends Pieza implements Movible {
 		this.ataqueCercano = new AtaqueCercanoSoldado(10);
 		this.rango = new RangoSoldado(this, tablero);
 	}
-
 
 	public Soldado(Ubicacion ubicacion,Bando bando){
 
@@ -127,21 +127,6 @@ public class Soldado extends Pieza implements Movible {
 	}
 
 	@Override
-	public void ejecutarComportamientoPorDistancia(DistanciaCercana distancia, Pieza pieza) {
-
-	}
-
-	@Override
-	public void ejecutarComportamientoPorDistancia(DistanciaMedia distancia, Pieza pieza) {
-
-	}
-
-	@Override
-	public void ejecutarComportamientoPorDistancia(DistanciaLejana distancia, Pieza pieza) {
-
-	}
-
-	@Override
 	public Batalloneable moverBatallonDerecha(Tablero campoDeBatalla) {
 		return new BatallonNull();
 	}
@@ -181,7 +166,21 @@ public class Soldado extends Pieza implements Movible {
 
 	}
 
-	public void atacar(Pieza pieza) {
-		//ROCHI
-	}
+	@Override
+	public void ejecutarComportamientoPorDistancia(DistanciaCercana distancia, Pieza pieza) {
+		this.bando.atacar(pieza, this.ataqueCercano, pieza.getBando());
+	};
+	@Override
+	public void ejecutarComportamientoPorDistancia(DistanciaMedia distancia, Pieza pieza) {
+		throw new FueraDeRangoParaEjecutarComportamientoException("Pieza fuera de rango");
+	};
+	@Override
+	public void ejecutarComportamientoPorDistancia(DistanciaLejana distancia, Pieza pieza) {
+		throw new FueraDeRangoParaEjecutarComportamientoException("Pieza fuera de rango");
+	};
+
+	public void atacar(Pieza atacado){
+		DistanciaRelativa distanciaEntrePiezas = this.calculadorDistancia.getDistanciaRelativa(this,atacado);
+		distanciaEntrePiezas.ejecutarComportamientoPorDistancia(this, atacado);
+	};
 }

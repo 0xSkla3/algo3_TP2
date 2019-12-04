@@ -31,7 +31,6 @@ public class JineteTest {
 		assertTrue(jinete.getPiezaAliadaCercana());
 	}
 
-
 	@Test
 	public void test02JineteReconoceAPiezaAliadaEnTerrenoCercanoAdistancia2(){
 		Jugador jugador1 = new Jugador();
@@ -89,7 +88,6 @@ public class JineteTest {
 		jinete.reconocerTerreno(tableroTest);
 		assertTrue(jinete.getPiezaEnemigaCercana());
 	}
-
 
 	@Test
 	public void test05jineteReconoceAPiezaAliadaEnTerrenoCercanoAdistancia2(){
@@ -150,7 +148,7 @@ public class JineteTest {
 		tableroTest.ubicarEnCelda(curanderoJugador2,ubicacionCuranderoJugador2);
 		jineteJugador1.reconocerTerreno(tableroTest);
 		assertTrue((jineteJugador1.getPiezaAliadaCercana() && jineteJugador1.getPiezaEnemigaCercana()));
-	};
+	}
 
 	@Test
 	public void test08JineteAtacaAEnemigoCercanoConAtaqueMedioCuandoHayUnSoldadoAliadoCerca(){
@@ -177,9 +175,9 @@ public class JineteTest {
 
 		int vidaTrasAtaque = soldadoEnemigo.getVida().getValorActual() - (jineteAliado.getAtaqueMedio().getValorComportamiento());
 		jineteAliado.atacar(soldadoEnemigo);
-		assertEquals(vidaTrasAtaque,soldadoEnemigo.getVida());
+		assertEquals(vidaTrasAtaque,soldadoEnemigo.getVida().getValorActual());
 
-	};
+	}
 
 	@Test
 	public void test09JineteAtacaConAtaqueMedioAEnemigoADistanciaMedia(){
@@ -200,7 +198,7 @@ public class JineteTest {
 		int vidaTrasAtaque = soldadoEnemigo.getVida().getValorActual() - jineteAliado.getAtaqueMedio().getValorComportamiento();
 
 		jineteAliado.atacar(soldadoEnemigo);
-		assertEquals(vidaTrasAtaque, soldadoEnemigo.getVida());
+		assertEquals(vidaTrasAtaque, soldadoEnemigo.getVida().getValorActual());
 
 	}
 
@@ -228,7 +226,7 @@ public class JineteTest {
 		int vidaTrasAtaque = soldadoEnemigo.getVida().getValorActual() - jineteAliado.getAtaqueCercano().getValorComportamiento();
 
 		jineteAliado.atacar(soldadoEnemigo);
-		assertEquals(vidaTrasAtaque, soldadoEnemigo.getVida());
+		assertEquals(vidaTrasAtaque, soldadoEnemigo.getVida().getValorActual());
 	};
 
 	@Test (expected = FueraDeRangoParaEjecutarComportamientoException.class)
