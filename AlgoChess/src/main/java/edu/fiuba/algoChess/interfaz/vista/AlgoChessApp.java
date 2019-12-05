@@ -21,15 +21,9 @@ public class AlgoChessApp extends Application implements EventHandler<ActionEven
     public void start(Stage firstStage) {
         firstStage.setTitle("AlgoChess");
         inicio = new Inicio(firstStage);
-/*
-        button = new Button();
-        button.setText("Soy un boton");
-
-        button.setOnAction(this);
 
         StackPane layout = new StackPane();
-        layout.getChildren().add(button);
-*/
+
         Scene scene = new Scene(inicio, Color.BLACK);
         firstStage.setScene(scene);
         firstStage.show();
@@ -41,8 +35,6 @@ public class AlgoChessApp extends Application implements EventHandler<ActionEven
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        if(actionEvent.getSource() == button){
-            System.out.println("log de consola");
-        }
+
     }
 }

@@ -58,7 +58,7 @@ public class PiezaNull extends Pieza {
     }
 
     @Override
-    public ArrayList<Pieza> aniadirSoldadoAlStack(ArrayList<Pieza> stack){
+    public ArrayList<Pieza> aniadirSoldadoAlStack(ArrayList<Pieza> stack, Pieza pieza){
         if (stack == null){
             ArrayList<Pieza> nuevoStack = new ArrayList<Pieza>();
             return  nuevoStack;
@@ -87,16 +87,23 @@ public class PiezaNull extends Pieza {
 
     @Override
     public void ejecutarComportamientoPorDistancia(DistanciaCercana distancia, Pieza pieza) {
-
     }
 
     @Override
     public void ejecutarComportamientoPorDistancia(DistanciaMedia distancia, Pieza pieza) {
-
     }
 
     @Override
     public void ejecutarComportamientoPorDistancia(DistanciaLejana distancia, Pieza pieza) {
+
+    }
+    @Override
+    public void atacar(Pieza atacado) {
+
+    }
+
+    @Override
+    public void curar(Pieza curado) {
 
     }
 
@@ -128,7 +135,6 @@ public class PiezaNull extends Pieza {
     public Batalloneable moverBatallon(Tablero campoDeBatalla, Ubicacion ubicacion1, Ubicacion ubicacion2, Ubicacion ubicacion3) {
         return new BatallonNull();
     }
-
     @Override
     public void moverPiezaDeBatallon(Tablero campoDeBatalla, Ubicacion ubicacion) {
 

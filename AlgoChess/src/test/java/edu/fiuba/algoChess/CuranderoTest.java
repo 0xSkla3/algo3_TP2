@@ -26,7 +26,7 @@ public class CuranderoTest {
         Ubicacion ubicacionCurandero = new Ubicacion(1,2);
         Curandero curandero = new Curandero(ubicacionCurandero,bandoJugador1);
         Comportamiento comportamiento = new AtaqueMedioJinete(15);
-        soldado.recibirAtaque(comportamiento);
+        soldado.recibirAtaque(comportamiento.getValorComportamiento());
         int vidaSoldadoCurado = soldado.getVida().getValorActual() + curandero.getCuracion().getValorComportamiento();
         curandero.curar(soldado);
         assertEquals(vidaSoldadoCurado,soldado.getVida().getValorActual());
@@ -41,7 +41,7 @@ public class CuranderoTest {
         Ubicacion ubicacionCurandero = new Ubicacion(1,2);
         Curandero curandero = new Curandero(ubicacionCurandero,bandoJugador2);
         Comportamiento comportamiento = new AtaqueMedioJinete(15);
-        soldado.recibirAtaque(comportamiento);
+        soldado.recibirAtaque(comportamiento.getValorComportamiento());
         curandero.curar(soldado);
     };
 
@@ -54,7 +54,7 @@ public class CuranderoTest {
         Ubicacion ubicacionCurandero = new Ubicacion(1,2);
         Curandero curandero = new Curandero(ubicacionCurandero,bandoJugador1);
         Comportamiento comportamiento = new AtaqueMedioJinete(15);
-        soldado.recibirAtaque(comportamiento);
+        soldado.recibirAtaque(comportamiento.getValorComportamiento());
         curandero.curar(soldado);
     };
     @Test (expected = NoSePuedeCurarUnaCatapultaException.class)
@@ -65,7 +65,7 @@ public class CuranderoTest {
         Ubicacion ubicacionCurandero = new Ubicacion(1,2);
         Curandero curandero = new Curandero(ubicacionCurandero,bandoJugador1);
         Comportamiento comportamiento = new AtaqueMedioJinete(15);
-        catapulta.recibirAtaque(comportamiento);
+        catapulta.recibirAtaque(comportamiento.getValorComportamiento());
         curandero.curar(catapulta);
     };
 

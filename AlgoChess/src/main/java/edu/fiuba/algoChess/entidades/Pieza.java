@@ -35,7 +35,7 @@ public abstract class Pieza implements Movible, Atacable {
 	protected Bando bando;
 
 	@Setter
-	@Getter
+//	@Getter
 	protected Rango rango;
 
 	@Setter
@@ -140,8 +140,8 @@ public abstract class Pieza implements Movible, Atacable {
 	public abstract ArrayList<Pieza> unirABatallonDeSoldado(ArrayList<Pieza> stackDeUnion);
 
 	public abstract ArrayList<Pieza> aniadirPiezaAlStack(ArrayList<Pieza> stack);
-
-	public abstract ArrayList<Pieza> aniadirSoldadoAlStack(ArrayList<Pieza> stack);
+	//toco metodo debajo
+	public abstract ArrayList<Pieza> aniadirSoldadoAlStack(ArrayList<Pieza> stack, Pieza pieza);
 
 	public abstract ArrayList<Pieza> aniadirTodoMenosSoldadoAlStack(ArrayList<Pieza> stack);
 
@@ -157,27 +157,23 @@ public abstract class Pieza implements Movible, Atacable {
 		return condicion1 && condicion2 && condicion3;
 	}
 
-	public void aumentarVida(Comportamiento comportamiento) {
-		getVida().curar(comportamiento.getValorComportamiento());
-	}
-
-	public void recibirAtaque(Comportamiento comportamiento){
-		this.setVida(getVida().herir(comportamiento.getValorComportamiento()));
-	}
-
 	public void ejecutarComportamientoPorDistancia(DistanciaRelativa distancia, Pieza pieza) { }
 
 	public abstract void ejecutarComportamientoPorDistancia(DistanciaCercana distancia, Pieza pieza);
 	public abstract void ejecutarComportamientoPorDistancia(DistanciaMedia distancia, Pieza pieza);
 	public abstract void ejecutarComportamientoPorDistancia(DistanciaLejana distancia, Pieza pieza);
 
-	public DistanciaRelativa getCalculadorDistancia(){
-		return this.calculadorDistancia;
-	}
+//	public DistanciaRelativa getCalculadorDistancia(){
+//		return this.calculadorDistancia;
+//	}
+//
+//	public void setUbicacion(Ubicacion ubicacion){
+//		this.ubicacion=ubicacion;
+//	}
 
-	public void setUbicacion(Ubicacion ubicacion){
-		this.ubicacion=ubicacion;
-	}
+	public abstract void atacar(Pieza atacado);
+
+	public abstract void curar(Pieza curado);
 
 	public boolean bandoAliado(Bando bando){
 		return this.bando.bandoAliado(bando);

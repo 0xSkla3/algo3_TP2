@@ -8,6 +8,9 @@ import edu.fiuba.algoChess.comportamientos.AtaqueMedioJinete;
 import edu.fiuba.algoChess.comportamientos.Comportamiento;
 import edu.fiuba.algoChess.entorno.*;
 import edu.fiuba.algoChess.excepciones.FueraDeRangoParaEjecutarComportamientoException;
+import edu.fiuba.algoChess.excepciones.NoHayBatallonFormadoException;
+import edu.fiuba.algoChess.excepciones.OperacionInvalidaException;
+import edu.fiuba.algoChess.excepciones.PiezaActualNoFormaBatallonDeSoldadosException;
 import edu.fiuba.algoChess.rangos.Rango;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,12 +28,12 @@ public class Jinete extends Pieza {
 	@Setter
 	private Comportamiento ataqueCercano = new AtaqueCercanoJinete(5);
 
-	@Getter
-	@Setter
+//	@Getter
+//	@Setter
 	public boolean piezaAliadaCercana;
 
-	@Getter
-	@Setter
+//	@Getter
+//	@Setter
 	public boolean piezaEnemigaCercana;
 
 	@Getter
@@ -98,49 +101,48 @@ public class Jinete extends Pieza {
 
 	@Override
 	public Batalloneable moverBatallonDerecha(Tablero campoDeBatalla) {
-		return null;
+		throw new NoHayBatallonFormadoException("No hay un batallon definido");
 	}
 
 	@Override
 	public Batalloneable moverBatallonIzquierda(Tablero campoDeBatalla) {
-		return null;
+		throw new NoHayBatallonFormadoException("No hay un batallon definido");
 	}
 
 	@Override
 	public Batalloneable moverBatallonArriba(Tablero campoDeBatalla) {
-		return null;
+		throw new NoHayBatallonFormadoException("No hay un batallon definido");
 	}
 
 	@Override
 	public Batalloneable moverBatallonAbajo(Tablero campoDeBatalla) {
-		return null;
+		throw new NoHayBatallonFormadoException("No hay un batallon definido");
 	}
 
 	@Override
 	public Batalloneable moverBatallon(Tablero campoDeBatalla, Ubicacion ubicacion1, Ubicacion ubicacion2, Ubicacion ubicacion3) {
-		return null;
+		throw new NoHayBatallonFormadoException("No hay un batallon definido");
 	}
 
 	@Override
 	public void moverPiezaDeBatallon(Tablero campoDeBatalla, Ubicacion ubicacion) {
-
+		throw new NoHayBatallonFormadoException("No hay un batallon definido");
 	}
 
 	@Override
 	public Rango actualizaRango(Tablero tablero) {
-
-		return null;
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
 	public Rango getRango() {
-		return null;
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
 	public ArrayList<Pieza> unirABatallonDeSoldado(ArrayList<Pieza> stackDeUnion) {
-		//throw new IllegalStateException("Un jinete no se puede unir a un batallon de Soldado");
-		return stackDeUnion;
+		throw new PiezaActualNoFormaBatallonDeSoldadosException("Un jinete no puede formar un batallon de soldados");
+
 	}
 
 	@Override
@@ -150,7 +152,7 @@ public class Jinete extends Pieza {
 	}
 
 	@Override
-	public ArrayList<Pieza> aniadirSoldadoAlStack(ArrayList<Pieza> stack) {
+	public ArrayList<Pieza> aniadirSoldadoAlStack(ArrayList<Pieza> stack, Pieza pieza) {
 		return stack;
 	}
 
@@ -162,12 +164,12 @@ public class Jinete extends Pieza {
 
 	@Override
 	public ArrayList<Pieza> getSoldadosContiguos() {
-		return null;
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
 	public boolean soldadosInmediatosSePuedenUnir() {
-		return false;
+		throw new PiezaActualNoFormaBatallonDeSoldadosException("Un jinete no se puede unir a un soldado");
 	}
 
 
@@ -213,10 +215,6 @@ public class Jinete extends Pieza {
 		return this.piezaEnemigaCercana;
 	}
 
-	@Override
-	public void recibirAtaque(Ataque ataque) {
-
-	}
 
 	@Override
 	public void ejecutarComportamientoPorDistancia(DistanciaCercana distancia, Pieza pieza) {
@@ -245,6 +243,11 @@ public class Jinete extends Pieza {
 
 	public void concretarAtaqueMedio(Pieza pieza) {
 		this.bando.atacar(pieza, this.ataqueMedio, pieza.getBando());
+	}
+
+	@Override
+	public void curar(Pieza curado) {
+
 	}
 }
 

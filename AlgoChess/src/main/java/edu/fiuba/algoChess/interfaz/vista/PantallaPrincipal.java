@@ -23,12 +23,12 @@ public class PantallaPrincipal {
 	
 	public PantallaPrincipal(String jugador1, String jugador2, Stage stage) {
 		this.stage = stage;
-		//this.stage = new Stage();
+		this.stage = new Stage();
 		this.pieceView = new PieceView();
 		this.mapView = new MapView();//tamanio del tablero
 
-		player1 =  new PlayerView(jugador1 );
-		player2 =  new PlayerView(jugador2);
+		this.player1 =  new PlayerView(jugador1);
+		this.player2 =  new PlayerView(jugador2);
 
 		initialPhase();
 	}
@@ -112,8 +112,6 @@ public class PantallaPrincipal {
             	});
             	
             	vbox.getChildren().addAll(hbx,hby,submit);
-            	
-            	
             	Scene theScene = new Scene(vbox);
         	    stage.setScene(theScene);
         	    stage.show();
@@ -140,13 +138,6 @@ public class PantallaPrincipal {
 		button.setStyle("-fx-background-color:#F7CF32");
 		head.getChildren().add(button);
 	}
-/*
-	public Scene getEscena() {
-		Scene escenaJuego = new Scene(this);
-		escenaJuego.setOnKeyPressed(new EntradaTecladoHandler(this.tablero, this.juego.obtenerMapa(),
-				this.juego.obtenerJugador(), this.parteInferior));
-		return escenaJuego;
-	}
-*/
+
 }
 

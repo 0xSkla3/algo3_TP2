@@ -9,6 +9,7 @@ import edu.fiuba.algoChess.comportamientos.AtaqueCercanoSoldado;
 import edu.fiuba.algoChess.comportamientos.Comportamiento;
 import edu.fiuba.algoChess.entorno.*;
 import edu.fiuba.algoChess.excepciones.FueraDeRangoParaEjecutarComportamientoException;
+import edu.fiuba.algoChess.excepciones.OperacionInvalidaException;
 import edu.fiuba.algoChess.rangos.Rango;
 import edu.fiuba.algoChess.rangos.RangoSoldado;
 import edu.fiuba.algoChess.salud.SaludLlena;
@@ -91,16 +92,24 @@ public class Soldado extends Pieza implements Movible {
 	}
 
 	@Override
-	public ArrayList<Pieza> aniadirSoldadoAlStack(ArrayList<Pieza> stack) {
-
+	public ArrayList<Pieza> aniadirSoldadoAlStack(ArrayList<Pieza> stack, Pieza pieza) {
+		Bando bandoPiezaAAniadir = pieza.getBando();
+		Bando bandoPiezaEje = this.getBando();
 		if (stack == null){
 			ArrayList<Pieza> nuevoStack = new ArrayList<>();
 			nuevoStack.add(this);
 			return  nuevoStack;
 		}
+		else{
+			if (bandoPiezaAAniadir==bandoPiezaEje){
+				stack.add(this);
+				return stack;
+			}
+			else{
+				throw new OperacionInvalidaException("No se pueden vinvular soldados de distintos bandos");
+			}
+		}
 
-		stack.add(this);
-		return stack;
 	}
 
 	@Override
@@ -109,9 +118,9 @@ public class Soldado extends Pieza implements Movible {
 		return stack;
 	}
 
-	public void atacar(DistanciaRelativa distancia, Pieza atacado){
+	/*public void atacar(DistanciaRelativa distancia, Pieza atacado){
 		//this.getBando().atacar(atacado, this.getAtaque(), atacado.getBando()); //ROCHI
-	}
+	}*/
 
 	public Batalloneable verificaBatallonONull() {
 		return this.getRango().darDeAltaBatallon();
@@ -167,11 +176,6 @@ public class Soldado extends Pieza implements Movible {
 	}
 
 	@Override
-	public void recibirAtaque(Ataque ataque) {
-
-	}
-
-	@Override
 	public void ejecutarComportamientoPorDistancia(DistanciaCercana distancia, Pieza pieza) {
 		this.bando.atacar(pieza, this.ataqueCercano, pieza.getBando());
 	};
@@ -187,5 +191,11 @@ public class Soldado extends Pieza implements Movible {
 	public void atacar(Pieza atacado){
 		DistanciaRelativa distanciaEntrePiezas = this.calculadorDistancia.getDistanciaRelativa(this,atacado);
 		distanciaEntrePiezas.ejecutarComportamientoPorDistancia(this, atacado);
-	};
+	}
+
+	@Override
+	public void curar(Pieza curado) {
+
+	}
+
 }

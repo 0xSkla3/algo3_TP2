@@ -12,10 +12,10 @@ import edu.fiuba.algoChess.entorno.Tablero;
 import edu.fiuba.algoChess.entorno.Ubicacion;
 import edu.fiuba.algoChess.excepciones.FueraDeRangoParaEjecutarComportamientoException;
 import edu.fiuba.algoChess.excepciones.NoSePuedeAtacarUnAliadoException;
+import edu.fiuba.algoChess.excepciones.OperacionInvalidaException;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class SoldadoTest {
 
@@ -203,5 +203,24 @@ public class SoldadoTest {
 		tablero.ubicarEnCelda(soldadoAliado, ubicacionSoldado);
 		soldadoAliado.atacar(jineteAliado);
 	};
+
+	@Test (expected = OperacionInvalidaException.class)
+	public void test009SeLanzaExcepcionCuandoSeQuiereArmarUnBatallonConSoldadosContiguosDeDistintosBandos(){
+
+		Boolean seArmaBatallon;
+		BandoJugador1 bandoJugador1 = new BandoJugador1();
+		BandoJugador2 bandoJugador2 = new BandoJugador2();
+		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
+
+
+		Soldado soldado1 = new Soldado(new Ubicacion(2,2), bandoJugador1, tableroTest);
+		Soldado soldado2 = new Soldado(new Ubicacion(3,2), bandoJugador1, tableroTest);
+		Soldado soldado3 = new Soldado(new Ubicacion(4,2), bandoJugador2, tableroTest);
+
+		soldado1.actualizaRango(tableroTest);
+		soldado2.actualizaRango(tableroTest);
+		soldado3.actualizaRango(tableroTest);
+		seArmaBatallon = BatallonUtil.esBatallon(soldado1,soldado2,soldado3);
+	}
 
 }
