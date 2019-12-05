@@ -58,33 +58,6 @@ public class RangoSoldado extends RangoInmediato implements Rango {
 		this.getIzquierda().getPiezaActual().aniadirSoldadoAlStack(nuevosSoldadosCercanos, piezaCentral);
 		this.getDerecha().getPiezaActual().aniadirSoldadoAlStack(nuevosSoldadosCercanos, piezaCentral);
 		this.setSoldadosEquipo(nuevosSoldadosCercanos);
-
-
-		//Se discrimina por bando antes de anadir soldado al stack  - LIO @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-
-//		Pieza soldadoArriba = this.getArriba().getPiezaActual();
-//		if(piezaCentral.getBando()==soldadoArriba.getBando()){
-//			nuevosSoldadosCercanos.add(soldadoArriba);
-//		//	soldadoArriba.aniadirPiezaAlStack(nuevosSoldadosCercanos);
-//			this.setSoldadosEquipo(nuevosSoldadosCercanos);
-//		}
-//		Pieza soldadoAbajo = this.getAbajo().getPiezaActual();
-//		if(piezaCentral.getBando()==soldadoAbajo.getBando()){
-//			nuevosSoldadosCercanos.add(soldadoAbajo);
-//			this.setSoldadosEquipo(nuevosSoldadosCercanos);
-//		}
-//		Pieza soldadoDerecha = this.getDerecha().getPiezaActual();
-//		if(piezaCentral.getBando()==soldadoDerecha.getBando()){
-//			nuevosSoldadosCercanos.add(soldadoDerecha);
-//			this.setSoldadosEquipo(nuevosSoldadosCercanos);
-//		}
-//		Pieza soldadoIzquierda = this.getIzquierda().getPiezaActual();
-//		if(piezaCentral.getBando()==soldadoIzquierda.getBando()){
-//			nuevosSoldadosCercanos.add(soldadoIzquierda);
-//			this.setSoldadosEquipo(nuevosSoldadosCercanos);
-//		}
-/////////////////@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-
 	}
 
 	public void actualizaObstaculosInmediatos(Pieza piezaCentral){

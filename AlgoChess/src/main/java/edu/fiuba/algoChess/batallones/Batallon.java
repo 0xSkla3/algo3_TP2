@@ -100,6 +100,8 @@ public abstract class Batallon implements Batalloneable {
 			if (soldadosBatallon.size() >= 2) {
 				//Para que siempre entre el central, que es el que tiene por companieros a los demas
 				//Esto es importante cuando hay mas de dos soldados contiguos.
+				//AGREGADO DE LIONEL PARA CHEQUEAR BANDOS
+				//aca va lo mio - lionel
 				soldadosBatallon.add(0, soldado1);
 				return soldadosBatallon;
 			}
@@ -119,8 +121,9 @@ public abstract class Batallon implements Batalloneable {
 
 	public static boolean esBatallon(Pieza soldado1, Pieza soldado2, Pieza soldado3) {
 		ArrayList<Pieza> soldadosBatallon = new ArrayList<>();
+
 		soldadosBatallon = armarPosibleBatallon(soldado1);
-		return soldadosBatallon.size()>=2;
+		return (soldadosBatallon.size()>=2);
 	}
 
 	public boolean equals(Batalloneable batallon){
