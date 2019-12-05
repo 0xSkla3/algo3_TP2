@@ -58,7 +58,7 @@ public class PiezaNull extends Pieza {
     }
 
     @Override
-    public ArrayList<Pieza> aniadirSoldadoAlStack(ArrayList<Pieza> stack){
+    public ArrayList<Pieza> aniadirSoldadoAlStack(ArrayList<Pieza> stack, Pieza pieza){
         if (stack == null){
             ArrayList<Pieza> nuevoStack = new ArrayList<Pieza>();
             return  nuevoStack;

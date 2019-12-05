@@ -43,12 +43,47 @@ public class RangoSoldado extends RangoInmediato implements Rango {
 		ArrayList<Pieza> nuevosSoldadosCercanos = new ArrayList<>();
 		if (piezas.size() == 0) return;
 
-		this.getArriba().getPiezaActual().aniadirSoldadoAlStack(nuevosSoldadosCercanos);
-		this.getAbajo().getPiezaActual().aniadirSoldadoAlStack(nuevosSoldadosCercanos);
-		this.getIzquierda().getPiezaActual().aniadirSoldadoAlStack(nuevosSoldadosCercanos);
-		this.getDerecha().getPiezaActual().aniadirSoldadoAlStack(nuevosSoldadosCercanos);
+//		ROCHI'S VERSION
+//		this.getArriba().getPiezaActual().aniadirSoldadoAlStack(nuevosSoldadosCercanos);
+//		this.getAbajo().getPiezaActual().aniadirSoldadoAlStack(nuevosSoldadosCercanos);
+//		this.getIzquierda().getPiezaActual().aniadirSoldadoAlStack(nuevosSoldadosCercanos);
+//		this.getDerecha().getPiezaActual().aniadirSoldadoAlStack(nuevosSoldadosCercanos);
+//
+//		this.setSoldadosEquipo(nuevosSoldadosCercanos);
 
+//		LIO'S VERSION
+		//Pieza soldadoArriba = this.getArriba().getPiezaActual();
+		this.getArriba().getPiezaActual().aniadirSoldadoAlStack(nuevosSoldadosCercanos, piezaCentral);
+		this.getAbajo().getPiezaActual().aniadirSoldadoAlStack(nuevosSoldadosCercanos, piezaCentral);
+		this.getIzquierda().getPiezaActual().aniadirSoldadoAlStack(nuevosSoldadosCercanos, piezaCentral);
+		this.getDerecha().getPiezaActual().aniadirSoldadoAlStack(nuevosSoldadosCercanos, piezaCentral);
 		this.setSoldadosEquipo(nuevosSoldadosCercanos);
+
+
+		//Se discrimina por bando antes de anadir soldado al stack  - LIO @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+//		Pieza soldadoArriba = this.getArriba().getPiezaActual();
+//		if(piezaCentral.getBando()==soldadoArriba.getBando()){
+//			nuevosSoldadosCercanos.add(soldadoArriba);
+//		//	soldadoArriba.aniadirPiezaAlStack(nuevosSoldadosCercanos);
+//			this.setSoldadosEquipo(nuevosSoldadosCercanos);
+//		}
+//		Pieza soldadoAbajo = this.getAbajo().getPiezaActual();
+//		if(piezaCentral.getBando()==soldadoAbajo.getBando()){
+//			nuevosSoldadosCercanos.add(soldadoAbajo);
+//			this.setSoldadosEquipo(nuevosSoldadosCercanos);
+//		}
+//		Pieza soldadoDerecha = this.getDerecha().getPiezaActual();
+//		if(piezaCentral.getBando()==soldadoDerecha.getBando()){
+//			nuevosSoldadosCercanos.add(soldadoDerecha);
+//			this.setSoldadosEquipo(nuevosSoldadosCercanos);
+//		}
+//		Pieza soldadoIzquierda = this.getIzquierda().getPiezaActual();
+//		if(piezaCentral.getBando()==soldadoIzquierda.getBando()){
+//			nuevosSoldadosCercanos.add(soldadoIzquierda);
+//			this.setSoldadosEquipo(nuevosSoldadosCercanos);
+//		}
+/////////////////@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 	}
 

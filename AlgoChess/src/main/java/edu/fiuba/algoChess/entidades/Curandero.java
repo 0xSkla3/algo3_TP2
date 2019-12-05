@@ -73,7 +73,7 @@ public class Curandero extends Pieza {
 	}
 
 	@Override
-	public ArrayList<Pieza> aniadirSoldadoAlStack(ArrayList<Pieza> stack) {
+	public ArrayList<Pieza> aniadirSoldadoAlStack(ArrayList<Pieza> stack, Pieza pieza) {
 
 		return stack;
 	}

@@ -9,6 +9,7 @@ import edu.fiuba.algoChess.comportamientos.AtaqueCercanoSoldado;
 import edu.fiuba.algoChess.comportamientos.Comportamiento;
 import edu.fiuba.algoChess.entorno.*;
 import edu.fiuba.algoChess.excepciones.FueraDeRangoParaEjecutarComportamientoException;
+import edu.fiuba.algoChess.excepciones.OperacionInvalidaException;
 import edu.fiuba.algoChess.rangos.Rango;
 import edu.fiuba.algoChess.rangos.RangoSoldado;
 import edu.fiuba.algoChess.salud.SaludLlena;
@@ -91,16 +92,24 @@ public class Soldado extends Pieza implements Movible {
 	}
 
 	@Override
-	public ArrayList<Pieza> aniadirSoldadoAlStack(ArrayList<Pieza> stack) {
-
+	public ArrayList<Pieza> aniadirSoldadoAlStack(ArrayList<Pieza> stack, Pieza pieza) {
+		Bando bandoPiezaAAniadir = pieza.getBando();
+		Bando bandoPiezaEje = this.getBando();
 		if (stack == null){
 			ArrayList<Pieza> nuevoStack = new ArrayList<>();
 			nuevoStack.add(this);
 			return  nuevoStack;
 		}
+		else{
+			if (bandoPiezaAAniadir==bandoPiezaEje){
+				stack.add(this);
+				return stack;
+			}
+			else{
+				throw new OperacionInvalidaException("No se pueden vinvular soldados de distintos bandos");
+			}
+		}
 
-		stack.add(this);
-		return stack;
 	}
 
 	@Override
