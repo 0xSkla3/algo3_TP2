@@ -13,6 +13,7 @@ public class Jugador {
 	private Bando bando;
 	private JugadorStatus status;
 	private Set<Pieza> piezas;
+	private Turno turno;
 
 	public Jugador() {
 		this.nombre = "";

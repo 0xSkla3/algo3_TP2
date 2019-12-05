@@ -182,5 +182,12 @@ public class Soldado extends Pieza implements Movible {
 	public void atacar(Pieza atacado){
 		DistanciaRelativa distanciaEntrePiezas = this.calculadorDistancia.getDistanciaRelativa(this,atacado);
 		distanciaEntrePiezas.ejecutarComportamientoPorDistancia(this, atacado);
-	};
+	}
+
+	@Override
+	public void curar(Pieza curado) {
+
+	}
+
+	;
 }

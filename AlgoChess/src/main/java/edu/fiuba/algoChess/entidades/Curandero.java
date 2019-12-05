@@ -135,7 +135,14 @@ public class Curandero extends Pieza {
 	@Override
 	public void ejecutarComportamientoPorDistancia(DistanciaLejana distancia, Pieza pieza) {
 		throw new FueraDeRangoParaEjecutarComportamientoException("Pieza fuera de rango");
-	};
+	}
+
+	@Override
+	public void atacar(Pieza atacado) {
+
+	}
+
+	;
 
 	public void curar(Pieza piezaACurar){
 		DistanciaRelativa distanciaEntrePiezas = this.calculadorDistancia.getDistanciaRelativa(this,piezaACurar);

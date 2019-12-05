@@ -137,4 +137,9 @@ public class Catapulta extends Pieza {
 
 
 
+	@Override
+	public void curar(Pieza curado) {
+
+	}
+
 }

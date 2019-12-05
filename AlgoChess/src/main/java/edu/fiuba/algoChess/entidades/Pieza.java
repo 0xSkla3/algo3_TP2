@@ -171,4 +171,7 @@ public abstract class Pieza implements Movible, Atacable {
 		this.ubicacion=ubicacion;
 	}
 
+	public abstract void atacar(Pieza atacado);
+
+	public abstract void curar(Pieza curado);
 }

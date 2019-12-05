@@ -242,6 +242,11 @@ public class Jinete extends Pieza {
 		distanciaEntrePiezas.ejecutarComportamientoPorDistancia(this, atacado);
 
 	}
+
+	@Override
+	public void curar(Pieza curado) {
+
+	}
 }
 
 

@@ -97,6 +97,19 @@ public class PiezaNull extends Pieza {
     public void ejecutarComportamientoPorDistancia(DistanciaLejana distancia, Pieza pieza) {
 
     }
+    @Override
+    public void atacar(Pieza atacado) {
+
+    }
+
+    @Override
+    public void curar(Pieza curado) {
+
+    }
+
+    public void recibirAtaque(Ataque ataque){
+    // lanza exception "no se puede atacar a casillero vacio
+    }
 
     @Override
     public Batalloneable moverBatallonDerecha(Tablero campoDeBatalla) {
