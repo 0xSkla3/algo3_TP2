@@ -67,10 +67,10 @@ public class PieceView{
 
     private void listaView() {
     	this.listaImage = new HashMap<String,String>();
-    	this.listaImage.put("soldado", "imagenes/soldado.jpg"); //aca se remplaza el nombre de la pieza con Soldado.geteclass() para linkear
-    	this.listaImage.put("jinete", "imagenes/jinete.jpg");
-    	this.listaImage.put("curandero", "imagenes/curandero.jpg");
-    	this.listaImage.put("catapulta", "imagenes/catapulta.jpg");
+    	this.listaImage.put("soldado", "imagenes/soldado.jpeg"); //aca se remplaza el nombre de la pieza con Soldado.geteclass() para linkear
+    	this.listaImage.put("jinete", "imagenes/jinete.jpeg");
+    	this.listaImage.put("curandero", "imagenes/curandero.jpeg");
+    	this.listaImage.put("catapulta", "imagenes/catapulta.jpeg");
    }
 
     public String searchImage(String piece) {

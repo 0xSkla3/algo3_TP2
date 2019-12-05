@@ -66,6 +66,12 @@ public class Juego {
 
 	}
 
+	public void ubicarEnCelda(Pieza pieza, Ubicacion ubicacion){
+		this.tablero.ubicarEnCelda(pieza, ubicacion);
+	}
+
+	/*
+
 	public Pieza crearPieza(String nombre, Ubicacion ubicacion, Bando bando) {
 
 		Pieza pieza = new PiezaNull();
@@ -88,6 +94,8 @@ public class Juego {
 		return new PiezaNull();
 	}
 
+	*/
+/*
 	public void aniadirPiezaJugador1(String nombre, Ubicacion ubicacion){
 		jugador1.adquirirPieza(crearPieza(nombre, ubicacion, new BandoJugador1()));
 	}
@@ -95,7 +103,7 @@ public class Juego {
 	public void aniadirPiezaJugador2(String nombre, Ubicacion ubicacion){
 		jugador2.adquirirPieza(crearPieza(nombre, ubicacion, new BandoJugador2()));
 	}
-
+*/
 	public void atacar(Pieza atacante, Pieza atacado){
 		atacante.atacar(atacado);
 	}

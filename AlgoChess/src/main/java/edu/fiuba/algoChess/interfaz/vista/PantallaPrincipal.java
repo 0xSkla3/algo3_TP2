@@ -58,19 +58,19 @@ public class PantallaPrincipal {
 		HBox head = new HBox();
 	    head.setId("head");
 	    
-	    Image imgSoldado = new Image("imagenes/soldado.jpg",80,80,false,false);
+	    Image imgSoldado = new Image("imagenes/soldado.jpeg",80,80,false,false);
 	    ImageView soldado = new ImageView(imgSoldado);
 	    menuPiece(soldado,"soldado",head);
 	    
-	    Image imgJinete = new Image("imagenes/jinete.jpg",80,80,false,false);
+	    Image imgJinete = new Image("imagenes/jinete.jpeg",80,80,false,false);
 	    ImageView jinete = new ImageView(imgJinete);
 	    menuPiece(jinete,"jinete",head);
 	    
-	    Image imgCatapulta = new Image("imagenes/catapulta.jpg",80,80,false,false);
+	    Image imgCatapulta = new Image("imagenes/catapulta.jpeg",80,80,false,false);
 	    ImageView catapulta = new ImageView(imgCatapulta);
 	    menuPiece(catapulta,"catapulta",head);
 	    
-	    Image imgCurandero = new Image("imagenes/curandero.jpg",80,80,false,false);
+	    Image imgCurandero = new Image("imagenes/curandero.jpeg",80,80,false,false);
 	    ImageView curandero= new ImageView(imgCurandero);
 	    menuPiece(curandero,"curandero",head);
 	    
