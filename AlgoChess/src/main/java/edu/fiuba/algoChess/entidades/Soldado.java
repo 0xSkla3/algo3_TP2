@@ -109,9 +109,9 @@ public class Soldado extends Pieza implements Movible {
 		return stack;
 	}
 
-	public void atacar(DistanciaRelativa distancia, Pieza atacado){
+	/*public void atacar(DistanciaRelativa distancia, Pieza atacado){
 		//this.getBando().atacar(atacado, this.getAtaque(), atacado.getBando()); //ROCHI
-	}
+	}*/
 
 	public Batalloneable verificaBatallonONull() {
 		return this.getRango().darDeAltaBatallon();

@@ -7,6 +7,9 @@ import edu.fiuba.algoChess.comportamientos.Comportamiento;
 import edu.fiuba.algoChess.comportamientos.CuracionCercanaCurandero;
 import edu.fiuba.algoChess.entorno.*;
 import edu.fiuba.algoChess.excepciones.FueraDeRangoParaEjecutarComportamientoException;
+import edu.fiuba.algoChess.excepciones.NoHayBatallonFormadoException;
+import edu.fiuba.algoChess.excepciones.OperacionInvalidaException;
+import edu.fiuba.algoChess.excepciones.PiezaActualNoFormaBatallonDeSoldadosException;
 import edu.fiuba.algoChess.rangos.Rango;
 import lombok.Getter;
 import lombok.Setter;
@@ -50,18 +53,17 @@ public class Curandero extends Pieza {
 
 	@Override
 	public Rango actualizaRango(Tablero tablero) {
-
-		return null;
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
 	public Rango getRango() {
-		return null;
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
 	public ArrayList<Pieza> unirABatallonDeSoldado(ArrayList<Pieza> stackDeUnion) {
-		return stackDeUnion;
+		throw new PiezaActualNoFormaBatallonDeSoldadosException("Un curandero no puede formar un batallon de soldados");
 	}
 
 	@Override
@@ -84,42 +86,42 @@ public class Curandero extends Pieza {
 
 	@Override
 	public ArrayList<Pieza> getSoldadosContiguos() {
-		return null;
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
 	public boolean soldadosInmediatosSePuedenUnir() {
-		return false;
+		throw new PiezaActualNoFormaBatallonDeSoldadosException("Un curandero no se puede unir a un soldado");
 	}
 
 	@Override
 	public Batalloneable moverBatallonDerecha(Tablero campoDeBatalla) {
-		return null;
+		throw new NoHayBatallonFormadoException("No hay un batallon definido");
 	}
 
 	@Override
 	public Batalloneable moverBatallonIzquierda(Tablero campoDeBatalla) {
-		return null;
+		throw new NoHayBatallonFormadoException("No hay un batallon definido");
 	}
 
 	@Override
 	public Batalloneable moverBatallonArriba(Tablero campoDeBatalla) {
-		return null;
+		throw new NoHayBatallonFormadoException("No hay un batallon definido");
 	}
 
 	@Override
 	public Batalloneable moverBatallonAbajo(Tablero campoDeBatalla) {
-		return null;
+		throw new NoHayBatallonFormadoException("No hay un batallon definido");
 	}
 
 	@Override
 	public Batalloneable moverBatallon(Tablero campoDeBatalla, Ubicacion ubicacion1, Ubicacion ubicacion2, Ubicacion ubicacion3) {
-		return null;
+		throw new NoHayBatallonFormadoException("No hay un batallon definido");
 	}
 
 	@Override
 	public void moverPiezaDeBatallon(Tablero campoDeBatalla, Ubicacion ubicacion) {
-
+		throw new NoHayBatallonFormadoException("No hay un batallon definido");
 	}
 
 	@Override
@@ -129,7 +131,6 @@ public class Curandero extends Pieza {
 
 	@Override
 	public void ejecutarComportamientoPorDistancia(DistanciaCercana distancia, Pieza pieza) {
-		//	pieza.aplicarCuracionAPieza(this);//pieza es la pieza a curar y this es el curandero
 		this.bando.curar(pieza, this.curacion, pieza.getBando());
 	};
 	@Override
