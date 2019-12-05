@@ -46,6 +46,22 @@ public class BandoJugador1 extends Bando{
         throw new NoSePuedeCurarUnaUnidadEnemigaException("No se puede curar un enemigo");
     }
 
+    @Override
+    public boolean bandoAliado(Bando bando) { return bando.bandoAliado(this); }
 
+    @Override
+    public boolean bandoAliado(BandoJugador1 bando) { return true; }
+
+    @Override
+    public boolean bandoAliado(BandoJugador2 bando) { return false; }
+
+    @Override
+    public boolean bandoEnemigo(Bando bando) { return bando.bandoEnemigo(this); }
+
+    @Override
+    public boolean bandoEnemigo(BandoJugador1 bando) { return false; }
+
+    @Override
+    public boolean bandoEnemigo(BandoJugador2 bando) { return true; }
 
 }

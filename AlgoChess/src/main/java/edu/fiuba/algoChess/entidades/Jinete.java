@@ -35,8 +35,9 @@ public class Jinete extends Pieza {
 
 	@Getter
 	@Setter
-	private int distanciaAReconocerEnTerreno;
+	private int distanciaAReconocerEnTerreno = 2;
 
+	private ReconocedorDeTerritorio reconocedorDeTerritorio;
 
 	public Jinete(Ubicacion ubicacion, int costo, int vida, Bando bando) {
 		super(costo, vida, ubicacion, bando);
@@ -49,7 +50,6 @@ public class Jinete extends Pieza {
 		this.ataqueMedio = new AtaqueMedioJinete(15);
 		this.piezaEnemigaCercana = false;
 		this.piezaAliadaCercana = false;
-		this.distanciaAReconocerEnTerreno = 2;
 
 	}
 
@@ -60,8 +60,6 @@ public class Jinete extends Pieza {
 		this.ataqueMedio = new AtaqueMedioJinete(15);
 		this.piezaEnemigaCercana = false;
 		this.piezaAliadaCercana = false;
-		this.distanciaAReconocerEnTerreno = 2;
-
 	}
 
 
@@ -83,8 +81,7 @@ public class Jinete extends Pieza {
 		this.piezaEnemigaCercana = false;
 		this.piezaAliadaCercana = false;
 		this.distanciaAReconocerEnTerreno = 2;
-		tablero.ubicarEnCelda(this, ubicacion);
-
+		this.reconocedorDeTerritorio = new ReconocedorDeTerritorio(tablero);
 	}
 
 	public Jinete(Ubicacion ubicacion, Tablero tablero) {
@@ -177,7 +174,8 @@ public class Jinete extends Pieza {
 	public void atacar(DistanciaRelativa distancia, Pieza atacado) {
 	}
 
-	public void reconocerTerreno(Tablero campoDeBatalla) {
+
+/*	public void reconocerTerreno(Tablero campoDeBatalla) {
 
 		int coordenadaX = this.ubicacion.getCoordenadaX();
 		int coordenadaY = this.ubicacion.getCoordenadaY();
@@ -201,10 +199,10 @@ public class Jinete extends Pieza {
 				} else if (!celda.isEmpty() && !(celda.getPiezaActual().getBando().equals(this.bando))) {
 					piezaEnemigaCercana = true;
 					continue;
-				} */ //ROCHI
+				}  //ROCHI
 			}
 		}
-	}
+	}*/
 
 
 	public boolean getPiezaAliadaCercana() {
@@ -222,17 +220,17 @@ public class Jinete extends Pieza {
 
 	@Override
 	public void ejecutarComportamientoPorDistancia(DistanciaCercana distancia, Pieza pieza) {
-		if (this.getPiezaAliadaCercana()) {
-			this.bando.atacar(pieza, this.ataqueMedio, pieza.getBando());
-		} else {
 			this.bando.atacar(pieza, this.ataqueCercano, pieza.getBando());
-		}
 	}
+
 
 	@Override
 	public void ejecutarComportamientoPorDistancia(DistanciaMedia distancia, Pieza pieza) {
-		this.bando.atacar(pieza, this.ataqueMedio, pieza.getBando());
+		this.reconocedorDeTerritorio.reconocerTerreno(this, distanciaAReconocerEnTerreno, pieza);
+		//this.bando.atacar(pieza, this.ataqueMedio, pieza.getBando());
 	}
+
+
 
 	@Override
 	public void ejecutarComportamientoPorDistancia(DistanciaLejana distancia, Pieza pieza) {
@@ -243,6 +241,10 @@ public class Jinete extends Pieza {
 		DistanciaRelativa distanciaEntrePiezas = this.calculadorDistancia.getDistanciaRelativa(this, atacado);
 		distanciaEntrePiezas.ejecutarComportamientoPorDistancia(this, atacado);
 
+	}
+
+	public void concretarAtaqueMedio(Pieza pieza) {
+		this.bando.atacar(pieza, this.ataqueMedio, pieza.getBando());
 	}
 }
 

@@ -27,6 +27,7 @@ public class AceptarNombresHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
         this.popupNombres.hide();
+
         PantallaPrincipal pantalla = new PantallaPrincipal(this.TFnombreJugador1.getText() , this.TFnombreJugador2.getText(), stage);
     }
 }

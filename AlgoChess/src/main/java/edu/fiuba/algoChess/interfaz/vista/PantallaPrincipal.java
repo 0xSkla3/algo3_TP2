@@ -35,7 +35,7 @@ public class PantallaPrincipal {
 	
 	public void initialPhase(){//player1 and player2
 
-		this.stage.setTitle("Phase Initial");
+		this.stage.setTitle("AlgoChess");
 		VBox vbox = new VBox();
 		HBox hbox = new HBox();
 		
@@ -88,19 +88,19 @@ public class PantallaPrincipal {
             	Stage stage = new Stage();
         		VBox vbox = new VBox();
             	
-            	Label labelx = new Label("Posicion x:");
+            	Label labelx = new Label("Ubicacion x:");
             	TextField x = new TextField ();
             	HBox hbx = new HBox();
             	hbx.getChildren().addAll(labelx, x);
             	hbx.setSpacing(10);
             	
-            	Label labely = new Label("Posicion y:");
+            	Label labely = new Label("Ubicacion y:");
             	TextField y = new TextField ();
             	HBox hby = new HBox();
             	hby.getChildren().addAll(labely, y);
             	hby.setSpacing(10);
             	
-            	Button submit = new Button("Posicionar");
+            	Button submit = new Button("ubicar");
             	submit.setStyle("-fx-background-color:#F1C40F;");
             	submit.setOnAction(new EventHandler<ActionEvent>() {
             	    @Override 

@@ -133,4 +133,13 @@ public class PiezaNull extends Pieza {
     public void moverPiezaDeBatallon(Tablero campoDeBatalla, Ubicacion ubicacion) {
 
     }
+
+    public boolean bandoAliado(Bando bando){
+        return false;
+    }
+
+    public boolean bandoEnemigo(Bando bando){
+        return false;
+    }
+
 }

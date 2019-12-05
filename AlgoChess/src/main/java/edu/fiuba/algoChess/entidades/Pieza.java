@@ -179,4 +179,12 @@ public abstract class Pieza implements Movible, Atacable {
 		this.ubicacion=ubicacion;
 	}
 
+	public boolean bandoAliado(Bando bando){
+		return this.bando.bandoAliado(bando);
+	}
+
+	public boolean bandoEnemigo(Bando bando){
+		return this.bando.bandoEnemigo(bando);
+	}
+
 }
