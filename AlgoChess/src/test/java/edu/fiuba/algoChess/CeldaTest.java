@@ -2,11 +2,11 @@ package edu.fiuba.algoChess;
 
 import static org.junit.Assert.*;
 
-import edu.fiuba.algoChess.bandos.BandoJugador1;
-import edu.fiuba.algoChess.entidades.Curandero;
-import edu.fiuba.algoChess.entidades.PiezaNull;
-import edu.fiuba.algoChess.entorno.Celda;
-import edu.fiuba.algoChess.entorno.Ubicacion;
+import edu.fiuba.algoChess.Modelo.bandos.BandoJugador1;
+import edu.fiuba.algoChess.Modelo.entidades.Curandero;
+import edu.fiuba.algoChess.Modelo.entidades.PiezaNull;
+import edu.fiuba.algoChess.Modelo.entorno.Celda;
+import edu.fiuba.algoChess.Modelo.entorno.Ubicacion;
 import org.junit.Test;
 
 public class CeldaTest {

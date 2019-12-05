@@ -1,14 +1,14 @@
 package edu.fiuba.algoChess;
 
-import static org.junit.Assert.*;
-
-import edu.fiuba.algoChess.bandos.BandoJugador1;
-import edu.fiuba.algoChess.bandos.BandoJugador2;
-import edu.fiuba.algoChess.entidades.Curandero;
-import edu.fiuba.algoChess.entorno.Tablero;
-import edu.fiuba.algoChess.entorno.Ubicacion;
-import edu.fiuba.algoChess.juego.Jugador;
+import edu.fiuba.algoChess.Modelo.bandos.BandoJugador1;
+import edu.fiuba.algoChess.Modelo.bandos.BandoJugador2;
+import edu.fiuba.algoChess.Modelo.entidades.Curandero;
+import edu.fiuba.algoChess.Modelo.entorno.Tablero;
+import edu.fiuba.algoChess.Modelo.entorno.Ubicacion;
+import edu.fiuba.algoChess.Modelo.juego.Jugador;
 import org.junit.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class EntidadTest {
 	private System system;

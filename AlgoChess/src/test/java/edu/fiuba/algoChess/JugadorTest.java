@@ -1,10 +1,10 @@
 package edu.fiuba.algoChess;
 import static org.junit.Assert.*;
 
-import edu.fiuba.algoChess.entidades.Catapulta;
-import edu.fiuba.algoChess.entidades.Pieza;
-import edu.fiuba.algoChess.juego.Jugador;
-import edu.fiuba.algoChess.juego.JugadorStatus;
+import edu.fiuba.algoChess.Modelo.entidades.Catapulta;
+import edu.fiuba.algoChess.Modelo.entidades.Pieza;
+import edu.fiuba.algoChess.Modelo.juego.Jugador;
+import edu.fiuba.algoChess.Modelo.juego.JugadorStatus;
 import org.junit.Test;
 
 public class JugadorTest {

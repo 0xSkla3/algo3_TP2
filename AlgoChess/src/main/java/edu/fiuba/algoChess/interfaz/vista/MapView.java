@@ -1,12 +1,9 @@
 package edu.fiuba.algoChess.interfaz.vista;
-import edu.fiuba.algoChess.entidades.Pieza;
-import edu.fiuba.algoChess.entorno.Celda;
-import edu.fiuba.algoChess.entorno.Tablero;
-import edu.fiuba.algoChess.entorno.Ubicacion;
-import edu.fiuba.algoChess.juego.Juego;
+import edu.fiuba.algoChess.Modelo.entorno.Tablero;
+import edu.fiuba.algoChess.Modelo.entorno.Ubicacion;
+import edu.fiuba.algoChess.Modelo.juego.Juego;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.Group;
@@ -27,7 +24,7 @@ public class MapView extends Group {
     private Pane[][] panes;
 
     public MapView(HashMap<String,Image> contenedorImagenes, Juego juego) {
-        this.juego = new Juego();
+    //    this.juego = new Juego();
         this.table = new GridPane();
         width = tileWidth * 20;
         heigth = tileHeigth * 20;

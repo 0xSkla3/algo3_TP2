@@ -4,22 +4,12 @@ package edu.fiuba.algoChess.interfaz.vista;
 import java.util.HashMap;
 
 //import fiuba.algo3.AlgoChess.entidades.Unidad;
-import edu.fiuba.algoChess.bandos.BandoJugador1;
-import edu.fiuba.algoChess.entidades.Pieza;
-import edu.fiuba.algoChess.entidades.Soldado;
-import edu.fiuba.algoChess.entorno.Tablero;
-import edu.fiuba.algoChess.entorno.Ubicacion;
-import edu.fiuba.algoChess.juego.Juego;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import edu.fiuba.algoChess.Modelo.entorno.Tablero;
+import edu.fiuba.algoChess.Modelo.juego.Juego;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 public class PieceView{
 
@@ -29,7 +19,6 @@ public class PieceView{
 
     private int lastXPosition;
     //private Pieza piezaActual = new Soldado(new Ubicacion(1,1), new BandoJugador1(), tablero);
-    private Juego juego = new Juego();
 
     public PieceView() {
     	listaView();
