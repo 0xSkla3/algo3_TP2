@@ -125,11 +125,6 @@ public class Curandero extends Pieza {
 	}
 
 	@Override
-	public void recibirAtaque(Ataque ataque) {
-
-	}
-
-	@Override
 	public void ejecutarComportamientoPorDistancia(DistanciaCercana distancia, Pieza pieza) {
 		this.bando.curar(pieza, this.curacion, pieza.getBando());
 	};

@@ -2,7 +2,6 @@ package edu.fiuba.algoChess.entidades;
 import edu.fiuba.algoChess.bandos.Bando;
 import edu.fiuba.algoChess.batallones.Batalloneable;
 import edu.fiuba.algoChess.comportamientos.Ataque;
-import edu.fiuba.algoChess.comportamientos.AtaqueLejano;
 import edu.fiuba.algoChess.comportamientos.AtaqueLejanoCatapulta;
 import edu.fiuba.algoChess.comportamientos.Comportamiento;
 import edu.fiuba.algoChess.entorno.*;
@@ -135,11 +134,6 @@ public class Catapulta extends Pieza {
 		distanciaEntrePiezas.ejecutarComportamientoPorDistancia(this, atacado);
 	}
 
-
-	@Override
-	public void recibirAtaque(Ataque ataque) {
-
-	}
 
 
 

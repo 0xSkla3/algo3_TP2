@@ -167,11 +167,6 @@ public class Soldado extends Pieza implements Movible {
 	}
 
 	@Override
-	public void recibirAtaque(Ataque ataque) {
-
-	}
-
-	@Override
 	public void ejecutarComportamientoPorDistancia(DistanciaCercana distancia, Pieza pieza) {
 		this.bando.atacar(pieza, this.ataqueCercano, pieza.getBando());
 	};

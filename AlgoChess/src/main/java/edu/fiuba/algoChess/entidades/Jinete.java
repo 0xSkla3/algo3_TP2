@@ -217,10 +217,6 @@ public class Jinete extends Pieza {
 		return this.piezaEnemigaCercana;
 	}
 
-	@Override
-	public void recibirAtaque(Ataque ataque) {
-
-	}
 
 	@Override
 	public void ejecutarComportamientoPorDistancia(DistanciaCercana distancia, Pieza pieza) {

@@ -157,14 +157,6 @@ public abstract class Pieza implements Movible, Atacable {
 		return condicion1 && condicion2 && condicion3;
 	}
 
-	public void aumentarVida(Comportamiento comportamiento) {
-		getVida().curar(comportamiento.getValorComportamiento());
-	}
-
-	public void recibirAtaque(Comportamiento comportamiento){
-		this.setVida(getVida().herir(comportamiento.getValorComportamiento()));
-	}
-
 	public void ejecutarComportamientoPorDistancia(DistanciaRelativa distancia, Pieza pieza) { }
 
 	public abstract void ejecutarComportamientoPorDistancia(DistanciaCercana distancia, Pieza pieza);
