@@ -129,12 +129,6 @@ public class Catapulta extends Pieza {
 		throw new FueraDeRangoParaEjecutarComportamientoException("Pieza fuera de rango");
 	}
 
-	public void atacar(Pieza atacado) {
-		DistanciaRelativa distanciaEntrePiezas = this.calculadorDistancia.getDistanciaRelativa(this, atacado);
-		distanciaEntrePiezas.ejecutarComportamientoPorDistancia(this, atacado);
-	}
-
-
 
 
 	@Override

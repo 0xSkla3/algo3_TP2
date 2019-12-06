@@ -118,9 +118,6 @@ public class Soldado extends Pieza implements Movible {
 		return stack;
 	}
 
-	/*public void atacar(DistanciaRelativa distancia, Pieza atacado){
-		//this.getBando().atacar(atacado, this.getAtaque(), atacado.getBando()); //ROCHI
-	}*/
 
 	public Batalloneable verificaBatallonONull() {
 		return this.getRango().darDeAltaBatallon();
@@ -188,10 +185,6 @@ public class Soldado extends Pieza implements Movible {
 		throw new FueraDeRangoParaEjecutarComportamientoException("Pieza fuera de rango");
 	};
 
-	public void atacar(Pieza atacado){
-		DistanciaRelativa distanciaEntrePiezas = this.calculadorDistancia.getDistanciaRelativa(this,atacado);
-		distanciaEntrePiezas.ejecutarComportamientoPorDistancia(this, atacado);
-	}
 
 	@Override
 	public void curar(Pieza curado) {

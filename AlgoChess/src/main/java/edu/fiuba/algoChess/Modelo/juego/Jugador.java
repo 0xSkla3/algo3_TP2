@@ -11,7 +11,7 @@ public class Jugador {
 	private int puntaje;
 	private int creditos;
 	private Bando bando;
-	private JugadorStatus status;
+	//private JugadorStatus status;
 	private Set<Pieza> piezas;
 	private Turno turno;
 
@@ -19,7 +19,7 @@ public class Jugador {
 		this.nombre = "";
 		this.puntaje = 0;
 		this.creditos = 20;
-		this.status = JugadorStatus.INACTIVO;
+	//	this.status = JugadorStatus.INACTIVO;
 		this.piezas = Collections.emptySet();
 	}
 
@@ -27,13 +27,13 @@ public class Jugador {
 		this.puntaje = 0;
 		this.nombre = unNombre;
 		this.creditos = 20;
-		this.status = JugadorStatus.INACTIVO;
+	//	this.status = JugadorStatus.INACTIVO;
 		this.piezas = Collections.emptySet();
 	}
 
 	public void sumarPuntaje(int unPuntaje){this.puntaje += unPuntaje;}
 
-	public void activarTurno(){this.status = JugadorStatus.EN_TURNO;}
+	/*public void activarTurno(){this.status = JugadorStatus.EN_TURNO;}
 
 	public void ponerEnEspera(){this.status = JugadorStatus.EN_ESPERA;}
 
@@ -41,7 +41,7 @@ public class Jugador {
 
 	public void ganador(){this.status = JugadorStatus.GANADOR;}
 
-	public void perdedor(){this.status = JugadorStatus.PERDEDOR;}
+	public void perdedor(){this.status = JugadorStatus.PERDEDOR;}*/
 
 	public String nombre() {
 		return this.nombre;
@@ -51,19 +51,19 @@ public class Jugador {
 		return this.puntaje;
 	}
 
-	public JugadorStatus getStatus(){ return this.status;}
-
+	//public JugadorStatus getStatus(){
+	//	return this.status;
+	//}
+/*
 	public void validarPerdedor(){
 		if(this.piezas.isEmpty())
 			this.perdedor();
 	}
-
+*/
 	public void adquirirPieza(Pieza pieza){
 		if(pieza.getCosto() <= this.creditos){
 			this.creditos = this.creditos - pieza.getCosto();
-			//this.piezas.add(pieza);
-		}else{
-			this.status = JugadorStatus.POR_COMENZAR;
+			this.piezas.add(pieza);
 		}
 	}
 

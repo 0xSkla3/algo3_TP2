@@ -177,45 +177,6 @@ public class Jinete extends Pieza {
 	}
 
 
-/*	public void reconocerTerreno(Tablero campoDeBatalla) {
-
-		int coordenadaX = this.ubicacion.getCoordenadaX();
-		int coordenadaY = this.ubicacion.getCoordenadaY();
-
-		for (int i = coordenadaX - distanciaAReconocerEnTerreno; i <= coordenadaX + distanciaAReconocerEnTerreno; i++) {
-			if (i < 1 || i > 20) {
-				continue;
-			}
-			for (int j = coordenadaY - distanciaAReconocerEnTerreno; j <= coordenadaX + distanciaAReconocerEnTerreno; j++) {
-				if (j < 1 || j > 20) {
-					continue;
-				}
-				Ubicacion ubicacion = new Ubicacion(i, j);
-				if (ubicacion.equals(this.getUbicacion())) {
-					continue;
-				}
-				Celda celda = campoDeBatalla.getCelda(ubicacion);
-			/*	if (!celda.isEmpty() && (celda.getPiezaActual().getBando().equals(this.bando))) {
-					piezaAliadaCercana = true;
-					continue;
-				} else if (!celda.isEmpty() && !(celda.getPiezaActual().getBando().equals(this.bando))) {
-					piezaEnemigaCercana = true;
-					continue;
-				}  //ROCHI
-			}
-		}
-	}*/
-
-
-	public boolean getPiezaAliadaCercana() {
-		return this.piezaAliadaCercana;
-	}
-
-	public boolean getPiezaEnemigaCercana() {
-		return this.piezaEnemigaCercana;
-	}
-
-
 	@Override
 	public void ejecutarComportamientoPorDistancia(DistanciaCercana distancia, Pieza pieza) {
 			this.bando.atacar(pieza, this.ataqueCercano, pieza.getBando());
@@ -225,20 +186,12 @@ public class Jinete extends Pieza {
 	@Override
 	public void ejecutarComportamientoPorDistancia(DistanciaMedia distancia, Pieza pieza) {
 		this.reconocedorDeTerritorio.reconocerTerreno(this, distanciaAReconocerEnTerreno, pieza);
-		//this.bando.atacar(pieza, this.ataqueMedio, pieza.getBando());
 	}
-
 
 
 	@Override
 	public void ejecutarComportamientoPorDistancia(DistanciaLejana distancia, Pieza pieza) {
 		throw new FueraDeRangoParaEjecutarComportamientoException("Pieza fuera de rango");
-	}
-
-	public void atacar(Pieza atacado) {
-		DistanciaRelativa distanciaEntrePiezas = this.calculadorDistancia.getDistanciaRelativa(this, atacado);
-		distanciaEntrePiezas.ejecutarComportamientoPorDistancia(this, atacado);
-
 	}
 
 	public void concretarAtaqueMedio(Pieza pieza) {

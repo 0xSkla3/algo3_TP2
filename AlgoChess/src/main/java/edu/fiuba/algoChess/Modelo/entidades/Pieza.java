@@ -163,15 +163,10 @@ public abstract class Pieza implements Movible, Atacable {
 	public abstract void ejecutarComportamientoPorDistancia(DistanciaMedia distancia, Pieza pieza);
 	public abstract void ejecutarComportamientoPorDistancia(DistanciaLejana distancia, Pieza pieza);
 
-//	public DistanciaRelativa getCalculadorDistancia(){
-//		return this.calculadorDistancia;
-//	}
-//
-//	public void setUbicacion(Ubicacion ubicacion){
-//		this.ubicacion=ubicacion;
-//	}
-
-	public abstract void atacar(Pieza atacado);
+	public void atacar(Pieza atacado){
+		DistanciaRelativa distanciaEntrePiezas = this.calculadorDistancia.getDistanciaRelativa(this.ubicacion, atacado.ubicacion);
+		distanciaEntrePiezas.ejecutarComportamientoPorDistancia(this, atacado);
+	}
 
 	public abstract void curar(Pieza curado);
 
@@ -182,5 +177,6 @@ public abstract class Pieza implements Movible, Atacable {
 	public boolean bandoEnemigo(Bando bando){
 		return this.bando.bandoEnemigo(bando);
 	}
+
 
 }

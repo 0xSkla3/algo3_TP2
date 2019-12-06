@@ -11,14 +11,12 @@ public class DistanciaRelativa {
        // this.distancia = distancia;
     }
 
-    public static DistanciaRelativa getDistanciaRelativa (Pieza piezaEje, Pieza otraPieza){
-        Ubicacion ubicacionOtraPieza = otraPieza.getUbicacion();
-        Ubicacion ubicacionPiezaEje = piezaEje.getUbicacion();
+    public static DistanciaRelativa getDistanciaRelativa (Ubicacion ubicacionPiezaCentral, Ubicacion ubicacionOtraPieza){
 
         int otraPiezaX = ubicacionOtraPieza.getCoordenadaX();
         int otraPiezaY = ubicacionOtraPieza.getCoordenadaY();
-        int piezaEjeX = ubicacionPiezaEje.getCoordenadaX();
-        int piezaEjeY = ubicacionPiezaEje.getCoordenadaY();
+        int piezaEjeX = ubicacionPiezaCentral.getCoordenadaX();
+        int piezaEjeY = ubicacionPiezaCentral.getCoordenadaY();
 
         DistanciaRelativa distanciaRelativa = new DistanciaLejana();
 

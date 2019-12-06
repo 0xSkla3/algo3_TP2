@@ -1,5 +1,10 @@
 package edu.fiuba.algoChess.interfaz.vista;
 
+import edu.fiuba.algoChess.Modelo.entidades.Catapulta;
+import edu.fiuba.algoChess.Modelo.entidades.Curandero;
+import edu.fiuba.algoChess.Modelo.entidades.Jinete;
+import edu.fiuba.algoChess.Modelo.entidades.Soldado;
+import edu.fiuba.algoChess.Modelo.juego.Juego;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -13,6 +18,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.util.HashMap;
+
 public class PantallaPrincipal {
 	private Stage stage;
 	private PieceView pieceView;
@@ -20,12 +27,16 @@ public class PantallaPrincipal {
 	private PlayerView player1;
 	private PlayerView player2;
 	private PlayerView turn;
+	private Juego juego;
+	private HashMap<String,Class> listaPiezas;
 	
 	public PantallaPrincipal(String jugador1, String jugador2, Stage stage) {
+		this.juego = new Juego(jugador1,jugador2);
 		this.stage = stage;
 		this.stage = new Stage();
 		this.pieceView = new PieceView();
 		this.mapView = new MapView();//tamanio del tablero
+		this.listaPiezas = new HashMap<>();
 
 		this.player1 =  new PlayerView(jugador1);
 		this.player2 =  new PlayerView(jugador2);
@@ -60,26 +71,29 @@ public class PantallaPrincipal {
 	    
 	    Image imgSoldado = new Image("imagenes/soldado.jpeg",80,80,false,false);
 	    ImageView soldado = new ImageView(imgSoldado);
-	    menuPiece(soldado,"soldado",head);
+	    this.listaPiezas.put("Soldado", Soldado.class);
+	    menuPiece(soldado, "Soldado" ,head);
 	    
 	    Image imgJinete = new Image("imagenes/jinete.jpeg",80,80,false,false);
 	    ImageView jinete = new ImageView(imgJinete);
-	    menuPiece(jinete,"jinete",head);
+		this.listaPiezas.put("Jinete", Jinete.class);
+	    menuPiece(jinete, "Jinete" ,head);
 	    
 	    Image imgCatapulta = new Image("imagenes/catapulta.jpeg",80,80,false,false);
 	    ImageView catapulta = new ImageView(imgCatapulta);
-	    menuPiece(catapulta,"catapulta",head);
+		this.listaPiezas.put("Catapulta", Catapulta.class);
+	    menuPiece(catapulta, "Catapulta",head);
 	    
 	    Image imgCurandero = new Image("imagenes/curandero.jpeg",80,80,false,false);
 	    ImageView curandero= new ImageView(imgCurandero);
-	    menuPiece(curandero,"curandero",head);
+	    menuPiece(curandero, "Curandero",head);
 	    
 	    head.getChildren().addAll(soldado,jinete,catapulta,curandero);
 	    turnOf(head,player1);
 	    return head;
 	}
 	
-	public void menuPiece(ImageView piece,String namePiece,HBox head) {
+	public void menuPiece(ImageView piece,String nombrePieza,HBox head) {
 	
 		piece.addEventHandler(MouseEvent.MOUSE_CLICKED,new EventHandler<MouseEvent>() {
 			
@@ -105,8 +119,8 @@ public class PantallaPrincipal {
             	submit.setOnAction(new EventHandler<ActionEvent>() {
             	    @Override 
             	    public void handle(ActionEvent e) {
-            	    	pieceView.setPieceMap(mapView,namePiece, Integer.parseInt(x.getText()),Integer.parseInt(y.getText()));
-            	    	cambioTurno(head,namePiece);
+            	    	pieceView.setPieceMap(mapView, nombrePieza, Integer.parseInt(x.getText()),Integer.parseInt(y.getText()));
+            	    	cambioTurno(head, nombrePieza);
             	    	stage.close();
             	    }
             	});

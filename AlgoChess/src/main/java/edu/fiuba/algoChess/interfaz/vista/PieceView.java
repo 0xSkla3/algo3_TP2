@@ -11,12 +11,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
+
 public class PieceView{
 
     private double piezaEscala = 1;
     private Tablero tablero;
-    private HashMap<String,String> listaImage;
-
+    private HashMap<String,String> listaImage = new HashMap<>();
     private int lastXPosition;
     //private Pieza piezaActual = new Soldado(new Ubicacion(1,1), new BandoJugador1(), tablero);
 
@@ -40,6 +40,7 @@ public class PieceView{
     }
 
     public ImageView getImageViewMin(String piece) {
+       // system.out.println(piece);
     	ImageView pieceImage = new ImageView(new Image(searchImage(piece)));
         pieceImage.setScaleX(piezaEscala);
         pieceImage.setScaleY(piezaEscala);
@@ -55,11 +56,10 @@ public class PieceView{
     }
 
     private void listaView() {
-    	this.listaImage = new HashMap<String,String>();
-    	this.listaImage.put("soldado", "imagenes/soldado.jpeg"); //aca se remplaza el nombre de la pieza con Soldado.geteclass() para linkear
-    	this.listaImage.put("jinete", "imagenes/jinete.jpeg");
-    	this.listaImage.put("curandero", "imagenes/curandero.jpeg");
-    	this.listaImage.put("catapulta", "imagenes/catapulta.jpeg");
+    	this.listaImage.put("Soldado", "imagenes/soldado.jpeg"); //aca se remplaza el nombre de la pieza con Soldado.geteclass() para linkear
+    	this.listaImage.put("Jinete", "imagenes/jinete.jpeg");
+    	this.listaImage.put("Curandero", "imagenes/curandero.jpeg");
+    	this.listaImage.put("Catapulta", "imagenes/catapulta.jpeg");
    }
 
     public String searchImage(String piece) {
