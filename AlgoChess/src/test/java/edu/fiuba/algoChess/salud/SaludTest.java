@@ -1,4 +1,8 @@
 package edu.fiuba.algoChess.salud;
+import edu.fiuba.algoChess.Modelo.salud.Salud;
+import edu.fiuba.algoChess.Modelo.salud.SaludLlena;
+import edu.fiuba.algoChess.Modelo.salud.SaludMedia;
+import edu.fiuba.algoChess.Modelo.salud.SaludMuerto;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

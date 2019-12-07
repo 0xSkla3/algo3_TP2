@@ -1,13 +1,12 @@
 package edu.fiuba.algoChess;
 
-import edu.fiuba.algoChess.bandos.BandoJugador1;
-import edu.fiuba.algoChess.bandos.BandoJugador2;
-import edu.fiuba.algoChess.entidades.Catapulta;
-import edu.fiuba.algoChess.entidades.Curandero;
-import edu.fiuba.algoChess.entidades.Jinete;
-import edu.fiuba.algoChess.entidades.Soldado;
-import edu.fiuba.algoChess.entorno.Tablero;
-import edu.fiuba.algoChess.entorno.Ubicacion;
+import edu.fiuba.algoChess.Modelo.bandos.BandoJugador1;
+import edu.fiuba.algoChess.Modelo.bandos.BandoJugador2;
+import edu.fiuba.algoChess.Modelo.entidades.Catapulta;
+import edu.fiuba.algoChess.Modelo.entidades.Curandero;
+import edu.fiuba.algoChess.Modelo.entidades.Soldado;
+import edu.fiuba.algoChess.Modelo.entorno.Tablero;
+import edu.fiuba.algoChess.Modelo.entorno.Ubicacion;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
@@ -37,14 +36,14 @@ public class RangoInmediatoTest {
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
 		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
-		Jinete jinete1 = new Jinete(new Ubicacion(2,2), bandoJugador1, tableroTest);
+		Curandero curandero1 = new Curandero(new Ubicacion(2,2), bandoJugador1, tableroTest);
 		Soldado soldado2 = new Soldado(new Ubicacion(3,2), bandoJugador1, tableroTest);
-		Jinete jinete3 = new Jinete(new Ubicacion(4,2), bandoJugador1, tableroTest);
+		Curandero curandero2 = new Curandero(new Ubicacion(4,2), bandoJugador1, tableroTest);
 
 		soldado2.getRango().actualizaRangoInmediato(soldado2,tableroTest);
 
-		assertTrue(soldado2.getRango().getPiezasEnRango().contains(jinete1));
-		assertTrue(soldado2.getRango().getPiezasEnRango().contains(jinete3));
+		assertTrue(soldado2.getRango().getPiezasEnRango().contains(curandero1));
+		assertTrue(soldado2.getRango().getPiezasEnRango().contains(curandero2));
 
 	}
 

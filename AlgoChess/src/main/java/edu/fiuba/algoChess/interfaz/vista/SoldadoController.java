@@ -1,7 +1,6 @@
 package edu.fiuba.algoChess.interfaz.vista;
 
-import edu.fiuba.algoChess.entidades.Pieza;
-import javafx.event.Event;
+import edu.fiuba.algoChess.Modelo.entidades.Pieza;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 

@@ -1,7 +1,7 @@
 package edu.fiuba.algoChess.interfaz.vista;
 
-import edu.fiuba.algoChess.entidades.Pieza;
-import edu.fiuba.algoChess.entorno.Tablero;
+import edu.fiuba.algoChess.Modelo.entidades.Pieza;
+import edu.fiuba.algoChess.Modelo.entorno.Tablero;
 import edu.fiuba.algoChess.interfaz.controlladores.MoverAbajoController;
 import edu.fiuba.algoChess.interfaz.controlladores.MoverArribaController;
 import edu.fiuba.algoChess.interfaz.controlladores.MoverDerechaController;
@@ -10,7 +10,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Tab;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;

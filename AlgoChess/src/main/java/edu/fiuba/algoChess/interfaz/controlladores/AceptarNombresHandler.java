@@ -1,5 +1,6 @@
 package edu.fiuba.algoChess.interfaz.controlladores;
 
+import edu.fiuba.algoChess.Modelo.juego.Juego;
 import edu.fiuba.algoChess.interfaz.vista.PantallaPrincipal;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

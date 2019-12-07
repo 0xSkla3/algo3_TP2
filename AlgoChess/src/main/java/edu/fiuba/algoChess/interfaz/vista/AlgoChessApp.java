@@ -1,6 +1,6 @@
 package edu.fiuba.algoChess.interfaz.vista;
 
-import edu.fiuba.algoChess.juego.Juego;
+import edu.fiuba.algoChess.Modelo.juego.Juego;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

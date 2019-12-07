@@ -1,16 +1,16 @@
 package edu.fiuba.algoChess;
 
-import edu.fiuba.algoChess.bandos.BandoJugador1;
-import edu.fiuba.algoChess.bandos.BandoJugador2;
-import edu.fiuba.algoChess.comportamientos.AtaqueMedioJinete;
-import edu.fiuba.algoChess.comportamientos.Comportamiento;
-import edu.fiuba.algoChess.entidades.Catapulta;
-import edu.fiuba.algoChess.entidades.Curandero;
-import edu.fiuba.algoChess.entidades.Soldado;
-import edu.fiuba.algoChess.entorno.Ubicacion;
-import edu.fiuba.algoChess.excepciones.FueraDeRangoParaEjecutarComportamientoException;
-import edu.fiuba.algoChess.excepciones.NoSePuedeCurarUnaCatapultaException;
-import edu.fiuba.algoChess.excepciones.NoSePuedeCurarUnaUnidadEnemigaException;
+import edu.fiuba.algoChess.Modelo.bandos.BandoJugador1;
+import edu.fiuba.algoChess.Modelo.bandos.BandoJugador2;
+import edu.fiuba.algoChess.Modelo.comportamientos.AtaqueMedioJinete;
+import edu.fiuba.algoChess.Modelo.comportamientos.Comportamiento;
+import edu.fiuba.algoChess.Modelo.entidades.Catapulta;
+import edu.fiuba.algoChess.Modelo.entidades.Curandero;
+import edu.fiuba.algoChess.Modelo.entidades.Soldado;
+import edu.fiuba.algoChess.Modelo.entorno.Ubicacion;
+import edu.fiuba.algoChess.Modelo.excepciones.FueraDeRangoParaEjecutarComportamientoException;
+import edu.fiuba.algoChess.Modelo.excepciones.NoSePuedeCurarUnaCatapultaException;
+import edu.fiuba.algoChess.Modelo.excepciones.NoSePuedeCurarUnaUnidadEnemigaException;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

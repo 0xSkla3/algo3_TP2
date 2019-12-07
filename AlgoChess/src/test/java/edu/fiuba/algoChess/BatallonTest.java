@@ -1,15 +1,15 @@
 package edu.fiuba.algoChess;
 
-import edu.fiuba.algoChess.bandos.BandoJugador1;
-import edu.fiuba.algoChess.bandos.BandoJugador2;
-import edu.fiuba.algoChess.batallones.Batalloneable;
-import edu.fiuba.algoChess.batallones.BatallonNull;
-import edu.fiuba.algoChess.batallones.BatallonUtil;
-import edu.fiuba.algoChess.entidades.Jinete;
-import edu.fiuba.algoChess.entidades.Soldado;
-import edu.fiuba.algoChess.entorno.Tablero;
-import edu.fiuba.algoChess.entorno.Ubicacion;
-import edu.fiuba.algoChess.juego.Jugador;
+import edu.fiuba.algoChess.Modelo.bandos.BandoJugador1;
+import edu.fiuba.algoChess.Modelo.bandos.BandoJugador2;
+import edu.fiuba.algoChess.Modelo.batallones.Batalloneable;
+import edu.fiuba.algoChess.Modelo.batallones.BatallonNull;
+import edu.fiuba.algoChess.Modelo.batallones.BatallonUtil;
+import edu.fiuba.algoChess.Modelo.entidades.Curandero;
+import edu.fiuba.algoChess.Modelo.entidades.Soldado;
+import edu.fiuba.algoChess.Modelo.entorno.Tablero;
+import edu.fiuba.algoChess.Modelo.entorno.Ubicacion;
+import edu.fiuba.algoChess.Modelo.juego.Jugador;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -79,12 +79,8 @@ public class BatallonTest {
 		Soldado soldado1 = new Soldado(new Ubicacion(2,2), bandoJugador1,tableroTest);
 		Soldado soldado2 = new Soldado(new Ubicacion(3,2), bandoJugador1,tableroTest);
 		Soldado soldado3 = new Soldado(new Ubicacion(4,2), bandoJugador1,tableroTest);
-		Jinete jinete = new Jinete(new Ubicacion(3,3), bandoJugador1,tableroTest);
+		Curandero curandero = new Curandero(new Ubicacion(3,3), bandoJugador1,tableroTest);
 
-		soldado1.setBando(bandoJugador1);
-		soldado2.setBando(bandoJugador1);
-		soldado3.setBando(bandoJugador1);
-		jinete.setBando(bandoJugador1);
 		BatallonUtil batallon = new BatallonUtil(soldado1,soldado2,soldado3);
 
 		soldado1.actualizaRango(tableroTest);

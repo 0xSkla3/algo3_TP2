@@ -1,18 +1,15 @@
 package edu.fiuba.algoChess.interfaz.vista;
 
-import edu.fiuba.algoChess.entidades.Pieza;
-import edu.fiuba.algoChess.entorno.Tablero;
-import edu.fiuba.algoChess.entorno.Ubicacion;
-import edu.fiuba.algoChess.juego.Juego;
+import edu.fiuba.algoChess.Modelo.entorno.Tablero;
+import edu.fiuba.algoChess.Modelo.entorno.Ubicacion;
+import edu.fiuba.algoChess.Modelo.juego.Juego;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MapView extends Group {
@@ -27,8 +24,7 @@ public class MapView extends Group {
     public GridPane table = new GridPane();
     public Pane[][] panes;
 
-    public MapView(HashMap<String,Image> contenedorImagenes, Juego juego ) {
-        this.juego = new Juego();
+    public MapView(HashMap<String,Image> contenedorImagenes, Juego juego) {
         this.table = new GridPane();
         width = tileWidth * 20;
         heigth = tileHeigth * 20;
@@ -39,9 +35,7 @@ public class MapView extends Group {
         this.table.setAlignment(Pos.CENTER);
         this.tablero = juego.getTablero();
         this.contenedorImagenes = contenedorImagenes;
-       // this.actualizarTablero();
         this.addView(table);
-       // this.getChildren().addAll(this.hboxTexto, this.grid);
     }
 
     public MapView(){
@@ -88,44 +82,6 @@ public class MapView extends Group {
         return panes[ubicacion.getX()][ubicacion.getY()];
     }
 
-    public void updateView(Node view) {
-        getChildren().remove(view);
-        getChildren().add(view);
-    }
-
-    public ArrayList<Pane> getPanesAdyacentes(Pieza pieza) {
-        ArrayList<Pane> panesAdyacentes = new ArrayList<Pane>();
-
-      /*  if (pieza.getUbicacion().getY() + 1 <= 19) {
-            panes[pieza.getUbicacion().getX()][pieza.getUbicacion().getY() + 1].setOnMouseClicked(new MovimientoAdelanteController(pieza));
-            panesAdyacentes.add(panes[pieza.getUbicacion().getX()][pieza.getUbicacion().getY() + 1]);
-        }
-
-        if (pieza.getUbicacion().getY() - 1 >= 0) {
-            panes[pieza.getUbicacion().getX()][pieza.getUbicacion().getY() - 1].setOnMouseClicked(new MovimientoAtrasController(pieza));
-            panesAdyacentes.add(panes[pieza.getUbicacion().getX()][pieza.getUbicacion().getY() - 1]);
-        } */
-
-        if (pieza.getUbicacion().getX() + 1 <= 19) {
-           // panes[pieza.getUbicacion().getX() + 1][pieza.getUbicacion().getY()].setOnMouseClicked(new MoverDerechaController(pieza, this.tablero, this.table, this.contenedorImagenes.get(0)));
-            panesAdyacentes.add(panes[pieza.getUbicacion().getX() + 1][pieza.getUbicacion().getY()]);
-        }
-
-        /*if (pieza.getUbicacion().getX() - 1 >= 0) {
-            panes[pieza.getUbicacion().getX() - 1][pieza.getUbicacion().getY()].setOnMouseClicked(new MovimientoIzquierdaController(pieza));
-            panesAdyacentes.add(panes[pieza.getUbicacion().getX() - 1][pieza.getUbicacion().getY()]);
-        }*/
-
-        panesAdyacentes.stream().forEach(pane -> pane.setStyle("-fx-background-color: #79f281"));
-
-        return panesAdyacentes;
-    }
-
-    public Pane paneActual(Pieza unidad) {
-        panes[unidad.getUbicacion().getX()][unidad.getUbicacion().getY()].setStyle("-fx-background-color: #46b1f2");
-
-        return panes[unidad.getUbicacion().getX()][unidad.getUbicacion().getY()];
-    }
-
-
 }
+
+

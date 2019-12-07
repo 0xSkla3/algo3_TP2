@@ -1,8 +1,8 @@
 package edu.fiuba.algoChess.interfaz.controlladores;
 
-import edu.fiuba.algoChess.entidades.*;
-import edu.fiuba.algoChess.entorno.Tablero;
-import edu.fiuba.algoChess.entorno.Ubicacion;
+import edu.fiuba.algoChess.Modelo.entidades.*;
+import edu.fiuba.algoChess.Modelo.entorno.Tablero;
+import edu.fiuba.algoChess.Modelo.entorno.Ubicacion;
 import edu.fiuba.algoChess.interfaz.vista.*;
 import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;

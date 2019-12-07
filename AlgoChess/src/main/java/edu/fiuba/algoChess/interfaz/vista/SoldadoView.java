@@ -1,6 +1,6 @@
 package edu.fiuba.algoChess.interfaz.vista;
 
-import edu.fiuba.algoChess.entidades.Pieza;
+import edu.fiuba.algoChess.Modelo.entidades.Pieza;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -24,7 +24,7 @@ public class SoldadoView implements Observer {
 		this.pieza = this.pieza;
 		vidaUnidad = pieza.getVida().getValorActual();
 
-		this.pieza.aniadirObservador(this);
+		//this.pieza.aniadirObservador(this);
 
 		unitImage = new ImageView();
 		unitImage.setScaleX(2);
@@ -34,12 +34,7 @@ public class SoldadoView implements Observer {
 
 		barraSalud = new SaludView(vidaUnidad);
 		unitImage.setImage(getImage());
-
-		//mapView.addViewOnMap(barraSalud, this.pieza.getUbicacion().getX(), this.pieza.getUbicacion().getY());
-		//mapView.addViewOnMap(unitImage, this.pieza.getUbicacion().getX(), this.pieza.getUbicacion().getY());
-
-
-		unitImage.setOnMouseClicked(new SoldadoController(this.pieza, this.mapView));
+		//unitImage.setOnMouseClicked(new SoldadoController(this.pieza, this.mapView));
 	}
 
 	public Image getImage() {
