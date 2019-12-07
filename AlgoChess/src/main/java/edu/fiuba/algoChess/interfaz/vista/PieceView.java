@@ -1,25 +1,15 @@
 package edu.fiuba.algoChess.interfaz.vista;
 
 
-import java.util.HashMap;
-
-//import fiuba.algo3.AlgoChess.entidades.Unidad;
-import edu.fiuba.algoChess.bandos.BandoJugador1;
-import edu.fiuba.algoChess.entidades.Pieza;
-import edu.fiuba.algoChess.entidades.Soldado;
 import edu.fiuba.algoChess.entorno.Tablero;
-import edu.fiuba.algoChess.entorno.Ubicacion;
+import edu.fiuba.algoChess.interfaz.controlladores.CrearPiezaHandler;
 import edu.fiuba.algoChess.juego.Juego;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
+
+import java.util.HashMap;
 
 public class PieceView{
 
@@ -28,24 +18,32 @@ public class PieceView{
     private HashMap<String,String> listaImage;
 
     private int lastXPosition;
-    //private Pieza piezaActual = new Soldado(new Ubicacion(1,1), new BandoJugador1(), tablero);
     private Juego juego = new Juego();
 
-    public PieceView() {
+    public PieceView(HashMap<String,String> listaImage, Juego juego) {
+    	this.tablero = juego.getTablero();
+    	this.juego = juego;
+    	this.listaImage = listaImage;
     	listaView();
     }
 
+	public PieceView() {
+		listaView();
+	}
+
     public void setPieceMap(MapView map,String piece,int x, int y) {
 		DropShadow rollOverColor = new DropShadow();
-
         ImageView pieceImage = getImageViewMin(piece);
+        //UbicarEnMapa ubicarEnMapa = new UbicarEnMapa();
+		CrearPiezaHandler crearPiezaHandler = new CrearPiezaHandler(piece,juego,x,y,"bando1");
+		MenuMovimiento menuMovimiento = new MenuMovimiento(crearPiezaHandler.getPieza(),tablero,pieceImage, map);
 
 		pieceImage.addEventHandler(MouseEvent.MOUSE_ENTERED,
 				(event) -> pieceImage.setEffect(rollOverColor));
 		pieceImage.addEventHandler(MouseEvent.MOUSE_EXITED,
 				(event) -> pieceImage.setEffect(null));
         pieceImage.addEventHandler(MouseEvent.MOUSE_PRESSED,
-				(event)-> MenuMovimiento.menuPopUp(pieceImage, map, x, y));
+				(event)-> menuMovimiento.menuPopUp());
 
         map.addViewOnMap(pieceImage, x, y);
     }

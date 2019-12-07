@@ -1,5 +1,6 @@
 package edu.fiuba.algoChess.interfaz.vista;
 
+import edu.fiuba.algoChess.juego.Juego;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -13,6 +14,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.util.HashMap;
+
 public class PantallaPrincipal {
 	private Stage stage;
 	private PieceView pieceView;
@@ -20,11 +23,14 @@ public class PantallaPrincipal {
 	private PlayerView player1;
 	private PlayerView player2;
 	private PlayerView turn;
+	private HashMap<String,String> listaImage;
+	private Juego juego;
 	
 	public PantallaPrincipal(String jugador1, String jugador2, Stage stage) {
 		this.stage = stage;
-		this.stage = new Stage();
-		this.pieceView = new PieceView();
+		//this.stage = new Stage();
+		this.juego = new Juego();
+		this.pieceView = new PieceView( listaImage, juego);
 		this.mapView = new MapView();//tamanio del tablero
 
 		this.player1 =  new PlayerView(jugador1);

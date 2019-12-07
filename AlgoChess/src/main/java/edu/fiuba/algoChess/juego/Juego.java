@@ -35,9 +35,12 @@ public class Juego {
 	public static final Soldado soldado = new Soldado();
 
 	public Juego(){
-	this.tablero = new Tablero();
+
 	this.jugador1 = new Jugador();
+	this.jugador1.setBando(new BandoJugador1());
 	this.jugador2 = new Jugador();
+	this.jugador2.setBando(new BandoJugador2());
+	this.tablero = new Tablero(jugador1.getBando(),jugador2.getBando());
 	}
 
 	public static void FaseInicial() {
@@ -70,40 +73,52 @@ public class Juego {
 		this.tablero.ubicarEnCelda(pieza, ubicacion);
 	}
 
-	/*
 
-	public Pieza crearPieza(String nombre, Ubicacion ubicacion, Bando bando) {
+	public Pieza crearPieza(String nombre, Ubicacion ubicacion, String bando) {
 
 		Pieza pieza = new PiezaNull();
+		Bando bando1 = new BandoJugador1();
+		Bando bando2 = new BandoJugador2();
 
-		if (nombre.contains("soldado")){
-			return new Soldado(ubicacion,bando,this.tablero);
+		if (bando.contains("jugador1")) {
+
+			if (nombre.contains("soldado")) {
+				return new Soldado(ubicacion, bando1, this.tablero);
+			}
+
+			if (nombre.contains("catapulta")) {
+				return new Catapulta(ubicacion, bando1, this.tablero);
+			}
+
+			if (nombre.contains("jinete")) {
+				return new Jinete(ubicacion, bando1, this.tablero);
+			}
+
+			if (nombre.contains("curandero")) {
+				return new Curandero(ubicacion, bando1, this.tablero);
+			}
+		} else {
+
+			if (nombre.contains("soldado")) {
+				return new Soldado(ubicacion, bando2, this.tablero);
+			}
+
+			if (nombre.contains("catapulta")) {
+				return new Catapulta(ubicacion, bando2, this.tablero);
+			}
+
+			if (nombre.contains("jinete")) {
+				return new Jinete(ubicacion, bando2, this.tablero);
+			}
+
+			if (nombre.contains("curandero")) {
+				return new Curandero(ubicacion, bando2, this.tablero);
+			}
 		}
 
-		if (nombre.contains("catapulta")){
-			return new Catapulta(ubicacion,bando,this.tablero);
-		}
-
-		if (nombre.contains("jinete")){
-			return new Jinete(ubicacion,bando,this.tablero);
-		}
-
-		if (nombre.contains("curandero")){
-			return new Curandero(ubicacion,bando,this.tablero);
-		}
 		return new PiezaNull();
 	}
 
-	*/
-/*
-	public void aniadirPiezaJugador1(String nombre, Ubicacion ubicacion){
-		jugador1.adquirirPieza(crearPieza(nombre, ubicacion, new BandoJugador1()));
-	}
-
-	public void aniadirPiezaJugador2(String nombre, Ubicacion ubicacion){
-		jugador2.adquirirPieza(crearPieza(nombre, ubicacion, new BandoJugador2()));
-	}
-*/
 	public void atacar(Pieza atacante, Pieza atacado){
 		atacante.atacar(atacado);
 	}
@@ -129,3 +144,15 @@ public class Juego {
 	}
 
 }
+
+/*
+	public void aniadirPiezaJugador1(String nombre, Ubicacion ubicacion){
+		jugador1.adquirirPieza(crearPieza(nombre, ubicacion, new BandoJugador1()));
+	}
+
+	public void aniadirPiezaJugador2(String nombre, Ubicacion ubicacion){
+		jugador2.adquirirPieza(crearPieza(nombre, ubicacion, new BandoJugador2()));
+	}
+*/
+
+

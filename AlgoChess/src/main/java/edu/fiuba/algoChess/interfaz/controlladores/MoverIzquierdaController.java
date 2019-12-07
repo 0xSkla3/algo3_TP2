@@ -7,34 +7,31 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
-public class MoverDerechaController {
+public class MoverIzquierdaController {
 
 	private Pieza pieza;
 	private Tablero tablero;
 	private MapView map;
 	private ImageView imagenPieza;
 
-	public MoverDerechaController(Pieza pieza, Tablero tablero, MapView map, ImageView imagenPieza) {
+	public MoverIzquierdaController(Pieza pieza, Tablero tablero, MapView map, ImageView imagenPieza) {
 		this.pieza = pieza;
 		this.tablero = tablero;
 		this.map = map;
 		this.imagenPieza = imagenPieza;
 	}
 
-	public void moverDerecha(){
+	public void moverIzquierda(){
 
-		int x = this.pieza.getUbicacion().getX();
-		int y = this.pieza.getUbicacion().getY();
-
-		pieza.moverseALaDerecha(tablero);
+		pieza.moverseALaIzquierda(tablero);
 
 		DropShadow rollOverColor = new DropShadow();
 		this.imagenPieza.addEventHandler(MouseEvent.MOUSE_ENTERED,
 				(event) -> this.imagenPieza.setEffect(rollOverColor));
 		this.imagenPieza.addEventHandler(MouseEvent.MOUSE_EXITED,
 				(event) -> this.imagenPieza.setEffect(null));
+
 		this.map.addViewOnMap(this.imagenPieza, this.pieza.getUbicacion().getX(), this.pieza.getUbicacion().getY());
 
 	}
-
 }

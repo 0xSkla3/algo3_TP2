@@ -16,7 +16,7 @@ import lombok.Setter;
 import java.util.ArrayList;
 
 @NoArgsConstructor
-public abstract class Pieza implements Movible, Atacable {
+public abstract class Pieza extends Observable implements Movible, Atacable {
 
 	@Setter
 	@Getter
@@ -148,6 +148,14 @@ public abstract class Pieza implements Movible, Atacable {
 	public abstract ArrayList<Pieza>  getSoldadosContiguos();
 
 	public abstract boolean soldadosInmediatosSePuedenUnir();
+
+	public int getX(){
+		return this.getUbicacion().getX();
+	}
+
+	public int getY(){
+		return this.getUbicacion().getY();
+	}
 
 	public boolean notEqualsNull(){
 		boolean condicion1 = !this.getVida().igualA(new SaludMuerto());

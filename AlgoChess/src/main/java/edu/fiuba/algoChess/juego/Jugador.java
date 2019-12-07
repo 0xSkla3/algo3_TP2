@@ -1,6 +1,8 @@
 package edu.fiuba.algoChess.juego;
 import edu.fiuba.algoChess.bandos.Bando;
 import edu.fiuba.algoChess.entidades.Pieza;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Collections;
 import java.util.Set;
@@ -10,6 +12,8 @@ public class Jugador {
 	private String nombre;
 	private int puntaje;
 	private int creditos;
+	@Setter
+	@Getter
 	private Bando bando;
 	private JugadorStatus status;
 	private Set<Pieza> piezas;
