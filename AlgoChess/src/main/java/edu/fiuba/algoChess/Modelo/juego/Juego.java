@@ -138,4 +138,16 @@ public class Juego {
 		pieza.moverseAbajo(this.tablero);
 	}
 
+	public BandoJugador1 getBandoJugador1(){
+		return bandoJugador1;
+	}
+
+	public BandoJugador2 getBandoJugador2(){
+		return bandoJugador2;
+	}
+
+
+	public Tablero getTablero() {
+		return this.tablero;
+	}
 }

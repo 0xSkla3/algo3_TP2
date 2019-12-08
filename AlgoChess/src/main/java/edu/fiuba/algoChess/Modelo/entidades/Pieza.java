@@ -77,12 +77,14 @@ public abstract class Pieza implements Movible, Atacable {
 	public void ejecutarComportamiento(DistanciaRelativa distancia, Pieza pieza){
 	};
 
-	public void aumentarVida(int aumento) {
-		this.setVida(this.getVida().curar(aumento));
+ 	public void aumentarVida(int aumento) {
+		this.vida.curar(aumento);
+ 		//this.setVida(this.getVida().curar(aumento));
 	}
 
 	public void recibirAtaque(int ataque){
-		this.setVida(this.getVida().herir(ataque));
+ 		//this.vida.herir(ataque);
+		this.setVida(this.vida.herir(ataque));
 	}
 
 	public void pisar(Celda celda, Pieza pieza){
