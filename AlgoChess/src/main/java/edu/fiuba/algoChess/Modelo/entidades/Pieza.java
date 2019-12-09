@@ -4,7 +4,6 @@ import edu.fiuba.algoChess.Modelo.bandos.Bando;
 import edu.fiuba.algoChess.Modelo.comportamientos.Atacable;
 import edu.fiuba.algoChess.Modelo.entorno.*;
 import edu.fiuba.algoChess.Modelo.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;
-import edu.fiuba.algoChess.Modelo.entorno.*;
 import edu.fiuba.algoChess.Modelo.rangos.Rango;
 import edu.fiuba.algoChess.Modelo.salud.Salud;
 import edu.fiuba.algoChess.Modelo.salud.SaludLlena;
@@ -34,6 +33,11 @@ public abstract class Pieza extends Observable implements Movible, Atacable {
 	@Setter
 	@Getter
 	protected Bando bando;
+
+	@Setter
+	@Getter
+	protected  Bando bandoCeldaActual;
+
 
 	@Setter
 //	@Getter
@@ -78,14 +82,18 @@ public abstract class Pieza extends Observable implements Movible, Atacable {
 	public void ejecutarComportamiento(DistanciaRelativa distancia, Pieza pieza){
 	};
 
- 	public void aumentarVida(int aumento) {
+ 	public void aumentarVida(double aumento) {
 		this.vida.curar(aumento);
  		//this.setVida(this.getVida().curar(aumento));
 	}
 
-	public void recibirAtaque(int ataque){
+	public void recibirAtaque(double ataque){
  		//this.vida.herir(ataque);
-		this.setVida(this.vida.herir(ataque));
+		double danioARecibir = ataque;
+		if(this.bandoEnemigo(bandoCeldaActual)){
+			danioARecibir = ataque*0.05;
+		}
+		this.setVida(this.vida.herir(danioARecibir));
 	}
 
 	public void pisar(Celda celda, Pieza pieza){

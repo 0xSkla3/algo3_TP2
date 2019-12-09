@@ -177,7 +177,7 @@ public class JineteTest {
 		tableroTest.ubicarEnCelda(jineteAliado,ubicacionJineteAliado);
 	//	jineteAliado.reconocerTerreno(tableroTest);
 
-		int vidaTrasAtaque = soldadoEnemigo.getVida().getValorActual() - (jineteAliado.getAtaqueCercano().getValorComportamiento());
+		double vidaTrasAtaque = soldadoEnemigo.getVida().getValorActual() - (jineteAliado.getAtaqueCercano().getValorComportamiento());
 		jineteAliado.atacar(soldadoEnemigo);
 		assertEquals(vidaTrasAtaque,soldadoEnemigo.getVida().getValorActual());
 
@@ -199,7 +199,7 @@ public class JineteTest {
 		tableroTest.ubicarEnCelda(jineteAliado,ubicacionJineteAliado);
 	//	jineteAliado.reconocerTerreno(tableroTest);
 
-		int vidaTrasAtaque = soldadoEnemigo.getVida().getValorActual() - jineteAliado.getAtaqueMedio().getValorComportamiento();
+		double vidaTrasAtaque = soldadoEnemigo.getVida().getValorActual() - jineteAliado.getAtaqueMedio().getValorComportamiento();
 
 		jineteAliado.atacar(soldadoEnemigo);
 		assertEquals(vidaTrasAtaque, soldadoEnemigo.getVida().getValorActual());
@@ -227,7 +227,7 @@ public class JineteTest {
 		tableroTest.ubicarEnCelda(jineteAliado,ubicacionJineteAliado);
 	//	jineteAliado.reconocerTerreno(tableroTest);
 
-		int vidaTrasAtaque = soldadoEnemigo.getVida().getValorActual() - jineteAliado.getAtaqueCercano().getValorComportamiento();
+		double vidaTrasAtaque = soldadoEnemigo.getVida().getValorActual() - jineteAliado.getAtaqueCercano().getValorComportamiento();
 
 		jineteAliado.atacar(soldadoEnemigo);
 		assertEquals(vidaTrasAtaque, soldadoEnemigo.getVida().getValorActual());

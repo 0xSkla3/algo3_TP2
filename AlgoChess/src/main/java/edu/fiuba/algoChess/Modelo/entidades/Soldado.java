@@ -8,7 +8,6 @@ import edu.fiuba.algoChess.Modelo.excepciones.FueraDeRangoParaEjecutarComportami
 import edu.fiuba.algoChess.Modelo.batallones.Batallon;
 import edu.fiuba.algoChess.Modelo.batallones.BatallonNull;
 import edu.fiuba.algoChess.Modelo.batallones.Batalloneable;
-import edu.fiuba.algoChess.Modelo.entorno.*;
 import edu.fiuba.algoChess.Modelo.excepciones.OperacionInvalidaException;
 import edu.fiuba.algoChess.Modelo.rangos.Rango;
 import edu.fiuba.algoChess.Modelo.rangos.RangoSoldado;

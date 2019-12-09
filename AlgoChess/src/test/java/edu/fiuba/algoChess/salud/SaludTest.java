@@ -11,18 +11,18 @@ public class SaludTest {
 
 	@Test
 	public void saludLlenaSeHiereCorrectamente(){
-		final int saludValorTotal = 50;
-		final int saludValorHerir = 5;
+		final double saludValorTotal = 50;
+		final double saludValorHerir = 5;
 		final Salud unaSalud = new SaludLlena(saludValorTotal);
 		unaSalud.herir(saludValorHerir);
 
-		assertEquals(unaSalud.getValorActual(), saludValorTotal- saludValorHerir);
+		assertEquals(unaSalud.getValorActual(), saludValorTotal- saludValorHerir, 0.0);
 	}
 
 	@Test
 	public void saludLlenaHeridaDevuelveSaludMedia(){
-		final int saludValorTotal = 50;
-		final int saludValorHerir = 5;
+		final double saludValorTotal = 50;
+		final double saludValorHerir = 5;
 		Salud unaSalud = new SaludLlena(saludValorTotal);
 		unaSalud = unaSalud.herir(saludValorHerir);
 
@@ -31,8 +31,8 @@ public class SaludTest {
 
 	@Test
 	public void saludMediaCuradaDevuelveSaludLlena(){
-		final int saludValorTotal = 50;
-		final int saludValorHerido = 5;
+		final double saludValorTotal = 50;
+		final double saludValorHerido = 5;
 		Salud unaSalud = new SaludMedia(saludValorTotal,saludValorTotal-saludValorHerido);
 		unaSalud = unaSalud.curar(saludValorTotal);
 

@@ -29,7 +29,7 @@ public class Catapulta extends Pieza {
 
 	public Catapulta(Ubicacion ubicacion, Bando bando, Tablero tablero){
 		super(5,50,ubicacion,bando);
-		tablero.getCelda(ubicacion).setPiezaActual(this);
+		tablero.ubicarEnCelda(this, ubicacion);
 		ataque = new AtaqueLejanoCatapulta(20);
 	}
 
@@ -128,8 +128,6 @@ public class Catapulta extends Pieza {
 	public void ejecutarComportamientoPorDistancia(DistanciaLejana distancia, Pieza pieza) {
 		throw new FueraDeRangoParaEjecutarComportamientoException("Pieza fuera de rango");
 	}
-
-
 
 	@Override
 	public void curar(Pieza curado) {

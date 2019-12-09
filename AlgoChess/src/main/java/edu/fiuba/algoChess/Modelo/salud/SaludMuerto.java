@@ -7,12 +7,12 @@ public class SaludMuerto extends Salud {
 	}
 
 	@Override
-	public Salud curar(int salud) {
+	public Salud curar(double salud) {
 		return this;
 	}
 
 	@Override
-	public Salud herir(int salud) {
+	public Salud herir(double salud) {
 		return this;
 	}
 

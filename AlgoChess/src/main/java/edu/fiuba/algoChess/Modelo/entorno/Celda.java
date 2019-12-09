@@ -55,6 +55,7 @@ public class Celda {
 
     public void ubicar(Pieza piezaAGuardar) {
 	    this.piezaActual = piezaAGuardar;
+	    piezaAGuardar.setBandoCeldaActual(this.sectorDelJugador);
     }
 
 }
