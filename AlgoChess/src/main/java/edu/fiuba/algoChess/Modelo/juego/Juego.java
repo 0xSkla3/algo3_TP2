@@ -40,6 +40,8 @@ public class Juego {
 	@Setter
 	private Turno turno;
 
+	private EstadoJuego estadoJuego;
+
 	public static final Soldado soldado = new Soldado();
 
 	public Juego() {
@@ -167,6 +169,5 @@ public class Juego {
 	public void aniadirPiezaJugador2(String nombre, Ubicacion ubicacion) {
 		jugador2.adquirirPieza(crearPieza(nombre, ubicacion, "jugador2"));
 	}
+
 }
-
-

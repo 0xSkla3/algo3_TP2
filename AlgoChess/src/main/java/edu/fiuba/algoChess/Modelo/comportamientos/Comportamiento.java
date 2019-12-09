@@ -5,7 +5,7 @@ import edu.fiuba.algoChess.Modelo.entidades.Pieza;
 
 public class Comportamiento {
 
-	protected int valorComportamiento;
+	protected double valorComportamiento;
 	protected DistanciaRelativa distanciaRelativa;
 
 	public Comportamiento(int valorComportamiento){
@@ -15,7 +15,7 @@ public class Comportamiento {
 	public void ejecutarComportamiento(Pieza pieza, Pieza otraPieza){
 	};
 
-	public int getValorComportamiento(){
+	public double getValorComportamiento(){
 		return valorComportamiento;
 	}
 

@@ -152,9 +152,9 @@ public class SoldadoTest {
 		Jinete jineteEnemigo = new Jinete(ubicacionJinete,bandoJugador2);
 		tablero.ubicarEnCelda(jineteEnemigo,ubicacionJinete);
 		tablero.ubicarEnCelda(soldadoAliado, ubicacionSoldado);
-		int vidaTrasAtaque = jineteEnemigo.getVida().getValorActual() - soldadoAliado.getAtaqueCercano().getValorComportamiento();
+		double vidaTrasAtaque = jineteEnemigo.getVida().getValorActual() - soldadoAliado.getAtaqueCercano().getValorComportamiento();
 		soldadoAliado.atacar(jineteEnemigo);
-		assertEquals(vidaTrasAtaque,jineteEnemigo.getVida().getValorActual());
+		assertEquals(vidaTrasAtaque,jineteEnemigo.getVida().getValorActual(), 0.0);
 	};
 
 	@Test (expected = FueraDeRangoParaEjecutarComportamientoException.class)

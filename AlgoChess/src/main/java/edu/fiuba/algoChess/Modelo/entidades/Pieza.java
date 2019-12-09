@@ -1,10 +1,10 @@
 package edu.fiuba.algoChess.Modelo.entidades;
 
 import edu.fiuba.algoChess.Modelo.bandos.Bando;
+import edu.fiuba.algoChess.Modelo.batallones.Batalloneable;
 import edu.fiuba.algoChess.Modelo.comportamientos.Atacable;
 import edu.fiuba.algoChess.Modelo.entorno.*;
 import edu.fiuba.algoChess.Modelo.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;
-import edu.fiuba.algoChess.Modelo.entorno.*;
 import edu.fiuba.algoChess.Modelo.rangos.Rango;
 import edu.fiuba.algoChess.Modelo.salud.Salud;
 import edu.fiuba.algoChess.Modelo.salud.SaludLlena;
@@ -17,7 +17,7 @@ import lombok.Setter;
 import java.util.ArrayList;
 
 @NoArgsConstructor
-public abstract class Pieza extends Observable implements Movible, Atacable {
+public abstract class Pieza extends Observable implements Movible, Atacable, Batalloneable {
 
 	@Setter
 	@Getter
@@ -34,6 +34,10 @@ public abstract class Pieza extends Observable implements Movible, Atacable {
 	@Setter
 	@Getter
 	protected Bando bando;
+
+	@Setter
+	@Getter
+	protected  Bando bandoCeldaActual;
 
 	@Setter
 //	@Getter
@@ -78,12 +82,18 @@ public abstract class Pieza extends Observable implements Movible, Atacable {
 	public void ejecutarComportamiento(DistanciaRelativa distancia, Pieza pieza){
 	};
 
-	public void aumentarVida(int aumento) {
-		this.setVida(this.getVida().curar(aumento));
+ 	public void aumentarVida(double aumento) {
+		this.vida.curar(aumento);
+ 		//this.setVida(this.getVida().curar(aumento));
 	}
 
-	public void recibirAtaque(int ataque){
-		this.setVida(this.getVida().herir(ataque));
+	public void recibirAtaque(double ataque){
+ 		//this.vida.herir(ataque);
+		double danioARecibir = ataque;
+		if(this.bandoEnemigo(bandoCeldaActual)){
+			danioARecibir = ataque*0.05;
+		}
+		this.setVida(this.vida.herir(danioARecibir));
 	}
 
 	public void pisar(Celda celda, Pieza pieza){
@@ -186,6 +196,5 @@ public abstract class Pieza extends Observable implements Movible, Atacable {
 	public boolean bandoEnemigo(Bando bando){
 		return this.bando.bandoEnemigo(bando);
 	}
-
 
 }
