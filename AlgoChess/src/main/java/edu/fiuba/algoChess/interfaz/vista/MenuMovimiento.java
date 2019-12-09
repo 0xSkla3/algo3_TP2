@@ -40,14 +40,9 @@ public class MenuMovimiento {
 	MapView mapView;
 
 	@Getter
-	@Setter
-	int x;
+	String nombrePieza;
 
-	@Getter
-	@Setter
-	int y;
-
-	MenuMovimiento(Pieza pieza, Tablero tablero, ImageView imagenPieza , MapView map){
+	MenuMovimiento(Pieza pieza, String nombrePieza, Tablero tablero, ImageView imagenPieza , MapView map){
 		this.pieza = pieza;
 		this.tablero = tablero;
 		this.imageView = imagenPieza;
@@ -58,8 +53,6 @@ public class MenuMovimiento {
 
 		Stage stage = new Stage();
 		VBox vbox = new VBox();
-		this.x = pieza.getX();
-		this.y = pieza.getY();
 
 		Button arriba = new Button("Mover arriba");
 		arriba.setStyle("-fx-background-color:#F1C40F;");
@@ -67,7 +60,7 @@ public class MenuMovimiento {
 			@Override
 			public void handle(ActionEvent e) {
 				moverArriba();
-				//cambioTurno(head,namePiece);
+				//cambioTurno(head,nombrePieza);
 				stage.close();
 			}
 		});
@@ -78,7 +71,7 @@ public class MenuMovimiento {
 			@Override
 			public void handle(ActionEvent e) {
 				moverAbajo();
-				//cambioTurno(head,namePiece);
+				//cambioTurno(head,nombrePieza);
 				stage.close();
 			}
 		});
@@ -89,7 +82,7 @@ public class MenuMovimiento {
 			@Override
 			public void handle(ActionEvent e) {
 				moverIzquierda();
-				//cambioTurno(head,namePiece);
+				//cambioTurno(head,nombrePieza);
 				stage.close();
 			}
 		});
@@ -100,7 +93,7 @@ public class MenuMovimiento {
 			@Override
 			public void handle(ActionEvent e) {
 				moverDerecha();
-				//cambioTurno(head,namePiece);
+				//cambioTurno(head,nombrePieza);
 				stage.close();
 			}
 		});
@@ -117,32 +110,24 @@ public class MenuMovimiento {
 		MoverArribaController moverArribaController = new MoverArribaController(pieza, tablero, this.getMapView(), this.getImageView());
 		moverArribaController.moverArriba();
 		sombrearPiezaAlPasarMouse(this.getImageView());
-		//this.getMapView().addViewOnMap(this.getImageView(), pieza.getX(), pieza.getY()-1);
-
 	}
 
 	public void moverAbajo(){
 		MoverAbajoController moverAbajoController = new MoverAbajoController(pieza, tablero, this.getMapView(), this.getImageView());
 		moverAbajoController.moverAbajo();
 		sombrearPiezaAlPasarMouse(this.getImageView());
-		//this.getMapView().addViewOnMap(this.getImageView(), pieza.getX(), pieza.getY()+1);
-
 	}
 
 	public void moverIzquierda(){
 		MoverIzquierdaController moverIzquierdaController = new MoverIzquierdaController(pieza, tablero, this.getMapView(), this.getImageView());
 		moverIzquierdaController.moverIzquierda();
 		sombrearPiezaAlPasarMouse(this.getImageView());
-		//this.getMapView().addViewOnMap(this.getImageView(), pieza.getX()-1, pieza.getY());
-
 	}
 
 	public void moverDerecha(){
 		MoverDerechaController moverDerechaController = new MoverDerechaController(pieza, tablero, this.getMapView(), this.getImageView());
 		moverDerechaController.moverDerecha();
 		sombrearPiezaAlPasarMouse(this.getImageView());
-		//this.getMapView().addViewOnMap(this.getImageView(), pieza.getX()+1, pieza.getY());
-
 	}
 
 	public static void sombrearPiezaAlPasarMouse(ImageView imagenPieza){
