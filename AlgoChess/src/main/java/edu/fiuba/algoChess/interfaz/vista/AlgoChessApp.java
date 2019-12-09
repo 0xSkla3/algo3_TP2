@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 public class AlgoChessApp extends Application implements EventHandler<ActionEvent> {
 
-
+    private Juego juego;
     private PieceView player;
     private MapView mapView;
     private Inicio inicio;
@@ -22,6 +22,7 @@ public class AlgoChessApp extends Application implements EventHandler<ActionEven
     public void start(Stage firstStage) {
         firstStage.setTitle("AlgoChess");
         inicio = new Inicio(firstStage);
+        juego = new Juego();
 
         StackPane layout = new StackPane();
 

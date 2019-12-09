@@ -9,6 +9,7 @@ import edu.fiuba.algoChess.Modelo.rangos.Rango;
 import edu.fiuba.algoChess.Modelo.salud.Salud;
 import edu.fiuba.algoChess.Modelo.salud.SaludLlena;
 import edu.fiuba.algoChess.Modelo.salud.SaludMuerto;
+import edu.fiuba.algoChess.entidades.Observable;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,7 +17,7 @@ import lombok.Setter;
 import java.util.ArrayList;
 
 @NoArgsConstructor
-public abstract class Pieza implements Movible, Atacable {
+public abstract class Pieza extends Observable implements Movible, Atacable {
 
 	@Setter
 	@Getter
@@ -150,6 +151,14 @@ public abstract class Pieza implements Movible, Atacable {
 	public abstract ArrayList<Pieza>  getSoldadosContiguos();
 
 	public abstract boolean soldadosInmediatosSePuedenUnir();
+
+	public int getX(){
+		return this.getUbicacion().getX();
+	}
+
+	public int getY(){
+		return this.getUbicacion().getY();
+	}
 
 	public boolean notEqualsNull(){
 		boolean condicion1 = !this.getVida().igualA(new SaludMuerto());

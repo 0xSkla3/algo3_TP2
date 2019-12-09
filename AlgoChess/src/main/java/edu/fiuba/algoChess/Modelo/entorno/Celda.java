@@ -29,15 +29,6 @@ public class Celda {
 		this.sectorDelJugador = bando;
 	}
 
-	public Pieza getPiezaActual(){return this.piezaActual;}
-
-
-	public void setSectorDelJugador(Bando bandoJugador){
-		this.sectorDelJugador = bandoJugador;
-	}
-
-	public Bando getSectorDelJugador(){ return this.sectorDelJugador;}
-
     public void guardarComienzo(Pieza piezaAUbicar) {
         if (!this.sectorDelJugador.equals(piezaAUbicar.getBando())  ) { //ESTA LINEA SOLO VALE EN LA PRIMERA ETAPA DEL JUEGO!!! AGREGAR OTRA CONDICION AL IF!!!
             throw new NoSePuedeUbicarPiezaEnSectoRival("No se puede ubicar pieza en sector rival");
@@ -65,7 +56,5 @@ public class Celda {
     public void ubicar(Pieza piezaAGuardar) {
 	    this.piezaActual = piezaAGuardar;
     }
-
-
 
 }

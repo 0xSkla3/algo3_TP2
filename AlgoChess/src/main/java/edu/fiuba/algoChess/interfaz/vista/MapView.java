@@ -1,13 +1,14 @@
 package edu.fiuba.algoChess.interfaz.vista;
+
 import edu.fiuba.algoChess.Modelo.entorno.Tablero;
 import edu.fiuba.algoChess.Modelo.entorno.Ubicacion;
 import edu.fiuba.algoChess.Modelo.juego.Juego;
 import javafx.geometry.Pos;
+import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.Group;
-import javafx.scene.Node;
 
 import java.util.HashMap;
 
@@ -17,14 +18,13 @@ public class MapView extends Group {
     public double heigth;
     private double tileWidth = 30;
     private double tileHeigth = 30;
-    private Tablero tablero;
-    private HashMap<String, Image> contenedorImagenes = new HashMap<>();
-    private Juego juego;
-    private GridPane table = new GridPane();;
-    private Pane[][] panes;
+    public Tablero tablero;
+    public HashMap<String, Image> contenedorImagenes = new HashMap<>();
+    public Juego juego;
+    public GridPane table = new GridPane();
+    public Pane[][] panes;
 
     public MapView(HashMap<String,Image> contenedorImagenes, Juego juego) {
-    //    this.juego = new Juego();
         this.table = new GridPane();
         width = tileWidth * 20;
         heigth = tileHeigth * 20;
@@ -35,15 +35,13 @@ public class MapView extends Group {
         this.table.setAlignment(Pos.CENTER);
         this.tablero = juego.getTablero();
         this.contenedorImagenes = contenedorImagenes;
-       // this.actualizarTablero();
         this.addView(table);
-       // this.getChildren().addAll(this.hboxTexto, this.grid);
     }
 
     public MapView(){
         table = new GridPane();
-        width = tileWidth * 20;//map.getWidth();
-        heigth = tileHeigth * 20;//map.getHeigth();
+        width = tileWidth * 20;
+        heigth = tileHeigth * 20;
         panes = new Pane[ (int)width][(int)heigth];
 
         for (int i = 0; i < 20; i++) {
@@ -71,7 +69,7 @@ public class MapView extends Group {
                 try {
                     panes[i][j].getChildren().remove(view);
                 } catch (Exception e) {
-                    //TODO: handle exception
+                    //excepcion
                 }
             }
         }
@@ -85,3 +83,5 @@ public class MapView extends Group {
     }
 
 }
+
+

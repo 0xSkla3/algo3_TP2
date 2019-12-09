@@ -1,8 +1,8 @@
 package edu.fiuba.algoChess.interfaz.vista;
 
 import edu.fiuba.algoChess.Modelo.entidades.Catapulta;
-import edu.fiuba.algoChess.Modelo.entidades.Curandero;
 import edu.fiuba.algoChess.Modelo.entidades.Jinete;
+import edu.fiuba.algoChess.Modelo.entidades.Pieza;
 import edu.fiuba.algoChess.Modelo.entidades.Soldado;
 import edu.fiuba.algoChess.Modelo.juego.Juego;
 import edu.fiuba.algoChess.interfaz.controlladores.UbicarPiezaHandler;
@@ -22,22 +22,34 @@ import javafx.stage.Stage;
 import java.util.HashMap;
 
 public class PantallaPrincipal {
+	private final HashMap<String, Class> listaPiezas;
 	private Stage stage;
 	private PieceView pieceView;
 	private MapView mapView;
 	private PlayerView player1;
 	private PlayerView player2;
 	private PlayerView turn;
+	private HashMap<String,String> listaImage;
 	private Juego juego;
-	private HashMap<String,Class> listaPiezas;
+//<<<<<<< HEAD
+//	private HashMap<String,Class> listaPiezas;
 	private PantallaPrincipal pantallaPrincipal;
+//=======
+
+
+//>>>>>>> 36e813688ffcec26d3de2676eec9de860d209c58
 	
 	public PantallaPrincipal(String jugador1, String jugador2, Stage stage) {
 
 		this.juego = new Juego(jugador1,jugador2);
 		this.stage = stage;
 		//this.stage = new Stage();
-		this.pieceView = new PieceView();
+//<<<<<<< HEAD
+//		this.pieceView = new PieceView();
+//=======
+		this.juego = new Juego();
+		this.pieceView = new PieceView( listaImage, juego);
+//>>>>>>> 36e813688ffcec26d3de2676eec9de860d209c58
 		this.mapView = new MapView();//tamanio del tablero
 		this.listaPiezas = new HashMap<>();
 
@@ -165,4 +177,3 @@ public class PantallaPrincipal {
 	}
 
 }
-
