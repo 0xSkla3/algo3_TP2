@@ -10,11 +10,13 @@ import edu.fiuba.algoChess.Modelo.excepciones.NoHayBatallonFormadoException;
 import edu.fiuba.algoChess.Modelo.excepciones.OperacionInvalidaException;
 import edu.fiuba.algoChess.Modelo.excepciones.PiezaActualNoFormaBatallonDeSoldadosException;
 import edu.fiuba.algoChess.Modelo.entorno.*;
+import edu.fiuba.algoChess.Modelo.rangos.Agrupable;
 import edu.fiuba.algoChess.Modelo.rangos.Rango;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class Curandero extends Pieza {
 
@@ -148,6 +150,96 @@ public class Curandero extends Pieza {
 		DistanciaRelativa distanciaEntrePiezas = this.calculadorDistancia.getDistanciaRelativa(this.ubicacion, piezaACurar.ubicacion);
 		distanciaEntrePiezas.ejecutarComportamientoPorDistancia(this, piezaACurar);
 	};
+
+	@Override
+	public Agrupable agrupar(Pieza pieza1, Pieza pieza2, Pieza pieza3) {
+		return null;
+	}
+
+	@Override
+	public Collection<Pieza> desagrupar(Agrupable grupo) {
+		return null;
+	}
+
+	@Override
+	public Rango actualizaRangoInmediato(Pieza piezaCentral, Tablero tablero) {
+		return null;
+	}
+
+	@Override
+	public void actualizaPiezasEnRango(Pieza piezaCentral) {
+
+	}
+
+	@Override
+	public ArrayList<Pieza> getPiezasEnRango() {
+		return null;
+	}
+
+	@Override
+	public void actualizaRangoMedio(Pieza piezaCentral, Tablero tablero) {
+
+	}
+
+	@Override
+	public void actualizaRangoCercano(Pieza piezaCentral, Tablero tablero) {
+
+	}
+
+	@Override
+	public void actualizaRangoSoldado(Pieza piezaCentral, Tablero tablero) {
+
+	}
+
+	@Override
+	public Batalloneable darDeAltaBatallon() {
+		return null;
+	}
+
+	@Override
+	public ArrayList<Pieza> getSoldadosEquipo() {
+		return null;
+	}
+
+	@Override
+	public Batalloneable crearBatallon(Pieza pieza1, Pieza pieza2, Pieza pieza3) {
+		return null;
+	}
+
+	@Override
+	public boolean equals(Batalloneable batallon) {
+		return false;
+	}
+
+	@Override
+	public Pieza getPieza1() {
+		return null;
+	}
+
+	@Override
+	public Pieza getPieza2() {
+		return null;
+	}
+
+	@Override
+	public Pieza getPieza3() {
+		return null;
+	}
+
+	@Override
+	public void setPieza1(Pieza pieza1) {
+
+	}
+
+	@Override
+	public void setPieza2(Pieza pieza2) {
+
+	}
+
+	@Override
+	public void setPieza3(Pieza pieza3) {
+
+	}
 
 
 }

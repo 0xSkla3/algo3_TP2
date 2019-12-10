@@ -175,17 +175,4 @@ public class Juego {
 		jugador2.adquirirPieza(crearPieza(nombre, ubicacion, "jugador2"));
 	}
 
-
-	public BandoJugador1 getBandoJugador1(){
-		return bandoJugador1;
-	}
-
-	public BandoJugador2 getBandoJugador2(){
-		return bandoJugador2;
-	}
-
-
-	public Tablero getTablero() {
-		return this.tablero;
-	}
 }

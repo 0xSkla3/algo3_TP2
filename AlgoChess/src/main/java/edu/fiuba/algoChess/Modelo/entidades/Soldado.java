@@ -1,6 +1,7 @@
 package edu.fiuba.algoChess.Modelo.entidades;
 
 import edu.fiuba.algoChess.Modelo.bandos.Bando;
+import edu.fiuba.algoChess.Modelo.batallones.BatallonUtil;
 import edu.fiuba.algoChess.Modelo.comportamientos.AtaqueCercanoSoldado;
 import edu.fiuba.algoChess.Modelo.comportamientos.Comportamiento;
 import edu.fiuba.algoChess.Modelo.entorno.*;
@@ -9,6 +10,7 @@ import edu.fiuba.algoChess.Modelo.batallones.Batallon;
 import edu.fiuba.algoChess.Modelo.batallones.BatallonNull;
 import edu.fiuba.algoChess.Modelo.batallones.Batalloneable;
 import edu.fiuba.algoChess.Modelo.excepciones.OperacionInvalidaException;
+import edu.fiuba.algoChess.Modelo.rangos.Agrupable;
 import edu.fiuba.algoChess.Modelo.rangos.Rango;
 import edu.fiuba.algoChess.Modelo.rangos.RangoSoldado;
 import edu.fiuba.algoChess.Modelo.salud.SaludLlena;
@@ -17,6 +19,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 @NoArgsConstructor
 public class Soldado extends Pieza implements Movible {
@@ -190,4 +193,93 @@ public class Soldado extends Pieza implements Movible {
 
 	}
 
+	@Override
+	public Agrupable agrupar(Pieza pieza1, Pieza pieza2, Pieza pieza3) {
+		return null;
+	}
+
+	@Override
+	public Collection<Pieza> desagrupar(Agrupable grupo) {
+		return null;
+	}
+
+	@Override
+	public Rango actualizaRangoInmediato(Pieza piezaCentral, Tablero tablero) {
+		return null;
+	}
+
+	@Override
+	public void actualizaPiezasEnRango(Pieza piezaCentral) {
+
+	}
+
+	@Override
+	public ArrayList<Pieza> getPiezasEnRango() {
+		return null;
+	}
+
+	@Override
+	public void actualizaRangoMedio(Pieza piezaCentral, Tablero tablero) {
+
+	}
+
+	@Override
+	public void actualizaRangoCercano(Pieza piezaCentral, Tablero tablero) {
+
+	}
+
+	@Override
+	public void actualizaRangoSoldado(Pieza piezaCentral, Tablero tablero) {
+
+	}
+
+	@Override
+	public Batalloneable darDeAltaBatallon() {
+		return this.getRango().darDeAltaBatallon();
+	}
+
+	@Override
+	public ArrayList<Pieza> getSoldadosEquipo() {
+		return this.getRango().getSoldadosEquipo();
+	}
+
+	@Override
+	public Batalloneable crearBatallon(Pieza pieza1, Pieza pieza2, Pieza pieza3) {
+		return null;
+	}
+
+	@Override
+	public boolean equals(Batalloneable batallon) {
+		return false;
+	}
+
+	@Override
+	public Pieza getPieza1() {
+		return null;
+	}
+
+	@Override
+	public Pieza getPieza2() {
+		return null;
+	}
+
+	@Override
+	public Pieza getPieza3() {
+		return null;
+	}
+
+	@Override
+	public void setPieza1(Pieza pieza1) {
+
+	}
+
+	@Override
+	public void setPieza2(Pieza pieza2) {
+
+	}
+
+	@Override
+	public void setPieza3(Pieza pieza3) {
+
+	}
 }

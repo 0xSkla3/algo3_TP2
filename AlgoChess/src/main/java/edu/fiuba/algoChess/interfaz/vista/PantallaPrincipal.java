@@ -22,6 +22,7 @@ import javafx.stage.Stage;
 import java.util.HashMap;
 
 public class PantallaPrincipal {
+
 	private final HashMap<String, Class> listaPiezas;
 	private Stage stage;
 	private PieceView pieceView;
@@ -65,7 +66,6 @@ public class PantallaPrincipal {
 		this.stage.setTitle("AlgoChess");
 		VBox vbox = new VBox();
 		HBox hbox = new HBox();
-		
 		vbox.getChildren().add(head()); 
 	    
 		player1.viewPlayer(hbox);
@@ -109,9 +109,9 @@ public class PantallaPrincipal {
 	    return head;
 	}
 	
-	public void menuPiece(ImageView piece,String nombrePieza,HBox head) {
+	public void menuPiece(ImageView pieza,String nombrePieza,HBox head) {
 	
-		piece.addEventHandler(MouseEvent.MOUSE_CLICKED,new EventHandler<MouseEvent>() {
+		pieza.addEventHandler(MouseEvent.MOUSE_CLICKED,new EventHandler<MouseEvent>() {
 			
             @Override
             public void handle(MouseEvent event) {

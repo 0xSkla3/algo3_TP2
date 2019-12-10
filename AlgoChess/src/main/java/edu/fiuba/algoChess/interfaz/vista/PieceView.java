@@ -29,7 +29,7 @@ public class PieceView{
 		DropShadow rollOverColor = new DropShadow();
         ImageView pieceImage = getImageViewMin(piece);
 		CrearPiezaHandler crearPiezaHandler = new CrearPiezaHandler(piece,juego,x,y,"jugador1");
-		MenuMovimiento menuMovimiento = new MenuMovimiento(crearPiezaHandler.getPieza(),tablero,pieceImage, map);
+		MenuMovimiento menuMovimiento = new MenuMovimiento(crearPiezaHandler.getPieza(),piece ,tablero,pieceImage, map);
 
 		pieceImage.addEventHandler(MouseEvent.MOUSE_ENTERED,
 				(event) -> pieceImage.setEffect(rollOverColor));
@@ -37,7 +37,6 @@ public class PieceView{
 				(event) -> pieceImage.setEffect(null));
         pieceImage.addEventHandler(MouseEvent.MOUSE_PRESSED,
 				(event)-> menuMovimiento.menuPopUp());
-
         map.addViewOnMap(pieceImage, x, y);
     }
 

@@ -1,6 +1,7 @@
 package edu.fiuba.algoChess.Modelo.entidades;
 
 import edu.fiuba.algoChess.Modelo.bandos.Bando;
+import edu.fiuba.algoChess.Modelo.batallones.Batalloneable;
 import edu.fiuba.algoChess.Modelo.comportamientos.Atacable;
 import edu.fiuba.algoChess.Modelo.entorno.*;
 import edu.fiuba.algoChess.Modelo.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;
@@ -16,7 +17,7 @@ import lombok.Setter;
 import java.util.ArrayList;
 
 @NoArgsConstructor
-public abstract class Pieza extends Observable implements Movible, Atacable {
+public abstract class Pieza extends Observable implements Movible, Atacable, Batalloneable {
 
 	@Setter
 	@Getter
@@ -37,7 +38,6 @@ public abstract class Pieza extends Observable implements Movible, Atacable {
 	@Setter
 	@Getter
 	protected  Bando bandoCeldaActual;
-
 
 	@Setter
 //	@Getter
@@ -196,6 +196,5 @@ public abstract class Pieza extends Observable implements Movible, Atacable {
 	public boolean bandoEnemigo(Bando bando){
 		return this.bando.bandoEnemigo(bando);
 	}
-
 
 }
