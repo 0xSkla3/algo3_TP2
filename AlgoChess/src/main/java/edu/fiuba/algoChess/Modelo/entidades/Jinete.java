@@ -10,7 +10,6 @@ import edu.fiuba.algoChess.Modelo.excepciones.FueraDeRangoParaEjecutarComportami
 import edu.fiuba.algoChess.Modelo.excepciones.NoHayBatallonFormadoException;
 import edu.fiuba.algoChess.Modelo.excepciones.OperacionInvalidaException;
 import edu.fiuba.algoChess.Modelo.excepciones.PiezaActualNoFormaBatallonDeSoldadosException;
-import edu.fiuba.algoChess.Modelo.entorno.*;
 import edu.fiuba.algoChess.Modelo.rangos.Rango;
 import lombok.Getter;
 import lombok.Setter;
@@ -71,7 +70,7 @@ public class Jinete extends Pieza {
 	}
 
 	public void mover(Tablero campoDeBatalla, Ubicacion ubicacion) {
-		campoDeBatalla.ubicarEnCelda(this, ubicacion);
+		campoDeBatalla.ubicarEnCeldaFaseInicial(this, ubicacion);
 		campoDeBatalla.eliminar(this.ubicacion);
 		this.ubicacion = ubicacion;
 	}
@@ -203,5 +202,3 @@ public class Jinete extends Pieza {
 
 	}
 }
-
-

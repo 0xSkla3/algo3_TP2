@@ -73,7 +73,7 @@ public class Tablero {
 		}
 	}
 
-	public void ubicarEnCelda(Pieza pieza, Ubicacion ubicacion) {
+	public void ubicarEnCeldaFaseInicial(Pieza pieza, Ubicacion ubicacion) {
 
 		if (!this.campoDeBatalla.containsKey(ubicacion)) {
 			throw new NoExisteNingunCasilleroParaLaUbicacionDadaException("No existe una celda en esa ubicacion");
@@ -84,9 +84,26 @@ public class Tablero {
 		}
 
 		try {
-			this.campoDeBatalla.get(ubicacion).guardarComienzo(pieza);
+			this.campoDeBatalla.get(ubicacion).guardarFaseInicial(pieza);
 			pieza.setUbicacion(ubicacion);
-			//pieza.getRango().actualizaPiezasEnRango(pieza);
+		} catch (NoSePuedeUbicarPorqueEstaOcupadoException e) {
+			throw new NoSePuedeUbicarPorqueEstaOcupadoException("no se puede ubicar pieza por estar el casillero ocupado");
+		}
+	}
+
+	public void ubicarEnCeldaFaseJuego(Pieza pieza, Ubicacion ubicacion) {
+
+		if (!this.campoDeBatalla.containsKey(ubicacion)) {
+			throw new NoExisteNingunCasilleroParaLaUbicacionDadaException("No existe una celda en esa ubicacion");
+		}
+
+		if (this.campoDeBatalla.get(ubicacion).getPiezaActual().notEqualsNull()) {
+			throw new NoSePuedeUbicarPorqueEstaOcupadoException("no se puede ubicar pieza por estar el casillero ocupado");
+		}
+
+		try {
+			this.campoDeBatalla.get(ubicacion).guardarFaseJuego(pieza);
+			pieza.setUbicacion(ubicacion);
 		} catch (NoSePuedeUbicarPorqueEstaOcupadoException e) {
 			throw new NoSePuedeUbicarPorqueEstaOcupadoException("no se puede ubicar pieza por estar el casillero ocupado");
 		}

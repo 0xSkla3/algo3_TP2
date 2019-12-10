@@ -108,9 +108,9 @@ public class BatallonTest {
 		soldado1.setBando(bandoJugador1);
 		soldado2.setBando(bandoJugador1);
 		soldado3.setBando(bandoJugador1);
-		tableroTest.ubicarEnCelda(soldado1, soldado1.getUbicacion());
-		tableroTest.ubicarEnCelda(soldado2, soldado2.getUbicacion());
-		tableroTest.ubicarEnCelda(soldado3, soldado3.getUbicacion());
+		tableroTest.ubicarEnCeldaFaseInicial(soldado1, soldado1.getUbicacion());
+		tableroTest.ubicarEnCeldaFaseInicial(soldado2, soldado2.getUbicacion());
+		tableroTest.ubicarEnCeldaFaseInicial(soldado3, soldado3.getUbicacion());
 
 		soldado1.actualizaRango(tableroTest);
 		soldado2.actualizaRango(tableroTest);
@@ -135,9 +135,9 @@ public class BatallonTest {
 		soldado1.setBando(bandoJugador1);
 		soldado2.setBando(bandoJugador1);
 		soldado3.setBando(bandoJugador1);
-		tableroTest.ubicarEnCelda(soldado1, soldado1.getUbicacion());
-		tableroTest.ubicarEnCelda(soldado2, soldado2.getUbicacion());
-		tableroTest.ubicarEnCelda(soldado3, soldado3.getUbicacion());
+		tableroTest.ubicarEnCeldaFaseInicial(soldado1, soldado1.getUbicacion());
+		tableroTest.ubicarEnCeldaFaseInicial(soldado2, soldado2.getUbicacion());
+		tableroTest.ubicarEnCeldaFaseInicial(soldado3, soldado3.getUbicacion());
 
 		soldado1.actualizaRango(tableroTest);
 		soldado2.actualizaRango(tableroTest);
@@ -162,9 +162,9 @@ public class BatallonTest {
 		soldado1.setBando(bandoJugador1);
 		soldado2.setBando(bandoJugador1);
 		soldado3.setBando(bandoJugador1);
-		tableroTest.ubicarEnCelda(soldado1, soldado1.getUbicacion());
-		tableroTest.ubicarEnCelda(soldado2, soldado2.getUbicacion());
-		tableroTest.ubicarEnCelda(soldado3, soldado3.getUbicacion());
+		tableroTest.ubicarEnCeldaFaseInicial(soldado1, soldado1.getUbicacion());
+		tableroTest.ubicarEnCeldaFaseInicial(soldado2, soldado2.getUbicacion());
+		tableroTest.ubicarEnCeldaFaseInicial(soldado3, soldado3.getUbicacion());
 
 		soldado1.actualizaRango(tableroTest);
 		soldado2.actualizaRango(tableroTest);
@@ -190,9 +190,9 @@ public class BatallonTest {
 		soldado1.setBando(bandoJugador1);
 		soldado2.setBando(bandoJugador1);
 		soldado3.setBando(bandoJugador1);
-		tableroTest.ubicarEnCelda(soldado1, soldado1.getUbicacion());
-		tableroTest.ubicarEnCelda(soldado2, soldado2.getUbicacion());
-		tableroTest.ubicarEnCelda(soldado3, soldado3.getUbicacion());
+		tableroTest.ubicarEnCeldaFaseInicial(soldado1, soldado1.getUbicacion());
+		tableroTest.ubicarEnCeldaFaseInicial(soldado2, soldado2.getUbicacion());
+		tableroTest.ubicarEnCeldaFaseInicial(soldado3, soldado3.getUbicacion());
 
 		soldado1.actualizaRango(tableroTest);
 		soldado2.actualizaRango(tableroTest);

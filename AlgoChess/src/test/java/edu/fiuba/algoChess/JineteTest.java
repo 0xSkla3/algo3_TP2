@@ -172,9 +172,9 @@ public class JineteTest {
 		Jinete jineteAliado = new Jinete(ubicacionJineteAliado,bandoJugador1);
 
 
-		tableroTest.ubicarEnCelda(soldadoEnemigo, ubicacionSoldadoEnemigo);
-		tableroTest.ubicarEnCelda(soldadoAliado,ubicacionSoldadoAliado);
-		tableroTest.ubicarEnCelda(jineteAliado,ubicacionJineteAliado);
+		tableroTest.ubicarEnCeldaFaseInicial(soldadoEnemigo, ubicacionSoldadoEnemigo);
+		tableroTest.ubicarEnCeldaFaseInicial(soldadoAliado,ubicacionSoldadoAliado);
+		tableroTest.ubicarEnCeldaFaseInicial(jineteAliado,ubicacionJineteAliado);
 	//	jineteAliado.reconocerTerreno(tableroTest);
 
 		double vidaTrasAtaque = soldadoEnemigo.getVida().getValorActual() - (jineteAliado.getAtaqueCercano().getValorComportamiento());
@@ -195,8 +195,8 @@ public class JineteTest {
 		Ubicacion ubicacionJineteAliado = new Ubicacion(10,1);
 		Jinete jineteAliado = new Jinete(ubicacionJineteAliado,bandoJugador1, tableroTest);
 
-		tableroTest.ubicarEnCelda(soldadoEnemigo, ubicacionSoldadoEnemigo);
-		tableroTest.ubicarEnCelda(jineteAliado,ubicacionJineteAliado);
+		tableroTest.ubicarEnCeldaFaseInicial(soldadoEnemigo, ubicacionSoldadoEnemigo);
+		tableroTest.ubicarEnCeldaFaseInicial(jineteAliado,ubicacionJineteAliado);
 	//	jineteAliado.reconocerTerreno(tableroTest);
 
 		double vidaTrasAtaque = soldadoEnemigo.getVida().getValorActual() - jineteAliado.getAtaqueMedio().getValorComportamiento();
@@ -222,9 +222,9 @@ public class JineteTest {
 		Ubicacion ubicacionJineteAliado = new Ubicacion(10,1);
 		Jinete jineteAliado = new Jinete(ubicacionJineteAliado,bandoJugador1);
 
-		tableroTest.ubicarEnCelda(soldadoEnemigo, ubicacionSoldadoEnemigo);
-		tableroTest.ubicarEnCelda(soldadoAliado,ubicacionSoldadoAliado);
-		tableroTest.ubicarEnCelda(jineteAliado,ubicacionJineteAliado);
+		tableroTest.ubicarEnCeldaFaseInicial(soldadoEnemigo, ubicacionSoldadoEnemigo);
+		tableroTest.ubicarEnCeldaFaseInicial(soldadoAliado,ubicacionSoldadoAliado);
+		tableroTest.ubicarEnCeldaFaseInicial(jineteAliado,ubicacionJineteAliado);
 	//	jineteAliado.reconocerTerreno(tableroTest);
 
 		double vidaTrasAtaque = soldadoEnemigo.getVida().getValorActual() - jineteAliado.getAtaqueCercano().getValorComportamiento();
@@ -243,8 +243,8 @@ public class JineteTest {
 		Soldado soldadoEnemigo = new Soldado(ubicacionSoldadoEnemigo,bandoJugador2);
 		Ubicacion ubicacionJineteAliado = new Ubicacion(10,1);
 		Jinete jineteAliado = new Jinete(ubicacionJineteAliado,bandoJugador1);
-		tableroTest.ubicarEnCelda(soldadoEnemigo, ubicacionSoldadoEnemigo);
-		tableroTest.ubicarEnCelda(jineteAliado,ubicacionJineteAliado);
+		tableroTest.ubicarEnCeldaFaseInicial(soldadoEnemigo, ubicacionSoldadoEnemigo);
+		tableroTest.ubicarEnCeldaFaseInicial(jineteAliado,ubicacionJineteAliado);
 	//	jineteAliado.reconocerTerreno(tableroTest);
 		jineteAliado.atacar(soldadoEnemigo);
 	}
@@ -259,8 +259,8 @@ public class JineteTest {
 		Soldado soldadoAliado = new Soldado(ubicacionSoldadoAliado,bandoJugador1);
 		Ubicacion ubicacionJineteAliado = new Ubicacion(10,1);
 		Jinete jineteAliado = new Jinete(ubicacionJineteAliado,bandoJugador1);
-		tableroTest.ubicarEnCelda(soldadoAliado, ubicacionSoldadoAliado);
-		tableroTest.ubicarEnCelda(jineteAliado,ubicacionJineteAliado);
+		tableroTest.ubicarEnCeldaFaseInicial(soldadoAliado, ubicacionSoldadoAliado);
+		tableroTest.ubicarEnCeldaFaseInicial(jineteAliado,ubicacionJineteAliado);
 	//	jineteAliado.reconocerTerreno(tableroTest);
 		jineteAliado.atacar(soldadoAliado);
 	}

@@ -32,7 +32,7 @@ public class TableroTest {
 		curandero.setBando(bandoJugador1);
 		Celda celdaTest = tableroTest.getCelda(ubicacionTest);
 		celdaTest.setSectorDelJugador(bandoJugador1);
-		tableroTest.ubicarEnCelda(curandero,ubicacionTest);
+		tableroTest.ubicarEnCeldaFaseInicial(curandero,ubicacionTest);
 		assertEquals(celdaTest.getPiezaActual(), curandero);
 	}
 
@@ -51,7 +51,7 @@ public class TableroTest {
 
 		Celda celdaTest = tableroTest.getCelda(ubicacionTest);
 		celdaTest.setSectorDelJugador(bandoJugador2);
-		tableroTest.ubicarEnCelda(curandero,ubicacionTest);
+		tableroTest.ubicarEnCeldaFaseInicial(curandero,ubicacionTest);
 	}
 
 
@@ -68,8 +68,8 @@ public class TableroTest {
 
 		Celda celdaTest = tableroTest.getCelda(ubicacionTest);
 		celdaTest.setSectorDelJugador(bandoJugador1);
-		tableroTest.ubicarEnCelda(curandero1, ubicacionTest);
-		tableroTest.ubicarEnCelda(curandero2, ubicacionTest);
+		tableroTest.ubicarEnCeldaFaseInicial(curandero1, ubicacionTest);
+		tableroTest.ubicarEnCeldaFaseInicial(curandero2, ubicacionTest);
 	}
 
 

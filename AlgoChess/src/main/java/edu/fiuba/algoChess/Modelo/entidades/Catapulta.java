@@ -4,7 +4,6 @@ import edu.fiuba.algoChess.Modelo.bandos.Bando;
 import edu.fiuba.algoChess.Modelo.batallones.Batalloneable;
 import edu.fiuba.algoChess.Modelo.comportamientos.AtaqueLejanoCatapulta;
 import edu.fiuba.algoChess.Modelo.comportamientos.Comportamiento;
-import edu.fiuba.algoChess.Modelo.entorno.*;
 import edu.fiuba.algoChess.Modelo.excepciones.FueraDeRangoParaEjecutarComportamientoException;
 import edu.fiuba.algoChess.Modelo.excepciones.NoHayBatallonFormadoException;
 import edu.fiuba.algoChess.Modelo.excepciones.OperacionInvalidaException;
@@ -29,7 +28,7 @@ public class Catapulta extends Pieza {
 
 	public Catapulta(Ubicacion ubicacion, Bando bando, Tablero tablero){
 		super(5,50,ubicacion,bando);
-		tablero.ubicarEnCelda(this, ubicacion);
+		tablero.ubicarEnCeldaFaseInicial(this, ubicacion);
 		ataque = new AtaqueLejanoCatapulta(20);
 	}
 

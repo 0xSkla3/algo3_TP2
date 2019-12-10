@@ -69,18 +69,18 @@ public class BatallonUtil extends Batallon implements Movible, Agrupable {
 		try {
 			this.getPieza1().moverPiezaDeBatallon(campoDeBatalla, ubicacion1);
 		}catch(NoSePuedeUbicarPorqueEstaOcupadoException ex) {
-			campoDeBatalla.ubicarEnCelda(this.getPieza1(),ubicacionVieja1);
+			campoDeBatalla.ubicarEnCeldaFaseInicial(this.getPieza1(),ubicacionVieja1);
 		}
 		try {
 			this.getPieza2().moverPiezaDeBatallon(campoDeBatalla, ubicacion2);
 		}catch(NoSePuedeUbicarPorqueEstaOcupadoException ex) {
-			campoDeBatalla.ubicarEnCelda(this.getPieza2(),ubicacionVieja2);
+			campoDeBatalla.ubicarEnCeldaFaseInicial(this.getPieza2(),ubicacionVieja2);
 
 		}
 		try {
 			this.getPieza3().moverPiezaDeBatallon(campoDeBatalla, ubicacion3);
 		}catch(NoSePuedeUbicarPorqueEstaOcupadoException ex) {
-			campoDeBatalla.ubicarEnCelda(this.getPieza3(),ubicacionVieja3);
+			campoDeBatalla.ubicarEnCeldaFaseInicial(this.getPieza3(),ubicacionVieja3);
 		}
 
 		this.getPieza1().actualizaRango(campoDeBatalla);

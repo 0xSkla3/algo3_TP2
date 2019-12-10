@@ -49,12 +49,12 @@ public class CuranderoTest {
         Ubicacion ubicacionSoldado = new Ubicacion(1,3);
         Soldado soldado = new Soldado(ubicacionSoldado,bandoJugador1);
         Celda celdaSoldado = new Celda(bandoJugador1);
-        celdaSoldado.guardarComienzo(soldado);
+        celdaSoldado.guardarFaseInicial(soldado);
 
         Ubicacion ubicacionCurandero = new Ubicacion(1,2);
         Curandero curandero = new Curandero(ubicacionCurandero,bandoJugador2);
         Celda celdaCurandero = new Celda(bandoJugador2);
-        celdaCurandero.guardarComienzo(curandero);
+        celdaCurandero.guardarFaseInicial(curandero);
 
         Comportamiento comportamiento = new AtaqueMedioJinete(15);
         soldado.recibirAtaque(comportamiento.getValorComportamiento());

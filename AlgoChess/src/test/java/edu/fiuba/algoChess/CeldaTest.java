@@ -26,7 +26,7 @@ public class CeldaTest {
 		Curandero pieza = new Curandero(origen,bandoTest);
 		Celda celda = new Celda(bandoTest);
 
-		celda.guardarComienzo(pieza);
+		celda.guardarFaseInicial(pieza);
 		assertEquals(pieza, celda.getPiezaActual());
 	}
 
@@ -38,7 +38,7 @@ public class CeldaTest {
 		Celda celda = new Celda(bandoTest);
 		PiezaNull piezaNull = new PiezaNull(null);
 
-		celda.guardarComienzo(pieza);
+		celda.guardarFaseInicial(pieza);
 		celda.eliminar();
 		assertTrue(celda.getPiezaActual().getClass() == piezaNull.getClass());
 	}

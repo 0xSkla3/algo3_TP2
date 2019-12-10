@@ -39,7 +39,7 @@ public class Soldado extends Pieza implements Movible {
 		this.danioCercano = 10;
 		this.ataqueCercano = new AtaqueCercanoSoldado(10);
 		this.rango = new RangoSoldado(this, tablero);
-		tablero.ubicarEnCelda(this, ubicacion);
+		tablero.ubicarEnCeldaFaseInicial(this, ubicacion);
 	}
 
 	public Soldado(Ubicacion ubicacion, Tablero tablero) {
@@ -168,7 +168,7 @@ public class Soldado extends Pieza implements Movible {
 	@Override
 	public void moverPiezaDeBatallon(Tablero campoDeBatalla, Ubicacion ubicacion) {
 		this.setUbicacion(ubicacion);
-		campoDeBatalla.ubicarEnCelda(this,ubicacion);
+		campoDeBatalla.ubicarEnCeldaFaseInicial(this,ubicacion);
 	}
 
 	@Override

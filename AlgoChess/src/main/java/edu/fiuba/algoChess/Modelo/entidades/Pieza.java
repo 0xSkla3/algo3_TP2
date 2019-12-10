@@ -123,7 +123,7 @@ public abstract class Pieza extends Observable implements Movible, Atacable {
 	public void mover( Tablero campoDeBatalla, Ubicacion ubicacion) {
 		try {
 			Ubicacion ubicacionVieja = this.getUbicacion();
-			campoDeBatalla.ubicarEnCelda(this, ubicacion);
+			campoDeBatalla.ubicarEnCeldaFaseJuego(this, ubicacion);
 			campoDeBatalla.eliminar(ubicacionVieja);
 			this.setUbicacion(ubicacion);
 		}catch (NoSePuedeUbicarPorqueEstaOcupadoException ex){
@@ -135,7 +135,7 @@ public abstract class Pieza extends Observable implements Movible, Atacable {
 	public void moverPiezaDeBatallon( Tablero campoDeBatalla, Ubicacion ubicacion){
 		try {
 			Ubicacion ubicacionVieja = this.getUbicacion();
-			campoDeBatalla.ubicarEnCelda(this, ubicacion);
+			campoDeBatalla.ubicarEnCeldaFaseInicial(this, ubicacion);
 			campoDeBatalla.eliminar(ubicacionVieja);
 			this.setUbicacion(ubicacion);
 		}catch (NoSePuedeUbicarPorqueEstaOcupadoException ex){

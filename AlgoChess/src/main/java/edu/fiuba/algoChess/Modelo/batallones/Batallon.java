@@ -154,19 +154,19 @@ public abstract class Batallon implements Batalloneable {
 		try {
 			this.getPieza1().mover(campoDeBatalla, ubicacion1);
 		}catch(NoSePuedeUbicarPorqueEstaOcupadoException ex) {
-			campoDeBatalla.ubicarEnCelda(this.getPieza1(),ubicacionVieja1);
+			campoDeBatalla.ubicarEnCeldaFaseInicial(this.getPieza1(),ubicacionVieja1);
 			return new BatallonNull();
 		}
 		try {
 			this.getPieza2().mover(campoDeBatalla, ubicacion2);
 		}catch(NoSePuedeUbicarPorqueEstaOcupadoException ex) {
-			campoDeBatalla.ubicarEnCelda(this.getPieza2(),ubicacionVieja2);
+			campoDeBatalla.ubicarEnCeldaFaseInicial(this.getPieza2(),ubicacionVieja2);
 			return new BatallonNull();
 		}
 		try {
 			this.getPieza3().mover(campoDeBatalla, ubicacion3);
 		}catch(NoSePuedeUbicarPorqueEstaOcupadoException ex) {
-			campoDeBatalla.ubicarEnCelda(this.getPieza3(),ubicacionVieja3);
+			campoDeBatalla.ubicarEnCeldaFaseInicial(this.getPieza3(),ubicacionVieja3);
 			return new BatallonNull();
 		}
 

@@ -23,12 +23,12 @@ public class CeldaNull extends Celda {
 	}
 
 	@Override
-	public void guardarComienzo(Pieza piezaAUbicar){
+	public void guardarFaseInicial(Pieza piezaAUbicar){
 		//Excepcion
 	}
 
 	@Override
-	public void guardarEnJuego(Pieza piezaAUbicar) {
+	public void guardarFaseJuego(Pieza piezaAUbicar) {
 		//Excepcion
 	}
 

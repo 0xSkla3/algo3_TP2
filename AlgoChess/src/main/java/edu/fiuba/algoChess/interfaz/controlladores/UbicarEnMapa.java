@@ -24,7 +24,7 @@ public class UbicarEnMapa {
 
 		try {
 			if(pieza != null) {
-				tablero.ubicarEnCelda(pieza, new Ubicacion(x, y));
+				tablero.ubicarEnCeldaFaseInicial(pieza, new Ubicacion(x, y));
 
 				if (pieza.getClass() == Soldado.class) {
 					new SoldadoView(mapView, pieza);

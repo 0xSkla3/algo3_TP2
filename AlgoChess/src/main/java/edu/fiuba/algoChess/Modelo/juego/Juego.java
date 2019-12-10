@@ -40,59 +40,64 @@ public class Juego {
 	@Setter
 	private Turno turno;
 
-	private EstadoJuego estadoJuego;
+	//private EstadoJuego estadoJuego;
 
 	public static final Soldado soldado = new Soldado();
 
 	public Juego() {
+
 		this.jugador1 = new Jugador();
 		this.jugador1.setBando(new BandoJugador1());
 		this.jugador2 = new Jugador();
 		this.jugador2.setBando(new BandoJugador2());
 		this.tablero = new Tablero(jugador1.getBando(), jugador2.getBando());
+
 	}
 
 	public Juego(String nombreJugador1, String nombreJugador2) {
+
 			this.bandoJugador1 = new BandoJugador1();
 			this.bandoJugador2 = new BandoJugador2();
 			this.tablero = new Tablero(this.bandoJugador1, this.bandoJugador2);
 			this.jugador1 = new Jugador(nombreJugador1);
 			this.jugador2 = new Jugador(nombreJugador2);
 
-		}
+	}
 
-		public static void FaseInicial () {
-			int creditodJugador1 = 20;
-			int creditodJugador2 = 20;
-			ArrayList<Pieza> equipo1;
-			ArrayList<Pieza> equipo2;
-			boolean finDeCargaJugador1 = false;
-			boolean finDeCargaJugador2 = false;
+	public static void FaseInicial () {
 
-			do {
-				if (creditodJugador1 > 1 && !finDeCargaJugador1) {
+		int creditodJugador1 = 20;
+		int creditodJugador2 = 20;
+		ArrayList<Pieza> equipo1;
+		ArrayList<Pieza> equipo2;
+		boolean finDeCargaJugador1 = false;
+		boolean finDeCargaJugador2 = false;
 
-				}
+		do {
 
-				if (creditodJugador2 > 1 && !finDeCargaJugador1) {
+			if (creditodJugador1 > 1 && !finDeCargaJugador1) {
+			}
 
-				}
+			if (creditodJugador2 > 1 && !finDeCargaJugador1) {
+			}
 
-			} while (creditodJugador1 > 1 || creditodJugador2 > 1);
+		} while (creditodJugador1 > 1 || creditodJugador2 > 1);
 
-		}
+	}
 
 
 		public static void main (String[]args){
 
 		}
 
-		public void ubicarEnCelda (Pieza pieza, Ubicacion ubicacion){
-			this.tablero.ubicarEnCelda(pieza, ubicacion);
-		}
+	//public void ubicarEnCelda (Pieza pieza, Ubicacion ubicacion){ this.tablero.ubicarEnCeldaFaseInicial(pieza, ubicacion); }
+
+	//public void ubicarEnCelda (Pieza pieza, Ubicacion ubicacion){
+	//	this.estadoJuego.ubicarEnCelda(pieza, ubicacion, tablero);
+	//}
 
 
-		public Pieza crearPieza (String nombre, Ubicacion ubicacion, String bando){
+	public Pieza crearPieza (String nombre, Ubicacion ubicacion, String bando){
 
 			Pieza pieza = new PiezaNull();
 			Bando bando1 = new BandoJugador1();

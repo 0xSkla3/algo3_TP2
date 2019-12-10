@@ -28,7 +28,7 @@ public class EntidadTest {
 		Ubicacion fila2Columna1 = new Ubicacion(1,2);
 		Curandero unCurandero = new Curandero();
 		unCurandero.setBando(new BandoJugador1());
-		unTablero.ubicarEnCelda(unCurandero,fila1Columna1);
+		unTablero.ubicarEnCeldaFaseInicial(unCurandero,fila1Columna1);
 		unCurandero.moverseALaDerecha(unTablero);
 		assertEquals(fila1Columna2,unCurandero.getUbicacion());
 		unCurandero.moverseArriba(unTablero);
@@ -71,11 +71,11 @@ public class EntidadTest {
 		Curandero unCuranderoObstaculoDerecha = new Curandero();
 		unCuranderoObstaculoDerecha.setBando(new BandoJugador1());
 
-		unTablero.ubicarEnCelda(unCuranderoPorMover,fila2Columna2);
-		unTablero.ubicarEnCelda(unCuranderoObstaculoArriba,fila3Columna2);
-		unTablero.ubicarEnCelda(unCuranderoObstaculoAbajo,fila1Columna2);
-		unTablero.ubicarEnCelda(unCuranderoObstaculoIzquierda,fila2Columna1);
-		unTablero.ubicarEnCelda(unCuranderoObstaculoDerecha,fila2Columna3);
+		unTablero.ubicarEnCeldaFaseInicial(unCuranderoPorMover,fila2Columna2);
+		unTablero.ubicarEnCeldaFaseInicial(unCuranderoObstaculoArriba,fila3Columna2);
+		unTablero.ubicarEnCeldaFaseInicial(unCuranderoObstaculoAbajo,fila1Columna2);
+		unTablero.ubicarEnCeldaFaseInicial(unCuranderoObstaculoIzquierda,fila2Columna1);
+		unTablero.ubicarEnCeldaFaseInicial(unCuranderoObstaculoDerecha,fila2Columna3);
 
 		unCuranderoPorMover.moverseALaDerecha(unTablero);
 		assertEquals(fila2Columna2,unCuranderoPorMover.getUbicacion());

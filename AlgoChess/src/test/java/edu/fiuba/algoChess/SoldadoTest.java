@@ -27,7 +27,6 @@ public class SoldadoTest {
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
 		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
 
-
 		Soldado soldado1 = new Soldado(new Ubicacion(2,2), bandoJugador1, tableroTest);
 		Soldado soldado2 = new Soldado(new Ubicacion(3,2), bandoJugador1, tableroTest);
 		Soldado soldado3 = new Soldado(new Ubicacion(4,2), bandoJugador1, tableroTest);
@@ -41,7 +40,6 @@ public class SoldadoTest {
 
 	@Test
 	public void test01TresSoldadosContiguosSeMuevenEnLaMismaDireccion(){
-
 
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
@@ -146,29 +144,42 @@ public class SoldadoTest {
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
 		Tablero tablero = new Tablero(bandoJugador1, bandoJugador2);
+
 		Ubicacion ubicacionSoldado = new Ubicacion(10,1);
 		Soldado soldadoAliado = new Soldado(ubicacionSoldado,bandoJugador1);
+
 		Ubicacion ubicacionJinete = new Ubicacion(11,1);
 		Jinete jineteEnemigo = new Jinete(ubicacionJinete,bandoJugador2);
-		tablero.ubicarEnCelda(jineteEnemigo,ubicacionJinete);
-		tablero.ubicarEnCelda(soldadoAliado, ubicacionSoldado);
+
+		tablero.ubicarEnCeldaFaseInicial(jineteEnemigo,ubicacionJinete);
+		tablero.ubicarEnCeldaFaseInicial(soldadoAliado, ubicacionSoldado);
 		double vidaTrasAtaque = jineteEnemigo.getVida().getValorActual() - soldadoAliado.getAtaqueCercano().getValorComportamiento();
+
 		soldadoAliado.atacar(jineteEnemigo);
+
 		assertEquals(vidaTrasAtaque,jineteEnemigo.getVida().getValorActual(), 0.0);
+
 	};
 
 	@Test (expected = FueraDeRangoParaEjecutarComportamientoException.class)
 	public void test06SeArrojaExceptionCuandoSeQuiereAtacarAUnEnemigoLejano(){
+
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
+
 		Tablero tablero = new Tablero(bandoJugador1, bandoJugador2);
+
 		Ubicacion ubicacionSoldado = new Ubicacion(10,1);
 		Soldado soldadoAliado = new Soldado(ubicacionSoldado,bandoJugador1);
+
 		Ubicacion ubicacionJinete = new Ubicacion(11,10);
 		Jinete jineteEnemigo = new Jinete(ubicacionJinete,bandoJugador2);
-		tablero.ubicarEnCelda(jineteEnemigo,ubicacionJinete);
-		tablero.ubicarEnCelda(soldadoAliado, ubicacionSoldado);
+
+		tablero.ubicarEnCeldaFaseInicial(jineteEnemigo,ubicacionJinete);
+		tablero.ubicarEnCeldaFaseInicial(soldadoAliado, ubicacionSoldado);
+
 		soldadoAliado.atacar(jineteEnemigo);
+
 	};
 
 	@Test (expected = FueraDeRangoParaEjecutarComportamientoException.class)
@@ -177,27 +188,37 @@ public class SoldadoTest {
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
 		Tablero tablero = new Tablero(bandoJugador1, bandoJugador2);
+
 		Ubicacion ubicacionSoldado = new Ubicacion(10,1);
 		Soldado soldadoAliado = new Soldado(ubicacionSoldado,bandoJugador1);
+
 		Ubicacion ubicacionJinete = new Ubicacion(11,3);
 		Jinete jineteEnemigo = new Jinete(ubicacionJinete,bandoJugador2);
-		tablero.ubicarEnCelda(jineteEnemigo,ubicacionJinete);
-		tablero.ubicarEnCelda(soldadoAliado, ubicacionSoldado);
+
+		tablero.ubicarEnCeldaFaseInicial(jineteEnemigo,ubicacionJinete);
+		tablero.ubicarEnCeldaFaseInicial(soldadoAliado, ubicacionSoldado);
+
 		soldadoAliado.atacar(jineteEnemigo);
+
 	};
 
 	@Test (expected = NoSePuedeAtacarUnAliadoException.class)
 	public void test08SeArrojaExceptionCuandoSeQuiereAtacarUnAliado(){
+
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
 		Tablero tablero = new Tablero(bandoJugador1, bandoJugador2);
+
 		Ubicacion ubicacionSoldado = new Ubicacion(10,1);
 		Soldado soldadoAliado = new Soldado(ubicacionSoldado,bandoJugador1);
+
 		Ubicacion ubicacionJinete = new Ubicacion(10,2);
 		Jinete jineteAliado = new Jinete(ubicacionJinete,bandoJugador1);
-		tablero.ubicarEnCelda(jineteAliado,ubicacionJinete);
-		tablero.ubicarEnCelda(soldadoAliado, ubicacionSoldado);
+
+		tablero.ubicarEnCeldaFaseInicial(jineteAliado,ubicacionJinete);
+		tablero.ubicarEnCeldaFaseInicial(soldadoAliado, ubicacionSoldado);
 		soldadoAliado.atacar(jineteAliado);
+
 	};
 
 	@Test (expected = OperacionInvalidaException.class)
@@ -217,6 +238,7 @@ public class SoldadoTest {
 		soldado2.actualizaRango(tableroTest);
 		soldado3.actualizaRango(tableroTest);
 		seArmaBatallon = BatallonUtil.esBatallon(soldado1,soldado2,soldado3);
+
 	}
 
 }
