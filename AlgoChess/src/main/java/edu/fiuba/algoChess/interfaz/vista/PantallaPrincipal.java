@@ -1,12 +1,12 @@
 package edu.fiuba.algoChess.interfaz.vista;
 
+import edu.fiuba.algoChess.Modelo.bandos.BandoJugador1;
+import edu.fiuba.algoChess.Modelo.bandos.BandoJugador2;
 import edu.fiuba.algoChess.Modelo.entidades.Catapulta;
 import edu.fiuba.algoChess.Modelo.entidades.Jinete;
-import edu.fiuba.algoChess.Modelo.entidades.Pieza;
 import edu.fiuba.algoChess.Modelo.entidades.Soldado;
 import edu.fiuba.algoChess.Modelo.juego.Juego;
 import edu.fiuba.algoChess.interfaz.controlladores.UbicarPiezaHandler;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -32,30 +32,21 @@ public class PantallaPrincipal {
 	private PlayerView turn;
 	private HashMap<String,String> listaImage;
 	private Juego juego;
-//<<<<<<< HEAD
-//	private HashMap<String,Class> listaPiezas;
+
 	private PantallaPrincipal pantallaPrincipal;
-//=======
-
-
-//>>>>>>> 36e813688ffcec26d3de2676eec9de860d209c58
 	
 	public PantallaPrincipal(String jugador1, String jugador2, Stage stage) {
 
 		this.juego = new Juego(jugador1,jugador2);
 		this.stage = stage;
-		//this.stage = new Stage();
-//<<<<<<< HEAD
-//		this.pieceView = new PieceView();
-//=======
+
 		this.juego = new Juego();
 		this.pieceView = new PieceView( listaImage, juego);
-//>>>>>>> 36e813688ffcec26d3de2676eec9de860d209c58
 		this.mapView = new MapView();//tamanio del tablero
 		this.listaPiezas = new HashMap<>();
 
-		this.player1 =  new PlayerView(jugador1,this.juego.getBandoJugador1());
-		this.player2 =  new PlayerView(jugador2,this.juego.getBandoJugador2());
+		this.player1 =  new PlayerView(jugador1,new BandoJugador1());
+		this.player2 =  new PlayerView(jugador2,new BandoJugador2());
 		this.pantallaPrincipal = this;
 
 		initialPhase();
@@ -78,7 +69,6 @@ public class PantallaPrincipal {
 	    theScene.getStylesheets().add("css/estilo.css");
 	    this.stage.setScene(theScene);
 	    this.stage.show();
-	   // stage.setFullScreen(true);
 	}
 	
 	public HBox head() {
@@ -132,20 +122,22 @@ public class PantallaPrincipal {
             	
             	Button submit = new Button("ubicar");
             	submit.setStyle("-fx-background-color:#F1C40F;");
-            	submit.setOnAction(new UbicarPiezaHandler(juego, stage, stageUbicar, pieceView,
+				submit.setOnAction(new UbicarPiezaHandler(juego, stage, stageUbicar, pieceView,
 						nombrePieza, pantallaPrincipal, listaPiezas, mapView, head, x, y, turn.getBandoJugador()));
 
 
-/*				submit.setOnAction(new EventHandler<ActionEvent>() {
+/*				submit.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 					@Override
-					public void handle(ActionEvent e) {
-							pieceView.setPieceMap(mapView, nombrePieza, Integer.parseInt(x.getText()),Integer.parseInt(y.getText()));
-							cambioTurno(head, nombrePieza);
-							stageUbicar.close();
+					public void handle(MouseEvent mouseEvent) {
+						new UbicarPiezaHandler(juego, stage, stageUbicar, pieceView,
+								nombrePieza, pantallaPrincipal, listaPiezas, mapView,
+								head, x, y, turn.getBandoJugador());
+						//pieceView.setPieceMap(mapView, nombrePieza, turn.getBandoJugador().nombreBando(),Integer.parseInt(x.getText()),Integer.parseInt(y.getText()));
+						cambioTurno(head, nombrePieza);
+						stageUbicar.close();
 					}
 				});
 */
-
 				vbox.getChildren().addAll(hbx,hby,submit);
             	Scene sceneUbicar = new Scene(vbox);
         	    stageUbicar.setScene(sceneUbicar);

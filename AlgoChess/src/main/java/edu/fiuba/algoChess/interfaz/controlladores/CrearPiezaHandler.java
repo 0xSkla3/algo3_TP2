@@ -1,6 +1,5 @@
 package edu.fiuba.algoChess.interfaz.controlladores;
 
-import edu.fiuba.algoChess.Modelo.bandos.Bando;
 import edu.fiuba.algoChess.Modelo.entidades.Pieza;
 import edu.fiuba.algoChess.Modelo.entorno.Ubicacion;
 import edu.fiuba.algoChess.Modelo.juego.Juego;
@@ -25,14 +24,15 @@ public class CrearPiezaHandler implements EventHandler<ActionEvent> {
 
 	@Getter
 	@Setter
-	String bando;
+	Boolean jugador1 = true;
 
 
-	public CrearPiezaHandler(String pieza, Juego juego, int x, int y, String bando){
+	public CrearPiezaHandler(String pieza, Juego juego, int x, int y){
+
 		this.juego = juego;
-		this.bando = bando;
 		this.ubicacion = new Ubicacion(x,y);
-		this.pieza = juego.crearPieza(pieza, ubicacion, bando);
+		this.pieza = juego.crearPieza(pieza, ubicacion);
+		juego.getJugadorActivo().adquirirPieza(this.pieza);
 
 	}
 

@@ -30,5 +30,10 @@ public abstract class Bando {
         return this.getClass() == o.getClass();
     }
 
+    public String nombreBando() {
+        return this.getClass() == BandoJugador1.class ? "jugador1" : "jugador2";
+    }
+
+
 }
 

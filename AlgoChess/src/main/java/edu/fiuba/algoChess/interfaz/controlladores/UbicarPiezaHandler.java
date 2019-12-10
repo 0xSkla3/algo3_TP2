@@ -56,7 +56,7 @@ public class UbicarPiezaHandler implements EventHandler<ActionEvent> {
     public void handle(ActionEvent e) {
         int x = Integer.parseInt((tFX.getText()));
         int y = Integer.parseInt((tFY.getText()));
-        pieceView.setPieceMap(mapView, nombrePieza, x, y);
+        pieceView.setPieceMap(mapView, nombrePieza,"jugador1" , x, y);
         pantallaPrincipal.cambioTurno(head, nombrePieza);
         stageUbicar.close();
         Class piezaClass = listaPieza.get(nombrePieza);

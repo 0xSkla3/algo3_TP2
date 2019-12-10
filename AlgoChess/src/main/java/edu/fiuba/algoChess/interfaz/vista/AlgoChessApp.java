@@ -23,7 +23,6 @@ public class AlgoChessApp extends Application implements EventHandler<ActionEven
         firstStage.setTitle("AlgoChess");
         inicio = new Inicio(firstStage);
         juego = new Juego();
-
         StackPane layout = new StackPane();
 
         Scene scene = new Scene(inicio, Color.BLACK);

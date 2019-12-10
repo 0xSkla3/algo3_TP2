@@ -1,10 +1,18 @@
 package edu.fiuba.algoChess.interfaz.vista;
 
 import java.util.HashMap;
+import java.util.Optional;
 
+import edu.fiuba.algoChess.Modelo.bandos.BandoJugador1;
+import edu.fiuba.algoChess.Modelo.entidades.Pieza;
 import edu.fiuba.algoChess.Modelo.entorno.Tablero;
 import edu.fiuba.algoChess.Modelo.juego.Juego;
+import edu.fiuba.algoChess.interfaz.controlladores.CompraPiezasHandler;
 import edu.fiuba.algoChess.interfaz.controlladores.CrearPiezaHandler;
+import edu.fiuba.algoChess.interfaz.controlladores.ObtenerPiezaDesdeCoordenadasHandler;
+import javafx.application.Platform;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -25,20 +33,40 @@ public class PieceView{
     	listaView();
     }
 
-    public void setPieceMap(MapView map,String piece,int x, int y) {
+    public void setPieceMap(MapView map, String piece, String bando ,int x, int y) {
 		DropShadow rollOverColor = new DropShadow();
         ImageView pieceImage = getImageViewMin(piece);
-		CrearPiezaHandler crearPiezaHandler = new CrearPiezaHandler(piece,juego,x,y,"jugador1");
-		MenuMovimiento menuMovimiento = new MenuMovimiento(crearPiezaHandler.getPieza(),piece ,tablero,pieceImage, map);
+		CrearPiezaHandler crearPiezaHandler = new CrearPiezaHandler(piece,juego,x,y);
+		Pieza piezaACrear = crearPiezaHandler.getPieza();
+		MenuMovimiento menuMovimiento = new MenuMovimiento(piezaACrear, piece, tablero, pieceImage, map);
 
 		pieceImage.addEventHandler(MouseEvent.MOUSE_ENTERED,
 				(event) -> pieceImage.setEffect(rollOverColor));
 		pieceImage.addEventHandler(MouseEvent.MOUSE_EXITED,
 				(event) -> pieceImage.setEffect(null));
         pieceImage.addEventHandler(MouseEvent.MOUSE_PRESSED,
-				(event)-> menuMovimiento.menuPopUp());
+				(event) -> mostrarDatosPiezaActual(piece, piezaACrear , x, y));
         map.addViewOnMap(pieceImage, x, y);
+        juego.pasarTurno();
     }
+
+ 	public void moverPiezaEnMapa(MapView map, String piece, int x, int y){
+
+		DropShadow rollOverColor = new DropShadow();
+		ImageView pieceImage = getImageViewMin(piece);
+		ObtenerPiezaDesdeCoordenadasHandler obtenerPiezaDesdeCoordenadasHandler = new ObtenerPiezaDesdeCoordenadasHandler(juego,x,y);
+		Pieza piezaAMover = obtenerPiezaDesdeCoordenadasHandler.getPiezaObjetivo();
+		MenuMovimiento menuMovimiento = new MenuMovimiento(piezaAMover, piece, tablero, pieceImage, map);
+
+		menuMovimiento.menuPopUp();
+		/*pieceImage.addEventHandler(MouseEvent.MOUSE_ENTERED,
+				(event) -> pieceImage.setEffect(rollOverColor));
+		pieceImage.addEventHandler(MouseEvent.MOUSE_EXITED,
+				(event) -> pieceImage.setEffect(null)); */
+		/*pieceImage.addEventHandler(MouseEvent.MOUSE_PRESSED,
+				(event)-> menuMovimiento.menuPopUp()); */
+		map.addViewOnMap(pieceImage, piezaAMover.getX(), piezaAMover.getY());
+	}
 
     public ImageView getImageViewMin(String piece) {
     	ImageView pieceImage = new ImageView(new Image(searchImage(piece)));
@@ -67,4 +95,37 @@ public class PieceView{
     		return this.listaImage.get(piece);
     }
 
+	public void alerta3seg(String Titulo, String Texto){
+
+		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+		alert.setTitle(Titulo);
+		alert.setHeaderText(Texto);
+
+		Thread thread = new Thread(() -> {
+			try {
+				Thread.sleep(3000);
+				if (alert.isShowing()) {
+					Platform.runLater(() -> alert.close());
+				}
+			} catch (Exception exp) {
+				exp.printStackTrace();
+			}
+		});
+		thread.setDaemon(true);
+		thread.start();
+		Optional<ButtonType> result = alert.showAndWait();
+	}
+
+	public void mostrarDatosPiezaActual(String piece, Pieza pieza, int x, int y){
+		if(pieza.getBando().equals(new BandoJugador1())){
+			alerta3seg("Datos Pieza","Pieza: "+
+					piece +   "\nUbicacion: x=" + x + " y=" + y +
+					"\nBando: Jugador1");}
+		else{
+			alerta3seg("Datos Pieza","Pieza: "+
+					piece +   "\nUbicacion: x=" + x + " y=" + y +
+					"\nBando: Jugador2");
+			}
+    }
 }
+

@@ -6,10 +6,13 @@ import edu.fiuba.algoChess.interfaz.controlladores.MoverAbajoController;
 import edu.fiuba.algoChess.interfaz.controlladores.MoverArribaController;
 import edu.fiuba.algoChess.interfaz.controlladores.MoverDerechaController;
 import edu.fiuba.algoChess.interfaz.controlladores.MoverIzquierdaController;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -18,6 +21,8 @@ import javafx.stage.Stage;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.Optional;
 
 @AllArgsConstructor
 public class MenuMovimiento {
@@ -137,4 +142,27 @@ public class MenuMovimiento {
 		imagenPieza.addEventHandler(MouseEvent.MOUSE_EXITED,
 				(event) -> imagenPieza.setEffect(null));
 	}
+
+	public void alerta1seg(String Titulo, String Texto){
+
+		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+		alert.setTitle(Titulo);
+		alert.setHeaderText(Texto);
+
+		Thread thread = new Thread(() -> {
+			try {
+
+				Thread.sleep(1000);
+				if (alert.isShowing()) {
+					Platform.runLater(() -> alert.close());
+				}
+			} catch (Exception exp) {
+				exp.printStackTrace();
+			}
+		});
+		thread.setDaemon(true);
+		thread.start();
+		Optional<ButtonType> result = alert.showAndWait();
+	}
 }
+

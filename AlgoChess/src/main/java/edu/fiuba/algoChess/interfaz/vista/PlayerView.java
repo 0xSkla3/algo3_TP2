@@ -2,6 +2,7 @@ package edu.fiuba.algoChess.interfaz.vista;
 
 
 import edu.fiuba.algoChess.Modelo.bandos.Bando;
+import edu.fiuba.algoChess.Modelo.bandos.BandoJugador1;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -45,5 +46,9 @@ public class PlayerView {
 
 	public Bando getBandoJugador(){
 		return this.bandoJugador;
+	}
+
+	public String nombreBando() {
+		return this.bandoJugador.getClass() == BandoJugador1.class ? "jugador1" : "jugador2";
 	}
 }
