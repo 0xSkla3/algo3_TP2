@@ -9,6 +9,7 @@ import edu.fiuba.algoChess.Modelo.bandos.Bando;
 import edu.fiuba.algoChess.Modelo.entidades.Pieza;
 
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Set;
 
@@ -20,22 +21,21 @@ public class Jugador {
 	@Setter
 	@Getter
 	private Bando bando;
-	//private JugadorStatus status;
-	private Set<Pieza> piezas;
+	private ArrayList<Pieza> piezas;
 	private Turno turno;
 
 	public Jugador() {
 		this.nombre = "";
 		this.puntaje = 0;
 		this.creditos = 20;
-		this.piezas = Collections.emptySet();
+		this.piezas = new ArrayList<>();
 	}
 
 	public Jugador(String unNombre) {
 		this.puntaje = 0;
 		this.nombre = unNombre;
 		this.creditos = 20;
-		this.piezas = Collections.emptySet();
+		this.piezas = new ArrayList<>();
 	}
 
 	public void sumarPuntaje(int unPuntaje){this.puntaje += unPuntaje;}
@@ -52,6 +52,8 @@ public class Jugador {
 		if(pieza.getCosto() <= this.creditos){
 			this.creditos = this.creditos - pieza.getCosto();
 			this.piezas.add(pieza);
+		}else{
+			//excepcion
 		}
 	}
 

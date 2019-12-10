@@ -23,9 +23,6 @@ public class MoverDerechaController {
 
 	public void moverDerecha(){
 
-		int x = this.pieza.getUbicacion().getX();
-		int y = this.pieza.getUbicacion().getY();
-
 		pieza.moverseALaDerecha(tablero);
 
 		DropShadow rollOverColor = new DropShadow();
