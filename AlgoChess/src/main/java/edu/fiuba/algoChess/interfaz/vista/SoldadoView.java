@@ -24,8 +24,6 @@ public class SoldadoView implements Observer {
 		this.pieza = this.pieza;
 		vidaUnidad = pieza.getVida().getValorActual();
 
-		//this.pieza.aniadirObservador(this);
-
 		unitImage = new ImageView();
 		unitImage.setScaleX(2);
 		unitImage.setScaleY(2);

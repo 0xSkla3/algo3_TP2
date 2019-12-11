@@ -30,6 +30,7 @@ public class MoverDerechaController {
 				(event) -> this.imagenPieza.setEffect(rollOverColor));
 		this.imagenPieza.addEventHandler(MouseEvent.MOUSE_EXITED,
 				(event) -> this.imagenPieza.setEffect(null));
+
 		this.map.addViewOnMap(this.imagenPieza, this.pieza.getUbicacion().getX(), this.pieza.getUbicacion().getY());
 
 	}

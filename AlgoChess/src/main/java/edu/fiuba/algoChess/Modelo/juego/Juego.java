@@ -53,6 +53,14 @@ public class Juego {
 	@Setter
 	Boolean finDeJuego = false;
 
+	@Getter
+	@Setter
+	Boolean enAplicacionDeComportamiento = false;
+
+	@Getter
+	@Setter
+	Pieza receptor;
+
 	public static final Soldado soldado = new Soldado();
 
 	public Juego() {

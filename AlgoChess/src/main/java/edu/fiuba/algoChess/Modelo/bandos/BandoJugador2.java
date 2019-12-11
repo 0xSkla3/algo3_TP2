@@ -62,4 +62,9 @@ public class BandoJugador2 extends Bando {
     @Override
     public boolean bandoEnemigo(BandoJugador2 bando) { return false; }
 
+    @Override
+    public String getNombre() {
+        return "jugador2";
+    }
+
 }

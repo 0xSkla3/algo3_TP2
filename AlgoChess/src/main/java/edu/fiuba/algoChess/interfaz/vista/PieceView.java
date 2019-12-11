@@ -5,9 +5,9 @@ import java.util.Optional;
 
 import edu.fiuba.algoChess.Modelo.bandos.BandoJugador1;
 import edu.fiuba.algoChess.Modelo.entidades.Pieza;
+import edu.fiuba.algoChess.Modelo.entidades.PiezaNull;
 import edu.fiuba.algoChess.Modelo.entorno.Tablero;
 import edu.fiuba.algoChess.Modelo.juego.Juego;
-import edu.fiuba.algoChess.interfaz.controlladores.CompraPiezasHandler;
 import edu.fiuba.algoChess.interfaz.controlladores.CrearPiezaHandler;
 import edu.fiuba.algoChess.interfaz.controlladores.ObtenerPiezaDesdeCoordenadasHandler;
 import javafx.application.Platform;
@@ -17,6 +17,9 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 
 public class PieceView{
@@ -25,46 +28,34 @@ public class PieceView{
     private Tablero tablero;
     private HashMap<String,String> listaImage = new HashMap<>();
     private Juego juego;
+    private PantallaPrincipal pantallaPrincipal;
 
 
-    public PieceView(HashMap<String,String> listaImage, Juego juego) {
+    public PieceView(HashMap<String,String> listaImage, Juego juego, PantallaPrincipal pantallaPrincipal) {
     	this.tablero = juego.getTablero();
     	this.juego = juego;
+    	this.pantallaPrincipal = pantallaPrincipal;
     	listaView();
     }
 
     public void setPieceMap(MapView map, String piece, String bando ,int x, int y) {
 		DropShadow rollOverColor = new DropShadow();
         ImageView pieceImage = getImageViewMin(piece);
-		CrearPiezaHandler crearPiezaHandler = new CrearPiezaHandler(piece,juego,x,y);
-		Pieza piezaACrear = crearPiezaHandler.getPieza();
-		MenuMovimiento menuMovimiento = new MenuMovimiento(piezaACrear, piece, tablero, pieceImage, map);
+		Pieza piezaTarget = piezaTarget(piece,juego,x,y);
 
 		pieceImage.addEventHandler(MouseEvent.MOUSE_ENTERED,
 				(event) -> pieceImage.setEffect(rollOverColor));
 		pieceImage.addEventHandler(MouseEvent.MOUSE_EXITED,
 				(event) -> pieceImage.setEffect(null));
         pieceImage.addEventHandler(MouseEvent.MOUSE_PRESSED,
-				(event) -> comportamientoAlTocarPieza(map, piece, piezaACrear , x, y));
+				(event) -> comportamientoAlTocarPieza(pieceImage, map, piece, piezaTarget , x, y));
         map.addViewOnMap(pieceImage, x, y);
         juego.pasarTurno();
     }
 
- 	public void moverPiezaEnMapa(MapView map, String piece, int x, int y){
-
-		DropShadow rollOverColor = new DropShadow();
-		ImageView pieceImage = getImageViewMin(piece);
-		ObtenerPiezaDesdeCoordenadasHandler obtenerPiezaDesdeCoordenadasHandler = new ObtenerPiezaDesdeCoordenadasHandler(juego,x,y);
-		Pieza piezaAMover = obtenerPiezaDesdeCoordenadasHandler.getPiezaObjetivo();
-		MenuMovimiento menuMovimiento = new MenuMovimiento(piezaAMover, piece, tablero, pieceImage, map);
-
+ 	public void moverPiezaEnMapa(ImageView pieceImage, MapView map, String piece, Pieza piezaAMover, int x, int y){
+		MenuMovimiento menuMovimiento = new MenuMovimiento(piezaAMover, piece, tablero, pieceImage, map, this, this.pantallaPrincipal,new Stage(), this.pantallaPrincipal.getHead());
 		menuMovimiento.menuPopUp();
-		/*pieceImage.addEventHandler(MouseEvent.MOUSE_ENTERED,
-				(event) -> pieceImage.setEffect(rollOverColor));
-		pieceImage.addEventHandler(MouseEvent.MOUSE_EXITED,
-				(event) -> pieceImage.setEffect(null)); */
-		/*pieceImage.addEventHandler(MouseEvent.MOUSE_PRESSED,
-				(event)-> menuMovimiento.menuPopUp()); */
 		map.addViewOnMap(pieceImage, piezaAMover.getX(), piezaAMover.getY());
 	}
 
@@ -117,7 +108,8 @@ public class PieceView{
 	}
 
 	public void mostrarDatosPiezaActual(String piece, Pieza pieza, int x, int y){
-		if(pieza.getBando().equals(new BandoJugador1())){
+
+    	if(pieza.getBando().equals(new BandoJugador1())){
 			alerta3seg("Datos Pieza","Pieza: "+
 					piece +   "\nUbicacion: x=" + x + " y=" + y +
 					"\nBando: Jugador1");}
@@ -128,12 +120,31 @@ public class PieceView{
 			}
     }
 
-    public void comportamientoAlTocarPieza(MapView map, String piece, Pieza pieza, int x, int y){
+    public void comportamientoAlTocarPieza(ImageView pieceImage, MapView map, String piece, Pieza piezaModelo, int x, int y){
     	if (this.juego.getSegundaEtapa()){
-			moverPiezaEnMapa(map, piece, x, y);
+    		if (!this.juego.getEnAplicacionDeComportamiento()) {
+				moverPiezaEnMapa(pieceImage, map, piece, piezaModelo, x, y);
+			}else{
+    			juego.setReceptor(piezaModelo);
+			}
 		}else{
-			mostrarDatosPiezaActual(piece, pieza,  x,  y);
+			mostrarDatosPiezaActual(piece, piezaModelo,  x,  y);
+			map.addViewOnMap(pieceImage, x, y);
 		}
+	}
+
+	public Pieza piezaTarget(String piece, Juego juego, int x, int y) {
+		CrearPiezaHandler crearPiezaHandler = new CrearPiezaHandler(piece, juego, x, y);
+		BuscarPiezaEnJuegoHandler buscarPiezaEnJuegoHandler = new BuscarPiezaEnJuegoHandler(juego, x, y);
+
+		if (!this.juego.getFinDeJuego()) {
+			if (this.juego.getSegundaEtapa()) {
+				return buscarPiezaEnJuegoHandler.buscarPiezaEnUbicacion();
+			} else {
+				return crearPiezaHandler.getPieza();
+			}
+		}
+		return new PiezaNull();
 	}
 }
 

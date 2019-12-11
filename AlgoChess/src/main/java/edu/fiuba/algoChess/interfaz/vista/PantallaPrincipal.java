@@ -24,6 +24,7 @@ import java.util.HashMap;
 public class PantallaPrincipal {
 
 	private final HashMap<String, Class> listaPiezas;
+	@Getter
 	private Stage stage;
 	private PieceView pieceView;
 	private MapView mapView;
@@ -34,6 +35,8 @@ public class PantallaPrincipal {
 	private Juego juego;
 	private SegundaEtapa segundaEtapa;
 	private FinDeJuego finDeJuego;
+	@Getter
+	private HBox head ;
 
 	@Getter
 	private Button turnoDe;
@@ -44,7 +47,7 @@ public class PantallaPrincipal {
 
 		this.juego = new Juego(jugador1,jugador2);
 		this.stage = stage;
-		this.pieceView = new PieceView( listaImage, juego);
+		this.pieceView = new PieceView( listaImage, juego, this);
 		this.mapView = new MapView(juego);//tamanio del tablero
 		this.listaPiezas = new HashMap<>();
 
@@ -57,7 +60,7 @@ public class PantallaPrincipal {
 		initialPhase();
 	}
 	
-	public void initialPhase(){//player1 and player2
+	public void initialPhase(){
 
 		this.stage.setTitle("AlgoChess");
 		VBox vbox = new VBox();
@@ -103,7 +106,7 @@ public class PantallaPrincipal {
 		terminarJuego(head,juego);
 		terminarDeColocarPiezas(head,juego);
 		turnOf(head,player1);
-
+		this.head = head;
 	    return head;
 	}
 	
@@ -148,7 +151,6 @@ public class PantallaPrincipal {
 			turnOf(head,player1);
 			this.juego.pasarTurno();
 		}
-		
 	}
 	
 	public void turnOf(HBox head,PlayerView player){
@@ -157,11 +159,6 @@ public class PantallaPrincipal {
 		button.setStyle("-fx-background-color:#F7CF32");
 		this.turnoDe = button;
 		head.getChildren().add(button);
-	}
-
-	public void cambioLabelTurno(Button button, PlayerView player){
-		this.turn = player;
-		button.setText("TURNO DE: "+player.getName());
 	}
 
 	public void terminarDeColocarPiezas(HBox head,Juego juego){
@@ -181,15 +178,14 @@ public class PantallaPrincipal {
 	public void terminarJuego(HBox head,Juego juego) {
 
 		Button button = new Button("Terminar Partida");
-		//button.setStyle("-fx-background-color:#F7CF32");
+		button.setStyle("-fx-background-color:#F7CF32");
 		button.addEventHandler(MouseEvent.MOUSE_PRESSED,
 				(event) -> finalizar());
 		head.getChildren().add(button);
 	}
-
 		public void finalizar(){
 			this.juego.terminarJuego();
 			this.finDeJuego.iniciarFase();
 		}
 
-	}
+}
