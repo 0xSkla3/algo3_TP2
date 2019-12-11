@@ -1,15 +1,11 @@
 package edu.fiuba.algoChess.interfaz.vista;
 
-import java.util.HashMap;
-import java.util.Optional;
-
 import edu.fiuba.algoChess.Modelo.bandos.BandoJugador1;
 import edu.fiuba.algoChess.Modelo.entidades.Pieza;
 import edu.fiuba.algoChess.Modelo.entidades.PiezaNull;
 import edu.fiuba.algoChess.Modelo.entorno.Tablero;
 import edu.fiuba.algoChess.Modelo.juego.Juego;
 import edu.fiuba.algoChess.interfaz.controlladores.CrearPiezaHandler;
-import edu.fiuba.algoChess.interfaz.controlladores.ObtenerPiezaDesdeCoordenadasHandler;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -17,9 +13,9 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
+
+import java.util.HashMap;
+import java.util.Optional;
 
 
 public class PieceView{
@@ -54,7 +50,8 @@ public class PieceView{
     }
 
  	public void moverPiezaEnMapa(ImageView pieceImage, MapView map, String piece, Pieza piezaAMover){
-		MenuPieza menuPieza = new MenuPieza(this.juego,piezaAMover, this.juego.getTablero(),pieceImage,map,this, piece);
+		MenuPieza menuPieza = new MenuPieza(this.juego,piezaAMover, this.juego.getTablero(),pieceImage,map,
+				this, piece, this.pantallaPrincipal.getSegundaEtapa());
 		menuPieza.menuPopUp();
 		map.addViewOnMap(pieceImage, piezaAMover.getX(), piezaAMover.getY());
 	}

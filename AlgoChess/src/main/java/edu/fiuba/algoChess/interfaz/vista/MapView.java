@@ -36,6 +36,7 @@ public class MapView extends Group {
         this.tablero = juego.getTablero();
         this.contenedorImagenes = new HashMap<>();
 
+
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 10; j++) {
                 Pane v = new Pane();

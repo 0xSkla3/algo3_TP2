@@ -33,8 +33,8 @@ public class FinDeJuego {
 		this.mapView = mapView;
 		this.listaPiezas = new HashMap<>();
 
-		this.player1 =  new PlayerView(jugador1,new BandoJugador1());
-		this.player2 =  new PlayerView(jugador2,new BandoJugador2());
+		this.player1 =  new PlayerView(juego.getJugador1());
+		this.player2 =  new PlayerView(juego.getJugador2());
 	}
 
 	public void iniciarFase(){

@@ -50,10 +50,15 @@ public class MenuPieza {
 	@Setter
 	MenuComportamiento menuComportamiento;
 
-	public MenuPieza(Juego juego, Pieza pieza, Tablero tablero, ImageView imagenPieza, MapView map, PieceView pieceView, String piezaNombre) {
+	@Getter
+	@Setter
+	SegundaEtapa segundaEtapa;
+
+	public MenuPieza(Juego juego, Pieza pieza, Tablero tablero, ImageView imagenPieza, MapView map, PieceView pieceView, String piezaNombre, SegundaEtapa segundaEtapa) {
 		this.piezaNombre = piezaNombre;
 		menuMovimiento = new MenuMovimiento(pieza, tablero, imagenPieza, map, pieceView);
-		menuComportamiento = new MenuComportamiento(juego, pieza, tablero, imagenPieza, map);
+		menuComportamiento = new MenuComportamiento(juego, pieza, tablero, imagenPieza, map, segundaEtapa);
+		this.segundaEtapa = segundaEtapa;
 	}
 
 	public void menuPopUp() {
@@ -80,6 +85,7 @@ public class MenuPieza {
 
 		vbox.getChildren().addAll(moverse, interactuar);
 
+		this.segundaEtapa.cambioTurno();
 		Scene theScene = new Scene(vbox);
 		stage.setScene(theScene);
 		stage.show();

@@ -77,8 +77,8 @@ public class Juego {
 
 	public Juego(String nombreJugador1, String nombreJugador2) {
 			this.tablero = new Tablero(new BandoJugador1(), new BandoJugador2());
-			this.jugador1 = new Jugador(nombreJugador1);
-			this.jugador2 = new Jugador(nombreJugador2);
+			this.jugador1 = new Jugador(nombreJugador1, "jugador1");
+			this.jugador2 = new Jugador(nombreJugador2, "jugador2");
 			this.piezasEnTablero = new ArrayList<>();
 			this.bandoActivo = new BandoJugador1();
 			this.jugadorActivo = this.jugador1;

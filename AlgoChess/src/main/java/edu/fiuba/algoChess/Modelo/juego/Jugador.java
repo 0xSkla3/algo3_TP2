@@ -15,14 +15,21 @@ import java.util.Set;
 
 public class Jugador {
 
+	@Getter
 	private String nombre;
+	@Setter
+	@Getter
+	private String queJugadorEs;
+	@Getter
 	private int puntaje;
+	@Getter
 	private int creditos;
 	@Setter
 	@Getter
 	private Bando bando;
 	private ArrayList<Pieza> piezas;
 	private Turno turno;
+
 
 	public Jugador() {
 		this.nombre = "";
@@ -31,11 +38,12 @@ public class Jugador {
 		this.piezas = new ArrayList<>();
 	}
 
-	public Jugador(String unNombre) {
+	public Jugador(String unNombre, String queJugadorEs) {
 		this.puntaje = 0;
 		this.nombre = unNombre;
 		this.creditos = 20;
 		this.piezas = new ArrayList<>();
+		this.queJugadorEs = queJugadorEs;
 	}
 
 	public void sumarPuntaje(int unPuntaje){this.puntaje += unPuntaje;}

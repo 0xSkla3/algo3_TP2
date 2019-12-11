@@ -5,6 +5,7 @@ import edu.fiuba.algoChess.Modelo.bandos.Bando;
 import edu.fiuba.algoChess.Modelo.entidades.Pieza;
 import edu.fiuba.algoChess.Modelo.excepciones.NoExisteNingunCasilleroParaLaUbicacionDadaException;
 import edu.fiuba.algoChess.Modelo.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;
+import javafx.scene.layout.Pane;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -45,6 +46,17 @@ public class Tablero {
 	}
 
 	public void asignarSectores(Bando bandoJugador1,Bando bandoJugador2){
+
+		for (int i = 0; i < 20; i++) {
+			for (int j = 0; j < 10; j++) {
+				this.getCelda(new Ubicacion(i, j)).setSectorDelJugador(bandoJugador1);
+			}
+			for (int j = 10; j < 20; j++) {
+				this.getCelda(new Ubicacion(i, j)).setSectorDelJugador(bandoJugador2);
+			}
+		}
+
+		/*
 		for (int i = 1; i <= 10; i++) {
 			for (int j = 1; j <= 20; j++) {
 				this.getCelda(new Ubicacion(i, j)).setSectorDelJugador(bandoJugador1);
@@ -55,6 +67,8 @@ public class Tablero {
 				this.getCelda(new Ubicacion(i, j)).setSectorDelJugador(bandoJugador2);
 			}
 		}
+		*/
+
 	}
 
 	public Celda getCelda(Ubicacion ubicacion) {

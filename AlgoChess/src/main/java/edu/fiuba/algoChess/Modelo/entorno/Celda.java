@@ -30,7 +30,7 @@ public class Celda {
 	}
 
     public void guardarFaseInicial(Pieza piezaAUbicar) {
-        if (!this.sectorDelJugador.equals(piezaAUbicar.getBando())  ) { //ESTA LINEA SOLO VALE EN LA PRIMERA ETAPA DEL JUEGO!!! AGREGAR OTRA CONDICION AL IF!!!
+        if (!this.sectorDelJugador.equals(piezaAUbicar.getBando())  ) {
             throw new NoSePuedeUbicarPiezaEnSectoRival("No se puede ubicar pieza en sector rival");
         } else {
 			try {

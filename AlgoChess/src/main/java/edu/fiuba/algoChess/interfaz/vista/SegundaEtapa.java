@@ -24,18 +24,19 @@ public class SegundaEtapa extends HBox {
 	private HashMap<String,String> listaImage;
 	private Juego juego;
 	private FinDeJuego finDeJuego;
+	private HBox head ;
 
 	public SegundaEtapa(Juego juego, String jugador1, String jugador2, Stage stage, PieceView pieceView,
-						MapView mapView) {
+						MapView mapView, PlayerView turn) {
 
 		this.juego = juego;
 		this.stage = stage;
 		this.pieceView = pieceView;
 		this.mapView = mapView;
 		this.listaPiezas = new HashMap<>();
-
-		this.player1 =  new PlayerView(jugador1,new BandoJugador1());
-		this.player2 =  new PlayerView(jugador2,new BandoJugador2());
+		this.turn = turn;
+		this.player1 =  new PlayerView(juego.getJugador1());
+	 	this.player2 =  new PlayerView(juego.getJugador2());
 
 		this.finDeJuego = new FinDeJuego(juego,jugador1,jugador2, stage, pieceView, mapView);
 	}
@@ -62,23 +63,35 @@ public class SegundaEtapa extends HBox {
 		HBox head = new HBox();
 		head.setId("head");
 		terminarJuego(head,juego);
-		turnOf(head,player1);
+		turnOf(head,turn);
+		this.head = head;
 		return head;
 	}
 
-	public void turnOf(HBox head,PlayerView player){
+	public void cambioTurno() {
 
+		head.getChildren().remove(6);
+		if(this.turn == player1) {
+			turnOf(head,player2);
+			this.juego.pasarTurno();
+		}
+		else {
+			turnOf(head,player1);
+			this.juego.pasarTurno();
+		}
+	}
+
+	public void turnOf(HBox head,PlayerView player){
 		this.turn = player;
-		Button button = new Button("TURNO DE: "+player.getName());
+		Button button = new Button("TURNO DE: "+this.turn.getName());
 		button.setStyle("-fx-background-color:#F7CF32");
 		head.getChildren().add(button);
-
 	}
 
 	public void terminarJuego(HBox head,Juego juego) {
 
 		Button button = new Button("Terminar Partida");
-		//button.setStyle("-fx-background-color:#F7CF32");
+		button.setStyle("-fx-background-color:#F7CF32");
 		button.addEventHandler(MouseEvent.MOUSE_PRESSED,
 				(event) -> finalizar());
 		head.getChildren().add(button);

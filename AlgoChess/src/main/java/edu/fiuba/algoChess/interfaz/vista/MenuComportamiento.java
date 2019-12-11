@@ -44,12 +44,17 @@ public class MenuComportamiento {
 	@Setter
 	MapView mapView;
 
-	MenuComportamiento(Juego juego, Pieza emisor, Tablero tablero, ImageView imagenPieza , MapView map){
+	@Getter
+	@Setter
+	SegundaEtapa segundaEtapa;
+
+	MenuComportamiento(Juego juego, Pieza emisor, Tablero tablero, ImageView imagenPieza , MapView map, SegundaEtapa segundaEtapa){
 		this.emisor = emisor;
 		this.receptor = juego.getReceptor();
 		this.tablero = tablero;
 		this.imagenPieza = imagenPieza;
 		this.mapView = map;
+		this.segundaEtapa = segundaEtapa;
 	}
 
 	public void menuComportamientoSoldado(){
