@@ -3,6 +3,7 @@ import edu.fiuba.algoChess.Modelo.bandos.Bando;
 import edu.fiuba.algoChess.Modelo.entidades.Pieza;
 import edu.fiuba.algoChess.Modelo.entorno.Tablero;
 import edu.fiuba.algoChess.Modelo.entorno.Ubicacion;
+import edu.fiuba.algoChess.Modelo.excepciones.NoExisteNingunCasilleroParaLaUbicacionDadaException;
 import edu.fiuba.algoChess.Modelo.excepciones.NoSePuedeUbicarPiezaEnSectoRival;
 import edu.fiuba.algoChess.Modelo.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;
 import edu.fiuba.algoChess.Modelo.juego.Juego;
@@ -102,10 +103,20 @@ public class UbicarPiezaHandler implements EventHandler<ActionEvent> {
             popup.setX(520);
             popup.getContent().addAll(bp);
             popup.show(this.stagePrincipal);
+        } catch(NoExisteNingunCasilleroParaLaUbicacionDadaException ex){
+        Popup popup = new Popup();
+        HBox hbox = new HBox();
+        BorderPane bp = new BorderPane();
+        Label label = new Label("No existe la ubicacion, por favor ingrese otra");
+        hbox.getChildren().add(label);
+        bp.setAlignment(hbox, Pos.CENTER);
+        bp.setCenter(hbox);
+        bp.setPrefSize(350,122);
+        bp.setStyle("-fx-background-color: #DBDBDF");
+        popup.setY(375);
+        popup.setX(520);
+        popup.getContent().addAll(bp);
+        popup.show(this.stagePrincipal);
         }
-
-
     }
-
-        
-    }
+}
