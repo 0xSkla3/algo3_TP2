@@ -26,8 +26,8 @@ public class MapView extends Group {
 
     public MapView(Juego juego) {
         this.table = new GridPane();
-        width = tileWidth * 20;
-        heigth = tileHeigth * 20;
+        width = tileWidth * 15;
+        heigth = tileHeigth * 15;
         panes = new Pane[ (int)width][(int)heigth];
         this.table.setHgap(5);
         this.table.setVgap(5);
@@ -37,15 +37,25 @@ public class MapView extends Group {
         this.contenedorImagenes = new HashMap<>();
 
         for (int i = 0; i < 20; i++) {
-            for (int j = 0; j < 20; j++) {
+            for (int j = 0; j < 10; j++) {
                 Pane v = new Pane();
                 v.setMinHeight(this.tileHeigth);
                 v.setMinWidth(this.tileWidth);
-                v.setStyle("-fx-border-color: black;-fx-position-shape:true");
-                panes[i][j] = v;
-                table.add(v , i, j);
+                v.setStyle("-fx-border-color: black;-fx-position-shape:true; -fx-background-color: #932330");
+                panes[j][i] = v;
+                table.add(v , j, i);
             }
+			for (int j = 10; j < 20; j++) {
+				Pane v = new Pane();
+				v.setMinHeight(this.tileHeigth);
+				v.setMinWidth(this.tileWidth);
+				v.setStyle("-fx-border-color: black;-fx-position-shape:true; -fx-background-color: #ffcc8a");
+				panes[j][i] = v;
+				table.add(v , j, i);
+			}
         }
+
+
         table.setStyle("-fx-padding: 20;");
         this.addView(table);
     }
