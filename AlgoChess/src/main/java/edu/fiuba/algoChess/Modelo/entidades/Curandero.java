@@ -3,7 +3,6 @@ package edu.fiuba.algoChess.Modelo.entidades;
 import edu.fiuba.algoChess.Modelo.bandos.Bando;
 import edu.fiuba.algoChess.Modelo.batallones.Batalloneable;
 import edu.fiuba.algoChess.Modelo.comportamientos.Comportamiento;
-import edu.fiuba.algoChess.Modelo.comportamientos.CuracionCercanaCurandero;
 import edu.fiuba.algoChess.Modelo.entorno.*;
 import edu.fiuba.algoChess.Modelo.excepciones.FueraDeRangoParaEjecutarComportamientoException;
 import edu.fiuba.algoChess.Modelo.excepciones.NoHayBatallonFormadoException;
@@ -31,21 +30,21 @@ public class Curandero extends Pieza {
 	public Curandero(){
 
 		super(2,75);
-		this.curacion = new CuracionCercanaCurandero(15);
+		this.curacion = new Comportamiento(15);
 
 	}
 
 	public Curandero(Ubicacion ubicacion,Bando bando){
 
 		super(2,75,ubicacion,bando);
-		this.curacion = new CuracionCercanaCurandero(15);
+		this.curacion = new Comportamiento(15);
 	}
 
 	public Curandero(Ubicacion ubicacion, Bando bando, Tablero tablero){
 
 		super(2,75,ubicacion,bando);
 		tablero.getCelda(ubicacion).setPiezaActual(this);
-		this.curacion = new CuracionCercanaCurandero(15);
+		this.curacion = new Comportamiento(15);
 
 	}
 
@@ -76,7 +75,6 @@ public class Curandero extends Pieza {
 
 	@Override
 	public ArrayList<Pieza> aniadirSoldadoAlStack(ArrayList<Pieza> stack, Pieza pieza) {
-
 		return stack;
 	}
 
@@ -141,7 +139,7 @@ public class Curandero extends Pieza {
 
 	@Override
 	public void atacar(Pieza atacado) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	;
@@ -168,7 +166,7 @@ public class Curandero extends Pieza {
 
 	@Override
 	public void actualizaPiezasEnRango(Pieza piezaCentral) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
@@ -178,17 +176,17 @@ public class Curandero extends Pieza {
 
 	@Override
 	public void actualizaRangoMedio(Pieza piezaCentral, Tablero tablero) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
 	public void actualizaRangoCercano(Pieza piezaCentral, Tablero tablero) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
 	public void actualizaRangoSoldado(Pieza piezaCentral, Tablero tablero) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
@@ -228,17 +226,17 @@ public class Curandero extends Pieza {
 
 	@Override
 	public void setPieza1(Pieza pieza1) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
 	public void setPieza2(Pieza pieza2) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
 	public void setPieza3(Pieza pieza3) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 

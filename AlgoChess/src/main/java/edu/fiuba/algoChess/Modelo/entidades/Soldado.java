@@ -2,7 +2,6 @@ package edu.fiuba.algoChess.Modelo.entidades;
 
 import edu.fiuba.algoChess.Modelo.bandos.Bando;
 import edu.fiuba.algoChess.Modelo.batallones.BatallonUtil;
-import edu.fiuba.algoChess.Modelo.comportamientos.AtaqueCercanoSoldado;
 import edu.fiuba.algoChess.Modelo.comportamientos.Comportamiento;
 import edu.fiuba.algoChess.Modelo.entorno.*;
 import edu.fiuba.algoChess.Modelo.excepciones.FueraDeRangoParaEjecutarComportamientoException;
@@ -40,7 +39,7 @@ public class Soldado extends Pieza implements Movible {
 	public Soldado(Ubicacion ubicacion, Bando bando, Tablero tablero){
 		super(2,75,ubicacion,bando);
 		this.danioCercano = 10;
-		this.ataqueCercano = new AtaqueCercanoSoldado(10);
+		this.ataqueCercano = new Comportamiento(10);
 		this.rango = new RangoSoldado(this, tablero);
 		tablero.ubicarEnCeldaFaseInicial(this, ubicacion);
 	}
@@ -48,7 +47,7 @@ public class Soldado extends Pieza implements Movible {
 	public Soldado(Ubicacion ubicacion, Tablero tablero) {
 		super(ubicacion);
 		this.setVida(new SaludLlena(75));
-		this.ataqueCercano = new AtaqueCercanoSoldado(10);
+		this.ataqueCercano = new Comportamiento(10);
 		this.rango = new RangoSoldado(this, tablero);
 	}
 
@@ -56,7 +55,7 @@ public class Soldado extends Pieza implements Movible {
 
 		super(2,75,ubicacion,bando);
 		danioCercano = 10;
-		this.ataqueCercano = new AtaqueCercanoSoldado(10);
+		this.ataqueCercano = new Comportamiento(10);
 	}
 
 	public Rango actualizaRango(Tablero tablero) {
@@ -190,7 +189,7 @@ public class Soldado extends Pieza implements Movible {
 
 	@Override
 	public void curar(Pieza curado) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
@@ -210,7 +209,7 @@ public class Soldado extends Pieza implements Movible {
 
 	@Override
 	public void actualizaPiezasEnRango(Pieza piezaCentral) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
@@ -220,17 +219,17 @@ public class Soldado extends Pieza implements Movible {
 
 	@Override
 	public void actualizaRangoMedio(Pieza piezaCentral, Tablero tablero) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
 	public void actualizaRangoCercano(Pieza piezaCentral, Tablero tablero) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
 	public void actualizaRangoSoldado(Pieza piezaCentral, Tablero tablero) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
@@ -270,16 +269,16 @@ public class Soldado extends Pieza implements Movible {
 
 	@Override
 	public void setPieza1(Pieza pieza1) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
 	public void setPieza2(Pieza pieza2) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
 	public void setPieza3(Pieza pieza3) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 }

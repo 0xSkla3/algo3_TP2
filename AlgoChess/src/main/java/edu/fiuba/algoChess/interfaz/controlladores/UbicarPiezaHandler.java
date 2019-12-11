@@ -3,7 +3,6 @@ import edu.fiuba.algoChess.Modelo.bandos.Bando;
 import edu.fiuba.algoChess.Modelo.entidades.Pieza;
 import edu.fiuba.algoChess.Modelo.entorno.Tablero;
 import edu.fiuba.algoChess.Modelo.entorno.Ubicacion;
-import edu.fiuba.algoChess.Modelo.excepciones.NoExisteNingunCasilleroParaLaUbicacionDadaException;
 import edu.fiuba.algoChess.Modelo.excepciones.NoSePuedeUbicarPiezaEnSectoRival;
 import edu.fiuba.algoChess.Modelo.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;
 import edu.fiuba.algoChess.Modelo.juego.Juego;
@@ -11,7 +10,6 @@ import edu.fiuba.algoChess.interfaz.vista.MapView;
 import edu.fiuba.algoChess.interfaz.vista.PantallaPrincipal;
 import edu.fiuba.algoChess.interfaz.vista.PieceView;
 import javafx.event.ActionEvent;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -62,51 +60,67 @@ public class UbicarPiezaHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent e) {
-
-         int x = Integer.parseInt((tFX.getText()));
-         int y = Integer.parseInt((tFY.getText()));
-         Popup popup = new Popup();
-         HBox hbox = new HBox();
-         BorderPane bp = new BorderPane();
-         bp.setPrefSize(300,100);
-         bp.setStyle("-fx-background-color: #DBDBDF");
-         popup.setY(375);
-         popup.setX(520);
-
-         try {
-              pieceView.setPieceMap(mapView, nombrePieza,"jugador1" , x, y);
-              pantallaPrincipal.cambioTurno(head, nombrePieza);
-              stageUbicar.close();
-         } catch(NoSePuedeUbicarPiezaEnSectoRival exc){
-
-              Label label1 = new Label("No se puede ubicar la pieza en una el sector rival");
-              hbox.getChildren().add(label1);
-              bp.setAlignment(hbox, Pos.CENTER);
-              bp.setCenter(hbox);
-              BorderPane.setMargin(hbox,new Insets(40,20,40,20));
-              popup.getContent().addAll(bp);
-              popup.show(this.stagePrincipal);
-         } catch(NoSePuedeUbicarPorqueEstaOcupadoException ex){
-
-              Label label = new Label("No se puede ubicar la pieza en una celda ocupada");
-              hbox.getChildren().add(label);
-              bp.setAlignment(hbox, Pos.CENTER);
-              bp.setCenter(hbox);
-              BorderPane.setMargin(hbox,new Insets(40,20,40,20));
-              popup.getContent().addAll(bp);
-              popup.show(this.stagePrincipal);
-
-         } catch(NoExisteNingunCasilleroParaLaUbicacionDadaException ex){
-
-             Label label = new Label("No existe ningun casillero para la ubicacion dada");
-             hbox.getChildren().add(label);
-             bp.setAlignment(hbox, Pos.CENTER);
-             bp.setCenter(hbox);
-             BorderPane.setMargin(hbox,new Insets(40,20,40,20));
-             popup.getContent().addAll(bp);
-             popup.show(this.stagePrincipal);
-
-         }
-
+        int x = Integer.parseInt((tFX.getText()));
+        int y = Integer.parseInt((tFY.getText()));
+/*        Popup popup = new Popup();
+        HBox hbox = new HBox();
+        BorderPane bp = new BorderPane();
+        bp.setPrefSize(350,122);
+        bp.setStyle("-fx-background-color: #DBDBDF");
+        popup.setY(375);
+        popup.setX(520);
+*/
+        try {
+           pieceView.setPieceMap(mapView, nombrePieza,"jugador1" , x, y);
+       } catch(NoSePuedeUbicarPiezaEnSectoRival exc){
+            Label label1 = new Label("No se puede ubicar la pieza en el sector rival");
+            Popup popup = new Popup();
+            HBox hbox = new HBox();
+            BorderPane bp = new BorderPane();
+            hbox.getChildren().add(label1);
+            bp.setAlignment(hbox, Pos.CENTER);
+            bp.setCenter(hbox);
+            bp.setPrefSize(350,122);
+            bp.setStyle("-fx-background-color: #DBDBDF");
+            popup.setY(375);
+            popup.setX(520);
+            popup.getContent().addAll(bp);
+            popup.show(this.stagePrincipal);
+        } catch(NoSePuedeUbicarPorqueEstaOcupadoException ex){
+            Popup popup = new Popup();
+            HBox hbox = new HBox();
+            BorderPane bp = new BorderPane();
+            Label label = new Label("No se puede ubicar la pieza en una celda ocupada");
+            hbox.getChildren().add(label);
+            bp.setAlignment(hbox, Pos.CENTER);
+            bp.setCenter(hbox);
+            bp.setPrefSize(350,122);
+            bp.setStyle("-fx-background-color: #DBDBDF");
+            popup.setY(375);
+            popup.setX(520);
+            popup.getContent().addAll(bp);
+            popup.show(this.stagePrincipal);
+        }
+        pantallaPrincipal.cambioTurno(head, nombrePieza);
+        stageUbicar.close();
+/*        Class piezaClass = listaPieza.get(nombrePieza);
+        Ubicacion ubicacion = new Ubicacion(x,y);
+        Tablero tablero = juego.getTablero();
+        try {
+            try {
+                Pieza pieza = (Pieza) piezaClass.getDeclaredConstructor().newInstance();
+            } catch (InvocationTargetException ex) {
+                ex.printStackTrace();
+            } catch (NoSuchMethodException ex) {
+                ex.printStackTrace();
+            }
+        } catch (InstantiationException ex) {
+            ex.printStackTrace();
+        } catch (IllegalAccessException ex) {
+            ex.printStackTrace();
+        }
+*/
     }
-}
+
+        
+    }

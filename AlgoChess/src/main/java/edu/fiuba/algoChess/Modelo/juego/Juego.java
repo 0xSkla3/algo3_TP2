@@ -49,6 +49,10 @@ public class Juego {
 	@Setter
 	Boolean segundaEtapa = false;
 
+	@Getter
+	@Setter
+	Boolean finDeJuego = false;
+
 	public static final Soldado soldado = new Soldado();
 
 	public Juego() {
@@ -75,9 +79,6 @@ public class Juego {
 		public static void main (String[]args){
 
 		}
-
-
-
 
 
 		public Pieza crearPieza (String nombre, Ubicacion ubicacion){
@@ -143,5 +144,13 @@ public class Juego {
 		this.bandoActivo = retorno;
 		this.jugadorActivo = jugadorActivo;
 		this.activoBando1 = activoBando1?false:true;
+	}
+
+	public void comenzarSegundoStage() {
+		setSegundaEtapa(true);
+	}
+
+	public void terminarJuego() {
+		setFinDeJuego(true);
 	}
 }

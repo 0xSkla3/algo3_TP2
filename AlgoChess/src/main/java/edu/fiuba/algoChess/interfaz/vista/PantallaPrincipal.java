@@ -7,7 +7,6 @@ import edu.fiuba.algoChess.Modelo.entidades.Jinete;
 import edu.fiuba.algoChess.Modelo.entidades.Soldado;
 import edu.fiuba.algoChess.Modelo.juego.Juego;
 import edu.fiuba.algoChess.interfaz.controlladores.UbicarPiezaHandler;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -32,6 +31,8 @@ public class PantallaPrincipal {
 	private PlayerView turn;
 	private HashMap<String,String> listaImage;
 	private Juego juego;
+	private SegundaEtapa segundaEtapa;
+	private FinDeJuego finDeJuego;
 
 	private PantallaPrincipal pantallaPrincipal;
 	
@@ -39,14 +40,14 @@ public class PantallaPrincipal {
 
 		this.juego = new Juego(jugador1,jugador2);
 		this.stage = stage;
-
-		this.juego = new Juego();
 		this.pieceView = new PieceView( listaImage, juego);
-		this.mapView = new MapView();//tamanio del tablero
+		this.mapView = new MapView(juego);//tamanio del tablero
 		this.listaPiezas = new HashMap<>();
 
 		this.player1 =  new PlayerView(jugador1,new BandoJugador1());
 		this.player2 =  new PlayerView(jugador2,new BandoJugador2());
+		this.segundaEtapa = new SegundaEtapa( juego,jugador1,jugador2, stage, pieceView, mapView);
+		this.finDeJuego = new FinDeJuego(juego,jugador1,jugador2, stage, pieceView, mapView);
 		this.pantallaPrincipal = this;
 
 		initialPhase();
@@ -93,57 +94,42 @@ public class PantallaPrincipal {
 	    Image imgCurandero = new Image("imagenes/curandero.jpeg",80,80,false,false);
 	    ImageView curandero= new ImageView(imgCurandero);
 	    menuPiece(curandero, "Curandero",head);
-	    
+
 	    head.getChildren().addAll(soldado,jinete,catapulta,curandero);
+		terminarJuego(head,juego);
 	    turnOf(head,player1);
+		terminarDeColocarPiezas(head,juego);
+
 	    return head;
 	}
 	
 	public void menuPiece(ImageView pieza,String nombrePieza,HBox head) {
 	
-		pieza.addEventHandler(MouseEvent.MOUSE_CLICKED,new EventHandler<MouseEvent>() {
-			
-            @Override
-            public void handle(MouseEvent event) {
-            	Stage stageUbicar = new Stage();
-        		VBox vbox = new VBox();
-            	
-            	Label labelx = new Label("Ubicacion x:");
-            	TextField x = new TextField ();
-            	HBox hbx = new HBox();
-            	hbx.getChildren().addAll(labelx, x);
-            	hbx.setSpacing(10);
-            	
-            	Label labely = new Label("Ubicacion y:");
-            	TextField y = new TextField ();
-            	HBox hby = new HBox();
-            	hby.getChildren().addAll(labely, y);
-            	hby.setSpacing(10);
-            	
-            	Button submit = new Button("ubicar");
-            	submit.setStyle("-fx-background-color:#F1C40F;");
-				submit.setOnAction(new UbicarPiezaHandler(juego, stage, stageUbicar, pieceView,
-						nombrePieza, pantallaPrincipal, listaPiezas, mapView, head, x, y, turn.getBandoJugador()));
+		pieza.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+			Stage stageUbicar = new Stage();
+			VBox vbox = new VBox();
 
+			Label labelx = new Label("Ubicacion x:");
+			TextField x = new TextField ();
+			HBox hbx = new HBox();
+			hbx.getChildren().addAll(labelx, x);
+			hbx.setSpacing(10);
 
-/*				submit.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-					@Override
-					public void handle(MouseEvent mouseEvent) {
-						new UbicarPiezaHandler(juego, stage, stageUbicar, pieceView,
-								nombrePieza, pantallaPrincipal, listaPiezas, mapView,
-								head, x, y, turn.getBandoJugador());
-						//pieceView.setPieceMap(mapView, nombrePieza, turn.getBandoJugador().nombreBando(),Integer.parseInt(x.getText()),Integer.parseInt(y.getText()));
-						cambioTurno(head, nombrePieza);
-						stageUbicar.close();
-					}
-				});
-*/
-				vbox.getChildren().addAll(hbx,hby,submit);
-            	Scene sceneUbicar = new Scene(vbox);
-        	    stageUbicar.setScene(sceneUbicar);
-        	    stageUbicar.show();
-            }
-        });	
+			Label labely = new Label("Ubicacion y:");
+			TextField y = new TextField ();
+			HBox hby = new HBox();
+			hby.getChildren().addAll(labely, y);
+			hby.setSpacing(10);
+
+			Button submit = new Button("ubicar");
+			submit.setStyle("-fx-background-color:#F1C40F;");
+			submit.setOnAction(new UbicarPiezaHandler(juego, stage, stageUbicar, pieceView,
+					nombrePieza, pantallaPrincipal, listaPiezas, mapView, head, x, y, turn.getBandoJugador()));
+			vbox.getChildren().addAll(hbx,hby,submit);
+			Scene sceneUbicar = new Scene(vbox);
+			stageUbicar.setScene(sceneUbicar);
+			stageUbicar.show();
+		});
 	}
 	
 	public void cambioTurno(HBox head, String namePiece) {
@@ -152,9 +138,11 @@ public class PantallaPrincipal {
 		this.turn.setPiece(pieceView.getImageViewMax(namePiece));
 		if(this.turn == player1) {
 			turnOf(head,player2);
+			this.juego.pasarTurno();
 		}
 		else {
 			turnOf(head,player1);
+			this.juego.pasarTurno();
 		}
 		
 	}
@@ -168,4 +156,34 @@ public class PantallaPrincipal {
 
 	}
 
-}
+	public void terminarDeColocarPiezas(HBox head,Juego juego){
+
+		Button button = new Button("Empezar");
+		button.setStyle("-fx-background-color:#F7CF32");
+		button.addEventHandler(MouseEvent.MOUSE_PRESSED,
+				(event)-> cambioASegundaEtapa());
+		head.getChildren().add(button);
+
+	}
+
+	public void cambioASegundaEtapa(){
+		this.juego.comenzarSegundoStage();
+		this.segundaEtapa.iniciarFase();
+	}
+
+	public void terminarJuego(HBox head,Juego juego) {
+
+		Button button = new Button("Terminar Partida");
+		//button.setStyle("-fx-background-color:#F7CF32");
+		button.addEventHandler(MouseEvent.MOUSE_PRESSED,
+				(event) -> finalizar());
+		head.getChildren().add(button);
+	}
+
+		public void finalizar(){
+			this.juego.terminarJuego();
+			this.finDeJuego.iniciarFase();
+		}
+
+	}
+

@@ -2,7 +2,6 @@ package edu.fiuba.algoChess.Modelo.entidades;
 import edu.fiuba.algoChess.Modelo.entorno.*;
 import edu.fiuba.algoChess.Modelo.bandos.Bando;
 import edu.fiuba.algoChess.Modelo.batallones.Batalloneable;
-import edu.fiuba.algoChess.Modelo.comportamientos.AtaqueLejanoCatapulta;
 import edu.fiuba.algoChess.Modelo.comportamientos.Comportamiento;
 import edu.fiuba.algoChess.Modelo.excepciones.FueraDeRangoParaEjecutarComportamientoException;
 import edu.fiuba.algoChess.Modelo.excepciones.NoHayBatallonFormadoException;
@@ -25,18 +24,18 @@ public class Catapulta extends Pieza {
 	public Catapulta(Ubicacion ubicacion, Bando bando){
 
 		super(5,50,ubicacion,bando);
-		ataque = new AtaqueLejanoCatapulta(20);
+		ataque = new Comportamiento(20);
 	}
 
 	public Catapulta(Ubicacion ubicacion, Bando bando, Tablero tablero){
 		super(5,50,ubicacion,bando);
 		tablero.ubicarEnCeldaFaseInicial(this, ubicacion);
-		ataque = new AtaqueLejanoCatapulta(20);
+		ataque = new Comportamiento(20);
 	}
 
 	public Catapulta(){
 		super(5,50);
-		ataque = new AtaqueLejanoCatapulta(20);
+		ataque = new Comportamiento(20);
 	}
 
 	public Catapulta(int costo, int vida) {
@@ -132,7 +131,7 @@ public class Catapulta extends Pieza {
 
 	@Override
 	public void curar(Pieza curado) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
@@ -152,7 +151,7 @@ public class Catapulta extends Pieza {
 
 	@Override
 	public void actualizaPiezasEnRango(Pieza piezaCentral) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
@@ -162,17 +161,17 @@ public class Catapulta extends Pieza {
 
 	@Override
 	public void actualizaRangoMedio(Pieza piezaCentral, Tablero tablero) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
 	public void actualizaRangoCercano(Pieza piezaCentral, Tablero tablero) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
 	public void actualizaRangoSoldado(Pieza piezaCentral, Tablero tablero) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
@@ -212,16 +211,16 @@ public class Catapulta extends Pieza {
 
 	@Override
 	public void setPieza1(Pieza pieza1) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
 	public void setPieza2(Pieza pieza2) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
 	public void setPieza3(Pieza pieza3) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 }

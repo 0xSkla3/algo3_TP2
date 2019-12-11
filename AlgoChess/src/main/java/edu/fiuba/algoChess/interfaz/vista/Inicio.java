@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 public class Inicio extends HBox {
 
     public Inicio(Stage stage) {
+
         this.setPrefSize(600, 600);
 
         stage.getIcons().add(new Image("imagenes/logo.png"));
