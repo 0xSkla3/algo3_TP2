@@ -37,8 +37,8 @@ public class MapView extends Group {
         this.contenedorImagenes = new HashMap<>();
 
 
-        for (int i = 0; i < 20; i++) {
-            for (int j = 0; j < 10; j++) {
+        for (int i = 1; i <=20; i++) {
+            for (int j = 1; j <= 10; j++) {
                 Pane v = new Pane();
                 v.setMinHeight(this.tileHeigth);
                 v.setMinWidth(this.tileWidth);
@@ -46,7 +46,7 @@ public class MapView extends Group {
                 panes[j][i] = v;
                 table.add(v , j, i);
             }
-			for (int j = 10; j < 20; j++) {
+			for (int j = 11; j <= 20; j++) {
 				Pane v = new Pane();
 				v.setMinHeight(this.tileHeigth);
 				v.setMinWidth(this.tileWidth);

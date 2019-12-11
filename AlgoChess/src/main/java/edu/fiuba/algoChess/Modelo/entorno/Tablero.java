@@ -47,27 +47,14 @@ public class Tablero {
 
 	public void asignarSectores(Bando bandoJugador1,Bando bandoJugador2){
 
-		for (int i = 0; i < 20; i++) {
-			for (int j = 0; j < 10; j++) {
-				this.getCelda(new Ubicacion(i, j)).setSectorDelJugador(bandoJugador1);
+		for (int i = 1; i <= 20; i++) {
+			for (int j = 1; j <= 10; j++) {
+				this.getCelda(new Ubicacion(j,i)).setSectorDelJugador(bandoJugador1);
 			}
-			for (int j = 10; j < 20; j++) {
-				this.getCelda(new Ubicacion(i, j)).setSectorDelJugador(bandoJugador2);
-			}
-		}
-
-		/*
-		for (int i = 1; i <= 10; i++) {
-			for (int j = 1; j <= 20; j++) {
-				this.getCelda(new Ubicacion(i, j)).setSectorDelJugador(bandoJugador1);
+			for (int j = 11; j <= 20; j++) {
+				this.getCelda(new Ubicacion(j,i)).setSectorDelJugador(bandoJugador2);
 			}
 		}
-		for (int i = 11; i <= 20; i++) {
-			for (int j = 1; j <= 20; j++) {
-				this.getCelda(new Ubicacion(i, j)).setSectorDelJugador(bandoJugador2);
-			}
-		}
-		*/
 
 	}
 

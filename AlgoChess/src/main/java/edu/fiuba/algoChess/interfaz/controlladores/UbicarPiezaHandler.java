@@ -9,8 +9,11 @@ import edu.fiuba.algoChess.Modelo.juego.Juego;
 import edu.fiuba.algoChess.interfaz.vista.MapView;
 import edu.fiuba.algoChess.interfaz.vista.PantallaPrincipal;
 import edu.fiuba.algoChess.interfaz.vista.PieceView;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.event.EventHandler;
@@ -24,6 +27,7 @@ import javafx.scene.layout.HBox;
 import java.awt.*;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
+import java.util.Optional;
 
 public class UbicarPiezaHandler implements EventHandler<ActionEvent> {
 
@@ -67,37 +71,32 @@ public class UbicarPiezaHandler implements EventHandler<ActionEvent> {
             pantallaPrincipal.cambioTurno(head, nombrePieza);
             stageUbicar.close();
        } catch(NoSePuedeUbicarPiezaEnSectoRival exc){
-            Label label1 = new Label("No se puede ubicar la pieza en el sector rival");
-            Popup popup = new Popup();
-            HBox hbox = new HBox();
-            BorderPane bp = new BorderPane();
-            hbox.getChildren().add(label1);
-            bp.setAlignment(hbox, Pos.CENTER);
-            bp.setCenter(hbox);
-            bp.setPrefSize(350,122);
-            bp.setStyle("-fx-background-color: #DBDBDF");
-            popup.setY(375);
-            popup.setX(520);
-            popup.getContent().addAll(bp);
-            popup.show(this.stagePrincipal);
+            alerta3seg("Sector rival", "No se puede ubicar la pieza en el sector rival");
         } catch(NoSePuedeUbicarPorqueEstaOcupadoException ex){
-            Popup popup = new Popup();
-            HBox hbox = new HBox();
-            BorderPane bp = new BorderPane();
-            Label label = new Label("No se puede ubicar la pieza en una celda ocupada");
-            hbox.getChildren().add(label);
-            bp.setAlignment(hbox, Pos.CENTER);
-            bp.setCenter(hbox);
-            bp.setPrefSize(350,122);
-            bp.setStyle("-fx-background-color: #DBDBDF");
-            popup.setY(375);
-            popup.setX(520);
-            popup.getContent().addAll(bp);
-            popup.show(this.stagePrincipal);
+            alerta3seg( "Celda ocupada", "No se puede ubicar la pieza en una celda ocupada");
         }
-
-
     }
 
+    public void alerta3seg(String Titulo, String Texto){
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle(Titulo);
+        alert.setHeaderText(Texto);
+
+        Thread thread = new Thread(() -> {
+            try {
+
+                Thread.sleep(3000);
+                if (alert.isShowing()) {
+                    Platform.runLater(() -> alert.close());
+                }
+            } catch (Exception exp) {
+                exp.printStackTrace();
+            }
+        });
+        thread.setDaemon(true);
+        thread.start();
+        Optional<ButtonType> result = alert.showAndWait();
+    }
         
     }
