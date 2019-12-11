@@ -3,15 +3,17 @@ package edu.fiuba.algoChess.interfaz.vista;
 import edu.fiuba.algoChess.Modelo.entidades.Pieza;
 import edu.fiuba.algoChess.Modelo.entorno.Tablero;
 import edu.fiuba.algoChess.Modelo.juego.Juego;
+import edu.fiuba.algoChess.interfaz.controlladores.AtacarPiezaHandler;
+import edu.fiuba.algoChess.interfaz.controlladores.CurarPiezaHandler;
+import edu.fiuba.algoChess.interfaz.controlladores.UbicarPiezaHandler;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import lombok.Getter;
@@ -58,9 +60,7 @@ public class MenuComportamiento {
 		Button atacar = new Button("Atacar");
 		atacar.setStyle("-fx-background-color:#F1C40F;");
 		atacar.setOnAction(e -> {
-			getImagenPieza().addEventHandler(MouseEvent.MOUSE_PRESSED,(event)-> atacar(emisor, receptor));
-			atacar(emisor, receptor);
-			alerta1seg("Ataque", "Soldado Atacó, vida restante del oponente: " + receptor.getVida().getValorActual());
+			menuAtacar();
 			stage.close();
 		});
 
@@ -93,10 +93,8 @@ public class MenuComportamiento {
 
 	Button atacar = new Button("Atacar");
 		atacar.setStyle("-fx-background-color:#F1C40F;");
-		atacar.setOnAction(e -> {
-		getImagenPieza().addEventHandler(MouseEvent.MOUSE_PRESSED,(event)-> atacar(emisor, receptor));
-		atacar(emisor, receptor);
-		alerta1seg("Ataque", "Jinete Atacó, vida restante del oponente: " + receptor.getVida().getValorActual());
+		atacar.setOnAction(e -> { menuAtacar();
+
 		stage.close();
 	});
 
@@ -116,9 +114,8 @@ public class MenuComportamiento {
 		Button atacar = new Button("Atacar");
 		atacar.setStyle("-fx-background-color:#F1C40F;");
 		atacar.setOnAction(e -> {
-			getImagenPieza().addEventHandler(MouseEvent.MOUSE_PRESSED,(event)-> atacar(emisor, receptor));
+			getImagenPieza().addEventHandler(MouseEvent.MOUSE_PRESSED,(event)-> menuAtacar());
 			atacar(emisor, receptor);
-			alerta1seg("Ataque", "Catapulta Atacó, vida restante del oponente: " + receptor.getVida().getValorActual());
 			stage.close();
 		});
 
@@ -138,9 +135,7 @@ public class MenuComportamiento {
 		Button curar = new Button("Curar");
 		curar.setStyle("-fx-background-color:#F1C40F;");
 		curar.setOnAction(e -> {
-			getImagenPieza().addEventHandler(MouseEvent.MOUSE_PRESSED,(event)-> atacar(emisor, receptor));
-			atacar(emisor, receptor);
-			alerta1seg("Curacion", "Curandero Curó, vida restante del oponente: " + receptor.getVida().getValorActual());
+			getImagenPieza().addEventHandler(MouseEvent.MOUSE_PRESSED,(event)-> menuCurar());
 			stage.close();
 		});
 
@@ -179,5 +174,57 @@ public class MenuComportamiento {
         thread.setDaemon(true);
         thread.start();
 	Optional<ButtonType> result = alert.showAndWait();
+	}
+
+	public void menuAtacar() {
+
+			Stage stageUbicar = new Stage();
+			VBox vbox = new VBox();
+
+			Label labelx = new Label("Ubicacion x:");
+			TextField x = new TextField ();
+			HBox hbx = new HBox();
+			hbx.getChildren().addAll(labelx, x);
+			hbx.setSpacing(10);
+
+			Label labely = new Label("Ubicacion y:");
+			TextField y = new TextField ();
+			HBox hby = new HBox();
+			hby.getChildren().addAll(labely, y);
+			hby.setSpacing(10);
+
+			Button submit = new Button("atacar");
+			submit.setStyle("-fx-background-color:#F1C40F;");
+			submit.setOnAction(new AtacarPiezaHandler(tablero, emisor, x, y));
+			vbox.getChildren().addAll(hbx,hby,submit);
+			Scene sceneUbicar = new Scene(vbox);
+			stageUbicar.setScene(sceneUbicar);
+			stageUbicar.show();
+	}
+
+	public void menuCurar() {
+
+		Stage stageUbicar = new Stage();
+		VBox vbox = new VBox();
+
+		Label labelx = new Label("Ubicacion x:");
+		TextField x = new TextField ();
+		HBox hbx = new HBox();
+		hbx.getChildren().addAll(labelx, x);
+		hbx.setSpacing(10);
+
+		Label labely = new Label("Ubicacion y:");
+		TextField y = new TextField ();
+		HBox hby = new HBox();
+		hby.getChildren().addAll(labely, y);
+		hby.setSpacing(10);
+
+		Button submit = new Button("curar");
+		submit.setStyle("-fx-background-color:#F1C40F;");
+		submit.setOnAction(new CurarPiezaHandler(tablero, emisor, x, y));
+		vbox.getChildren().addAll(hbx,hby,submit);
+		Scene sceneUbicar = new Scene(vbox);
+		stageUbicar.setScene(sceneUbicar);
+		stageUbicar.show();
 	}
 }
