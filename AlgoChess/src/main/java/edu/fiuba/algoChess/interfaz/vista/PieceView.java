@@ -53,9 +53,9 @@ public class PieceView{
         juego.pasarTurno();
     }
 
- 	public void moverPiezaEnMapa(ImageView pieceImage, MapView map, String piece, Pieza piezaAMover, int x, int y){
-		MenuMovimiento menuMovimiento = new MenuMovimiento(piezaAMover, piece, tablero, pieceImage, map, this, this.pantallaPrincipal,new Stage(), this.pantallaPrincipal.getHead());
-		menuMovimiento.menuPopUp();
+ 	public void moverPiezaEnMapa(ImageView pieceImage, MapView map, String piece, Pieza piezaAMover){
+		MenuPieza menuPieza = new MenuPieza(this.juego,piezaAMover, this.juego.getTablero(),pieceImage,map,this, piece);
+		menuPieza.menuPopUp();
 		map.addViewOnMap(pieceImage, piezaAMover.getX(), piezaAMover.getY());
 	}
 
@@ -123,7 +123,7 @@ public class PieceView{
     public void comportamientoAlTocarPieza(ImageView pieceImage, MapView map, String piece, Pieza piezaModelo, int x, int y){
     	if (this.juego.getSegundaEtapa()){
     		if (!this.juego.getEnAplicacionDeComportamiento()) {
-				moverPiezaEnMapa(pieceImage, map, piece, piezaModelo, x, y);
+				moverPiezaEnMapa(pieceImage, map, piece, piezaModelo);
 			}else{
     			juego.setReceptor(piezaModelo);
 			}

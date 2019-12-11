@@ -49,19 +49,13 @@ public class MenuMovimiento {
 	HBox head;
 
 
-	MenuMovimiento(Pieza pieza, String nombrePieza, Tablero tablero, ImageView imagenPieza , MapView map,
-				   PieceView pieceView, PantallaPrincipal pantallaPrincipal, Stage stageUbicar,
-				   HBox head){
+	MenuMovimiento(Pieza pieza, Tablero tablero, ImageView imagenPieza , MapView map,
+				   PieceView pieceView){
 		this.pieza = pieza;
 		this.tablero = tablero;
 		this.imageView = imagenPieza;
 		this.mapView = map;
 		this.pieceView = pieceView;
-		this.pantallaPrincipal = pantallaPrincipal;
-		this.stagePrincipal = this.pantallaPrincipal.getStage();
-		this.stageUbicar = stageUbicar;
-
-		this.head = head;
 	}
 
 	public void menuPopUp(){

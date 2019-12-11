@@ -2,6 +2,7 @@ package edu.fiuba.algoChess.interfaz.vista;
 
 import edu.fiuba.algoChess.Modelo.entidades.Pieza;
 import edu.fiuba.algoChess.Modelo.entorno.Tablero;
+import edu.fiuba.algoChess.Modelo.juego.Juego;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -41,10 +42,9 @@ public class MenuComportamiento {
 	@Setter
 	MapView mapView;
 
-
-	MenuComportamiento(Pieza emisor, Pieza receptor, Tablero tablero, ImageView imagenPieza , MapView map){
+	MenuComportamiento(Juego juego, Pieza emisor, Tablero tablero, ImageView imagenPieza , MapView map){
 		this.emisor = emisor;
-		this.receptor = receptor;
+		this.receptor = juego.getReceptor();
 		this.tablero = tablero;
 		this.imagenPieza = imagenPieza;
 		this.mapView = map;
@@ -57,25 +57,19 @@ public class MenuComportamiento {
 
 		Button atacar = new Button("Atacar");
 		atacar.setStyle("-fx-background-color:#F1C40F;");
-		atacar.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent e) {
-				getImagenPieza().addEventHandler(MouseEvent.MOUSE_PRESSED,(event)-> atacar(getEmisor(), receptor));
-				atacar(emisor, receptor);
-				alerta1seg("Ataque", "Soldado Atacó, vida restante del oponente: " + receptor.getVida().getValorActual());
-				stage.close();
-			}
+		atacar.setOnAction(e -> {
+			getImagenPieza().addEventHandler(MouseEvent.MOUSE_PRESSED,(event)-> atacar(emisor, receptor));
+			atacar(emisor, receptor);
+			alerta1seg("Ataque", "Soldado Atacó, vida restante del oponente: " + receptor.getVida().getValorActual());
+			stage.close();
 		});
 
 		Button batallonear = new Button("Generar Batallon");
 		batallonear.setStyle("-fx-background-color:#F1C40F;");
-		batallonear.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent e) {
-				generarBatallon(emisor);
-				alerta1seg("Batallon", "Batallon Creado");
-				stage.close();
-			}
+		batallonear.setOnAction(e -> {
+			generarBatallon(emisor);
+			alerta1seg("Batallon", "Batallon Creado");
+			stage.close();
 		});
 
 		vbox.getChildren().addAll(atacar,batallonear);
@@ -90,24 +84,77 @@ public class MenuComportamiento {
 		emisor.darDeAltaBatallon();
 	}
 
-	public void MenuAtaqueBatallon(){
+	public void menuComportamientoBatallon() {
+	}
+
+	public void menuComportamientoJinete(){
+	Stage stage = new Stage();
+	VBox vbox = new VBox();
+
+	Button atacar = new Button("Atacar");
+		atacar.setStyle("-fx-background-color:#F1C40F;");
+		atacar.setOnAction(e -> {
+		getImagenPieza().addEventHandler(MouseEvent.MOUSE_PRESSED,(event)-> atacar(emisor, receptor));
+		atacar(emisor, receptor);
+		alerta1seg("Ataque", "Jinete Atacó, vida restante del oponente: " + receptor.getVida().getValorActual());
+		stage.close();
+	});
+
+		vbox.getChildren().addAll(atacar);
+
+	Scene theScene = new Scene(vbox);
+		stage.setScene(theScene);
+		stage.show();
 
 	}
 
-	public void MenuAtaqueJinete(){
+
+	public void menuComportamientoCatapulta(){
+		Stage stage = new Stage();
+		VBox vbox = new VBox();
+
+		Button atacar = new Button("Atacar");
+		atacar.setStyle("-fx-background-color:#F1C40F;");
+		atacar.setOnAction(e -> {
+			getImagenPieza().addEventHandler(MouseEvent.MOUSE_PRESSED,(event)-> atacar(emisor, receptor));
+			atacar(emisor, receptor);
+			alerta1seg("Ataque", "Catapulta Atacó, vida restante del oponente: " + receptor.getVida().getValorActual());
+			stage.close();
+		});
+
+		vbox.getChildren().addAll(atacar);
+
+		Scene theScene = new Scene(vbox);
+		stage.setScene(theScene);
+		stage.show();
 
 	}
 
+	public void menuComportamientoCurandero(){
 
-	public void MenuAtaqueCatapulta(){
+		Stage stage = new Stage();
+		VBox vbox = new VBox();
+
+		Button curar = new Button("Curar");
+		curar.setStyle("-fx-background-color:#F1C40F;");
+		curar.setOnAction(e -> {
+			getImagenPieza().addEventHandler(MouseEvent.MOUSE_PRESSED,(event)-> atacar(emisor, receptor));
+			atacar(emisor, receptor);
+			alerta1seg("Curacion", "Curandero Curó, vida restante del oponente: " + receptor.getVida().getValorActual());
+			stage.close();
+		});
+
+		vbox.getChildren().addAll(curar);
+
+		Scene theScene = new Scene(vbox);
+		stage.setScene(theScene);
+		stage.show();
 
 	}
 
 	private void atacar(Pieza atacante, Pieza atacado) {
 		atacante.atacar(atacado);
 	}
-
-
 
 	private void curar(Pieza curador, Pieza curado) {
 		curador.curar(curado);
