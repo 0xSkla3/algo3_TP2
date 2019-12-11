@@ -62,7 +62,7 @@ public class UbicarPiezaHandler implements EventHandler<ActionEvent> {
     public void handle(ActionEvent e) {
         int x = Integer.parseInt((tFX.getText()));
         int y = Integer.parseInt((tFY.getText()));
-/*        Popup popup = new Popup();
+/*      Popup popup = new Popup();
         HBox hbox = new HBox();
         BorderPane bp = new BorderPane();
         bp.setPrefSize(350,122);
@@ -71,7 +71,9 @@ public class UbicarPiezaHandler implements EventHandler<ActionEvent> {
         popup.setX(520);
 */
         try {
-           pieceView.setPieceMap(mapView, nombrePieza,"jugador1" , x, y);
+            pieceView.setPieceMap(mapView, nombrePieza,"jugador1" , x, y);
+            pantallaPrincipal.cambioTurno(head, nombrePieza);
+            stageUbicar.close();
        } catch(NoSePuedeUbicarPiezaEnSectoRival exc){
             Label label1 = new Label("No se puede ubicar la pieza en el sector rival");
             Popup popup = new Popup();
@@ -101,25 +103,8 @@ public class UbicarPiezaHandler implements EventHandler<ActionEvent> {
             popup.getContent().addAll(bp);
             popup.show(this.stagePrincipal);
         }
-        pantallaPrincipal.cambioTurno(head, nombrePieza);
-        stageUbicar.close();
-/*        Class piezaClass = listaPieza.get(nombrePieza);
-        Ubicacion ubicacion = new Ubicacion(x,y);
-        Tablero tablero = juego.getTablero();
-        try {
-            try {
-                Pieza pieza = (Pieza) piezaClass.getDeclaredConstructor().newInstance();
-            } catch (InvocationTargetException ex) {
-                ex.printStackTrace();
-            } catch (NoSuchMethodException ex) {
-                ex.printStackTrace();
-            }
-        } catch (InstantiationException ex) {
-            ex.printStackTrace();
-        } catch (IllegalAccessException ex) {
-            ex.printStackTrace();
-        }
-*/
+
+
     }
 
         
