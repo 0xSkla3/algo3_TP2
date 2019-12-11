@@ -79,6 +79,7 @@ public class UbicarPiezaHandler implements EventHandler<ActionEvent> {
             BorderPane bp = new BorderPane();
             hbox.getChildren().add(label1);
             bp.setAlignment(hbox, Pos.CENTER);
+            bp.setCenter(hbox);
             bp.setPrefSize(350,122);
             bp.setStyle("-fx-background-color: #DBDBDF");
             popup.setY(375);
@@ -92,6 +93,7 @@ public class UbicarPiezaHandler implements EventHandler<ActionEvent> {
             Label label = new Label("No se puede ubicar la pieza en una celda ocupada");
             hbox.getChildren().add(label);
             bp.setAlignment(hbox, Pos.CENTER);
+            bp.setCenter(hbox);
             bp.setPrefSize(350,122);
             bp.setStyle("-fx-background-color: #DBDBDF");
             popup.setY(375);
