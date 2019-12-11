@@ -67,7 +67,7 @@ public class UbicarPiezaHandler implements EventHandler<ActionEvent> {
             pieceView.setPieceMap(mapView, nombrePieza,"jugador1" , x, y);
             pantallaPrincipal.cambioTurno(head, nombrePieza);
             stageUbicar.close();
-       } catch(NoSePuedeUbicarPiezaEnSectoRival exc){
+        } catch(NoSePuedeUbicarPiezaEnSectoRival exc){
             Label label1 = new Label("No se puede ubicar la pieza en el sector rival");
             Popup popup = new Popup();
             HBox hbox = new HBox();
@@ -96,19 +96,19 @@ public class UbicarPiezaHandler implements EventHandler<ActionEvent> {
             popup.getContent().addAll(bp);
             popup.show(this.stagePrincipal);
         } catch(NoExisteNingunCasilleroParaLaUbicacionDadaException ex){
-        Popup popup = new Popup();
-        HBox hbox = new HBox();
-        BorderPane bp = new BorderPane();
-        Label label = new Label("No existe la ubicacion, por favor ingrese otra");
-        hbox.getChildren().add(label);
-        bp.setAlignment(hbox, Pos.CENTER);
-        bp.setCenter(hbox);
-        bp.setPrefSize(350,122);
-        bp.setStyle("-fx-background-color: #DBDBDF");
-        popup.setY(375);
-        popup.setX(520);
-        popup.getContent().addAll(bp);
-        popup.show(this.stagePrincipal);
+            Popup popup = new Popup();
+            HBox hbox = new HBox();
+            BorderPane bp = new BorderPane();
+            Label label = new Label("No existe la ubicacion, por favor ingrese otra");
+            hbox.getChildren().add(label);
+            bp.setAlignment(hbox, Pos.CENTER);
+            bp.setCenter(hbox);
+            bp.setPrefSize(350,122);
+            bp.setStyle("-fx-background-color: #DBDBDF");
+            popup.setY(375);
+            popup.setX(520);
+            popup.getContent().addAll(bp);
+            popup.show(this.stagePrincipal);
         }
     }
 }
