@@ -125,7 +125,7 @@ public class PieceView{
     		if (!this.juego.getEnAplicacionDeComportamiento()) {
 				moverPiezaEnMapa(pieceImage, map, piece, piezaModelo, x, y);
 			}else{
-    			juego.setReceptor();
+    			juego.setReceptor(piezaModelo);
 			}
 		}else{
 			mostrarDatosPiezaActual(piece, piezaModelo,  x,  y);
