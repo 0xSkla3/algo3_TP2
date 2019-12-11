@@ -2,7 +2,6 @@ package edu.fiuba.algoChess;
 
 import edu.fiuba.algoChess.Modelo.bandos.BandoJugador1;
 import edu.fiuba.algoChess.Modelo.bandos.BandoJugador2;
-import edu.fiuba.algoChess.Modelo.comportamientos.AtaqueMedioJinete;
 import edu.fiuba.algoChess.Modelo.comportamientos.Comportamiento;
 import edu.fiuba.algoChess.Modelo.entidades.Catapulta;
 import edu.fiuba.algoChess.Modelo.entidades.Curandero;
@@ -33,7 +32,7 @@ public class CuranderoTest {
         Ubicacion ubicacionCurandero = new Ubicacion(5,6);
         Curandero curandero = new Curandero(ubicacionCurandero,bandoJugador1,tablero);
 
-        Comportamiento comportamiento = new AtaqueMedioJinete(15);
+        Comportamiento comportamiento = new Comportamiento(15);
         soldado.recibirAtaque(comportamiento.getValorComportamiento());
         double vidaSoldadoCurado = soldado.getVida().getValorActual() + curandero.getCuracion().getValorComportamiento();
         curandero.curar(soldado);
@@ -56,7 +55,7 @@ public class CuranderoTest {
         Celda celdaCurandero = new Celda(bandoJugador2);
         celdaCurandero.guardarFaseInicial(curandero);
 
-        Comportamiento comportamiento = new AtaqueMedioJinete(15);
+        Comportamiento comportamiento = new Comportamiento(15);
         soldado.recibirAtaque(comportamiento.getValorComportamiento());
         curandero.curar(soldado);
     };
@@ -74,7 +73,7 @@ public class CuranderoTest {
         Ubicacion ubicacionCurandero = new Ubicacion(1,2);
         Curandero curandero = new Curandero(ubicacionCurandero,bandoJugador1,tablero);
 
-        Comportamiento comportamiento = new AtaqueMedioJinete(15);
+        Comportamiento comportamiento = new Comportamiento(15);
         soldado.recibirAtaque(comportamiento.getValorComportamiento());
         curandero.curar(soldado);
     };
@@ -92,7 +91,7 @@ public class CuranderoTest {
         Ubicacion ubicacionCurandero = new Ubicacion(1,2);
         Curandero curandero = new Curandero(ubicacionCurandero,bandoJugador1,tablero);
 
-        Comportamiento comportamiento = new AtaqueMedioJinete(15);
+        Comportamiento comportamiento = new Comportamiento(15);
         catapulta.recibirAtaque(comportamiento.getValorComportamiento());
         curandero.curar(catapulta);
     };

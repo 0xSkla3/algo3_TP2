@@ -2,8 +2,6 @@ package edu.fiuba.algoChess.Modelo.entidades;
 
 import edu.fiuba.algoChess.Modelo.bandos.Bando;
 import edu.fiuba.algoChess.Modelo.batallones.Batalloneable;
-import edu.fiuba.algoChess.Modelo.comportamientos.AtaqueCercanoJinete;
-import edu.fiuba.algoChess.Modelo.comportamientos.AtaqueMedioJinete;
 import edu.fiuba.algoChess.Modelo.comportamientos.Comportamiento;
 import edu.fiuba.algoChess.Modelo.entorno.*;
 import edu.fiuba.algoChess.Modelo.excepciones.FueraDeRangoParaEjecutarComportamientoException;
@@ -25,11 +23,11 @@ public class Jinete extends Pieza {
 
 	@Getter
 	@Setter
-	private Comportamiento ataqueMedio = new AtaqueMedioJinete(15);
+	private Comportamiento ataqueMedio = new Comportamiento(15);
 
 	@Getter
 	@Setter
-	private Comportamiento ataqueCercano = new AtaqueCercanoJinete(5);
+	private Comportamiento ataqueCercano = new Comportamiento(5);
 
 //	@Getter
 //	@Setter
@@ -52,8 +50,8 @@ public class Jinete extends Pieza {
 	public Jinete() {
 
 		super(3, 100);
-		this.ataqueCercano = new AtaqueCercanoJinete(5);
-		this.ataqueMedio = new AtaqueMedioJinete(15);
+		this.ataqueCercano = new Comportamiento(5);
+		this.ataqueMedio = new Comportamiento(15);
 		this.piezaEnemigaCercana = false;
 		this.piezaAliadaCercana = false;
 
@@ -62,8 +60,8 @@ public class Jinete extends Pieza {
 	public Jinete(Ubicacion ubicacion, Bando bando) {
 
 		super(3, 100, ubicacion, bando);
-		this.ataqueCercano = new AtaqueCercanoJinete(5);
-		this.ataqueMedio = new AtaqueMedioJinete(15);
+		this.ataqueCercano = new Comportamiento(5);
+		this.ataqueMedio = new Comportamiento(15);
 		this.piezaEnemigaCercana = false;
 		this.piezaAliadaCercana = false;
 	}
@@ -82,8 +80,8 @@ public class Jinete extends Pieza {
 	public Jinete(Ubicacion ubicacion, Bando bando, Tablero tablero) {
 
 		super(3, 100, ubicacion, bando);
-		this.ataqueCercano = new AtaqueCercanoJinete(5);
-		this.ataqueMedio = new AtaqueMedioJinete(15);
+		this.ataqueCercano = new Comportamiento(5);
+		this.ataqueMedio = new Comportamiento(15);
 		this.piezaEnemigaCercana = false;
 		this.piezaAliadaCercana = false;
 		this.distanciaAReconocerEnTerreno = 2;
@@ -94,8 +92,8 @@ public class Jinete extends Pieza {
 
 		super(ubicacion);
 		tablero.getCelda(ubicacion).setPiezaActual(this);
-		this.ataqueCercano = new AtaqueCercanoJinete(5);
-		this.ataqueMedio = new AtaqueMedioJinete(15);
+		this.ataqueCercano = new Comportamiento(5);
+		this.ataqueMedio = new Comportamiento(15);
 		this.piezaEnemigaCercana = false;
 		this.piezaAliadaCercana = false;
 		this.distanciaAReconocerEnTerreno = 2;
@@ -203,7 +201,7 @@ public class Jinete extends Pieza {
 
 	@Override
 	public void curar(Pieza curado) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
@@ -223,7 +221,7 @@ public class Jinete extends Pieza {
 
 	@Override
 	public void actualizaPiezasEnRango(Pieza piezaCentral) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
@@ -233,17 +231,17 @@ public class Jinete extends Pieza {
 
 	@Override
 	public void actualizaRangoMedio(Pieza piezaCentral, Tablero tablero) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
 	public void actualizaRangoCercano(Pieza piezaCentral, Tablero tablero) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
 	public void actualizaRangoSoldado(Pieza piezaCentral, Tablero tablero) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
@@ -283,17 +281,17 @@ public class Jinete extends Pieza {
 
 	@Override
 	public void setPieza1(Pieza pieza1) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
 	public void setPieza2(Pieza pieza2) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
 	public void setPieza3(Pieza pieza3) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 }
 
