@@ -73,7 +73,7 @@ public class UbicarPiezaHandler implements EventHandler<ActionEvent> {
         try {
            pieceView.setPieceMap(mapView, nombrePieza,"jugador1" , x, y);
        } catch(NoSePuedeUbicarPiezaEnSectoRival exc){
-            Label label1 = new Label("No se puede ubicar la pieza en una el sector rival");
+            Label label1 = new Label("No se puede ubicar la pieza en el sector rival");
             Popup popup = new Popup();
             HBox hbox = new HBox();
             BorderPane bp = new BorderPane();

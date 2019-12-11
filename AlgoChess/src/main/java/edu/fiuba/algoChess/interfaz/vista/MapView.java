@@ -24,7 +24,7 @@ public class MapView extends Group {
     public GridPane table = new GridPane();
     public Pane[][] panes;
 
-    public MapView(HashMap<String,Image> contenedorImagenes, Juego juego) {
+    public MapView(Juego juego) {
         this.table = new GridPane();
         width = tileWidth * 20;
         heigth = tileHeigth * 20;
@@ -34,15 +34,7 @@ public class MapView extends Group {
         this.table.setPrefSize(600, 600);
         this.table.setAlignment(Pos.CENTER);
         this.tablero = juego.getTablero();
-        this.contenedorImagenes = contenedorImagenes;
-        this.addView(table);
-    }
-
-    public MapView(){
-        table = new GridPane();
-        width = tileWidth * 20;
-        heigth = tileHeigth * 20;
-        panes = new Pane[ (int)width][(int)heigth];
+        this.contenedorImagenes = new HashMap<>();
 
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 20; j++) {
@@ -54,7 +46,6 @@ public class MapView extends Group {
                 table.add(v , i, j);
             }
         }
-
         table.setStyle("-fx-padding: 20;");
         this.addView(table);
     }
