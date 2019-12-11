@@ -82,6 +82,11 @@ public class MapView extends Group {
         return panes[ubicacion.getX()][ubicacion.getY()];
     }
 
+    public void updateView(Node view) {
+        getChildren().remove(view);
+        getChildren().add(view);
+    }
+
 }
 
 

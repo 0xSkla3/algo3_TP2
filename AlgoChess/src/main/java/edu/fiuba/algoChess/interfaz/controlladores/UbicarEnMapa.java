@@ -12,7 +12,7 @@ public class UbicarEnMapa {
 	private Tablero tablero;
 	private MapView mapView;
 
-	UbicarEnMapa(Pieza unidad, Tablero tablero, MapView mapView) {
+	public UbicarEnMapa(Pieza unidad, Tablero tablero, MapView mapView) {
 		this.pieza = unidad;
 		this.tablero = tablero;
 		this.mapView = mapView;

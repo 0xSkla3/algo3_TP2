@@ -21,6 +21,7 @@ public abstract class Bando {
     public abstract boolean bandoEnemigo(Bando bando);
     public abstract boolean bandoEnemigo(BandoJugador1 bando);
     public abstract boolean bandoEnemigo(BandoJugador2 bando);
+    public abstract String getNombre();
 
     @Override
     public boolean equals(Object o) {
