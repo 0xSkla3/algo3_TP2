@@ -41,17 +41,17 @@ public class CurarPiezaHandler implements EventHandler<ActionEvent> {
 			Pieza receptor = tablero.getCelda(new Ubicacion(x,y)).getPiezaActual();
 			if(receptor.getClass() != PiezaNull.class){
 				emisor.curar(receptor);
-				alerta1seg("Curacion", "Curacion efectuada, vida restante del aliado: " + receptor.getVida().getValorActual());}
+				alerta3seg("Curacion", "Curacion efectuada, vida restante del aliado: " + receptor.getVida().getValorActual());}
 		} catch(NoSePuedeCurarUnaUnidadEnemigaException exc){
-			alerta1seg("Curacion a un Enemigo", "No se puede curar a un enemigo");
+			alerta3seg("Curacion a un Enemigo", "No se puede curar a un enemigo");
 		} catch(NoSePuedeObtenerUnaPiezaDeCeldaaNull ex){
-			alerta1seg("Curacion a vacio", "No se puede curar a una celda vacia");
+			alerta3seg("Curacion a vacio", "No se puede curar a una celda vacia");
 		} catch(NoSePuedeCurarUnaCatapultaException ex){
-		alerta1seg("Curacion a catapulta", "No se puede curar a una catapulta");
+		alerta3seg("Curacion a catapulta", "No se puede curar a una catapulta");
 	}
 	}
 
-	public void alerta1seg(String Titulo, String Texto){
+	public void alerta3seg(String Titulo, String Texto){
 
 		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 		alert.setTitle(Titulo);
@@ -60,7 +60,7 @@ public class CurarPiezaHandler implements EventHandler<ActionEvent> {
 		Thread thread = new Thread(() -> {
 			try {
 
-				Thread.sleep(1000);
+				Thread.sleep(3000);
 				if (alert.isShowing()) {
 					Platform.runLater(() -> alert.close());
 				}

@@ -44,15 +44,15 @@ public class AtacarPiezaHandler implements EventHandler<ActionEvent> {
 			Pieza receptor = tablero.getCelda(new Ubicacion(x,y)).getPiezaActual();
 			if(receptor.getClass() != PiezaNull.class){
 			emisor.atacar(receptor);
-			alerta1seg("Ataque", "Ataque efectuado, vida restante del oponente: " + receptor.getVida().getValorActual());}
+			alerta3seg("Ataque", "Ataque efectuado, vida restante del oponente: " + receptor.getVida().getValorActual());}
 		} catch(NoSePuedeAtacarUnAliadoException exc){
-			alerta1seg("Ataque a un Aliado", "No se puede atacar a un aliado");
+			alerta3seg("Ataque a un Aliado", "No se puede atacar a un aliado");
 		} catch(NoSePuedeObtenerUnaPiezaDeCeldaaNull ex){
-			alerta1seg("Ataque a vacio", "No se puede atacar a una celda vacia");
+			alerta3seg("Ataque a vacio", "No se puede atacar a una celda vacia");
 		}
 	}
 
-	public void alerta1seg(String Titulo, String Texto){
+	public void alerta3seg(String Titulo, String Texto){
 
 		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 		alert.setTitle(Titulo);
@@ -61,7 +61,7 @@ public class AtacarPiezaHandler implements EventHandler<ActionEvent> {
 		Thread thread = new Thread(() -> {
 			try {
 
-				Thread.sleep(1000);
+				Thread.sleep(3000);
 				if (alert.isShowing()) {
 					Platform.runLater(() -> alert.close());
 				}
