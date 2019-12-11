@@ -17,6 +17,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import lombok.Getter;
 
 import java.util.HashMap;
 
@@ -33,6 +34,9 @@ public class PantallaPrincipal {
 	private Juego juego;
 	private SegundaEtapa segundaEtapa;
 	private FinDeJuego finDeJuego;
+
+	@Getter
+	private Button turnoDe;
 
 	private PantallaPrincipal pantallaPrincipal;
 	
@@ -97,8 +101,8 @@ public class PantallaPrincipal {
 
 	    head.getChildren().addAll(soldado,jinete,catapulta,curandero);
 		terminarJuego(head,juego);
-	    turnOf(head,player1);
 		terminarDeColocarPiezas(head,juego);
+		turnOf(head,player1);
 
 	    return head;
 	}
@@ -133,7 +137,7 @@ public class PantallaPrincipal {
 	}
 	
 	public void cambioTurno(HBox head, String namePiece) {
-		head.getChildren().remove(4);
+		head.getChildren().remove(6);
 		
 		this.turn.setPiece(pieceView.getImageViewMax(namePiece));
 		if(this.turn == player1) {
@@ -148,12 +152,16 @@ public class PantallaPrincipal {
 	}
 	
 	public void turnOf(HBox head,PlayerView player){
-
 		this.turn = player;
 		Button button = new Button("TURNO DE: "+player.getName());
 		button.setStyle("-fx-background-color:#F7CF32");
+		this.turnoDe = button;
 		head.getChildren().add(button);
+	}
 
+	public void cambioLabelTurno(Button button, PlayerView player){
+		this.turn = player;
+		button.setText("TURNO DE: "+player.getName());
 	}
 
 	public void terminarDeColocarPiezas(HBox head,Juego juego){
@@ -163,7 +171,6 @@ public class PantallaPrincipal {
 		button.addEventHandler(MouseEvent.MOUSE_PRESSED,
 				(event)-> cambioASegundaEtapa());
 		head.getChildren().add(button);
-
 	}
 
 	public void cambioASegundaEtapa(){
@@ -186,4 +193,3 @@ public class PantallaPrincipal {
 		}
 
 	}
-
