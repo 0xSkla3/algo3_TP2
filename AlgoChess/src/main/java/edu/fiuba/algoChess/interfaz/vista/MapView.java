@@ -79,7 +79,6 @@ public class MapView extends Group {
 
     public Pane paneActual(Ubicacion ubicacion) {
         panes[ubicacion.getX()][ubicacion.getY()].setStyle("-fx-background-color: #46b1f2");
-
         return panes[ubicacion.getX()][ubicacion.getY()];
     }
 

@@ -45,7 +45,7 @@ public class PieceView{
 		pieceImage.addEventHandler(MouseEvent.MOUSE_EXITED,
 				(event) -> pieceImage.setEffect(null));
         pieceImage.addEventHandler(MouseEvent.MOUSE_PRESSED,
-				(event) -> mostrarDatosPiezaActual(piece, piezaACrear , x, y));
+				(event) -> comportamientoAlTocarPieza(map, piece, piezaACrear , x, y));
         map.addViewOnMap(pieceImage, x, y);
         juego.pasarTurno();
     }
@@ -127,5 +127,13 @@ public class PieceView{
 					"\nBando: Jugador2");
 			}
     }
+
+    public void comportamientoAlTocarPieza(MapView map, String piece, Pieza pieza, int x, int y){
+    	if (this.juego.getSegundaEtapa()){
+			moverPiezaEnMapa(map, piece, x, y);
+		}else{
+			mostrarDatosPiezaActual(piece, pieza,  x,  y);
+		}
+	}
 }
 
