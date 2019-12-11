@@ -32,6 +32,7 @@ public class PantallaPrincipal {
 	private HashMap<String,String> listaImage;
 	private Juego juego;
 	private SegundaEtapa segundaEtapa;
+	private FinDeJuego finDeJuego;
 
 	private PantallaPrincipal pantallaPrincipal;
 	
@@ -46,6 +47,7 @@ public class PantallaPrincipal {
 		this.player1 =  new PlayerView(jugador1,new BandoJugador1());
 		this.player2 =  new PlayerView(jugador2,new BandoJugador2());
 		this.segundaEtapa = new SegundaEtapa( juego,jugador1,jugador2, stage, pieceView, mapView);
+		this.finDeJuego = new FinDeJuego(juego,jugador1,jugador2, stage, pieceView, mapView);
 		this.pantallaPrincipal = this;
 
 		initialPhase();
@@ -94,6 +96,7 @@ public class PantallaPrincipal {
 	    menuPiece(curandero, "Curandero",head);
 
 	    head.getChildren().addAll(soldado,jinete,catapulta,curandero);
+		terminarJuego(head,juego);
 	    turnOf(head,player1);
 		terminarDeColocarPiezas(head,juego);
 
@@ -167,4 +170,20 @@ public class PantallaPrincipal {
 		this.juego.comenzarSegundoStage();
 		this.segundaEtapa.iniciarFase();
 	}
-}
+
+	public void terminarJuego(HBox head,Juego juego) {
+
+		Button button = new Button("Terminar Partida");
+		//button.setStyle("-fx-background-color:#F7CF32");
+		button.addEventHandler(MouseEvent.MOUSE_PRESSED,
+				(event) -> finalizar());
+		head.getChildren().add(button);
+	}
+
+		public void finalizar(){
+			this.juego.terminarJuego();
+			this.finDeJuego.iniciarFase();
+		}
+
+	}
+

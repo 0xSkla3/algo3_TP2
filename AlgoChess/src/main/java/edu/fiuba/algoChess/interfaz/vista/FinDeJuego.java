@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 import java.util.HashMap;
 
-public class SegundaEtapa extends HBox {
+public class FinDeJuego {
 
 	private final HashMap<String, Class> listaPiezas;
 	private Stage stage;
@@ -23,9 +23,8 @@ public class SegundaEtapa extends HBox {
 	private PlayerView turn;
 	private HashMap<String,String> listaImage;
 	private Juego juego;
-	private FinDeJuego finDeJuego;
 
-	public SegundaEtapa(Juego juego, String jugador1, String jugador2, Stage stage, PieceView pieceView,
+	public FinDeJuego(Juego juego, String jugador1, String jugador2, Stage stage, PieceView pieceView,
 						MapView mapView) {
 
 		this.juego = juego;
@@ -36,8 +35,6 @@ public class SegundaEtapa extends HBox {
 
 		this.player1 =  new PlayerView(jugador1,new BandoJugador1());
 		this.player2 =  new PlayerView(jugador2,new BandoJugador2());
-
-		this.finDeJuego = new FinDeJuego(juego,jugador1,jugador2, stage, pieceView, mapView);
 	}
 
 	public void iniciarFase(){
@@ -61,32 +58,15 @@ public class SegundaEtapa extends HBox {
 	public HBox head() {
 		HBox head = new HBox();
 		head.setId("head");
-		terminarJuego(head,juego);
-		turnOf(head,player1);
+		mensajeFin(head);
 		return head;
 	}
 
-	public void turnOf(HBox head,PlayerView player){
+	public void mensajeFin(HBox head){
 
-		this.turn = player;
-		Button button = new Button("TURNO DE: "+player.getName());
+		Button button = new Button("Partida Terminada, gracias por jugar");
 		button.setStyle("-fx-background-color:#F7CF32");
 		head.getChildren().add(button);
 
 	}
-
-	public void terminarJuego(HBox head,Juego juego) {
-
-		Button button = new Button("Terminar Partida");
-		//button.setStyle("-fx-background-color:#F7CF32");
-		button.addEventHandler(MouseEvent.MOUSE_PRESSED,
-				(event) -> finalizar());
-		head.getChildren().add(button);
-	}
-
-	public void finalizar(){
-		this.juego.terminarJuego();
-		this.finDeJuego.iniciarFase();
-	}
-
 }
