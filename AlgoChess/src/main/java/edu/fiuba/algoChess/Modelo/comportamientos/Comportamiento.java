@@ -8,7 +8,7 @@ public class Comportamiento {
 	protected double valorComportamiento;
 	protected DistanciaRelativa distanciaRelativa;
 
-	public Comportamiento(int valorComportamiento){
+	public Comportamiento(double valorComportamiento){
 		this.valorComportamiento = valorComportamiento;
 	}
 

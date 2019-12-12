@@ -2,7 +2,6 @@ package edu.fiuba.algoChess.Modelo.entidades;
 
 import edu.fiuba.algoChess.Modelo.bandos.Bando;
 import edu.fiuba.algoChess.Modelo.batallones.Batalloneable;
-import edu.fiuba.algoChess.Modelo.comportamientos.Atacable;
 import edu.fiuba.algoChess.Modelo.entorno.*;
 import edu.fiuba.algoChess.Modelo.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;
 import edu.fiuba.algoChess.Modelo.rangos.Rango;
@@ -17,7 +16,7 @@ import lombok.Setter;
 import java.util.ArrayList;
 
 @NoArgsConstructor
-public abstract class Pieza extends Observable implements Movible, Atacable, Batalloneable {
+public abstract class Pieza extends Observable implements Movible, Batalloneable {
 
 	@Setter
 	@Getter
@@ -196,4 +195,19 @@ public abstract class Pieza extends Observable implements Movible, Atacable, Bat
 		return this.bando.bandoEnemigo(bando);
 	}
 
+	public Pieza obtenerPiezaArriba(){
+		return ubicacion.obtenerPieza(ubicacion.getUbicacionArriba());
+	}
+
+	public Pieza obtenerPiezaAbajo(){
+		return ubicacion.obtenerPieza(ubicacion.getUbicacionAbajo());
+	}
+
+	public Pieza obtenerPiezaDerecha(){
+		return ubicacion.obtenerPieza(ubicacion.getUbicacionDerecha());
+	}
+
+	public Pieza obtenerPiezaIzquierda(){
+		return ubicacion.obtenerPieza(ubicacion.getUbicacionIzquierda());
+	}
 }

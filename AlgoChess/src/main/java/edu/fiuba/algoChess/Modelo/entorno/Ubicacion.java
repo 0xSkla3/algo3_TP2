@@ -1,5 +1,8 @@
 package edu.fiuba.algoChess.Modelo.entorno;
 
+import edu.fiuba.algoChess.Modelo.entidades.Jinete;
+import edu.fiuba.algoChess.Modelo.entidades.Pieza;
+import edu.fiuba.algoChess.Modelo.excepciones.OperacionInvalidaException;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,6 +16,8 @@ public class Ubicacion {
 	@Getter
 	@Setter
 	private final int y;
+
+	private ObservadorTablero observable = new ObservadorTablero();
 
 	public Ubicacion(int x, int y) {
 		this.x = x;
@@ -49,4 +54,54 @@ public class Ubicacion {
 		return this.y;
 	};
 
+	public Celda obtenerCelda(Ubicacion ubicacion){
+		return this.observable.obtenerCelda(ubicacion);
+	}
+	public ObservadorTablero getObservable(){
+		return this.observable;
+	}
+
+
+	public void reconocerTerrenoParaAtacarADistanciaMedia(Jinete jinete, Pieza pieza, int distanciaAReconocerEnTerreno, Ubicacion ubicacionJinete) {
+		int coordenadaXJinete = ubicacionJinete.x;
+		int coordenadaYJinete = ubicacionJinete.y;
+		boolean piezaEnemigaCercana = false;
+		boolean piezaAliadaCercana = false;
+
+		for (int i = coordenadaXJinete - distanciaAReconocerEnTerreno; i <= coordenadaXJinete + distanciaAReconocerEnTerreno; i++) {
+			if (i < 1 || i > 20) {
+				continue;
+			}
+			for (int j = coordenadaYJinete - distanciaAReconocerEnTerreno; j <= coordenadaYJinete + distanciaAReconocerEnTerreno; j++) {
+				if (j < 1 || j > 20) {
+					continue;
+				}
+				Ubicacion ubicacion = new Ubicacion(i, j);
+				if (ubicacion.equals(ubicacionJinete)) {
+					continue;
+				}
+
+				Celda celda = obtenerCelda(ubicacion); //campoDeBatalla.getCelda(ubicacion);
+				if ((celda.piezaBandoAliado(jinete.getBando())) ) {
+					piezaAliadaCercana = true;
+				} else if ((celda.piezaBandoEnemigo(jinete.getBando()))) {
+					piezaEnemigaCercana = true;
+				}
+			}
+		}
+
+		if(piezaEnemigaCercana && !piezaAliadaCercana){
+
+			throw new OperacionInvalidaException("Operacion invalida");
+
+		}
+
+		jinete.concretarAtaqueMedio(pieza);
+
+	}
+
+	public Pieza obtenerPieza(Ubicacion ubicacion) {
+		return this.observable.obtenerPieza(ubicacion);
+	}
 }
+

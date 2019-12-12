@@ -6,14 +6,13 @@ import edu.fiuba.algoChess.Modelo.bandos.BandoJugador2;
 import edu.fiuba.algoChess.Modelo.entidades.Pieza;
 import edu.fiuba.algoChess.Modelo.entidades.Soldado;
 import edu.fiuba.algoChess.Modelo.entidades.*;
+import edu.fiuba.algoChess.Modelo.entorno.ObservadorTablero;
 import edu.fiuba.algoChess.Modelo.entorno.Tablero;
 import edu.fiuba.algoChess.Modelo.entorno.Ubicacion;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.stream.Stream;
 
 public class Juego {
 
@@ -56,6 +55,8 @@ public class Juego {
 	@Getter
 	@Setter
 	Pieza receptor;
+
+	private ObservadorTablero observadorTablero;
 
 	public static final Soldado soldado = new Soldado();
 

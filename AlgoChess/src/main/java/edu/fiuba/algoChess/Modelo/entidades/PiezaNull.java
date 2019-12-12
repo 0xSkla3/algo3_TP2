@@ -1,6 +1,5 @@
 package edu.fiuba.algoChess.Modelo.entidades;
 import edu.fiuba.algoChess.Modelo.bandos.Bando;
-import edu.fiuba.algoChess.Modelo.comportamientos.Ataque;
 import edu.fiuba.algoChess.Modelo.entorno.*;
 import edu.fiuba.algoChess.Modelo.batallones.BatallonNull;
 import edu.fiuba.algoChess.Modelo.batallones.Batalloneable;
@@ -107,7 +106,7 @@ public class PiezaNull extends Pieza {
 		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
-	public void recibirAtaque(Ataque ataque){
+	public void recibirAtaque(double ataque){
 		throw new OperacionInvalidaException("Operacion invalida");
 	}
 

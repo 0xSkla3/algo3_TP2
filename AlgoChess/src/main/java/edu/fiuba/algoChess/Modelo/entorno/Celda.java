@@ -58,4 +58,12 @@ public class Celda {
 	    piezaAGuardar.setBandoCeldaActual(this.sectorDelJugador);
     }
 
+    public boolean piezaBandoAliado(Bando bando){
+		return this.piezaActual.bandoAliado(bando);
+	}
+
+	public boolean piezaBandoEnemigo(Bando bando){
+		return this.piezaActual.bandoEnemigo(bando);
+	}
+
 }

@@ -46,10 +46,7 @@ public class Jinete extends Pieza {
 		this.piezaEnemigaCercana = false;
 		this.piezaAliadaCercana = false;
 		this.distanciaAReconocerEnTerreno = 2;
-		this.reconocedorDeTerritorio = new ReconocedorDeTerritorio(tablero);
 	}
-
-	private ReconocedorDeTerritorio reconocedorDeTerritorio;
 
 	public void mover(Tablero campoDeBatalla, Ubicacion ubicacion) {
 		campoDeBatalla.ubicarEnCeldaFaseInicial(this, ubicacion);
@@ -130,11 +127,6 @@ public class Jinete extends Pieza {
 		throw new PiezaActualNoFormaBatallonDeSoldadosException("Un jinete no se puede unir a un soldado");
 	}
 
-
-//	public void atacar(DistanciaRelativa distancia, Pieza atacado) {
-//	}
-
-
 	@Override
 	public void ejecutarComportamientoPorDistancia(DistanciaCercana distancia, Pieza pieza) {
 			this.bando.atacar(pieza, this.ataqueCercano, pieza.getBando());
@@ -143,7 +135,7 @@ public class Jinete extends Pieza {
 
 	@Override
 	public void ejecutarComportamientoPorDistancia(DistanciaMedia distancia, Pieza pieza) {
-		this.reconocedorDeTerritorio.reconocerTerreno(this, distanciaAReconocerEnTerreno, pieza);
+		this.ubicacion.reconocerTerrenoParaAtacarADistanciaMedia(this, pieza, distanciaAReconocerEnTerreno, ubicacion);
 	}
 
 

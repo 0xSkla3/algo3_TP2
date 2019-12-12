@@ -1,4 +1,5 @@
 package edu.fiuba.algoChess.Modelo.entidades;
+import edu.fiuba.algoChess.Modelo.comportamientos.AtaqueCatapulta;
 import edu.fiuba.algoChess.Modelo.entorno.*;
 import edu.fiuba.algoChess.Modelo.bandos.Bando;
 import edu.fiuba.algoChess.Modelo.batallones.Batalloneable;
@@ -16,15 +17,17 @@ import java.util.Collection;
 
 public class Catapulta extends Pieza {
 
-	private Comportamiento ataque;
+	private AtaqueCatapulta ataque;
 	private int danio = 20;
 	public int costo = 5;
 	private Salud vida;
+	//private BandoNeutral bandoDanioNeutral;
 
 	public Catapulta(Ubicacion ubicacion, Bando bando, Tablero tablero){
 		super(5,50,ubicacion,bando);
 		tablero.ubicarEnCeldaFaseInicial(this, ubicacion);
-		ataque = new Comportamiento(20);
+		ataque = new AtaqueCatapulta(20);
+	//	this.bandoDanioNeutral = new BandoNeutral();
 	}
 
 	public Catapulta(int costo, int vida) {
@@ -110,12 +113,13 @@ public class Catapulta extends Pieza {
 
 	@Override
 	public void ejecutarComportamientoPorDistancia(DistanciaMedia distancia, Pieza pieza) {
-		this.bando.atacar(pieza, this.ataque, pieza.getBando());
+		throw new FueraDeRangoParaEjecutarComportamientoException("Pieza fuera de rango");
 	}
 
 	@Override
 	public void ejecutarComportamientoPorDistancia(DistanciaLejana distancia, Pieza pieza) {
-		throw new FueraDeRangoParaEjecutarComportamientoException("Pieza fuera de rango");
+		this.ataque.atacar(pieza);
+		//this.bandoDanioNeutral.atacar(pieza, this.ataque, pieza.getBando());
 	}
 
 	@Override
@@ -212,4 +216,9 @@ public class Catapulta extends Pieza {
 	public void setPieza3(Pieza pieza3) {
 		throw new OperacionInvalidaException("Operacion invalida");
 	}
+
+	public AtaqueCatapulta getAtaque(){
+		return this.ataque;
+	}
+
 }

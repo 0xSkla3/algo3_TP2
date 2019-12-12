@@ -42,6 +42,12 @@ public class Tablero {
 			}
 		}
 		this.asignarSectores(bandoJugador1, bandoJugador2);
+		this.inicializarObservadorTablero();
+	}
+
+	private void inicializarObservadorTablero() {
+		ObservadorTablero observadorTablero = new ObservadorTablero();
+		observadorTablero.setTablero(this);
 	}
 
 	public void asignarSectores(Bando bandoJugador1,Bando bandoJugador2){
