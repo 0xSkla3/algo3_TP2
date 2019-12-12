@@ -4,6 +4,7 @@ import edu.fiuba.algoChess.Modelo.comportamientos.Ataque;
 import edu.fiuba.algoChess.Modelo.entorno.*;
 import edu.fiuba.algoChess.Modelo.batallones.BatallonNull;
 import edu.fiuba.algoChess.Modelo.batallones.Batalloneable;
+import edu.fiuba.algoChess.Modelo.excepciones.OperacionInvalidaException;
 import edu.fiuba.algoChess.Modelo.rangos.Agrupable;
 import edu.fiuba.algoChess.Modelo.rangos.Rango;
 import edu.fiuba.algoChess.Modelo.salud.SaludMuerto;
@@ -84,28 +85,30 @@ public class PiezaNull extends Pieza {
 
 	@Override
 	public void ejecutarComportamientoPorDistancia(DistanciaCercana distancia, Pieza pieza) {
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
 	public void ejecutarComportamientoPorDistancia(DistanciaMedia distancia, Pieza pieza) {
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
 	public void ejecutarComportamientoPorDistancia(DistanciaLejana distancia, Pieza pieza) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 	@Override
 	public void atacar(Pieza atacado) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
 	public void curar(Pieza curado) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	public void recibirAtaque(Ataque ataque){
-		// lanza exception "no se puede atacar a casillero vacio
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
@@ -134,7 +137,7 @@ public class PiezaNull extends Pieza {
 	}
 	@Override
 	public void moverPiezaDeBatallon(Tablero campoDeBatalla, Ubicacion ubicacion) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	public boolean bandoAliado(Bando bando){
@@ -162,7 +165,7 @@ public class PiezaNull extends Pieza {
 
 	@Override
 	public void actualizaPiezasEnRango(Pieza piezaCentral) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
@@ -172,17 +175,17 @@ public class PiezaNull extends Pieza {
 
 	@Override
 	public void actualizaRangoMedio(Pieza piezaCentral, Tablero tablero) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
 	public void actualizaRangoCercano(Pieza piezaCentral, Tablero tablero) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
 	public void actualizaRangoSoldado(Pieza piezaCentral, Tablero tablero) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
@@ -222,16 +225,16 @@ public class PiezaNull extends Pieza {
 
 	@Override
 	public void setPieza1(Pieza pieza1) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
 	public void setPieza2(Pieza pieza2) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
 	public void setPieza3(Pieza pieza3) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 }

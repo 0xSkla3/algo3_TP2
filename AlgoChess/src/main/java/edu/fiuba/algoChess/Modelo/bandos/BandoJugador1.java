@@ -12,7 +12,6 @@ public class BandoJugador1 extends Bando{
 
     @Override
     public void atacar(Pieza pieza, Comportamiento comportamiento, Bando bando){
-
         bando.atacar(pieza, comportamiento, this);
     };
 

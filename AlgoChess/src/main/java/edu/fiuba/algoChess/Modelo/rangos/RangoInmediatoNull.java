@@ -3,6 +3,7 @@ package edu.fiuba.algoChess.Modelo.rangos;
 import edu.fiuba.algoChess.Modelo.batallones.Batalloneable;
 import edu.fiuba.algoChess.Modelo.entidades.Pieza;
 import edu.fiuba.algoChess.Modelo.entorno.Tablero;
+import edu.fiuba.algoChess.Modelo.excepciones.OperacionInvalidaException;
 
 import java.util.ArrayList;
 
@@ -16,7 +17,7 @@ public class RangoInmediatoNull implements RangoNull {
 
 	@Override
 	public void actualizaPiezasEnRango(Pieza piezaCentral) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
@@ -26,17 +27,17 @@ public class RangoInmediatoNull implements RangoNull {
 
 	@Override
 	public void actualizaRangoMedio(Pieza piezaCentral, Tablero tablero) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
 	public void actualizaRangoCercano(Pieza piezaCentral, Tablero tablero) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
 	public void actualizaRangoSoldado(Pieza piezaCentral, Tablero tablero) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override

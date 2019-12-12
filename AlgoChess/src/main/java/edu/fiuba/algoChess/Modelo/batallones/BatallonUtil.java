@@ -5,6 +5,7 @@ import edu.fiuba.algoChess.Modelo.entorno.Ubicacion;
 import edu.fiuba.algoChess.Modelo.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;
 import edu.fiuba.algoChess.Modelo.entidades.Movible;
 import edu.fiuba.algoChess.Modelo.entidades.Pieza;
+import edu.fiuba.algoChess.Modelo.excepciones.OperacionInvalidaException;
 import edu.fiuba.algoChess.Modelo.rangos.Agrupable;
 import lombok.*;
 
@@ -93,7 +94,7 @@ public class BatallonUtil extends Batallon implements Movible, Agrupable {
 
 	@Override
 	public void moverPiezaDeBatallon(Tablero campoDeBatalla, Ubicacion ubicacion) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
@@ -103,17 +104,17 @@ public class BatallonUtil extends Batallon implements Movible, Agrupable {
 
 	@Override
 	public void actualizaRangoMedio(Pieza piezaCentral, Tablero tablero) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
 	public void actualizaRangoCercano(Pieza piezaCentral, Tablero tablero) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
 	public void actualizaRangoSoldado(Pieza piezaCentral, Tablero tablero) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override

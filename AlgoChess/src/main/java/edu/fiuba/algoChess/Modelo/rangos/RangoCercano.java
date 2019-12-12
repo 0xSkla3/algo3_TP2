@@ -5,6 +5,7 @@ import edu.fiuba.algoChess.Modelo.entidades.Pieza;
 import edu.fiuba.algoChess.Modelo.entorno.Celda;
 import edu.fiuba.algoChess.Modelo.entorno.Tablero;
 import edu.fiuba.algoChess.Modelo.entorno.Ubicacion;
+import edu.fiuba.algoChess.Modelo.excepciones.OperacionInvalidaException;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,9 +27,7 @@ public class RangoCercano implements Rango{
 
 	@Override
 	public Rango actualizaRangoInmediato(Pieza piezaCentral, Tablero tablero) {
-
-		//Excepcion
-		return null;
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
@@ -40,7 +39,7 @@ public class RangoCercano implements Rango{
 
 	@Override
 	public void actualizaRangoMedio(Pieza piezaCentral, Tablero tablero) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
@@ -61,7 +60,7 @@ public class RangoCercano implements Rango{
 
 	@Override
 	public void actualizaRangoSoldado(Pieza piezaCentral, Tablero tablero) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
