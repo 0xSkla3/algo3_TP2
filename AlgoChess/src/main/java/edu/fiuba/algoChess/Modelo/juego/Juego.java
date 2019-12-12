@@ -71,11 +71,6 @@ public class Juego {
 			this.activoBando1 = true;
 		}
 
-		public static void main (String[]args){
-
-		}
-
-
 		public Pieza crearPieza (String nombre, Ubicacion ubicacion){
 
 			Pieza pieza = new PiezaNull();
