@@ -7,6 +7,7 @@ import edu.fiuba.algoChess.Modelo.batallones.Batalloneable;
 import edu.fiuba.algoChess.Modelo.batallones.BatallonNull;
 import edu.fiuba.algoChess.Modelo.entidades.Pieza;
 import edu.fiuba.algoChess.Modelo.entorno.Tablero;
+import edu.fiuba.algoChess.Modelo.excepciones.OperacionInvalidaException;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -77,12 +78,12 @@ public class RangoSoldado extends RangoInmediato implements Rango {
 
 	@Override
 	public void actualizaRangoMedio(Pieza piezaCentral, Tablero tablero) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
 	public void actualizaRangoCercano(Pieza piezaCentral, Tablero tablero) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override

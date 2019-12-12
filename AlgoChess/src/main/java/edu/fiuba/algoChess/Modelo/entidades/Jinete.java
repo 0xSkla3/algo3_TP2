@@ -131,8 +131,8 @@ public class Jinete extends Pieza {
 	}
 
 
-	public void atacar(DistanciaRelativa distancia, Pieza atacado) {
-	}
+//	public void atacar(DistanciaRelativa distancia, Pieza atacado) {
+//	}
 
 
 	@Override

@@ -3,6 +3,7 @@ package edu.fiuba.algoChess.Modelo.batallones;
 import edu.fiuba.algoChess.Modelo.entidades.Pieza;
 import edu.fiuba.algoChess.Modelo.entorno.Tablero;
 import edu.fiuba.algoChess.Modelo.entorno.Ubicacion;
+import edu.fiuba.algoChess.Modelo.excepciones.OperacionInvalidaException;
 import edu.fiuba.algoChess.Modelo.rangos.Rango;
 import edu.fiuba.algoChess.Modelo.rangos.RangoInmediatoNull;
 import lombok.Getter;
@@ -34,23 +35,23 @@ public class BatallonNull extends Batallon {
 	}
 
 	public void moverseALaDerecha(Tablero campoDeBatalla) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	public void moverseALaIzquierda(Tablero campoDeBatalla) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	public void moverseArriba(Tablero campoDeBatalla) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	public void moverseAbajo(Tablero campoDeBatalla) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	public void mover(Tablero campoDeBatalla, Ubicacion ubicacion) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
@@ -80,7 +81,7 @@ public class BatallonNull extends Batallon {
 
 	@Override
 	public void moverPiezaDeBatallon(Tablero campoDeBatalla, Ubicacion ubicacion) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	public Rango actualizaRangoInmediato(Pieza piezaCentral, Tablero tablero) {
@@ -88,22 +89,22 @@ public class BatallonNull extends Batallon {
 	}
 
 	public void actualizaPiezasEnRango(Pieza piezaCentral) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
 	public void actualizaRangoMedio(Pieza piezaCentral, Tablero tablero) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
 	public void actualizaRangoCercano(Pieza piezaCentral, Tablero tablero) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 
 	public void actualizaRangoSoldado(Pieza piezaCentral, Tablero tablero) {
-
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	public Batalloneable darDeAltaBatallon() {

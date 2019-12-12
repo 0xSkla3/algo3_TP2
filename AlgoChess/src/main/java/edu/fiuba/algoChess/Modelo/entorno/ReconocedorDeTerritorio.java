@@ -2,6 +2,7 @@ package edu.fiuba.algoChess.Modelo.entorno;
 
 import edu.fiuba.algoChess.Modelo.entidades.Jinete;
 import edu.fiuba.algoChess.Modelo.entidades.Pieza;
+import edu.fiuba.algoChess.Modelo.excepciones.OperacionInvalidaException;
 
 public class ReconocedorDeTerritorio {
 
@@ -42,7 +43,7 @@ public class ReconocedorDeTerritorio {
 
             if(piezaEnemigaCercana && !piezaAliadaCercana){
 
-                //throw new AtaqueInvalidoException
+                throw new OperacionInvalidaException("Operacion invalida");
                 return;
             }
 
