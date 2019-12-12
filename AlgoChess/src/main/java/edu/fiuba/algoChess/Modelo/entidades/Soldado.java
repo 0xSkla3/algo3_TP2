@@ -39,20 +39,6 @@ public class Soldado extends Pieza implements Movible {
 		tablero.ubicarEnCeldaFaseInicial(this, ubicacion);
 	}
 
-	public Soldado(Ubicacion ubicacion, Tablero tablero) {
-		super(ubicacion);
-		this.setVida(new SaludLlena(75));
-		this.ataqueCercano = new Comportamiento(10);
-		this.rango = new RangoSoldado(this, tablero);
-	}
-
-	public Soldado(Ubicacion ubicacion,Bando bando){
-
-		super(2,75,ubicacion,bando);
-		danioCercano = 10;
-		this.ataqueCercano = new Comportamiento(10);
-	}
-
 	public Rango actualizaRango(Tablero tablero) {
 		this.getRango().actualizaRangoSoldado(this,tablero);
 		return this.getRango();
@@ -65,11 +51,6 @@ public class Soldado extends Pieza implements Movible {
 
 	@Override
 	public ArrayList<Pieza> unirABatallonDeSoldado(ArrayList<Pieza> stackDeUnion) {
-		/*if (stackDeUnion == null){
-			ArrayList<Pieza> nuevoStackDeUnion = new ArrayList<>();
-			nuevoStackDeUnion.add(this);
-			return nuevoStackDeUnion;
-		} */
 		stackDeUnion.add(this);
 		return stackDeUnion;
 	}
@@ -82,7 +63,6 @@ public class Soldado extends Pieza implements Movible {
 			nuevoStack.add(this);
 			return  nuevoStack;
 		}
-
 		stack.add(this);
 		return stack;
 	}

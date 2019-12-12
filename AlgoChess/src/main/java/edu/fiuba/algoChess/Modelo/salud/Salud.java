@@ -19,7 +19,7 @@ public abstract class Salud implements Curable, Herible {
 	public abstract Salud curar(double salud);
 
 	public Salud morir(){
-		this.valorActual = 0;
+		this.valorActual = 0.0;
 		return new SaludMuerto();
 	}
 

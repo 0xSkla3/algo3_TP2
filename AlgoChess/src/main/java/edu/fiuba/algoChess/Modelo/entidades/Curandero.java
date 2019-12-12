@@ -20,23 +20,6 @@ public class Curandero extends Pieza {
 	@Setter
 	private Comportamiento curacion;
 
-	public Curandero(Ubicacion ubicacion, int costo, int vida, Bando bando) {
-		super(costo,vida,ubicacion,bando);
-	}
-
-	public Curandero(){
-
-		super(2,75);
-		this.curacion = new Comportamiento(15);
-
-	}
-
-	public Curandero(Ubicacion ubicacion,Bando bando){
-
-		super(2,75,ubicacion,bando);
-		this.curacion = new Comportamiento(15);
-	}
-
 	public Curandero(Ubicacion ubicacion, Bando bando, Tablero tablero){
 
 		super(2,75,ubicacion,bando);
@@ -44,10 +27,6 @@ public class Curandero extends Pieza {
 		this.curacion = new Comportamiento(15);
 
 	}
-
-	public void curar(DistanciaRelativa distancia, Pieza aCurar){
-
-	};
 
 	@Override
 	public Rango actualizaRango(Tablero tablero) {
@@ -240,6 +219,5 @@ public class Curandero extends Pieza {
 	public void setPieza3(Pieza pieza3) {
 		throw new OperacionInvalidaException("Operacion invalida");
 	}
-
 
 }

@@ -23,45 +23,19 @@ public class Jinete extends Pieza {
 
 	@Getter
 	@Setter
-	private Comportamiento ataqueMedio = new Comportamiento(15);
+	private Comportamiento ataqueMedio;
 
 	@Getter
 	@Setter
-	private Comportamiento ataqueCercano = new Comportamiento(5);
+	private Comportamiento ataqueCercano;
 
-//	@Getter
-//	@Setter
 	public boolean piezaAliadaCercana;
 
-//	@Getter
-//	@Setter
 	public boolean piezaEnemigaCercana;
 
 	@Getter
 	@Setter
 	private int distanciaAReconocerEnTerreno = 2;
-
-	private ReconocedorDeTerritorio reconocedorDeTerritorio;
-
-	public Jinete(Ubicacion ubicacion, Bando bando) {
-
-		super(3, 100, ubicacion, bando);
-		this.ataqueCercano = new Comportamiento(5);
-		this.ataqueMedio = new Comportamiento(15);
-		this.piezaEnemigaCercana = false;
-		this.piezaAliadaCercana = false;
-	}
-
-
-	public Jinete(Ubicacion ubicacion) {
-		super(ubicacion);
-	}
-
-	public void mover(Tablero campoDeBatalla, Ubicacion ubicacion) {
-		campoDeBatalla.ubicarEnCeldaFaseInicial(this, ubicacion);
-		campoDeBatalla.eliminar(this.ubicacion);
-		this.ubicacion = ubicacion;
-	}
 
 	public Jinete(Ubicacion ubicacion, Bando bando, Tablero tablero) {
 
@@ -75,16 +49,12 @@ public class Jinete extends Pieza {
 		this.reconocedorDeTerritorio = new ReconocedorDeTerritorio(tablero);
 	}
 
-	public Jinete(Ubicacion ubicacion, Tablero tablero) {
+	private ReconocedorDeTerritorio reconocedorDeTerritorio;
 
-		super(ubicacion);
-		tablero.getCelda(ubicacion).setPiezaActual(this);
-		this.ataqueCercano = new Comportamiento(5);
-		this.ataqueMedio = new Comportamiento(15);
-		this.piezaEnemigaCercana = false;
-		this.piezaAliadaCercana = false;
-		this.distanciaAReconocerEnTerreno = 2;
-
+	public void mover(Tablero campoDeBatalla, Ubicacion ubicacion) {
+		campoDeBatalla.ubicarEnCeldaFaseInicial(this, ubicacion);
+		campoDeBatalla.eliminar(this.ubicacion);
+		this.ubicacion = ubicacion;
 	}
 
 	@Override
