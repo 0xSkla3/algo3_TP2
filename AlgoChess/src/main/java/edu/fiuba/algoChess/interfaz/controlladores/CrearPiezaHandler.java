@@ -42,7 +42,6 @@ public class CrearPiezaHandler implements EventHandler<ActionEvent> {
 		this.juego = juego;
 		this.ubicacion = new Ubicacion(x,y);
 		this.pieza = juego.crearPieza(pieza, ubicacion);
-		juego.getJugadorActivo().adquirirPieza(this.pieza);
 
 	}
 

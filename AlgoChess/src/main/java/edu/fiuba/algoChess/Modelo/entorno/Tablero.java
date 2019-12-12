@@ -12,7 +12,7 @@ import lombok.Setter;
 
 import java.util.*;
 
-@NoArgsConstructor
+//@NoArgsConstructor
 public class Tablero {
 
 	@Getter
@@ -26,7 +26,6 @@ public class Tablero {
 	public Tablero(Bando bandoJugador1, Bando  bandoJugador2) {
 		this.campoDeBatalla = new HashMap<>();
 		this.inicializarTablero(bandoJugador1, bandoJugador2);
-		//this.celdaActiva=this.campoDeBatalla.get(new Ubicacion(1,1));
 	}
 
 	public void inicializarTablero(Bando bandoJugador1, Bando  bandoJugador2) {
@@ -116,4 +115,3 @@ public class Tablero {
 	}
 
 }
-

@@ -50,13 +50,7 @@ public class PlayerView {
 		return this.player.getNombre();
 	}
 
-	//public void setBando(Bando bandoJugador) { this.bandoJugador = bandoJugador; }
-
 	public Bando getBandoJugador(){
 		return this.player.getBando();
-	}
-
-	public String nombreBando() {
-		return this.player.getBando().getClass() == BandoJugador1.class ? "jugador1" : "jugador2";
 	}
 }

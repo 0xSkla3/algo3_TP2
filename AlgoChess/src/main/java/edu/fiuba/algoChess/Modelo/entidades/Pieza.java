@@ -84,7 +84,6 @@ public abstract class Pieza extends Observable implements Movible, Atacable, Bat
 
  	public void aumentarVida(double aumento) {
 		this.vida.curar(aumento);
- 		//this.setVida(this.getVida().curar(aumento));
 	}
 
 	public void recibirAtaque(double ataque){

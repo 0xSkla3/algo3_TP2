@@ -1,8 +1,6 @@
 package edu.fiuba.algoChess.interfaz.controlladores;
+
 import edu.fiuba.algoChess.Modelo.bandos.Bando;
-import edu.fiuba.algoChess.Modelo.entidades.Pieza;
-import edu.fiuba.algoChess.Modelo.entorno.Tablero;
-import edu.fiuba.algoChess.Modelo.entorno.Ubicacion;
 import edu.fiuba.algoChess.Modelo.excepciones.NoSePuedeUbicarPiezaEnSectoRival;
 import edu.fiuba.algoChess.Modelo.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;
 import edu.fiuba.algoChess.Modelo.juego.Juego;
@@ -11,21 +9,13 @@ import edu.fiuba.algoChess.interfaz.vista.PantallaPrincipal;
 import edu.fiuba.algoChess.interfaz.vista.PieceView;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.geometry.Pos;
+import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.event.EventHandler;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.stage.Popup;
-import javafx.stage.Stage;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 
-
-import java.awt.*;
-import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Optional;
 
@@ -67,7 +57,7 @@ public class UbicarPiezaHandler implements EventHandler<ActionEvent> {
         int x = Integer.parseInt((tFX.getText()));
         int y = Integer.parseInt((tFY.getText()));
         try {
-            pieceView.setPieceMap(mapView, nombrePieza,"jugador1" , x, y);
+            pieceView.setPieceMap(mapView, nombrePieza, x, y);
             pantallaPrincipal.cambioTurno(head, nombrePieza);
             stageUbicar.close();
        } catch(NoSePuedeUbicarPiezaEnSectoRival exc){
@@ -98,5 +88,4 @@ public class UbicarPiezaHandler implements EventHandler<ActionEvent> {
         thread.start();
         Optional<ButtonType> result = alert.showAndWait();
     }
-        
-    }
+}

@@ -5,14 +5,10 @@ import edu.fiuba.algoChess.Modelo.entorno.Tablero;
 import edu.fiuba.algoChess.Modelo.juego.Juego;
 import edu.fiuba.algoChess.interfaz.controlladores.AtacarPiezaHandler;
 import edu.fiuba.algoChess.interfaz.controlladores.CurarPiezaHandler;
-import edu.fiuba.algoChess.interfaz.controlladores.UbicarPiezaHandler;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -73,7 +69,7 @@ public class MenuComportamiento {
 		batallonear.setStyle("-fx-background-color:#F1C40F;");
 		batallonear.setOnAction(e -> {
 			generarBatallon(emisor);
-			alerta1seg("Batallon", "Batallon Creado");
+			//alerta1seg("Batallon", "Batallon Creado");
 			stage.close();
 		});
 
@@ -89,9 +85,6 @@ public class MenuComportamiento {
 		emisor.darDeAltaBatallon();
 	}
 
-	public void menuComportamientoBatallon() {
-	}
-
 	public void menuComportamientoJinete(){
 	Stage stage = new Stage();
 	VBox vbox = new VBox();
@@ -99,7 +92,6 @@ public class MenuComportamiento {
 	Button atacar = new Button("Atacar");
 		atacar.setStyle("-fx-background-color:#F1C40F;");
 		atacar.setOnAction(e -> { menuAtacar();
-
 		stage.close();
 	});
 
@@ -118,9 +110,7 @@ public class MenuComportamiento {
 
 		Button atacar = new Button("Atacar");
 		atacar.setStyle("-fx-background-color:#F1C40F;");
-		atacar.setOnAction(e -> {
-			getImagenPieza().addEventHandler(MouseEvent.MOUSE_PRESSED,(event)-> menuAtacar());
-			atacar(emisor, receptor);
+		atacar.setOnAction(e -> { menuAtacar();
 			stage.close();
 		});
 
@@ -139,8 +129,7 @@ public class MenuComportamiento {
 
 		Button curar = new Button("Curar");
 		curar.setStyle("-fx-background-color:#F1C40F;");
-		curar.setOnAction(e -> {
-			getImagenPieza().addEventHandler(MouseEvent.MOUSE_PRESSED,(event)-> menuCurar());
+		curar.setOnAction(e -> { menuCurar();
 			stage.close();
 		});
 
@@ -150,14 +139,6 @@ public class MenuComportamiento {
 		stage.setScene(theScene);
 		stage.show();
 
-	}
-
-	private void atacar(Pieza atacante, Pieza atacado) {
-		atacante.atacar(atacado);
-	}
-
-	private void curar(Pieza curador, Pieza curado) {
-		curador.curar(curado);
 	}
 
 	public void alerta1seg(String Titulo, String Texto){

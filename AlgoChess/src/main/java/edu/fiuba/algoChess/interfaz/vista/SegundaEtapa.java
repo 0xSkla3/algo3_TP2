@@ -1,7 +1,5 @@
 package edu.fiuba.algoChess.interfaz.vista;
 
-import edu.fiuba.algoChess.Modelo.bandos.BandoJugador1;
-import edu.fiuba.algoChess.Modelo.bandos.BandoJugador2;
 import edu.fiuba.algoChess.Modelo.juego.Juego;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -14,14 +12,11 @@ import java.util.HashMap;
 
 public class SegundaEtapa extends HBox {
 
-	private final HashMap<String, Class> listaPiezas;
 	private Stage stage;
-	private PieceView pieceView;
 	private MapView mapView;
 	private PlayerView player1;
 	private PlayerView player2;
 	private PlayerView turn;
-	private HashMap<String,String> listaImage;
 	private Juego juego;
 	private FinDeJuego finDeJuego;
 	private HBox head ;
@@ -31,13 +26,11 @@ public class SegundaEtapa extends HBox {
 
 		this.juego = juego;
 		this.stage = stage;
-		this.pieceView = pieceView;
 		this.mapView = mapView;
-		this.listaPiezas = new HashMap<>();
 		this.turn = turn;
 		this.player1 =  new PlayerView(juego.getJugador1());
 	 	this.player2 =  new PlayerView(juego.getJugador2());
-
+		this.turn = juego.getJugadorActivo()==juego.getJugador1()?player1:player2;
 		this.finDeJuego = new FinDeJuego(juego,jugador1,jugador2, stage, pieceView, mapView);
 	}
 
@@ -62,7 +55,7 @@ public class SegundaEtapa extends HBox {
 	public HBox head() {
 		HBox head = new HBox();
 		head.setId("head");
-		terminarJuego(head,juego);
+		terminarJuego(head);
 		turnOf(head,turn);
 		this.head = head;
 		return head;
@@ -70,15 +63,14 @@ public class SegundaEtapa extends HBox {
 
 	public void cambioTurno() {
 
-		head.getChildren().remove(6);
+		head.getChildren().remove(1);
 		if(this.turn == player1) {
 			turnOf(head,player2);
-			this.juego.pasarTurno();
 		}
 		else {
 			turnOf(head,player1);
-			this.juego.pasarTurno();
 		}
+		this.juego.pasarTurno();
 	}
 
 	public void turnOf(HBox head,PlayerView player){
@@ -88,7 +80,7 @@ public class SegundaEtapa extends HBox {
 		head.getChildren().add(button);
 	}
 
-	public void terminarJuego(HBox head,Juego juego) {
+	public void terminarJuego(HBox head) {
 
 		Button button = new Button("Terminar Partida");
 		button.setStyle("-fx-background-color:#F7CF32");

@@ -34,7 +34,7 @@ public class PieceView{
     	listaView();
     }
 
-    public void setPieceMap(MapView map, String piece, String bando ,int x, int y) {
+    public void setPieceMap(MapView map, String piece,int x, int y) {
 		DropShadow rollOverColor = new DropShadow();
         ImageView pieceImage = getImageViewMin(piece);
 		Pieza piezaTarget = piezaTarget(piece,juego,x,y);
@@ -109,21 +109,17 @@ public class PieceView{
     	if(pieza.getBando().equals(new BandoJugador1())){
 			alerta3seg("Datos Pieza","Pieza: "+
 					piece +   "\nUbicacion: x=" + x + " y=" + y +
-					"\nBando: Jugador1");}
+					"\nBando: "+ juego.getJugador1().getNombre());}
 		else{
 			alerta3seg("Datos Pieza","Pieza: "+
 					piece +   "\nUbicacion: x=" + x + " y=" + y +
-					"\nBando: Jugador2");
+					"\nBando: "+ juego.getJugador1().getNombre());
 			}
     }
 
     public void comportamientoAlTocarPieza(ImageView pieceImage, MapView map, String piece, Pieza piezaModelo, int x, int y){
     	if (this.juego.getSegundaEtapa()){
-    		if (!this.juego.getEnAplicacionDeComportamiento()) {
 				moverPiezaEnMapa(pieceImage, map, piece, piezaModelo);
-			}else{
-    			juego.setReceptor(piezaModelo);
-			}
 		}else{
 			mostrarDatosPiezaActual(piece, piezaModelo,  x,  y);
 			map.addViewOnMap(pieceImage, x, y);
