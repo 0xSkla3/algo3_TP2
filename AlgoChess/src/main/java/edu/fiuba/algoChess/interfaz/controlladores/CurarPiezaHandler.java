@@ -48,7 +48,9 @@ public class CurarPiezaHandler implements EventHandler<ActionEvent> {
 			alerta3seg("Curacion a vacio", "No se puede curar a una celda vacia");
 		} catch(NoSePuedeCurarUnaCatapultaException ex){
 		alerta3seg("Curacion a catapulta", "No se puede curar a una catapulta");
-	}
+		}catch (FueraDeRangoParaEjecutarComportamientoException ex) {
+			alerta3seg("Muy lejos", "No se puede curar a una pieza tan lejana");
+		}
 	}
 
 	public void alerta3seg(String Titulo, String Texto){

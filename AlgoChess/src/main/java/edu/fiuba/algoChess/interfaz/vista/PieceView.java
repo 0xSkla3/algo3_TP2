@@ -46,7 +46,7 @@ public class PieceView{
         pieceImage.addEventHandler(MouseEvent.MOUSE_PRESSED,
 				(event) -> comportamientoAlTocarPieza(pieceImage, map, piece, piezaTarget , x, y));
         map.addViewOnMap(pieceImage, x, y);
-        juego.pasarTurno();
+        //juego.pasarTurno();
     }
 
  	public void moverPiezaEnMapa(ImageView pieceImage, MapView map, String piece, Pieza piezaAMover){
@@ -113,7 +113,7 @@ public class PieceView{
 		else{
 			alerta3seg("Datos Pieza","Pieza: "+
 					piece +   "\nUbicacion: x=" + x + " y=" + y +
-					"\nBando: "+ juego.getJugador1().getNombre());
+					"\nBando: "+ juego.getJugador2().getNombre());
 			}
     }
 

@@ -43,20 +43,6 @@ public class Jinete extends Pieza {
 
 	private ReconocedorDeTerritorio reconocedorDeTerritorio;
 
-	public Jinete(Ubicacion ubicacion, int costo, int vida, Bando bando) {
-		super(costo, vida, ubicacion, bando);
-	}
-
-	public Jinete() {
-
-		super(3, 100);
-		this.ataqueCercano = new Comportamiento(5);
-		this.ataqueMedio = new Comportamiento(15);
-		this.piezaEnemigaCercana = false;
-		this.piezaAliadaCercana = false;
-
-	}
-
 	public Jinete(Ubicacion ubicacion, Bando bando) {
 
 		super(3, 100, ubicacion, bando);
@@ -80,6 +66,7 @@ public class Jinete extends Pieza {
 	public Jinete(Ubicacion ubicacion, Bando bando, Tablero tablero) {
 
 		super(3, 100, ubicacion, bando);
+		tablero.ubicarEnCeldaFaseInicial(this, ubicacion);
 		this.ataqueCercano = new Comportamiento(5);
 		this.ataqueMedio = new Comportamiento(15);
 		this.piezaEnemigaCercana = false;

@@ -31,11 +31,6 @@ public class Soldado extends Pieza implements Movible {
 	@Setter
 	private int danioCercano;
 
-	public Soldado(Ubicacion ubicacion, int costo, int vida, Bando bando) {
-
-		super(costo,vida,ubicacion,bando);
-	}
-
 	public Soldado(Ubicacion ubicacion, Bando bando, Tablero tablero){
 		super(2,75,ubicacion,bando);
 		this.danioCercano = 10;

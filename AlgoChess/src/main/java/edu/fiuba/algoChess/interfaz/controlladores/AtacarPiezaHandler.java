@@ -4,10 +4,7 @@ import edu.fiuba.algoChess.Modelo.entidades.Pieza;
 import edu.fiuba.algoChess.Modelo.entidades.PiezaNull;
 import edu.fiuba.algoChess.Modelo.entorno.Tablero;
 import edu.fiuba.algoChess.Modelo.entorno.Ubicacion;
-import edu.fiuba.algoChess.Modelo.excepciones.NoSePuedeAtacarUnAliadoException;
-import edu.fiuba.algoChess.Modelo.excepciones.NoSePuedeObtenerUnaPiezaDeCeldaaNull;
-import edu.fiuba.algoChess.Modelo.excepciones.NoSePuedeUbicarPiezaEnSectoRival;
-import edu.fiuba.algoChess.Modelo.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;
+import edu.fiuba.algoChess.Modelo.excepciones.*;
 import edu.fiuba.algoChess.Modelo.juego.Juego;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -27,7 +24,6 @@ import lombok.AllArgsConstructor;
 import javax.swing.*;
 import java.util.Optional;
 
-
 @AllArgsConstructor
 public class AtacarPiezaHandler implements EventHandler<ActionEvent> {
 
@@ -41,14 +37,17 @@ public class AtacarPiezaHandler implements EventHandler<ActionEvent> {
 		int x = Integer.parseInt((tFX.getText()));
 		int y = Integer.parseInt((tFY.getText()));
 		try {
-			Pieza receptor = tablero.getCelda(new Ubicacion(x,y)).getPiezaActual();
-			if(receptor.getClass() != PiezaNull.class){
-			emisor.atacar(receptor);
-			alerta3seg("Ataque", "Ataque efectuado, vida restante del oponente: " + receptor.getVida().getValorActual());}
-		} catch(NoSePuedeAtacarUnAliadoException exc){
+			Pieza receptor = tablero.getCelda(new Ubicacion(x, y)).getPiezaActual();
+			if (receptor.getClass() != PiezaNull.class) {
+				emisor.atacar(receptor);
+				alerta3seg("Ataque", "Ataque efectuado, vida restante del oponente: " + receptor.getVida().getValorActual());
+			}
+		} catch (NoSePuedeAtacarUnAliadoException exc) {
 			alerta3seg("Ataque a un Aliado", "No se puede atacar a un aliado");
-		} catch(NoSePuedeObtenerUnaPiezaDeCeldaaNull ex){
+		} catch (NoSePuedeObtenerUnaPiezaDeCeldaaNull ex) {
 			alerta3seg("Ataque a vacio", "No se puede atacar a una celda vacia");
+		} catch (FueraDeRangoParaEjecutarComportamientoException ex) {
+			alerta3seg("Muy lejos", "No se puede atacar a una pieza tan lejana");
 		}
 	}
 
