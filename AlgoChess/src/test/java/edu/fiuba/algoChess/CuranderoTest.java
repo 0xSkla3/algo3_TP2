@@ -18,7 +18,6 @@ import static org.junit.Assert.assertEquals;
 
 public class CuranderoTest {
 
-
     @Test
     public void test01CuranderoPuedeCurarSoldadoAliadoCercano(){
 
@@ -37,28 +36,24 @@ public class CuranderoTest {
         double vidaSoldadoCurado = soldado.getVida().getValorActual() + curandero.getCuracion().getValorComportamiento();
         curandero.curar(soldado);
         assertEquals(vidaSoldadoCurado,soldado.getVida().getValorActual(), 0.0);
-    };
+    }
 
     @Test (expected = NoSePuedeCurarUnaUnidadEnemigaException.class)
     public void test02SeLanzaExceptionCuandoCuranderoIntentaCurarSoldadoEnemigoCercano(){
 
         BandoJugador1 bandoJugador1 = new BandoJugador1();
         BandoJugador2 bandoJugador2 = new BandoJugador2();
+        Tablero tablero = new Tablero(bandoJugador1,bandoJugador2);
 
-        Ubicacion ubicacionSoldado = new Ubicacion(1,3);
-        Soldado soldado = new Soldado(ubicacionSoldado,bandoJugador1);
-        Celda celdaSoldado = new Celda(bandoJugador1);
-        celdaSoldado.guardarFaseInicial(soldado);
-
-        Ubicacion ubicacionCurandero = new Ubicacion(1,2);
-        Curandero curandero = new Curandero(ubicacionCurandero,bandoJugador2);
-        Celda celdaCurandero = new Celda(bandoJugador2);
-        celdaCurandero.guardarFaseInicial(curandero);
+        Ubicacion ubicacionSoldado = new Ubicacion(10,3);
+        Soldado soldado = new Soldado(ubicacionSoldado,bandoJugador1,tablero);
+        Ubicacion ubicacionCurandero = new Ubicacion(11,3);
+        Curandero curandero = new Curandero(ubicacionCurandero,bandoJugador2,tablero);
 
         Comportamiento comportamiento = new Comportamiento(15);
         soldado.recibirAtaque(comportamiento.getValorComportamiento());
         curandero.curar(soldado);
-    };
+    }
 
     @Test (expected = FueraDeRangoParaEjecutarComportamientoException.class)
     public void test03SeLanzaExceptionCuandoCuranderoIntentaCurarSoldadoAliadoLejano(){
@@ -76,7 +71,7 @@ public class CuranderoTest {
         Comportamiento comportamiento = new Comportamiento(15);
         soldado.recibirAtaque(comportamiento.getValorComportamiento());
         curandero.curar(soldado);
-    };
+    }
 
     @Test (expected = NoSePuedeCurarUnaCatapultaException.class)
     public void test04SeLanzaExceptionCuandoCuranderoIntentaCurarUnaCatapulta(){
@@ -94,6 +89,6 @@ public class CuranderoTest {
         Comportamiento comportamiento = new Comportamiento(15);
         catapulta.recibirAtaque(comportamiento.getValorComportamiento());
         curandero.curar(catapulta);
-    };
+    }
 
 }

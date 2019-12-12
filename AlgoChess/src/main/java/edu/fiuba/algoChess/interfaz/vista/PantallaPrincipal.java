@@ -142,7 +142,7 @@ public class PantallaPrincipal {
 
 		this.player1.updateView();
 		this.player2.updateView();
-		this.turn = juego.getJugadorActivo().equals(juego.getJugador1())? this.player2 :this.player1;
+		this.turn = juego.getJugadorActivo().equals(juego.getJugador1())? this.player1 :this.player2;
 		this.turn.setPiece(pieceView.getImageViewMax(namePiece));
 		if(this.turn == player1) {
 			turnOf(head,player2);
@@ -150,7 +150,7 @@ public class PantallaPrincipal {
 		else {
 			turnOf(head,player1);
 		}
-		//this.juego.pasarTurno();
+		this.juego.pasarTurno();
 	}
 	
 	public void turnOf(HBox head,PlayerView player){

@@ -39,8 +39,8 @@ public class PlayerView {
 	 if(this.name == null)
 	 return;
 	 this.name.setText(this.player.getNombre());
-	 this.credits.setText("Créditos: " + Integer.toString(this.player.getCreditos()));
- }
+	 this.credits.setText("Créditos: " + this.player.getCreditos());
+	 }
 	
 	public void setPiece(ImageView piece) {
 		this.playerBox.getChildren().add(piece);

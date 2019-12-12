@@ -21,20 +21,9 @@ public class Catapulta extends Pieza {
 	public int costo = 5;
 	private Salud vida;
 
-	public Catapulta(Ubicacion ubicacion, Bando bando){
-
-		super(5,50,ubicacion,bando);
-		ataque = new Comportamiento(20);
-	}
-
 	public Catapulta(Ubicacion ubicacion, Bando bando, Tablero tablero){
 		super(5,50,ubicacion,bando);
 		tablero.ubicarEnCeldaFaseInicial(this, ubicacion);
-		ataque = new Comportamiento(20);
-	}
-
-	public Catapulta(){
-		super(5,50);
 		ataque = new Comportamiento(20);
 	}
 

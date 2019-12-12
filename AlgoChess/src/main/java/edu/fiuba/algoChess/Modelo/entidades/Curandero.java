@@ -4,10 +4,7 @@ import edu.fiuba.algoChess.Modelo.bandos.Bando;
 import edu.fiuba.algoChess.Modelo.batallones.Batalloneable;
 import edu.fiuba.algoChess.Modelo.comportamientos.Comportamiento;
 import edu.fiuba.algoChess.Modelo.entorno.*;
-import edu.fiuba.algoChess.Modelo.excepciones.FueraDeRangoParaEjecutarComportamientoException;
-import edu.fiuba.algoChess.Modelo.excepciones.NoHayBatallonFormadoException;
-import edu.fiuba.algoChess.Modelo.excepciones.OperacionInvalidaException;
-import edu.fiuba.algoChess.Modelo.excepciones.PiezaActualNoFormaBatallonDeSoldadosException;
+import edu.fiuba.algoChess.Modelo.excepciones.*;
 import edu.fiuba.algoChess.Modelo.entorno.*;
 import edu.fiuba.algoChess.Modelo.rangos.Agrupable;
 import edu.fiuba.algoChess.Modelo.rangos.Rango;
@@ -23,34 +20,13 @@ public class Curandero extends Pieza {
 	@Setter
 	private Comportamiento curacion;
 
-	public Curandero(Ubicacion ubicacion, int costo, int vida, Bando bando) {
-		super(costo,vida,ubicacion,bando);
-	}
-
-	public Curandero(){
-
-		super(2,75);
-		this.curacion = new Comportamiento(15);
-
-	}
-
-	public Curandero(Ubicacion ubicacion,Bando bando){
-
-		super(2,75,ubicacion,bando);
-		this.curacion = new Comportamiento(15);
-	}
-
 	public Curandero(Ubicacion ubicacion, Bando bando, Tablero tablero){
 
 		super(2,75,ubicacion,bando);
-		tablero.getCelda(ubicacion).setPiezaActual(this);
+		tablero.ubicarEnCeldaFaseInicial(this, ubicacion);
 		this.curacion = new Comportamiento(15);
 
 	}
-
-	public void curar(DistanciaRelativa distancia, Pieza aCurar){
-
-	};
 
 	@Override
 	public Rango actualizaRango(Tablero tablero) {
@@ -128,6 +104,11 @@ public class Curandero extends Pieza {
 	public void ejecutarComportamientoPorDistancia(DistanciaCercana distancia, Pieza pieza) {
 		this.bando.curar(pieza, this.curacion, pieza.getBando());
 	};
+
+	public void ejecutarComportamientoPorDistancia(DistanciaCercana distancia, Catapulta pieza) {
+		throw new NoSePuedeCurarUnaCatapultaException("No se puede curar una catapulta");
+	};
+
 	@Override
 	public void ejecutarComportamientoPorDistancia(DistanciaMedia distancia, Pieza pieza) {
 		throw new FueraDeRangoParaEjecutarComportamientoException("Pieza fuera de rango");
@@ -238,6 +219,5 @@ public class Curandero extends Pieza {
 	public void setPieza3(Pieza pieza3) {
 		throw new OperacionInvalidaException("Operacion invalida");
 	}
-
 
 }

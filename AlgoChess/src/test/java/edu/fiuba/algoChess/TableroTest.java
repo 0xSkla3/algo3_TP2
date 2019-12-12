@@ -22,18 +22,12 @@ public class TableroTest {
 
 	@Test
 	public void testTableroSeColocaPiezaAliadaConExicitoEnSectorAliado() {
-		Jugador jugador1 = new Jugador();
-		Jugador jugador2 = new Jugador();
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
 		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
 		Ubicacion ubicacionTest = new Ubicacion(1,2);
-		Curandero curandero = new Curandero();
-		curandero.setBando(bandoJugador1);
-		Celda celdaTest = tableroTest.getCelda(ubicacionTest);
-		celdaTest.setSectorDelJugador(bandoJugador1);
-		tableroTest.ubicarEnCeldaFaseInicial(curandero,ubicacionTest);
-		assertEquals(celdaTest.getPiezaActual(), curandero);
+		Curandero curandero = new Curandero(ubicacionTest,bandoJugador1,tableroTest);
+		assertEquals(tableroTest.getCelda(ubicacionTest).getPiezaActual(), curandero);
 	}
 
 
@@ -45,13 +39,9 @@ public class TableroTest {
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
 		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
+		Ubicacion ubicacionTest = new Ubicacion(14,2);
+		Curandero curandero = new Curandero(ubicacionTest,bandoJugador1,tableroTest);
 
-		Ubicacion ubicacionTest = new Ubicacion(1,2);
-		Curandero curandero = new Curandero(ubicacionTest,bandoJugador1);
-
-		Celda celdaTest = tableroTest.getCelda(ubicacionTest);
-		celdaTest.setSectorDelJugador(bandoJugador2);
-		tableroTest.ubicarEnCeldaFaseInicial(curandero,ubicacionTest);
 	}
 
 
@@ -65,29 +55,6 @@ public class TableroTest {
 		Ubicacion ubicacionTest = new Ubicacion(4,4);
 		Curandero curandero1 = new Curandero(ubicacionTest, bandoJugador1, tableroTest);
 		Curandero curandero2 = new Curandero(ubicacionTest, bandoJugador1, tableroTest);
-
-		Celda celdaTest = tableroTest.getCelda(ubicacionTest);
-		celdaTest.setSectorDelJugador(bandoJugador1);
-		tableroTest.ubicarEnCeldaFaseInicial(curandero1, ubicacionTest);
-		tableroTest.ubicarEnCeldaFaseInicial(curandero2, ubicacionTest);
 	}
-
-
-/*	@Test
-	public void testtableroEsIgualAtableroVacioConMismoTamanioEsFalse(){
-		tablero tablero = new tablero(10,10);
-        tablero.ubicarEnCasilleroAleatorio(new ObjetoUbicable());
-        tablero otrotablero = new tablero(10,10);
-        assertFalse(tablero.esIgualA(otrotablero));
-	}
-
-	@Test
-	public void testtableroEsIgualAtableroVacioConTamanioDiferenteEsFalse(){
-		tablero tablero = new tablero(10,10);
-		tablero.ubicarEnCasilleroAleatorio(new ObjetoUbicable());
-		tablero otrotablero = new tablero(8,10);
-		assertFalse(tablero.esIgualA(otrotablero));
-	}
-*/
 
 }

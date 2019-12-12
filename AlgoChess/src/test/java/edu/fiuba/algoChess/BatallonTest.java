@@ -23,13 +23,10 @@ public class BatallonTest {
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
 		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
 
-		Soldado soldado1 = new Soldado(new Ubicacion(2,2),tableroTest);
-		Soldado soldado2 = new Soldado(new Ubicacion(3,2),tableroTest);
-		Soldado soldado3 = new Soldado(new Ubicacion(4,2),tableroTest);
+		Soldado soldado1 = new Soldado(new Ubicacion(2,2),bandoJugador1,tableroTest);
+		Soldado soldado2 = new Soldado(new Ubicacion(3,2),bandoJugador1,tableroTest);
+		Soldado soldado3 = new Soldado(new Ubicacion(4,2),bandoJugador1,tableroTest);
 
-		soldado1.setBando(bandoJugador1);
-		soldado2.setBando(bandoJugador1);
-		soldado3.setBando(bandoJugador1);
 		BatallonUtil batallon = new BatallonUtil(soldado1,soldado2,soldado3);
 
 		soldado1.actualizaRango(tableroTest);
@@ -50,12 +47,9 @@ public class BatallonTest {
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
 		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
-		Soldado soldado1 = new Soldado(new Ubicacion(2,2),tableroTest);
-		Soldado soldado2 = new Soldado(new Ubicacion(3,2),tableroTest);
-		Soldado soldado3 = new Soldado(new Ubicacion(4,2),tableroTest);
-		soldado1.setBando(bandoJugador1);
-		soldado2.setBando(bandoJugador1);
-		soldado3.setBando(bandoJugador1);
+		Soldado soldado1 = new Soldado(new Ubicacion(2,2),bandoJugador1,tableroTest);
+		Soldado soldado2 = new Soldado(new Ubicacion(3,2),bandoJugador1,tableroTest);
+		Soldado soldado3 = new Soldado(new Ubicacion(4,2),bandoJugador1,tableroTest);
 		BatallonUtil batallon = new BatallonUtil(soldado1,soldado2,soldado3);
 
 		soldado1.actualizaRango(tableroTest);
@@ -97,20 +91,13 @@ public class BatallonTest {
 
 	@Test
 	public void Test03esBatallonNotaQueHayBatallon(){
-		Jugador jugador1 = new Jugador();
-		Jugador jugador2 = new Jugador();
+
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
 		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
-		Soldado soldado1 = new Soldado(new Ubicacion(2,2),tableroTest);
-		Soldado soldado2 = new Soldado(new Ubicacion(3,2),tableroTest);
-		Soldado soldado3 = new Soldado(new Ubicacion(4,2),tableroTest);
-		soldado1.setBando(bandoJugador1);
-		soldado2.setBando(bandoJugador1);
-		soldado3.setBando(bandoJugador1);
-		tableroTest.ubicarEnCeldaFaseInicial(soldado1, soldado1.getUbicacion());
-		tableroTest.ubicarEnCeldaFaseInicial(soldado2, soldado2.getUbicacion());
-		tableroTest.ubicarEnCeldaFaseInicial(soldado3, soldado3.getUbicacion());
+		Soldado soldado1 = new Soldado(new Ubicacion(2,2),bandoJugador1,tableroTest);
+		Soldado soldado2 = new Soldado(new Ubicacion(3,2),bandoJugador1,tableroTest);
+		Soldado soldado3 = new Soldado(new Ubicacion(4,2),bandoJugador1,tableroTest);
 
 		soldado1.actualizaRango(tableroTest);
 		soldado2.actualizaRango(tableroTest);
@@ -124,20 +111,13 @@ public class BatallonTest {
 
 	@Test
 	public void Test04noEsBatallonNotaQueNoHayBatallon(){
-		Jugador jugador1 = new Jugador();
-		Jugador jugador2 = new Jugador();
+
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
 		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
-		Soldado soldado1 = new Soldado(new Ubicacion(2,2),tableroTest);
-		Soldado soldado2 = new Soldado(new Ubicacion(2,3),tableroTest);
-		Soldado soldado3 = new Soldado(new Ubicacion(4,2),tableroTest);
-		soldado1.setBando(bandoJugador1);
-		soldado2.setBando(bandoJugador1);
-		soldado3.setBando(bandoJugador1);
-		tableroTest.ubicarEnCeldaFaseInicial(soldado1, soldado1.getUbicacion());
-		tableroTest.ubicarEnCeldaFaseInicial(soldado2, soldado2.getUbicacion());
-		tableroTest.ubicarEnCeldaFaseInicial(soldado3, soldado3.getUbicacion());
+		Soldado soldado1 = new Soldado(new Ubicacion(2,2),bandoJugador1,tableroTest);
+		Soldado soldado2 = new Soldado(new Ubicacion(2,3),bandoJugador1,tableroTest);
+		Soldado soldado3 = new Soldado(new Ubicacion(4,2),bandoJugador1,tableroTest);
 
 		soldado1.actualizaRango(tableroTest);
 		soldado2.actualizaRango(tableroTest);
@@ -151,20 +131,13 @@ public class BatallonTest {
 
 	@Test
 	public void Test05batallonAsociadoONullDaNull(){
-		Jugador jugador1 = new Jugador();
-		Jugador jugador2 = new Jugador();
+
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
 		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
-		Soldado soldado1 = new Soldado(new Ubicacion(2,2),tableroTest);
-		Soldado soldado2 = new Soldado(new Ubicacion(2,3),tableroTest);
-		Soldado soldado3 = new Soldado(new Ubicacion(4,2),tableroTest);
-		soldado1.setBando(bandoJugador1);
-		soldado2.setBando(bandoJugador1);
-		soldado3.setBando(bandoJugador1);
-		tableroTest.ubicarEnCeldaFaseInicial(soldado1, soldado1.getUbicacion());
-		tableroTest.ubicarEnCeldaFaseInicial(soldado2, soldado2.getUbicacion());
-		tableroTest.ubicarEnCeldaFaseInicial(soldado3, soldado3.getUbicacion());
+		Soldado soldado1 = new Soldado(new Ubicacion(2,2),bandoJugador1,tableroTest);
+		Soldado soldado2 = new Soldado(new Ubicacion(2,3),bandoJugador1,tableroTest);
+		Soldado soldado3 = new Soldado(new Ubicacion(4,2),bandoJugador1,tableroTest);
 
 		soldado1.actualizaRango(tableroTest);
 		soldado2.actualizaRango(tableroTest);
@@ -184,15 +157,9 @@ public class BatallonTest {
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
 		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
-		Soldado soldado1 = new Soldado(new Ubicacion(2,2),tableroTest);
-		Soldado soldado2 = new Soldado(new Ubicacion(3,2),tableroTest);
-		Soldado soldado3 = new Soldado(new Ubicacion(4,2),tableroTest);
-		soldado1.setBando(bandoJugador1);
-		soldado2.setBando(bandoJugador1);
-		soldado3.setBando(bandoJugador1);
-		tableroTest.ubicarEnCeldaFaseInicial(soldado1, soldado1.getUbicacion());
-		tableroTest.ubicarEnCeldaFaseInicial(soldado2, soldado2.getUbicacion());
-		tableroTest.ubicarEnCeldaFaseInicial(soldado3, soldado3.getUbicacion());
+		Soldado soldado1 = new Soldado(new Ubicacion(2,2),bandoJugador1,tableroTest);
+		Soldado soldado2 = new Soldado(new Ubicacion(3,2),bandoJugador1,tableroTest);
+		Soldado soldado3 = new Soldado(new Ubicacion(4,2),bandoJugador1,tableroTest);
 
 		soldado1.actualizaRango(tableroTest);
 		soldado2.actualizaRango(tableroTest);

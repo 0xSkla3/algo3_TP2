@@ -1,4 +1,4 @@
-package edu.fiuba.algoChess;
+package edu.fiuba.algoChess.Modelo.excepciones;
 
 
 public class NoSePuedeEliminarPorqueEstaVacioException extends RuntimeException {
