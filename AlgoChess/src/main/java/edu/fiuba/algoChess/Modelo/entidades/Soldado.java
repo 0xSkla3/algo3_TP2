@@ -107,10 +107,10 @@ public class Soldado extends Pieza implements Movible {
 				return stack;
 			}
 			else{
-				throw new OperacionInvalidaException("No se pueden vinvular soldados de distintos bandos");
+				//throw new OperacionInvalidaException("No se pueden vinvular soldados de distintos bandos");
 			}
 		}
-
+		return stack;
 	}
 
 	@Override

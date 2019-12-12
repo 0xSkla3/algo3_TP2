@@ -221,8 +221,8 @@ public class SoldadoTest {
 
 	};
 
-	@Test (expected = OperacionInvalidaException.class)
-	public void test009SeLanzaExcepcionCuandoSeQuiereArmarUnBatallonConSoldadosContiguosDeDistintosBandos(){
+	@Test
+	public void test009NoSeVerificaBatallonSiElBatallonEsDeSoldadosDeDistintoBando(){
 
 		Boolean seArmaBatallon;
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
@@ -230,15 +230,15 @@ public class SoldadoTest {
 		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
 
 
-		Soldado soldado1 = new Soldado(new Ubicacion(2,2), bandoJugador1, tableroTest);
-		Soldado soldado2 = new Soldado(new Ubicacion(3,2), bandoJugador1, tableroTest);
-		Soldado soldado3 = new Soldado(new Ubicacion(4,2), bandoJugador2, tableroTest);
+		Soldado soldado1 = new Soldado(new Ubicacion(9,2), bandoJugador1, tableroTest);
+		Soldado soldado2 = new Soldado(new Ubicacion(10,2), bandoJugador1, tableroTest);
+		Soldado soldado3 = new Soldado(new Ubicacion(11,2), bandoJugador2, tableroTest);
 
 		soldado1.actualizaRango(tableroTest);
 		soldado2.actualizaRango(tableroTest);
 		soldado3.actualizaRango(tableroTest);
 		seArmaBatallon = BatallonUtil.esBatallon(soldado1,soldado2,soldado3);
-
+		assertFalse(seArmaBatallon);
 	}
 
 }

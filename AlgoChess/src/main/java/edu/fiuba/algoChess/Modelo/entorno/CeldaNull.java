@@ -11,34 +11,4 @@ public class CeldaNull extends Celda {
 		this.piezaActual = new PiezaNull();
 		this.sectorDelJugador = null;
 	}
-
-	@Override
-	public Pieza getPiezaActual(){
-		throw new NoSePuedeObtenerUnaPiezaDeCeldaaNull("No se puede obtener pieza de CeldaNull");
-		}
-
-	@Override
-	public void setSectorDelJugador(Bando bandoJugador){
-		//Excepcion
-	}
-
-	@Override
-	public void guardarFaseInicial(Pieza piezaAUbicar){
-		//Excepcion
-	}
-
-	@Override
-	public void guardarFaseJuego(Pieza piezaAUbicar) {
-		//Excepcion
-	}
-
-	@Override
-	public void eliminar() {
-		//Excepcion
-	}
-
-	@Override
-	public void ubicar(Pieza piezaAGuardar) {
-		//Excepcion
-	}
 }

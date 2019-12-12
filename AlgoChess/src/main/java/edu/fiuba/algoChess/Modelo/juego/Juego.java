@@ -55,33 +55,20 @@ public class Juego {
 
 	@Getter
 	@Setter
-	Boolean enAplicacionDeComportamiento = false;
-
-	@Getter
-	@Setter
 	Pieza receptor;
 
 	public static final Soldado soldado = new Soldado();
 
-	public Juego() {
-
-		this.jugador1 = new Jugador();
-		this.jugador1.setBando(new BandoJugador1());
-		this.jugador2 = new Jugador();
-		this.jugador2.setBando(new BandoJugador2());
-		this.tablero = new Tablero(jugador1.getBando(), jugador2.getBando());
-		this.piezasEnTablero = new ArrayList<>();
-		this.bandoActivo = new BandoJugador1();
-		this.jugadorActivo = this.jugador1;
-	}
-
 	public Juego(String nombreJugador1, String nombreJugador2) {
 			this.tablero = new Tablero(new BandoJugador1(), new BandoJugador2());
-			this.jugador1 = new Jugador(nombreJugador1);
-			this.jugador2 = new Jugador(nombreJugador2);
+			this.jugador1 = new Jugador(nombreJugador1, "jugador1");
+			this.jugador2 = new Jugador(nombreJugador2, "jugador2");
+			this.jugador1.setBando(new BandoJugador1());
+			this.jugador2.setBando(new BandoJugador2());
 			this.piezasEnTablero = new ArrayList<>();
-			this.bandoActivo = new BandoJugador1();
+			this.bandoActivo = this.jugador1.getBando();
 			this.jugadorActivo = this.jugador1;
+			this.activoBando1 = true;
 		}
 
 		public static void main (String[]args){
@@ -95,40 +82,31 @@ public class Juego {
 
 				if (nombre.contains("Soldado")) {
 					pieza = new Soldado(ubicacion, this.bandoActivo, this.tablero);
-					//ubicarEnCelda(pieza, ubicacion);
 					this.getPiezasEnTablero().add(pieza);
 					this.jugadorActivo.adquirirPieza(pieza);
-					pasarTurno();
 					return pieza;
 				}
 
 				if (nombre.contains("Catapulta")) {
 					pieza = new Catapulta(ubicacion, this.bandoActivo, this.tablero);
-					//ubicarEnCelda(pieza, ubicacion);
 					this.getPiezasEnTablero().add(pieza);
 					this.jugadorActivo.adquirirPieza(pieza);
-					pasarTurno();
 					return pieza;
 				}
 
 				if (nombre.contains("Jinete")) {
 					pieza = new Jinete(ubicacion, this.bandoActivo, this.tablero);
-					//ubicarEnCelda(pieza, ubicacion);
 					this.getPiezasEnTablero().add(pieza);
 					this.jugadorActivo.adquirirPieza(pieza);
-					pasarTurno();
 					return pieza;
 				}
 
 				if (nombre.contains("Curandero")) {
 					pieza = new Curandero(ubicacion, this.bandoActivo, this.tablero);
-					//ubicarEnCelda(pieza, ubicacion);
 					this.getPiezasEnTablero().add(pieza);
 					this.jugadorActivo.adquirirPieza(pieza);
-					pasarTurno();
 					return pieza;
 				}
-
 
 			return pieza;
 		}
@@ -147,10 +125,8 @@ public class Juego {
 	}
 
 	public void pasarTurno(){
-		Bando retorno = activoBando1? new BandoJugador2(): new BandoJugador1();
-		Jugador jugadorActivo = activoBando1? this.jugador2: this.jugador1;
-		this.bandoActivo = retorno;
-		this.jugadorActivo = jugadorActivo;
+		this.jugadorActivo = activoBando1? this.jugador2: this.jugador1;
+		this.bandoActivo = jugadorActivo.getBando();
 		this.activoBando1 = activoBando1?false:true;
 	}
 

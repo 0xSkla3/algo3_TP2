@@ -1,7 +1,5 @@
 package edu.fiuba.algoChess.interfaz.vista;
 
-import edu.fiuba.algoChess.Modelo.bandos.BandoJugador1;
-import edu.fiuba.algoChess.Modelo.bandos.BandoJugador2;
 import edu.fiuba.algoChess.Modelo.entidades.Catapulta;
 import edu.fiuba.algoChess.Modelo.entidades.Jinete;
 import edu.fiuba.algoChess.Modelo.entidades.Soldado;
@@ -33,13 +31,11 @@ public class PantallaPrincipal {
 	private PlayerView turn;
 	private HashMap<String,String> listaImage;
 	private Juego juego;
+	@Getter
 	private SegundaEtapa segundaEtapa;
 	private FinDeJuego finDeJuego;
 	@Getter
 	private HBox head ;
-
-	@Getter
-	private Button turnoDe;
 
 	private PantallaPrincipal pantallaPrincipal;
 	
@@ -51,9 +47,11 @@ public class PantallaPrincipal {
 		this.mapView = new MapView(juego);//tamanio del tablero
 		this.listaPiezas = new HashMap<>();
 
-		this.player1 =  new PlayerView(jugador1,new BandoJugador1());
-		this.player2 =  new PlayerView(jugador2,new BandoJugador2());
-		this.segundaEtapa = new SegundaEtapa( juego,jugador1,jugador2, stage, pieceView, mapView);
+		this.player1 =  new PlayerView(juego.getJugador1());
+		this.player2 =  new PlayerView(juego.getJugador2());
+		this.turn = this.player1;
+
+		this.segundaEtapa = new SegundaEtapa( juego,jugador1,jugador2, stage, pieceView, mapView, turn);
 		this.finDeJuego = new FinDeJuego(juego,jugador1,jugador2, stage, pieceView, mapView);
 		this.pantallaPrincipal = this;
 
@@ -141,23 +139,24 @@ public class PantallaPrincipal {
 	
 	public void cambioTurno(HBox head, String namePiece) {
 		head.getChildren().remove(6);
-		
+
+		this.player1.updateView();
+		this.player2.updateView();
+		this.turn = juego.getJugadorActivo().equals(juego.getJugador1())? this.player2 :this.player1;
 		this.turn.setPiece(pieceView.getImageViewMax(namePiece));
 		if(this.turn == player1) {
 			turnOf(head,player2);
-			this.juego.pasarTurno();
 		}
 		else {
 			turnOf(head,player1);
-			this.juego.pasarTurno();
 		}
+		//this.juego.pasarTurno();
 	}
 	
 	public void turnOf(HBox head,PlayerView player){
 		this.turn = player;
-		Button button = new Button("TURNO DE: "+player.getName());
+		Button button = new Button("TURNO DE: " + player.getName());
 		button.setStyle("-fx-background-color:#F7CF32");
-		this.turnoDe = button;
 		head.getChildren().add(button);
 	}
 
