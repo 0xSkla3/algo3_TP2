@@ -3,6 +3,8 @@ package edu.fiuba.algoChess.Modelo.batallones;
 import edu.fiuba.algoChess.Modelo.entidades.Pieza;
 import edu.fiuba.algoChess.Modelo.entorno.Tablero;
 import edu.fiuba.algoChess.Modelo.entorno.Ubicacion;
+import edu.fiuba.algoChess.Modelo.excepciones.NoSePuedeMoverUnBatallonNull;
+import edu.fiuba.algoChess.Modelo.excepciones.NoSePuedeObtenerElEquipoDeUnBatallonNull;
 import edu.fiuba.algoChess.Modelo.excepciones.OperacionInvalidaException;
 import edu.fiuba.algoChess.Modelo.rangos.Rango;
 import edu.fiuba.algoChess.Modelo.rangos.RangoInmediatoNull;
@@ -55,33 +57,8 @@ public class BatallonNull extends Batallon {
 	}
 
 	@Override
-	public Batalloneable moverBatallonDerecha(Tablero campoDeBatalla) {
-		return new BatallonNull();
-	}
-
-	@Override
-	public Batalloneable moverBatallonIzquierda(Tablero campoDeBatalla) {
-		return new BatallonNull();
-	}
-
-	@Override
-	public Batalloneable moverBatallonArriba(Tablero campoDeBatalla) {
-		return new BatallonNull();
-	}
-
-	@Override
-	public Batalloneable moverBatallonAbajo(Tablero campoDeBatalla) {
-		return new BatallonNull();
-	}
-
-	@Override
-	public Batalloneable moverBatallon(Tablero campoDeBatalla, Ubicacion ubicacion1, Ubicacion ubicacion2, Ubicacion ubicacion3) {
-		return null;
-	}
-
-	@Override
-	public void moverPiezaDeBatallon(Tablero campoDeBatalla, Ubicacion ubicacion) {
-		throw new OperacionInvalidaException("Operacion invalida");
+	public Batallon moverBatallon(Tablero campoDeBatalla, Ubicacion ubicacion1, Ubicacion ubicacion2, Ubicacion ubicacion3) {
+		throw new NoSePuedeMoverUnBatallonNull("No se puede mover un batallon null");
 	}
 
 	public Rango actualizaRangoInmediato(Pieza piezaCentral, Tablero tablero) {
@@ -92,34 +69,16 @@ public class BatallonNull extends Batallon {
 		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
-	@Override
-	public void actualizaRangoMedio(Pieza piezaCentral, Tablero tablero) {
-		throw new OperacionInvalidaException("Operacion invalida");
-	}
-
-	@Override
-	public void actualizaRangoCercano(Pieza piezaCentral, Tablero tablero) {
-		throw new OperacionInvalidaException("Operacion invalida");
-	}
-
-
 	public void actualizaRangoSoldado(Pieza piezaCentral, Tablero tablero) {
 		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
-	public Batalloneable darDeAltaBatallon() {
-		return null;
-	}
-
 	public ArrayList<Pieza> getSoldadosEquipo() {
-		return null;
+
+		throw new NoSePuedeObtenerElEquipoDeUnBatallonNull("No se puede obtener el equipo de un batallon null");
 	}
 
-	public Batalloneable crearBatallon(Pieza pieza1, Pieza pieza2, Pieza pieza3) {
-		return null;
-	}
-
-	public boolean equals(Batalloneable batallon){
+	public boolean equals(Batallon batallon){
 		Set<Pieza> itemsBatallonActual = new HashSet<>();
 		Set<Pieza>itemsBatallonAComparar = new HashSet<>();
 

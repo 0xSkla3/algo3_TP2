@@ -53,7 +53,7 @@ public class SoldadoTest {
 		soldado2.actualizaRango(tableroTest);
 		soldado3.actualizaRango(tableroTest);
 
-		Batalloneable batallon = BatallonUtil.batallonAsociadoONull(soldado1);
+		Batallon batallon = BatallonUtil.batallonAsociadoONull(soldado1);
 		batallon.moverBatallonArriba(tableroTest);
 ;
 		assertEquals(batallon.getPieza3().getUbicacion(), new Ubicacion(2,3));
@@ -82,7 +82,7 @@ public class SoldadoTest {
 		soldado2.actualizaRango(tableroTest);
 		soldado3.actualizaRango(tableroTest);
 
-		Batalloneable batallon = BatallonUtil.batallonAsociadoONull(soldado1);
+		Batallon batallon = BatallonUtil.batallonAsociadoONull(soldado1);
 		batallon.moverBatallonArriba(tableroTest);
 
 	}
@@ -102,8 +102,8 @@ public class SoldadoTest {
 		soldado2.actualizaRango(tableroTest);
 		soldado3.actualizaRango(tableroTest);
 
-		Batalloneable batallon = Batallon.batallonAsociadoONull(soldado1);
-		Batalloneable batallonModificado = batallon.moverBatallonArriba(tableroTest);
+		Batallon batallon = Batallon.batallonAsociadoONull(soldado1);
+		Batallon batallonModificado = batallon.moverBatallonArriba(tableroTest);
 
 		assertTrue(batallonModificado.equals(new BatallonNull()));
 
@@ -130,7 +130,7 @@ public class SoldadoTest {
 		soldado3.actualizaRango(tableroTest);
 		soldado4.actualizaRango(tableroTest);
 
-		Batalloneable batallon = BatallonUtil.batallonAsociadoONull(soldado1);
+		Batallon batallon = BatallonUtil.batallonAsociadoONull(soldado1);
 		batallon.moverBatallonArriba(tableroTest);
 
 		assertEquals(batallon.getPieza1().getUbicacion(), new Ubicacion(3,3));

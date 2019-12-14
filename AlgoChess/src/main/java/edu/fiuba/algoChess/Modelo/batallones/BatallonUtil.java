@@ -12,23 +12,16 @@ import lombok.*;
 import java.util.*;
 
 @AllArgsConstructor
-@NoArgsConstructor
-public class BatallonUtil extends Batallon implements Movible, Agrupable {
+public class BatallonUtil extends Batallon {
 
-	@Setter
-	@Getter
-	Pieza pieza1;
-
-	@Setter
-	@Getter
-	Pieza pieza2;
-
-	@Setter
-	@Getter
-	Pieza pieza3;
+	public BatallonUtil(Pieza pieza1, Pieza pieza2, Pieza pieza3 ){
+		this.pieza1 = pieza1;
+		this.pieza2 = pieza2;
+		this.pieza3 = pieza3;
+	}
 
 	@Override
-	public Batalloneable moverBatallonDerecha(Tablero campoDeBatalla) {
+	public Batallon moverBatallonDerecha(Tablero campoDeBatalla) {
 		Ubicacion ubicacionDerecha1 = getPieza1().getUbicacion().getUbicacionDerecha();
 		Ubicacion ubicacionDerecha2 = getPieza2().getUbicacion().getUbicacionDerecha();
 		Ubicacion ubicacionDerecha3 = getPieza3().getUbicacion().getUbicacionDerecha();
@@ -36,28 +29,29 @@ public class BatallonUtil extends Batallon implements Movible, Agrupable {
 	}
 
 	@Override
-	public Batalloneable moverBatallonIzquierda(Tablero campoDeBatalla) {
+	public Batallon moverBatallonIzquierda(Tablero campoDeBatalla) {
 		Ubicacion ubicacionIzquierda1 = getPieza1().getUbicacion().getUbicacionIzquierda();
 		Ubicacion ubicacionIzquierda2 = getPieza2().getUbicacion().getUbicacionIzquierda();
 		Ubicacion ubicacionIzquierda3 = getPieza3().getUbicacion().getUbicacionIzquierda();
 		return this.moverBatallon(campoDeBatalla, ubicacionIzquierda1, ubicacionIzquierda2, ubicacionIzquierda3);
 	}
 
-	public Batalloneable moverBatallonArriba(Tablero campoDeBatalla) {
+	public Batallon moverBatallonArriba(Tablero campoDeBatalla) {
 		Ubicacion ubicacionArriba1 = getPieza1().getUbicacion().getUbicacionArriba();
 		Ubicacion ubicacionArriba2 = getPieza2().getUbicacion().getUbicacionArriba();
 		Ubicacion ubicacionArriba3 = getPieza3().getUbicacion().getUbicacionArriba();
 		return this.moverBatallon(campoDeBatalla, ubicacionArriba1, ubicacionArriba2, ubicacionArriba3);
 	}
 
-	public Batalloneable moverBatallonAbajo(Tablero campoDeBatalla) {
+	public Batallon moverBatallonAbajo(Tablero campoDeBatalla) {
 		Ubicacion ubicacionAbajo1 = getPieza1().getUbicacion().getUbicacionAbajo();
 		Ubicacion ubicacionAbajo2 = getPieza2().getUbicacion().getUbicacionAbajo();
 		Ubicacion ubicacionAbajo3 = getPieza3().getUbicacion().getUbicacionAbajo();
 		return this.moverBatallon(campoDeBatalla, ubicacionAbajo1, ubicacionAbajo2, ubicacionAbajo3);
 	}
 
-	public Batalloneable moverBatallon(Tablero campoDeBatalla, Ubicacion ubicacion1, Ubicacion ubicacion2, Ubicacion ubicacion3){
+	@Override
+	public Batallon moverBatallon(Tablero campoDeBatalla, Ubicacion ubicacion1, Ubicacion ubicacion2, Ubicacion ubicacion3){
 
 		Ubicacion ubicacionVieja1 = getPieza1().getUbicacion();
 		Ubicacion ubicacionVieja2 = getPieza2().getUbicacion();
@@ -92,39 +86,27 @@ public class BatallonUtil extends Batallon implements Movible, Agrupable {
 
 	}
 
-	@Override
-	public void moverPiezaDeBatallon(Tablero campoDeBatalla, Ubicacion ubicacion) {
-		throw new OperacionInvalidaException("Operacion invalida");
+	static ArrayList<Pieza> armarPosibleBatallon(Pieza soldado) {
+		return _armarPosibleBatallon(soldado,0);
 	}
 
-	@Override
-	public Batallon crearBatallon(Pieza pieza1, Pieza pieza2, Pieza pieza3) {
-		return new BatallonUtil(pieza1, pieza2, pieza3);
+	private static ArrayList<Pieza> _armarPosibleBatallon(Pieza soldado, int control) {
+		ArrayList<Pieza> soldadosBatallon = new ArrayList<>();
+		int corte = 0;
+		Pieza soldado1 = soldado;
+		soldadosBatallon = soldado1.getSoldadosContiguos();
+		while (soldadosBatallon.size() != 0 && corte < 10) {
+			if (soldadosBatallon.size() >= 2) {
+				soldadosBatallon.add(0, soldado1);
+				return soldadosBatallon;
+			}
+			if (soldadosBatallon.size() == 1 && control == 0) {
+				return _armarPosibleBatallon(soldadosBatallon.get(0),1);
+			}
+			corte++;
+		}
+		return soldadosBatallon;
 	}
 
-	@Override
-	public void actualizaRangoMedio(Pieza piezaCentral, Tablero tablero) {
-		throw new OperacionInvalidaException("Operacion invalida");
-	}
-
-	@Override
-	public void actualizaRangoCercano(Pieza piezaCentral, Tablero tablero) {
-		throw new OperacionInvalidaException("Operacion invalida");
-	}
-
-	@Override
-	public void actualizaRangoSoldado(Pieza piezaCentral, Tablero tablero) {
-		throw new OperacionInvalidaException("Operacion invalida");
-	}
-
-	@Override
-	public Batalloneable darDeAltaBatallon() {
-		return null;
-	}
-
-	@Override
-	public ArrayList<Pieza> getSoldadosEquipo() {
-		return null;
-	}
 }
 

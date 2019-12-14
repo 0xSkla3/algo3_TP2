@@ -1,4 +1,5 @@
-package edu.fiuba.algoChess.salud;
+package edu.fiuba.algoChess.modelo.salud;
+import edu.fiuba.algoChess.Modelo.excepciones.NoPuedeInteractuarseConAlgoNoVivo;
 import edu.fiuba.algoChess.Modelo.salud.Salud;
 import edu.fiuba.algoChess.Modelo.salud.SaludLlena;
 import edu.fiuba.algoChess.Modelo.salud.SaludMedia;
@@ -69,14 +70,11 @@ public class SaludTest {
 		assertTrue(unaSalud.igualA(new SaludLlena(saludValorTotal)));
 	}
 
-	@Test
+	@Test(expected = NoPuedeInteractuarseConAlgoNoVivo.class)
 	public void saludMuertoNoSeLlena(){
-		final int saludValorTotal = 50;
 		final int saludValorCurar = 5;
 		Salud unaSalud = new SaludMuerto();
-		unaSalud = unaSalud.curar(saludValorCurar);
-
-		assertTrue(unaSalud.igualA(new SaludMuerto()));
+		unaSalud.curar(saludValorCurar);
 	}
 
 }

@@ -1,6 +1,6 @@
 package edu.fiuba.algoChess.Modelo.rangos;
 
-import edu.fiuba.algoChess.Modelo.batallones.Batalloneable;
+import edu.fiuba.algoChess.Modelo.batallones.Batallon;
 import edu.fiuba.algoChess.Modelo.entidades.Pieza;
 import edu.fiuba.algoChess.Modelo.entorno.Tablero;
 
@@ -17,7 +17,7 @@ public interface Rango {
 	void actualizaRangoCercano(Pieza piezaCentral, Tablero tablero);
 
 	public abstract void actualizaRangoSoldado(Pieza piezaCentral, Tablero tablero);
-	public abstract Batalloneable darDeAltaBatallon();
+	public abstract Batallon darDeAltaBatallon();
 	public abstract ArrayList<Pieza> getSoldadosEquipo();
 
 }

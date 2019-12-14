@@ -1,14 +1,15 @@
 package edu.fiuba.algoChess.Modelo.entidades;
 
 import edu.fiuba.algoChess.Modelo.bandos.Bando;
+import edu.fiuba.algoChess.Modelo.batallones.Batallon;
 import edu.fiuba.algoChess.Modelo.batallones.Batalloneable;
 import edu.fiuba.algoChess.Modelo.entorno.*;
-import edu.fiuba.algoChess.Modelo.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;
+import edu.fiuba.algoChess.Modelo.excepciones.*;
+import edu.fiuba.algoChess.Modelo.rangos.Agrupable;
 import edu.fiuba.algoChess.Modelo.rangos.Rango;
 import edu.fiuba.algoChess.Modelo.salud.Salud;
 import edu.fiuba.algoChess.Modelo.salud.SaludLlena;
 import edu.fiuba.algoChess.Modelo.salud.SaludMuerto;
-import edu.fiuba.algoChess.entidades.Observable;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,7 +17,7 @@ import lombok.Setter;
 import java.util.ArrayList;
 
 @NoArgsConstructor
-public abstract class Pieza extends Observable implements Movible, Batalloneable {
+public abstract class Pieza extends Movible implements Batalloneable {
 
 	@Setter
 	@Getter
@@ -39,20 +40,11 @@ public abstract class Pieza extends Observable implements Movible, Batalloneable
 	protected  Bando bandoCeldaActual;
 
 	@Setter
-//	@Getter
 	protected Rango rango;
 
 	@Setter
 	@Getter
 	protected DistanciaRelativa calculadorDistancia;
-
-	Pieza(int costo, int vida) {
-
-		this.vida = new SaludLlena(vida);
-		this.costo = costo;
-		this.calculadorDistancia = new DistanciaRelativa();
-
-	}
 
 	public Pieza(int costo, int vida, Ubicacion ubicacion, Bando bando) {
 		this.bando = bando;
@@ -69,17 +61,6 @@ public abstract class Pieza extends Observable implements Movible, Batalloneable
 		this.bando = null;
 		this.calculadorDistancia = new DistanciaRelativa();
 	}
-
-	boolean equals(Pieza pieza){
-
-		boolean condicion1 = pieza.getVida().igualA(this.getVida());
-		boolean condicion2 = pieza.getCosto() == this.getCosto();
-		return condicion1 && condicion2 ;
-
-	}
-
-	public void ejecutarComportamiento(DistanciaRelativa distancia, Pieza pieza){
-	};
 
  	public void aumentarVida(double aumento) {
 		this.vida.curar(aumento);
@@ -155,11 +136,20 @@ public abstract class Pieza extends Observable implements Movible, Batalloneable
 
 	public abstract ArrayList<Pieza> unirABatallonDeSoldado(ArrayList<Pieza> stackDeUnion);
 
-	public abstract ArrayList<Pieza> aniadirPiezaAlStack(ArrayList<Pieza> stack);
-	//toco metodo debajo
-	public abstract ArrayList<Pieza> aniadirSoldadoAlStack(ArrayList<Pieza> stack, Pieza pieza);
+	public ArrayList<Pieza> aniadirPiezaAlStack(ArrayList<Pieza> stack){
+		stack.add(this);
+		return stack;
+	}
 
-	public abstract ArrayList<Pieza> aniadirTodoMenosSoldadoAlStack(ArrayList<Pieza> stack);
+	public ArrayList<Pieza> aniadirSoldadoAlStack(ArrayList<Pieza> stack, Pieza pieza){
+		if (stack == null) return new ArrayList<>();
+		return stack;
+	};
+
+	public ArrayList<Pieza> aniadirTodoMenosSoldadoAlStack(ArrayList<Pieza> stack){
+		stack.add(this);
+		return stack;
+	}
 
 	public abstract ArrayList<Pieza>  getSoldadosContiguos();
 
@@ -180,8 +170,6 @@ public abstract class Pieza extends Observable implements Movible, Batalloneable
 
 		return condicion1 && condicion2 && condicion3;
 	}
-
-	public void ejecutarComportamientoPorDistancia(DistanciaRelativa distancia, Pieza pieza) { }
 
 	public abstract void ejecutarComportamientoPorDistancia(DistanciaCercana distancia, Pieza pieza);
 	public abstract void ejecutarComportamientoPorDistancia(DistanciaMedia distancia, Pieza pieza);
@@ -217,4 +205,18 @@ public abstract class Pieza extends Observable implements Movible, Batalloneable
 	public Pieza obtenerPiezaIzquierda(){
 		return ubicacion.obtenerPieza(ubicacion.getUbicacionIzquierda());
 	}
+
+	public Agrupable agrupar(Pieza pieza1, Pieza pieza2, Pieza pieza3){
+		throw new NoSePuedeAgruparUnaPiezaDistintaDeSoldado("No se puede agrupar una pieza que no sea un soldado");
+	}
+
+	public Batallon crearBatallon(Pieza pieza1, Pieza pieza2, Pieza pieza3) {
+		throw new NoSePuedeCrearUnBatallonDePiezaDistintaASoldado("No se puede crear un batallon de una pieza distinta a Soldado");
+	}
+
+	@Override
+	public Batallon darDeAltaBatallon() {
+		throw new NoSePuedeCrearUnBatallonDePiezaDistintaASoldado("No se puede crear un batallon de una pieza distinta a Soldado");
+	}
+
 }

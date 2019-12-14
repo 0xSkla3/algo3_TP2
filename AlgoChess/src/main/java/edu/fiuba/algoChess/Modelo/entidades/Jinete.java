@@ -55,36 +55,6 @@ public class Jinete extends Pieza {
 	}
 
 	@Override
-	public Batalloneable moverBatallonDerecha(Tablero campoDeBatalla) {
-		throw new NoHayBatallonFormadoException("No hay un batallon definido");
-	}
-
-	@Override
-	public Batalloneable moverBatallonIzquierda(Tablero campoDeBatalla) {
-		throw new NoHayBatallonFormadoException("No hay un batallon definido");
-	}
-
-	@Override
-	public Batalloneable moverBatallonArriba(Tablero campoDeBatalla) {
-		throw new NoHayBatallonFormadoException("No hay un batallon definido");
-	}
-
-	@Override
-	public Batalloneable moverBatallonAbajo(Tablero campoDeBatalla) {
-		throw new NoHayBatallonFormadoException("No hay un batallon definido");
-	}
-
-	@Override
-	public Batalloneable moverBatallon(Tablero campoDeBatalla, Ubicacion ubicacion1, Ubicacion ubicacion2, Ubicacion ubicacion3) {
-		throw new NoHayBatallonFormadoException("No hay un batallon definido");
-	}
-
-	@Override
-	public void moverPiezaDeBatallon(Tablero campoDeBatalla, Ubicacion ubicacion) {
-		throw new NoHayBatallonFormadoException("No hay un batallon definido");
-	}
-
-	@Override
 	public Rango actualizaRango(Tablero tablero) {
 		throw new OperacionInvalidaException("Operacion invalida");
 	}
@@ -154,16 +124,6 @@ public class Jinete extends Pieza {
 	}
 
 	@Override
-	public Agrupable agrupar(Pieza pieza1, Pieza pieza2, Pieza pieza3) {
-		return null;
-	}
-
-	@Override
-	public Collection<Pieza> desagrupar(Agrupable grupo) {
-		return null;
-	}
-
-	@Override
 	public Rango actualizaRangoInmediato(Pieza piezaCentral, Tablero tablero) {
 		return null;
 	}
@@ -194,54 +154,10 @@ public class Jinete extends Pieza {
 	}
 
 	@Override
-	public Batalloneable darDeAltaBatallon() {
-		return null;
-	}
-
-	@Override
 	public ArrayList<Pieza> getSoldadosEquipo() {
 		return null;
 	}
 
-	@Override
-	public Batalloneable crearBatallon(Pieza pieza1, Pieza pieza2, Pieza pieza3) {
-		return null;
-	}
-
-	@Override
-	public boolean equals(Batalloneable batallon) {
-		return false;
-	}
-
-	@Override
-	public Pieza getPieza1() {
-		return null;
-	}
-
-	@Override
-	public Pieza getPieza2() {
-		return null;
-	}
-
-	@Override
-	public Pieza getPieza3() {
-		return null;
-	}
-
-	@Override
-	public void setPieza1(Pieza pieza1) {
-		throw new OperacionInvalidaException("Operacion invalida");
-	}
-
-	@Override
-	public void setPieza2(Pieza pieza2) {
-		throw new OperacionInvalidaException("Operacion invalida");
-	}
-
-	@Override
-	public void setPieza3(Pieza pieza3) {
-		throw new OperacionInvalidaException("Operacion invalida");
-	}
 }
 
 

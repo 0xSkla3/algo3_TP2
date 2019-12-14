@@ -1,6 +1,6 @@
 package edu.fiuba.algoChess.Modelo.rangos;
 
-import edu.fiuba.algoChess.Modelo.batallones.Batalloneable;
+import edu.fiuba.algoChess.Modelo.batallones.Batallon;
 import edu.fiuba.algoChess.Modelo.entidades.Pieza;
 import edu.fiuba.algoChess.Modelo.entorno.Celda;
 import edu.fiuba.algoChess.Modelo.entorno.Tablero;
@@ -64,7 +64,7 @@ public class RangoCercano implements Rango{
 	}
 
 	@Override
-	public Batalloneable darDeAltaBatallon() {
+	public Batallon darDeAltaBatallon() {
 		return null;
 	}
 
