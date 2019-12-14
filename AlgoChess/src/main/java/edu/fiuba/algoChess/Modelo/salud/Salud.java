@@ -31,6 +31,10 @@ public abstract class Salud implements Curable, Herible, StateVive {
 	public void stateComportarse() {
 	}
 
+	public boolean stateEstaVivo() {
+		return true;
+	}
+
 	// Herramienta para testing
 	public boolean igualA(Salud salud) {
 		return (this.getValorCompleto() == salud.getValorCompleto() && this.getValorActual() == salud.getValorActual());

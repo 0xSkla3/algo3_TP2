@@ -22,4 +22,9 @@ public class SaludMuerto extends Salud {
 	public void stateComportarse() {
 		throw new NoPuedeInteractuarseConAlgoNoVivo("no puede interactuarse con algo no vivo");
 	}
+
+	@Override
+	public boolean stateEstaVivo() {
+		return false;
+	}
 }

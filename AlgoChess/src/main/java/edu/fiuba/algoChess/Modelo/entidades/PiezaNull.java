@@ -6,6 +6,7 @@ import edu.fiuba.algoChess.Modelo.batallones.Batalloneable;
 import edu.fiuba.algoChess.Modelo.excepciones.OperacionInvalidaException;
 import edu.fiuba.algoChess.Modelo.rangos.Agrupable;
 import edu.fiuba.algoChess.Modelo.rangos.Rango;
+import edu.fiuba.algoChess.Modelo.salud.SaludLlena;
 import edu.fiuba.algoChess.Modelo.salud.SaludMuerto;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class PiezaNull extends Pieza {
 	}
 
 	public PiezaNull() {
-		this.vida = new SaludMuerto();
+		this.vida = new SaludLlena(0xDEAD);
 		this.costo = 0;
 		this.ubicacion = null;
 		this.bando = null;

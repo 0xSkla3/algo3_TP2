@@ -9,6 +9,7 @@ import edu.fiuba.algoChess.Modelo.entidades.*;
 import edu.fiuba.algoChess.Modelo.entorno.ObservadorTablero;
 import edu.fiuba.algoChess.Modelo.entorno.Tablero;
 import edu.fiuba.algoChess.Modelo.entorno.Ubicacion;
+import edu.fiuba.algoChess.Modelo.salud.SaludMuerto;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -109,6 +110,9 @@ public class Juego {
 
 	public void atacar (Pieza atacante, Pieza atacado){
 		atacante.atacar(atacado);
+		if(! atacado.getVida().stateEstaVivo()) {
+			this.tablero.eliminar(atacado.getUbicacion());
+		}
 	}
 
 	public void curar (Pieza curador, Pieza curado){
@@ -121,9 +125,9 @@ public class Juego {
 	}
 
 	public void pasarTurno(){
-		this.jugadorActivo = activoBando1? this.jugador2: this.jugador1;
+		this.jugadorActivo = activoBando1 ? this.jugador2: this.jugador1;
 		this.bandoActivo = jugadorActivo.getBando();
-		this.activoBando1 = activoBando1?false:true;
+		this.activoBando1 = ! activoBando1;
 	}
 
 	public void comenzarSegundoStage() {
