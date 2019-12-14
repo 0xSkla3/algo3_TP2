@@ -37,20 +37,20 @@ public class MenuMovimiento {
 
 	@Getter
 	@Setter
-	MapView mapView;
+	VistaTablero mapView;
 
 	@Getter
 	String nombrePieza;
 
-	PieceView pieceView;
+	VistaPieza pieceView;
 	Stage stagePrincipal;
 	Stage stageUbicar;
 	PantallaPrincipal pantallaPrincipal;
 	HBox head;
 
 
-	MenuMovimiento(Pieza pieza, Tablero tablero, ImageView imagenPieza , MapView map,
-				   PieceView pieceView){
+	MenuMovimiento(Pieza pieza, Tablero tablero, ImageView imagenPieza , VistaTablero map,
+				   VistaPieza pieceView){
 		this.pieza = pieza;
 		this.tablero = tablero;
 		this.imageView = imagenPieza;

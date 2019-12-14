@@ -4,9 +4,9 @@ import edu.fiuba.algoChess.Modelo.bandos.Bando;
 import edu.fiuba.algoChess.Modelo.excepciones.NoSePuedeUbicarPiezaEnSectoRival;
 import edu.fiuba.algoChess.Modelo.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;
 import edu.fiuba.algoChess.Modelo.juego.Juego;
-import edu.fiuba.algoChess.interfaz.vista.MapView;
+import edu.fiuba.algoChess.interfaz.vista.VistaTablero;
 import edu.fiuba.algoChess.interfaz.vista.PantallaPrincipal;
-import edu.fiuba.algoChess.interfaz.vista.PieceView;
+import edu.fiuba.algoChess.interfaz.vista.VistaPieza;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -24,11 +24,11 @@ public class UbicarPiezaHandler implements EventHandler<ActionEvent> {
     private String nombrePieza;
     private Juego juego;
     private Stage stagePrincipal;
-    private PieceView pieceView;
+    private VistaPieza pieceView;
     private PantallaPrincipal pantallaPrincipal;
     private HashMap<String,Class> listaPieza;
     private Stage stageUbicar;
-    private MapView mapView;
+    private VistaTablero mapView;
     private HBox head;
     private TextField tFX;
     private TextField tFY;
@@ -36,8 +36,8 @@ public class UbicarPiezaHandler implements EventHandler<ActionEvent> {
 
 
     public UbicarPiezaHandler(Juego juego, Stage stagePrincipal, Stage stageUbicar,
-                              PieceView pieceView, String nombrePieza, PantallaPrincipal pantallaPrincipal,
-                              HashMap<String,Class> listaPiezas, MapView mapView, HBox head, TextField tFX, TextField tFY, Bando bandoPieza){
+                              VistaPieza pieceView, String nombrePieza, PantallaPrincipal pantallaPrincipal,
+                              HashMap<String,Class> listaPiezas, VistaTablero mapView, HBox head, TextField tFX, TextField tFY, Bando bandoPieza){
         this.juego = juego;
         this.nombrePieza = nombrePieza;
         this.stagePrincipal = stagePrincipal;
@@ -58,7 +58,7 @@ public class UbicarPiezaHandler implements EventHandler<ActionEvent> {
         int y = Integer.parseInt((tFY.getText()));
         try {
             pieceView.setPieceMap(mapView, nombrePieza, x, y);
-            pantallaPrincipal.cambioTurno(head, nombrePieza);
+            pantallaPrincipal.cambioTurno(head);
             stageUbicar.close();
        } catch(NoSePuedeUbicarPiezaEnSectoRival exc){
             alerta3seg("Sector rival", "No se puede ubicar la pieza en el sector rival");

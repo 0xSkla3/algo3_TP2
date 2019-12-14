@@ -94,31 +94,37 @@ public abstract class Pieza extends Observable implements Movible, Batalloneable
 		this.setVida(this.vida.herir(danioARecibir));
 	}
 
+	// FIXME: revisar si esto no tiene que ser static
 	public void pisar(Celda celda, Pieza pieza){
 		celda.setPiezaActual(pieza);
 	}
 
 	public void moverseALaDerecha(Tablero campoDeBatalla){
+ 		this.vida.stateComportarse();
 		Ubicacion ubicacionDerecha = this.ubicacion.getUbicacionDerecha();
 		this.mover(campoDeBatalla, ubicacionDerecha);
 	}
 
 	public void moverseALaIzquierda(Tablero campoDeBatalla) {
+ 		this.vida.stateComportarse();
 		Ubicacion ubicacionIzquierda = this.ubicacion.getUbicacionIzquierda();
 		this.mover(campoDeBatalla, ubicacionIzquierda);
 	}
 
 	public void moverseArriba(Tablero campoDeBatalla) {
+ 		this.vida.stateComportarse();
 		Ubicacion ubicacionArriba = this.ubicacion.getUbicacionArriba();
 		this.mover(campoDeBatalla, ubicacionArriba);
 	}
 
 	public void moverseAbajo(Tablero campoDeBatalla) {
+ 		this.vida.stateComportarse();
 		Ubicacion ubicacionAbajo = this.ubicacion.getUbicacionAbajo();
 		this.mover(campoDeBatalla, ubicacionAbajo);
 	}
 
 	public void mover( Tablero campoDeBatalla, Ubicacion ubicacion) {
+		this.vida.stateComportarse();
 		try {
 			Ubicacion ubicacionVieja = this.getUbicacion();
 			campoDeBatalla.ubicarEnCeldaFaseJuego(this, ubicacion);
@@ -131,6 +137,7 @@ public abstract class Pieza extends Observable implements Movible, Batalloneable
 	}
 
 	public void moverPiezaDeBatallon( Tablero campoDeBatalla, Ubicacion ubicacion){
+		this.vida.stateComportarse();
 		try {
 			Ubicacion ubicacionVieja = this.getUbicacion();
 			campoDeBatalla.ubicarEnCeldaFaseInicial(this, ubicacion);

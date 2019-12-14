@@ -12,7 +12,7 @@ import javafx.scene.layout.Pane;
 
 import java.util.HashMap;
 
-public class MapView extends Group {
+public class VistaTablero extends Group {
 
     public double width;
     public double heigth;
@@ -24,7 +24,7 @@ public class MapView extends Group {
     public GridPane table = new GridPane();
     public Pane[][] panes;
 
-    public MapView(Juego juego) {
+    public VistaTablero(Juego juego) {
         this.table = new GridPane();
         width = tileWidth * 15;
         heigth = tileHeigth * 15;

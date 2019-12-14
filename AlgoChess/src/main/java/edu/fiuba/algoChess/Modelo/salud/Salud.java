@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @AllArgsConstructor
-public abstract class Salud implements Curable, Herible {
+public abstract class Salud implements Curable, Herible, StateVive {
 
 	@Getter
 	@Setter
@@ -26,6 +26,9 @@ public abstract class Salud implements Curable, Herible {
 	public Salud llenar(){
 
 		return new SaludLlena(this.valorCompleto);
+	}
+
+	public void stateComportarse() {
 	}
 
 	// Herramienta para testing

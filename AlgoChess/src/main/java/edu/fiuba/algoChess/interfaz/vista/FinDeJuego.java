@@ -13,16 +13,16 @@ public class FinDeJuego {
 
 	private final HashMap<String, Class> listaPiezas;
 	private Stage stage;
-	private PieceView pieceView;
-	private MapView mapView;
+	private VistaPieza pieceView;
+	private VistaTablero mapView;
 	private VistaJugador player1;
 	private VistaJugador player2;
 	private VistaJugador turn;
 	private HashMap<String,String> listaImage;
 	private Juego juego;
 
-	public FinDeJuego(Juego juego, Stage stage, PieceView pieceView,
-						MapView mapView) {
+	public FinDeJuego(Juego juego, Stage stage, VistaPieza pieceView,
+						VistaTablero mapView) {
 
 		this.juego = juego;
 		this.stage = stage;

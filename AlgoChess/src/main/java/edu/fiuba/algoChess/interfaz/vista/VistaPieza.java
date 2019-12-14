@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.Optional;
 
 
-public class PieceView{
+public class VistaPieza {
 
     private double piezaEscala = 1;
     private Tablero tablero;
@@ -27,14 +27,14 @@ public class PieceView{
     private PantallaPrincipal pantallaPrincipal;
 
 
-    public PieceView(HashMap<String,String> listaImage, Juego juego, PantallaPrincipal pantallaPrincipal) {
+    public VistaPieza(HashMap<String,String> listaImage, Juego juego, PantallaPrincipal pantallaPrincipal) {
     	this.tablero = juego.getTablero();
     	this.juego = juego;
     	this.pantallaPrincipal = pantallaPrincipal;
     	listaView();
     }
 
-    public void setPieceMap(MapView map, String piece,int x, int y) {
+    public void setPieceMap(VistaTablero map, String piece, int x, int y) {
 		DropShadow rollOverColor = new DropShadow();
         ImageView pieceImage = getImageViewMin(piece);
 		Pieza piezaTarget = piezaTarget(piece,juego,x,y);
@@ -49,7 +49,7 @@ public class PieceView{
         //juego.pasarTurno();
     }
 
- 	public void moverPiezaEnMapa(ImageView pieceImage, MapView map, String piece, Pieza piezaAMover){
+ 	public void moverPiezaEnMapa(ImageView pieceImage, VistaTablero map, String piece, Pieza piezaAMover){
 		MenuPieza menuPieza = new MenuPieza(this.juego,piezaAMover, this.juego.getTablero(),pieceImage,map,
 				this, piece, this.pantallaPrincipal.getSegundaEtapa());
 		menuPieza.menuPopUp();
@@ -117,7 +117,7 @@ public class PieceView{
 			}
     }
 
-    public void comportamientoAlTocarPieza(ImageView pieceImage, MapView map, String piece, Pieza piezaModelo, int x, int y){
+    public void comportamientoAlTocarPieza(ImageView pieceImage, VistaTablero map, String piece, Pieza piezaModelo, int x, int y){
     	if (this.juego.getSegundaEtapa()){
 				moverPiezaEnMapa(pieceImage, map, piece, piezaModelo);
 		}else{

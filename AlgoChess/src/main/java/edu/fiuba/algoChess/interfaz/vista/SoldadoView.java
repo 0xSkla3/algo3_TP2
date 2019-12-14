@@ -13,13 +13,13 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class SoldadoView implements Observer {
-	private MapView mapView;
+	private VistaTablero mapView;
 	private Pieza pieza;
 	private ImageView unitImage;
 	private double vidaUnidad;
 	private SaludView barraSalud;
 
-	public SoldadoView(MapView mapView, Pieza pieza) {
+	public SoldadoView(VistaTablero mapView, Pieza pieza) {
 		this.mapView = mapView;
 		this.pieza = this.pieza;
 		vidaUnidad = pieza.getVida().getValorActual();

@@ -13,8 +13,8 @@ import javafx.stage.Stage;
 public class AlgoChessApp extends Application implements EventHandler<ActionEvent> {
 
     private Juego juego;
-    private PieceView player;
-    private MapView mapView;
+    private VistaPieza player;
+    private VistaTablero mapView;
     private Inicio inicio;
     private Button button;
 

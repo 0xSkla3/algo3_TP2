@@ -24,8 +24,8 @@ public class PantallaPrincipal {
 	private final HashMap<String, Class> listaPiezas;
 	@Getter
 	private Stage stage;
-	private PieceView pieceView;
-	private MapView mapView;
+	private VistaPieza pieceView;
+	private VistaTablero mapView;
 	private VistaJugador player1;
 	private VistaJugador player2;
 	private HashMap<String,String> listaImage;
@@ -42,8 +42,8 @@ public class PantallaPrincipal {
 
 		this.juego = new Juego(jugador1,jugador2);
 		this.stage = stage;
-		this.pieceView = new PieceView( listaImage, juego, this);
-		this.mapView = new MapView(juego);//tamanio del tablero
+		this.pieceView = new VistaPieza( listaImage, juego, this);
+		this.mapView = new VistaTablero(juego);//tamanio del tablero
 		this.listaPiezas = new HashMap<>();
 
 		this.player1 =  new VistaJugador(juego.getJugador1());
@@ -134,14 +134,18 @@ public class PantallaPrincipal {
 			stageUbicar.show();
 		});
 	}
-	
-	public void cambioTurno(HBox head, String namePiece) {
-		head.getChildren().remove(6);
 
+	public void actualizarVista() {
 		this.player1.actualizarVista();
 		this.player2.actualizarVista();
+	}
+
+	public void cambioTurno(HBox head) {
+		head.getChildren().remove(6);
+
+		this.actualizarVista();
+
 		this.juego.pasarTurno();
-		//this.turn.setPiece(pieceView.getImageViewMax(namePiece));
 		turnOf(head);
 	}
 	

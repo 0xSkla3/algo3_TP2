@@ -6,7 +6,6 @@ import edu.fiuba.algoChess.Modelo.juego.Juego;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import lombok.Getter;
@@ -32,11 +31,11 @@ public class MenuPieza {
 
 	@Getter
 	@Setter
-	MapView map;
+	VistaTablero map;
 
 	@Getter
 	@Setter
-	PieceView pieceView;
+    VistaPieza pieceView;
 
 	@Getter
 	@Setter
@@ -54,7 +53,7 @@ public class MenuPieza {
 	@Setter
 	SegundaEtapa segundaEtapa;
 
-	public MenuPieza(Juego juego, Pieza pieza, Tablero tablero, ImageView imagenPieza, MapView map, PieceView pieceView, String piezaNombre, SegundaEtapa segundaEtapa) {
+	public MenuPieza(Juego juego, Pieza pieza, Tablero tablero, ImageView imagenPieza, VistaTablero map, VistaPieza pieceView, String piezaNombre, SegundaEtapa segundaEtapa) {
 		this.piezaNombre = piezaNombre;
 		menuMovimiento = new MenuMovimiento(pieza, tablero, imagenPieza, map, pieceView);
 		menuComportamiento = new MenuComportamiento(juego, pieza, tablero, imagenPieza, map, segundaEtapa);

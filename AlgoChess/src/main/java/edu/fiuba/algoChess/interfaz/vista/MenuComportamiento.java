@@ -38,13 +38,13 @@ public class MenuComportamiento {
 
 	@Getter
 	@Setter
-	MapView mapView;
+    VistaTablero mapView;
 
 	@Getter
 	@Setter
 	SegundaEtapa segundaEtapa;
 
-	MenuComportamiento(Juego juego, Pieza emisor, Tablero tablero, ImageView imagenPieza , MapView map, SegundaEtapa segundaEtapa){
+	MenuComportamiento(Juego juego, Pieza emisor, Tablero tablero, ImageView imagenPieza , VistaTablero map, SegundaEtapa segundaEtapa){
 		this.emisor = emisor;
 		this.receptor = juego.getReceptor();
 		this.tablero = tablero;

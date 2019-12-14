@@ -11,15 +11,15 @@ import javafx.stage.Stage;
 public class SegundaEtapa extends HBox {
 
 	private Stage stage;
-	private MapView mapView;
+	private VistaTablero mapView;
 	private VistaJugador player1;
 	private VistaJugador player2;
 	private Juego juego;
 	private FinDeJuego finDeJuego;
 	private HBox head ;
 
-	public SegundaEtapa(Juego juego, Stage stage, PieceView pieceView,
-						MapView mapView) {
+	public SegundaEtapa(Juego juego, Stage stage, VistaPieza pieceView,
+						VistaTablero mapView) {
 
 		this.juego = juego;
 		this.stage = stage;

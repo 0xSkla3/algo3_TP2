@@ -2,7 +2,7 @@ package edu.fiuba.algoChess.interfaz.controlladores;
 
 import edu.fiuba.algoChess.Modelo.entidades.Pieza;
 import edu.fiuba.algoChess.Modelo.entorno.Tablero;
-import edu.fiuba.algoChess.interfaz.vista.MapView;
+import edu.fiuba.algoChess.interfaz.vista.VistaTablero;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -10,10 +10,10 @@ import javafx.scene.input.MouseEvent;
 public class MoverAbajoController {
 	private Pieza pieza;
 	private Tablero tablero;
-	private MapView map;
+	private VistaTablero map;
 	private ImageView imagenPieza;
 
-	public MoverAbajoController(Pieza pieza, Tablero tablero, MapView map, ImageView imagenPieza) {
+	public MoverAbajoController(Pieza pieza, Tablero tablero, VistaTablero map, ImageView imagenPieza) {
 		this.pieza = pieza;
 		this.tablero = tablero;
 		this.map = map;
