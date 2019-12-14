@@ -26,9 +26,8 @@ public class PantallaPrincipal {
 	private Stage stage;
 	private PieceView pieceView;
 	private MapView mapView;
-	private PlayerView player1;
-	private PlayerView player2;
-	private PlayerView turn;
+	private VistaJugador player1;
+	private VistaJugador player2;
 	private HashMap<String,String> listaImage;
 	private Juego juego;
 	@Getter
@@ -47,12 +46,11 @@ public class PantallaPrincipal {
 		this.mapView = new MapView(juego);//tamanio del tablero
 		this.listaPiezas = new HashMap<>();
 
-		this.player1 =  new PlayerView(juego.getJugador1());
-		this.player2 =  new PlayerView(juego.getJugador2());
-		this.turn = this.player1;
+		this.player1 =  new VistaJugador(juego.getJugador1());
+		this.player2 =  new VistaJugador(juego.getJugador2());
 
-		this.segundaEtapa = new SegundaEtapa( juego,jugador1,jugador2, stage, pieceView, mapView, turn);
-		this.finDeJuego = new FinDeJuego(juego,jugador1,jugador2, stage, pieceView, mapView);
+		this.segundaEtapa = new SegundaEtapa(juego, stage, pieceView, mapView);
+		this.finDeJuego = new FinDeJuego(juego, stage, pieceView, mapView);
 		this.pantallaPrincipal = this;
 
 		initialPhase();
@@ -65,9 +63,9 @@ public class PantallaPrincipal {
 		HBox hbox = new HBox();
 		vbox.getChildren().add(head()); 
 	    
-		player1.viewPlayer(hbox);
+		player1.instanciarVista(hbox);
 	    hbox.getChildren().add(mapView);
-	    player2.viewPlayer(hbox);
+	    player2.instanciarVista(hbox);
 	    
 	    vbox.getChildren().add(hbox); 
 	    
@@ -103,7 +101,7 @@ public class PantallaPrincipal {
 	    head.getChildren().addAll(soldado,jinete,catapulta,curandero);
 		terminarJuego(head,juego);
 		terminarDeColocarPiezas(head,juego);
-		turnOf(head,player1);
+		turnOf(head);
 		this.head = head;
 	    return head;
 	}
@@ -129,7 +127,7 @@ public class PantallaPrincipal {
 			Button submit = new Button("ubicar");
 			submit.setStyle("-fx-background-color:#F1C40F;");
 			submit.setOnAction(new UbicarPiezaHandler(juego, stage, stageUbicar, pieceView,
-					nombrePieza, pantallaPrincipal, listaPiezas, mapView, head, x, y, turn.getBandoJugador()));
+					nombrePieza, pantallaPrincipal, listaPiezas, mapView, head, x, y, juego.getJugadorActivo().getBando()));
 			vbox.getChildren().addAll(hbx,hby,submit);
 			Scene sceneUbicar = new Scene(vbox);
 			stageUbicar.setScene(sceneUbicar);
@@ -140,22 +138,15 @@ public class PantallaPrincipal {
 	public void cambioTurno(HBox head, String namePiece) {
 		head.getChildren().remove(6);
 
-		this.player1.updateView();
-		this.player2.updateView();
-		this.turn = juego.getJugadorActivo().equals(juego.getJugador1())? this.player1 :this.player2;
-		this.turn.setPiece(pieceView.getImageViewMax(namePiece));
-		if(this.turn == player1) {
-			turnOf(head,player2);
-		}
-		else {
-			turnOf(head,player1);
-		}
+		this.player1.actualizarVista();
+		this.player2.actualizarVista();
 		this.juego.pasarTurno();
+		//this.turn.setPiece(pieceView.getImageViewMax(namePiece));
+		turnOf(head);
 	}
 	
-	public void turnOf(HBox head,PlayerView player){
-		this.turn = player;
-		Button button = new Button("TURNO DE: " + player.getName());
+	public void turnOf(HBox head){
+		Button button = new Button("TURNO DE: " + this.juego.getJugadorActivo().getNombre());
 		button.setStyle("-fx-background-color:#F7CF32");
 		head.getChildren().add(button);
 	}

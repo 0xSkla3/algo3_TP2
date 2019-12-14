@@ -1,11 +1,8 @@
 package edu.fiuba.algoChess.interfaz.vista;
 
-import edu.fiuba.algoChess.Modelo.bandos.BandoJugador1;
-import edu.fiuba.algoChess.Modelo.bandos.BandoJugador2;
 import edu.fiuba.algoChess.Modelo.juego.Juego;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -18,13 +15,13 @@ public class FinDeJuego {
 	private Stage stage;
 	private PieceView pieceView;
 	private MapView mapView;
-	private PlayerView player1;
-	private PlayerView player2;
-	private PlayerView turn;
+	private VistaJugador player1;
+	private VistaJugador player2;
+	private VistaJugador turn;
 	private HashMap<String,String> listaImage;
 	private Juego juego;
 
-	public FinDeJuego(Juego juego, String jugador1, String jugador2, Stage stage, PieceView pieceView,
+	public FinDeJuego(Juego juego, Stage stage, PieceView pieceView,
 						MapView mapView) {
 
 		this.juego = juego;
@@ -33,8 +30,8 @@ public class FinDeJuego {
 		this.mapView = mapView;
 		this.listaPiezas = new HashMap<>();
 
-		this.player1 =  new PlayerView(juego.getJugador1());
-		this.player2 =  new PlayerView(juego.getJugador2());
+		this.player1 =  new VistaJugador(juego.getJugador1());
+		this.player2 =  new VistaJugador(juego.getJugador2());
 	}
 
 	public void iniciarFase(){
@@ -43,9 +40,9 @@ public class FinDeJuego {
 		HBox hbox = new HBox();
 		vbox.getChildren().add(head());
 
-		player1.viewPlayer(hbox);
+		player1.instanciarVista(hbox);
 		hbox.getChildren().add(mapView);
-		player2.viewPlayer(hbox);
+		player2.instanciarVista(hbox);
 
 		vbox.getChildren().add(hbox);
 
