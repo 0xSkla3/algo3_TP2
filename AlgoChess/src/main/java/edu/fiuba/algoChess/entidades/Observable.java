@@ -1,7 +1,4 @@
 package edu.fiuba.algoChess.entidades;
-
-import edu.fiuba.algoChess.interfaz.vista.SoldadoView;
-
 import java.util.ArrayList;
 import java.util.Observer;
 

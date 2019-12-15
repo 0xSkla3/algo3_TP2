@@ -1,9 +1,9 @@
 package edu.fiuba.algoChess.interfaz.vista;
 
-import edu.fiuba.algoChess.Modelo.entidades.Curandero;
-import edu.fiuba.algoChess.Modelo.entidades.Pieza;
-import edu.fiuba.algoChess.Modelo.entorno.Tablero;
-import edu.fiuba.algoChess.Modelo.juego.Juego;
+import edu.fiuba.algoChess.modelo.entidades.Curandero;
+import edu.fiuba.algoChess.modelo.entidades.Pieza;
+import edu.fiuba.algoChess.modelo.entorno.Tablero;
+import edu.fiuba.algoChess.modelo.juego.Juego;
 import edu.fiuba.algoChess.interfaz.controlladores.AtacarPiezaHandler;
 import edu.fiuba.algoChess.interfaz.controlladores.CurarPiezaHandler;
 import javafx.application.Platform;
@@ -39,13 +39,13 @@ public class MenuComportamiento {
 
 	@Getter
 	@Setter
-	MapView mapView;
+    VistaTablero mapView;
 
 	@Getter
 	@Setter
 	SegundaEtapa segundaEtapa;
 
-	MenuComportamiento(Juego juego, Pieza emisor, Tablero tablero, ImageView imagenPieza , MapView map, SegundaEtapa segundaEtapa){
+	MenuComportamiento(Juego juego, Pieza emisor, Tablero tablero, ImageView imagenPieza , VistaTablero map, SegundaEtapa segundaEtapa){
 		this.emisor = emisor;
 		this.receptor = juego.getReceptor();
 		this.tablero = tablero;

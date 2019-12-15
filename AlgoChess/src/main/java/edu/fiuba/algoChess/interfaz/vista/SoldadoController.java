@@ -1,11 +1,11 @@
 package edu.fiuba.algoChess.interfaz.vista;
 
-import edu.fiuba.algoChess.Modelo.entidades.Pieza;
+import edu.fiuba.algoChess.modelo.entidades.Pieza;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 
 public class SoldadoController implements EventHandler<MouseEvent> {
-	public SoldadoController(Pieza pieza, MapView mapView) {
+	public SoldadoController(Pieza pieza, VistaTablero mapView) {
 	}
 
 	@Override

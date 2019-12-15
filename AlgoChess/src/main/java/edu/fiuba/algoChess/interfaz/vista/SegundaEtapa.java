@@ -1,6 +1,6 @@
 package edu.fiuba.algoChess.interfaz.vista;
 
-import edu.fiuba.algoChess.Modelo.juego.Juego;
+import edu.fiuba.algoChess.modelo.juego.Juego;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
@@ -8,30 +8,27 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.util.HashMap;
-
 public class SegundaEtapa extends HBox {
 
 	private Stage stage;
-	private MapView mapView;
-	private PlayerView player1;
-	private PlayerView player2;
-	private PlayerView turn;
+	private VistaTablero mapView;
+	private VistaJugador player1;
+	private VistaJugador player2;
 	private Juego juego;
 	private FinDeJuego finDeJuego;
 	private HBox head ;
 
-	public SegundaEtapa(Juego juego, String jugador1, String jugador2, Stage stage, PieceView pieceView,
-						MapView mapView, PlayerView turn) {
+	public SegundaEtapa(Juego juego, Stage stage, VistaPieza pieceView,
+						VistaTablero mapView) {
 
 		this.juego = juego;
 		this.stage = stage;
 		this.mapView = mapView;
-		this.turn = turn;
-		this.player1 =  new PlayerView(juego.getJugador1());
-	 	this.player2 =  new PlayerView(juego.getJugador2());
-		this.turn = juego.getJugadorActivo()==juego.getJugador1()?player1:player2;
-		this.finDeJuego = new FinDeJuego(juego,jugador1,jugador2, stage, pieceView, mapView);
+		this.player1 =  new VistaJugador(juego.getJugador1());
+	 	this.player2 =  new VistaJugador(juego.getJugador2());
+		this.player1.setMostrarCreditos(false);
+		this.player2.setMostrarCreditos(false);
+		this.finDeJuego = new FinDeJuego(juego, stage, pieceView, mapView);
 	}
 
 	public void iniciarFase(){
@@ -40,9 +37,9 @@ public class SegundaEtapa extends HBox {
 		HBox hbox = new HBox();
 		vbox.getChildren().add(head());
 
-		player1.viewPlayer(hbox);
+		player1.instanciarVista(hbox);
 		hbox.getChildren().add(mapView);
-		player2.viewPlayer(hbox);
+		player2.instanciarVista(hbox);
 
 		vbox.getChildren().add(hbox);
 
@@ -56,7 +53,7 @@ public class SegundaEtapa extends HBox {
 		HBox head = new HBox();
 		head.setId("head");
 		terminarJuego(head);
-		turnOf(head,turn);
+		turnOf(head);
 		this.head = head;
 		return head;
 	}
@@ -64,18 +61,12 @@ public class SegundaEtapa extends HBox {
 	public void cambioTurno() {
 
 		head.getChildren().remove(1);
-		if(this.turn == player1) {
-			turnOf(head,player2);
-		}
-		else {
-			turnOf(head,player1);
-		}
 		this.juego.pasarTurno();
+		turnOf(head);
 	}
 
-	public void turnOf(HBox head,PlayerView player){
-		this.turn = player;
-		Button button = new Button("TURNO DE: "+this.turn.getName());
+	public void turnOf(HBox head){
+		Button button = new Button("TURNO DE: "+this.juego.getJugadorActivo().getNombre());
 		button.setStyle("-fx-background-color:#F7CF32");
 		head.getChildren().add(button);
 	}

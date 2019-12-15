@@ -1,9 +1,9 @@
 package edu.fiuba.algoChess.interfaz.vista;
 
-import edu.fiuba.algoChess.Modelo.entidades.Pieza;
+import edu.fiuba.algoChess.modelo.entidades.Pieza;
 
 public class CatapultaView {
-	public CatapultaView(MapView mapView, Pieza pieza) {
+	public CatapultaView(VistaTablero mapView, Pieza pieza) {
 	}
 
 }

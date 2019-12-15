@@ -1,9 +1,9 @@
 package edu.fiuba.algoChess.interfaz.vista;
 
-import edu.fiuba.algoChess.Modelo.entidades.Catapulta;
-import edu.fiuba.algoChess.Modelo.entidades.Jinete;
-import edu.fiuba.algoChess.Modelo.entidades.Soldado;
-import edu.fiuba.algoChess.Modelo.juego.Juego;
+import edu.fiuba.algoChess.modelo.entidades.Catapulta;
+import edu.fiuba.algoChess.modelo.entidades.Jinete;
+import edu.fiuba.algoChess.modelo.entidades.Soldado;
+import edu.fiuba.algoChess.modelo.juego.Juego;
 import edu.fiuba.algoChess.interfaz.controlladores.UbicarPiezaHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -24,11 +24,10 @@ public class PantallaPrincipal {
 	private final HashMap<String, Class> listaPiezas;
 	@Getter
 	private Stage stage;
-	private PieceView pieceView;
-	private MapView mapView;
-	private PlayerView player1;
-	private PlayerView player2;
-	private PlayerView turn;
+	private VistaPieza pieceView;
+	private VistaTablero mapView;
+	private VistaJugador player1;
+	private VistaJugador player2;
 	private HashMap<String,String> listaImage;
 	private Juego juego;
 	@Getter
@@ -43,16 +42,15 @@ public class PantallaPrincipal {
 
 		this.juego = new Juego(jugador1,jugador2);
 		this.stage = stage;
-		this.pieceView = new PieceView( listaImage, juego, this);
-		this.mapView = new MapView(juego);//tamanio del tablero
+		this.pieceView = new VistaPieza( listaImage, juego, this);
+		this.mapView = new VistaTablero(juego);//tamanio del tablero
 		this.listaPiezas = new HashMap<>();
 
-		this.player1 =  new PlayerView(juego.getJugador1());
-		this.player2 =  new PlayerView(juego.getJugador2());
-		this.turn = this.player1;
+		this.player1 =  new VistaJugador(juego.getJugador1());
+		this.player2 =  new VistaJugador(juego.getJugador2());
 
-		this.segundaEtapa = new SegundaEtapa( juego,jugador1,jugador2, stage, pieceView, mapView, turn);
-		this.finDeJuego = new FinDeJuego(juego,jugador1,jugador2, stage, pieceView, mapView);
+		this.segundaEtapa = new SegundaEtapa(juego, stage, pieceView, mapView);
+		this.finDeJuego = new FinDeJuego(juego, stage, pieceView, mapView);
 		this.pantallaPrincipal = this;
 
 		initialPhase();
@@ -65,9 +63,9 @@ public class PantallaPrincipal {
 		HBox hbox = new HBox();
 		vbox.getChildren().add(head()); 
 	    
-		player1.viewPlayer(hbox);
+		player1.instanciarVista(hbox);
 	    hbox.getChildren().add(mapView);
-	    player2.viewPlayer(hbox);
+	    player2.instanciarVista(hbox);
 	    
 	    vbox.getChildren().add(hbox); 
 	    
@@ -103,7 +101,7 @@ public class PantallaPrincipal {
 	    head.getChildren().addAll(soldado,jinete,catapulta,curandero);
 		terminarJuego(head,juego);
 		terminarDeColocarPiezas(head,juego);
-		turnOf(head,player1);
+		turnOf(head);
 		this.head = head;
 	    return head;
 	}
@@ -129,33 +127,30 @@ public class PantallaPrincipal {
 			Button submit = new Button("ubicar");
 			submit.setStyle("-fx-background-color:#F1C40F;");
 			submit.setOnAction(new UbicarPiezaHandler(juego, stage, stageUbicar, pieceView,
-					nombrePieza, pantallaPrincipal, listaPiezas, mapView, head, x, y, turn.getBandoJugador()));
+					nombrePieza, pantallaPrincipal, listaPiezas, mapView, head, x, y, juego.getJugadorActivo().getBando()));
 			vbox.getChildren().addAll(hbx,hby,submit);
 			Scene sceneUbicar = new Scene(vbox);
 			stageUbicar.setScene(sceneUbicar);
 			stageUbicar.show();
 		});
 	}
-	
-	public void cambioTurno(HBox head, String namePiece) {
+
+	public void actualizarVista() {
+		this.player1.actualizarVista();
+		this.player2.actualizarVista();
+	}
+
+	public void cambioTurno(HBox head) {
 		head.getChildren().remove(6);
 
-		this.player1.updateView();
-		this.player2.updateView();
-		this.turn = juego.getJugadorActivo().equals(juego.getJugador1())? this.player1 :this.player2;
-		this.turn.setPiece(pieceView.getImageViewMax(namePiece));
-		if(this.turn == player1) {
-			turnOf(head,player2);
-		}
-		else {
-			turnOf(head,player1);
-		}
+		this.actualizarVista();
+
 		this.juego.pasarTurno();
+		turnOf(head);
 	}
 	
-	public void turnOf(HBox head,PlayerView player){
-		this.turn = player;
-		Button button = new Button("TURNO DE: " + player.getName());
+	public void turnOf(HBox head){
+		Button button = new Button("TURNO DE: " + this.juego.getJugadorActivo().getNombre());
 		button.setStyle("-fx-background-color:#F7CF32");
 		head.getChildren().add(button);
 	}

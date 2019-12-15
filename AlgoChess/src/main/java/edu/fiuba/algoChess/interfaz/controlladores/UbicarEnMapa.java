@@ -1,8 +1,8 @@
 package edu.fiuba.algoChess.interfaz.controlladores;
 
-import edu.fiuba.algoChess.Modelo.entidades.*;
-import edu.fiuba.algoChess.Modelo.entorno.Tablero;
-import edu.fiuba.algoChess.Modelo.entorno.Ubicacion;
+import edu.fiuba.algoChess.modelo.entidades.*;
+import edu.fiuba.algoChess.modelo.entorno.Tablero;
+import edu.fiuba.algoChess.modelo.entorno.Ubicacion;
 import edu.fiuba.algoChess.interfaz.vista.*;
 import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
@@ -10,9 +10,9 @@ import javafx.scene.input.MouseEvent;
 public class UbicarEnMapa {
 	private Pieza pieza;
 	private Tablero tablero;
-	private MapView mapView;
+	private VistaTablero mapView;
 
-	public UbicarEnMapa(Pieza unidad, Tablero tablero, MapView mapView) {
+	public UbicarEnMapa(Pieza unidad, Tablero tablero, VistaTablero mapView) {
 		this.pieza = unidad;
 		this.tablero = tablero;
 		this.mapView = mapView;

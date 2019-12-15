@@ -1,6 +1,6 @@
 package edu.fiuba.algoChess.interfaz.vista;
 
-import edu.fiuba.algoChess.Modelo.juego.Juego;
+import edu.fiuba.algoChess.modelo.juego.Juego;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -13,8 +13,8 @@ import javafx.stage.Stage;
 public class AlgoChessApp extends Application implements EventHandler<ActionEvent> {
 
     private Juego juego;
-    private PieceView player;
-    private MapView mapView;
+    private VistaPieza player;
+    private VistaTablero mapView;
     private Inicio inicio;
     private Button button;
 
