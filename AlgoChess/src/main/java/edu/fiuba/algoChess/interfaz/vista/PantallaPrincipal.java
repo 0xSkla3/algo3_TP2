@@ -1,10 +1,9 @@
 package edu.fiuba.algoChess.interfaz.vista;
 
-import edu.fiuba.algoChess.Modelo.entidades.Catapulta;
-import edu.fiuba.algoChess.Modelo.entidades.Jinete;
-import edu.fiuba.algoChess.Modelo.entidades.Soldado;
-import edu.fiuba.algoChess.Modelo.juego.Juego;
-import edu.fiuba.algoChess.interfaz.controlladores.CrearPiezaHandler;
+import edu.fiuba.algoChess.modelo.entidades.Catapulta;
+import edu.fiuba.algoChess.modelo.entidades.Jinete;
+import edu.fiuba.algoChess.modelo.entidades.Soldado;
+import edu.fiuba.algoChess.modelo.juego.Juego;
 import edu.fiuba.algoChess.interfaz.controlladores.UbicarPiezaHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;

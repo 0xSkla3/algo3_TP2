@@ -1,31 +1,13 @@
 package edu.fiuba.algoChess.interfaz.controlladores;
 
-import edu.fiuba.algoChess.Modelo.entidades.Pieza;
-import edu.fiuba.algoChess.Modelo.entorno.Ubicacion;
-import edu.fiuba.algoChess.Modelo.excepciones.NoSePuedeUbicarPiezaEnSectoRival;
-import edu.fiuba.algoChess.Modelo.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;
-import edu.fiuba.algoChess.Modelo.juego.Juego;
-
-import edu.fiuba.algoChess.interfaz.vista.DialogoAlerta;
-import edu.fiuba.algoChess.interfaz.vista.PantallaPrincipal;
-import javafx.application.Platform;
-import javafx.geometry.Pos;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Label;
-import javafx.stage.Popup;
+import edu.fiuba.algoChess.modelo.entidades.Pieza;
+import edu.fiuba.algoChess.modelo.entorno.Ubicacion;
+import edu.fiuba.algoChess.modelo.juego.Juego;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
 import lombok.Getter;
 import lombok.Setter;
-
-import javax.swing.*;
-import java.awt.*;
-import java.util.Optional;
 
 public class CrearPiezaHandler implements EventHandler<ActionEvent> {
 	Juego juego;

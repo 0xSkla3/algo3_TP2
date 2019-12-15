@@ -1,10 +1,6 @@
 package edu.fiuba.algoChess.interfaz.controlladores;
 
-import edu.fiuba.algoChess.Modelo.entidades.Catapulta;
-import edu.fiuba.algoChess.Modelo.entidades.Curandero;
-import edu.fiuba.algoChess.Modelo.entidades.Jinete;
-import edu.fiuba.algoChess.Modelo.entidades.Soldado;
-import edu.fiuba.algoChess.Modelo.juego.Juego;
+import edu.fiuba.algoChess.modelo.juego.Juego;
 import lombok.Getter;
 import lombok.Setter;
 

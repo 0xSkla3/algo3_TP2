@@ -1,13 +1,11 @@
 package edu.fiuba.algoChess;
-import edu.fiuba.algoChess.Modelo.bandos.BandoJugador1;
-import edu.fiuba.algoChess.Modelo.bandos.BandoJugador2;
-import edu.fiuba.algoChess.Modelo.entidades.Curandero;
-import edu.fiuba.algoChess.Modelo.entorno.Celda;
-import edu.fiuba.algoChess.Modelo.entorno.Tablero;
-import edu.fiuba.algoChess.Modelo.entorno.Ubicacion;
-import edu.fiuba.algoChess.Modelo.excepciones.NoSePuedeUbicarPiezaEnSectoRival;
-import edu.fiuba.algoChess.Modelo.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;
-import edu.fiuba.algoChess.Modelo.juego.Jugador;
+import edu.fiuba.algoChess.modelo.bandos.BandoJugador1;
+import edu.fiuba.algoChess.modelo.bandos.BandoJugador2;
+import edu.fiuba.algoChess.modelo.entidades.Curandero;
+import edu.fiuba.algoChess.modelo.entorno.Tablero;
+import edu.fiuba.algoChess.modelo.entorno.Ubicacion;
+import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeUbicarPiezaEnSectoRival;
+import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;
 import org.junit.Test;
 
 //import modelo.juego.ObjetoUbicable;

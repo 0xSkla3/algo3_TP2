@@ -1,15 +1,14 @@
 package edu.fiuba.algoChess;
 
-import edu.fiuba.algoChess.Modelo.bandos.BandoJugador1;
-import edu.fiuba.algoChess.Modelo.bandos.BandoJugador2;
-import edu.fiuba.algoChess.Modelo.batallones.Batalloneable;
-import edu.fiuba.algoChess.Modelo.batallones.BatallonNull;
-import edu.fiuba.algoChess.Modelo.batallones.BatallonUtil;
-import edu.fiuba.algoChess.Modelo.entidades.Curandero;
-import edu.fiuba.algoChess.Modelo.entidades.Soldado;
-import edu.fiuba.algoChess.Modelo.entorno.Tablero;
-import edu.fiuba.algoChess.Modelo.entorno.Ubicacion;
-import edu.fiuba.algoChess.Modelo.juego.Jugador;
+import edu.fiuba.algoChess.modelo.bandos.BandoJugador1;
+import edu.fiuba.algoChess.modelo.bandos.BandoJugador2;
+import edu.fiuba.algoChess.modelo.batallones.Batallon;
+import edu.fiuba.algoChess.modelo.batallones.BatallonNull;
+import edu.fiuba.algoChess.modelo.batallones.BatallonUtil;
+import edu.fiuba.algoChess.modelo.entidades.Curandero;
+import edu.fiuba.algoChess.modelo.entidades.Soldado;
+import edu.fiuba.algoChess.modelo.entorno.Tablero;
+import edu.fiuba.algoChess.modelo.entorno.Ubicacion;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -143,7 +142,7 @@ public class BatallonTest {
 		soldado2.actualizaRango(tableroTest);
 		soldado3.actualizaRango(tableroTest);
 
-		Batalloneable batallonGenerado = BatallonUtil.batallonAsociadoONull(soldado1);
+		Batallon batallonGenerado = BatallonUtil.batallonAsociadoONull(soldado1);
 		BatallonNull batallonNull = new BatallonNull() ;
 
 		assertTrue(batallonNull.equals(batallonGenerado));
@@ -152,8 +151,7 @@ public class BatallonTest {
 
 	@Test
 	public void Test06batallonAsociadoONullCreaBatallon(){
-		Jugador jugador1 = new Jugador();
-		Jugador jugador2 = new Jugador();
+
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
 		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
@@ -165,8 +163,8 @@ public class BatallonTest {
 		soldado2.actualizaRango(tableroTest);
 		soldado3.actualizaRango(tableroTest);
 
-		Batalloneable batallonPatron = new BatallonUtil(soldado1,soldado2,soldado3);
-		Batalloneable batallonGenerado = BatallonUtil.batallonAsociadoONull(soldado1);
+		Batallon batallonPatron = new BatallonUtil(soldado1,soldado2,soldado3);
+		Batallon batallonGenerado = BatallonUtil.batallonAsociadoONull(soldado1);
 
 		assertTrue(batallonPatron.equals(batallonGenerado));
 
