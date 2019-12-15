@@ -1,6 +1,6 @@
 package edu.fiuba.algoChess.interfaz.vista;
 
-import edu.fiuba.algoChess.Modelo.entidades.Pieza;
+import edu.fiuba.algoChess.modelo.entidades.Pieza;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;

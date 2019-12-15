@@ -1,7 +1,7 @@
 package edu.fiuba.algoChess.interfaz.vista;
 
-import edu.fiuba.algoChess.Modelo.entidades.Pieza;
-import edu.fiuba.algoChess.Modelo.entorno.Tablero;
+import edu.fiuba.algoChess.modelo.entidades.Pieza;
+import edu.fiuba.algoChess.modelo.entorno.Tablero;
 import edu.fiuba.algoChess.interfaz.controlladores.*;
 import javafx.application.Platform;
 import javafx.scene.Scene;

@@ -1,9 +1,5 @@
 package edu.fiuba.algoChess.modelo.salud;
-import edu.fiuba.algoChess.Modelo.excepciones.NoPuedeInteractuarseConAlgoNoVivo;
-import edu.fiuba.algoChess.Modelo.salud.Salud;
-import edu.fiuba.algoChess.Modelo.salud.SaludLlena;
-import edu.fiuba.algoChess.Modelo.salud.SaludMedia;
-import edu.fiuba.algoChess.Modelo.salud.SaludMuerto;
+import edu.fiuba.algoChess.modelo.excepciones.NoPuedeInteractuarseConAlgoNoVivo;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

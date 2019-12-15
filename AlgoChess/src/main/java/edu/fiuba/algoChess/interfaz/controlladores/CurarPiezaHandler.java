@@ -1,27 +1,18 @@
 package edu.fiuba.algoChess.interfaz.controlladores;
 
-import edu.fiuba.algoChess.Modelo.entidades.Pieza;
-import edu.fiuba.algoChess.Modelo.entidades.PiezaNull;
-import edu.fiuba.algoChess.Modelo.entorno.Tablero;
-import edu.fiuba.algoChess.Modelo.entorno.Ubicacion;
-import edu.fiuba.algoChess.Modelo.excepciones.*;
-import edu.fiuba.algoChess.Modelo.juego.Juego;
+import edu.fiuba.algoChess.modelo.entidades.Pieza;
+import edu.fiuba.algoChess.modelo.entidades.PiezaNull;
+import edu.fiuba.algoChess.modelo.entorno.Tablero;
+import edu.fiuba.algoChess.modelo.entorno.Ubicacion;
+import edu.fiuba.algoChess.modelo.excepciones.*;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.stage.Popup;
-import javafx.stage.Stage;
 import lombok.AllArgsConstructor;
 
-import javax.swing.*;
 import java.util.Optional;
 
 

@@ -1,16 +1,14 @@
 package edu.fiuba.algoChess;
 
-import edu.fiuba.algoChess.Modelo.bandos.BandoJugador1;
-import edu.fiuba.algoChess.Modelo.bandos.BandoJugador2;
-import edu.fiuba.algoChess.Modelo.batallones.Batallon;
-import edu.fiuba.algoChess.Modelo.batallones.Batalloneable;
-import edu.fiuba.algoChess.Modelo.batallones.BatallonNull;
-import edu.fiuba.algoChess.Modelo.batallones.BatallonUtil;
-import edu.fiuba.algoChess.Modelo.entidades.Curandero;
-import edu.fiuba.algoChess.Modelo.entidades.Soldado;
-import edu.fiuba.algoChess.Modelo.entorno.Tablero;
-import edu.fiuba.algoChess.Modelo.entorno.Ubicacion;
-import edu.fiuba.algoChess.Modelo.juego.Jugador;
+import edu.fiuba.algoChess.modelo.bandos.BandoJugador1;
+import edu.fiuba.algoChess.modelo.bandos.BandoJugador2;
+import edu.fiuba.algoChess.modelo.batallones.Batallon;
+import edu.fiuba.algoChess.modelo.batallones.BatallonNull;
+import edu.fiuba.algoChess.modelo.batallones.BatallonUtil;
+import edu.fiuba.algoChess.modelo.entidades.Curandero;
+import edu.fiuba.algoChess.modelo.entidades.Soldado;
+import edu.fiuba.algoChess.modelo.entorno.Tablero;
+import edu.fiuba.algoChess.modelo.entorno.Ubicacion;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

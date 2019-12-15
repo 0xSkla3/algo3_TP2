@@ -1,7 +1,7 @@
 package edu.fiuba.algoChess.interfaz.vista;
 
 
-import edu.fiuba.algoChess.Modelo.juego.Jugador;
+import edu.fiuba.algoChess.modelo.juego.Jugador;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;

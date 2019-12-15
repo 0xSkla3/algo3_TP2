@@ -1,10 +1,10 @@
 package edu.fiuba.algoChess.interfaz.vista;
 
-import edu.fiuba.algoChess.Modelo.bandos.BandoJugador1;
-import edu.fiuba.algoChess.Modelo.entidades.Pieza;
-import edu.fiuba.algoChess.Modelo.entidades.PiezaNull;
-import edu.fiuba.algoChess.Modelo.entorno.Tablero;
-import edu.fiuba.algoChess.Modelo.juego.Juego;
+import edu.fiuba.algoChess.modelo.bandos.BandoJugador1;
+import edu.fiuba.algoChess.modelo.entidades.Pieza;
+import edu.fiuba.algoChess.modelo.entidades.PiezaNull;
+import edu.fiuba.algoChess.modelo.entorno.Tablero;
+import edu.fiuba.algoChess.modelo.juego.Juego;
 import edu.fiuba.algoChess.interfaz.controlladores.CrearPiezaHandler;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;

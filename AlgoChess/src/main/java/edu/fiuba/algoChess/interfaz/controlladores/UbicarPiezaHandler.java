@@ -1,9 +1,9 @@
 package edu.fiuba.algoChess.interfaz.controlladores;
 
-import edu.fiuba.algoChess.Modelo.bandos.Bando;
-import edu.fiuba.algoChess.Modelo.excepciones.NoSePuedeUbicarPiezaEnSectoRival;
-import edu.fiuba.algoChess.Modelo.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;
-import edu.fiuba.algoChess.Modelo.juego.Juego;
+import edu.fiuba.algoChess.modelo.bandos.Bando;
+import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeUbicarPiezaEnSectoRival;
+import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;
+import edu.fiuba.algoChess.modelo.juego.Juego;
 import edu.fiuba.algoChess.interfaz.vista.VistaTablero;
 import edu.fiuba.algoChess.interfaz.vista.PantallaPrincipal;
 import edu.fiuba.algoChess.interfaz.vista.VistaPieza;
