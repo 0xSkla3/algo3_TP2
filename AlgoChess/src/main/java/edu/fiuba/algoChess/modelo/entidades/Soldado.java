@@ -177,42 +177,7 @@ public class Soldado extends Pieza {
 	public Batallon crearBatallon(Pieza pieza1, Pieza pieza2, Pieza pieza3) {
 		return null;
 	}
-/*
-	@Override
-	public boolean equals(Batalloneable batallon) {
-		return false;
-	}
 
-	@Override
-	public Pieza getPieza1() {
-		return null;
-	}
-
-	@Override
-	public Pieza getPieza2() {
-		return null;
-	}
-
-	@Override
-	public Pieza getPieza3() {
-		return null;
-	}
-
-	@Override
-	public void setPieza1(Pieza pieza1) {
-		throw new OperacionInvalidaException("Operacion invalida");
-	}
-
-	@Override
-	public void setPieza2(Pieza pieza2) {
-		throw new OperacionInvalidaException("Operacion invalida");
-	}
-
-	@Override
-	public void setPieza3(Pieza pieza3) {
-		throw new OperacionInvalidaException("Operacion invalida");
-	}
-*/
 	public double getDanio() {
 		return danioCercano;
 	}

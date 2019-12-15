@@ -19,9 +19,7 @@ public class AtaqueCatapulta extends Ataque{
 
         atacados = new CopyOnWriteArrayList<>();
         aAtacar = new CopyOnWriteArrayList<>();
-       // aAtacar.add(pieza);
-       // pieza.recibirAtaque(danio);
-        //atacados.add(pieza);
+
         for (Pieza piezaAAtacar: aAtacar
              ) {
              if(!atacados.contains(piezaAAtacar)) {

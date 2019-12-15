@@ -107,12 +107,10 @@ public class Jinete extends Pieza {
 			this.bando.atacar(pieza, this.ataqueCercano, pieza.getBando());
 	}
 
-
 	@Override
 	public void ejecutarComportamientoPorDistancia(DistanciaMedia distancia, Pieza pieza) {
 		this.ubicacion.reconocerTerrenoParaAtacarADistanciaMedia(this, pieza, distanciaAReconocerEnTerreno, ubicacion);
 	}
-
 
 	@Override
 	public void ejecutarComportamientoPorDistancia(DistanciaLejana distancia, Pieza pieza) {
@@ -127,12 +125,7 @@ public class Jinete extends Pieza {
 	public Agrupable agrupar(Pieza pieza1, Pieza pieza2, Pieza pieza3) {
 		return null;
 	}
-/*
-	@Override
-	public Collection<Pieza> desagrupar(Agrupable grupo) {
-		return null;
-	}
-*/
+
 	@Override
 	public Rango actualizaRangoInmediato(Pieza piezaCentral, Tablero tablero) {
 		return null;
@@ -167,47 +160,7 @@ public class Jinete extends Pieza {
 	public ArrayList<Pieza> getSoldadosEquipo() {
 		return null;
 	}
-/*
-	@Override
-	public Batalloneable crearBatallon(Pieza pieza1, Pieza pieza2, Pieza pieza3) {
-		return null;
-	}
 
-	@Override
-	public boolean equals(Batalloneable batallon) {
-		return false;
-	}
-
-	@Override
-	public Pieza getPieza1() {
-		return null;
-	}
-
-	@Override
-	public Pieza getPieza2() {
-		return null;
-	}
-
-	@Override
-	public Pieza getPieza3() {
-		return null;
-	}
-
-	@Override
-	public void setPieza1(Pieza pieza1) {
-		throw new OperacionInvalidaException("Operacion invalida");
-	}
-
-	@Override
-	public void setPieza2(Pieza pieza2) {
-		throw new OperacionInvalidaException("Operacion invalida");
-	}
-
-	@Override
-	public void setPieza3(Pieza pieza3) {
-		throw new OperacionInvalidaException("Operacion invalida");
-	}
-*/
 	public double getDanioMedio() {
 		return this.danioMedio;
 	}
@@ -217,5 +170,3 @@ public class Jinete extends Pieza {
 	}
 
 }
-
-
