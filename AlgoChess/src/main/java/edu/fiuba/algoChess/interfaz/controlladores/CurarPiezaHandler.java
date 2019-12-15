@@ -6,6 +6,8 @@ import edu.fiuba.algoChess.Modelo.entorno.Tablero;
 import edu.fiuba.algoChess.Modelo.entorno.Ubicacion;
 import edu.fiuba.algoChess.Modelo.excepciones.*;
 import edu.fiuba.algoChess.Modelo.juego.Juego;
+import edu.fiuba.algoChess.interfaz.vista.DialogoAlerta;
+import edu.fiuba.algoChess.interfaz.vista.SegundaEtapa;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -22,57 +24,39 @@ import javafx.stage.Stage;
 import lombok.AllArgsConstructor;
 
 import javax.swing.*;
+import javax.tools.Diagnostic;
 import java.util.Optional;
 
 
 @AllArgsConstructor
 public class CurarPiezaHandler implements EventHandler<ActionEvent> {
-
-	Tablero tablero;
+	Juego juego;
 	Pieza emisor;
 	TextField tFX;
 	TextField tFY;
+	Stage stage;
+	SegundaEtapa segundaEtapa;
 
 	@Override
 	public void handle(ActionEvent actionEvent) {
 		int x = Integer.parseInt((tFX.getText()));
 		int y = Integer.parseInt((tFY.getText()));
 		try {
-			Pieza receptor = tablero.getCelda(new Ubicacion(x,y)).getPiezaActual();
-			if(receptor.getClass() != PiezaNull.class){
+			Pieza receptor = juego.getTablero().getCelda(new Ubicacion(x,y)).getPiezaActual();
+			if(receptor.getClass() != PiezaNull.class) {
 				emisor.curar(receptor);
-				alerta3seg("Curacion", "Curacion efectuada, vida restante del aliado: " + receptor.getVida().getValorActual());}
+				stage.close();
+				segundaEtapa.cambioTurno();
+				DialogoAlerta.Alerta("Curacion", "Curacion efectuada, vida restante del aliado: " + receptor.getVida().getValorActual(), 2);
+			}
 		} catch(NoSePuedeCurarUnaUnidadEnemigaException exc){
-			alerta3seg("Curacion a un Enemigo", "No se puede curar a un enemigo");
+			DialogoAlerta.Alerta("Curacion a un Enemigo", "No se puede curar a un enemigo", 2);
 		} catch(NoSePuedeObtenerUnaPiezaDeCeldaaNull ex){
-			alerta3seg("Curacion a vacio", "No se puede curar a una celda vacia");
+			DialogoAlerta.Alerta("Curacion a vacio", "No se puede curar a una celda vacia", 2);
 		} catch(NoSePuedeCurarUnaCatapultaException ex){
-		alerta3seg("Curacion a catapulta", "No se puede curar a una catapulta");
+			DialogoAlerta.Alerta("Curacion a catapulta", "No se puede curar a una catapulta", 2);
 		}catch (FueraDeRangoParaEjecutarComportamientoException ex) {
-			alerta3seg("Muy lejos", "No se puede curar a una pieza tan lejana");
+			DialogoAlerta.Alerta("Muy lejos", "No se puede curar a una pieza tan lejana", 2);
 		}
 	}
-
-	public void alerta3seg(String Titulo, String Texto){
-
-		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-		alert.setTitle(Titulo);
-		alert.setHeaderText(Texto);
-
-		Thread thread = new Thread(() -> {
-			try {
-
-				Thread.sleep(3000);
-				if (alert.isShowing()) {
-					Platform.runLater(() -> alert.close());
-				}
-			} catch (Exception exp) {
-				exp.printStackTrace();
-			}
-		});
-		thread.setDaemon(true);
-		thread.start();
-		Optional<ButtonType> result = alert.showAndWait();
-	}
-
 }

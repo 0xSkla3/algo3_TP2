@@ -1,5 +1,6 @@
 package edu.fiuba.algoChess.interfaz.vista;
 
+import edu.fiuba.algoChess.Modelo.entidades.Pieza;
 import edu.fiuba.algoChess.Modelo.entorno.Tablero;
 import edu.fiuba.algoChess.Modelo.entorno.Ubicacion;
 import edu.fiuba.algoChess.Modelo.juego.Juego;
@@ -10,6 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class VistaTablero extends Group {
@@ -21,10 +23,14 @@ public class VistaTablero extends Group {
     public Tablero tablero;
     public HashMap<String, Image> contenedorImagenes = new HashMap<>();
     public Juego juego;
+    public PantallaPrincipal pantallaPrincipal;
     public GridPane table = new GridPane();
     public Pane[][] panes;
 
-    public VistaTablero(Juego juego) {
+    public VistaTablero(Juego juego, PantallaPrincipal pantallaPrincipal) {
+        this.juego = juego;
+        this.pantallaPrincipal = pantallaPrincipal;
+
         this.table = new GridPane();
         width = tileWidth * 15;
         heigth = tileHeigth * 15;
@@ -58,10 +64,28 @@ public class VistaTablero extends Group {
 
 
         table.setStyle("-fx-padding: 20;");
-        this.addView(table);
+        this.instanciarVista(table);
     }
 
-    public void addView(Node view) {
+    public void actualizarVista() {
+        for(int i = 0; i < width; i++)
+            for(int j = 0; j < heigth; j++) {
+                try {
+                       panes[i][j].getChildren().clear();
+                }
+                catch (Exception e) {
+
+                }
+            }
+
+        for(Pieza p : this.juego.getPiezasEnTablero()) {
+            VistaPieza vp = new VistaPieza(p, juego, pantallaPrincipal);
+            Ubicacion u = p.getUbicacion();
+            panes[u.getCoordenadaX()][u.getCoordenadaY()].getChildren().add(0, vp.crearNodo());
+        }
+    }
+
+    public void instanciarVista(Node view) {
         this.getChildren().add(view);
     }
 

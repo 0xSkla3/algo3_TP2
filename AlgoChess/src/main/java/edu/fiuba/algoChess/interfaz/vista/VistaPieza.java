@@ -2,58 +2,59 @@ package edu.fiuba.algoChess.interfaz.vista;
 
 import edu.fiuba.algoChess.Modelo.bandos.BandoJugador1;
 import edu.fiuba.algoChess.Modelo.entidades.Pieza;
-import edu.fiuba.algoChess.Modelo.entidades.PiezaNull;
 import edu.fiuba.algoChess.Modelo.entorno.Tablero;
+import edu.fiuba.algoChess.Modelo.entorno.Ubicacion;
 import edu.fiuba.algoChess.Modelo.juego.Juego;
-import edu.fiuba.algoChess.interfaz.controlladores.CrearPiezaHandler;
-import javafx.application.Platform;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
+import javafx.scene.Node;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 
-import java.util.HashMap;
-import java.util.Optional;
+import java.util.Map;
 
 
 public class VistaPieza {
+	static private Map<String,String> diccionarioImagenes = Map.of(
+		"Soldado", "imagenes/soldado.jpeg",
+		"Jinete", "imagenes/jinete.jpeg",
+		"Curandero", "imagenes/curandero.jpeg",
+    	"Catapulta", "imagenes/catapulta.jpeg");
 
-    private double piezaEscala = 1;
+
+	private double piezaEscala = 1;
     private Tablero tablero;
-    private HashMap<String,String> listaImage = new HashMap<>();
     private Juego juego;
     private PantallaPrincipal pantallaPrincipal;
 
+    Pieza pieza;
+	public VistaPieza(Pieza pieza, Juego juego, PantallaPrincipal pantallaPrincipal) {
+		this.pieza = pieza;
+		this.juego = juego;
+		this.pantallaPrincipal = pantallaPrincipal;
+	}
 
-    public VistaPieza(HashMap<String,String> listaImage, Juego juego, PantallaPrincipal pantallaPrincipal) {
-    	this.tablero = juego.getTablero();
-    	this.juego = juego;
-    	this.pantallaPrincipal = pantallaPrincipal;
-    	listaView();
-    }
-
-    public void setPieceMap(VistaTablero map, String piece, int x, int y) {
+	public Node crearNodo() {
+		ImageView pieceImage = getImageViewMin(pieza.getClass().getSimpleName());
 		DropShadow rollOverColor = new DropShadow();
-        ImageView pieceImage = getImageViewMin(piece);
-		Pieza piezaTarget = piezaTarget(piece,juego,x,y);
 
 		pieceImage.addEventHandler(MouseEvent.MOUSE_ENTERED,
 				(event) -> pieceImage.setEffect(rollOverColor));
 		pieceImage.addEventHandler(MouseEvent.MOUSE_EXITED,
 				(event) -> pieceImage.setEffect(null));
-        pieceImage.addEventHandler(MouseEvent.MOUSE_PRESSED,
-				(event) -> comportamientoAlTocarPieza(pieceImage, map, piece, piezaTarget , x, y));
-        map.addViewOnMap(pieceImage, x, y);
-        //juego.pasarTurno();
-    }
+		pieceImage.addEventHandler(MouseEvent.MOUSE_PRESSED,
+				(event) -> comportamientoAlTocarPieza());
 
- 	public void moverPiezaEnMapa(ImageView pieceImage, VistaTablero map, String piece, Pieza piezaAMover){
-		MenuPieza menuPieza = new MenuPieza(this.juego,piezaAMover, this.juego.getTablero(),pieceImage,map,
-				this, piece, this.pantallaPrincipal.getSegundaEtapa());
+		HBox hbox = new HBox();
+		hbox.setStyle("-fx-border-width: 2; -fx-border-color: " + (pieza.getBando().nombreBando() == "jugador1" ? "#FF0000" : "#0000FF") + "; -fx-margin: -2");
+		hbox.getChildren().add(pieceImage);
+		return hbox;
+	}
+
+ 	public void ejecutarAccionSegundaEtapa(){
+		MenuPieza menuPieza = new MenuPieza(this.juego, this.pieza, this.pantallaPrincipal.getSegundaEtapa());
 		menuPieza.menuPopUp();
-		map.addViewOnMap(pieceImage, piezaAMover.getX(), piezaAMover.getY());
 	}
 
     public ImageView getImageViewMin(String piece) {
@@ -71,73 +72,35 @@ public class VistaPieza {
         return pieceImage;
     }
 
-    private HashMap<String, String> listaView() {
-    	this.listaImage.put("Soldado", "imagenes/soldado.jpeg");
-    	this.listaImage.put("Jinete", "imagenes/jinete.jpeg");
-    	this.listaImage.put("Curandero", "imagenes/curandero.jpeg");
-    	this.listaImage.put("Catapulta", "imagenes/catapulta.jpeg");
-    	return listaImage;
-   }
-
     public String searchImage(String piece) {
-    		return this.listaImage.get(piece);
+    		return diccionarioImagenes.get(piece);
     }
 
-	public void alerta3seg(String Titulo, String Texto){
+	public void mostrarDatosPiezaActual() {
+		Ubicacion u = pieza.getUbicacion();
+		int x = u.getCoordenadaX();
+		int y = u.getCoordenadaY();
 
-		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-		alert.setTitle(Titulo);
-		alert.setHeaderText(Texto);
-
-		Thread thread = new Thread(() -> {
-			try {
-				Thread.sleep(3000);
-				if (alert.isShowing()) {
-					Platform.runLater(() -> alert.close());
-				}
-			} catch (Exception exp) {
-				exp.printStackTrace();
-			}
-		});
-		thread.setDaemon(true);
-		thread.start();
-		Optional<ButtonType> result = alert.showAndWait();
-	}
-
-	public void mostrarDatosPiezaActual(String piece, Pieza pieza, int x, int y){
-
-    	if(pieza.getBando().equals(new BandoJugador1())){
-			alerta3seg("Datos Pieza","Pieza: "+
-					piece +   "\nUbicacion: x=" + x + " y=" + y +
-					"\nBando: "+ juego.getJugador1().getNombre());}
-		else{
-			alerta3seg("Datos Pieza","Pieza: "+
-					piece +   "\nUbicacion: x=" + x + " y=" + y +
-					"\nBando: "+ juego.getJugador2().getNombre());
-			}
+    	if(pieza.getBando().equals(new BandoJugador1())) {
+			DialogoAlerta.Alerta("Datos Pieza","Pieza: "+
+					pieza.getClass().getSimpleName() +   "\nUbicacion: x=" + x + " y=" + y +
+					"\nBando: "+ juego.getJugador1().getNombre(), 2);
+    	}
+		else {
+			DialogoAlerta.Alerta("Datos Pieza","Pieza: "+
+					pieza.getClass().getSimpleName() +   "\nUbicacion: x=" + x + " y=" + y +
+					"\nBando: "+ juego.getJugador2().getNombre(), 2);
+		}
     }
 
-    public void comportamientoAlTocarPieza(ImageView pieceImage, VistaTablero map, String piece, Pieza piezaModelo, int x, int y){
+	public void comportamientoAlTocarPieza(){
     	if (this.juego.getSegundaEtapa()){
-				moverPiezaEnMapa(pieceImage, map, piece, piezaModelo);
-		}else{
-			mostrarDatosPiezaActual(piece, piezaModelo,  x,  y);
-			map.addViewOnMap(pieceImage, x, y);
+			if(juego.getJugadorActivo().getBando() == pieza.getBando())
+    			ejecutarAccionSegundaEtapa();
 		}
-	}
-
-	public Pieza piezaTarget(String piece, Juego juego, int x, int y) {
-		CrearPiezaHandler crearPiezaHandler = new CrearPiezaHandler(piece, juego, x, y);
-		BuscarPiezaEnJuegoHandler buscarPiezaEnJuegoHandler = new BuscarPiezaEnJuegoHandler(juego, x, y);
-
-		if (!this.juego.getFinDeJuego()) {
-			if (this.juego.getSegundaEtapa()) {
-				return buscarPiezaEnJuegoHandler.buscarPiezaEnUbicacion();
-			} else {
-				return crearPiezaHandler.getPieza();
-			}
+    	else {
+			mostrarDatosPiezaActual();
 		}
-		return new PiezaNull();
 	}
 }
 

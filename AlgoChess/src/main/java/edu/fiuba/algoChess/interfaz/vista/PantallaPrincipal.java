@@ -4,6 +4,7 @@ import edu.fiuba.algoChess.Modelo.entidades.Catapulta;
 import edu.fiuba.algoChess.Modelo.entidades.Jinete;
 import edu.fiuba.algoChess.Modelo.entidades.Soldado;
 import edu.fiuba.algoChess.Modelo.juego.Juego;
+import edu.fiuba.algoChess.interfaz.controlladores.CrearPiezaHandler;
 import edu.fiuba.algoChess.interfaz.controlladores.UbicarPiezaHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -24,7 +25,6 @@ public class PantallaPrincipal {
 	private final HashMap<String, Class> listaPiezas;
 	@Getter
 	private Stage stage;
-	private VistaPieza pieceView;
 	private VistaTablero mapView;
 	private VistaJugador player1;
 	private VistaJugador player2;
@@ -42,15 +42,15 @@ public class PantallaPrincipal {
 
 		this.juego = new Juego(jugador1,jugador2);
 		this.stage = stage;
-		this.pieceView = new VistaPieza( listaImage, juego, this);
-		this.mapView = new VistaTablero(juego);//tamanio del tablero
+		//this.pieceView = new VistaPieza(juego, this);
+		this.mapView = new VistaTablero(this.juego, this);
 		this.listaPiezas = new HashMap<>();
 
 		this.player1 =  new VistaJugador(juego.getJugador1());
 		this.player2 =  new VistaJugador(juego.getJugador2());
 
-		this.segundaEtapa = new SegundaEtapa(juego, stage, pieceView, mapView);
-		this.finDeJuego = new FinDeJuego(juego, stage, pieceView, mapView);
+		this.segundaEtapa = new SegundaEtapa(juego, stage, mapView);
+		this.finDeJuego = new FinDeJuego(juego, stage, mapView);
 		this.pantallaPrincipal = this;
 
 		initialPhase();
@@ -126,8 +126,9 @@ public class PantallaPrincipal {
 
 			Button submit = new Button("ubicar");
 			submit.setStyle("-fx-background-color:#F1C40F;");
-			submit.setOnAction(new UbicarPiezaHandler(juego, stage, stageUbicar, pieceView,
-					nombrePieza, pantallaPrincipal, listaPiezas, mapView, head, x, y, juego.getJugadorActivo().getBando()));
+//			submit.setOnAction(new UbicarPiezaHandler(juego, stage, stageUbicar, pieceView,
+//					nombrePieza, pantallaPrincipal, listaPiezas, mapView, head, x, y, juego.getJugadorActivo().getBando()));
+			submit.setOnAction(new CrearPiezaHandler(juego, nombrePieza, x, y, head, stageUbicar, pantallaPrincipal));
 			vbox.getChildren().addAll(hbx,hby,submit);
 			Scene sceneUbicar = new Scene(vbox);
 			stageUbicar.setScene(sceneUbicar);
@@ -138,6 +139,7 @@ public class PantallaPrincipal {
 	public void actualizarVista() {
 		this.player1.actualizarVista();
 		this.player2.actualizarVista();
+		this.mapView.actualizarVista();
 	}
 
 	public void cambioTurno(HBox head) {

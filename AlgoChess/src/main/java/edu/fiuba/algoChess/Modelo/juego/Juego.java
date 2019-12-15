@@ -73,40 +73,24 @@ public class Juego {
 			this.activoBando1 = true;
 		}
 
-		public Pieza crearPieza (String nombre, Ubicacion ubicacion){
+	public Pieza crearPieza (String nombre, Ubicacion ubicacion){
+		Pieza pieza;
 
-			Pieza pieza = new PiezaNull();
+		if (nombre.contains("Soldado"))
+			pieza = new Soldado(ubicacion, this.bandoActivo, this.tablero);
+		else if (nombre.contains("Catapulta"))
+			pieza = new Catapulta(ubicacion, this.bandoActivo, this.tablero);
+		else if (nombre.contains("Jinete"))
+			pieza = new Jinete(ubicacion, this.bandoActivo, this.tablero);
+		else if (nombre.contains("Curandero"))
+			pieza = new Curandero(ubicacion, this.bandoActivo, this.tablero);
+		else
+			return new PiezaNull();
 
-				if (nombre.contains("Soldado")) {
-					pieza = new Soldado(ubicacion, this.bandoActivo, this.tablero);
-					this.getPiezasEnTablero().add(pieza);
-					this.jugadorActivo.adquirirPieza(pieza);
-					return pieza;
-				}
-
-				if (nombre.contains("Catapulta")) {
-					pieza = new Catapulta(ubicacion, this.bandoActivo, this.tablero);
-					this.getPiezasEnTablero().add(pieza);
-					this.jugadorActivo.adquirirPieza(pieza);
-					return pieza;
-				}
-
-				if (nombre.contains("Jinete")) {
-					pieza = new Jinete(ubicacion, this.bandoActivo, this.tablero);
-					this.getPiezasEnTablero().add(pieza);
-					this.jugadorActivo.adquirirPieza(pieza);
-					return pieza;
-				}
-
-				if (nombre.contains("Curandero")) {
-					pieza = new Curandero(ubicacion, this.bandoActivo, this.tablero);
-					this.getPiezasEnTablero().add(pieza);
-					this.jugadorActivo.adquirirPieza(pieza);
-					return pieza;
-				}
-
-			return pieza;
-		}
+		this.getPiezasEnTablero().add(pieza);
+		this.jugadorActivo.adquirirPieza(pieza);
+		return pieza;
+	}
 
 	public void atacar (Pieza atacante, Pieza atacado){
 		atacante.atacar(atacado);

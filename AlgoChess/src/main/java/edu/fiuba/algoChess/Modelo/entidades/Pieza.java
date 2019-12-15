@@ -125,14 +125,15 @@ public abstract class Pieza extends Observable implements Movible, Batalloneable
 
 	public void mover( Tablero campoDeBatalla, Ubicacion ubicacion) {
 		this.vida.stateComportarse();
-		try {
+		//try {
+		// que la excepcion se levante
 			Ubicacion ubicacionVieja = this.getUbicacion();
 			campoDeBatalla.ubicarEnCeldaFaseJuego(this, ubicacion);
 			campoDeBatalla.eliminar(ubicacionVieja);
 			this.setUbicacion(ubicacion);
-		}catch (NoSePuedeUbicarPorqueEstaOcupadoException ex){
+		//}catch (NoSePuedeUbicarPorqueEstaOcupadoException ex){
 			//mensaje de error en vista y darle el turno al mismo jugador
-		}
+		//}
 
 	}
 

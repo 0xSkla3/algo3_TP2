@@ -53,11 +53,14 @@ public class MenuPieza {
 	@Setter
 	SegundaEtapa segundaEtapa;
 
-	public MenuPieza(Juego juego, Pieza pieza, Tablero tablero, ImageView imagenPieza, VistaTablero map, VistaPieza pieceView, String piezaNombre, SegundaEtapa segundaEtapa) {
+//	public MenuPieza(Juego juego, Pieza pieza, Tablero tablero, ImageView imagenPieza, VistaTablero map, VistaPieza pieceView, String piezaNombre, SegundaEtapa segundaEtapa) {
+	public MenuPieza(Juego juego, Pieza pieza, SegundaEtapa segundaEtapa) {
 		this.piezaNombre = piezaNombre;
-		menuMovimiento = new MenuMovimiento(pieza, tablero, imagenPieza, map, pieceView);
-		menuComportamiento = new MenuComportamiento(juego, pieza, tablero, imagenPieza, map, segundaEtapa);
+		menuMovimiento = new MenuMovimiento(pieza, juego.getTablero(), segundaEtapa);
+		menuComportamiento = new MenuComportamiento(juego, pieza, segundaEtapa);
 		this.segundaEtapa = segundaEtapa;
+
+		this.piezaNombre = pieza.getClass().getSimpleName();
 	}
 
 	public void menuPopUp() {
@@ -69,9 +72,9 @@ public class MenuPieza {
 		Button moverse = new Button("Moverse");
 		moverse.setStyle("-fx-background-color:#F1C40F;");
 		moverse.setOnAction(e -> {
-					if(!piezaNombre.contains("Catapulta")) {
-						this.menuMovimiento.menuPopUp();
-					}
+			if(!piezaNombre.contains("Catapulta")) {
+				this.menuMovimiento.menuPopUp();
+			}
 			stage.close();
 		});
 
@@ -84,11 +87,9 @@ public class MenuPieza {
 
 		vbox.getChildren().addAll(moverse, interactuar);
 
-		this.segundaEtapa.cambioTurno();
 		Scene theScene = new Scene(vbox);
 		stage.setScene(theScene);
 		stage.show();
-
 	}
 
 	public void elegirMenuInteraccion() {
