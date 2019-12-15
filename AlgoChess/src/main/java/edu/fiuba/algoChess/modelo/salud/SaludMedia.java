@@ -14,8 +14,8 @@ public class SaludMedia extends Salud {
 
 	@Override
 	public Salud herir(double danioARecibir) {
-		setValorActual(this.getValorActual()- danioARecibir);
-		return this.getValorActual() < 0? new SaludMuerto():this;
+		setValorActual(this.valorActual- danioARecibir);
+		return (this.valorActual <= 0) ? new SaludMuerto() : this;
 	}
 
 }
