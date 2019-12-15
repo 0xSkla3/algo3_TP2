@@ -2,6 +2,7 @@ package edu.fiuba.algoChess.Modelo.entidades;
 
 import edu.fiuba.algoChess.Modelo.bandos.Bando;
 import edu.fiuba.algoChess.Modelo.batallones.Batalloneable;
+import edu.fiuba.algoChess.Modelo.comportamientos.Ataque;
 import edu.fiuba.algoChess.Modelo.entorno.*;
 import edu.fiuba.algoChess.Modelo.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;
 import edu.fiuba.algoChess.Modelo.rangos.Rango;
@@ -85,13 +86,14 @@ public abstract class Pieza extends Observable implements Movible, Batalloneable
 		this.vida.curar(aumento);
 	}
 
-	public void recibirAtaque(double ataque){
+	public void recibirAtaque(Ataque ataque){
+ 		this.setVida(this.bando.recibirAtaque(this.vida, ataque, this.bandoCeldaActual));
  		//this.vida.herir(ataque);
-		double danioARecibir = ataque;
-		if(this.bandoEnemigo(bandoCeldaActual)){
-			danioARecibir = ataque*0.05;
-		}
-		this.setVida(this.vida.herir(danioARecibir));
+	//	double ataqueARecibir = ataque;
+	//	if(this.bandoEnemigo(bandoCeldaActual)){
+	//		ataqueARecibir.aumentarDanioPorSectorEnemigo();
+	//	}
+	//	this.setVida(this.vida.herir(ataqueARecibir));
 	}
 
 	public void pisar(Celda celda, Pieza pieza){
@@ -184,8 +186,6 @@ public abstract class Pieza extends Observable implements Movible, Batalloneable
 		DistanciaRelativa distanciaEntrePiezas = this.calculadorDistancia.getDistanciaRelativa(this.ubicacion, atacado.ubicacion);
 		distanciaEntrePiezas.ejecutarComportamientoPorDistancia(this, atacado);
 	}
-
-	public abstract void curar(Pieza curado);
 
 	public boolean bandoAliado(Bando bando){
 		return this.bando.bandoAliado(bando);

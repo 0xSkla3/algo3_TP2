@@ -1,5 +1,7 @@
 package edu.fiuba.algoChess.Modelo.salud;
 
+import edu.fiuba.algoChess.Modelo.comportamientos.Ataque;
+
 public class SaludMedia extends Salud {
 
 	public SaludMedia(double valorCompleto, double valorActual) {
@@ -13,8 +15,8 @@ public class SaludMedia extends Salud {
 	}
 
 	@Override
-	public Salud herir(double salud) {
-		setValorActual(this.getValorActual()-salud);
+	public Salud herir(double danioARecibir) {
+		setValorActual(this.getValorActual()- danioARecibir);
 		return this.getValorActual() < 0? new SaludMuerto():this;
 	}
 

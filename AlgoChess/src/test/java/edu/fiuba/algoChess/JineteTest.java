@@ -33,7 +33,7 @@ public class JineteTest {
 		Ubicacion ubicacionJineteAliado = new Ubicacion(10,1);
 		Jinete jineteAliado = new Jinete(ubicacionJineteAliado,bandoJugador1, tableroTest);
 
-		double vidaTrasAtaque = soldadoEnemigo.getVida().getValorActual() - (jineteAliado.getAtaqueCercano().getValorComportamiento());
+		double vidaTrasAtaque = soldadoEnemigo.getVida().getValorActual() - (jineteAliado.getDanioCercano());
 		jineteAliado.atacar(soldadoEnemigo);
 		assertEquals(vidaTrasAtaque,soldadoEnemigo.getVida().getValorActual());
 
@@ -51,7 +51,7 @@ public class JineteTest {
 		Ubicacion ubicacionJineteAliado = new Ubicacion(10,1);
 		Jinete jineteAliado = new Jinete(ubicacionJineteAliado,bandoJugador1, tableroTest);
 
-		double vidaTrasAtaque = soldadoEnemigo.getVida().getValorActual() - jineteAliado.getAtaqueMedio().getValorComportamiento();
+		double vidaTrasAtaque = soldadoEnemigo.getVida().getValorActual() - jineteAliado.getDanioMedio();
 
 		jineteAliado.atacar(soldadoEnemigo);
 		assertEquals(vidaTrasAtaque, soldadoEnemigo.getVida().getValorActual());
@@ -74,7 +74,7 @@ public class JineteTest {
 		Ubicacion ubicacionJineteAliado = new Ubicacion(10,1);
 		Jinete jineteAliado = new Jinete(ubicacionJineteAliado,bandoJugador1,tableroTest);
 
-		double vidaTrasAtaque = soldadoEnemigo.getVida().getValorActual() - jineteAliado.getAtaqueCercano().getValorComportamiento();
+		double vidaTrasAtaque = soldadoEnemigo.getVida().getValorActual() - jineteAliado.getDanioCercano();
 
 		jineteAliado.atacar(soldadoEnemigo);
 		assertEquals(vidaTrasAtaque, soldadoEnemigo.getVida().getValorActual());

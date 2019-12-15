@@ -151,7 +151,7 @@ public class SoldadoTest {
 		Ubicacion ubicacionJinete = new Ubicacion(11,1);
 		Jinete jineteEnemigo = new Jinete(ubicacionJinete,bandoJugador2,tablero);
 
-		double vidaTrasAtaque = jineteEnemigo.getVida().getValorActual() - soldadoAliado.getAtaqueCercano().getValorComportamiento();
+		double vidaTrasAtaque = jineteEnemigo.getVida().getValorActual() - soldadoAliado.getDanio();
 
 		soldadoAliado.atacar(jineteEnemigo);
 

@@ -2,14 +2,13 @@ package edu.fiuba.algoChess.Modelo.entidades;
 
 import edu.fiuba.algoChess.Modelo.bandos.Bando;
 import edu.fiuba.algoChess.Modelo.batallones.Batalloneable;
-import edu.fiuba.algoChess.Modelo.comportamientos.Comportamiento;
+import edu.fiuba.algoChess.Modelo.comportamientos.AtaqueNormal;
 import edu.fiuba.algoChess.Modelo.entorno.*;
 import edu.fiuba.algoChess.Modelo.excepciones.FueraDeRangoParaEjecutarComportamientoException;
 import edu.fiuba.algoChess.Modelo.excepciones.NoHayBatallonFormadoException;
 import edu.fiuba.algoChess.Modelo.excepciones.OperacionInvalidaException;
 import edu.fiuba.algoChess.Modelo.excepciones.PiezaActualNoFormaBatallonDeSoldadosException;
 
-import edu.fiuba.algoChess.Modelo.entorno.*;
 import edu.fiuba.algoChess.Modelo.rangos.Agrupable;
 import edu.fiuba.algoChess.Modelo.rangos.Rango;
 import lombok.Getter;
@@ -23,11 +22,11 @@ public class Jinete extends Pieza {
 
 	@Getter
 	@Setter
-	private Comportamiento ataqueMedio;
+	private AtaqueNormal ataqueMedio;
 
 	@Getter
 	@Setter
-	private Comportamiento ataqueCercano;
+	private AtaqueNormal ataqueCercano;
 
 	public boolean piezaAliadaCercana;
 
@@ -37,12 +36,18 @@ public class Jinete extends Pieza {
 	@Setter
 	private int distanciaAReconocerEnTerreno = 2;
 
+	@Getter
+	private double danioCercano = 5;
+
+	@Getter
+	private double danioMedio = 15;
+
 	public Jinete(Ubicacion ubicacion, Bando bando, Tablero tablero) {
 
 		super(3, 100, ubicacion, bando);
 		tablero.ubicarEnCeldaFaseInicial(this, ubicacion);
-		this.ataqueCercano = new Comportamiento(5);
-		this.ataqueMedio = new Comportamiento(15);
+		this.ataqueCercano = new AtaqueNormal(danioCercano);
+		this.ataqueMedio = new AtaqueNormal(danioMedio);
 		this.piezaEnemigaCercana = false;
 		this.piezaAliadaCercana = false;
 		this.distanciaAReconocerEnTerreno = 2;
@@ -149,11 +154,6 @@ public class Jinete extends Pieza {
 	}
 
 	@Override
-	public void curar(Pieza curado) {
-		throw new OperacionInvalidaException("Operacion invalida");
-	}
-
-	@Override
 	public Agrupable agrupar(Pieza pieza1, Pieza pieza2, Pieza pieza3) {
 		return null;
 	}
@@ -241,6 +241,14 @@ public class Jinete extends Pieza {
 	@Override
 	public void setPieza3(Pieza pieza3) {
 		throw new OperacionInvalidaException("Operacion invalida");
+	}
+
+	public double getDanioMedio() {
+		return this.danioMedio;
+	}
+
+	public double getDanioCercano() {
+		return this.danioCercano;
 	}
 }
 

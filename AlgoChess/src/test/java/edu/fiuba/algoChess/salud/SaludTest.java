@@ -1,4 +1,5 @@
 package edu.fiuba.algoChess.salud;
+import edu.fiuba.algoChess.Modelo.comportamientos.Ataque;
 import edu.fiuba.algoChess.Modelo.salud.Salud;
 import edu.fiuba.algoChess.Modelo.salud.SaludLlena;
 import edu.fiuba.algoChess.Modelo.salud.SaludMedia;
@@ -41,8 +42,8 @@ public class SaludTest {
 
 	@Test
 	public void saludLlenaNoSeLlenaMas(){
-		final int saludValorTotal = 50;
-		final int saludValorCurar = 5;
+		final double saludValorTotal = 50;
+		final double saludValorCurar = 5;
 		Salud unaSalud = new SaludLlena(saludValorTotal);
 		unaSalud = unaSalud.curar(saludValorCurar);
 
@@ -51,8 +52,8 @@ public class SaludTest {
 
 	@Test
 	public void saludMediaMuere(){
-		final int saludValorTotal = 50;
-		final int saludValorHerido = 5;
+		final double saludValorTotal = 50;
+		final double saludValorHerido = 5;
 		Salud unaSalud = new SaludMedia(saludValorTotal,saludValorTotal-saludValorHerido);
 		unaSalud = unaSalud.herir(saludValorTotal);
 
@@ -61,8 +62,8 @@ public class SaludTest {
 
 	@Test
 	public void saludMediaSeLLena(){
-		final int saludValorTotal = 50;
-		final int saludValorHerir = 5;
+		final double saludValorTotal = 50;
+		final double saludValorHerir = 5;
 		Salud unaSalud = new SaludMedia(saludValorTotal,saludValorTotal-saludValorHerir);
 		unaSalud = unaSalud.curar(saludValorTotal);
 
@@ -71,8 +72,8 @@ public class SaludTest {
 
 	@Test
 	public void saludMuertoNoSeLlena(){
-		final int saludValorTotal = 50;
-		final int saludValorCurar = 5;
+		final double saludValorTotal = 50;
+		final double saludValorCurar = 5;
 		Salud unaSalud = new SaludMuerto();
 		unaSalud = unaSalud.curar(saludValorCurar);
 

@@ -1,17 +1,24 @@
 package edu.fiuba.algoChess.Modelo.bandos;
 
-import edu.fiuba.algoChess.Modelo.comportamientos.Comportamiento;
+import edu.fiuba.algoChess.Modelo.comportamientos.Ataque;
+import edu.fiuba.algoChess.Modelo.comportamientos.Curacion;
 import edu.fiuba.algoChess.Modelo.entidades.Pieza;
+import edu.fiuba.algoChess.Modelo.salud.Herible;
+import edu.fiuba.algoChess.Modelo.salud.Salud;
 
 public abstract class Bando {
 
-    public abstract void atacar(Pieza pieza, Comportamiento comportamiento, Bando bando);
-    public abstract void atacar(Pieza pieza, Comportamiento comportamiento, BandoJugador1 bandojugador1);
-    public abstract void atacar(Pieza pieza, Comportamiento comportamiento, BandoJugador2 bandojugador2);
+    public abstract void atacar(Pieza pieza, Ataque ataque, Bando bando);
+    public abstract void atacar(Pieza pieza, Ataque ataque, BandoJugador1 bandojugador1);
+    public abstract void atacar(Pieza pieza, Ataque ataque, BandoJugador2 bandojugador2);
 
-    public abstract void curar(Pieza pieza, Comportamiento comportamiento, Bando bando);
-    public abstract void curar(Pieza pieza, Comportamiento comportamiento, BandoJugador1 bandojugador1);
-    public abstract void curar(Pieza pieza, Comportamiento comportamiento, BandoJugador2 bandojugador2);
+    public abstract void curar(Pieza pieza, Curacion curacion, Bando bando);
+    public abstract void curar(Pieza pieza, Curacion curacion, BandoJugador1 bandojugador1);
+    public abstract void curar(Pieza pieza, Curacion curacion, BandoJugador2 bandojugador2);
+
+    public abstract Salud recibirAtaque(Herible salud, Ataque ataque, Bando bando);
+    public abstract Salud recibirAtaque(Herible salud, Ataque ataque, BandoJugador1 bandoJugador1);
+    public abstract Salud recibirAtaque(Herible salud, Ataque ataque, BandoJugador2 bandoJugador2);
 
     public abstract boolean bandoAliado(Bando bando);
     public abstract boolean bandoAliado(BandoJugador1 bando);
@@ -23,17 +30,9 @@ public abstract class Bando {
     public abstract boolean bandoEnemigo(BandoJugador2 bando);
     public abstract String getNombre();
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Bando bando = (Bando) o;
-        return this.getClass() == o.getClass();
-    }
-
-    public String nombreBando() {
+   /* public String nombreBando() {
         return this.getClass() == BandoJugador1.class ? "jugador1" : "jugador2";
-    }
+    }*/
 
 
 }

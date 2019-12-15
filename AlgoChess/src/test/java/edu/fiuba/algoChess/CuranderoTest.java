@@ -2,11 +2,10 @@ package edu.fiuba.algoChess;
 
 import edu.fiuba.algoChess.Modelo.bandos.BandoJugador1;
 import edu.fiuba.algoChess.Modelo.bandos.BandoJugador2;
-import edu.fiuba.algoChess.Modelo.comportamientos.Comportamiento;
+import edu.fiuba.algoChess.Modelo.comportamientos.AtaqueNormal;
 import edu.fiuba.algoChess.Modelo.entidades.Catapulta;
 import edu.fiuba.algoChess.Modelo.entidades.Curandero;
 import edu.fiuba.algoChess.Modelo.entidades.Soldado;
-import edu.fiuba.algoChess.Modelo.entorno.Celda;
 import edu.fiuba.algoChess.Modelo.entorno.Tablero;
 import edu.fiuba.algoChess.Modelo.entorno.Ubicacion;
 import edu.fiuba.algoChess.Modelo.excepciones.FueraDeRangoParaEjecutarComportamientoException;
@@ -31,9 +30,9 @@ public class CuranderoTest {
         Ubicacion ubicacionCurandero = new Ubicacion(5,6);
         Curandero curandero = new Curandero(ubicacionCurandero,bandoJugador1,tablero);
 
-        Comportamiento comportamiento = new Comportamiento(15);
-        soldado.recibirAtaque(comportamiento.getValorComportamiento());
-        double vidaSoldadoCurado = soldado.getVida().getValorActual() + curandero.getCuracion().getValorComportamiento();
+        AtaqueNormal ataqueNormal = new AtaqueNormal(15);
+        soldado.recibirAtaque(ataqueNormal);
+        double vidaSoldadoCurado = soldado.getVida().getValorActual() + curandero.getCuracion().getValorCuracion();
         curandero.curar(soldado);
         assertEquals(vidaSoldadoCurado,soldado.getVida().getValorActual(), 0.0);
     }
@@ -50,8 +49,8 @@ public class CuranderoTest {
         Ubicacion ubicacionCurandero = new Ubicacion(11,3);
         Curandero curandero = new Curandero(ubicacionCurandero,bandoJugador2,tablero);
 
-        Comportamiento comportamiento = new Comportamiento(15);
-        soldado.recibirAtaque(comportamiento.getValorComportamiento());
+        AtaqueNormal ataqueNormal = new AtaqueNormal(15);
+        soldado.recibirAtaque(ataqueNormal);
         curandero.curar(soldado);
     }
 
@@ -68,8 +67,8 @@ public class CuranderoTest {
         Ubicacion ubicacionCurandero = new Ubicacion(1,2);
         Curandero curandero = new Curandero(ubicacionCurandero,bandoJugador1,tablero);
 
-        Comportamiento comportamiento = new Comportamiento(15);
-        soldado.recibirAtaque(comportamiento.getValorComportamiento());
+        AtaqueNormal ataqueNormal = new AtaqueNormal(15);
+        soldado.recibirAtaque(ataqueNormal);
         curandero.curar(soldado);
     }
 
@@ -86,8 +85,8 @@ public class CuranderoTest {
         Ubicacion ubicacionCurandero = new Ubicacion(1,2);
         Curandero curandero = new Curandero(ubicacionCurandero,bandoJugador1,tablero);
 
-        Comportamiento comportamiento = new Comportamiento(15);
-        catapulta.recibirAtaque(comportamiento.getValorComportamiento());
+        AtaqueNormal ataqueNormal = new AtaqueNormal(15);
+        catapulta.recibirAtaque(ataqueNormal);
         curandero.curar(catapulta);
     }
 

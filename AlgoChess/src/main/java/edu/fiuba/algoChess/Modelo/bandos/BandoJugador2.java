@@ -1,47 +1,59 @@
 package edu.fiuba.algoChess.Modelo.bandos;
 
-import edu.fiuba.algoChess.Modelo.comportamientos.Comportamiento;
-import edu.fiuba.algoChess.Modelo.entidades.Catapulta;
+import edu.fiuba.algoChess.Modelo.comportamientos.Ataque;
+import edu.fiuba.algoChess.Modelo.comportamientos.Curacion;
 import edu.fiuba.algoChess.Modelo.excepciones.NoSePuedeAtacarUnAliadoException;
-import edu.fiuba.algoChess.Modelo.excepciones.NoSePuedeCurarUnaCatapultaException;
 import edu.fiuba.algoChess.Modelo.excepciones.NoSePuedeCurarUnaUnidadEnemigaException;
 import edu.fiuba.algoChess.Modelo.entidades.Pieza;
+import edu.fiuba.algoChess.Modelo.salud.Herible;
+import edu.fiuba.algoChess.Modelo.salud.Salud;
 
 public class BandoJugador2 extends Bando {
 
     @Override
-    public void atacar(Pieza pieza, Comportamiento comportamiento, Bando bando){
-        bando.atacar(pieza, comportamiento, this);
+    public void atacar(Pieza pieza, Ataque ataque, Bando bando){
+        bando.atacar(pieza, ataque, this);
     }
 
     @Override
-    public void atacar(Pieza pieza, Comportamiento comportamiento, BandoJugador1 bandojugador1){
-        pieza.recibirAtaque(comportamiento.getValorComportamiento());
+    public void atacar(Pieza pieza, Ataque ataque, BandoJugador1 bandojugador1){
+        pieza.recibirAtaque(ataque);
     }
 
     @Override
-    public void atacar(Pieza pieza, Comportamiento comportamiento, BandoJugador2 bandojugador2){
+    public void atacar(Pieza pieza, Ataque ataque, BandoJugador2 bandojugador2){
         throw new NoSePuedeAtacarUnAliadoException("No se puede atacar un aliado");
     }
 
+
     @Override
-    public void curar(Pieza pieza, Comportamiento comportamiento, Bando bando){
-        if (!(pieza instanceof Catapulta)){
-            bando.curar(pieza, comportamiento, this);
-        }
-        else {
-            throw new NoSePuedeCurarUnaCatapultaException("No se puede curar una catapulta");
-        }
+    public void curar(Pieza pieza, Curacion curacion, Bando bando){
+        bando.curar(pieza, curacion, this);
     }
 
     @Override
-    public void curar(Pieza pieza, Comportamiento comportamiento, BandoJugador2 bandojugador2){
-        pieza.aumentarVida(comportamiento.getValorComportamiento());
-    }
-
-    @Override
-    public void curar(Pieza pieza, Comportamiento comportamiento, BandoJugador1 bandojugador1){
+    public void curar(Pieza pieza, Curacion curacion, BandoJugador1 bandojugador1){
         throw new NoSePuedeCurarUnaUnidadEnemigaException("No se puede curar un enemigo");
+    }
+
+    @Override
+    public void curar(Pieza pieza, Curacion curacion, BandoJugador2 bandojugador2){
+        pieza.aumentarVida(curacion.getValorCuracion());
+    }
+
+    @Override
+    public Salud recibirAtaque(Herible herible, Ataque ataque, Bando bando) {
+        return bando.recibirAtaque(herible, ataque, this);
+    }
+
+    @Override
+    public Salud recibirAtaque(Herible herible, Ataque ataque, BandoJugador1 bandoJugador1) {
+        return ataque.hacerDanioSectorEnemigo(herible);
+    }
+
+    @Override
+    public Salud recibirAtaque(Herible herible, Ataque ataque, BandoJugador2 bandoJugador2) {
+        return ataque.hacerDanioSectorAliado(herible);
     }
 
     @Override

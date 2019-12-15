@@ -111,7 +111,7 @@ public class Juego {
 		atacante.atacar(atacado);
 	}
 
-	public void curar (Pieza curador, Pieza curado){
+	public void curar (Curandero curador, Pieza curado){
 		curador.curar(curado);
 	}
 

@@ -1,8 +1,7 @@
 package edu.fiuba.algoChess.Modelo.entidades;
 
 import edu.fiuba.algoChess.Modelo.bandos.Bando;
-import edu.fiuba.algoChess.Modelo.batallones.BatallonUtil;
-import edu.fiuba.algoChess.Modelo.comportamientos.Comportamiento;
+import edu.fiuba.algoChess.Modelo.comportamientos.AtaqueNormal;
 import edu.fiuba.algoChess.Modelo.entorno.*;
 import edu.fiuba.algoChess.Modelo.excepciones.FueraDeRangoParaEjecutarComportamientoException;
 import edu.fiuba.algoChess.Modelo.batallones.Batallon;
@@ -12,7 +11,6 @@ import edu.fiuba.algoChess.Modelo.excepciones.OperacionInvalidaException;
 import edu.fiuba.algoChess.Modelo.rangos.Agrupable;
 import edu.fiuba.algoChess.Modelo.rangos.Rango;
 import edu.fiuba.algoChess.Modelo.rangos.RangoSoldado;
-import edu.fiuba.algoChess.Modelo.salud.SaludLlena;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,7 +23,7 @@ public class Soldado extends Pieza implements Movible {
 
 	@Getter
 	@Setter
-	private Comportamiento ataqueCercano;
+	private AtaqueNormal ataqueCercano;
 
 	@Getter
 	@Setter
@@ -34,7 +32,7 @@ public class Soldado extends Pieza implements Movible {
 	public Soldado(Ubicacion ubicacion, Bando bando, Tablero tablero){
 		super(2,75,ubicacion,bando);
 		this.danioCercano = 10;
-		this.ataqueCercano = new Comportamiento(10);
+		this.ataqueCercano = new AtaqueNormal(10);
 		this.rango = new RangoSoldado(this, tablero);
 		tablero.ubicarEnCeldaFaseInicial(this, ubicacion);
 	}
@@ -161,12 +159,6 @@ public class Soldado extends Pieza implements Movible {
 		throw new FueraDeRangoParaEjecutarComportamientoException("Pieza fuera de rango");
 	};
 
-
-	@Override
-	public void curar(Pieza curado) {
-		throw new OperacionInvalidaException("Operacion invalida");
-	}
-
 	@Override
 	public Agrupable agrupar(Pieza pieza1, Pieza pieza2, Pieza pieza3) {
 		return null;
@@ -255,5 +247,9 @@ public class Soldado extends Pieza implements Movible {
 	@Override
 	public void setPieza3(Pieza pieza3) {
 		throw new OperacionInvalidaException("Operacion invalida");
+	}
+
+	public double getDanio() {
+		return danioCercano;
 	}
 }

@@ -2,10 +2,9 @@ package edu.fiuba.algoChess.Modelo.entidades;
 
 import edu.fiuba.algoChess.Modelo.bandos.Bando;
 import edu.fiuba.algoChess.Modelo.batallones.Batalloneable;
-import edu.fiuba.algoChess.Modelo.comportamientos.Comportamiento;
+import edu.fiuba.algoChess.Modelo.comportamientos.Curacion;
 import edu.fiuba.algoChess.Modelo.entorno.*;
 import edu.fiuba.algoChess.Modelo.excepciones.*;
-import edu.fiuba.algoChess.Modelo.entorno.*;
 import edu.fiuba.algoChess.Modelo.rangos.Agrupable;
 import edu.fiuba.algoChess.Modelo.rangos.Rango;
 import lombok.Getter;
@@ -18,13 +17,13 @@ public class Curandero extends Pieza {
 
 	@Getter
 	@Setter
-	private Comportamiento curacion;
+	private Curacion curacion;
 
 	public Curandero(Ubicacion ubicacion, Bando bando, Tablero tablero){
 
 		super(2,75,ubicacion,bando);
 		tablero.ubicarEnCeldaFaseInicial(this, ubicacion);
-		this.curacion = new Comportamiento(15);
+		this.curacion = new Curacion(15);
 
 	}
 
@@ -103,10 +102,6 @@ public class Curandero extends Pieza {
 	@Override
 	public void ejecutarComportamientoPorDistancia(DistanciaCercana distancia, Pieza pieza) {
 		this.bando.curar(pieza, this.curacion, pieza.getBando());
-	};
-
-	public void ejecutarComportamientoPorDistancia(DistanciaCercana distancia, Catapulta pieza) {
-		throw new NoSePuedeCurarUnaCatapultaException("No se puede curar una catapulta");
 	};
 
 	@Override

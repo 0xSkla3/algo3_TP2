@@ -3,20 +3,20 @@ package edu.fiuba.algoChess.Modelo.comportamientos;
 import edu.fiuba.algoChess.Modelo.entorno.DistanciaRelativa;
 import edu.fiuba.algoChess.Modelo.entidades.Pieza;
 
-public class Comportamiento {
+public class Curacion {
 
-	protected double valorComportamiento;
+	protected double curacion;
 	protected DistanciaRelativa distanciaRelativa;
 
-	public Comportamiento(double valorComportamiento){
-		this.valorComportamiento = valorComportamiento;
+	public Curacion(double curacion){
+		this.curacion = curacion;
 	}
 
 	public void ejecutarComportamiento(Pieza pieza, Pieza otraPieza){
 	};
 
-	public double getValorComportamiento(){
-		return valorComportamiento;
+	public double getValorCuracion(){
+		return curacion;
 	}
 
 }

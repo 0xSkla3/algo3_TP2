@@ -3,13 +3,11 @@ package edu.fiuba.algoChess.Modelo.comportamientos;
 import edu.fiuba.algoChess.Modelo.entidades.Pieza;
 import edu.fiuba.algoChess.Modelo.excepciones.OperacionInvalidaException;
 
-import java.util.ArrayList;
-import java.util.ConcurrentModificationException;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class AtaqueCatapulta extends Comportamiento{
+public class AtaqueCatapulta extends Ataque{
 
-    private double danio;
+    private Ataque danio;
     private CopyOnWriteArrayList<Pieza> atacados;
     private CopyOnWriteArrayList<Pieza> aAtacar;
 
@@ -21,7 +19,7 @@ public class AtaqueCatapulta extends Comportamiento{
 
         atacados = new CopyOnWriteArrayList<>();
         aAtacar = new CopyOnWriteArrayList<>();
-        aAtacar.add(pieza);
+       // aAtacar.add(pieza);
        // pieza.recibirAtaque(danio);
         //atacados.add(pieza);
         for (Pieza piezaAAtacar: aAtacar
@@ -39,10 +37,6 @@ public class AtaqueCatapulta extends Comportamiento{
                  }
              }
         }
-    }
-
-    public double getDanio(){
-        return danio;
     }
 
 

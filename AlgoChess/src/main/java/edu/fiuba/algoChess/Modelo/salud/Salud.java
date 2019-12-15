@@ -1,5 +1,6 @@
 package edu.fiuba.algoChess.Modelo.salud;
 
+import edu.fiuba.algoChess.Modelo.comportamientos.Ataque;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,11 +10,11 @@ public abstract class Salud implements Curable, Herible {
 
 	@Getter
 	@Setter
-	private double valorCompleto;
+	protected double valorCompleto;
 
 	@Getter
 	@Setter
-	private double valorActual;
+	protected double valorActual;
 
 	@Override
 	public abstract Salud curar(double salud);

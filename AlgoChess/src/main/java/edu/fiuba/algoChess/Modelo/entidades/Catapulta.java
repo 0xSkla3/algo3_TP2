@@ -3,11 +3,7 @@ import edu.fiuba.algoChess.Modelo.comportamientos.AtaqueCatapulta;
 import edu.fiuba.algoChess.Modelo.entorno.*;
 import edu.fiuba.algoChess.Modelo.bandos.Bando;
 import edu.fiuba.algoChess.Modelo.batallones.Batalloneable;
-import edu.fiuba.algoChess.Modelo.comportamientos.Comportamiento;
-import edu.fiuba.algoChess.Modelo.excepciones.FueraDeRangoParaEjecutarComportamientoException;
-import edu.fiuba.algoChess.Modelo.excepciones.NoHayBatallonFormadoException;
-import edu.fiuba.algoChess.Modelo.excepciones.OperacionInvalidaException;
-import edu.fiuba.algoChess.Modelo.excepciones.PiezaActualNoFormaBatallonDeSoldadosException;
+import edu.fiuba.algoChess.Modelo.excepciones.*;
 import edu.fiuba.algoChess.Modelo.rangos.Agrupable;
 import edu.fiuba.algoChess.Modelo.rangos.Rango;
 import edu.fiuba.algoChess.Modelo.salud.Salud;
@@ -123,8 +119,8 @@ public class Catapulta extends Pieza {
 	}
 
 	@Override
-	public void curar(Pieza curado) {
-		throw new OperacionInvalidaException("Operacion invalida");
+	public void aumentarVida(double aumento) {
+		throw new NoSePuedeCurarUnaCatapultaException("No se puede curar una catapulta");
 	}
 
 	@Override

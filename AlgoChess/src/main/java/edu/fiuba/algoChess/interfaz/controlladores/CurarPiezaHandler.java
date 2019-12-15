@@ -1,5 +1,6 @@
 package edu.fiuba.algoChess.interfaz.controlladores;
 
+import edu.fiuba.algoChess.Modelo.entidades.Curandero;
 import edu.fiuba.algoChess.Modelo.entidades.Pieza;
 import edu.fiuba.algoChess.Modelo.entidades.PiezaNull;
 import edu.fiuba.algoChess.Modelo.entorno.Tablero;
@@ -29,7 +30,7 @@ import java.util.Optional;
 public class CurarPiezaHandler implements EventHandler<ActionEvent> {
 
 	Tablero tablero;
-	Pieza emisor;
+	Curandero emisor;
 	TextField tFX;
 	TextField tFY;
 

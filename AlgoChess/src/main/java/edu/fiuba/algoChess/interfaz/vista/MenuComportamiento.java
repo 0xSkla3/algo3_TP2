@@ -1,5 +1,6 @@
 package edu.fiuba.algoChess.interfaz.vista;
 
+import edu.fiuba.algoChess.Modelo.entidades.Curandero;
 import edu.fiuba.algoChess.Modelo.entidades.Pieza;
 import edu.fiuba.algoChess.Modelo.entorno.Tablero;
 import edu.fiuba.algoChess.Modelo.juego.Juego;
@@ -207,7 +208,7 @@ public class MenuComportamiento {
 
 		Button submit = new Button("curar");
 		submit.setStyle("-fx-background-color:#F1C40F;");
-		submit.setOnAction(new CurarPiezaHandler(tablero, emisor, x, y));
+		submit.setOnAction(new CurarPiezaHandler(tablero, (Curandero) emisor, x, y));
 		vbox.getChildren().addAll(hbx,hby,submit);
 		Scene sceneUbicar = new Scene(vbox);
 		stageUbicar.setScene(sceneUbicar);
