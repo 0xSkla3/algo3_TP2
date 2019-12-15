@@ -4,9 +4,11 @@ import edu.fiuba.algoChess.modelo.bandos.BandoJugador1;
 import edu.fiuba.algoChess.modelo.entidades.Pieza;
 import edu.fiuba.algoChess.modelo.entidades.PiezaNull;
 import edu.fiuba.algoChess.modelo.entorno.Tablero;
+import edu.fiuba.algoChess.modelo.entorno.Ubicacion;
 import edu.fiuba.algoChess.modelo.juego.Juego;
 import edu.fiuba.algoChess.interfaz.controlladores.CrearPiezaHandler;
 import javafx.application.Platform;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.effect.DropShadow;
@@ -50,7 +52,7 @@ public class VistaPieza {
 				(event) -> comportamientoAlTocarPieza());
 
 		HBox hbox = new HBox();
-		hbox.setStyle("-fx-border-width: 2; -fx-border-color: " + (pieza.getBando().nombreBando() == "jugador1" ? "#FF0000" : "#0000FF") + "; -fx-margin: -2");
+		hbox.setStyle("-fx-border-width: 2; -fx-border-color: " + (pieza.getBando().getNombre() == "jugador1" ? "#FF0000" : "#0000FF") + "; -fx-margin: -2");
 		hbox.getChildren().add(pieceImage);
 		return hbox;
 	}

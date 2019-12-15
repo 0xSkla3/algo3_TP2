@@ -155,7 +155,7 @@ public class MenuComportamiento {
 
 		Button submit = new Button("curar");
 		submit.setStyle("-fx-background-color:#F1C40F;");
-		submit.setOnAction(new CurarPiezaHandler(juego, emisor, x, y, stageUbicar, segundaEtapa));
+		submit.setOnAction(new CurarPiezaHandler(juego, (Curandero)emisor, x, y, stageUbicar, segundaEtapa));
 		vbox.getChildren().addAll(hbx,hby,submit);
 		Scene sceneUbicar = new Scene(vbox);
 		stageUbicar.setScene(sceneUbicar);

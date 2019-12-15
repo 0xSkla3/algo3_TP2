@@ -1,5 +1,6 @@
 package edu.fiuba.algoChess.interfaz.vista;
 
+import edu.fiuba.algoChess.interfaz.controlladores.CrearPiezaHandler;
 import edu.fiuba.algoChess.modelo.entidades.Catapulta;
 import edu.fiuba.algoChess.modelo.entidades.Jinete;
 import edu.fiuba.algoChess.modelo.entidades.Soldado;
@@ -125,8 +126,6 @@ public class PantallaPrincipal {
 
 			Button submit = new Button("ubicar");
 			submit.setStyle("-fx-background-color:#F1C40F;");
-//			submit.setOnAction(new UbicarPiezaHandler(juego, stage, stageUbicar, pieceView,
-//					nombrePieza, pantallaPrincipal, listaPiezas, mapView, head, x, y, juego.getJugadorActivo().getBando()));
 			submit.setOnAction(new CrearPiezaHandler(juego, nombrePieza, x, y, head, stageUbicar, pantallaPrincipal));
 			vbox.getChildren().addAll(hbx,hby,submit);
 			Scene sceneUbicar = new Scene(vbox);

@@ -1,17 +1,21 @@
 package edu.fiuba.algoChess.interfaz.controlladores;
 
+import edu.fiuba.algoChess.interfaz.vista.DialogoAlerta;
+import edu.fiuba.algoChess.interfaz.vista.SegundaEtapa;
 import edu.fiuba.algoChess.modelo.entidades.Curandero;
 import edu.fiuba.algoChess.modelo.entidades.Pieza;
 import edu.fiuba.algoChess.modelo.entidades.PiezaNull;
 import edu.fiuba.algoChess.modelo.entorno.Tablero;
 import edu.fiuba.algoChess.modelo.entorno.Ubicacion;
 import edu.fiuba.algoChess.modelo.excepciones.*;
+import edu.fiuba.algoChess.modelo.juego.Juego;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import lombok.AllArgsConstructor;
 
 import java.util.Optional;
@@ -20,7 +24,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class CurarPiezaHandler implements EventHandler<ActionEvent> {
 	Juego juego;
-	Pieza emisor;
+	Curandero emisor;
 	TextField tFX;
 	TextField tFY;
 	Stage stage;

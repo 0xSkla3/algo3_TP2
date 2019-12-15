@@ -112,12 +112,7 @@ public abstract class Pieza extends Movible implements Batalloneable {
 			this.setUbicacion(ubicacion);
 		//}catch (NoSePuedeUbicarPorqueEstaOcupadoException ex){
 			//mensaje de error en vista y darle el turno al mismo jugador
-<<<<<<< HEAD:AlgoChess/src/main/java/edu/fiuba/algoChess/Modelo/entidades/Pieza.java
 		//}
-
-=======
-		}
->>>>>>> bf11f5add8e66521e72b0e9839f101bfdae2ad1a:AlgoChess/src/main/java/edu/fiuba/algoChess/modelo/entidades/Pieza.java
 	}
 
 	public void moverPiezaDeBatallon( Tablero campoDeBatalla, Ubicacion ubicacion){
