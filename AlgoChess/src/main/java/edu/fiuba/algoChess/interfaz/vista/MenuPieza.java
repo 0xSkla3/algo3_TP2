@@ -12,50 +12,15 @@ import lombok.Getter;
 import lombok.Setter;
 
 public class MenuPieza {
-
-	@Getter
-	@Setter
 	Juego juego;
-
-	@Getter
-	@Setter
 	Pieza pieza;
-
-	@Getter
-	@Setter
-	Tablero tablero;
-
-	@Getter
-	@Setter
-	ImageView imagenPieza;
-
-	@Getter
-	@Setter
-	VistaTablero map;
-
-	@Getter
-	@Setter
-    VistaPieza pieceView;
-
-	@Getter
-	@Setter
+	MenuMovimiento menuMovimiento;
+	MenuComportamiento menuComportamiento;
+	SegundaEtapa segundaEtapa;
 	String piezaNombre;
 
-	@Getter
-	@Setter
-	MenuMovimiento menuMovimiento;
-
-	@Getter
-	@Setter
-	MenuComportamiento menuComportamiento;
-
-	@Getter
-	@Setter
-	SegundaEtapa segundaEtapa;
-
-//	public MenuPieza(Juego juego, Pieza pieza, Tablero tablero, ImageView imagenPieza, VistaTablero map, VistaPieza pieceView, String piezaNombre, SegundaEtapa segundaEtapa) {
 	public MenuPieza(Juego juego, Pieza pieza, SegundaEtapa segundaEtapa) {
-		this.piezaNombre = piezaNombre;
+		this.pieza = pieza;
 		menuMovimiento = new MenuMovimiento(pieza, juego.getTablero(), segundaEtapa);
 		menuComportamiento = new MenuComportamiento(juego, pieza, segundaEtapa);
 		this.segundaEtapa = segundaEtapa;
@@ -85,7 +50,14 @@ public class MenuPieza {
 			stage.close();
 		});
 
-		vbox.getChildren().addAll(moverse, interactuar);
+		Button pasar = new Button("Pasar turno");
+		pasar.setStyle("-fx-background-color:#F1C40F;");
+		pasar.setOnAction(e -> {
+			segundaEtapa.cambioTurno();
+			stage.close();
+		});
+
+		vbox.getChildren().addAll(moverse, interactuar, pasar);
 
 		Scene theScene = new Scene(vbox);
 		stage.setScene(theScene);

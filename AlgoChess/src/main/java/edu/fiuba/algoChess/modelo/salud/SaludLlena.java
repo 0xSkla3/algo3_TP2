@@ -14,9 +14,9 @@ public class SaludLlena extends Salud {
 
 	@Override
 	public Salud herir(double danioARecibir) {
-		setValorActual(this.valorActual - danioARecibir);
-		//se esta retornando soldado
-		return /*this.valorActual == this.valorCompleto ? this : */new SaludMedia(this.valorCompleto ,this.valorActual);
+		// delegamos en SaludMedia hacer las cuentas y ajustes
+		Salud herida = new SaludMedia(this.valorCompleto, this.valorActual);
+		return herida.herir(danioARecibir);
 	}
 
 }

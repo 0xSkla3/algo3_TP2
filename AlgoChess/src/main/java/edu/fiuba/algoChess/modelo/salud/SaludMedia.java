@@ -9,7 +9,7 @@ public class SaludMedia extends Salud {
 	@Override
 	public Salud curar(double salud) {
 		setValorActual(this.getValorActual()+salud);
-		return this.getValorActual() > this.getValorCompleto()?new SaludLlena(this.getValorCompleto()):this;
+		return (this.getValorActual() >= this.getValorCompleto()) ? new SaludLlena(this.getValorCompleto()) : this;
 	}
 
 	@Override

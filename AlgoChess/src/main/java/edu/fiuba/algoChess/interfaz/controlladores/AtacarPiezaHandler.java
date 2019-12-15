@@ -35,10 +35,13 @@ public class AtacarPiezaHandler implements EventHandler<ActionEvent> {
 		try {
 			Pieza receptor = juego.getTablero().getCelda(new Ubicacion(x, y)).getPiezaActual();
 			if (receptor.getClass() != PiezaNull.class) {
-				emisor.atacar(receptor);
+				juego.atacar(emisor, receptor);
 				stage.close();
 				segundaEtapa.cambioTurno();
-				DialogoAlerta.Alerta("Ataque", "Ataque efectuado, vida restante del oponente: " + receptor.getVida().getValorActual(), 2);
+				if(receptor.getVida().stateEstaVivo())
+					DialogoAlerta.Alerta("Ataque", "Ataque efectuado, vida restante del oponente: " + receptor.getVida().getValorActual(), 2);
+				else
+					DialogoAlerta.Alerta("Ataque", "Ataque efectuado, oponente muerto", 2);
 			}
 		} catch (NoSePuedeAtacarUnAliadoException exc) {
 			DialogoAlerta.Alerta("Ataque a un Aliado", "No se puede atacar a un aliado", 2);

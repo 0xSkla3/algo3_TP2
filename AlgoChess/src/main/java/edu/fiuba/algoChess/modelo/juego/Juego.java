@@ -44,6 +44,8 @@ public class Juego {
 	@Setter
 	private ArrayList<Pieza> piezasEnTablero;
 
+	ArrayList<Pieza> piezasMuertas;
+
 	@Getter
 	@Setter
 	Boolean segundaEtapa = false;
@@ -52,21 +54,19 @@ public class Juego {
 	@Setter
 	Boolean finDeJuego = false;
 
-	@Getter
-	@Setter
-	Pieza receptor;
-
 	private ObservadorTablero observadorTablero;
 
 	public static final Soldado soldado = new Soldado();
 
 	public Juego(String nombreJugador1, String nombreJugador2) {
-			this.tablero = new Tablero(new BandoJugador1(), new BandoJugador2());
-			this.jugador1 = new Jugador(nombreJugador1, "jugador1");
-			this.jugador2 = new Jugador(nombreJugador2, "jugador2");
-			this.jugador1.setBando(new BandoJugador1());
-			this.jugador2.setBando(new BandoJugador2());
+			Bando bando1 = new BandoJugador1();
+			Bando bando2 = new BandoJugador2();
+
+			this.tablero = new Tablero(bando1, bando2);
+			this.jugador1 = new Jugador(nombreJugador1, bando1);
+			this.jugador2 = new Jugador(nombreJugador2, bando2);
 			this.piezasEnTablero = new ArrayList<>();
+			this.piezasMuertas = new ArrayList<>();
 			this.bandoActivo = this.jugador1.getBando();
 			this.jugadorActivo = this.jugador1;
 			this.activoBando1 = true;
@@ -95,6 +95,8 @@ public class Juego {
 		atacante.atacar(atacado);
 		if(! atacado.getVida().stateEstaVivo()) {
 			this.tablero.eliminar(atacado.getUbicacion());
+			this.piezasEnTablero.remove(atacado);
+			this.piezasMuertas.add(atacado);
 		}
 	}
 

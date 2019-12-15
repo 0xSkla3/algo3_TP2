@@ -12,9 +12,11 @@ import javafx.event.EventHandler;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+@AllArgsConstructor
 public class CrearPiezaHandler implements EventHandler<ActionEvent> {
 	Juego juego;
 	String nombrePieza;
@@ -23,18 +25,7 @@ public class CrearPiezaHandler implements EventHandler<ActionEvent> {
 	HBox head;
 	Stage stageUbicar;
 	PantallaPrincipal pantallaPrincipal;
-
-
-	public CrearPiezaHandler(Juego juego, String nombrePieza, TextField x, TextField y, HBox head, Stage stageUbicar, PantallaPrincipal pantallaPrincipal){
-		this.juego = juego;
-		this.nombrePieza = nombrePieza;
-		this.x = x;
-		this.y = y;
-		this.head = head;
-		this.stageUbicar = stageUbicar;
-		this.pantallaPrincipal = pantallaPrincipal;
-	}
-
+	
 	@Override
 	public void handle(ActionEvent actionEvent) {
 		int x = Integer.parseInt((this.x.getText()));

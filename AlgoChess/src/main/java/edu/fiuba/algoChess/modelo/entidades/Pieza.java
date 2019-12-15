@@ -66,7 +66,7 @@ public abstract class Pieza extends Movible implements Batalloneable {
 	}
 
  	public void aumentarVida(double aumento) {
-		this.vida.curar(aumento);
+		this.vida = this.vida.curar(aumento);
 	}
 
 	public void recibirAtaque(Ataque ataque){
