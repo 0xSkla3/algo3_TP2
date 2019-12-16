@@ -2,6 +2,7 @@ package edu.fiuba.algoChess.interfaz.vista;
 
 import edu.fiuba.algoChess.modelo.entidades.Pieza;
 import edu.fiuba.algoChess.modelo.entorno.Tablero;
+import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;
 import edu.fiuba.algoChess.modelo.juego.Juego;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -33,15 +34,23 @@ public class MenuPieza {
 		Stage stage = new Stage();
 		VBox vbox = new VBox();
 
-
 		Button moverse = new Button("Moverse");
 		moverse.setStyle("-fx-background-color:#F1C40F;");
-		moverse.setOnAction(e -> {
-			if(!piezaNombre.contains("Catapulta")) {
-				this.menuMovimiento.menuPopUp();
-			}
-			stage.close();
-		});
+		try {
+
+			moverse.setOnAction(e -> {
+				if(!piezaNombre.contains("Catapulta")) {
+					this.menuMovimiento.menuPopUp();
+				}
+				stage.close();
+			});
+
+		} catch (NoSePuedeUbicarPorqueEstaOcupadoException exc){
+
+			DialogoAlerta.Alerta("Movimiento Invalido",
+					"No se puede ubicar la pieza porque esta ocupada la celda", 3);
+
+		}
 
 		Button interactuar = new Button("interactuar");
 		interactuar.setStyle("-fx-background-color:#F1C40F;");

@@ -54,7 +54,7 @@ public class Jinete extends Pieza {
 	}
 
 	public void mover(Tablero campoDeBatalla, Ubicacion ubicacion) {
-		campoDeBatalla.ubicarEnCeldaFaseInicial(this, ubicacion);
+		campoDeBatalla.ubicarEnCeldaFaseJuego(this, ubicacion);
 		campoDeBatalla.eliminar(this.ubicacion);
 		this.ubicacion = ubicacion;
 	}
