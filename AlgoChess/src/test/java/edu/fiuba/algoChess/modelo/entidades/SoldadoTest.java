@@ -19,6 +19,21 @@ import static org.junit.Assert.*;
 public class SoldadoTest {
 
 	@Test
+	public void testSoldadoSubeYBajaASuPosicionOriginal(){
+
+		BandoJugador1 bandoJugador1 = new BandoJugador1();
+		BandoJugador2 bandoJugador2 = new BandoJugador2();
+		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
+		Soldado soldado = new Soldado(new Ubicacion(2,2), bandoJugador1,tableroTest);
+
+		soldado.moverseArriba(tableroTest);
+		assertEquals(soldado.getUbicacion(), new Ubicacion(2,3));
+		soldado.moverseAbajo(tableroTest);
+		assertEquals(soldado.getUbicacion(), new Ubicacion(2,2));
+
+	}
+
+	@Test
 	public void test00SeVerificaBatallon(){
 
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
