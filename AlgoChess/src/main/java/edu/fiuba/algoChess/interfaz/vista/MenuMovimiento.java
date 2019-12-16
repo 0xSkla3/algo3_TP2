@@ -36,7 +36,7 @@ public class MenuMovimiento {
 		arriba.setOnAction(e -> {
 			try {
 
-				pieza.moverseArriba(tablero);
+				pieza.moverseAbajo(tablero); //en el tablero se visualiza al reves
 				segundaEtapa.cambioTurno();
 				stage.close();
 
@@ -51,7 +51,7 @@ public class MenuMovimiento {
 		abajo.setOnAction(e -> {
 			try {
 
-				pieza.moverseAbajo(tablero);
+				pieza.moverseArriba(tablero); //el tablero se visualiza al reves
 				segundaEtapa.cambioTurno();
 				stage.close();
 
