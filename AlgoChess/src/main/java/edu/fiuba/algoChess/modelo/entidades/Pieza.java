@@ -114,6 +114,7 @@ public abstract class Pieza extends Movible implements Batalloneable {
 		}
 	}
 
+
 	public void moverPiezaDeBatallon( Tablero campoDeBatalla, Ubicacion ubicacion){
 		this.vida.stateComportarse();
 		try {
@@ -127,30 +128,51 @@ public abstract class Pieza extends Movible implements Batalloneable {
 		}
 	}
 
-	public abstract Rango actualizaRango(Tablero tablero);
+	public Rango actualizaRango(Tablero tablero){
+		throw new NoSePuedeObtenerElRangoDeUnaPiezaNoAgrupable("No se puede actualizar el rango de una pieza no agrupable");
+	}
 
-	public abstract Rango getRango();
+	public Rango getRango(){
+		throw new NoSePuedeObtenerElRangoDeUnaPiezaNoAgrupable("No se puede obtener el rango de una pieza no agrupable");
+	}
 
-	public abstract ArrayList<Pieza> unirABatallonDeSoldado(ArrayList<Pieza> stackDeUnion);
+	public ArrayList<Pieza> unirABatallonDeSoldado(ArrayList<Pieza> stackDeUnion){
+		throw new NoSePuedeAgruparUnaPiezaDistintaDeSoldado("No se puede agrupar una pieza distinta de soldado");
+	}
 
 	public ArrayList<Pieza> aniadirPiezaAlStack(ArrayList<Pieza> stack){
-		stack.add(this);
-		return stack;
+		try {
+			stack.add(this);
+			return stack;
+		} catch(NullPointerException ex){
+			ArrayList<Pieza> nuevoStack = new ArrayList<>();
+			nuevoStack.add(this);
+			return  nuevoStack;
+		}
 	}
 
-	public ArrayList<Pieza> aniadirSoldadoAlStack(ArrayList<Pieza> stack, Pieza pieza){
-		if (stack == null) return new ArrayList<>();
+	public ArrayList<Pieza> aniadirSoldadoAliadoStack(ArrayList<Pieza> stack, Pieza pieza){
 		return stack;
-	};
+	}
 
 	public ArrayList<Pieza> aniadirTodoMenosSoldadoAlStack(ArrayList<Pieza> stack){
-		stack.add(this);
-		return stack;
+		try {
+			stack.add(this);
+			return stack;
+		} catch(NullPointerException ex){
+			ArrayList<Pieza> nuevoStack = new ArrayList<>();
+			nuevoStack.add(this);
+			return  nuevoStack;
+		}
 	}
 
-	public abstract ArrayList<Pieza>  getSoldadosContiguos();
+	public ArrayList<Pieza>  getSoldadosContiguos(){
+		throw new NoSePuedeObtenerElEquipoDeUnaPiezaNoAgrupable("No se pueden obtener los soldados contiguos de una pieza no agrupable");
+	}
 
-	public abstract boolean soldadosInmediatosSePuedenUnir();
+	public boolean soldadosInmediatosSePuedenUnir(){
+		throw new NoSePuedeObtenerElEquipoDeUnaPiezaNoAgrupable("No se pueden obtener los soldados contiguos de una pieza no agrupable");
+	}
 
 	public int getX(){
 		return this.getUbicacion().getX();
@@ -212,6 +234,41 @@ public abstract class Pieza extends Movible implements Batalloneable {
 	@Override
 	public Batallon darDeAltaBatallon() {
 		throw new NoSePuedeCrearUnBatallonDePiezaDistintaASoldado("No se puede crear un batallon de una pieza distinta a Soldado");
+	}
+
+	@Override
+	public ArrayList<Pieza> getPiezasEnRango() {
+		throw new NoSePuedeObtenerElEquipoDeUnaPiezaNoAgrupable("No se pueden obtener las piezas en equipo de una entidad no agrupable");
+	}
+
+	@Override
+	public ArrayList<Pieza> getSoldadosEquipo() {
+		throw new NoSePuedeObtenerElEquipoDeUnaPiezaNoAgrupable("No se pueden obtener las piezas en equipo de una entidad no agrupable");
+	}
+
+	@Override
+	public Rango actualizaRangoInmediato(Pieza piezaCentral, Tablero tablero) {
+		throw new NoSePuedeObtenerElRangoDeUnaPiezaNoAgrupable("No se pueden obtener las piezas en rango de una entidad no agrupable");
+	}
+
+	@Override
+	public void actualizaPiezasEnRango(Pieza piezaCentral) {
+		throw new NoSePuedeObtenerElRangoDeUnaPiezaNoAgrupable("No se pueden obtener las piezas en rango de una entidad no agrupable");
+	}
+
+	@Override
+	public void actualizaRangoMedio(Pieza piezaCentral, Tablero tablero) {
+		throw new OperacionInvalidaException("Operacion invalida");
+	}
+
+	@Override
+	public void actualizaRangoCercano(Pieza piezaCentral, Tablero tablero) {
+		throw new OperacionInvalidaException("Operacion invalida");
+	}
+
+	@Override
+	public void actualizaRangoSoldado(Pieza piezaCentral, Tablero tablero) {
+		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 }

@@ -30,40 +30,12 @@ public class PiezaNull extends Pieza {
 	}
 
 	@Override
-	public Rango getRango() {
-		throw new NoSePuedeObtenerrElRangoDeUnaPiezaNull("No se puede obtener el rango de una pieza null");
-	}
-
-	@Override
-	public ArrayList<Pieza> unirABatallonDeSoldado(ArrayList<Pieza> stackDeUnion) {
-		return null;
-	}
-
-
-	@Override
 	public ArrayList<Pieza> aniadirPiezaAlStack(ArrayList<Pieza> stack){
-		if (stack == null){
-			ArrayList<Pieza> nuevoStack = new ArrayList<>();
-			return  nuevoStack;
-		}
-		return stack;
-	}
-
-	@Override
-	public ArrayList<Pieza> aniadirSoldadoAlStack(ArrayList<Pieza> stack, Pieza pieza){
-		if (stack == null){
-			ArrayList<Pieza> nuevoStack = new ArrayList<>();
-			return  nuevoStack;
-		}
 		return stack;
 	}
 
 	@Override
 	public ArrayList<Pieza> aniadirTodoMenosSoldadoAlStack(ArrayList<Pieza> stack){
-		if (stack == null){
-			ArrayList<Pieza> nuevoStack = new ArrayList<>();
-			return  nuevoStack;
-		}
 		return stack;
 	}
 
@@ -151,12 +123,6 @@ public class PiezaNull extends Pieza {
 	@Override
 	public Batallon darDeAltaBatallon() {
 		throw new NoSePuedeDarDeAltaUnBatallonDePiezaNull("No se puede dar de alta un batallon de piezas null");
-	}
-
-	@Override
-	public ArrayList<Pieza> getSoldadosEquipo() {
-
-		throw new NoSePuedeObtenerElEquipoDeUnaPiezaNoAgrupable("No se puede obtener el equipo de una pieza null");
 	}
 
 }

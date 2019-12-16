@@ -102,7 +102,7 @@ public class BatallonTest {
 		soldado2.actualizaRango(tableroTest);
 		soldado3.actualizaRango(tableroTest);
 
-		Boolean esBatallon = BatallonUtil.esBatallon(soldado1,soldado2,soldado3);
+		boolean esBatallon = BatallonUtil.esBatallon(soldado1,soldado2,soldado3);
 
 		assertTrue(esBatallon);
 
@@ -122,7 +122,7 @@ public class BatallonTest {
 		soldado2.actualizaRango(tableroTest);
 		soldado3.actualizaRango(tableroTest);
 
-		Boolean esBatallon = BatallonUtil.esBatallon(soldado1,soldado2,soldado3);
+		boolean esBatallon = BatallonUtil.esBatallon(soldado1,soldado2,soldado3);
 
 		assertFalse(esBatallon);
 
@@ -143,9 +143,8 @@ public class BatallonTest {
 		soldado3.actualizaRango(tableroTest);
 
 		Batallon batallonGenerado = BatallonUtil.batallonAsociadoONull(soldado1);
-		BatallonNull batallonNull = new BatallonNull() ;
 
-		assertTrue(batallonNull.equals(batallonGenerado));
+		TestHelper.assertEqualsBatallonNull(batallonGenerado);
 
 	}
 
@@ -166,7 +165,7 @@ public class BatallonTest {
 		Batallon batallonPatron = new BatallonUtil(soldado1,soldado2,soldado3);
 		Batallon batallonGenerado = BatallonUtil.batallonAsociadoONull(soldado1);
 
-		assertTrue(batallonPatron.equals(batallonGenerado));
+		TestHelper.assertEqualsBatallon(batallonPatron, batallonGenerado);
 
 	}
 

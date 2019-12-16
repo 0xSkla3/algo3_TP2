@@ -8,6 +8,8 @@ import edu.fiuba.algoChess.modelo.entidades.Pieza;
 import edu.fiuba.algoChess.modelo.salud.Herible;
 import edu.fiuba.algoChess.modelo.salud.Salud;
 
+import java.util.ArrayList;
+
 
 public class BandoJugador1 extends Bando{
 

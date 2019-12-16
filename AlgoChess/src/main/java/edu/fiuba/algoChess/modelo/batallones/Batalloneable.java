@@ -7,7 +7,7 @@ import edu.fiuba.algoChess.modelo.rangos.Rango;
 
 import java.util.ArrayList;
 
-public interface Batalloneable extends Agrupable {
+public interface Batalloneable extends Agrupable, Rango {
 
 	@Override
 	Agrupable agrupar(Pieza pieza1, Pieza pieza2, Pieza pieza3);

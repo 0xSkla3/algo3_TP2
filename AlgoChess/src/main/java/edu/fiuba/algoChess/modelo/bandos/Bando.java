@@ -6,6 +6,8 @@ import edu.fiuba.algoChess.modelo.entidades.Pieza;
 import edu.fiuba.algoChess.modelo.salud.Herible;
 import edu.fiuba.algoChess.modelo.salud.Salud;
 
+import java.util.ArrayList;
+
 public abstract class Bando {
 
     public abstract void atacar(Pieza pieza, Ataque ataque, Bando bando);
@@ -24,16 +26,22 @@ public abstract class Bando {
     public abstract boolean bandoAliado(BandoJugador1 bando);
     public abstract boolean bandoAliado(BandoJugador2 bando);
 
-
     public abstract boolean bandoEnemigo(Bando bando);
     public abstract boolean bandoEnemigo(BandoJugador1 bando);
     public abstract boolean bandoEnemigo(BandoJugador2 bando);
     public abstract String getNombre();
 
-   /* public String nombreBando() {
-        return this.getClass() == BandoJugador1.class ? "jugador1" : "jugador2";
-    }*/
-
+    public ArrayList<Pieza> aniadirSoldadoAliadoAlStack(ArrayList<Pieza> stack, Pieza pieza ) {
+        if (this.bandoAliado(pieza.getBando())) {
+            try {
+                stack.add(pieza);
+            } catch(NullPointerException ex){
+                stack = new ArrayList<>();
+                stack.add(pieza);
+            }
+        }
+       return stack;
+    }
 
 }
 

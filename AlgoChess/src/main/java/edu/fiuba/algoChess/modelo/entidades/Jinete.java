@@ -60,49 +60,6 @@ public class Jinete extends Pieza {
 	}
 
 	@Override
-	public Rango actualizaRango(Tablero tablero) {
-		throw new OperacionInvalidaException("Operacion invalida");
-	}
-
-	@Override
-	public Rango getRango() {
-		throw new OperacionInvalidaException("Operacion invalida");
-	}
-
-	@Override
-	public ArrayList<Pieza> unirABatallonDeSoldado(ArrayList<Pieza> stackDeUnion) {
-		throw new PiezaActualNoFormaBatallonDeSoldadosException("Un jinete no puede formar un batallon de soldados");
-
-	}
-
-	@Override
-	public ArrayList<Pieza> aniadirPiezaAlStack(ArrayList<Pieza> stack) {
-		stack.add(this);
-		return stack;
-	}
-
-	@Override
-	public ArrayList<Pieza> aniadirSoldadoAlStack(ArrayList<Pieza> stack, Pieza pieza) {
-		return stack;
-	}
-
-	@Override
-	public ArrayList<Pieza> aniadirTodoMenosSoldadoAlStack(ArrayList<Pieza> stack) {
-		stack.add(this);
-		return stack;
-	}
-
-	@Override
-	public ArrayList<Pieza> getSoldadosContiguos() {
-		throw new OperacionInvalidaException("Operacion invalida");
-	}
-
-	@Override
-	public boolean soldadosInmediatosSePuedenUnir() {
-		throw new PiezaActualNoFormaBatallonDeSoldadosException("Un jinete no se puede unir a un soldado");
-	}
-
-	@Override
 	public void ejecutarComportamientoPorDistancia(DistanciaCercana distancia, Pieza pieza) {
 			this.bando.atacar(pieza, this.ataqueCercano, pieza.getBando());
 	}
@@ -119,54 +76,6 @@ public class Jinete extends Pieza {
 
 	public void concretarAtaqueMedio(Pieza pieza) {
 		this.bando.atacar(pieza, this.ataqueMedio, pieza.getBando());
-	}
-
-	@Override
-	public Agrupable agrupar(Pieza pieza1, Pieza pieza2, Pieza pieza3) {
-		return null;
-	}
-
-	@Override
-	public Rango actualizaRangoInmediato(Pieza piezaCentral, Tablero tablero) {
-		return null;
-	}
-
-	@Override
-	public void actualizaPiezasEnRango(Pieza piezaCentral) {
-		throw new OperacionInvalidaException("Operacion invalida");
-	}
-
-	@Override
-	public ArrayList<Pieza> getPiezasEnRango() {
-		return null;
-	}
-
-	@Override
-	public void actualizaRangoMedio(Pieza piezaCentral, Tablero tablero) {
-		throw new OperacionInvalidaException("Operacion invalida");
-	}
-
-	@Override
-	public void actualizaRangoCercano(Pieza piezaCentral, Tablero tablero) {
-		throw new OperacionInvalidaException("Operacion invalida");
-	}
-
-	@Override
-	public void actualizaRangoSoldado(Pieza piezaCentral, Tablero tablero) {
-		throw new OperacionInvalidaException("Operacion invalida");
-	}
-
-	@Override
-	public ArrayList<Pieza> getSoldadosEquipo() {
-		return null;
-	}
-
-	public double getDanioMedio() {
-		return this.danioMedio;
-	}
-
-	public double getDanioCercano() {
-		return this.danioCercano;
 	}
 
 }

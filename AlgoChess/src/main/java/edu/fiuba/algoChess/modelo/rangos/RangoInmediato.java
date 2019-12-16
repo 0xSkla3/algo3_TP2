@@ -30,6 +30,10 @@ public abstract class RangoInmediato implements Rango {
 
 	@Getter
 	@Setter
+	Celda actual;
+
+	@Getter
+	@Setter
 	ArrayList<Pieza> piezasEnRango;
 
 	public RangoInmediato(Pieza piezaCentral, Tablero tablero) {
@@ -47,6 +51,7 @@ public abstract class RangoInmediato implements Rango {
 		this.setAbajo(tablero.getCelda(piezaCentral.getUbicacion().getUbicacionAbajo()));
 		this.setDerecha(tablero.getCelda(piezaCentral.getUbicacion().getUbicacionIzquierda()));
 		this.setIzquierda(tablero.getCelda(piezaCentral.getUbicacion().getUbicacionDerecha()));
+		this.setActual(tablero.getCelda(piezaCentral.getUbicacion()));
 
 		this.actualizaPiezasEnRango(piezaCentral);
 

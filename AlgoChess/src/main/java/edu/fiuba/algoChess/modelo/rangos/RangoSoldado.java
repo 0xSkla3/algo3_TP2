@@ -37,18 +37,21 @@ public class RangoSoldado extends RangoInmediato implements Rango {
 		this.actualizaObstaculosInmediatos(soldado);
 	}
 
-	private void actualizaSoldadosCercanos(Pieza piezaCentral){
+	private ArrayList<Pieza> actualizaSoldadosCercanos(Pieza piezaCentral){
 
 		this.actualizaPiezasEnRango(piezaCentral);
 		ArrayList<Pieza> piezas = piezaCentral.getRango().getPiezasEnRango();
 		ArrayList<Pieza> nuevosSoldadosCercanos = new ArrayList<>();
-		if (piezas.size() == 0) return;
+		if (piezas.size() == 0) return new ArrayList<>();
 
-		this.getArriba().getPiezaActual().aniadirSoldadoAlStack(nuevosSoldadosCercanos, piezaCentral);
-		this.getAbajo().getPiezaActual().aniadirSoldadoAlStack(nuevosSoldadosCercanos, piezaCentral);
-		this.getIzquierda().getPiezaActual().aniadirSoldadoAlStack(nuevosSoldadosCercanos, piezaCentral);
-		this.getDerecha().getPiezaActual().aniadirSoldadoAlStack(nuevosSoldadosCercanos, piezaCentral);
+		this.getArriba().getPiezaActual().aniadirSoldadoAliadoStack(nuevosSoldadosCercanos, piezaCentral);
+		this.getAbajo().getPiezaActual().aniadirSoldadoAliadoStack(nuevosSoldadosCercanos, piezaCentral);
+		this.getIzquierda().getPiezaActual().aniadirSoldadoAliadoStack(nuevosSoldadosCercanos, piezaCentral);
+		this.getDerecha().getPiezaActual().aniadirSoldadoAliadoStack(nuevosSoldadosCercanos, piezaCentral);
+
 		this.setSoldadosEquipo(nuevosSoldadosCercanos);
+
+		return nuevosSoldadosCercanos;
 	}
 
 	public void actualizaObstaculosInmediatos(Pieza piezaCentral){
