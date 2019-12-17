@@ -56,12 +56,6 @@ public class Jinete extends Pieza {
 		this.distanciaAReconocerEnTerreno = 2;
 	}
 
-	public void mover(Tablero campoDeBatalla, Ubicacion ubicacion) {
-		campoDeBatalla.ubicarEnCeldaFaseJuego(this, ubicacion);
-		campoDeBatalla.eliminar(this.ubicacion);
-		this.ubicacion = ubicacion;
-	}
-
 	@Override
 	public void ejecutarComportamientoPorDistancia(DistanciaCercana distancia, Pieza pieza) {
 			this.bando.atacar(pieza, this.ataqueCercano, pieza.getBando());
