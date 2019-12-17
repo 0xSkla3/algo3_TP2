@@ -65,6 +65,11 @@ public class SegundaEtapa extends HBox {
 	public void cambioTurno() {
 		this.actualizarVista();
 
+		if(this.juego.getFinDeJuego()) {
+			finalizar();
+			return;
+		}
+
 		head.getChildren().remove(1);
 		this.juego.pasarTurno();
 		turnOf(head);
@@ -79,7 +84,6 @@ public class SegundaEtapa extends HBox {
 	}
 
 	public void terminarJuego(HBox head) {
-
 		Button button = new Button("Terminar Partida");
 		button.setStyle("-fx-background-color:#F7CF32");
 		button.addEventHandler(MouseEvent.MOUSE_PRESSED,
