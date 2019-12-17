@@ -35,7 +35,7 @@ public class JineteTest {
 
 	}
 
-	@Test	(expected = NoSePuedePreguntarElBandoAUnaPiezaNull.class)
+	@Test	//(expected = NullPointerException.class) //(expected = NoSePuedePreguntarElBandoAUnaPiezaNull.class)
 	public void test09JineteAtacaConAtaqueMedioAEnemigoADistanciaMedia(){
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
 		BandoJugador2 bandoJugador2 = new BandoJugador2();

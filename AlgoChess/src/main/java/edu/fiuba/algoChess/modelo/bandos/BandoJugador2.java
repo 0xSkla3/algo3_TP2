@@ -2,6 +2,7 @@ package edu.fiuba.algoChess.modelo.bandos;
 
 import edu.fiuba.algoChess.modelo.comportamientos.Ataque;
 import edu.fiuba.algoChess.modelo.comportamientos.Curacion;
+import edu.fiuba.algoChess.modelo.entidades.Jinete;
 import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeAtacarUnAliadoException;
 import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeCurarUnaUnidadEnemigaException;
 import edu.fiuba.algoChess.modelo.entidades.Pieza;
@@ -98,6 +99,37 @@ public class BandoJugador2 extends Bando {
         }
 
         return stack;
+    }
+
+    @Override
+    public void jineteReconocerEnemigoParaAtacarADistanciaMedia(Jinete jinete, Bando bando) {
+        bando.jineteReconocerEnemigoParaAtacarADistanciaMedia(jinete, this);
+    }
+
+    @Override
+    public void jineteReconocerEnemigoParaAtacarADistanciaMedia(Jinete jinete, BandoJugador1 bandoJugador1) {
+        jinete.ataqueMedioInvalido();
+    }
+
+    @Override
+    public void jineteReconocerEnemigoParaAtacarADistanciaMedia(Jinete jinete, BandoJugador2 bandoJugador2) {
+
+    }
+
+    @Override
+    public void jineteReconocerAliadoParaAtacarADistanciaMedia(Jinete jinete, Bando bando) {
+        bando.jineteReconocerAliadoParaAtacarADistanciaMedia(jinete, this);
+
+    }
+
+    @Override
+    public void jineteReconocerAliadoParaAtacarADistanciaMedia(Jinete jinete, BandoJugador1 bandoJugador1) {
+
+    }
+
+    @Override
+    public void jineteReconocerAliadoParaAtacarADistanciaMedia(Jinete jinete, BandoJugador2 bandoJugador2) {
+        jinete.ataqueMedioValido();
     }
 
 }

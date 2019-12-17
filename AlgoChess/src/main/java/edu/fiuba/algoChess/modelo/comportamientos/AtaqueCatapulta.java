@@ -8,7 +8,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class AtaqueCatapulta extends Ataque{
 
-    //private Ataque danio;
     private CopyOnWriteArrayList<Pieza> atacados;
     private CopyOnWriteArrayList<Pieza> aAtacar;
 

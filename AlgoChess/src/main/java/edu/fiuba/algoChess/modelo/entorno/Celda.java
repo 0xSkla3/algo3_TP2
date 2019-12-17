@@ -1,5 +1,6 @@
 package edu.fiuba.algoChess.modelo.entorno;
 
+import edu.fiuba.algoChess.modelo.excepciones.NoSePuedePreguntarElBandoAUnaPiezaNull;
 import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeUbicarPiezaEnSectoRival;
 import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;
 import edu.fiuba.algoChess.modelo.bandos.Bando;
@@ -57,6 +58,14 @@ public class Celda {
 	    this.piezaActual = piezaAGuardar;
 	    piezaAGuardar.setBandoCeldaActual(this.sectorDelJugador);
     }
+
+    public Bando obtenerBandoDePieza(){
+		try {
+			return piezaActual.getBando();
+		} catch (NoSePuedePreguntarElBandoAUnaPiezaNull ex){
+			throw new NoSePuedePreguntarElBandoAUnaPiezaNull("PiezaNull no tiene bando");
+		}
+	}
 
     public boolean piezaBandoAliado(Bando bando){
 		return this.piezaActual.bandoAliado(bando);

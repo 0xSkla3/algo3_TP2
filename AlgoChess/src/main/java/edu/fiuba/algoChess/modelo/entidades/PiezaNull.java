@@ -125,4 +125,9 @@ public class PiezaNull extends Pieza {
 		throw new NoSePuedeDarDeAltaUnBatallonDePiezaNull("No se puede dar de alta un batallon de piezas null");
 	}
 
+/*	@Override
+	public Bando getBando(){
+		throw new NoSePuedePreguntarElBandoAUnaPiezaNull("No se puede saber el bando de una pieza null");
+	}
+*/
 }
