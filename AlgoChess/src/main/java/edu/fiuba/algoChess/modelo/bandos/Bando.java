@@ -22,6 +22,10 @@ public abstract class Bando {
     public abstract Salud recibirAtaque(Herible salud, Ataque ataque, BandoJugador1 bandoJugador1);
     public abstract Salud recibirAtaque(Herible salud, Ataque ataque, BandoJugador2 bandoJugador2);
 
+    public abstract ArrayList<Pieza> aniadirSoldadoAliadoAlStack(Pieza piezaPeriferia, ArrayList<Pieza> stack, Bando bando);
+    public abstract ArrayList<Pieza> aniadirSoldadoAliadoAlStack(Pieza piezaPeriferia, ArrayList<Pieza> stack, BandoJugador1 bandoJugador1);
+    public abstract ArrayList<Pieza> aniadirSoldadoAliadoAlStack(Pieza piezaPeriferia, ArrayList<Pieza> stack, BandoJugador2 bandoJugador2);
+
     public abstract boolean bandoAliado(Bando bando);
     public abstract boolean bandoAliado(BandoJugador1 bando);
     public abstract boolean bandoAliado(BandoJugador2 bando);
@@ -29,10 +33,7 @@ public abstract class Bando {
     public abstract boolean bandoEnemigo(Bando bando);
     public abstract boolean bandoEnemigo(BandoJugador1 bando);
     public abstract boolean bandoEnemigo(BandoJugador2 bando);
-    public abstract String getNombre();
 
-    public abstract ArrayList<Pieza> aniadirSoldadoAliadoAlStack(Pieza piezaPeriferia, ArrayList<Pieza> stack, Bando bando);
-    public abstract ArrayList<Pieza> aniadirSoldadoAliadoAlStack(Pieza piezaPeriferia, ArrayList<Pieza> stack, BandoJugador1 bandoJugador1);
-    public abstract ArrayList<Pieza> aniadirSoldadoAliadoAlStack(Pieza piezaPeriferia, ArrayList<Pieza> stack, BandoJugador2 bandoJugador2);
+    public abstract String getNombre();
 
 }

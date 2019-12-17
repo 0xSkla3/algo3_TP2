@@ -24,16 +24,6 @@ public class Curandero extends Pieza {
 	}
 
 	@Override
-	public Rango actualizaRango(Tablero tablero) {
-		throw new OperacionInvalidaException("Operacion invalida");
-	}
-
-	@Override
-	public Rango getRango() {
-		throw new OperacionInvalidaException("Operacion invalida");
-	}
-
-	@Override
 	public void ejecutarComportamientoPorDistancia(DistanciaCercana distancia, Pieza pieza) {
 		this.bando.curar(pieza, this.curacion, pieza.getBando());
 	}

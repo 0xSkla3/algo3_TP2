@@ -6,6 +6,7 @@ import edu.fiuba.algoChess.modelo.entorno.Tablero;
 import edu.fiuba.algoChess.modelo.entorno.Ubicacion;
 import edu.fiuba.algoChess.modelo.excepciones.FueraDeRangoParaEjecutarComportamientoException;
 import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeAtacarUnAliadoException;
+import edu.fiuba.algoChess.modelo.excepciones.NoSePuedePreguntarElBandoAUnaPiezaNull;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
@@ -34,7 +35,7 @@ public class JineteTest {
 
 	}
 
-	@Test
+	@Test	(expected = NoSePuedePreguntarElBandoAUnaPiezaNull.class)
 	public void test09JineteAtacaConAtaqueMedioAEnemigoADistanciaMedia(){
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
 		BandoJugador2 bandoJugador2 = new BandoJugador2();

@@ -19,11 +19,6 @@ public class Catapulta extends Pieza {
 	}
 
 	@Override
-	public Rango actualizaRango(Tablero tablero) {
-		throw new OperacionInvalidaException("Operacion invalida");
-	}
-
-	@Override
 	public void ejecutarComportamientoPorDistancia(DistanciaCercana distancia, Pieza pieza) {
 		throw new FueraDeRangoParaEjecutarComportamientoException("Pieza fuera de rango");
 	}
