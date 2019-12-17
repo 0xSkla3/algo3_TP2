@@ -13,11 +13,9 @@ import java.util.Objects;
 
 public class Ubicacion {
 	@Getter
-	@Setter
 	private final int x;
 
 	@Getter
-	@Setter
 	private final int y;
 
 	private ObservadorTablero observable = new ObservadorTablero();

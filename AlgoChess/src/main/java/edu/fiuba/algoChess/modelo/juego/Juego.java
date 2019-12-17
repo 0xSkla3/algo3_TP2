@@ -9,49 +9,41 @@ import edu.fiuba.algoChess.modelo.entidades.*;
 import edu.fiuba.algoChess.modelo.entorno.ObservadorTablero;
 import edu.fiuba.algoChess.modelo.entorno.Tablero;
 import edu.fiuba.algoChess.modelo.entorno.Ubicacion;
+import edu.fiuba.algoChess.modelo.excepciones.OperacionInvalidaException;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
 
 public class Juego {
-
 	@Getter
-	@Setter
 	private Tablero tablero;
 
 	@Getter
-	@Setter
 	private Jugador jugador1;
 
 	@Getter
-	@Setter
 	private Jugador jugador2;
 
 	@Getter
-	@Setter
 	private boolean activoBando1;
 
 	@Getter
-	@Setter
 	private Bando bandoActivo;
 
 	@Getter
-	@Setter
 	private Jugador jugadorActivo;
 
 	@Getter
-	@Setter
 	private ArrayList<Pieza> piezasEnTablero;
 
+	@Getter
 	ArrayList<Pieza> piezasMuertas;
 
 	@Getter
-	@Setter
 	Boolean segundaEtapa = false;
 
 	@Getter
-	@Setter
 	Boolean finDeJuego = false;
 
 	private ObservadorTablero observadorTablero;
@@ -70,9 +62,15 @@ public class Juego {
 			this.bandoActivo = this.jugador1.getBando();
 			this.jugadorActivo = this.jugador1;
 			this.activoBando1 = true;
+
+			this.segundaEtapa = false;
+			this.finDeJuego = false;
 		}
 
 	public Pieza crearPieza (String nombre, Ubicacion ubicacion){
+		if(finDeJuego || segundaEtapa)
+			throw new OperacionInvalidaException("Fase de juego incorrecta");
+
 		Pieza pieza;
 
 		//FIXME
@@ -94,11 +92,16 @@ public class Juego {
 	}
 
 	public void atacar (Pieza atacante, Pieza atacado){
+		if(! segundaEtapa)
+			throw new OperacionInvalidaException("Fase de juego invalida");
+
 		atacante.atacar(atacado);
 		if(! atacado.getVida().stateEstaVivo()) {
 			this.tablero.eliminar(atacado.getUbicacion());
 			this.piezasEnTablero.remove(atacado);
 			this.piezasMuertas.add(atacado);
+
+			this.evaluarFinDeJuego();
 		}
 	}
 
@@ -118,10 +121,28 @@ public class Juego {
 	}
 
 	public void comenzarSegundoStage() {
-		setSegundaEtapa(true);
+		this.segundaEtapa = true;
+	}
+
+	private void evaluarFinDeJuego() {
+		boolean piezasVivas1 = false;
+		boolean piezasVivas2 = false;
+
+		// miro si le queda alguna pieza viva a cada jugador
+		for (Pieza p: piezasEnTablero) {
+			if(! p.getVida().stateEstaVivo())	continue;
+			if(p.getBando() == this.jugador1.getBando())
+				piezasVivas1 = true;
+			else
+				piezasVivas2 = true;
+		}
+
+		if(! piezasVivas1 || ! piezasVivas2)
+			this.terminarJuego();
 	}
 
 	public void terminarJuego() {
-		setFinDeJuego(true);
+		this.finDeJuego = true;
+		this.segundaEtapa = false;
 	}
 }
