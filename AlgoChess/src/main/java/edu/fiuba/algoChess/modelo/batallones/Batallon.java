@@ -28,19 +28,18 @@ public abstract class Batallon extends Movible {
 	@Getter
 	Pieza pieza3;
 
-	public static Batallon darDeAltaBatallon(Pieza soldado){
+	public static Batallon darDeAltaBatallon(Pieza soldado) {
 		ArrayList<Pieza> soldadosBatallon;
 		soldadosBatallon = BatallonUtil.armarPosibleBatallon(soldado);
-
-		if (soldadosBatallon.size() > 1){
+		try {
 			BatallonUtil batallonUtil = new BatallonUtil();
 			batallonUtil.setPieza1(soldadosBatallon.get(0));
 			batallonUtil.setPieza2(soldadosBatallon.get(1));
 			batallonUtil.setPieza3(soldadosBatallon.get(2));
 			return batallonUtil;
+		} catch (IndexOutOfBoundsException ex) {
+			return new BatallonNull();
 		}
-
-		return new BatallonNull();
 	}
 
 	public static Batallon batallonAsociadoONull(Pieza soldado1){
@@ -59,21 +58,6 @@ public abstract class Batallon extends Movible {
 	public Batallon moverBatallon(Tablero campoDeBatalla, Ubicacion ubicacion1, Ubicacion ubicacion2, Ubicacion ubicacion3){
 
 		throw new NoSePuedeMoverUnBatallonNull("No se puede mover un batallon null");
-	}
-
-	public boolean equals(Batallon batallon){
-		Set<Pieza> itemsBatallonActual = new HashSet<>();
-		Set<Pieza>itemsBatallonAComparar = new HashSet<>();
-
-		itemsBatallonActual.add(this.getPieza1());
-		itemsBatallonActual.add(this.getPieza2());
-		itemsBatallonActual.add(this.getPieza3());
-
-		itemsBatallonAComparar.add(batallon.getPieza1());
-		itemsBatallonAComparar.add(batallon.getPieza2());
-		itemsBatallonAComparar.add(batallon.getPieza3());
-
-		return itemsBatallonActual.equals(itemsBatallonAComparar);
 	}
 
 }

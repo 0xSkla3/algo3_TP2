@@ -1,5 +1,6 @@
 package edu.fiuba.algoChess.modelo.entorno;
 
+import edu.fiuba.algoChess.modelo.excepciones.NoSePuedePreguntarElBandoAUnaPiezaNull;
 import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeUbicarPiezaEnSectoRival;
 import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;
 import edu.fiuba.algoChess.modelo.bandos.Bando;
@@ -20,6 +21,7 @@ public class Celda {
 	@Getter
 	protected Bando sectorDelJugador;
 
+
 	public Celda(){
 		this.piezaActual = new PiezaNull(null);
 	}
@@ -28,7 +30,6 @@ public class Celda {
 		this.piezaActual = new PiezaNull(null);
 		this.sectorDelJugador = bando;
 	}
-
     public void guardarFaseInicial(Pieza piezaAUbicar) {
         if (this.sectorDelJugador.getNombre() != piezaAUbicar.getBando().getNombre()  ) {
             throw new NoSePuedeUbicarPiezaEnSectoRival("No se puede ubicar pieza en sector rival");
@@ -42,11 +43,7 @@ public class Celda {
     }
 
 	public void guardarFaseJuego(Pieza piezaAUbicar) {
-		try {
-			this.piezaActual.pisar(this, piezaAUbicar);
-		} catch (NoSePuedeUbicarPorqueEstaOcupadoException e) {
-			throw new NoSePuedeUbicarPorqueEstaOcupadoException("no se puede ubicar pieza por estar el casillero ocupado");
-		}
+		this.piezaActual.pisar(this, piezaAUbicar);
 	}
 
 	public void eliminar() {
@@ -57,6 +54,14 @@ public class Celda {
 	    this.piezaActual = piezaAGuardar;
 	    piezaAGuardar.setBandoCeldaActual(this.sectorDelJugador);
     }
+
+    public Bando obtenerBandoDePieza(){
+		try {
+			return piezaActual.getBando();
+		} catch (NoSePuedePreguntarElBandoAUnaPiezaNull ex){
+			throw new NoSePuedePreguntarElBandoAUnaPiezaNull("PiezaNull no tiene bando");
+		}
+	}
 
     public boolean piezaBandoAliado(Bando bando){
 		return this.piezaActual.bandoAliado(bando);

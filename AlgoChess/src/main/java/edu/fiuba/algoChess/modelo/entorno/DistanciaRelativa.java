@@ -1,15 +1,10 @@
 package edu.fiuba.algoChess.modelo.entorno;
 
 import edu.fiuba.algoChess.modelo.entidades.Pieza;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
 public class DistanciaRelativa {
-
-    //protected int distancia;
-
-    public DistanciaRelativa(//int distancia
-     ){
-       // this.distancia = distancia;
-    }
 
     public static DistanciaRelativa getDistanciaRelativa (Ubicacion ubicacionPiezaCentral, Ubicacion ubicacionOtraPieza){
 

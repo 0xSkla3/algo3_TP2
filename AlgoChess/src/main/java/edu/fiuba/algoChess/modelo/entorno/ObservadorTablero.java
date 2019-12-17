@@ -1,13 +1,12 @@
 package edu.fiuba.algoChess.modelo.entorno;
 
 import edu.fiuba.algoChess.modelo.entidades.Pieza;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
 public class ObservadorTablero {
 
     static protected Tablero tablero = null;
-
-    public void ObservadorTablero(){
-    }
 
     public void setTablero(Tablero tablero){
         this.tablero = tablero;

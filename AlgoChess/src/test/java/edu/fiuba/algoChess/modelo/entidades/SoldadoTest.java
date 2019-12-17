@@ -1,9 +1,9 @@
 package edu.fiuba.algoChess.modelo.entidades;
 
+import edu.fiuba.algoChess.TestHelper;
 import edu.fiuba.algoChess.modelo.bandos.BandoJugador1;
 import edu.fiuba.algoChess.modelo.bandos.BandoJugador2;
 import edu.fiuba.algoChess.modelo.batallones.Batallon;
-import edu.fiuba.algoChess.modelo.batallones.BatallonNull;
 import edu.fiuba.algoChess.modelo.batallones.BatallonUtil;
 import edu.fiuba.algoChess.modelo.entorno.Tablero;
 import edu.fiuba.algoChess.modelo.entorno.Ubicacion;
@@ -114,8 +114,7 @@ public class SoldadoTest {
 		Batallon batallon = Batallon.batallonAsociadoONull(soldado1);
 		Batallon batallonModificado = batallon.moverBatallonArriba(tableroTest);
 
-		assertTrue(batallonModificado.equals(new BatallonNull()));
-
+		TestHelper.assertEqualsBatallonNull(batallonModificado);
 	}
 
 	@Test

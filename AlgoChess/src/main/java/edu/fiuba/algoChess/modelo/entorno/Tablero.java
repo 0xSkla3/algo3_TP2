@@ -62,59 +62,33 @@ public class Tablero {
 	}
 
 	public Celda getCelda(Ubicacion ubicacion) {
-		if (!this.campoDeBatalla.containsKey(ubicacion)) {
+		try{
+			return this.campoDeBatalla.get(ubicacion);}
+		catch(IndexOutOfBoundsException ex){
 			throw new NoExisteNingunCasilleroParaLaUbicacionDadaException("No existe una celda en esa ubicacion");
-		}else {
-			return this.campoDeBatalla.get(ubicacion);
-		}
-	}
-
-	public Celda getCeldaONull(Ubicacion ubicacion) {
-		if (!this.campoDeBatalla.containsKey(ubicacion)) {
-			return new CeldaNull();
-		}else {
-			return this.campoDeBatalla.get(ubicacion);
 		}
 	}
 
 	public void ubicarEnCeldaFaseInicial(Pieza pieza, Ubicacion ubicacion) {
 
-		if (!this.campoDeBatalla.containsKey(ubicacion)) {
-			throw new NoExisteNingunCasilleroParaLaUbicacionDadaException("No existe una celda en esa ubicacion");
-		}
-
-		if (this.campoDeBatalla.get(ubicacion).getPiezaActual().notEqualsNull()) {
-			throw new NoSePuedeUbicarPorqueEstaOcupadoException("no se puede ubicar pieza por estar el casillero ocupado");
-		}
-
 		try {
 			this.campoDeBatalla.get(ubicacion).guardarFaseInicial(pieza);
 			pieza.setUbicacion(ubicacion);
-		} catch (NoSePuedeUbicarPorqueEstaOcupadoException e) {
-			throw new NoSePuedeUbicarPorqueEstaOcupadoException("no se puede ubicar pieza por estar el casillero ocupado");
+		} catch (IndexOutOfBoundsException e) {
+			throw new NoExisteNingunCasilleroParaLaUbicacionDadaException("No existe una celda en esa ubicacion");
 		}
 	}
 
 	public void ubicarEnCeldaFaseJuego(Pieza pieza, Ubicacion ubicacion) {
-
-		if (!this.campoDeBatalla.containsKey(ubicacion)) {
-			throw new NoExisteNingunCasilleroParaLaUbicacionDadaException("No existe una celda en esa ubicacion");
-		}
-
-		if (this.campoDeBatalla.get(ubicacion).getPiezaActual().notEqualsNull()) {
-			throw new NoSePuedeUbicarPorqueEstaOcupadoException("no se puede ubicar pieza por estar el casillero ocupado");
-		}
-
 		try {
 			this.campoDeBatalla.get(ubicacion).guardarFaseJuego(pieza);
 			pieza.setUbicacion(ubicacion);
-		} catch (NoSePuedeUbicarPorqueEstaOcupadoException e) {
-			throw new NoSePuedeUbicarPorqueEstaOcupadoException("no se puede ubicar pieza por estar el casillero ocupado");
+		} catch (IndexOutOfBoundsException e) {
+			throw new NoExisteNingunCasilleroParaLaUbicacionDadaException("No existe una celda en esa ubicacion");
 		}
 	}
 
 	public void eliminar(Ubicacion ubicacion) {
-
 		this.getCelda(ubicacion).eliminar();
 	}
 

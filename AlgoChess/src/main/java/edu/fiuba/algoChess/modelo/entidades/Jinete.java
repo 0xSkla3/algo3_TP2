@@ -1,7 +1,9 @@
 package edu.fiuba.algoChess.modelo.entidades;
 
 import edu.fiuba.algoChess.modelo.bandos.Bando;
+import edu.fiuba.algoChess.modelo.comportamientos.Ataque;
 import edu.fiuba.algoChess.modelo.comportamientos.AtaqueNormal;
+import edu.fiuba.algoChess.modelo.comportamientos.AtaqueNull;
 import edu.fiuba.algoChess.modelo.entorno.*;
 import edu.fiuba.algoChess.modelo.excepciones.FueraDeRangoParaEjecutarComportamientoException;
 import lombok.Getter;
@@ -11,7 +13,7 @@ public class Jinete extends Pieza {
 
 	@Getter
 	@Setter
-	private AtaqueNormal ataqueMedio;
+	private Ataque ataqueMedio;
 
 	@Getter
 	@Setter
@@ -37,6 +39,7 @@ public class Jinete extends Pieza {
 		tablero.ubicarEnCeldaFaseInicial(this, ubicacion);
 		this.ataqueCercano = new AtaqueNormal(danioCercano);
 		this.ataqueMedio = new AtaqueNormal(danioMedio);
+		//this.ataqueMedio = new AtaqueNormal(danioMedio);
 		this.piezaEnemigaCercana = false;
 		this.piezaAliadaCercana = false;
 		this.distanciaAReconocerEnTerreno = 2;
@@ -55,7 +58,8 @@ public class Jinete extends Pieza {
 
 	@Override
 	public void ejecutarComportamientoPorDistancia(DistanciaMedia distancia, Pieza pieza) {
-		this.ubicacion.reconocerTerrenoParaAtacarADistanciaMedia(this, pieza, distanciaAReconocerEnTerreno, ubicacion);
+		this.ubicacion.reconocerTerrenoParaAtacarADistanciaMedia(this, distanciaAReconocerEnTerreno, ubicacion, bando);
+		this.concretarAtaqueMedio(pieza);
 	}
 
 	@Override
@@ -67,4 +71,11 @@ public class Jinete extends Pieza {
 		this.bando.atacar(pieza, this.ataqueMedio, pieza.getBando());
 	}
 
+	public void ataqueMedioInvalido() {
+		this.ataqueMedio = new AtaqueNull(0);
+	}
+
+	public void ataqueMedioValido() {
+		this.ataqueMedio = new AtaqueNormal(danioMedio);
+	}
 }

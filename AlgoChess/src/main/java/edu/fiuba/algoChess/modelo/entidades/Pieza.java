@@ -72,9 +72,8 @@ public abstract class Pieza extends Movible implements Batalloneable {
  		this.setVida(this.bando.recibirAtaque(this.vida, ataque, this.bandoCeldaActual));
 	}
 
-	// FIXME: revisar si esto no tiene que ser static
-	public void pisar(Celda celda, Pieza pieza){
-		celda.setPiezaActual(pieza);
+	public void pisar(Celda celda, Pieza piezaAUbicar){
+		throw new NoSePuedeUbicarPorqueEstaOcupadoException("No se puede ubicar la pieza porque la celda ya esta ocupada");
 	}
 
 	public void moverseALaDerecha(Tablero campoDeBatalla){

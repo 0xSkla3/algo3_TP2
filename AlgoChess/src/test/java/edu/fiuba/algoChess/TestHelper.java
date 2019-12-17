@@ -35,4 +35,5 @@ public class TestHelper {
 
 		return itemsBatallonActual.equals(itemsBatallonAComparar);
 	}
+
 }

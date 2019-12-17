@@ -5,7 +5,6 @@ import edu.fiuba.algoChess.modelo.comportamientos.Curacion;
 import edu.fiuba.algoChess.modelo.entorno.*;
 import edu.fiuba.algoChess.modelo.excepciones.FueraDeRangoParaEjecutarComportamientoException;
 import edu.fiuba.algoChess.modelo.excepciones.OperacionInvalidaException;
-import edu.fiuba.algoChess.modelo.rangos.Rango;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,16 +18,6 @@ public class Curandero extends Pieza {
 		super(2,75,ubicacion,bando);
 		tablero.ubicarEnCeldaFaseInicial(this, ubicacion);
 		this.curacion = new Curacion(15);
-	}
-
-	@Override
-	public Rango actualizaRango(Tablero tablero) {
-		throw new OperacionInvalidaException("Operacion invalida");
-	}
-
-	@Override
-	public Rango getRango() {
-		throw new OperacionInvalidaException("Operacion invalida");
 	}
 
 	@Override
