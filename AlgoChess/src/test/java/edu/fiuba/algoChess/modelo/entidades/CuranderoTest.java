@@ -3,15 +3,11 @@ package edu.fiuba.algoChess.modelo.entidades;
 import edu.fiuba.algoChess.modelo.bandos.BandoJugador1;
 import edu.fiuba.algoChess.modelo.bandos.BandoJugador2;
 import edu.fiuba.algoChess.modelo.comportamientos.AtaqueNormal;
-import edu.fiuba.algoChess.modelo.entidades.Catapulta;
-import edu.fiuba.algoChess.modelo.entidades.Curandero;
-import edu.fiuba.algoChess.modelo.entidades.Soldado;
 import edu.fiuba.algoChess.modelo.entorno.Tablero;
 import edu.fiuba.algoChess.modelo.entorno.Ubicacion;
 import edu.fiuba.algoChess.modelo.excepciones.FueraDeRangoParaEjecutarComportamientoException;
 import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeCurarUnaCatapultaException;
 import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeCurarUnaUnidadEnemigaException;
-
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

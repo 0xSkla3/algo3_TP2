@@ -1,5 +1,6 @@
 package edu.fiuba.algoChess.interfaz.vista;
 
+
 import edu.fiuba.algoChess.interfaz.controlladores.JugarHandler;
 import edu.fiuba.algoChess.interfaz.controlladores.SalirHandler;
 import javafx.geometry.Insets;
@@ -7,9 +8,11 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
 
 public class Inicio extends HBox {
 

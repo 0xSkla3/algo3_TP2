@@ -1,23 +1,12 @@
 package edu.fiuba.algoChess.modelo.entidades;
 
 import edu.fiuba.algoChess.modelo.bandos.Bando;
-import edu.fiuba.algoChess.modelo.batallones.Batalloneable;
 import edu.fiuba.algoChess.modelo.comportamientos.AtaqueNormal;
 import edu.fiuba.algoChess.modelo.entorno.*;
 import edu.fiuba.algoChess.modelo.excepciones.FueraDeRangoParaEjecutarComportamientoException;
-import edu.fiuba.algoChess.modelo.excepciones.OperacionInvalidaException;
-import edu.fiuba.algoChess.modelo.excepciones.PiezaActualNoFormaBatallonDeSoldadosException;
-
-import edu.fiuba.algoChess.modelo.rangos.Agrupable;
-import edu.fiuba.algoChess.modelo.rangos.Rango;
-
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
-import static java.lang.Math.abs;
 public class Jinete extends Pieza {
 
 	@Getter

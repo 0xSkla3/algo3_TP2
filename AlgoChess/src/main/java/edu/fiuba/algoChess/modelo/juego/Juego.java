@@ -75,6 +75,8 @@ public class Juego {
 	public Pieza crearPieza (String nombre, Ubicacion ubicacion){
 		Pieza pieza;
 
+		//FIXME
+
 		if (nombre.contains("Soldado"))
 			pieza = new Soldado(ubicacion, this.bandoActivo, this.tablero);
 		else if (nombre.contains("Catapulta"))

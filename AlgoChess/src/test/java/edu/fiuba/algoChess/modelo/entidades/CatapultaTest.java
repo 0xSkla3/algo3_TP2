@@ -2,11 +2,8 @@ package edu.fiuba.algoChess.modelo.entidades;
 
 import edu.fiuba.algoChess.modelo.bandos.BandoJugador1;
 import edu.fiuba.algoChess.modelo.bandos.BandoJugador2;
-import edu.fiuba.algoChess.modelo.entidades.Catapulta;
-import edu.fiuba.algoChess.modelo.entidades.Soldado;
 import edu.fiuba.algoChess.modelo.entorno.Tablero;
 import edu.fiuba.algoChess.modelo.entorno.Ubicacion;
-
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

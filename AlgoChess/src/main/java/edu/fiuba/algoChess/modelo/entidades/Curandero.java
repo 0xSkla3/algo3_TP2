@@ -16,11 +16,9 @@ public class Curandero extends Pieza {
 	private Curacion curacion;
 
 	public Curandero(Ubicacion ubicacion, Bando bando, Tablero tablero){
-
 		super(2,75,ubicacion,bando);
 		tablero.ubicarEnCeldaFaseInicial(this, ubicacion);
 		this.curacion = new Curacion(15);
-
 	}
 
 	@Override

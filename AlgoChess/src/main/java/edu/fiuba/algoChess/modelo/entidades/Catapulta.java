@@ -1,8 +1,10 @@
 package edu.fiuba.algoChess.modelo.entidades;
 
 import edu.fiuba.algoChess.modelo.bandos.Bando;
+
 import edu.fiuba.algoChess.modelo.comportamientos.AtaqueCatapulta;
 import edu.fiuba.algoChess.modelo.entorno.*;
+
 import edu.fiuba.algoChess.modelo.excepciones.FueraDeRangoParaEjecutarComportamientoException;
 import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeCurarUnaCatapultaException;
 import edu.fiuba.algoChess.modelo.excepciones.OperacionInvalidaException;

@@ -1,19 +1,16 @@
 package edu.fiuba.algoChess.modelo.entidades;
 
 import edu.fiuba.algoChess.modelo.bandos.Bando;
+import edu.fiuba.algoChess.modelo.batallones.Batallon;
 import edu.fiuba.algoChess.modelo.batallones.Batalloneable;
 import edu.fiuba.algoChess.modelo.comportamientos.Ataque;
 import edu.fiuba.algoChess.modelo.entorno.*;
-import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;
+import edu.fiuba.algoChess.modelo.excepciones.*;
+import edu.fiuba.algoChess.modelo.rangos.Agrupable;
 import edu.fiuba.algoChess.modelo.rangos.Rango;
-import edu.fiuba.algoChess.modelo.rangos.RangoNull;
 import edu.fiuba.algoChess.modelo.salud.Salud;
 import edu.fiuba.algoChess.modelo.salud.SaludLlena;
 import edu.fiuba.algoChess.modelo.salud.SaludMuerto;
-
-import edu.fiuba.algoChess.modelo.batallones.Batallon;
-import edu.fiuba.algoChess.modelo.excepciones.*;
-import edu.fiuba.algoChess.modelo.rangos.Agrupable;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
