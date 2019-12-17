@@ -6,6 +6,7 @@ import edu.fiuba.algoChess.modelo.comportamientos.Ataque;
 import edu.fiuba.algoChess.modelo.entorno.*;
 import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;
 import edu.fiuba.algoChess.modelo.rangos.Rango;
+import edu.fiuba.algoChess.modelo.rangos.RangoNull;
 import edu.fiuba.algoChess.modelo.salud.Salud;
 import edu.fiuba.algoChess.modelo.salud.SaludLlena;
 import edu.fiuba.algoChess.modelo.salud.SaludMuerto;
@@ -43,6 +44,7 @@ public abstract class Pieza extends Movible implements Batalloneable {
 	protected  Bando bandoCeldaActual;
 
 	@Setter
+	@Getter
 	protected Rango rango;
 
 	@Setter
@@ -66,7 +68,7 @@ public abstract class Pieza extends Movible implements Batalloneable {
 	}
 
  	public void aumentarVida(double aumento) {
-		this.vida.curar(aumento);
+		this.vida = this.vida.curar(aumento);
 	}
 
 	public void recibirAtaque(Ataque ataque){
@@ -103,17 +105,12 @@ public abstract class Pieza extends Movible implements Batalloneable {
 	}
 
 	public void mover( Tablero campoDeBatalla, Ubicacion ubicacion) {
-		this.vida.stateComportarse();
-		try {
+			this.vida.stateComportarse();
 			Ubicacion ubicacionVieja = this.getUbicacion();
 			campoDeBatalla.ubicarEnCeldaFaseJuego(this, ubicacion);
 			campoDeBatalla.eliminar(ubicacionVieja);
 			this.setUbicacion(ubicacion);
-		}catch (NoSePuedeUbicarPorqueEstaOcupadoException ex){
-			//mensaje de error en vista y darle el turno al mismo jugador
-		}
 	}
-
 
 	public void moverPiezaDeBatallon( Tablero campoDeBatalla, Ubicacion ubicacion){
 		this.vida.stateComportarse();
@@ -124,16 +121,11 @@ public abstract class Pieza extends Movible implements Batalloneable {
 			this.setUbicacion(ubicacion);
 		}catch (NoSePuedeUbicarPorqueEstaOcupadoException ex){
 			throw new NoSePuedeUbicarPorqueEstaOcupadoException("no se puede ubicar pieza por estar el casillero ocupado");
-			//mensaje de error en vista y darle el turno al mismo jugador
 		}
 	}
 
 	public Rango actualizaRango(Tablero tablero){
 		throw new NoSePuedeObtenerElRangoDeUnaPiezaNoAgrupable("No se puede actualizar el rango de una pieza no agrupable");
-	}
-
-	public Rango getRango(){
-		throw new NoSePuedeObtenerElRangoDeUnaPiezaNoAgrupable("No se puede obtener el rango de una pieza no agrupable");
 	}
 
 	public ArrayList<Pieza> unirABatallonDeSoldado(ArrayList<Pieza> stackDeUnion){
@@ -195,7 +187,7 @@ public abstract class Pieza extends Movible implements Batalloneable {
 	public abstract void ejecutarComportamientoPorDistancia(DistanciaLejana distancia, Pieza pieza);
 
 	public void atacar(Pieza atacado){
-		DistanciaRelativa distanciaEntrePiezas = this.calculadorDistancia.getDistanciaRelativa(this.ubicacion, atacado.ubicacion);
+		DistanciaRelativa distanciaEntrePiezas = DistanciaRelativa.getDistanciaRelativa(this.ubicacion, atacado.ubicacion);
 		distanciaEntrePiezas.ejecutarComportamientoPorDistancia(this, atacado);
 	}
 

@@ -36,12 +36,13 @@ public class Curandero extends Pieza {
 	@Override
 	public void ejecutarComportamientoPorDistancia(DistanciaCercana distancia, Pieza pieza) {
 		this.bando.curar(pieza, this.curacion, pieza.getBando());
-	};
+	}
 
 	@Override
 	public void ejecutarComportamientoPorDistancia(DistanciaMedia distancia, Pieza pieza) {
 		throw new FueraDeRangoParaEjecutarComportamientoException("Pieza fuera de rango");
-	};
+	}
+
 	@Override
 	public void ejecutarComportamientoPorDistancia(DistanciaLejana distancia, Pieza pieza) {
 		throw new FueraDeRangoParaEjecutarComportamientoException("Pieza fuera de rango");
@@ -53,7 +54,7 @@ public class Curandero extends Pieza {
 	}
 
 	public void curar(Pieza piezaACurar){
-		DistanciaRelativa distanciaEntrePiezas = this.calculadorDistancia.getDistanciaRelativa(this.ubicacion, piezaACurar.ubicacion);
+		DistanciaRelativa distanciaEntrePiezas = DistanciaRelativa.getDistanciaRelativa(this.ubicacion, piezaACurar.ubicacion);
 		distanciaEntrePiezas.ejecutarComportamientoPorDistancia(this, piezaACurar);
 	}
 

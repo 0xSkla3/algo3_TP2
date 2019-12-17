@@ -69,7 +69,7 @@ public class PiezaNull extends Pieza {
 	}
 
 	public void recibirAtaque(Ataque ataque){
-		throw new OperacionInvalidaException("Operacion invalida");
+		throw new NoSePuedeAtacarPiezaNull("Operacion invalida");
 	}
 
 	@Override

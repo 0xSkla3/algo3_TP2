@@ -5,9 +5,6 @@ import edu.fiuba.algoChess.modelo.comportamientos.AtaqueNormal;
 import edu.fiuba.algoChess.modelo.entorno.*;
 import edu.fiuba.algoChess.modelo.excepciones.FueraDeRangoParaEjecutarComportamientoException;
 import edu.fiuba.algoChess.modelo.batallones.Batallon;
-import edu.fiuba.algoChess.modelo.batallones.Batalloneable;
-import edu.fiuba.algoChess.modelo.excepciones.OperacionInvalidaException;
-import edu.fiuba.algoChess.modelo.rangos.Agrupable;
 import edu.fiuba.algoChess.modelo.rangos.Rango;
 import edu.fiuba.algoChess.modelo.rangos.RangoSoldado;
 
@@ -49,7 +46,7 @@ public class Soldado extends Pieza {
 
 	@Override
 	public ArrayList<Pieza> aniadirSoldadoAliadoStack(ArrayList<Pieza> stack, Pieza pieza) {
-		return pieza.getBando().aniadirSoldadoAliadoAlStack(stack, pieza);
+		return pieza.bando.aniadirSoldadoAliadoAlStack(this, stack, this.bando);
 	}
 
 	@Override

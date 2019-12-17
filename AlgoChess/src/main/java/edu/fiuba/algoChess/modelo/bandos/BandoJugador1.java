@@ -16,13 +16,12 @@ public class BandoJugador1 extends Bando{
 
     @Override
     public void atacar(Pieza pieza, Ataque ataque, Bando bando){
-        bando.atacar(pieza, ataque, this);
-    };
+        bando.atacar(pieza, ataque, this);}
 
     @Override
     public void atacar(Pieza pieza, Ataque ataque, BandoJugador1 bandojugador1){
         throw new NoSePuedeAtacarUnAliadoException("No se puede atacar un aliado");
-    };
+    }
 
     @Override
     public void atacar(Pieza pieza, Ataque ataque, BandoJugador2 bandojugador2){
@@ -80,6 +79,25 @@ public class BandoJugador1 extends Bando{
     @Override
     public String getNombre() {
         return "jugador1";
+    }
+
+    public ArrayList<Pieza> aniadirSoldadoAliadoAlStack(Pieza piezaPeriferia, ArrayList<Pieza> stack, BandoJugador1 bandoSoldadoPeriferia){
+        try {
+            stack.add(piezaPeriferia);
+        } catch(NullPointerException ex){
+            stack = new ArrayList<>();
+            stack.add(piezaPeriferia);
+        }
+        return stack;
+    }
+
+    public ArrayList<Pieza> aniadirSoldadoAliadoAlStack(Pieza piezaPeriferia, ArrayList<Pieza> stack, BandoJugador2 bandoSoldadoPeriferia){
+        return stack;
+    }
+
+    @Override
+    public ArrayList<Pieza> aniadirSoldadoAliadoAlStack(Pieza piezaPeriferia, ArrayList<Pieza> stack, Bando bandoSoldadoPeriferia) {
+        return bandoSoldadoPeriferia.aniadirSoldadoAliadoAlStack(piezaPeriferia, stack, this);
     }
 
 }

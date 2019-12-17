@@ -2,6 +2,7 @@ package edu.fiuba.algoChess.interfaz.vista;
 
 import edu.fiuba.algoChess.modelo.entidades.Pieza;
 import edu.fiuba.algoChess.modelo.entorno.Tablero;
+import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;
 import edu.fiuba.algoChess.modelo.juego.Juego;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,52 +13,20 @@ import lombok.Getter;
 import lombok.Setter;
 
 public class MenuPieza {
-
-	@Getter
-	@Setter
 	Juego juego;
-
-	@Getter
-	@Setter
 	Pieza pieza;
-
-	@Getter
-	@Setter
-	Tablero tablero;
-
-	@Getter
-	@Setter
-	ImageView imagenPieza;
-
-	@Getter
-	@Setter
-	VistaTablero map;
-
-	@Getter
-	@Setter
-    VistaPieza pieceView;
-
-	@Getter
-	@Setter
+	MenuMovimiento menuMovimiento;
+	MenuComportamiento menuComportamiento;
+	SegundaEtapa segundaEtapa;
 	String piezaNombre;
 
-	@Getter
-	@Setter
-	MenuMovimiento menuMovimiento;
-
-	@Getter
-	@Setter
-	MenuComportamiento menuComportamiento;
-
-	@Getter
-	@Setter
-	SegundaEtapa segundaEtapa;
-
-	public MenuPieza(Juego juego, Pieza pieza, Tablero tablero, ImageView imagenPieza, VistaTablero map, VistaPieza pieceView, String piezaNombre, SegundaEtapa segundaEtapa) {
-		this.piezaNombre = piezaNombre;
-		menuMovimiento = new MenuMovimiento(pieza, tablero, imagenPieza, map, pieceView);
-		menuComportamiento = new MenuComportamiento(juego, pieza, tablero, imagenPieza, map, segundaEtapa);
+	public MenuPieza(Juego juego, Pieza pieza, SegundaEtapa segundaEtapa) {
+		this.pieza = pieza;
+		menuMovimiento = new MenuMovimiento(pieza, juego.getTablero(), segundaEtapa);
+		menuComportamiento = new MenuComportamiento(juego, pieza, segundaEtapa);
 		this.segundaEtapa = segundaEtapa;
+
+		this.piezaNombre = pieza.getClass().getSimpleName();
 	}
 
 	public void menuPopUp() {
@@ -65,15 +34,23 @@ public class MenuPieza {
 		Stage stage = new Stage();
 		VBox vbox = new VBox();
 
-
 		Button moverse = new Button("Moverse");
 		moverse.setStyle("-fx-background-color:#F1C40F;");
-		moverse.setOnAction(e -> {
-					if(!piezaNombre.contains("Catapulta")) {
-						this.menuMovimiento.menuPopUp();
-					}
-			stage.close();
-		});
+		try {
+
+			moverse.setOnAction(e -> {
+				if(!piezaNombre.contains("Catapulta")) {
+					this.menuMovimiento.menuPopUp();
+				}
+				stage.close();
+			});
+
+		} catch (NoSePuedeUbicarPorqueEstaOcupadoException exc){
+
+			DialogoAlerta.Alerta("Movimiento Invalido",
+					"No se puede ubicar la pieza porque esta ocupada la celda", 3);
+
+		}
 
 		Button interactuar = new Button("interactuar");
 		interactuar.setStyle("-fx-background-color:#F1C40F;");
@@ -82,13 +59,18 @@ public class MenuPieza {
 			stage.close();
 		});
 
-		vbox.getChildren().addAll(moverse, interactuar);
+		Button pasar = new Button("Pasar turno");
+		pasar.setStyle("-fx-background-color:#F1C40F;");
+		pasar.setOnAction(e -> {
+			segundaEtapa.cambioTurno();
+			stage.close();
+		});
 
-		this.segundaEtapa.cambioTurno();
+		vbox.getChildren().addAll(moverse, interactuar, pasar);
+
 		Scene theScene = new Scene(vbox);
 		stage.setScene(theScene);
 		stage.show();
-
 	}
 
 	public void elegirMenuInteraccion() {

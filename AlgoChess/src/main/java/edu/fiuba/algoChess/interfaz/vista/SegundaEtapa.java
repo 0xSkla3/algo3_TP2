@@ -18,9 +18,7 @@ public class SegundaEtapa extends HBox {
 	private FinDeJuego finDeJuego;
 	private HBox head ;
 
-	public SegundaEtapa(Juego juego, Stage stage, VistaPieza pieceView,
-						VistaTablero mapView) {
-
+	public SegundaEtapa(Juego juego, Stage stage, VistaTablero mapView) {
 		this.juego = juego;
 		this.stage = stage;
 		this.mapView = mapView;
@@ -28,7 +26,7 @@ public class SegundaEtapa extends HBox {
 	 	this.player2 =  new VistaJugador(juego.getJugador2());
 		this.player1.setMostrarCreditos(false);
 		this.player2.setMostrarCreditos(false);
-		this.finDeJuego = new FinDeJuego(juego, stage, pieceView, mapView);
+		this.finDeJuego = new FinDeJuego(juego, stage, mapView);
 	}
 
 	public void iniciarFase(){
@@ -58,11 +56,20 @@ public class SegundaEtapa extends HBox {
 		return head;
 	}
 
+	public void actualizarVista() {
+		this.player1.actualizarVista();
+		this.player2.actualizarVista();
+		this.mapView.actualizarVista();
+	}
+
 	public void cambioTurno() {
+		this.actualizarVista();
 
 		head.getChildren().remove(1);
 		this.juego.pasarTurno();
 		turnOf(head);
+
+		this.actualizarVista();
 	}
 
 	public void turnOf(HBox head){

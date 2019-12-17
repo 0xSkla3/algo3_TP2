@@ -19,6 +19,21 @@ import static org.junit.Assert.*;
 public class SoldadoTest {
 
 	@Test
+	public void testSoldadoSubeYBajaASuPosicionOriginal(){
+
+		BandoJugador1 bandoJugador1 = new BandoJugador1();
+		BandoJugador2 bandoJugador2 = new BandoJugador2();
+		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
+		Soldado soldado = new Soldado(new Ubicacion(2,2), bandoJugador1,tableroTest);
+
+		soldado.moverseArriba(tableroTest);
+		assertEquals(soldado.getUbicacion(), new Ubicacion(2,3));
+		soldado.moverseAbajo(tableroTest);
+		assertEquals(soldado.getUbicacion(), new Ubicacion(2,2));
+
+	}
+
+	@Test
 	public void test00SeVerificaBatallon(){
 
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
@@ -53,7 +68,6 @@ public class SoldadoTest {
 
 		Batallon batallon = BatallonUtil.batallonAsociadoONull(soldado1);
 		batallon.moverBatallonArriba(tableroTest);
-;
 		assertEquals(batallon.getPieza3().getUbicacion(), new Ubicacion(2,3));
 		assertEquals(batallon.getPieza1().getUbicacion(), new Ubicacion(3,3));
 		assertEquals(batallon.getPieza2().getUbicacion(), new Ubicacion(4,3));
@@ -155,7 +169,7 @@ public class SoldadoTest {
 
 		assertEquals(vidaTrasAtaque,jineteEnemigo.getVida().getValorActual(), 0.0);
 
-	};
+	}
 
 	@Test (expected = FueraDeRangoParaEjecutarComportamientoException.class)
 	public void test06SeArrojaExceptionCuandoSeQuiereAtacarAUnEnemigoLejano(){
@@ -173,7 +187,7 @@ public class SoldadoTest {
 
 		soldadoAliado.atacar(jineteEnemigo);
 
-	};
+	}
 
 	@Test (expected = FueraDeRangoParaEjecutarComportamientoException.class)
 	public void test07SeArrojaExceptionCuandoSeQuiereAtacarAUnEnemigoADistanciaMedia(){
@@ -190,7 +204,7 @@ public class SoldadoTest {
 
 		soldadoAliado.atacar(jineteEnemigo);
 
-	};
+	}
 
 	@Test (expected = NoSePuedeAtacarUnAliadoException.class)
 	public void test08SeArrojaExceptionCuandoSeQuiereAtacarUnAliado(){
@@ -206,7 +220,7 @@ public class SoldadoTest {
 		Jinete jineteAliado = new Jinete(ubicacionJinete,bandoJugador1,tablero);
 		soldadoAliado.atacar(jineteAliado);
 
-	};
+	}
 
 	@Test
 	public void test009NoSeVerificaBatallonSiElBatallonEsDeSoldadosDeDistintoBando(){

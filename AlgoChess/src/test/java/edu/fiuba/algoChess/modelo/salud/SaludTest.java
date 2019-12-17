@@ -14,10 +14,10 @@ public class SaludTest {
 	public void saludLlenaSeHiereCorrectamente(){
 		final double saludValorTotal = 50;
 		final double saludValorHerir = 5;
-		final Salud unaSalud = new SaludLlena(saludValorTotal);
-		unaSalud.herir(saludValorHerir);
+		Salud unaSalud = new SaludLlena(saludValorTotal);
+		unaSalud = unaSalud.herir(saludValorHerir);
 
-		assertEquals(unaSalud.getValorActual(), saludValorTotal- saludValorHerir, 0.0);
+		assertEquals(saludValorTotal- saludValorHerir, unaSalud.getValorActual() , 0.0);
 	}
 
 	@Test

@@ -7,7 +7,7 @@ import edu.fiuba.algoChess.modelo.excepciones.*;
 
 import java.util.ArrayList;
 
-public class RangoInmediatoNull implements RangoNull {
+public class RangoInmediatoNull extends RangoNull {
 
 
 	@Override

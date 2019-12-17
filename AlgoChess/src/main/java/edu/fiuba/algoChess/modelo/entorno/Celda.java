@@ -30,7 +30,7 @@ public class Celda {
 	}
 
     public void guardarFaseInicial(Pieza piezaAUbicar) {
-        if (!this.sectorDelJugador.equals(piezaAUbicar.getBando())  ) {
+        if (this.sectorDelJugador.getNombre() != piezaAUbicar.getBando().getNombre()  ) {
             throw new NoSePuedeUbicarPiezaEnSectoRival("No se puede ubicar pieza en sector rival");
         } else {
 			try {

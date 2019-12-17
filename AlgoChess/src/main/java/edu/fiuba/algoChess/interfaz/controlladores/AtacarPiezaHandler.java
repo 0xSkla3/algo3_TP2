@@ -1,67 +1,54 @@
 package edu.fiuba.algoChess.interfaz.controlladores;
 
+import edu.fiuba.algoChess.interfaz.vista.DialogoAlerta;
+import edu.fiuba.algoChess.interfaz.vista.SegundaEtapa;
 import edu.fiuba.algoChess.modelo.entidades.Pieza;
 import edu.fiuba.algoChess.modelo.entidades.PiezaNull;
 import edu.fiuba.algoChess.modelo.entorno.Tablero;
 import edu.fiuba.algoChess.modelo.entorno.Ubicacion;
 import edu.fiuba.algoChess.modelo.excepciones.*;
+import edu.fiuba.algoChess.modelo.juego.Juego;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import lombok.AllArgsConstructor;
 
 import java.util.Optional;
 
 @AllArgsConstructor
 public class AtacarPiezaHandler implements EventHandler<ActionEvent> {
-
-	Tablero tablero;
+	Juego juego;
 	Pieza emisor;
 	TextField tFX;
 	TextField tFY;
+	Stage stage;
+	SegundaEtapa segundaEtapa;
 
 	@Override
 	public void handle(ActionEvent actionEvent) {
 		int x = Integer.parseInt((tFX.getText()));
 		int y = Integer.parseInt((tFY.getText()));
 		try {
-			Pieza receptor = tablero.getCelda(new Ubicacion(x, y)).getPiezaActual();
+			Pieza receptor = juego.getTablero().getCelda(new Ubicacion(x, y)).getPiezaActual();
 			if (receptor.getClass() != PiezaNull.class) {
-				emisor.atacar(receptor);
-				alerta3seg("Ataque", "Ataque efectuado, vida restante del oponente: " + receptor.getVida().getValorActual());
+				juego.atacar(emisor, receptor);
+				stage.close();
+				segundaEtapa.cambioTurno();
+				if(receptor.getVida().stateEstaVivo())
+					DialogoAlerta.Alerta("Ataque", "Ataque efectuado, vida restante del oponente: " + receptor.getVida().getValorActual(), 2);
+				else
+					DialogoAlerta.Alerta("Ataque", "Ataque efectuado, oponente muerto", 2);
 			}
 		} catch (NoSePuedeAtacarUnAliadoException exc) {
-			alerta3seg("Ataque a un Aliado", "No se puede atacar a un aliado");
+			DialogoAlerta.Alerta("Ataque a un Aliado", "No se puede atacar a un aliado", 2);
 		} catch (NoSePuedeObtenerUnaPiezaDeCeldaaNull ex) {
-			alerta3seg("Ataque a vacio", "No se puede atacar a una celda vacia");
+			DialogoAlerta.Alerta("Ataque a vacio", "No se puede atacar a una celda vacia", 2);
 		} catch (FueraDeRangoParaEjecutarComportamientoException ex) {
-			alerta3seg("Muy lejos", "No se puede atacar a una pieza tan lejana");
+			DialogoAlerta.Alerta("Muy lejos", "No se puede atacar a una pieza tan lejana", 2);
 		}
 	}
-
-	public void alerta3seg(String Titulo, String Texto){
-
-		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-		alert.setTitle(Titulo);
-		alert.setHeaderText(Texto);
-
-		Thread thread = new Thread(() -> {
-			try {
-
-				Thread.sleep(3000);
-				if (alert.isShowing()) {
-					Platform.runLater(() -> alert.close());
-				}
-			} catch (Exception exp) {
-				exp.printStackTrace();
-			}
-		});
-		thread.setDaemon(true);
-		thread.start();
-		Optional<ButtonType> result = alert.showAndWait();
-	}
-
 }

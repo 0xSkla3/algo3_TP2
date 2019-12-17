@@ -42,7 +42,8 @@ public class RangoSoldado extends RangoInmediato implements Rango {
 		this.actualizaPiezasEnRango(piezaCentral);
 		ArrayList<Pieza> piezas = piezaCentral.getRango().getPiezasEnRango();
 		ArrayList<Pieza> nuevosSoldadosCercanos = new ArrayList<>();
-		if (piezas.size() == 0) return new ArrayList<>();
+
+		try{piezas.size();}catch(NullPointerException e){return new ArrayList<>();}
 
 		this.getArriba().getPiezaActual().aniadirSoldadoAliadoStack(nuevosSoldadosCercanos, piezaCentral);
 		this.getAbajo().getPiezaActual().aniadirSoldadoAliadoStack(nuevosSoldadosCercanos, piezaCentral);
@@ -59,7 +60,7 @@ public class RangoSoldado extends RangoInmediato implements Rango {
 		this.actualizaPiezasEnRango(piezaCentral);
 		ArrayList<Pieza> piezas = piezaCentral.getRango().getPiezasEnRango();
 		ArrayList<Pieza> nuevosObstaculosCercanos = new ArrayList<>();
-		if (piezas.size() == 0) return;
+		try{piezas.size();}catch(NullPointerException e){return;}
 
 		this.getArriba().getPiezaActual().aniadirTodoMenosSoldadoAlStack(nuevosObstaculosCercanos);
 		this.getAbajo().getPiezaActual().aniadirTodoMenosSoldadoAlStack(nuevosObstaculosCercanos);

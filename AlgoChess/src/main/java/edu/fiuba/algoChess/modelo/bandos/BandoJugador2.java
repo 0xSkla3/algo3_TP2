@@ -8,6 +8,8 @@ import edu.fiuba.algoChess.modelo.entidades.Pieza;
 import edu.fiuba.algoChess.modelo.salud.Herible;
 import edu.fiuba.algoChess.modelo.salud.Salud;
 
+import java.util.ArrayList;
+
 public class BandoJugador2 extends Bando {
 
     @Override
@@ -76,6 +78,26 @@ public class BandoJugador2 extends Bando {
     @Override
     public String getNombre() {
         return "jugador2";
+    }
+
+    @Override
+    public ArrayList<Pieza> aniadirSoldadoAliadoAlStack(Pieza piezaPeriferia, ArrayList<Pieza> stack, Bando bandoSoldadoPeriferia) {
+        return bandoSoldadoPeriferia.aniadirSoldadoAliadoAlStack(piezaPeriferia, stack, this);
+    }
+
+    public ArrayList<Pieza> aniadirSoldadoAliadoAlStack(Pieza piezaPeriferia, ArrayList<Pieza> stack, BandoJugador1 bandoSoldadoPeriferia){
+        return stack;
+    }
+
+    public ArrayList<Pieza> aniadirSoldadoAliadoAlStack(Pieza piezaPeriferia, ArrayList<Pieza> stack, BandoJugador2 bandoSoldadoPeriferia){
+        try {
+            stack.add(piezaPeriferia);
+        } catch(NullPointerException ex){
+            stack = new ArrayList<>();
+            stack.add(piezaPeriferia);
+        }
+
+        return stack;
     }
 
 }

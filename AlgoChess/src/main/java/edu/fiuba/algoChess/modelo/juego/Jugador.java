@@ -14,14 +14,10 @@ public class Jugador {
 
 	@Getter
 	private String nombre;
-	@Setter
-	@Getter
-	private String queJugadorEs;
 	@Getter
 	private int puntaje;
 	@Getter
 	private int creditos;
-	@Setter
 	@Getter
 	private Bando bando;
 	private ArrayList<Pieza> piezas;
@@ -35,12 +31,12 @@ public class Jugador {
 		this.piezas = new ArrayList<>();
 	}
 
-	public Jugador(String unNombre, String queJugadorEs) {
+	public Jugador(String unNombre, Bando bando) {
 		this.puntaje = 0;
 		this.nombre = unNombre;
+		this.bando = bando;
 		this.creditos = 20;
 		this.piezas = new ArrayList<>();
-		this.queJugadorEs = queJugadorEs;
 	}
 
 	public void sumarPuntaje(int unPuntaje){this.puntaje += unPuntaje;}

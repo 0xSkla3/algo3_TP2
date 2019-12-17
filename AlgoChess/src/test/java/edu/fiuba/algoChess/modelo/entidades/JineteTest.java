@@ -2,8 +2,6 @@ package edu.fiuba.algoChess.modelo.entidades;
 
 import edu.fiuba.algoChess.modelo.bandos.BandoJugador1;
 import edu.fiuba.algoChess.modelo.bandos.BandoJugador2;
-import edu.fiuba.algoChess.modelo.entidades.Jinete;
-import edu.fiuba.algoChess.modelo.entidades.Soldado;
 import edu.fiuba.algoChess.modelo.entorno.Tablero;
 import edu.fiuba.algoChess.modelo.entorno.Ubicacion;
 import edu.fiuba.algoChess.modelo.excepciones.FueraDeRangoParaEjecutarComportamientoException;
@@ -11,8 +9,6 @@ import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeAtacarUnAliadoException;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertFalse;
 
 public class JineteTest {
 
@@ -77,7 +73,7 @@ public class JineteTest {
 
 		jineteAliado.atacar(soldadoEnemigo);
 		assertEquals(vidaTrasAtaque, soldadoEnemigo.getVida().getValorActual());
-	};
+	}
 
 	@Test (expected = FueraDeRangoParaEjecutarComportamientoException.class)
 	public void SeArrojaExceptionCuandoSeQuiereAtacarAUnEnemigoLejano(){

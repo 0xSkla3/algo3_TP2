@@ -13,49 +13,19 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Optional;
 
+@AllArgsConstructor
 public class MenuComportamiento {
-
-	@Getter
-	@Setter
+	Juego juego;
 	Pieza emisor;
-
-	@Getter
-	@Setter
-	Pieza receptor;
-
-	@Getter
-	@Setter
-	Tablero tablero;
-
-
-	@Getter
-	@Setter
-	ImageView imagenPieza;
-
-	@Getter
-	@Setter
-    VistaTablero mapView;
-
-	@Getter
-	@Setter
 	SegundaEtapa segundaEtapa;
 
-	MenuComportamiento(Juego juego, Pieza emisor, Tablero tablero, ImageView imagenPieza , VistaTablero map, SegundaEtapa segundaEtapa){
-		this.emisor = emisor;
-		this.receptor = juego.getReceptor();
-		this.tablero = tablero;
-		this.imagenPieza = imagenPieza;
-		this.mapView = map;
-		this.segundaEtapa = segundaEtapa;
-	}
-
 	public void menuComportamientoSoldado(){
-
 		Stage stage = new Stage();
 		VBox vbox = new VBox();
 
@@ -70,11 +40,11 @@ public class MenuComportamiento {
 		batallonear.setStyle("-fx-background-color:#F1C40F;");
 		batallonear.setOnAction(e -> {
 			generarBatallon(emisor);
-			//alerta1seg("Batallon", "Batallon Creado");
+			DialogoAlerta.Alerta("Batallon", "Batallon Creado", 2);
 			stage.close();
 		});
 
-		vbox.getChildren().addAll(atacar,batallonear);
+		vbox.getChildren().addAll(atacar, batallonear);
 
 		Scene theScene = new Scene(vbox);
 		stage.setScene(theScene);
@@ -84,6 +54,7 @@ public class MenuComportamiento {
 
 	private void generarBatallon(Pieza emisor) {
 		emisor.darDeAltaBatallon();
+		segundaEtapa.cambioTurno();
 	}
 
 	public void menuComportamientoJinete(){
@@ -96,14 +67,12 @@ public class MenuComportamiento {
 		stage.close();
 	});
 
-		vbox.getChildren().addAll(atacar);
+	vbox.getChildren().addAll(atacar);
 
 	Scene theScene = new Scene(vbox);
 		stage.setScene(theScene);
 		stage.show();
-
 	}
-
 
 	public void menuComportamientoCatapulta(){
 		Stage stage = new Stage();
@@ -130,7 +99,8 @@ public class MenuComportamiento {
 
 		Button curar = new Button("Curar");
 		curar.setStyle("-fx-background-color:#F1C40F;");
-		curar.setOnAction(e -> { menuCurar();
+		curar.setOnAction(e -> {
+			menuCurar();
 			stage.close();
 		});
 
@@ -142,29 +112,7 @@ public class MenuComportamiento {
 
 	}
 
-	public void alerta1seg(String Titulo, String Texto){
-
-	Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle(Titulo);
-        alert.setHeaderText(Texto);
-
-	Thread thread = new Thread(() -> {
-		try {
-			Thread.sleep(1000);
-			if (alert.isShowing()) {
-				Platform.runLater(() -> alert.close());
-			}
-		} catch (Exception exp) {
-			exp.printStackTrace();
-		}
-	});
-        thread.setDaemon(true);
-        thread.start();
-	Optional<ButtonType> result = alert.showAndWait();
-	}
-
 	public void menuAtacar() {
-
 			Stage stageUbicar = new Stage();
 			VBox vbox = new VBox();
 
@@ -182,7 +130,7 @@ public class MenuComportamiento {
 
 			Button submit = new Button("atacar");
 			submit.setStyle("-fx-background-color:#F1C40F;");
-			submit.setOnAction(new AtacarPiezaHandler(tablero, emisor, x, y));
+			submit.setOnAction(new AtacarPiezaHandler(juego, emisor, x, y, stageUbicar, segundaEtapa));
 			vbox.getChildren().addAll(hbx,hby,submit);
 			Scene sceneUbicar = new Scene(vbox);
 			stageUbicar.setScene(sceneUbicar);
@@ -190,7 +138,6 @@ public class MenuComportamiento {
 	}
 
 	public void menuCurar() {
-
 		Stage stageUbicar = new Stage();
 		VBox vbox = new VBox();
 
@@ -208,7 +155,7 @@ public class MenuComportamiento {
 
 		Button submit = new Button("curar");
 		submit.setStyle("-fx-background-color:#F1C40F;");
-		submit.setOnAction(new CurarPiezaHandler(tablero, (Curandero) emisor, x, y));
+		submit.setOnAction(new CurarPiezaHandler(juego, (Curandero)emisor, x, y, stageUbicar, segundaEtapa));
 		vbox.getChildren().addAll(hbx,hby,submit);
 		Scene sceneUbicar = new Scene(vbox);
 		stageUbicar.setScene(sceneUbicar);
