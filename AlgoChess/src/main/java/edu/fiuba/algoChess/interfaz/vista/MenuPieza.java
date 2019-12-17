@@ -34,25 +34,14 @@ public class MenuPieza {
 		Stage stage = new Stage();
 		VBox vbox = new VBox();
 
-		Button moverse = new Button("Moverse");
+		Button moverse = new Button("Mover");
 		moverse.setStyle("-fx-background-color:#F1C40F;");
-		try {
+		moverse.setOnAction(e -> {
+			this.menuMovimiento.menuPopUp();
+			stage.close();
+		});
 
-			moverse.setOnAction(e -> {
-				if(!piezaNombre.contains("Catapulta")) {
-					this.menuMovimiento.menuPopUp();
-				}
-				stage.close();
-			});
-
-		} catch (NoSePuedeUbicarPorqueEstaOcupadoException exc){
-
-			DialogoAlerta.Alerta("Movimiento Invalido",
-					"No se puede ubicar la pieza porque esta ocupada la celda", 3);
-
-		}
-
-		Button interactuar = new Button("interactuar");
+		Button interactuar = new Button("Interactuar");
 		interactuar.setStyle("-fx-background-color:#F1C40F;");
 		interactuar.setOnAction(e -> {
 			elegirMenuInteraccion();
@@ -66,7 +55,10 @@ public class MenuPieza {
 			stage.close();
 		});
 
-		vbox.getChildren().addAll(moverse, interactuar, pasar);
+		if(! piezaNombre.contains("Catapulta")) {
+			vbox.getChildren().add(moverse);
+		}
+		vbox.getChildren().addAll(interactuar, pasar);
 
 		Scene theScene = new Scene(vbox);
 		stage.setScene(theScene);

@@ -25,7 +25,7 @@ public class CrearPiezaHandler implements EventHandler<ActionEvent> {
 	HBox head;
 	Stage stageUbicar;
 	PantallaPrincipal pantallaPrincipal;
-	
+
 	@Override
 	public void handle(ActionEvent actionEvent) {
 		int x = Integer.parseInt((this.x.getText()));

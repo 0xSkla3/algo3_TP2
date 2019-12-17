@@ -39,16 +39,9 @@ public class Jinete extends Pieza {
 		tablero.ubicarEnCeldaFaseInicial(this, ubicacion);
 		this.ataqueCercano = new AtaqueNormal(danioCercano);
 		this.ataqueMedio = new AtaqueNormal(danioMedio);
-		//this.ataqueMedio = new AtaqueNormal(danioMedio);
 		this.piezaEnemigaCercana = false;
 		this.piezaAliadaCercana = false;
 		this.distanciaAReconocerEnTerreno = 2;
-	}
-
-	public void mover(Tablero campoDeBatalla, Ubicacion ubicacion) {
-		campoDeBatalla.ubicarEnCeldaFaseJuego(this, ubicacion);
-		campoDeBatalla.eliminar(this.ubicacion);
-		this.ubicacion = ubicacion;
 	}
 
 	@Override

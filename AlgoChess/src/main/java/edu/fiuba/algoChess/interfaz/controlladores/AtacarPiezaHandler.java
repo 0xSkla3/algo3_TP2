@@ -48,7 +48,7 @@ public class AtacarPiezaHandler implements EventHandler<ActionEvent> {
 		} catch (NoSePuedeObtenerUnaPiezaDeCeldaaNull ex) {
 			DialogoAlerta.Alerta("Ataque a vacio", "No se puede atacar a una celda vacia", 2);
 		} catch (FueraDeRangoParaEjecutarComportamientoException ex) {
-			DialogoAlerta.Alerta("Muy lejos", "No se puede atacar a una pieza tan lejana", 2);
+			DialogoAlerta.Alerta("Fuera de rango", "Pieza fuera de rango para el ataque", 2);
 		}
 	}
 }

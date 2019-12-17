@@ -79,31 +79,4 @@ public class VistaTablero extends Group {
     public void instanciarVista(Node view) {
         this.getChildren().add(view);
     }
-/*
-    public void addViewOnMap(Node view, int x, int y) {
-        for (int i = 0; i < width; i++) {
-            for (int j = 0; j < heigth; j++) {
-                try {
-                    panes[i][j].getChildren().remove(view);
-                } catch (Exception e) {
-                    //excepcion
-                }
-            }
-        }
-        panes[x][y].getChildren().add(0, view);
-    }
-*/
-/*
-    public Pane paneActual(Ubicacion ubicacion) {
-        panes[ubicacion.getX()][ubicacion.getY()].setStyle("-fx-background-color: #46b1f2");
-        return panes[ubicacion.getX()][ubicacion.getY()];
-    }
-*/
-    public void updateView(Node view) {
-        getChildren().remove(view);
-        getChildren().add(view);
-    }
-
 }
-
-
