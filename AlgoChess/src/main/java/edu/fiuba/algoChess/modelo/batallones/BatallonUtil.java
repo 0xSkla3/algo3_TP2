@@ -23,33 +23,33 @@ public class BatallonUtil extends Batallon {
 	}
 
 	@Override
-	public Batallon moverBatallonDerecha(Tablero campoDeBatalla) {
+	public void moverseALaDerecha(Tablero campoDeBatalla) {
 		Ubicacion ubicacionDerecha1 = getPieza1().getUbicacion().getUbicacionDerecha();
 		Ubicacion ubicacionDerecha2 = getPieza2().getUbicacion().getUbicacionDerecha();
 		Ubicacion ubicacionDerecha3 = getPieza3().getUbicacion().getUbicacionDerecha();
-		return this.moverBatallon(campoDeBatalla, ubicacionDerecha1, ubicacionDerecha2, ubicacionDerecha3);
+		this.moverBatallon(campoDeBatalla, ubicacionDerecha1, ubicacionDerecha2, ubicacionDerecha3);
 	}
 
 	@Override
-	public Batallon moverBatallonIzquierda(Tablero campoDeBatalla) {
+	public void moverseALaIzquierda(Tablero campoDeBatalla) {
 		Ubicacion ubicacionIzquierda1 = getPieza1().getUbicacion().getUbicacionIzquierda();
 		Ubicacion ubicacionIzquierda2 = getPieza2().getUbicacion().getUbicacionIzquierda();
 		Ubicacion ubicacionIzquierda3 = getPieza3().getUbicacion().getUbicacionIzquierda();
-		return this.moverBatallon(campoDeBatalla, ubicacionIzquierda1, ubicacionIzquierda2, ubicacionIzquierda3);
+		this.moverBatallon(campoDeBatalla, ubicacionIzquierda1, ubicacionIzquierda2, ubicacionIzquierda3);
 	}
 
-	public Batallon moverBatallonArriba(Tablero campoDeBatalla) {
+	public void moverseArriba(Tablero campoDeBatalla) {
 		Ubicacion ubicacionArriba1 = getPieza1().getUbicacion().getUbicacionArriba();
 		Ubicacion ubicacionArriba2 = getPieza2().getUbicacion().getUbicacionArriba();
 		Ubicacion ubicacionArriba3 = getPieza3().getUbicacion().getUbicacionArriba();
-		return this.moverBatallon(campoDeBatalla, ubicacionArriba1, ubicacionArriba2, ubicacionArriba3);
+		this.moverBatallon(campoDeBatalla, ubicacionArriba1, ubicacionArriba2, ubicacionArriba3);
 	}
 
-	public Batallon moverBatallonAbajo(Tablero campoDeBatalla) {
+	public void moverseAbajo(Tablero campoDeBatalla) {
 		Ubicacion ubicacionAbajo1 = getPieza1().getUbicacion().getUbicacionAbajo();
 		Ubicacion ubicacionAbajo2 = getPieza2().getUbicacion().getUbicacionAbajo();
 		Ubicacion ubicacionAbajo3 = getPieza3().getUbicacion().getUbicacionAbajo();
-		return this.moverBatallon(campoDeBatalla, ubicacionAbajo1, ubicacionAbajo2, ubicacionAbajo3);
+		this.moverBatallon(campoDeBatalla, ubicacionAbajo1, ubicacionAbajo2, ubicacionAbajo3);
 	}
 
 	@Override

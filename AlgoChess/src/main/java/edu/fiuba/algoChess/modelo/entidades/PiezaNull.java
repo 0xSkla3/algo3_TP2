@@ -11,10 +11,6 @@ import java.util.ArrayList;
 
 public class PiezaNull extends Pieza {
 
-	public PiezaNull(Ubicacion ubicacion) {
-		super(ubicacion);
-	}
-
 	public PiezaNull() {
 		this.vida = new SaludLlena(0xDEAD);
 		this.costo = 0;

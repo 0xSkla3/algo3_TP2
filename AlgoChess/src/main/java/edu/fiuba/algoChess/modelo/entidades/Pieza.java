@@ -55,14 +55,6 @@ public abstract class Pieza extends Movible implements Batalloneable {
 		this.calculadorDistancia = new DistanciaRelativa();
 	}
 
-	public Pieza(Ubicacion ubicacion) {
-		this.vida = new SaludMuerto();
-		this.costo = 0;
-		this.ubicacion = ubicacion;
-		this.bando = null;
-		this.calculadorDistancia = new DistanciaRelativa();
-	}
-
  	public void aumentarVida(double aumento) {
 		this.vida = this.vida.curar(aumento);
 	}

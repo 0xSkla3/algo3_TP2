@@ -111,7 +111,7 @@ public class Soldado extends Pieza {
 	public void moverseALaDerecha(Tablero campoDeBatalla) {
 		try {
 			this.vida.stateComportarse();
-			this.batallonActual.moverBatallonDerecha(campoDeBatalla);
+			this.batallonActual.moverseALaDerecha(campoDeBatalla);
 		} catch (AccionAgrupableInvalidaException e) {
 			this.vida.stateComportarse();
 			Ubicacion ubicacionDerecha = this.ubicacion.getUbicacionDerecha();
@@ -122,7 +122,7 @@ public class Soldado extends Pieza {
 	public void moverseALaIzquierda(Tablero campoDeBatalla) {
 		try {
 			this.vida.stateComportarse();
-			this.batallonActual.moverBatallonIzquierda(campoDeBatalla);
+			this.batallonActual.moverseALaIzquierda(campoDeBatalla);
 		} catch (AccionAgrupableInvalidaException e) {
 			this.vida.stateComportarse();
 			Ubicacion ubicacionIzquierda = this.ubicacion.getUbicacionIzquierda();
@@ -133,7 +133,7 @@ public class Soldado extends Pieza {
 	public void moverseArriba(Tablero campoDeBatalla) {
 		try {
 			this.vida.stateComportarse();
-			this.batallonActual.moverBatallonArriba(campoDeBatalla);
+			this.batallonActual.moverseArriba(campoDeBatalla);
 		} catch (AccionAgrupableInvalidaException e) {
 			this.vida.stateComportarse();
 			Ubicacion ubicacionArriba = this.ubicacion.getUbicacionArriba();
@@ -144,7 +144,7 @@ public class Soldado extends Pieza {
 	public void moverseAbajo(Tablero campoDeBatalla) {
 		try {
 			this.vida.stateComportarse();
-			this.batallonActual.moverBatallonAbajo(campoDeBatalla);
+			this.batallonActual.moverseAbajo(campoDeBatalla);
 		} catch (AccionAgrupableInvalidaException e) {
 			this.vida.stateComportarse();
 			Ubicacion ubicacionAbajo = this.ubicacion.getUbicacionAbajo();
