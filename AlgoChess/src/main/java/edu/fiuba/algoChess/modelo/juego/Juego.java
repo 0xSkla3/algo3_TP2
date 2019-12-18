@@ -99,6 +99,8 @@ public class Juego {
 			this.piezasEnTablero.remove(atacado);
 			this.piezasMuertas.add(atacado);
 
+			this.jugadorActivo.sumarPuntaje(atacado.getCosto());
+
 			this.evaluarFinDeJuego();
 		}
 	}
