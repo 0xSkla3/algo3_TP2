@@ -4,6 +4,7 @@ import edu.fiuba.algoChess.modelo.bandos.BandoJugador1;
 import edu.fiuba.algoChess.modelo.bandos.BandoJugador2;
 import edu.fiuba.algoChess.modelo.entorno.Tablero;
 import edu.fiuba.algoChess.modelo.entorno.Ubicacion;
+import edu.fiuba.algoChess.modelo.excepciones.InteraccionInvalidaException;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
