@@ -1,14 +1,14 @@
 package edu.fiuba.algoChess.modelo.entorno;
 
-import edu.fiuba.algoChess.modelo.juego.Jugador;
 import edu.fiuba.algoChess.modelo.bandos.Bando;
 import edu.fiuba.algoChess.modelo.entidades.Pieza;
 import edu.fiuba.algoChess.modelo.excepciones.NoExisteNingunCasilleroParaLaUbicacionDadaException;
-import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;
+import edu.fiuba.algoChess.modelo.juego.Jugador;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Tablero {
 

@@ -1,5 +1,6 @@
-package edu.fiuba.algoChess;
+package edu.fiuba.algoChess.modelo.batallones;
 
+import edu.fiuba.algoChess.TestHelper;
 import edu.fiuba.algoChess.modelo.bandos.BandoJugador1;
 import edu.fiuba.algoChess.modelo.bandos.BandoJugador2;
 import edu.fiuba.algoChess.modelo.batallones.Batallon;

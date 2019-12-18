@@ -179,14 +179,6 @@ public abstract class Pieza extends Movible implements Batalloneable {
 		distanciaEntrePiezas.ejecutarComportamientoPorDistancia(this, atacado);
 	}
 
-	public boolean bandoAliado(Bando bando){
-		return this.bando.bandoAliado(bando);
-	}
-
-	public boolean bandoEnemigo(Bando bando){
-		return this.bando.bandoEnemigo(bando);
-	}
-
 	public Pieza obtenerPiezaArriba(){
 		return ubicacion.obtenerPieza(ubicacion.getUbicacionArriba());
 	}

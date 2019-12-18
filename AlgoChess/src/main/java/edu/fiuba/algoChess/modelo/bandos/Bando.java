@@ -40,13 +40,6 @@ public abstract class Bando {
     public abstract void jineteReconocerAliadoParaAtacarADistanciaMedia(Jinete jinete, BandoJugador1 bandoJugador1);
     public abstract void jineteReconocerAliadoParaAtacarADistanciaMedia(Jinete jinete, BandoJugador2 bandoJugador2);
 
-    public abstract boolean bandoAliado(Bando bando);
-    public abstract boolean bandoAliado(BandoJugador1 bando);
-    public abstract boolean bandoAliado(BandoJugador2 bando);
-
-    public abstract boolean bandoEnemigo(Bando bando);
-    public abstract boolean bandoEnemigo(BandoJugador1 bando);
-    public abstract boolean bandoEnemigo(BandoJugador2 bando);
 
     public abstract String getNombre();
 

@@ -1,11 +1,9 @@
 package edu.fiuba.algoChess.modelo.entorno;
 
-import edu.fiuba.algoChess.modelo.excepciones.NoSePuedePreguntarElBandoAUnaPiezaNull;
-import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeUbicarPiezaEnSectoRival;
-import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;
 import edu.fiuba.algoChess.modelo.bandos.Bando;
 import edu.fiuba.algoChess.modelo.entidades.Pieza;
 import edu.fiuba.algoChess.modelo.entidades.PiezaNull;
+import edu.fiuba.algoChess.modelo.excepciones.NoSePuedePreguntarElBandoAUnaPiezaNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -52,14 +50,6 @@ public class Celda {
 		} catch (NoSePuedePreguntarElBandoAUnaPiezaNull ex){
 			throw new NoSePuedePreguntarElBandoAUnaPiezaNull("PiezaNull no tiene bando");
 		}
-	}
-
-    public boolean piezaBandoAliado(Bando bando){
-		return this.piezaActual.bandoAliado(bando);
-	}
-
-	public boolean piezaBandoEnemigo(Bando bando){
-		return this.piezaActual.bandoEnemigo(bando);
 	}
 
 }
