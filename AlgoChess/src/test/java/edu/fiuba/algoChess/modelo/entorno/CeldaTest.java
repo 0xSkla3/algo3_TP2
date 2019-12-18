@@ -17,7 +17,7 @@ public class CeldaTest {
 	public void celdaTestInicializaVacia(){
 
 		Celda celdaPrueba = new Celda();
-		PiezaNull piezaNull = new PiezaNull(null);
+		PiezaNull piezaNull = new PiezaNull();
 		assertTrue(celdaPrueba.getPiezaActual().getClass() == piezaNull.getClass());
 	}
 
@@ -42,7 +42,7 @@ public class CeldaTest {
 		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
 		Curandero pieza = new Curandero(origen,bandoJugador1,tableroTest);
 		Celda celda = new Celda(bandoJugador1);
-		PiezaNull piezaNull = new PiezaNull(null);
+		PiezaNull piezaNull = new PiezaNull();
 
 		celda.guardarFaseInicial(pieza);
 		celda.eliminar();

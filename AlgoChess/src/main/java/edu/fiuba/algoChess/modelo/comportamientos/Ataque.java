@@ -7,7 +7,7 @@ import edu.fiuba.algoChess.modelo.salud.Salud;
 public abstract class Ataque {
 
     protected double danio;
-    protected final double C_extraSectorEnemigo = 0.05;
+    protected final double C_extraSectorEnemigo = 1.05;
 
     public Ataque(double danio){
         this.danio = danio;

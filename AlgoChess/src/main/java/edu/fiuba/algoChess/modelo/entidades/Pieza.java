@@ -5,11 +5,12 @@ import edu.fiuba.algoChess.modelo.batallones.Batallon;
 import edu.fiuba.algoChess.modelo.batallones.Batalloneable;
 import edu.fiuba.algoChess.modelo.comportamientos.Ataque;
 import edu.fiuba.algoChess.modelo.entorno.*;
-import edu.fiuba.algoChess.modelo.excepciones.*;
+import edu.fiuba.algoChess.modelo.excepciones.AccionAgrupableInvalidaException;
+import edu.fiuba.algoChess.modelo.excepciones.CeldaYaOcupadaException;
+import edu.fiuba.algoChess.modelo.excepciones.InteraccionInvalidaException;
 import edu.fiuba.algoChess.modelo.rangos.Rango;
 import edu.fiuba.algoChess.modelo.salud.Salud;
 import edu.fiuba.algoChess.modelo.salud.SaludLlena;
-import edu.fiuba.algoChess.modelo.salud.SaludMuerto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -52,14 +53,6 @@ public abstract class Pieza extends Movible implements Batalloneable {
 		this.ubicacion = ubicacion;
 		this.vida = new SaludLlena(vida);
 		this.costo = costo;
-		this.calculadorDistancia = new DistanciaRelativa();
-	}
-
-	public Pieza(Ubicacion ubicacion) {
-		this.vida = new SaludMuerto();
-		this.costo = 0;
-		this.ubicacion = ubicacion;
-		this.bando = null;
 		this.calculadorDistancia = new DistanciaRelativa();
 	}
 
@@ -226,6 +219,10 @@ public abstract class Pieza extends Movible implements Batalloneable {
 	@Override
 	public void actualizaRangoSoldado(Pieza piezaCentral, Tablero tablero) {
 		throw new AccionAgrupableInvalidaException("No se puede actualizar el rango de una pieza que no sea un soldado");
+	}
+
+	public void setBatallonActual(Batallon batallonActual){
+		throw new AccionAgrupableInvalidaException("No se le puede asignar un batallon a una pieza distinta de Soldado");
 	}
 
 }

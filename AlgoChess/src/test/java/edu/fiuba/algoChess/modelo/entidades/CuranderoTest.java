@@ -5,6 +5,7 @@ import edu.fiuba.algoChess.modelo.bandos.BandoJugador2;
 import edu.fiuba.algoChess.modelo.comportamientos.AtaqueNormal;
 import edu.fiuba.algoChess.modelo.entorno.Tablero;
 import edu.fiuba.algoChess.modelo.entorno.Ubicacion;
+import edu.fiuba.algoChess.modelo.excepciones.FueraDeRangoException;
 import edu.fiuba.algoChess.modelo.excepciones.InteraccionInvalidaException;
 import org.junit.Test;
 
@@ -49,7 +50,7 @@ public class CuranderoTest {
         curandero.curar(soldado);
     }
 
-    @Test (expected = InteraccionInvalidaException.class)
+    @Test (expected = FueraDeRangoException.class)
     public void test03SeLanzaExceptionCuandoCuranderoIntentaCurarSoldadoAliadoLejano(){
 
         BandoJugador1 bandoJugador1 = new BandoJugador1();

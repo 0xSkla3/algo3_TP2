@@ -10,6 +10,7 @@ import edu.fiuba.algoChess.modelo.entorno.ObservadorTablero;
 import edu.fiuba.algoChess.modelo.entorno.Tablero;
 import edu.fiuba.algoChess.modelo.entorno.Ubicacion;
 import edu.fiuba.algoChess.modelo.excepciones.FaseDeJuegoInvalidaException;
+import edu.fiuba.algoChess.modelo.excepciones.OperacionInvalidaSobreObjetoNuloException;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -46,8 +47,6 @@ public class Juego {
 	Boolean finDeJuego = false;
 
 	private ObservadorTablero observadorTablero;
-
-	public static final Soldado soldado = new Soldado();
 
 	public Juego(String nombreJugador1, String nombreJugador2) {
 			Bando bando1 = new BandoJugador1();
@@ -100,7 +99,6 @@ public class Juego {
 			this.piezasMuertas.add(atacado);
 
 			this.jugadorActivo.sumarPuntaje(atacado.getCosto());
-
 			this.evaluarFinDeJuego();
 		}
 	}
@@ -118,10 +116,13 @@ public class Juego {
 		this.jugadorActivo = activoBando1 ? this.jugador2: this.jugador1;
 		this.bandoActivo = jugadorActivo.getBando();
 		this.activoBando1 = ! activoBando1;
+		this.actualizarRangos();
 	}
 
 	public void comenzarSegundoStage() {
 		this.segundaEtapa = true;
+		this.jugadorActivo = jugador1;
+		this.bandoActivo = jugador1.getBando();
 	}
 
 	private void evaluarFinDeJuego() {
@@ -144,5 +145,11 @@ public class Juego {
 	public void terminarJuego() {
 		this.finDeJuego = true;
 		this.segundaEtapa = false;
+	}
+
+	public void actualizarRangos(){
+		this.tablero.getCampoDeBatalla().forEach((ubicacion, celda) -> {try{celda.getPiezaActual().actualizaRango(this.tablero);
+		}catch(OperacionInvalidaSobreObjetoNuloException e){}
+		});
 	}
 }

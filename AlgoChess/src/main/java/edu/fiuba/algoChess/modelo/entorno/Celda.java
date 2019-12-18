@@ -20,11 +20,11 @@ public class Celda {
 	protected Bando sectorDelJugador;
 
 	public Celda(){
-		this.piezaActual = new PiezaNull(null);
+		this.piezaActual = new PiezaNull();
 	}
 
 	public Celda(Bando bando){
-		this.piezaActual = new PiezaNull(null);
+		this.piezaActual = new PiezaNull();
 		this.sectorDelJugador = bando;
 	}
     public void guardarFaseInicial(Pieza piezaAUbicar) {
@@ -36,7 +36,7 @@ public class Celda {
 	}
 
 	public void eliminar() {
-		this.piezaActual = new PiezaNull(null);
+		this.piezaActual = new PiezaNull();
 	}
 
     public void ubicar(Pieza piezaAGuardar) {

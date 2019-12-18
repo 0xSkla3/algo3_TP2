@@ -7,6 +7,7 @@ import edu.fiuba.algoChess.modelo.batallones.Batallon;
 import edu.fiuba.algoChess.modelo.batallones.BatallonUtil;
 import edu.fiuba.algoChess.modelo.entorno.Tablero;
 import edu.fiuba.algoChess.modelo.entorno.Ubicacion;
+import edu.fiuba.algoChess.modelo.excepciones.FueraDeRangoException;
 import edu.fiuba.algoChess.modelo.excepciones.InteraccionInvalidaException;
 import org.junit.Test;
 
@@ -44,7 +45,7 @@ public class SoldadoTest {
 		soldado2.actualizaRango(tableroTest);
 		soldado3.actualizaRango(tableroTest);
 
-		assertTrue(BatallonUtil.esBatallon(soldado1,soldado2,soldado3));
+		assertTrue(TestHelper.esBatallon(soldado1,soldado2,soldado3));
 	}
 
 	@Test
@@ -166,7 +167,7 @@ public class SoldadoTest {
 
 	}
 
-	@Test (expected = InteraccionInvalidaException.class)
+	@Test (expected = FueraDeRangoException.class)
 	public void test06SeArrojaExceptionCuandoSeQuiereAtacarAUnEnemigoLejano(){
 
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
@@ -184,7 +185,7 @@ public class SoldadoTest {
 
 	}
 
-	@Test (expected = InteraccionInvalidaException.class)
+	@Test (expected = FueraDeRangoException.class)
 	public void test07SeArrojaExceptionCuandoSeQuiereAtacarAUnEnemigoADistanciaMedia(){
 
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
@@ -233,7 +234,7 @@ public class SoldadoTest {
 		soldado1.actualizaRango(tableroTest);
 		soldado2.actualizaRango(tableroTest);
 		soldado3.actualizaRango(tableroTest);
-		seArmaBatallon = BatallonUtil.esBatallon(soldado1,soldado2,soldado3);
+		seArmaBatallon = TestHelper.esBatallon(soldado1,soldado2,soldado3);
 		assertFalse(seArmaBatallon);
 	}
 

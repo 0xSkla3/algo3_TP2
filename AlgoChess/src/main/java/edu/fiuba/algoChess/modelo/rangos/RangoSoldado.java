@@ -6,6 +6,7 @@ import edu.fiuba.algoChess.modelo.batallones.Batallon;
 import edu.fiuba.algoChess.modelo.batallones.BatallonNull;
 import edu.fiuba.algoChess.modelo.batallones.BatallonUtil;
 import edu.fiuba.algoChess.modelo.entidades.Pieza;
+import edu.fiuba.algoChess.modelo.entidades.Soldado;
 import edu.fiuba.algoChess.modelo.entorno.Tablero;
 import edu.fiuba.algoChess.modelo.excepciones.OperacionInvalidaException;
 import lombok.Getter;
@@ -80,16 +81,23 @@ public class RangoSoldado extends RangoInmediato {
 	@Override
 	public Batallon darDeAltaBatallon(){
 		ArrayList<Pieza> soldadosBatallon = new ArrayList<>();
-		this.getPiezasEnRango().forEach(pieza -> {if(pieza.soldadosInmediatosSePuedenUnir()){
-			soldadosBatallon.add(this.getPiezasEnRango().get(1));
-			soldadosBatallon.add(this.getPiezasEnRango().get(2));
-			soldadosBatallon.add(this.getPiezasEnRango().get(3));
-		}});
+		try{
+			this.getPiezasEnRango().forEach(pieza -> {if(pieza.soldadosInmediatosSePuedenUnir()){
+				soldadosBatallon.add(this.getPiezasEnRango().get(0));
+				soldadosBatallon.add(this.getPiezasEnRango().get(1));
+				soldadosBatallon.add(this.getPiezasEnRango().get(2));
+			}});
 
-		if (soldadosBatallon.size() >= 1){
-			return new BatallonUtil(soldadosBatallon.get(1), soldadosBatallon.get(2), soldadosBatallon.get(3));
+			BatallonUtil batallonUtil = new BatallonUtil(soldadosBatallon.get(0),
+													     soldadosBatallon.get(1),
+													     soldadosBatallon.get(2));
+			soldadosBatallon.get(0).setBatallonActual(batallonUtil);
+			soldadosBatallon.get(1).setBatallonActual(batallonUtil);
+			soldadosBatallon.get(2).setBatallonActual(batallonUtil);
+			return batallonUtil;
+		} catch(IndexOutOfBoundsException e){
+			return new BatallonNull();
 		}
-		return new BatallonNull();
 	}
 
 }
