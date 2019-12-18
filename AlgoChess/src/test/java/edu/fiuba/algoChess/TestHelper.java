@@ -2,8 +2,10 @@ package edu.fiuba.algoChess;
 
 import edu.fiuba.algoChess.modelo.batallones.Batallon;
 import edu.fiuba.algoChess.modelo.batallones.BatallonNull;
+import edu.fiuba.algoChess.modelo.batallones.BatallonUtil;
 import edu.fiuba.algoChess.modelo.entidades.Pieza;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -34,6 +36,11 @@ public class TestHelper {
 		itemsBatallonAComparar.add(batallon2.getPieza3());
 
 		return itemsBatallonActual.equals(itemsBatallonAComparar);
+	}
+
+	public static boolean esBatallon(Pieza soldado1, Pieza soldado2, Pieza soldado3) {
+		ArrayList<Pieza> soldadosBatallon = BatallonUtil.armarPosibleBatallon(soldado1);
+		return (soldadosBatallon.size()>=2);
 	}
 
 }

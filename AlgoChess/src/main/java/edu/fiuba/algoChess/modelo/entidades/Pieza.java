@@ -228,4 +228,8 @@ public abstract class Pieza extends Movible implements Batalloneable {
 		throw new AccionAgrupableInvalidaException("No se puede actualizar el rango de una pieza que no sea un soldado");
 	}
 
+	public void setBatallonActual(Batallon batallonActual){
+		throw new AccionAgrupableInvalidaException("No se le puede asignar un batallon a una pieza distinta de Soldado");
+	}
+
 }

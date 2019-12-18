@@ -2,8 +2,10 @@ package edu.fiuba.algoChess.modelo.entidades;
 
 import edu.fiuba.algoChess.modelo.bandos.Bando;
 import edu.fiuba.algoChess.modelo.batallones.Batallon;
+import edu.fiuba.algoChess.modelo.batallones.BatallonNull;
 import edu.fiuba.algoChess.modelo.comportamientos.AtaqueNormal;
 import edu.fiuba.algoChess.modelo.entorno.*;
+import edu.fiuba.algoChess.modelo.excepciones.AccionAgrupableInvalidaException;
 import edu.fiuba.algoChess.modelo.excepciones.FueraDeRangoException;
 import edu.fiuba.algoChess.modelo.rangos.Rango;
 import edu.fiuba.algoChess.modelo.rangos.RangoSoldado;
@@ -24,12 +26,17 @@ public class Soldado extends Pieza {
 	@Setter
 	private int danioCercano;
 
+	@Getter
+	@Setter
+	Batallon batallonActual;
+
 	public Soldado(Ubicacion ubicacion, Bando bando, Tablero tablero){
 		super(2,75,ubicacion,bando);
 		this.danioCercano = 10;
 		this.ataqueCercano = new AtaqueNormal(10);
 		this.rango = new RangoSoldado(this, tablero);
 		tablero.ubicarEnCeldaFaseInicial(this, ubicacion);
+		batallonActual = new BatallonNull();
 	}
 
 	public Rango actualizaRango(Tablero tablero) {
@@ -69,7 +76,7 @@ public class Soldado extends Pieza {
 
 	public void moverPiezaDeBatallon(Tablero campoDeBatalla, Ubicacion ubicacion) {
 		this.setUbicacion(ubicacion);
-		campoDeBatalla.ubicarEnCeldaFaseInicial(this,ubicacion);
+		campoDeBatalla.ubicarEnCeldaFaseJuego(this,ubicacion);
 	}
 
 	@Override
@@ -88,11 +95,6 @@ public class Soldado extends Pieza {
 	}
 
 	@Override
-	public Rango actualizaRangoInmediato(Pieza piezaCentral, Tablero tablero) {
-		return null;
-	}
-
-	@Override
 	public Batallon darDeAltaBatallon() {
 		return this.getRango().darDeAltaBatallon();
 	}
@@ -104,6 +106,50 @@ public class Soldado extends Pieza {
 
 	public double getDanio() {
 		return danioCercano;
+	}
+
+	public void moverseALaDerecha(Tablero campoDeBatalla) {
+		try {
+			this.vida.stateComportarse();
+			this.batallonActual.moverBatallonDerecha(campoDeBatalla);
+		} catch (AccionAgrupableInvalidaException e) {
+			this.vida.stateComportarse();
+			Ubicacion ubicacionDerecha = this.ubicacion.getUbicacionDerecha();
+			this.mover(campoDeBatalla, ubicacionDerecha);
+		}
+	}
+
+	public void moverseALaIzquierda(Tablero campoDeBatalla) {
+		try {
+			this.vida.stateComportarse();
+			this.batallonActual.moverBatallonIzquierda(campoDeBatalla);
+		} catch (AccionAgrupableInvalidaException e) {
+			this.vida.stateComportarse();
+			Ubicacion ubicacionIzquierda = this.ubicacion.getUbicacionIzquierda();
+			this.mover(campoDeBatalla, ubicacionIzquierda);
+		}
+	}
+
+	public void moverseArriba(Tablero campoDeBatalla) {
+		try {
+			this.vida.stateComportarse();
+			this.batallonActual.moverBatallonArriba(campoDeBatalla);
+		} catch (AccionAgrupableInvalidaException e) {
+			this.vida.stateComportarse();
+			Ubicacion ubicacionArriba = this.ubicacion.getUbicacionArriba();
+			this.mover(campoDeBatalla, ubicacionArriba);
+		}
+	}
+
+	public void moverseAbajo(Tablero campoDeBatalla) {
+		try {
+			this.vida.stateComportarse();
+			this.batallonActual.moverBatallonAbajo(campoDeBatalla);
+		} catch (AccionAgrupableInvalidaException e) {
+			this.vida.stateComportarse();
+			Ubicacion ubicacionAbajo = this.ubicacion.getUbicacionAbajo();
+			this.mover(campoDeBatalla, ubicacionAbajo);
+		}
 	}
 
 }

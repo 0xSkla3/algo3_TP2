@@ -1,15 +1,20 @@
 package edu.fiuba.algoChess.modelo.batallones;
 
+import edu.fiuba.algoChess.interfaz.vista.MenuMovimiento;
+import edu.fiuba.algoChess.modelo.entidades.Soldado;
 import edu.fiuba.algoChess.modelo.entorno.Tablero;
 import edu.fiuba.algoChess.modelo.entorno.Ubicacion;
+import edu.fiuba.algoChess.modelo.excepciones.BatallonEnMovimientoException;
 import edu.fiuba.algoChess.modelo.excepciones.CeldaYaOcupadaException;
 import edu.fiuba.algoChess.modelo.entidades.Pieza;
 import lombok.*;
 
 import java.util.*;
 
-@AllArgsConstructor
+@NoArgsConstructor
 public class BatallonUtil extends Batallon {
+
+	boolean enMovimiento = false;
 
 	public BatallonUtil(Pieza pieza1, Pieza pieza2, Pieza pieza3 ){
 		this.pieza1 = pieza1;
@@ -50,6 +55,11 @@ public class BatallonUtil extends Batallon {
 	@Override
 	public Batallon moverBatallon(Tablero campoDeBatalla, Ubicacion ubicacion1, Ubicacion ubicacion2, Ubicacion ubicacion3){
 
+		if(enMovimiento) {
+			throw new BatallonEnMovimientoException("Batallon en movimiento");
+		}
+		enMovimiento = true;
+
 		Ubicacion ubicacionVieja1 = getPieza1().getUbicacion();
 		Ubicacion ubicacionVieja2 = getPieza2().getUbicacion();
 		Ubicacion ubicacionVieja3 = getPieza3().getUbicacion();
@@ -58,32 +68,49 @@ public class BatallonUtil extends Batallon {
 		campoDeBatalla.eliminar(ubicacionVieja2);
 		campoDeBatalla.eliminar(ubicacionVieja3);
 
+		boolean sePuedenMoverTodos = true;
 		try {
 			this.getPieza1().moverPiezaDeBatallon(campoDeBatalla, ubicacion1);
 		}catch(CeldaYaOcupadaException ex) {
-			campoDeBatalla.ubicarEnCeldaFaseInicial(this.getPieza1(),ubicacionVieja1);
+			campoDeBatalla.ubicarEnCeldaFaseJuego(this.getPieza1(),ubicacionVieja1);
+			sePuedenMoverTodos = false;
 		}
 		try {
 			this.getPieza2().moverPiezaDeBatallon(campoDeBatalla, ubicacion2);
 		}catch(CeldaYaOcupadaException ex) {
-			campoDeBatalla.ubicarEnCeldaFaseInicial(this.getPieza2(),ubicacionVieja2);
-
+			campoDeBatalla.ubicarEnCeldaFaseJuego(this.getPieza2(),ubicacionVieja2);
+			sePuedenMoverTodos = false;
 		}
 		try {
 			this.getPieza3().moverPiezaDeBatallon(campoDeBatalla, ubicacion3);
 		}catch(CeldaYaOcupadaException ex) {
-			campoDeBatalla.ubicarEnCeldaFaseInicial(this.getPieza3(),ubicacionVieja3);
+			campoDeBatalla.ubicarEnCeldaFaseJuego(this.getPieza3(),ubicacionVieja3);
+			sePuedenMoverTodos = false;
 		}
 
 		this.getPieza1().actualizaRango(campoDeBatalla);
 		this.getPieza2().actualizaRango(campoDeBatalla);
 		this.getPieza3().actualizaRango(campoDeBatalla);
 
-		return BatallonUtil.darDeAltaBatallon(this.getPieza1());
+
+		enMovimiento = false;
+
+		if(!sePuedenMoverTodos){
+			return this.desagrupar();
+		}
+
+		return this;
 
 	}
 
-	static ArrayList<Pieza> armarPosibleBatallon(Pieza soldado) {
+	public Batallon desagrupar(){
+		this.pieza1.setBatallonActual(new BatallonNull());
+		this.pieza2.setBatallonActual(new BatallonNull());
+		this.pieza3.setBatallonActual(new BatallonNull());
+		return new BatallonNull();
+	}
+
+	public static ArrayList<Pieza> armarPosibleBatallon(Pieza soldado) {
 		return _armarPosibleBatallon(soldado,0);
 	}
 

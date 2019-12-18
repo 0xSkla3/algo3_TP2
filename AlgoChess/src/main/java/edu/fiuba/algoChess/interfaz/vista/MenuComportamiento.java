@@ -1,5 +1,6 @@
 package edu.fiuba.algoChess.interfaz.vista;
 
+import edu.fiuba.algoChess.modelo.batallones.BatallonUtil;
 import edu.fiuba.algoChess.modelo.entidades.Curandero;
 import edu.fiuba.algoChess.modelo.entidades.Pieza;
 import edu.fiuba.algoChess.modelo.entidades.PiezaNull;
@@ -45,7 +46,7 @@ public class MenuComportamiento {
 	}
 
 	private void generarBatallon(Pieza emisor) {
-		emisor.darDeAltaBatallon();
+		BatallonUtil.darDeAltaBatallon(emisor);
 		segundaEtapa.cambioTurno();
 	}
 

@@ -103,7 +103,7 @@ public class BatallonTest {
 		soldado2.actualizaRango(tableroTest);
 		soldado3.actualizaRango(tableroTest);
 
-		boolean esBatallon = BatallonUtil.esBatallon(soldado1,soldado2,soldado3);
+		boolean esBatallon = TestHelper.esBatallon(soldado1,soldado2,soldado3);
 
 		assertTrue(esBatallon);
 
@@ -123,7 +123,7 @@ public class BatallonTest {
 		soldado2.actualizaRango(tableroTest);
 		soldado3.actualizaRango(tableroTest);
 
-		boolean esBatallon = BatallonUtil.esBatallon(soldado1,soldado2,soldado3);
+		boolean esBatallon = TestHelper.esBatallon(soldado1,soldado2,soldado3);
 
 		assertFalse(esBatallon);
 

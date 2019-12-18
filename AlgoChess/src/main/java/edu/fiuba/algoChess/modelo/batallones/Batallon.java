@@ -30,10 +30,10 @@ public abstract class Batallon extends Movible {
 		ArrayList<Pieza> soldadosBatallon;
 		soldadosBatallon = BatallonUtil.armarPosibleBatallon(soldado);
 		try {
-			BatallonUtil batallonUtil = new BatallonUtil();
-			batallonUtil.setPieza1(soldadosBatallon.get(0));
-			batallonUtil.setPieza2(soldadosBatallon.get(1));
-			batallonUtil.setPieza3(soldadosBatallon.get(2));
+			BatallonUtil batallonUtil = new BatallonUtil(soldadosBatallon.get(0),soldadosBatallon.get(1),soldadosBatallon.get(2));
+			soldadosBatallon.get(0).setBatallonActual(batallonUtil);
+			soldadosBatallon.get(1).setBatallonActual(batallonUtil);
+			soldadosBatallon.get(2).setBatallonActual(batallonUtil);
 			return batallonUtil;
 		} catch (IndexOutOfBoundsException ex) {
 			return new BatallonNull();
@@ -46,15 +46,7 @@ public abstract class Batallon extends Movible {
 		return batallon;
 	}
 
-	public static boolean esBatallon(Pieza soldado1, Pieza soldado2, Pieza soldado3) {
-		ArrayList<Pieza> soldadosBatallon = new ArrayList<>();
-
-		soldadosBatallon = BatallonUtil.armarPosibleBatallon(soldado1);
-		return (soldadosBatallon.size()>=2);
-	}
-
 	public Batallon moverBatallon(Tablero campoDeBatalla, Ubicacion ubicacion1, Ubicacion ubicacion2, Ubicacion ubicacion3){
-
 		throw new AccionAgrupableInvalidaException("No se puede mover un batallon null");
 	}
 
