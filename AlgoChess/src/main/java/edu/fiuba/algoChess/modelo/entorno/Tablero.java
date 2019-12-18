@@ -10,7 +10,6 @@ import lombok.Setter;
 
 import java.util.*;
 
-//@NoArgsConstructor
 public class Tablero {
 
 	@Getter

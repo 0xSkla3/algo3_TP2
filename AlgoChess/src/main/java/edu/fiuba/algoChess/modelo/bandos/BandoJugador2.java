@@ -3,9 +3,11 @@ package edu.fiuba.algoChess.modelo.bandos;
 import edu.fiuba.algoChess.modelo.comportamientos.Ataque;
 import edu.fiuba.algoChess.modelo.comportamientos.Curacion;
 import edu.fiuba.algoChess.modelo.entidades.Jinete;
+import edu.fiuba.algoChess.modelo.entorno.Celda;
 import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeAtacarUnAliadoException;
 import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeCurarUnaUnidadEnemigaException;
 import edu.fiuba.algoChess.modelo.entidades.Pieza;
+import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeUbicarPiezaEnSectoRival;
 import edu.fiuba.algoChess.modelo.salud.Herible;
 import edu.fiuba.algoChess.modelo.salud.Salud;
 
@@ -102,6 +104,21 @@ public class BandoJugador2 extends Bando {
     }
 
     @Override
+    public void pisarSiBandoCorrecto(Celda celdaPorRemplazar, Pieza piezaPorGuardar, Bando bando) {
+         bando.pisarSiBandoCorrecto(celdaPorRemplazar, piezaPorGuardar,this);
+    }
+
+    @Override
+    public void pisarSiBandoCorrecto(Celda celdaPorRemplazar, Pieza piezaPorGuardar, BandoJugador1 bandoJugador1) {
+        throw new NoSePuedeUbicarPiezaEnSectoRival("No se puede ubicar esta pieza en el sector rival");
+    }
+
+    @Override
+    public void pisarSiBandoCorrecto(Celda celdaPorRemplazar, Pieza piezaPorGuardar, BandoJugador2 bandoJugador2) {
+        celdaPorRemplazar.getPiezaActual().pisar(celdaPorRemplazar, piezaPorGuardar);
+    }
+
+    @Override
     public void jineteReconocerEnemigoParaAtacarADistanciaMedia(Jinete jinete, Bando bando) {
         bando.jineteReconocerEnemigoParaAtacarADistanciaMedia(jinete, this);
     }
@@ -113,18 +130,15 @@ public class BandoJugador2 extends Bando {
 
     @Override
     public void jineteReconocerEnemigoParaAtacarADistanciaMedia(Jinete jinete, BandoJugador2 bandoJugador2) {
-
     }
 
     @Override
     public void jineteReconocerAliadoParaAtacarADistanciaMedia(Jinete jinete, Bando bando) {
         bando.jineteReconocerAliadoParaAtacarADistanciaMedia(jinete, this);
-
     }
 
     @Override
     public void jineteReconocerAliadoParaAtacarADistanciaMedia(Jinete jinete, BandoJugador1 bandoJugador1) {
-
     }
 
     @Override

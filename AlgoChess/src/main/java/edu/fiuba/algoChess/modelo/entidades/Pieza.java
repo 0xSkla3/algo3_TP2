@@ -170,14 +170,6 @@ public abstract class Pieza extends Movible implements Batalloneable {
 		return this.getUbicacion().getY();
 	}
 
-	public boolean notEqualsNull(){
-		boolean condicion1 = !this.getVida().igualA(new SaludMuerto());
-		boolean condicion2 = this.getCosto() != 0;
-		boolean condicion3 = this.getBando() != null;
-
-		return condicion1 && condicion2 && condicion3;
-	}
-
 	public abstract void ejecutarComportamientoPorDistancia(DistanciaCercana distancia, Pieza pieza);
 	public abstract void ejecutarComportamientoPorDistancia(DistanciaMedia distancia, Pieza pieza);
 	public abstract void ejecutarComportamientoPorDistancia(DistanciaLejana distancia, Pieza pieza);

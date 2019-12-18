@@ -4,6 +4,7 @@ import edu.fiuba.algoChess.modelo.comportamientos.Ataque;
 import edu.fiuba.algoChess.modelo.comportamientos.Curacion;
 import edu.fiuba.algoChess.modelo.entidades.Jinete;
 import edu.fiuba.algoChess.modelo.entidades.Pieza;
+import edu.fiuba.algoChess.modelo.entorno.Celda;
 import edu.fiuba.algoChess.modelo.salud.Herible;
 import edu.fiuba.algoChess.modelo.salud.Salud;
 
@@ -26,6 +27,10 @@ public abstract class Bando {
     public abstract ArrayList<Pieza> aniadirSoldadoAliadoAlStack(Pieza piezaPeriferia, ArrayList<Pieza> stack, Bando bando);
     public abstract ArrayList<Pieza> aniadirSoldadoAliadoAlStack(Pieza piezaPeriferia, ArrayList<Pieza> stack, BandoJugador1 bandoJugador1);
     public abstract ArrayList<Pieza> aniadirSoldadoAliadoAlStack(Pieza piezaPeriferia, ArrayList<Pieza> stack, BandoJugador2 bandoJugador2);
+
+    public abstract void pisarSiBandoCorrecto(Celda celdaPorRemplazar, Pieza piezaPorGuardar, Bando bando);
+    public abstract void pisarSiBandoCorrecto(Celda celdaPorRemplazar, Pieza piezaPorGuardar, BandoJugador1 bandoJugador1);
+    public abstract void pisarSiBandoCorrecto(Celda celdaPorRemplazar, Pieza piezaPorGuardar, BandoJugador2 bandoJugador2);
 
     public abstract void jineteReconocerEnemigoParaAtacarADistanciaMedia(Jinete jinete, Bando bando);
     public abstract void jineteReconocerEnemigoParaAtacarADistanciaMedia(Jinete jinete, BandoJugador1 bandoJugador1);

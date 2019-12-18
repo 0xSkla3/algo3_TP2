@@ -5,9 +5,8 @@ import edu.fiuba.algoChess.modelo.entorno.Tablero;
 import edu.fiuba.algoChess.modelo.entorno.Ubicacion;
 import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeMoverUnGrupoParaUnaPiezaUnica;
 import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeMoverUnaPiezaUnicaParaUnGrupo;
-import edu.fiuba.algoChess.entidades.Observable;
 
-public abstract class Movible extends Observable {
+public abstract class Movible {
 
 	public void moverseALaDerecha(Tablero campoDeBatalla){
 		throw new NoSePuedeMoverUnaPiezaUnicaParaUnGrupo("No se puede mover una pieza unica para un grupo");

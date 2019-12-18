@@ -21,7 +21,6 @@ public class Celda {
 	@Getter
 	protected Bando sectorDelJugador;
 
-
 	public Celda(){
 		this.piezaActual = new PiezaNull(null);
 	}
@@ -31,15 +30,7 @@ public class Celda {
 		this.sectorDelJugador = bando;
 	}
     public void guardarFaseInicial(Pieza piezaAUbicar) {
-        if (this.sectorDelJugador.getNombre() != piezaAUbicar.getBando().getNombre()  ) {
-            throw new NoSePuedeUbicarPiezaEnSectoRival("No se puede ubicar pieza en sector rival");
-        } else {
-			try {
-				this.piezaActual.pisar(this, piezaAUbicar);
-			} catch (NoSePuedeUbicarPorqueEstaOcupadoException e) {
-				throw new NoSePuedeUbicarPorqueEstaOcupadoException("no se puede ubicar pieza por estar el casillero ocupado");
-			}
-		}
+		this.getSectorDelJugador().pisarSiBandoCorrecto(this, piezaAUbicar, piezaAUbicar.getBando());
     }
 
 	public void guardarFaseJuego(Pieza piezaAUbicar) {
