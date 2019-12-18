@@ -1,4 +1,5 @@
 package edu.fiuba.algoChess.modelo.salud;
+import edu.fiuba.algoChess.modelo.excepciones.InteraccionInvalidaException;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

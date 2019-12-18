@@ -11,7 +11,7 @@ import edu.fiuba.algoChess.modelo.excepciones.OperacionInvalidaException;
 import lombok.Getter;
 import lombok.Setter;
 
-public class RangoSoldado extends RangoInmediato implements Rango {
+public class RangoSoldado extends RangoInmediato {
 
 	@Getter
 	ArrayList<Pieza> soldadosEquipo;
@@ -71,16 +71,6 @@ public class RangoSoldado extends RangoInmediato implements Rango {
 	}
 
 	@Override
-	public void actualizaRangoMedio(Pieza piezaCentral, Tablero tablero) {
-		throw new OperacionInvalidaException("Operacion invalida");
-	}
-
-	@Override
-	public void actualizaRangoCercano(Pieza piezaCentral, Tablero tablero) {
-		throw new OperacionInvalidaException("Operacion invalida");
-	}
-
-
 	public void actualizaRangoSoldado(Pieza piezaCentral,Tablero tablero) {
 		super.actualizaRangoInmediato(piezaCentral,tablero);
 		this.actualizaSoldadosCercanos(piezaCentral);

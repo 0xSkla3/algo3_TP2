@@ -6,7 +6,6 @@ import edu.fiuba.algoChess.modelo.batallones.Batalloneable;
 import edu.fiuba.algoChess.modelo.comportamientos.Ataque;
 import edu.fiuba.algoChess.modelo.entorno.*;
 import edu.fiuba.algoChess.modelo.excepciones.*;
-import edu.fiuba.algoChess.modelo.rangos.Agrupable;
 import edu.fiuba.algoChess.modelo.rangos.Rango;
 import edu.fiuba.algoChess.modelo.salud.Salud;
 import edu.fiuba.algoChess.modelo.salud.SaludLlena;
@@ -195,10 +194,6 @@ public abstract class Pieza extends Movible implements Batalloneable {
 		return ubicacion.obtenerPieza(ubicacion.getUbicacionIzquierda());
 	}
 
-	public Agrupable agrupar(Pieza pieza1, Pieza pieza2, Pieza pieza3){
-		throw new InteraccionInvalidaException("No se puede agrupar una pieza que no sea un soldado");
-	}
-
 	public Batallon crearBatallon(Pieza pieza1, Pieza pieza2, Pieza pieza3) {
 		throw new AccionAgrupableInvalidaException("No se puede crear un batallon de una pieza distinta a Soldado");
 	}
@@ -226,16 +221,6 @@ public abstract class Pieza extends Movible implements Batalloneable {
 	@Override
 	public void actualizaPiezasEnRango(Pieza piezaCentral) {
 		throw new AccionAgrupableInvalidaException("No se pueden obtener las piezas en rango de una entidad no agrupable");
-	}
-
-	@Override
-	public void actualizaRangoMedio(Pieza piezaCentral, Tablero tablero) {
-		throw new AccionAgrupableInvalidaException("No se puede actualizar el rango de una pieza que no sea un soldado");
-	}
-
-	@Override
-	public void actualizaRangoCercano(Pieza piezaCentral, Tablero tablero) {
-		throw new AccionAgrupableInvalidaException("No se puede actualizar el rango de una pieza que no sea un soldado");
 	}
 
 	@Override

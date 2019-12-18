@@ -11,11 +11,6 @@ public interface Rango {
 	Rango actualizaRangoInmediato(Pieza piezaCentral, Tablero tablero);
 	void actualizaPiezasEnRango(Pieza piezaCentral);
 	ArrayList<Pieza> getPiezasEnRango();
-
-	void actualizaRangoMedio(Pieza piezaCentral, Tablero tablero);
-
-	void actualizaRangoCercano(Pieza piezaCentral, Tablero tablero);
-
 	void actualizaRangoSoldado(Pieza piezaCentral, Tablero tablero);
 	Batallon darDeAltaBatallon();
 	ArrayList<Pieza> getSoldadosEquipo();

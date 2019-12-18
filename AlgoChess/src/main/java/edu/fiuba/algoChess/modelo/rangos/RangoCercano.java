@@ -38,31 +38,9 @@ public class RangoCercano implements Rango{
 	}
 
 	@Override
-	public void actualizaRangoMedio(Pieza piezaCentral, Tablero tablero) {
-		throw new OperacionInvalidaException("Operacion invalida");
-	}
-
-	@Override
-	public void actualizaRangoCercano(Pieza piezaCentral, Tablero tablero) {
-		Map<Ubicacion, Celda> nuevoRangoCarcano = new HashMap<>();
-		final int xInicial = piezaCentral.getUbicacion().getX() - 2;
-		final int yInicial = piezaCentral.getUbicacion().getY() - 2;
-		int x;
-		int y;
-
-		for(x = xInicial; abs(x - xInicial) < 5; x++){
-			for(y = yInicial; abs(y - yInicial) < 5; y++){
-				nuevoRangoCarcano.put(new Ubicacion(x, y), tablero.getCampoDeBatalla().get(new Ubicacion(x,y)));
-			}
-		}
-			this.setRangoCarcano(nuevoRangoCarcano);
-	}
-
-	@Override
 	public void actualizaRangoSoldado(Pieza piezaCentral, Tablero tablero) {
 
 	}
-
 
 	@Override
 	public Batallon darDeAltaBatallon() {

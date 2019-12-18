@@ -97,16 +97,6 @@ public class PiezaNull extends Pieza {
 	}
 
 	@Override
-	public void actualizaRangoMedio(Pieza piezaCentral, Tablero tablero) {
-		throw new OperacionInvalidaSobreObjetoNuloException("No se puede actualizar el rango de una PiezaNull");
-	}
-
-	@Override
-	public void actualizaRangoCercano(Pieza piezaCentral, Tablero tablero) {
-		throw new OperacionInvalidaSobreObjetoNuloException("No se puede actualizar el rango de una PiezaNull");
-	}
-
-	@Override
 	public void actualizaRangoSoldado(Pieza piezaCentral, Tablero tablero) {
 		throw new OperacionInvalidaSobreObjetoNuloException("No se puede actualizar el rango de una PiezaNull");
 	}
