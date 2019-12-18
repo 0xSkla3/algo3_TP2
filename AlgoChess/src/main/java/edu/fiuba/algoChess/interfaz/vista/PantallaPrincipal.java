@@ -104,6 +104,7 @@ public class PantallaPrincipal {
 
 				try {
 					juego.crearPieza(nombrePieza, ubicacion);
+					ReproductorSonidos.reproducir("coin");
 					this.cambioTurno(head);
 				} catch (UbicacionEnSectorInvalidoException exc) {
 					DialogoAlerta.Alerta("Sector rival", "No se puede ubicar la pieza en el sector rival", 2);

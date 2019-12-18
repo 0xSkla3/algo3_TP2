@@ -23,8 +23,8 @@ public class MenuMovimiento {
 		arriba.setStyle("-fx-background-color:#F1C40F;");
 		arriba.setOnAction(e -> {
 			try {
-
 				pieza.moverseAbajo(tablero); //en el tablero se visualiza al reves
+				ReproductorSonidos.reproducir("walk");
 				segundaEtapa.cambioTurno();
 				stage.close();
 
@@ -38,8 +38,8 @@ public class MenuMovimiento {
 		abajo.setStyle("-fx-background-color:#F1C40F;");
 		abajo.setOnAction(e -> {
 			try {
-
 				pieza.moverseArriba(tablero); //el tablero se visualiza al reves
+				ReproductorSonidos.reproducir("walk");
 				segundaEtapa.cambioTurno();
 				stage.close();
 
@@ -54,8 +54,8 @@ public class MenuMovimiento {
 		izquierda.setStyle("-fx-background-color:#F1C40F;");
 		izquierda.setOnAction(e -> {
 			try {
-
 				pieza.moverseALaIzquierda(tablero);
+				ReproductorSonidos.reproducir("walk");
 				segundaEtapa.cambioTurno();
 				stage.close();
 
@@ -69,8 +69,8 @@ public class MenuMovimiento {
 		derecha.setStyle("-fx-background-color:#F1C40F;");
 		derecha.setOnAction(e -> {
 			try {
-
 				pieza.moverseALaDerecha(tablero);
+				ReproductorSonidos.reproducir("walk");
 				segundaEtapa.cambioTurno();
 				stage.close();
 

@@ -8,6 +8,7 @@ import edu.fiuba.algoChess.modelo.juego.Juego;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 import lombok.AllArgsConstructor;
 
@@ -32,6 +33,7 @@ public class MenuComportamiento {
 		batallonear.setStyle("-fx-background-color:#F1C40F;");
 		batallonear.setOnAction(e -> {
 			generarBatallon(emisor);
+			ReproductorSonidos.reproducir("agrupate");
 			DialogoAlerta.Alerta("Batallon", "Batallon Creado", 2);
 			stage.close();
 		});
@@ -114,10 +116,13 @@ public class MenuComportamiento {
 				if (receptor.getClass() != PiezaNull.class) {
 					juego.atacar(emisor, receptor);
 					segundaEtapa.cambioTurno();
-					if (receptor.getVida().stateEstaVivo())
+					if (receptor.getVida().stateEstaVivo()) {
+						ReproductorSonidos.reproducir("sword");
 						DialogoAlerta.Alerta("Ataque", "Ataque efectuado, vida restante del oponente: " + receptor.getVida().getValorActual(), 2);
-					else
+					} else {
+						ReproductorSonidos.reproducir("die");
 						DialogoAlerta.Alerta("Ataque", "Ataque efectuado, oponente muerto", 2);
+					}
 				}
 			} catch (InteraccionInvalidaException exc) {
 				DialogoAlerta.Alerta("Ataque a un Aliado", "No se puede atacar a un aliado", 2);
@@ -138,6 +143,7 @@ public class MenuComportamiento {
 				Pieza receptor = juego.getTablero().getCelda(ubicacion).getPiezaActual();
 				if (receptor.getClass() != PiezaNull.class) {
 					((Curandero)emisor).curar(receptor);
+					ReproductorSonidos.reproducir("spell");
 					segundaEtapa.cambioTurno();
 					DialogoAlerta.Alerta("Curacion", "Curacion efectuada, vida restante del aliado: " + receptor.getVida().getValorActual(), 2);
 				}
