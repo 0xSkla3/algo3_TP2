@@ -57,10 +57,12 @@ public class FinDeJuego {
 	}
 
 	public void mensajeFin(HBox head){
+		String ganador = juego.getJugador1().getPuntaje() >= juego.getJugador2().getPuntaje() ? juego.getJugador1().getNombre() : juego.getJugador2().getNombre();
 
-		Button button = new Button("Partida Terminada, gracias por jugar");
+		Button button = new Button("Partida Terminada, " + ganador + " ganador");
 		button.setStyle("-fx-background-color:#F7CF32");
 		head.getChildren().add(button);
 
+		DialogoAlerta.Alerta("Partida terminada", "Ganó el jugador: " + ganador, 10);
 	}
 }
