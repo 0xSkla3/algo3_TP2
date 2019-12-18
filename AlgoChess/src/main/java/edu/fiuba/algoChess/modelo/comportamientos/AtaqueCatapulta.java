@@ -1,8 +1,7 @@
 package edu.fiuba.algoChess.modelo.comportamientos;
 
 import edu.fiuba.algoChess.modelo.entidades.Pieza;
-import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeAtacarPiezaNull;
-import edu.fiuba.algoChess.modelo.excepciones.OperacionInvalidaException;
+import edu.fiuba.algoChess.modelo.excepciones.InteraccionInvalidaException;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -29,7 +28,7 @@ public class AtaqueCatapulta extends Ataque{
         try {
             pieza.recibirAtaque(this);
             this.atacarArriba(pieza.obtenerPiezaArriba());
-        }catch (NoSePuedeAtacarPiezaNull exc){
+        }catch (InteraccionInvalidaException exc){
 
         }
     }
@@ -38,7 +37,7 @@ public class AtaqueCatapulta extends Ataque{
         try {
             pieza.recibirAtaque(this);
             this.atacarDerecha(pieza.obtenerPiezaDerecha());
-        }catch (NoSePuedeAtacarPiezaNull exc){
+        }catch (InteraccionInvalidaException exc){
 
         }
     }
@@ -47,7 +46,7 @@ public class AtaqueCatapulta extends Ataque{
         try {
             pieza.recibirAtaque(this);
             this.atacarAbajo(pieza.obtenerPiezaAbajo());
-        }catch (NoSePuedeAtacarPiezaNull exc){
+        }catch (InteraccionInvalidaException exc){
 
         }
     }
@@ -56,7 +55,7 @@ public class AtaqueCatapulta extends Ataque{
         try {
             pieza.recibirAtaque(this);
             this.atacarIzquierda(pieza.obtenerPiezaIzquierda());
-        }catch (NoSePuedeAtacarPiezaNull exc){
+        }catch (InteraccionInvalidaException exc){
 
         }
     }

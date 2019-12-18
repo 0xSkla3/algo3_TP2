@@ -1,11 +1,9 @@
 package edu.fiuba.algoChess.modelo.entorno;
 
-import edu.fiuba.algoChess.modelo.excepciones.NoSePuedePreguntarElBandoAUnaPiezaNull;
-import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeUbicarPiezaEnSectoRival;
-import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;
 import edu.fiuba.algoChess.modelo.bandos.Bando;
 import edu.fiuba.algoChess.modelo.entidades.Pieza;
 import edu.fiuba.algoChess.modelo.entidades.PiezaNull;
+import edu.fiuba.algoChess.modelo.excepciones.OperacionInvalidaSobreObjetoNuloException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,7 +19,6 @@ public class Celda {
 	@Getter
 	protected Bando sectorDelJugador;
 
-
 	public Celda(){
 		this.piezaActual = new PiezaNull(null);
 	}
@@ -31,15 +28,7 @@ public class Celda {
 		this.sectorDelJugador = bando;
 	}
     public void guardarFaseInicial(Pieza piezaAUbicar) {
-        if (this.sectorDelJugador.getNombre() != piezaAUbicar.getBando().getNombre()  ) {
-            throw new NoSePuedeUbicarPiezaEnSectoRival("No se puede ubicar pieza en sector rival");
-        } else {
-			try {
-				this.piezaActual.pisar(this, piezaAUbicar);
-			} catch (NoSePuedeUbicarPorqueEstaOcupadoException e) {
-				throw new NoSePuedeUbicarPorqueEstaOcupadoException("no se puede ubicar pieza por estar el casillero ocupado");
-			}
-		}
+		this.getSectorDelJugador().pisarSiBandoCorrecto(this, piezaAUbicar, piezaAUbicar.getBando());
     }
 
 	public void guardarFaseJuego(Pieza piezaAUbicar) {
@@ -58,17 +47,9 @@ public class Celda {
     public Bando obtenerBandoDePieza(){
 		try {
 			return piezaActual.getBando();
-		} catch (NoSePuedePreguntarElBandoAUnaPiezaNull ex){
-			throw new NoSePuedePreguntarElBandoAUnaPiezaNull("PiezaNull no tiene bando");
+		} catch (OperacionInvalidaSobreObjetoNuloException ex){
+			throw new OperacionInvalidaSobreObjetoNuloException("PiezaNull no tiene bando");
 		}
-	}
-
-    public boolean piezaBandoAliado(Bando bando){
-		return this.piezaActual.bandoAliado(bando);
-	}
-
-	public boolean piezaBandoEnemigo(Bando bando){
-		return this.piezaActual.bandoEnemigo(bando);
 	}
 
 }

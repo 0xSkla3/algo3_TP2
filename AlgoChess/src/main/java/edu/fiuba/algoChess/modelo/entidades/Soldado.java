@@ -1,13 +1,12 @@
 package edu.fiuba.algoChess.modelo.entidades;
 
 import edu.fiuba.algoChess.modelo.bandos.Bando;
+import edu.fiuba.algoChess.modelo.batallones.Batallon;
 import edu.fiuba.algoChess.modelo.comportamientos.AtaqueNormal;
 import edu.fiuba.algoChess.modelo.entorno.*;
-import edu.fiuba.algoChess.modelo.excepciones.FueraDeRangoParaEjecutarComportamientoException;
-import edu.fiuba.algoChess.modelo.batallones.Batallon;
+import edu.fiuba.algoChess.modelo.excepciones.FueraDeRangoException;
 import edu.fiuba.algoChess.modelo.rangos.Rango;
 import edu.fiuba.algoChess.modelo.rangos.RangoSoldado;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -80,12 +79,12 @@ public class Soldado extends Pieza {
 
 	@Override
 	public void ejecutarComportamientoPorDistancia(DistanciaMedia distancia, Pieza pieza) {
-		throw new FueraDeRangoParaEjecutarComportamientoException("Pieza fuera de rango");
+		throw new FueraDeRangoException("Pieza fuera de rango");
 	}
 
 	@Override
 	public void ejecutarComportamientoPorDistancia(DistanciaLejana distancia, Pieza pieza) {
-		throw new FueraDeRangoParaEjecutarComportamientoException("Pieza fuera de rango");
+		throw new FueraDeRangoException("Pieza fuera de rango");
 	}
 
 	@Override

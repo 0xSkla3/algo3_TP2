@@ -4,14 +4,12 @@ import edu.fiuba.algoChess.modelo.entidades.Movible;
 import edu.fiuba.algoChess.modelo.entidades.Pieza;
 import edu.fiuba.algoChess.modelo.entorno.Tablero;
 import edu.fiuba.algoChess.modelo.entorno.Ubicacion;
-import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeMoverUnBatallonNull;
+import edu.fiuba.algoChess.modelo.excepciones.AccionAgrupableInvalidaException;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
 @NoArgsConstructor
 public abstract class Batallon extends Movible {
@@ -57,7 +55,7 @@ public abstract class Batallon extends Movible {
 
 	public Batallon moverBatallon(Tablero campoDeBatalla, Ubicacion ubicacion1, Ubicacion ubicacion2, Ubicacion ubicacion3){
 
-		throw new NoSePuedeMoverUnBatallonNull("No se puede mover un batallon null");
+		throw new AccionAgrupableInvalidaException("No se puede mover un batallon null");
 	}
 
 }

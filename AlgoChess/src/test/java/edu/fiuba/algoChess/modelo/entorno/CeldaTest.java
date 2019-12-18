@@ -1,4 +1,4 @@
-package edu.fiuba.algoChess;
+package edu.fiuba.algoChess.modelo.entorno;
 
 import static org.junit.Assert.*;
 

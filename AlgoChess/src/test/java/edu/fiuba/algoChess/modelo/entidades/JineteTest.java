@@ -4,9 +4,6 @@ import edu.fiuba.algoChess.modelo.bandos.BandoJugador1;
 import edu.fiuba.algoChess.modelo.bandos.BandoJugador2;
 import edu.fiuba.algoChess.modelo.entorno.Tablero;
 import edu.fiuba.algoChess.modelo.entorno.Ubicacion;
-import edu.fiuba.algoChess.modelo.excepciones.FueraDeRangoParaEjecutarComportamientoException;
-import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeAtacarUnAliadoException;
-import edu.fiuba.algoChess.modelo.excepciones.NoSePuedePreguntarElBandoAUnaPiezaNull;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
@@ -35,7 +32,7 @@ public class JineteTest {
 
 	}
 
-	@Test	//(expected = NullPointerException.class) //(expected = NoSePuedePreguntarElBandoAUnaPiezaNull.class)
+	@Test	//(expected = NullPointerException.class) //(expected = OperacionInvalidaSobreObjetoNuloException.class)
 	public void test09JineteAtacaConAtaqueMedioAEnemigoADistanciaMedia(){
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
 		BandoJugador2 bandoJugador2 = new BandoJugador2();
@@ -76,7 +73,7 @@ public class JineteTest {
 		assertEquals(vidaTrasAtaque, soldadoEnemigo.getVida().getValorActual());
 	}
 
-	@Test (expected = FueraDeRangoParaEjecutarComportamientoException.class)
+	@Test (expected = InteraccionInvalidaException.class)
 	public void SeArrojaExceptionCuandoSeQuiereAtacarAUnEnemigoLejano(){
 
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
@@ -89,7 +86,7 @@ public class JineteTest {
 		jineteAliado.atacar(soldadoEnemigo);
 	}
 
-	@Test (expected = NoSePuedeAtacarUnAliadoException.class)
+	@Test (expected = InteraccionInvalidaException.class)
 	public void SeArrojaExceptionCuandoSeQuiereAtacarUnAliado(){
 
 		BandoJugador1 bandoJugador1 = new BandoJugador1();

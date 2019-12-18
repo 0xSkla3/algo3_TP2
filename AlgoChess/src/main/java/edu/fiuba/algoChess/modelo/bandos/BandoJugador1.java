@@ -3,9 +3,10 @@ package edu.fiuba.algoChess.modelo.bandos;
 import edu.fiuba.algoChess.modelo.comportamientos.Ataque;
 import edu.fiuba.algoChess.modelo.comportamientos.Curacion;
 import edu.fiuba.algoChess.modelo.entidades.Jinete;
-import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeAtacarUnAliadoException;
-import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeCurarUnaUnidadEnemigaException;
+import edu.fiuba.algoChess.modelo.entorno.Celda;
+import edu.fiuba.algoChess.modelo.excepciones.InteraccionInvalidaException;
 import edu.fiuba.algoChess.modelo.entidades.Pieza;
+import edu.fiuba.algoChess.modelo.excepciones.UbicacionEnSectorInvalidoException;
 import edu.fiuba.algoChess.modelo.salud.Herible;
 import edu.fiuba.algoChess.modelo.salud.Salud;
 
@@ -21,7 +22,7 @@ public class BandoJugador1 extends Bando{
 
     @Override
     public void atacar(Pieza pieza, Ataque ataque, BandoJugador1 bandojugador1){
-        throw new NoSePuedeAtacarUnAliadoException("No se puede atacar un aliado");
+        throw new InteraccionInvalidaException("No se puede atacar un aliado");
     }
 
     @Override
@@ -41,7 +42,7 @@ public class BandoJugador1 extends Bando{
 
     @Override
     public void curar(Pieza pieza, Curacion curacion, BandoJugador2 bandojugador2){
-        throw new NoSePuedeCurarUnaUnidadEnemigaException("No se puede curar un enemigo");
+        throw new InteraccionInvalidaException("No se puede curar un enemigo");
     }
 
     @Override
@@ -60,24 +61,6 @@ public class BandoJugador1 extends Bando{
     }
 
     @Override
-    public boolean bandoAliado(Bando bando) { return bando.bandoAliado(this); }
-
-    @Override
-    public boolean bandoAliado(BandoJugador1 bando) { return true; }
-
-    @Override
-    public boolean bandoAliado(BandoJugador2 bando) { return false; }
-
-    @Override
-    public boolean bandoEnemigo(Bando bando) { return bando.bandoEnemigo(this); }
-
-    @Override
-    public boolean bandoEnemigo(BandoJugador1 bando) { return false; }
-
-    @Override
-    public boolean bandoEnemigo(BandoJugador2 bando) { return true; }
-
-    @Override
     public String getNombre() {
         return "jugador1";
     }
@@ -94,6 +77,21 @@ public class BandoJugador1 extends Bando{
 
     public ArrayList<Pieza> aniadirSoldadoAliadoAlStack(Pieza piezaPeriferia, ArrayList<Pieza> stack, BandoJugador2 bandoSoldadoPeriferia){
         return stack;
+    }
+
+    @Override
+    public void pisarSiBandoCorrecto(Celda celdaPorRemplazar, Pieza piezaPorGuardar, Bando bando) {
+        bando.pisarSiBandoCorrecto(celdaPorRemplazar,piezaPorGuardar,this);
+    }
+
+    @Override
+    public void pisarSiBandoCorrecto(Celda celdaPorRemplazar, Pieza piezaPorGuardar, BandoJugador1 bandoJugador1) {
+        celdaPorRemplazar.getPiezaActual().pisar(celdaPorRemplazar, piezaPorGuardar);
+    }
+
+    @Override
+    public void pisarSiBandoCorrecto(Celda celdaPorRemplazar, Pieza piezaPorGuardar, BandoJugador2 bandoJugador2) {
+        throw new UbicacionEnSectorInvalidoException("No se puede ubicar esta pieza en el sector rival");
     }
 
     @Override

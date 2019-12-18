@@ -2,7 +2,7 @@ package edu.fiuba.algoChess.modelo.batallones;
 
 import edu.fiuba.algoChess.modelo.entorno.Tablero;
 import edu.fiuba.algoChess.modelo.entorno.Ubicacion;
-import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;
+import edu.fiuba.algoChess.modelo.excepciones.CeldaYaOcupadaException;
 import edu.fiuba.algoChess.modelo.entidades.Pieza;
 import lombok.*;
 
@@ -60,18 +60,18 @@ public class BatallonUtil extends Batallon {
 
 		try {
 			this.getPieza1().moverPiezaDeBatallon(campoDeBatalla, ubicacion1);
-		}catch(NoSePuedeUbicarPorqueEstaOcupadoException ex) {
+		}catch(CeldaYaOcupadaException ex) {
 			campoDeBatalla.ubicarEnCeldaFaseInicial(this.getPieza1(),ubicacionVieja1);
 		}
 		try {
 			this.getPieza2().moverPiezaDeBatallon(campoDeBatalla, ubicacion2);
-		}catch(NoSePuedeUbicarPorqueEstaOcupadoException ex) {
+		}catch(CeldaYaOcupadaException ex) {
 			campoDeBatalla.ubicarEnCeldaFaseInicial(this.getPieza2(),ubicacionVieja2);
 
 		}
 		try {
 			this.getPieza3().moverPiezaDeBatallon(campoDeBatalla, ubicacion3);
-		}catch(NoSePuedeUbicarPorqueEstaOcupadoException ex) {
+		}catch(CeldaYaOcupadaException ex) {
 			campoDeBatalla.ubicarEnCeldaFaseInicial(this.getPieza3(),ubicacionVieja3);
 		}
 

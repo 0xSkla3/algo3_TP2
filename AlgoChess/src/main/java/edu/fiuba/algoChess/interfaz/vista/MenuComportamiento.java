@@ -119,11 +119,11 @@ public class MenuComportamiento {
 					else
 						DialogoAlerta.Alerta("Ataque", "Ataque efectuado, oponente muerto", 2);
 				}
-			} catch (NoSePuedeAtacarUnAliadoException exc) {
+			} catch (InteraccionInvalidaException exc) {
 				DialogoAlerta.Alerta("Ataque a un Aliado", "No se puede atacar a un aliado", 2);
-			} catch (NoSePuedeObtenerUnaPiezaDeCeldaaNull ex) {
+			} catch (OperacionInvalidaSobreObjetoNuloException ex) {
 				DialogoAlerta.Alerta("Ataque a vacio", "No se puede atacar a una celda vacia", 2);
-			} catch (FueraDeRangoParaEjecutarComportamientoException ex) {
+			} catch (FueraDeRangoException ex) {
 				DialogoAlerta.Alerta("Fuera de rango", "Pieza fuera de rango para el ataque", 2);
 			}
 		});
@@ -141,13 +141,11 @@ public class MenuComportamiento {
 					segundaEtapa.cambioTurno();
 					DialogoAlerta.Alerta("Curacion", "Curacion efectuada, vida restante del aliado: " + receptor.getVida().getValorActual(), 2);
 				}
-			} catch (NoSePuedeCurarUnaUnidadEnemigaException exc) {
-				DialogoAlerta.Alerta("Curacion a un Enemigo", "No se puede curar a un enemigo", 2);
-			} catch (NoSePuedeObtenerUnaPiezaDeCeldaaNull ex) {
+			} catch (InteraccionInvalidaException exc) {
+				DialogoAlerta.Alerta("Curacion a un Enemigo", "No se puede curar ni a un enemigo ni a una catapulta", 2);
+			} catch (OperacionInvalidaSobreObjetoNuloException ex) {
 				DialogoAlerta.Alerta("Curacion a vacio", "No se puede curar a una celda vacia", 2);
-			} catch (NoSePuedeCurarUnaCatapultaException ex) {
-				DialogoAlerta.Alerta("Curacion a catapulta", "No se puede curar a una catapulta", 2);
-			} catch (FueraDeRangoParaEjecutarComportamientoException ex) {
+			} catch (FueraDeRangoException ex) {
 				DialogoAlerta.Alerta("Muy lejos", "No se puede curar a una pieza tan lejana", 2);
 			}
 		});

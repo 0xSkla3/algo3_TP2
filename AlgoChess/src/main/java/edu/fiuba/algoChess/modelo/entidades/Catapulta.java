@@ -3,8 +3,8 @@ package edu.fiuba.algoChess.modelo.entidades;
 import edu.fiuba.algoChess.modelo.bandos.Bando;
 import edu.fiuba.algoChess.modelo.comportamientos.AtaqueCatapulta;
 import edu.fiuba.algoChess.modelo.entorno.*;
-import edu.fiuba.algoChess.modelo.excepciones.FueraDeRangoParaEjecutarComportamientoException;
-import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeCurarUnaCatapultaException;
+import edu.fiuba.algoChess.modelo.excepciones.FueraDeRangoException;
+import edu.fiuba.algoChess.modelo.excepciones.InteraccionInvalidaException;
 
 public class Catapulta extends Pieza {
 
@@ -18,12 +18,12 @@ public class Catapulta extends Pieza {
 
 	@Override
 	public void ejecutarComportamientoPorDistancia(DistanciaCercana distancia, Pieza pieza) {
-		throw new FueraDeRangoParaEjecutarComportamientoException("Pieza fuera de rango");
+		throw new FueraDeRangoException("Pieza fuera de rango");
 	}
 
 	@Override
 	public void ejecutarComportamientoPorDistancia(DistanciaMedia distancia, Pieza pieza) {
-		throw new FueraDeRangoParaEjecutarComportamientoException("Pieza fuera de rango");
+		throw new FueraDeRangoException("Pieza fuera de rango");
 	}
 
 	@Override
@@ -34,7 +34,7 @@ public class Catapulta extends Pieza {
 
 	@Override
 	public void aumentarVida(double aumento) {
-		throw new NoSePuedeCurarUnaCatapultaException("No se puede curar una catapulta");
+		throw new InteraccionInvalidaException("No se puede curar una catapulta");
 	}
 
 	public AtaqueCatapulta getAtaque(){

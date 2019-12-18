@@ -5,9 +5,7 @@ import edu.fiuba.algoChess.modelo.bandos.BandoJugador2;
 import edu.fiuba.algoChess.modelo.comportamientos.AtaqueNormal;
 import edu.fiuba.algoChess.modelo.entorno.Tablero;
 import edu.fiuba.algoChess.modelo.entorno.Ubicacion;
-import edu.fiuba.algoChess.modelo.excepciones.FueraDeRangoParaEjecutarComportamientoException;
-import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeCurarUnaCatapultaException;
-import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeCurarUnaUnidadEnemigaException;
+import edu.fiuba.algoChess.modelo.excepciones.InteraccionInvalidaException;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -34,7 +32,7 @@ public class CuranderoTest {
         assertEquals(vidaSoldadoCurado,soldado.getVida().getValorActual(), 0.0);
     }
 
-    @Test (expected = NoSePuedeCurarUnaUnidadEnemigaException.class)
+    @Test (expected = InteraccionInvalidaException.class)
     public void test02SeLanzaExceptionCuandoCuranderoIntentaCurarSoldadoEnemigoCercano(){
 
         BandoJugador1 bandoJugador1 = new BandoJugador1();
@@ -51,7 +49,7 @@ public class CuranderoTest {
         curandero.curar(soldado);
     }
 
-    @Test (expected = FueraDeRangoParaEjecutarComportamientoException.class)
+    @Test (expected = InteraccionInvalidaException.class)
     public void test03SeLanzaExceptionCuandoCuranderoIntentaCurarSoldadoAliadoLejano(){
 
         BandoJugador1 bandoJugador1 = new BandoJugador1();
@@ -69,7 +67,7 @@ public class CuranderoTest {
         curandero.curar(soldado);
     }
 
-    @Test (expected = NoSePuedeCurarUnaCatapultaException.class)
+    @Test (expected = InteraccionInvalidaException.class)
     public void test04SeLanzaExceptionCuandoCuranderoIntentaCurarUnaCatapulta(){
 
         BandoJugador1 bandoJugador1 = new BandoJugador1();

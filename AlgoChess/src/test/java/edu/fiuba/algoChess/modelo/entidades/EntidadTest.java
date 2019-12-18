@@ -1,11 +1,10 @@
-package edu.fiuba.algoChess;
+package edu.fiuba.algoChess.modelo.entidades;
 
 import edu.fiuba.algoChess.modelo.bandos.BandoJugador1;
 import edu.fiuba.algoChess.modelo.bandos.BandoJugador2;
-import edu.fiuba.algoChess.modelo.entidades.Curandero;
 import edu.fiuba.algoChess.modelo.entorno.Tablero;
 import edu.fiuba.algoChess.modelo.entorno.Ubicacion;
-import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;
+import edu.fiuba.algoChess.modelo.excepciones.CeldaYaOcupadaException;
 import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -35,7 +34,7 @@ public class EntidadTest {
 
 	}
 
-	@Test (expected = NoSePuedeUbicarPorqueEstaOcupadoException.class)
+	@Test (expected = CeldaYaOcupadaException.class)
 	public void testEntidadMovibleNoPuedeDesplazarseACasilleroOcupado(){
 
 		BandoJugador1 bandoJugador1 = new BandoJugador1();

@@ -1,11 +1,9 @@
-package edu.fiuba.algoChess;
+package edu.fiuba.algoChess.modelo.entorno;
 import edu.fiuba.algoChess.modelo.bandos.BandoJugador1;
 import edu.fiuba.algoChess.modelo.bandos.BandoJugador2;
 import edu.fiuba.algoChess.modelo.entidades.Curandero;
-import edu.fiuba.algoChess.modelo.entorno.Tablero;
-import edu.fiuba.algoChess.modelo.entorno.Ubicacion;
-import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeUbicarPiezaEnSectoRival;
-import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;
+import edu.fiuba.algoChess.modelo.excepciones.UbicacionEnSectorInvalidoException;
+import edu.fiuba.algoChess.modelo.excepciones.CeldaYaOcupadaException;
 import org.junit.Test;
 
 //import modelo.juego.ObjetoUbicable;
@@ -29,7 +27,7 @@ public class TableroTest {
 	}
 
 
-	@Test (expected = NoSePuedeUbicarPiezaEnSectoRival.class)
+	@Test (expected = UbicacionEnSectorInvalidoException.class)
 	public void testTableroSeColocaPiezaAliadaEnSectorRivalTiraException() {
 		//si bien el tablero al crearlo ya se inicializa con 2 sectores de celdas preestablecidas
 		//en este test se muestra explicitamente que un jugador no puede colocar una pieza en sector rival
@@ -43,7 +41,7 @@ public class TableroTest {
 	}
 
 
-	@Test (expected = NoSePuedeUbicarPorqueEstaOcupadoException.class)
+	@Test (expected = CeldaYaOcupadaException.class)
 	public void testTableroUbicarEnUnCeldaOcupadaLanzaExcepcion(){
 
 		BandoJugador1 bandoJugador1 = new BandoJugador1();

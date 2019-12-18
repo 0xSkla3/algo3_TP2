@@ -9,9 +9,8 @@ import edu.fiuba.algoChess.modelo.entidades.*;
 import edu.fiuba.algoChess.modelo.entorno.ObservadorTablero;
 import edu.fiuba.algoChess.modelo.entorno.Tablero;
 import edu.fiuba.algoChess.modelo.entorno.Ubicacion;
-import edu.fiuba.algoChess.modelo.excepciones.OperacionInvalidaException;
+import edu.fiuba.algoChess.modelo.excepciones.FaseDeJuegoInvalidaException;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.util.ArrayList;
 
@@ -69,8 +68,7 @@ public class Juego {
 
 	public Pieza crearPieza (String nombre, Ubicacion ubicacion){
 		if(finDeJuego || segundaEtapa)
-			throw new OperacionInvalidaException("Fase de juego incorrecta");
-
+			throw new FaseDeJuegoInvalidaException("Fase de juego incorrecta");
 		Pieza pieza;
 
 		//FIXME
@@ -93,7 +91,7 @@ public class Juego {
 
 	public void atacar (Pieza atacante, Pieza atacado){
 		if(! segundaEtapa)
-			throw new OperacionInvalidaException("Fase de juego invalida");
+			throw new FaseDeJuegoInvalidaException("Fase de juego invalida");
 
 		atacante.atacar(atacado);
 		if(! atacado.getVida().stateEstaVivo()) {
