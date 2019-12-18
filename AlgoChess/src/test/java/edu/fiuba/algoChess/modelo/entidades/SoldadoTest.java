@@ -7,6 +7,7 @@ import edu.fiuba.algoChess.modelo.batallones.Batallon;
 import edu.fiuba.algoChess.modelo.batallones.BatallonUtil;
 import edu.fiuba.algoChess.modelo.entorno.Tablero;
 import edu.fiuba.algoChess.modelo.entorno.Ubicacion;
+import edu.fiuba.algoChess.modelo.excepciones.FueraDeRangoException;
 import edu.fiuba.algoChess.modelo.excepciones.InteraccionInvalidaException;
 import org.junit.Test;
 
@@ -166,7 +167,7 @@ public class SoldadoTest {
 
 	}
 
-	@Test (expected = InteraccionInvalidaException.class)
+	@Test (expected = FueraDeRangoException.class)
 	public void test06SeArrojaExceptionCuandoSeQuiereAtacarAUnEnemigoLejano(){
 
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
@@ -184,7 +185,7 @@ public class SoldadoTest {
 
 	}
 
-	@Test (expected = InteraccionInvalidaException.class)
+	@Test (expected = FueraDeRangoException.class)
 	public void test07SeArrojaExceptionCuandoSeQuiereAtacarAUnEnemigoADistanciaMedia(){
 
 		BandoJugador1 bandoJugador1 = new BandoJugador1();

@@ -4,6 +4,7 @@ import edu.fiuba.algoChess.modelo.bandos.BandoJugador1;
 import edu.fiuba.algoChess.modelo.bandos.BandoJugador2;
 import edu.fiuba.algoChess.modelo.entorno.Tablero;
 import edu.fiuba.algoChess.modelo.entorno.Ubicacion;
+import edu.fiuba.algoChess.modelo.excepciones.FueraDeRangoException;
 import edu.fiuba.algoChess.modelo.excepciones.InteraccionInvalidaException;
 import org.junit.Test;
 
@@ -74,7 +75,7 @@ public class JineteTest {
 		assertEquals(vidaTrasAtaque, soldadoEnemigo.getVida().getValorActual());
 	}
 
-	@Test (expected = InteraccionInvalidaException.class)
+	@Test (expected = FueraDeRangoException.class)
 	public void SeArrojaExceptionCuandoSeQuiereAtacarAUnEnemigoLejano(){
 
 		BandoJugador1 bandoJugador1 = new BandoJugador1();
