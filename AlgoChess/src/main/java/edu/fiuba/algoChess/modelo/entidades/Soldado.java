@@ -15,7 +15,7 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 
-@NoArgsConstructor
+//@NoArgsConstructor
 public class Soldado extends Pieza {
 
 	@Getter

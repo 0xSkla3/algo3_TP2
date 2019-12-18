@@ -48,8 +48,6 @@ public class Juego {
 
 	private ObservadorTablero observadorTablero;
 
-	public static final Soldado soldado = new Soldado();
-
 	public Juego(String nombreJugador1, String nombreJugador2) {
 			Bando bando1 = new BandoJugador1();
 			Bando bando2 = new BandoJugador2();

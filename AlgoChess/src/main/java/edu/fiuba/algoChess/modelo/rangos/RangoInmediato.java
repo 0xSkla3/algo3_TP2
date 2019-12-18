@@ -1,10 +1,8 @@
 package edu.fiuba.algoChess.modelo.rangos;
 
-import edu.fiuba.algoChess.modelo.batallones.Batallon;
-import edu.fiuba.algoChess.modelo.entorno.Celda;
 import edu.fiuba.algoChess.modelo.entidades.Pieza;
+import edu.fiuba.algoChess.modelo.entorno.Celda;
 import edu.fiuba.algoChess.modelo.entorno.Tablero;
-import edu.fiuba.algoChess.modelo.excepciones.OperacionInvalidaException;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -69,16 +67,6 @@ public abstract class RangoInmediato implements Rango {
 		this.getDerecha().getPiezaActual().aniadirPiezaAlStack(nuevoEntorno);
 
 		this.setPiezasEnRango(nuevoEntorno);
-	}
-
-	@Override
-	public Batallon darDeAltaBatallon(){
-		return null;
-	}
-
-	@Override
-	public ArrayList<Pieza> getSoldadosEquipo() {
-		return null;
 	}
 
 }

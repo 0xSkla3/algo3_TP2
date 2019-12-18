@@ -49,7 +49,10 @@ public class RangoSoldadoTest {
 	@Test
 	public void RangoSoldadoDevuelvePiezasEnEquipo() {
 		RangoSoldado rango = new RangoSoldado();
-		Soldado soldado = new Soldado();
+		BandoJugador1 bandoJugador1 = new BandoJugador1();
+		BandoJugador2 bandoJugador2 = new BandoJugador2();
+		Tablero tableroTest = new Tablero(bandoJugador1, bandoJugador2);
+		Soldado soldado = new Soldado(new Ubicacion(2,2), bandoJugador1, tableroTest);
 		rango.getSoldadosEquipo().add(soldado);
 		assertTrue(rango.getSoldadosEquipo().contains(soldado));
 	}
