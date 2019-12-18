@@ -3,11 +3,7 @@ package edu.fiuba.algoChess.modelo.entorno;
 import edu.fiuba.algoChess.modelo.bandos.Bando;
 import edu.fiuba.algoChess.modelo.entidades.Jinete;
 import edu.fiuba.algoChess.modelo.entidades.Pieza;
-import edu.fiuba.algoChess.modelo.excepciones.NoExisteNingunCasilleroParaLaUbicacionDadaException;
-import edu.fiuba.algoChess.modelo.excepciones.NoSePuedePreguntarElBandoAUnaPiezaNull;
-import edu.fiuba.algoChess.modelo.excepciones.OperacionInvalidaException;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.util.Objects;
 
@@ -136,7 +132,7 @@ public class Ubicacion {
 				try {
 
 					celda.obtenerBandoDePieza().jineteReconocerEnemigoParaAtacarADistanciaMedia(jinete, jineteBando);
-				//} catch (NoExisteNingunCasilleroParaLaUbicacionDadaException exc){
+				//} catch (UbicacionEnTableroInexistenteException exc){
 				//	continue;
 				} catch (NullPointerException ex){
 					continue; // FIXME: esteNullPointerException es porque la pieza de la celda actual es PiezaNull y la misma tiene null en bando.
@@ -168,9 +164,9 @@ public class Ubicacion {
 					Celda celda = obtenerCelda(ubicacion);
 				try {
 					celda.obtenerBandoDePieza().jineteReconocerAliadoParaAtacarADistanciaMedia(jinete, jineteBando);
-			//	} catch (NoExisteNingunCasilleroParaLaUbicacionDadaException exc){
+			//	} catch (UbicacionEnTableroInexistenteException exc){
 			//		continue;
-				//} catch (NoSePuedePreguntarElBandoAUnaPiezaNull ex){
+				//} catch (OperacionInvalidaSobreObjetoNuloException ex){
 					//continue;
 				} catch (NullPointerException ex){ // esteNullPointerException es porque la pieza de la celda actual es PiezaNull y la misma tiene null en bando.
 					continue;	//FIXME: esteNullPointerException es porque la pieza de la celda actual es PiezaNull y la misma tiene null en bando.

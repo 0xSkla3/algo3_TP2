@@ -1,8 +1,8 @@
 package edu.fiuba.algoChess.interfaz.controlladores;
 
 import edu.fiuba.algoChess.modelo.bandos.Bando;
-import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeUbicarPiezaEnSectoRival;
-import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;
+import edu.fiuba.algoChess.modelo.excepciones.UbicacionEnSectorInvalidoException;
+import edu.fiuba.algoChess.modelo.excepciones.CeldaYaOcupadaException;
 import edu.fiuba.algoChess.modelo.juego.Juego;
 import edu.fiuba.algoChess.interfaz.vista.VistaTablero;
 import edu.fiuba.algoChess.interfaz.vista.PantallaPrincipal;
@@ -60,9 +60,9 @@ public class UbicarPiezaHandler implements EventHandler<ActionEvent> {
             //pieceView.setPieceMap(mapView, nombrePieza, x, y);
             pantallaPrincipal.cambioTurno(head);
             stageUbicar.close();
-       } catch(NoSePuedeUbicarPiezaEnSectoRival exc){
+       } catch(UbicacionEnSectorInvalidoException exc){
             alerta3seg("Sector rival", "No se puede ubicar la pieza en el sector rival");
-        } catch(NoSePuedeUbicarPorqueEstaOcupadoException ex){
+        } catch(CeldaYaOcupadaException ex){
             alerta3seg( "Celda ocupada", "No se puede ubicar la pieza en una celda ocupada");
         }
     }

@@ -4,20 +4,14 @@ import edu.fiuba.algoChess.interfaz.vista.DialogoAlerta;
 import edu.fiuba.algoChess.interfaz.vista.SegundaEtapa;
 import edu.fiuba.algoChess.modelo.entidades.Pieza;
 import edu.fiuba.algoChess.modelo.entidades.PiezaNull;
-import edu.fiuba.algoChess.modelo.entorno.Tablero;
 import edu.fiuba.algoChess.modelo.entorno.Ubicacion;
 import edu.fiuba.algoChess.modelo.excepciones.*;
 import edu.fiuba.algoChess.modelo.juego.Juego;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import lombok.AllArgsConstructor;
-
-import java.util.Optional;
 
 @AllArgsConstructor
 public class AtacarPiezaHandler implements EventHandler<ActionEvent> {
@@ -43,11 +37,11 @@ public class AtacarPiezaHandler implements EventHandler<ActionEvent> {
 				else
 					DialogoAlerta.Alerta("Ataque", "Ataque efectuado, oponente muerto", 2);
 			}
-		} catch (NoSePuedeAtacarUnAliadoException exc) {
+		} catch (InteraccionInvalidaException exc) {
 			DialogoAlerta.Alerta("Ataque a un Aliado", "No se puede atacar a un aliado", 2);
-		} catch (NoSePuedeObtenerUnaPiezaDeCeldaaNull ex) {
+		} catch (OperacionInvalidaSobreObjetoNuloException ex) {
 			DialogoAlerta.Alerta("Ataque a vacio", "No se puede atacar a una celda vacia", 2);
-		} catch (FueraDeRangoParaEjecutarComportamientoException ex) {
+		} catch (InteraccionInvalidaException ex) {
 			DialogoAlerta.Alerta("Fuera de rango", "Pieza fuera de rango para el ataque", 2);
 		}
 	}

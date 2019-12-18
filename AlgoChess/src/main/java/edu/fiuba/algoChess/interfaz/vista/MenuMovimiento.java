@@ -2,24 +2,12 @@ package edu.fiuba.algoChess.interfaz.vista;
 
 import edu.fiuba.algoChess.modelo.entidades.Pieza;
 import edu.fiuba.algoChess.modelo.entorno.Tablero;
-import edu.fiuba.algoChess.interfaz.controlladores.*;
-import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;
-import javafx.application.Platform;
+import edu.fiuba.algoChess.modelo.excepciones.CeldaYaOcupadaException;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.effect.DropShadow;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-
-import java.util.Optional;
 
 @AllArgsConstructor
 public class MenuMovimiento {
@@ -40,7 +28,7 @@ public class MenuMovimiento {
 				segundaEtapa.cambioTurno();
 				stage.close();
 
-			} catch (NoSePuedeUbicarPorqueEstaOcupadoException exc){
+			} catch (CeldaYaOcupadaException exc){
 					DialogoAlerta.Alerta("Movimiento Invalido",
 					"La pieza no se puede mover hacia arriba porque el casillero esta ocupado", 3);
 			}
@@ -55,7 +43,7 @@ public class MenuMovimiento {
 				segundaEtapa.cambioTurno();
 				stage.close();
 
-			} catch (NoSePuedeUbicarPorqueEstaOcupadoException exc){
+			} catch (CeldaYaOcupadaException exc){
 				DialogoAlerta.Alerta("Movimiento Invalido",
 				"La pieza no se puede mover hacia abajo porque el casillero esta ocupado", 3);
 
@@ -71,7 +59,7 @@ public class MenuMovimiento {
 				segundaEtapa.cambioTurno();
 				stage.close();
 
-			} catch (NoSePuedeUbicarPorqueEstaOcupadoException exc){
+			} catch (CeldaYaOcupadaException exc){
 				DialogoAlerta.Alerta("Movimiento Invalido",
 				"La pieza no se puede mover hacia la izquierda porque el casillero esta ocupado", 3);
 			}
@@ -86,7 +74,7 @@ public class MenuMovimiento {
 				segundaEtapa.cambioTurno();
 				stage.close();
 
-			} catch (NoSePuedeUbicarPorqueEstaOcupadoException exc){
+			} catch (CeldaYaOcupadaException exc){
 				DialogoAlerta.Alerta("Movimiento Invalido",
 				"La pieza no se puede mover hacia la derecha porque el casillero esta ocupado", 3);
 			}

@@ -51,11 +51,11 @@ public class RangoJinete implements Rango{
 
 	@Override
 	public Batallon darDeAltaBatallon() {
-		throw new NoSePuedeDarDeAltaUnBatallonDeJinetes("No se puede dar de alta un batallon de jinetes");
+		throw new AccionAgrupableInvalidaException("No se puede dar de alta un batallon de jinetes");
 	}
 
 	@Override
 	public ArrayList<Pieza> getSoldadosEquipo(){
-		throw new NoSePuedeObtenerElEquipoDeUnaPiezaNoAgrupable("No se puede obtener el equipo de una pieza no agrupable");
+		throw new AccionAgrupableInvalidaException("No se puede obtener el equipo de una pieza no agrupable");
 	}
 }

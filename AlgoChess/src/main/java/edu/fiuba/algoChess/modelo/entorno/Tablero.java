@@ -2,7 +2,7 @@ package edu.fiuba.algoChess.modelo.entorno;
 
 import edu.fiuba.algoChess.modelo.bandos.Bando;
 import edu.fiuba.algoChess.modelo.entidades.Pieza;
-import edu.fiuba.algoChess.modelo.excepciones.NoExisteNingunCasilleroParaLaUbicacionDadaException;
+import edu.fiuba.algoChess.modelo.excepciones.UbicacionEnTableroInexistenteException;
 import edu.fiuba.algoChess.modelo.juego.Jugador;
 import lombok.Getter;
 import lombok.Setter;
@@ -64,7 +64,7 @@ public class Tablero {
 		try{
 			return this.campoDeBatalla.get(ubicacion);}
 		catch(IndexOutOfBoundsException ex){
-			throw new NoExisteNingunCasilleroParaLaUbicacionDadaException("No existe una celda en esa ubicacion");
+			throw new UbicacionEnTableroInexistenteException("No existe una celda en esa ubicacion");
 		}
 	}
 
@@ -74,7 +74,7 @@ public class Tablero {
 			this.campoDeBatalla.get(ubicacion).guardarFaseInicial(pieza);
 			pieza.setUbicacion(ubicacion);
 		} catch (IndexOutOfBoundsException e) {
-			throw new NoExisteNingunCasilleroParaLaUbicacionDadaException("No existe una celda en esa ubicacion");
+			throw new UbicacionEnTableroInexistenteException("No existe una celda en esa ubicacion");
 		}
 	}
 
@@ -83,7 +83,7 @@ public class Tablero {
 			this.campoDeBatalla.get(ubicacion).guardarFaseJuego(pieza);
 			pieza.setUbicacion(ubicacion);
 		} catch (IndexOutOfBoundsException e) {
-			throw new NoExisteNingunCasilleroParaLaUbicacionDadaException("No existe una celda en esa ubicacion");
+			throw new UbicacionEnTableroInexistenteException("No existe una celda en esa ubicacion");
 		}
 	}
 

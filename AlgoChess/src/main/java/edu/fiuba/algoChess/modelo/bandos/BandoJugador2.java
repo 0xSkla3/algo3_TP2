@@ -3,11 +3,10 @@ package edu.fiuba.algoChess.modelo.bandos;
 import edu.fiuba.algoChess.modelo.comportamientos.Ataque;
 import edu.fiuba.algoChess.modelo.comportamientos.Curacion;
 import edu.fiuba.algoChess.modelo.entidades.Jinete;
-import edu.fiuba.algoChess.modelo.entorno.Celda;
-import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeAtacarUnAliadoException;
-import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeCurarUnaUnidadEnemigaException;
 import edu.fiuba.algoChess.modelo.entidades.Pieza;
-import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeUbicarPiezaEnSectoRival;
+import edu.fiuba.algoChess.modelo.entorno.Celda;
+import edu.fiuba.algoChess.modelo.excepciones.InteraccionInvalidaException;
+import edu.fiuba.algoChess.modelo.excepciones.UbicacionEnSectorInvalidoException;
 import edu.fiuba.algoChess.modelo.salud.Herible;
 import edu.fiuba.algoChess.modelo.salud.Salud;
 
@@ -27,7 +26,7 @@ public class BandoJugador2 extends Bando {
 
     @Override
     public void atacar(Pieza pieza, Ataque ataque, BandoJugador2 bandojugador2){
-        throw new NoSePuedeAtacarUnAliadoException("No se puede atacar un aliado");
+        throw new InteraccionInvalidaException("No se puede atacar un aliado");
     }
 
     @Override
@@ -37,7 +36,7 @@ public class BandoJugador2 extends Bando {
 
     @Override
     public void curar(Pieza pieza, Curacion curacion, BandoJugador1 bandojugador1){
-        throw new NoSePuedeCurarUnaUnidadEnemigaException("No se puede curar un enemigo");
+        throw new InteraccionInvalidaException("No se puede curar un enemigo");
     }
 
     @Override
@@ -92,7 +91,7 @@ public class BandoJugador2 extends Bando {
 
     @Override
     public void pisarSiBandoCorrecto(Celda celdaPorRemplazar, Pieza piezaPorGuardar, BandoJugador1 bandoJugador1) {
-        throw new NoSePuedeUbicarPiezaEnSectoRival("No se puede ubicar esta pieza en el sector rival");
+        throw new UbicacionEnSectorInvalidoException("No se puede ubicar esta pieza en el sector rival");
     }
 
     @Override

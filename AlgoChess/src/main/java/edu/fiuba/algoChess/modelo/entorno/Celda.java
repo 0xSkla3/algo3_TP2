@@ -3,7 +3,7 @@ package edu.fiuba.algoChess.modelo.entorno;
 import edu.fiuba.algoChess.modelo.bandos.Bando;
 import edu.fiuba.algoChess.modelo.entidades.Pieza;
 import edu.fiuba.algoChess.modelo.entidades.PiezaNull;
-import edu.fiuba.algoChess.modelo.excepciones.NoSePuedePreguntarElBandoAUnaPiezaNull;
+import edu.fiuba.algoChess.modelo.excepciones.OperacionInvalidaSobreObjetoNuloException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -47,8 +47,8 @@ public class Celda {
     public Bando obtenerBandoDePieza(){
 		try {
 			return piezaActual.getBando();
-		} catch (NoSePuedePreguntarElBandoAUnaPiezaNull ex){
-			throw new NoSePuedePreguntarElBandoAUnaPiezaNull("PiezaNull no tiene bando");
+		} catch (OperacionInvalidaSobreObjetoNuloException ex){
+			throw new OperacionInvalidaSobreObjetoNuloException("PiezaNull no tiene bando");
 		}
 	}
 

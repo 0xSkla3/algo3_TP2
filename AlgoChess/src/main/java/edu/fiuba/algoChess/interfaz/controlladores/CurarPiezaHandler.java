@@ -5,20 +5,14 @@ import edu.fiuba.algoChess.interfaz.vista.SegundaEtapa;
 import edu.fiuba.algoChess.modelo.entidades.Curandero;
 import edu.fiuba.algoChess.modelo.entidades.Pieza;
 import edu.fiuba.algoChess.modelo.entidades.PiezaNull;
-import edu.fiuba.algoChess.modelo.entorno.Tablero;
 import edu.fiuba.algoChess.modelo.entorno.Ubicacion;
 import edu.fiuba.algoChess.modelo.excepciones.*;
 import edu.fiuba.algoChess.modelo.juego.Juego;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import lombok.AllArgsConstructor;
-
-import java.util.Optional;
 
 
 @AllArgsConstructor
@@ -42,13 +36,11 @@ public class CurarPiezaHandler implements EventHandler<ActionEvent> {
 				segundaEtapa.cambioTurno();
 				DialogoAlerta.Alerta("Curacion", "Curacion efectuada, vida restante del aliado: " + receptor.getVida().getValorActual(), 2);
 			}
-		} catch(NoSePuedeCurarUnaUnidadEnemigaException exc){
-			DialogoAlerta.Alerta("Curacion a un Enemigo", "No se puede curar a un enemigo", 2);
-		} catch(NoSePuedeObtenerUnaPiezaDeCeldaaNull ex){
+		} catch(InteraccionInvalidaException exc){
+			DialogoAlerta.Alerta("Curacion a un Enemigo", "No se puede curar ni a un enemigo ni a una catapulta", 2);
+		} catch(OperacionInvalidaSobreObjetoNuloException ex){
 			DialogoAlerta.Alerta("Curacion a vacio", "No se puede curar a una celda vacia", 2);
-		} catch(NoSePuedeCurarUnaCatapultaException ex){
-			DialogoAlerta.Alerta("Curacion a catapulta", "No se puede curar a una catapulta", 2);
-		}catch (FueraDeRangoParaEjecutarComportamientoException ex) {
+		}catch (FueraDeRangoException ex) {
 			DialogoAlerta.Alerta("Muy lejos", "No se puede curar a una pieza tan lejana", 2);
 		}
 	}

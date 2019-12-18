@@ -73,7 +73,7 @@ public abstract class Pieza extends Movible implements Batalloneable {
 	}
 
 	public void pisar(Celda celda, Pieza piezaAUbicar){
-		throw new NoSePuedeUbicarPorqueEstaOcupadoException("No se puede ubicar la pieza porque la celda ya esta ocupada");
+		throw new CeldaYaOcupadaException("No se puede ubicar la pieza porque la celda ya esta ocupada");
 	}
 
 	public void moverseALaDerecha(Tablero campoDeBatalla){
@@ -115,17 +115,17 @@ public abstract class Pieza extends Movible implements Batalloneable {
 			campoDeBatalla.ubicarEnCeldaFaseInicial(this, ubicacion);
 			campoDeBatalla.eliminar(ubicacionVieja);
 			this.setUbicacion(ubicacion);
-		}catch (NoSePuedeUbicarPorqueEstaOcupadoException ex){
-			throw new NoSePuedeUbicarPorqueEstaOcupadoException("no se puede ubicar pieza por estar el casillero ocupado");
+		}catch (CeldaYaOcupadaException ex){
+			throw new CeldaYaOcupadaException("no se puede ubicar pieza por estar el casillero ocupado");
 		}
 	}
 
 	public Rango actualizaRango(Tablero tablero){
-		throw new NoSePuedeObtenerElRangoDeUnaPiezaNoAgrupable("No se puede actualizar el rango de una pieza no agrupable");
+		throw new AccionAgrupableInvalidaException("No se puede actualizar el rango de una pieza no agrupable");
 	}
 
 	public ArrayList<Pieza> unirABatallonDeSoldado(ArrayList<Pieza> stackDeUnion){
-		throw new NoSePuedeAgruparUnaPiezaDistintaDeSoldado("No se puede agrupar una pieza distinta de soldado");
+		throw new InteraccionInvalidaException("No se puede agrupar una pieza distinta de soldado");
 	}
 
 	public ArrayList<Pieza> aniadirPiezaAlStack(ArrayList<Pieza> stack){
@@ -155,11 +155,11 @@ public abstract class Pieza extends Movible implements Batalloneable {
 	}
 
 	public ArrayList<Pieza>  getSoldadosContiguos(){
-		throw new NoSePuedeObtenerElEquipoDeUnaPiezaNoAgrupable("No se pueden obtener los soldados contiguos de una pieza no agrupable");
+		throw new AccionAgrupableInvalidaException("No se pueden obtener los soldados contiguos de una pieza no agrupable");
 	}
 
 	public boolean soldadosInmediatosSePuedenUnir(){
-		throw new NoSePuedeObtenerElEquipoDeUnaPiezaNoAgrupable("No se pueden obtener los soldados contiguos de una pieza no agrupable");
+		throw new AccionAgrupableInvalidaException("No se pueden obtener los soldados contiguos de una pieza no agrupable");
 	}
 
 	public int getX(){
@@ -196,51 +196,51 @@ public abstract class Pieza extends Movible implements Batalloneable {
 	}
 
 	public Agrupable agrupar(Pieza pieza1, Pieza pieza2, Pieza pieza3){
-		throw new NoSePuedeAgruparUnaPiezaDistintaDeSoldado("No se puede agrupar una pieza que no sea un soldado");
+		throw new InteraccionInvalidaException("No se puede agrupar una pieza que no sea un soldado");
 	}
 
 	public Batallon crearBatallon(Pieza pieza1, Pieza pieza2, Pieza pieza3) {
-		throw new NoSePuedeCrearUnBatallonDePiezaDistintaASoldado("No se puede crear un batallon de una pieza distinta a Soldado");
+		throw new AccionAgrupableInvalidaException("No se puede crear un batallon de una pieza distinta a Soldado");
 	}
 
 	@Override
 	public Batallon darDeAltaBatallon() {
-		throw new NoSePuedeCrearUnBatallonDePiezaDistintaASoldado("No se puede crear un batallon de una pieza distinta a Soldado");
+		throw new AccionAgrupableInvalidaException("No se puede crear un batallon de una pieza distinta a Soldado");
 	}
 
 	@Override
 	public ArrayList<Pieza> getPiezasEnRango() {
-		throw new NoSePuedeObtenerElEquipoDeUnaPiezaNoAgrupable("No se pueden obtener las piezas en equipo de una entidad no agrupable");
+		throw new AccionAgrupableInvalidaException("No se pueden obtener las piezas en equipo de una entidad no agrupable");
 	}
 
 	@Override
 	public ArrayList<Pieza> getSoldadosEquipo() {
-		throw new NoSePuedeObtenerElEquipoDeUnaPiezaNoAgrupable("No se pueden obtener las piezas en equipo de una entidad no agrupable");
+		throw new AccionAgrupableInvalidaException("No se pueden obtener las piezas en equipo de una entidad no agrupable");
 	}
 
 	@Override
 	public Rango actualizaRangoInmediato(Pieza piezaCentral, Tablero tablero) {
-		throw new NoSePuedeObtenerElRangoDeUnaPiezaNoAgrupable("No se pueden obtener las piezas en rango de una entidad no agrupable");
+		throw new AccionAgrupableInvalidaException("No se pueden obtener las piezas en rango de una entidad no agrupable");
 	}
 
 	@Override
 	public void actualizaPiezasEnRango(Pieza piezaCentral) {
-		throw new NoSePuedeObtenerElRangoDeUnaPiezaNoAgrupable("No se pueden obtener las piezas en rango de una entidad no agrupable");
+		throw new AccionAgrupableInvalidaException("No se pueden obtener las piezas en rango de una entidad no agrupable");
 	}
 
 	@Override
 	public void actualizaRangoMedio(Pieza piezaCentral, Tablero tablero) {
-		throw new OperacionInvalidaException("Operacion invalida");
+		throw new AccionAgrupableInvalidaException("No se puede actualizar el rango de una pieza que no sea un soldado");
 	}
 
 	@Override
 	public void actualizaRangoCercano(Pieza piezaCentral, Tablero tablero) {
-		throw new OperacionInvalidaException("Operacion invalida");
+		throw new AccionAgrupableInvalidaException("No se puede actualizar el rango de una pieza que no sea un soldado");
 	}
 
 	@Override
 	public void actualizaRangoSoldado(Pieza piezaCentral, Tablero tablero) {
-		throw new OperacionInvalidaException("Operacion invalida");
+		throw new AccionAgrupableInvalidaException("No se puede actualizar el rango de una pieza que no sea un soldado");
 	}
 
 }

@@ -1,16 +1,11 @@
 package edu.fiuba.algoChess.interfaz.vista;
 
 import edu.fiuba.algoChess.modelo.entidades.Pieza;
-import edu.fiuba.algoChess.modelo.entorno.Tablero;
-import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;
 import edu.fiuba.algoChess.modelo.juego.Juego;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import lombok.Getter;
-import lombok.Setter;
 
 public class MenuPieza {
 	Juego juego;

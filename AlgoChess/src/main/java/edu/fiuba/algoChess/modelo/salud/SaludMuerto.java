@@ -1,5 +1,6 @@
 package edu.fiuba.algoChess.modelo.salud;
-import edu.fiuba.algoChess.modelo.excepciones.NoPuedeInteractuarseConAlgoNoVivo;
+
+import edu.fiuba.algoChess.modelo.excepciones.InteraccionInvalidaException;
 
 public class SaludMuerto extends Salud {
 
@@ -9,17 +10,17 @@ public class SaludMuerto extends Salud {
 
 	@Override
 	public Salud curar(double salud) {
-		throw new NoPuedeInteractuarseConAlgoNoVivo("no puede interactuarse con algo no vivo");
+		throw new InteraccionInvalidaException("no puede interactuarse con algo no vivo");
 	}
 
 	@Override
 	public Salud herir(double salud) {
-		throw new NoPuedeInteractuarseConAlgoNoVivo("no puede interactuarse con algo no vivo");
+		throw new InteraccionInvalidaException("no puede interactuarse con algo no vivo");
 	}
 
 	@Override
 	public void stateComportarse() {
-		throw new NoPuedeInteractuarseConAlgoNoVivo("no puede interactuarse con algo no vivo");
+		throw new InteraccionInvalidaException("no puede interactuarse con algo no vivo");
 	}
 
 	@Override

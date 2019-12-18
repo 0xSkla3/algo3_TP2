@@ -5,7 +5,8 @@ import edu.fiuba.algoChess.modelo.comportamientos.Ataque;
 import edu.fiuba.algoChess.modelo.comportamientos.AtaqueNormal;
 import edu.fiuba.algoChess.modelo.comportamientos.AtaqueNull;
 import edu.fiuba.algoChess.modelo.entorno.*;
-import edu.fiuba.algoChess.modelo.excepciones.FueraDeRangoParaEjecutarComportamientoException;
+import edu.fiuba.algoChess.modelo.excepciones.FueraDeRangoException;
+import edu.fiuba.algoChess.modelo.excepciones.InteraccionInvalidaException;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -57,7 +58,7 @@ public class Jinete extends Pieza {
 
 	@Override
 	public void ejecutarComportamientoPorDistancia(DistanciaLejana distancia, Pieza pieza) {
-		throw new FueraDeRangoParaEjecutarComportamientoException("Pieza fuera de rango");
+		throw new FueraDeRangoException("Pieza fuera de rango");
 	}
 
 	public void concretarAtaqueMedio(Pieza pieza) {
