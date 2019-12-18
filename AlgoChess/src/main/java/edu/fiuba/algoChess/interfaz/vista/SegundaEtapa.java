@@ -7,10 +7,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import lombok.Getter;
 
 public class SegundaEtapa extends HBox {
 
 	private Stage stage;
+	@Getter
 	private VistaTablero mapView;
 	private VistaJugador player1;
 	private VistaJugador player2;

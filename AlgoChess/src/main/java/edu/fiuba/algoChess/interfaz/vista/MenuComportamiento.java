@@ -2,22 +2,14 @@ package edu.fiuba.algoChess.interfaz.vista;
 
 import edu.fiuba.algoChess.modelo.entidades.Curandero;
 import edu.fiuba.algoChess.modelo.entidades.Pieza;
-import edu.fiuba.algoChess.modelo.entorno.Tablero;
+import edu.fiuba.algoChess.modelo.entidades.PiezaNull;
+import edu.fiuba.algoChess.modelo.excepciones.*;
 import edu.fiuba.algoChess.modelo.juego.Juego;
-import edu.fiuba.algoChess.interfaz.controlladores.AtacarPiezaHandler;
-import edu.fiuba.algoChess.interfaz.controlladores.CurarPiezaHandler;
-import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-
-import java.util.Optional;
 
 @AllArgsConstructor
 public class MenuComportamiento {
@@ -113,52 +105,51 @@ public class MenuComportamiento {
 	}
 
 	public void menuAtacar() {
-			Stage stageUbicar = new Stage();
-			VBox vbox = new VBox();
+		DialogoAlerta.Alerta("Ataque", "Seleccione pieza a atacar", 1);
+		this.segundaEtapa.getMapView().registrarControlador(ubicacion -> {
+			this.segundaEtapa.getMapView().registrarControlador(null);
 
-			Label labelx = new Label("Ubicacion x:");
-			TextField x = new TextField ();
-			HBox hbx = new HBox();
-			hbx.getChildren().addAll(labelx, x);
-			hbx.setSpacing(10);
-
-			Label labely = new Label("Ubicacion y:");
-			TextField y = new TextField ();
-			HBox hby = new HBox();
-			hby.getChildren().addAll(labely, y);
-			hby.setSpacing(10);
-
-			Button submit = new Button("atacar");
-			submit.setStyle("-fx-background-color:#F1C40F;");
-			submit.setOnAction(new AtacarPiezaHandler(juego, emisor, x, y, stageUbicar, segundaEtapa));
-			vbox.getChildren().addAll(hbx,hby,submit);
-			Scene sceneUbicar = new Scene(vbox);
-			stageUbicar.setScene(sceneUbicar);
-			stageUbicar.show();
+			try {
+				Pieza receptor = juego.getTablero().getCelda(ubicacion).getPiezaActual();
+				if (receptor.getClass() != PiezaNull.class) {
+					juego.atacar(emisor, receptor);
+					segundaEtapa.cambioTurno();
+					if (receptor.getVida().stateEstaVivo())
+						DialogoAlerta.Alerta("Ataque", "Ataque efectuado, vida restante del oponente: " + receptor.getVida().getValorActual(), 2);
+					else
+						DialogoAlerta.Alerta("Ataque", "Ataque efectuado, oponente muerto", 2);
+				}
+			} catch (NoSePuedeAtacarUnAliadoException exc) {
+				DialogoAlerta.Alerta("Ataque a un Aliado", "No se puede atacar a un aliado", 2);
+			} catch (NoSePuedeObtenerUnaPiezaDeCeldaaNull ex) {
+				DialogoAlerta.Alerta("Ataque a vacio", "No se puede atacar a una celda vacia", 2);
+			} catch (FueraDeRangoParaEjecutarComportamientoException ex) {
+				DialogoAlerta.Alerta("Fuera de rango", "Pieza fuera de rango para el ataque", 2);
+			}
+		});
 	}
 
 	public void menuCurar() {
-		Stage stageUbicar = new Stage();
-		VBox vbox = new VBox();
+		DialogoAlerta.Alerta("Ataque", "Seleccione pieza a curar", 1);
+		this.segundaEtapa.getMapView().registrarControlador(ubicacion -> {
+			this.segundaEtapa.getMapView().registrarControlador(null);
 
-		Label labelx = new Label("Ubicacion x:");
-		TextField x = new TextField ();
-		HBox hbx = new HBox();
-		hbx.getChildren().addAll(labelx, x);
-		hbx.setSpacing(10);
-
-		Label labely = new Label("Ubicacion y:");
-		TextField y = new TextField ();
-		HBox hby = new HBox();
-		hby.getChildren().addAll(labely, y);
-		hby.setSpacing(10);
-
-		Button submit = new Button("curar");
-		submit.setStyle("-fx-background-color:#F1C40F;");
-		submit.setOnAction(new CurarPiezaHandler(juego, (Curandero)emisor, x, y, stageUbicar, segundaEtapa));
-		vbox.getChildren().addAll(hbx,hby,submit);
-		Scene sceneUbicar = new Scene(vbox);
-		stageUbicar.setScene(sceneUbicar);
-		stageUbicar.show();
+			try {
+				Pieza receptor = juego.getTablero().getCelda(ubicacion).getPiezaActual();
+				if (receptor.getClass() != PiezaNull.class) {
+					((Curandero)emisor).curar(receptor);
+					segundaEtapa.cambioTurno();
+					DialogoAlerta.Alerta("Curacion", "Curacion efectuada, vida restante del aliado: " + receptor.getVida().getValorActual(), 2);
+				}
+			} catch (NoSePuedeCurarUnaUnidadEnemigaException exc) {
+				DialogoAlerta.Alerta("Curacion a un Enemigo", "No se puede curar a un enemigo", 2);
+			} catch (NoSePuedeObtenerUnaPiezaDeCeldaaNull ex) {
+				DialogoAlerta.Alerta("Curacion a vacio", "No se puede curar a una celda vacia", 2);
+			} catch (NoSePuedeCurarUnaCatapultaException ex) {
+				DialogoAlerta.Alerta("Curacion a catapulta", "No se puede curar a una catapulta", 2);
+			} catch (FueraDeRangoParaEjecutarComportamientoException ex) {
+				DialogoAlerta.Alerta("Muy lejos", "No se puede curar a una pieza tan lejana", 2);
+			}
+		});
 	}
 }

@@ -1,15 +1,10 @@
 package edu.fiuba.algoChess.interfaz.vista;
 
-import edu.fiuba.algoChess.interfaz.controlladores.CrearPiezaHandler;
-import edu.fiuba.algoChess.modelo.entidades.Catapulta;
-import edu.fiuba.algoChess.modelo.entidades.Jinete;
-import edu.fiuba.algoChess.modelo.entidades.Soldado;
+import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeUbicarPiezaEnSectoRival;
+import edu.fiuba.algoChess.modelo.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException;
 import edu.fiuba.algoChess.modelo.juego.Juego;
-import edu.fiuba.algoChess.interfaz.controlladores.UbicarPiezaHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -21,8 +16,6 @@ import lombok.Getter;
 import java.util.HashMap;
 
 public class PantallaPrincipal {
-
-	private final HashMap<String, Class> listaPiezas;
 	@Getter
 	private Stage stage;
 	private VistaTablero mapView;
@@ -42,9 +35,9 @@ public class PantallaPrincipal {
 
 		this.juego = new Juego(jugador1,jugador2);
 		this.stage = stage;
-		//this.pieceView = new VistaPieza(juego, this);
 		this.mapView = new VistaTablero(this.juego, this);
-		this.listaPiezas = new HashMap<>();
+
+//		this.mapView.registerHandler((u) -> DialogoAlerta.Alerta("xxx", Integer.toString(u.getCoordenadaX()) + ", " + Integer.toString(u.getCoordenadaY()), 1));
 
 		this.player1 =  new VistaJugador(juego.getJugador1());
 		this.player2 =  new VistaJugador(juego.getJugador2());
@@ -81,17 +74,14 @@ public class PantallaPrincipal {
 	    
 	    Image imgSoldado = new Image("imagenes/soldado.jpeg",80,80,false,false);
 	    ImageView soldado = new ImageView(imgSoldado);
-	    this.listaPiezas.put("Soldado", Soldado.class);
 	    menuPiece(soldado, "Soldado" ,head);
 	    
 	    Image imgJinete = new Image("imagenes/jinete.jpeg",80,80,false,false);
 	    ImageView jinete = new ImageView(imgJinete);
-		this.listaPiezas.put("Jinete", Jinete.class);
 	    menuPiece(jinete, "Jinete" ,head);
 	    
 	    Image imgCatapulta = new Image("imagenes/catapulta.jpeg",80,80,false,false);
 	    ImageView catapulta = new ImageView(imgCatapulta);
-		this.listaPiezas.put("Catapulta", Catapulta.class);
 	    menuPiece(catapulta, "Catapulta",head);
 	    
 	    Image imgCurandero = new Image("imagenes/curandero.jpeg",80,80,false,false);
@@ -107,31 +97,23 @@ public class PantallaPrincipal {
 	}
 	
 	public void menuPiece(ImageView pieza,String nombrePieza,HBox head) {
-	
-		pieza.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-			Stage stageUbicar = new Stage();
-			VBox vbox = new VBox();
+		pieza.setOnMouseClicked(e -> {
+			DialogoAlerta.Alerta("Ubicar pieza", "Seleccione la ubicación de la pieza", 1);
+			this.mapView.registrarControlador(ubicacion -> {
+				this.mapView.registrarControlador(null);
 
-			Label labelx = new Label("Ubicacion x:");
-			TextField x = new TextField ();
-			HBox hbx = new HBox();
-			hbx.getChildren().addAll(labelx, x);
-			hbx.setSpacing(10);
+				try {
+					juego.crearPieza(nombrePieza, ubicacion);
+					this.cambioTurno(head);
+				} catch (NoSePuedeUbicarPiezaEnSectoRival exc) {
+					DialogoAlerta.Alerta("Sector rival", "No se puede ubicar la pieza en el sector rival", 2);
+				} catch (NoSePuedeUbicarPorqueEstaOcupadoException ex) {
+					DialogoAlerta.Alerta("Celda ocupada", "No se puede ubicar la pieza en una celda ocupada", 2);
+				}
 
-			Label labely = new Label("Ubicacion y:");
-			TextField y = new TextField ();
-			HBox hby = new HBox();
-			hby.getChildren().addAll(labely, y);
-			hby.setSpacing(10);
-
-			Button submit = new Button("ubicar");
-			submit.setStyle("-fx-background-color:#F1C40F;");
-			submit.setOnAction(new CrearPiezaHandler(juego, nombrePieza, x, y, head, stageUbicar, pantallaPrincipal));
-			vbox.getChildren().addAll(hbx,hby,submit);
-			Scene sceneUbicar = new Scene(vbox);
-			stageUbicar.setScene(sceneUbicar);
-			stageUbicar.show();
-		});
+			});
+			}
+		);
 	}
 
 	public void actualizarVista() {

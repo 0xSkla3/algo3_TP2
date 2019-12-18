@@ -1,18 +1,15 @@
 package edu.fiuba.algoChess.interfaz.vista;
 
 import edu.fiuba.algoChess.modelo.entidades.Pieza;
-import edu.fiuba.algoChess.modelo.entorno.Tablero;
 import edu.fiuba.algoChess.modelo.entorno.Ubicacion;
 import edu.fiuba.algoChess.modelo.juego.Juego;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Node;
-import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.function.Consumer;
 
 public class VistaTablero extends Group {
 
@@ -24,6 +21,8 @@ public class VistaTablero extends Group {
     public PantallaPrincipal pantallaPrincipal;
     public GridPane table = new GridPane();
     public Pane[][] panes;
+
+    private Consumer<Ubicacion> handler = null;
 
     public VistaTablero(Juego juego, PantallaPrincipal pantallaPrincipal) {
         this.juego = juego;
@@ -37,30 +36,34 @@ public class VistaTablero extends Group {
         this.table.setVgap(5);
         this.table.setPrefSize(600, 600);
         this.table.setAlignment(Pos.CENTER);
-
-
+        this.setPickOnBounds(false);
         for (int i = 1; i <=20; i++) {
-            for (int j = 1; j <= 10; j++) {
+            for (int j = 1; j <= 20; j++) {
                 Pane v = new Pane();
                 v.setMinHeight(this.tileHeigth);
                 v.setMinWidth(this.tileWidth);
-                v.setStyle("-fx-border-color: black;-fx-position-shape:true; -fx-background-color: #932330");
+                v.setStyle("-fx-border-color: black;-fx-position-shape:true; -fx-background-color: " + (j > 10 ? "#ffcc8a" : "#932330"));
+
+                v.setUserData(new Ubicacion(j, i));
+                v.setOnMouseClicked((event) -> this.celdaClickeada((Ubicacion)((Pane)event.getSource()).getUserData()));
+
                 panes[j][i] = v;
                 table.add(v , j, i);
             }
-			for (int j = 11; j <= 20; j++) {
-				Pane v = new Pane();
-				v.setMinHeight(this.tileHeigth);
-				v.setMinWidth(this.tileWidth);
-				v.setStyle("-fx-border-color: black;-fx-position-shape:true; -fx-background-color: #ffcc8a");
-				panes[j][i] = v;
-				table.add(v , j, i);
-			}
         }
-
 
         table.setStyle("-fx-padding: 20;");
         this.instanciarVista(table);
+    }
+
+    void celdaClickeada(Ubicacion u) {
+        if(this.handler != null) {
+            this.handler.accept(u);
+        }
+    }
+
+    public void registrarControlador(Consumer<Ubicacion> handler) {
+        this.handler = handler;
     }
 
     public void actualizarVista() {

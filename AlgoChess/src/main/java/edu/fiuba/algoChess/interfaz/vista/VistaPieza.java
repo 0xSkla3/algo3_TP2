@@ -2,15 +2,10 @@ package edu.fiuba.algoChess.interfaz.vista;
 
 import edu.fiuba.algoChess.modelo.bandos.BandoJugador1;
 import edu.fiuba.algoChess.modelo.entidades.Pieza;
-import edu.fiuba.algoChess.modelo.entidades.PiezaNull;
 import edu.fiuba.algoChess.modelo.entorno.Tablero;
 import edu.fiuba.algoChess.modelo.entorno.Ubicacion;
 import edu.fiuba.algoChess.modelo.juego.Juego;
-import edu.fiuba.algoChess.interfaz.controlladores.CrearPiezaHandler;
-import javafx.application.Platform;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -44,12 +39,9 @@ public class VistaPieza {
 		ImageView pieceImage = getImageViewMin(pieza.getClass().getSimpleName());
 		DropShadow rollOverColor = new DropShadow();
 
-		pieceImage.addEventHandler(MouseEvent.MOUSE_ENTERED,
-				(event) -> pieceImage.setEffect(rollOverColor));
-		pieceImage.addEventHandler(MouseEvent.MOUSE_EXITED,
-				(event) -> pieceImage.setEffect(null));
-		pieceImage.addEventHandler(MouseEvent.MOUSE_PRESSED,
-				(event) -> comportamientoAlTocarPieza());
+		pieceImage.setOnMouseEntered((event) -> pieceImage.setEffect(rollOverColor));
+		pieceImage.setOnMouseExited((event) -> pieceImage.setEffect(null));
+		pieceImage.setOnMouseClicked((event) -> comportamientoAlTocarPieza());
 
 		HBox hbox = new HBox();
 		hbox.setStyle("-fx-border-width: 2; -fx-border-color: " + (pieza.getBando().getNombre() == "jugador1" ? "#FF0000" : "#0000FF") + "; -fx-margin: -2");
