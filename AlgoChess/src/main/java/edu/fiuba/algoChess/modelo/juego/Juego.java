@@ -47,6 +47,8 @@ public class Juego {
 	@Getter
 	Boolean finDeJuego = false;
 
+	private ObservadorTablero observadorTablero;
+
 	public Juego(String nombreJugador1, String nombreJugador2) {
 			Bando bando1 = new BandoJugador1();
 			Bando bando2 = new BandoJugador2();
@@ -64,13 +66,12 @@ public class Juego {
 			this.finDeJuego = false;
 		}
 
-	public void crearPieza (Pieza pieza){
-		if(finDeJuego || segundaEtapa) {
+	public Pieza crearPieza (Pieza piezaACrear){
+		if(finDeJuego || segundaEtapa)
 			throw new FaseDeJuegoInvalidaException("Fase de juego incorrecta");
-		}
-
-		this.getPiezasEnTablero().add(pieza);
-		this.jugadorActivo.adquirirPieza(pieza);
+		this.getPiezasEnTablero().add(piezaACrear);
+		this.jugadorActivo.adquirirPieza(piezaACrear);
+		return piezaACrear;
 	}
 
 	public void atacar (Pieza atacante, Pieza atacado){
@@ -90,6 +91,11 @@ public class Juego {
 
 	public void curar (Curandero curador, Pieza curado){
 		curador.curar(curado);
+	}
+
+	public Pieza obtenerPiezaAPartirDeUbicacion(Ubicacion ubicacionPiezaObjetivo) {
+		Pieza retorno = new PiezaNull();
+		return this.getPiezasEnTablero().stream().filter(pieza -> ubicacionPiezaObjetivo.equals(pieza.getUbicacion())).findFirst().orElse(retorno);
 	}
 
 	public void pasarTurno(){

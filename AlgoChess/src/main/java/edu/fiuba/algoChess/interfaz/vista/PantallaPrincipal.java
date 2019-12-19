@@ -104,15 +104,17 @@ public class PantallaPrincipal {
 				this.mapView.registrarControlador(null);
 
 				try {
+
 					Pieza piezaACrear;
+
 					if (nombrePieza.contains("Soldado"))
 						piezaACrear = new Soldado(ubicacion, juego.getBandoActivo(), juego.getTablero());
 					else if (nombrePieza.contains("Catapulta"))
-						piezaACrear = new Catapulta(ubicacion,  juego.getBandoActivo(), juego.getTablero());
+						piezaACrear = new Catapulta(ubicacion, juego.getBandoActivo(), juego.getTablero());
 					else if (nombrePieza.contains("Jinete"))
-						piezaACrear = new Jinete(ubicacion,  juego.getBandoActivo(), juego.getTablero());
+						piezaACrear = new Jinete(ubicacion, juego.getBandoActivo(), juego.getTablero());
 					else if (nombrePieza.contains("Curandero"))
-						piezaACrear = new Curandero(ubicacion,  juego.getBandoActivo(), juego.getTablero());
+						piezaACrear = new Curandero(ubicacion, juego.getBandoActivo(), juego.getTablero());
 					else
 						piezaACrear = new PiezaNull();
 

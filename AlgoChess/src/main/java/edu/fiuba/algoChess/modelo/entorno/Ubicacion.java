@@ -14,7 +14,7 @@ public class Ubicacion {
 	@Getter
 	private final int y;
 
-	private ObservadorTablero observadorTablero = new ObservadorTablero();
+	private ObservadorTablero observable = new ObservadorTablero();
 
 	public Ubicacion(int x, int y) {
 		this.x = x;
@@ -23,6 +23,8 @@ public class Ubicacion {
 
 	//@Override
 	public boolean equals(Object o) {
+		//if (this == o) return true;
+		//   if (o == null || getClass() != o.getClass()) return false;
 		Ubicacion ubicacion = (Ubicacion) o;
 		return (x == ubicacion.x && y == ubicacion.y);
 	}
@@ -57,12 +59,51 @@ public class Ubicacion {
 	}
 
 	public Celda obtenerCelda(Ubicacion ubicacion) {
-		return this.observadorTablero.obtenerCelda(ubicacion);
+		return this.observable.obtenerCelda(ubicacion);
 	}
 
-	public ObservadorTablero getObservadorTablero() {
-		return this.observadorTablero;
+	public ObservadorTablero getObservable() {
+		return this.observable;
 	}
+
+
+	/*public void reconocerTerrenoParaAtacarADistanciaMedia(Jinete jinete, Pieza pieza, int distanciaAReconocerEnTerreno, Ubicacion ubicacionJinete) {
+		int coordenadaXJinete = ubicacionJinete.x;
+		int coordenadaYJinete = ubicacionJinete.y;
+		boolean piezaEnemigaCercana = false;
+		boolean piezaAliadaCercana = false;
+
+		for (int i = coordenadaXJinete - distanciaAReconocerEnTerreno; i <= coordenadaXJinete + distanciaAReconocerEnTerreno; i++) {
+			if (i < 1 || i > 20) {
+				continue;
+			}
+			for (int j = coordenadaYJinete - distanciaAReconocerEnTerreno; j <= coordenadaYJinete + distanciaAReconocerEnTerreno; j++) {
+				if (j < 1 || j > 20) {
+					continue;
+				}
+				Ubicacion ubicacion = new Ubicacion(i, j);
+				if (ubicacion.equals(ubicacionJinete)) {
+					continue;
+				}
+
+				Celda celda = obtenerCelda(ubicacion); //campoDeBatalla.getCelda(ubicacion);
+				if ((celda.piezaBandoAliado(jinete.getBando()))) {
+					piezaAliadaCercana = true;
+				} else if ((celda.piezaBandoEnemigo(jinete.getBando()))) {
+					piezaEnemigaCercana = true;
+				}
+			}
+		}
+
+		if (piezaEnemigaCercana && !piezaAliadaCercana) {
+
+			throw new OperacionInvalidaException("Operacion invalida");
+
+		}
+
+		jinete.concretarAtaqueMedio(pieza);
+
+	}*/
 
 	public void reconocerTerrenoParaAtacarADistanciaMedia(Jinete jinete, int distanciaAReconocerEnTerreno, Ubicacion ubicacionJinete, Bando jineteBando) {
 		reconocerEnemigoAXDistancia(jinete, distanciaAReconocerEnTerreno, ubicacionJinete, jineteBando);
@@ -75,7 +116,9 @@ public class Ubicacion {
 		int coordenadaYJinete = ubicacionJinete.y;
 
 		for (int i = coordenadaXJinete - distanciaAReconocerEnTerreno; i <= coordenadaXJinete + distanciaAReconocerEnTerreno; i++) {
-
+			//if (i < 1 || i > 20) {
+			//	continue;
+			//}
 			for (int j = coordenadaYJinete - distanciaAReconocerEnTerreno; j <= coordenadaYJinete + distanciaAReconocerEnTerreno; j++) {
 					if ((j < 1 || i < 1) || (j > 20 || i > 20)) {
 						continue;
@@ -89,7 +132,8 @@ public class Ubicacion {
 				try {
 
 					celda.obtenerBandoDePieza().jineteReconocerEnemigoParaAtacarADistanciaMedia(jinete, jineteBando);
-
+				//} catch (UbicacionEnTableroInexistenteException exc){
+				//	continue;
 				} catch (NullPointerException ex){
 					continue; // FIXME: esteNullPointerException es porque la pieza de la celda actual es PiezaNull y la misma tiene null en bando.
 					// FIXME: en caso de crear un BandoNULL habria que agregar muchos try a todos lados.
@@ -105,6 +149,9 @@ public class Ubicacion {
 		int coordenadaYJinete = ubicacionJinete.y;
 
 		for (int i = coordenadaXJinete - distanciaAReconocerEnTerreno; i <= coordenadaXJinete + distanciaAReconocerEnTerreno; i++) {
+			//if (i < 1 || i > 20) {
+			//	continue;
+			//}
 			for (int j = coordenadaYJinete - distanciaAReconocerEnTerreno; j <= coordenadaYJinete + distanciaAReconocerEnTerreno; j++) {
 				if ((j < 1 || i < 1) || (j > 20 || i > 20)) {
 					continue;
@@ -117,8 +164,11 @@ public class Ubicacion {
 					Celda celda = obtenerCelda(ubicacion);
 				try {
 					celda.obtenerBandoDePieza().jineteReconocerAliadoParaAtacarADistanciaMedia(jinete, jineteBando);
-
-				} catch (NullPointerException ex){
+			//	} catch (UbicacionEnTableroInexistenteException exc){
+			//		continue;
+				//} catch (OperacionInvalidaSobreObjetoNuloException ex){
+					//continue;
+				} catch (NullPointerException ex){ // esteNullPointerException es porque la pieza de la celda actual es PiezaNull y la misma tiene null en bando.
 					continue;	//FIXME: esteNullPointerException es porque la pieza de la celda actual es PiezaNull y la misma tiene null en bando.
 								// FIXME: en caso de crear un BandoNULL habria que agregar muchos try a todos lados.
 				}
@@ -127,8 +177,10 @@ public class Ubicacion {
 		}
 	}
 
+
+
 	public Pieza obtenerPieza(Ubicacion ubicacion) {
-		return this.observadorTablero.obtenerPieza(ubicacion);
+		return this.observable.obtenerPieza(ubicacion);
 	}
 }
 

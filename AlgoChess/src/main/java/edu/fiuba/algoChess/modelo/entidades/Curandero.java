@@ -41,7 +41,7 @@ public class Curandero extends Pieza {
 	}
 
 	public void curar(Pieza piezaACurar){
-		DistanciaRelativa distanciaEntrePiezas = DistanciaRelativa.calcularDistanciaRelativa(this.ubicacion, piezaACurar.ubicacion);
+		DistanciaRelativa distanciaEntrePiezas = DistanciaRelativa.getDistanciaRelativa(this.ubicacion, piezaACurar.ubicacion);
 		distanciaEntrePiezas.ejecutarComportamientoPorDistancia(this, piezaACurar);
 	}
 

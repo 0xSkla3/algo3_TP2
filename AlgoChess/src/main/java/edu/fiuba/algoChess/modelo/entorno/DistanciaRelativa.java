@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class DistanciaRelativa {
 
-    public static DistanciaRelativa calcularDistanciaRelativa(Ubicacion ubicacionPiezaCentral, Ubicacion ubicacionOtraPieza){
+    public static DistanciaRelativa getDistanciaRelativa (Ubicacion ubicacionPiezaCentral, Ubicacion ubicacionOtraPieza){
 
         int otraPiezaX = ubicacionOtraPieza.getCoordenadaX();
         int otraPiezaY = ubicacionOtraPieza.getCoordenadaY();
