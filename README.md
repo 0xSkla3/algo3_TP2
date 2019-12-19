@@ -1,6 +1,16 @@
 ## Trabajo práctico final Algoritmos 3 (AlgoChess) 
 ### Comenzando 🚀
 Este es el repositorio oficial de nuestro equipo de algoritmos 3
+#### Cómo configurar el Intellij para correr el juego
+Para correr el trabajo, es necesario utilizar la siguiente configuracion de la JVM:
+
+```
+--module-path
+${PATH_TO_FX}
+--add-modules
+javafx.controls,javafx.fxml,javafx.graphics,javafx.media
+```
+
 ### Acuerdo de Prácticas 📋
 Para la ejecución de las entregas de este trabajo, se acordaron las siguientes prácticas
 #### Diagramas actualizados en papel
@@ -19,7 +29,5 @@ mvn test
 ### Construcción 🛠️
 * [Maven](https://maven.apache.org/) - Administrador de dependencias
 ### Integrantes ✒️
-- Alejandro Arenas(98199) - alearenas92@gmail.com  
 - Rocío Gallo (97490) - rochimgg@gmail.com
-- Lionel Guglielmone (96963) - lionel@guglielmone.com 
-- José Fretel (96185) - jers06.jf@gmail.com 
+- Alejandro Arenas(98199) - alearenas92@gmail.com  
