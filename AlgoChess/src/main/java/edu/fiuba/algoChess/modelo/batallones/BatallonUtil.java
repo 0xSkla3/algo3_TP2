@@ -102,7 +102,7 @@ public class BatallonUtil extends Batallon {
 					campoDeBatalla.ubicarEnCeldaFaseJuego(pieza1, ubicacionVieja1);
 					campoDeBatalla.ubicarEnCeldaFaseJuego(pieza2, ubicacionVieja2);
 					campoDeBatalla.ubicarEnCeldaFaseJuego(pieza3, ubicacionVieja3);
-					throw new CeldaYaOcupadaException("Celda ya ocupada"); 
+					throw new CeldaYaOcupadaException("Celda ya ocupada");
 				}
 			}
 
@@ -120,12 +120,6 @@ public class BatallonUtil extends Batallon {
 			enMovimiento = false;
 
 		}
-	}
-
-	private void deshacerMovimiento(Ubicacion ubicacionVieja1, Ubicacion ubicacionVieja2, Ubicacion ubicacionVieja3){
-		this.getPieza3().rollbackMovimiento(ubicacionVieja1);
-		this.getPieza2().rollbackMovimiento(ubicacionVieja2);
-		this.getPieza1().rollbackMovimiento(ubicacionVieja3);
 	}
 
 	public Batallon desagrupar(){

@@ -2,6 +2,35 @@
 
 title __JUEGO's Class Diagram__\n
 
+  namespace edu.fiuba.algoChess {
+    namespace modelo.juego {
+      class edu.fiuba.algoChess.modelo.juego.EstadoFaseInicial {
+          + ubicarEnCelda()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.juego {
+      class edu.fiuba.algoChess.modelo.juego.EstadoFaseJuego {
+          + ubicarEnCelda()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.juego {
+      abstract class edu.fiuba.algoChess.modelo.juego.EstadoJuego {
+          {abstract} + ubicarEnCelda()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.juego {
       class edu.fiuba.algoChess.modelo.juego.Juego {
           - jugador1 : Jugador
           - jugador2 : Jugador
@@ -18,7 +47,12 @@ title __JUEGO's Class Diagram__\n
           + terminarJuego():
           - evaluarFinDeJuego()
       }
+    }
+  }
+  
 
+  namespace edu.fiuba.algoChess {
+    namespace modelo.juego {
       class edu.fiuba.algoChess.modelo.juego.Jugador {
           - creditos : int
           - nombre : String
@@ -28,30 +62,53 @@ title __JUEGO's Class Diagram__\n
           + adquirirPieza(Pieza):
           + sumarPuntaje(int):
       }
+    }
+  }
+  
 
+  namespace edu.fiuba.algoChess {
+    namespace modelo.juego {
       interface edu.fiuba.algoChess.modelo.juego.Turno {
           {abstract} + cambiarTurno(): Turno
           {abstract} + pasar(): Turno
           {abstract} + rendirse(): Turno
       }
+    }
+  }
+  
 
+  namespace edu.fiuba.algoChess {
+    namespace modelo.juego {
       class edu.fiuba.algoChess.modelo.juego.TurnoFinal {
           + cambiarTurno(): Turno
           + pasar(): Turno
           + rendirse(): Turno
       }
+    }
+  }
+  
 
+  namespace edu.fiuba.algoChess {
+    namespace modelo.juego {
       class edu.fiuba.algoChess.modelo.juego.TurnoJugador1 {
           + cambiarTurno(): Turno
           + pasar(): Turno
           + rendirse(): Turno
       }
+    }
+  }
+  
 
+  namespace edu.fiuba.algoChess {
+    namespace modelo.juego {
       class edu.fiuba.algoChess.modelo.juego.TurnoJugador2 {
            + cambiarTurno(): Turno
            + pasar(): Turno
            + rendirse(): Turno
       }
+    }
+  }
+  
 
   edu.fiuba.algoChess.modelo.juego.TurnoFinal .up.|> edu.fiuba.algoChess.modelo.juego.Turno
   edu.fiuba.algoChess.modelo.juego.TurnoJugador1 .up.|> edu.fiuba.algoChess.modelo.juego.Turno

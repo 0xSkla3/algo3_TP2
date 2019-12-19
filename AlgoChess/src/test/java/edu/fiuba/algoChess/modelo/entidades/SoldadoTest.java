@@ -64,7 +64,7 @@ public class SoldadoTest {
 		soldado3.actualizaRango(tableroTest);
 
 		Batallon batallon = BatallonUtil.batallonAsociadoONull(soldado1);
-		batallon.moverBatallonArriba(tableroTest);
+		batallon.moverseArriba(tableroTest);
 		assertEquals(batallon.getPieza3().getUbicacion(), new Ubicacion(2,3));
 		assertEquals(batallon.getPieza1().getUbicacion(), new Ubicacion(3,3));
 		assertEquals(batallon.getPieza2().getUbicacion(), new Ubicacion(4,3));
@@ -92,7 +92,7 @@ public class SoldadoTest {
 		soldado3.actualizaRango(tableroTest);
 
 		Batallon batallon = BatallonUtil.batallonAsociadoONull(soldado1);
-		batallon.moverBatallonArriba(tableroTest);
+		batallon.moverseArriba(tableroTest);
 
 	}
 
@@ -112,9 +112,9 @@ public class SoldadoTest {
 		soldado3.actualizaRango(tableroTest);
 
 		Batallon batallon = Batallon.batallonAsociadoONull(soldado1);
-		Batallon batallonModificado = batallon.moverBatallonArriba(tableroTest);
+		batallon.moverseArriba(tableroTest);
 
-		TestHelper.assertEqualsBatallonNull(batallonModificado);
+		TestHelper.assertEqualsBatallonNull(soldado1.getBatallonActual());
 	}
 
 	@Test
@@ -139,7 +139,7 @@ public class SoldadoTest {
 		soldado4.actualizaRango(tableroTest);
 
 		Batallon batallon = BatallonUtil.batallonAsociadoONull(soldado1);
-		batallon.moverBatallonArriba(tableroTest);
+		batallon.moverseArriba(tableroTest);
 
 		assertEquals(batallon.getPieza1().getUbicacion(), new Ubicacion(3,3));
 		assertEquals(batallon.getPieza2().getUbicacion(), new Ubicacion(4,3));

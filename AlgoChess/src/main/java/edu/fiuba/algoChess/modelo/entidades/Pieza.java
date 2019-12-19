@@ -7,6 +7,7 @@ import edu.fiuba.algoChess.modelo.comportamientos.Ataque;
 import edu.fiuba.algoChess.modelo.entorno.*;
 import edu.fiuba.algoChess.modelo.excepciones.AccionAgrupableInvalidaException;
 import edu.fiuba.algoChess.modelo.excepciones.CeldaYaOcupadaException;
+import edu.fiuba.algoChess.modelo.excepciones.InteraccionInvalidaException;
 import edu.fiuba.algoChess.modelo.rangos.Rango;
 import edu.fiuba.algoChess.modelo.salud.Salud;
 import edu.fiuba.algoChess.modelo.salud.SaludLlena;
@@ -111,11 +112,9 @@ public abstract class Pieza extends Movible implements Batalloneable {
 		throw new AccionAgrupableInvalidaException("No se puede actualizar el rango de una pieza no agrupable");
 	}
 
-/*
 	public ArrayList<Pieza> unirABatallonDeSoldado(ArrayList<Pieza> stackDeUnion){
 		throw new InteraccionInvalidaException("No se puede agrupar una pieza distinta de soldado");
 	}
-*/
 
 	public ArrayList<Pieza> aniadirPiezaAlStack(ArrayList<Pieza> stack){
 		try {
@@ -164,7 +163,7 @@ public abstract class Pieza extends Movible implements Batalloneable {
 	public abstract void ejecutarComportamientoPorDistancia(DistanciaLejana distancia, Pieza pieza);
 
 	public void atacar(Pieza atacado){
-		DistanciaRelativa distanciaEntrePiezas = DistanciaRelativa.calcularDistanciaRelativa(this.ubicacion, atacado.ubicacion);
+		DistanciaRelativa distanciaEntrePiezas = DistanciaRelativa.getDistanciaRelativa(this.ubicacion, atacado.ubicacion);
 		distanciaEntrePiezas.ejecutarComportamientoPorDistancia(this, atacado);
 	}
 
