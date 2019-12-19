@@ -2,174 +2,45 @@
 
 title __RANGOS's Class Diagram__\n
 
-  namespace edu.fiuba.algoChess {
-    namespace modelo.rangos {
-      interface edu.fiuba.algoChess.modelo.rangos.Agrupable {
-          {abstract} + agrupar()
-      }
-    }
-  }
-  
-
-  namespace edu.fiuba.algoChess {
-    namespace modelo.rangos {
       interface edu.fiuba.algoChess.modelo.rangos.Rango {
-          {abstract} + actualizaPiezasEnRango()
-          {abstract} + actualizaRangoCercano()
-          {abstract} + actualizaRangoInmediato()
-          {abstract} + actualizaRangoMedio()
-          {abstract} + actualizaRangoSoldado()
-          {abstract} + darDeAltaBatallon()
-          {abstract} + getPiezasEnRango()
-          {abstract} + getSoldadosEquipo()
+          {abstract} + actualizaPiezasEnRango(Pieza):
+          {abstract} + actualizaRangoInmediato(Pieza, Tablero): Rango
+          {abstract} + actualizaRangoSoldado(Pieza, Tablero):
+          {abstract} + darDeAltaBatallon(): Batallon
       }
-    }
-  }
-  
 
-  namespace edu.fiuba.algoChess {
-    namespace modelo.rangos {
       class edu.fiuba.algoChess.modelo.rangos.RangoCercano {
           ~ piezasEnRango : ArrayList<Pieza>
           - rangoCarcano : Map<Ubicacion, Celda>
-          + actualizaPiezasEnRango()
-          + actualizaRangoCercano()
-          + actualizaRangoInmediato()
-          + actualizaRangoMedio()
-          + actualizaRangoSoldado()
-          + darDeAltaBatallon()
-          + getPiezasEnRango()
-          + getRangoCarcano()
-          + getSoldadosEquipo()
-          + setPiezasEnRango()
-          + setRangoCarcano()
+          + actualizaPiezasEnRango(Pieza):
+          + actualizaRangoInmediato(Pieza, Tablero): Rango
+          + actualizaRangoSoldado(Pieza, Tablero):
+          + darDeAltaBatallon(): Batallon
       }
-    }
-  }
-  
 
-  namespace edu.fiuba.algoChess {
-    namespace modelo.rangos {
       abstract class edu.fiuba.algoChess.modelo.rangos.RangoInmediato {
+          # arriba : Celda
+          # abajo : Celda
+          # izquierda : Celda
+          # derecha : Celda
+          # actual : Celda
           ~ piezasEnRango : ArrayList<Pieza>
-          + RangoInmediato()
-          + RangoInmediato()
-          + actualizaPiezasEnRango()
-          + actualizaRangoInmediato()
-          + darDeAltaBatallon()
-          + getAbajo()
-          + getActual()
-          + getArriba()
-          + getDerecha()
-          + getIzquierda()
-          + getPiezasEnRango()
-          + getSoldadosEquipo()
-          + setAbajo()
-          + setActual()
-          + setArriba()
-          + setDerecha()
-          + setIzquierda()
-          + setPiezasEnRango()
+          + actualizaPiezasEnRango(Pieza):
+          + actualizaRangoInmediato(Pieza, Tablero): Rango
+          + darDeAltaBatallon(): Batallon
       }
-    }
-  }
-  
 
-  namespace edu.fiuba.algoChess {
-    namespace modelo.rangos {
-      class edu.fiuba.algoChess.modelo.rangos.RangoInmediatoNull {
-          + actualizaPiezasEnRango()
-          + actualizaRangoCercano()
-          + actualizaRangoInmediato()
-          + actualizaRangoMedio()
-          + actualizaRangoSoldado()
-          + darDeAltaBatallon()
-          + getPiezasEnRango()
-          + getSoldadosEquipo()
-      }
-    }
-  }
-  
-
-  namespace edu.fiuba.algoChess {
-    namespace modelo.rangos {
-      class edu.fiuba.algoChess.modelo.rangos.RangoJinete {
-          + actualizaPiezasEnRango()
-          + actualizaRangoCercano()
-          + actualizaRangoInmediato()
-          + actualizaRangoMedio()
-          + actualizaRangoSoldado()
-          + darDeAltaBatallon()
-          + getPiezasEnRango()
-          + getRangoCercanoJinete()
-          + getRangoInmediatoJinete()
-          + getSoldadosEquipo()
-          + setRangoCercanoJinete()
-          + setRangoInmediatoJinete()
-      }
-    }
-  }
-  
-
-  namespace edu.fiuba.algoChess {
-    namespace modelo.rangos {
-      class edu.fiuba.algoChess.modelo.rangos.RangoNull {
-          + actualizaPiezasEnRango()
-          + actualizaRangoCercano()
-          + actualizaRangoInmediato()
-          + actualizaRangoMedio()
-          + actualizaRangoSoldado()
-          + darDeAltaBatallon()
-          + getPiezasEnRango()
-          + getSoldadosEquipo()
-      }
-    }
-  }
-  
-
-  namespace edu.fiuba.algoChess {
-    namespace modelo.rangos {
       class edu.fiuba.algoChess.modelo.rangos.RangoSoldado {
           ~ obstaculos : ArrayList<Pieza>
           ~ soldadosEquipo : ArrayList<Pieza>
-          + RangoSoldado()
-          + RangoSoldado()
-          + actualizaObstaculosInmediatos()
-          + actualizaRangoCercano()
-          + actualizaRangoMedio()
-          + actualizaRangoSoldado()
-          + darDeAltaBatallon()
-          + getObstaculos()
-          + getSoldadosEquipo()
-          + setObstaculos()
-          + setSoldadosEquipo()
-          - actualizaSoldadosCercanos()
+          + actualizaObstaculosInmediatos(Pieza): ArrayList<Pieza>
+          + actualizaRangoSoldado(Pieza, Tablero):
+          + darDeAltaBatallon() : Batallon
+          - actualizaSoldadosCercanos(Pieza): ArrayList<Pieza>
       }
-    }
-  }
-  
 
   edu.fiuba.algoChess.modelo.rangos.RangoCercano .up.|> edu.fiuba.algoChess.modelo.rangos.Rango
   edu.fiuba.algoChess.modelo.rangos.RangoInmediato .up.|> edu.fiuba.algoChess.modelo.rangos.Rango
-  edu.fiuba.algoChess.modelo.rangos.RangoInmediato o-- edu.fiuba.algoChess.modelo.entorno.Celda : abajo
-  edu.fiuba.algoChess.modelo.rangos.RangoInmediato o-- edu.fiuba.algoChess.modelo.entorno.Celda : actual
-  edu.fiuba.algoChess.modelo.rangos.RangoInmediato o-- edu.fiuba.algoChess.modelo.entorno.Celda : arriba
-  edu.fiuba.algoChess.modelo.rangos.RangoInmediato o-- edu.fiuba.algoChess.modelo.entorno.Celda : derecha
-  edu.fiuba.algoChess.modelo.rangos.RangoInmediato o-- edu.fiuba.algoChess.modelo.entorno.Celda : izquierda
-  edu.fiuba.algoChess.modelo.rangos.RangoInmediatoNull -up-|> edu.fiuba.algoChess.modelo.rangos.RangoNull
-  edu.fiuba.algoChess.modelo.rangos.RangoJinete .up.|> edu.fiuba.algoChess.modelo.rangos.Rango
-  edu.fiuba.algoChess.modelo.rangos.RangoJinete o-- edu.fiuba.algoChess.modelo.rangos.RangoCercano : rangoCercanoJinete
-  edu.fiuba.algoChess.modelo.rangos.RangoJinete o-- edu.fiuba.algoChess.modelo.rangos.RangoInmediato : rangoInmediatoJinete
-  edu.fiuba.algoChess.modelo.rangos.RangoNull .up.|> edu.fiuba.algoChess.modelo.rangos.Rango
-  edu.fiuba.algoChess.modelo.rangos.RangoSoldado .up.|> edu.fiuba.algoChess.modelo.rangos.Rango
   edu.fiuba.algoChess.modelo.rangos.RangoSoldado -up-|> edu.fiuba.algoChess.modelo.rangos.RangoInmediato
-
-
-right footer
-
-
-PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
-For more information about this tool, please contact philippe.mesmeur@gmail.com
-endfooter
 
 @enduml
