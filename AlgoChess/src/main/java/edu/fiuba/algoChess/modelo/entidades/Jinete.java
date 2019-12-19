@@ -6,7 +6,6 @@ import edu.fiuba.algoChess.modelo.comportamientos.AtaqueNormal;
 import edu.fiuba.algoChess.modelo.comportamientos.AtaqueNull;
 import edu.fiuba.algoChess.modelo.entorno.*;
 import edu.fiuba.algoChess.modelo.excepciones.FueraDeRangoException;
-import edu.fiuba.algoChess.modelo.excepciones.InteraccionInvalidaException;
 import lombok.Getter;
 import lombok.Setter;
 

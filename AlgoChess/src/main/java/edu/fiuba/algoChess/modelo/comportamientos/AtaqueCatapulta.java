@@ -1,10 +1,8 @@
 package edu.fiuba.algoChess.modelo.comportamientos;
 
 import edu.fiuba.algoChess.modelo.entidades.Pieza;
-import edu.fiuba.algoChess.modelo.excepciones.InteraccionInvalidaException;
 import edu.fiuba.algoChess.modelo.excepciones.OperacionInvalidaSobreObjetoNuloException;
 
-import java.util.concurrent.CopyOnWriteArrayList;
 
 public class AtaqueCatapulta extends Ataque{
 
