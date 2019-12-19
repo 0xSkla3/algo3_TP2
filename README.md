@@ -4,7 +4,7 @@ Este es el repositorio oficial de nuestro equipo de algoritmos 3
 #### Cómo configurar el Intellij para correr el juego
 Para correr el trabajo, es necesario utilizar la siguiente configuracion de la JVM:
 
-```
+```bash
 --module-path
 ${PATH_TO_FX}
 --add-modules
