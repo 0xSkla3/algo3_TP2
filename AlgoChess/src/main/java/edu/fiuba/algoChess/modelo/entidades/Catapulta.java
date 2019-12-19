@@ -31,7 +31,6 @@ public class Catapulta extends Pieza {
 		this.ataque.atacar(pieza);
 	}
 
-
 	@Override
 	public void aumentarVida(double aumento) {
 		throw new InteraccionInvalidaException("No se puede curar una catapulta");
