@@ -102,7 +102,7 @@ public class BatallonUtil extends Batallon {
 					campoDeBatalla.ubicarEnCeldaFaseJuego(pieza1, ubicacionVieja1);
 					campoDeBatalla.ubicarEnCeldaFaseJuego(pieza2, ubicacionVieja2);
 					campoDeBatalla.ubicarEnCeldaFaseJuego(pieza3, ubicacionVieja3);
-					throw new CeldaYaOcupadaException("Celda ya ocupada"); 
+					throw new CeldaYaOcupadaException("Celda ya ocupada");
 				}
 			}
 
