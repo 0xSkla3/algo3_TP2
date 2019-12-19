@@ -47,4 +47,8 @@ public abstract class Movible {
 		throw new AccionAgrupableInvalidaException("No se puede mover un grupo para una pieza unica");
 	}
 
+	public void rollbackMovimiento(Ubicacion ubicacionVieja){
+		throw new AccionAgrupableInvalidaException("No se puede hacer rollback del movimiento de una entidad no agrupable");
+	}
+
 }

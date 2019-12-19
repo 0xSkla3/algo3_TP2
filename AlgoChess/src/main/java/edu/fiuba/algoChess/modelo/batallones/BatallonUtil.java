@@ -53,54 +53,79 @@ public class BatallonUtil extends Batallon {
 	}
 
 	@Override
-	public Batallon moverBatallon(Tablero campoDeBatalla, Ubicacion ubicacion1, Ubicacion ubicacion2, Ubicacion ubicacion3){
+	public Batallon moverBatallon(Tablero campoDeBatalla, Ubicacion ubicacion1, Ubicacion ubicacion2, Ubicacion ubicacion3) {
 
-		if(enMovimiento) {
+		if (enMovimiento) {
 			throw new BatallonEnMovimientoException("Batallon en movimiento");
 		}
-		enMovimiento = true;
 
 		Ubicacion ubicacionVieja1 = getPieza1().getUbicacion();
 		Ubicacion ubicacionVieja2 = getPieza2().getUbicacion();
 		Ubicacion ubicacionVieja3 = getPieza3().getUbicacion();
 
-		campoDeBatalla.eliminar(ubicacionVieja1);
-		campoDeBatalla.eliminar(ubicacionVieja2);
-		campoDeBatalla.eliminar(ubicacionVieja3);
+		enMovimiento = true;
 
-		boolean sePuedenMoverTodos = true;
 		try {
-			this.getPieza1().moverPiezaDeBatallon(campoDeBatalla, ubicacion1);
-		}catch(CeldaYaOcupadaException ex) {
-			campoDeBatalla.ubicarEnCeldaFaseJuego(this.getPieza1(),ubicacionVieja1);
-			sePuedenMoverTodos = false;
+			campoDeBatalla.eliminar(ubicacionVieja1);
+			campoDeBatalla.eliminar(ubicacionVieja2);
+			campoDeBatalla.eliminar(ubicacionVieja3);
+
+			boolean sePuedenMoverTodos = true;
+			try {
+				this.getPieza1().moverPiezaDeBatallon(campoDeBatalla, ubicacion1);
+			} catch (CeldaYaOcupadaException ex) {
+				campoDeBatalla.ubicarEnCeldaFaseJuego(this.getPieza1(), ubicacionVieja1);
+				sePuedenMoverTodos = false;
+			}
+			try {
+				this.getPieza2().moverPiezaDeBatallon(campoDeBatalla, ubicacion2);
+			} catch (CeldaYaOcupadaException ex) {
+				try {
+					campoDeBatalla.ubicarEnCeldaFaseJuego(this.getPieza2(), ubicacionVieja2);
+					sePuedenMoverTodos = false;
+				} catch (CeldaYaOcupadaException e) {
+					campoDeBatalla.eliminar(pieza1.getUbicacion());
+					campoDeBatalla.ubicarEnCeldaFaseJuego(pieza1, ubicacionVieja1);
+					campoDeBatalla.ubicarEnCeldaFaseJuego(pieza2, ubicacionVieja2);
+					throw new CeldaYaOcupadaException("Celda ya ocupada");
+				}
+			}
+			try {
+				this.getPieza3().moverPiezaDeBatallon(campoDeBatalla, ubicacion3);
+			} catch (CeldaYaOcupadaException ex) {
+				try {
+					campoDeBatalla.ubicarEnCeldaFaseJuego(this.getPieza3(), ubicacionVieja3);
+					sePuedenMoverTodos = false;
+				} catch (CeldaYaOcupadaException e) {
+					campoDeBatalla.eliminar(pieza1.getUbicacion());
+					campoDeBatalla.eliminar(pieza2.getUbicacion());
+					campoDeBatalla.ubicarEnCeldaFaseJuego(pieza1, ubicacionVieja1);
+					campoDeBatalla.ubicarEnCeldaFaseJuego(pieza2, ubicacionVieja2);
+					campoDeBatalla.ubicarEnCeldaFaseJuego(pieza3, ubicacionVieja3);
+					throw new CeldaYaOcupadaException("Celda ya ocupada"); 
+				}
+			}
+
+			this.getPieza1().actualizaRango(campoDeBatalla);
+			this.getPieza2().actualizaRango(campoDeBatalla);
+			this.getPieza3().actualizaRango(campoDeBatalla);
+
+			if (!sePuedenMoverTodos) {
+				return this.desagrupar();
+			}
+
+			return this;
+
+		} finally {
+			enMovimiento = false;
+
 		}
-		try {
-			this.getPieza2().moverPiezaDeBatallon(campoDeBatalla, ubicacion2);
-		}catch(CeldaYaOcupadaException ex) {
-			campoDeBatalla.ubicarEnCeldaFaseJuego(this.getPieza2(),ubicacionVieja2);
-			sePuedenMoverTodos = false;
-		}
-		try {
-			this.getPieza3().moverPiezaDeBatallon(campoDeBatalla, ubicacion3);
-		}catch(CeldaYaOcupadaException ex) {
-			campoDeBatalla.ubicarEnCeldaFaseJuego(this.getPieza3(),ubicacionVieja3);
-			sePuedenMoverTodos = false;
-		}
+	}
 
-		this.getPieza1().actualizaRango(campoDeBatalla);
-		this.getPieza2().actualizaRango(campoDeBatalla);
-		this.getPieza3().actualizaRango(campoDeBatalla);
-
-
-		enMovimiento = false;
-
-		if(!sePuedenMoverTodos){
-			return this.desagrupar();
-		}
-
-		return this;
-
+	private void deshacerMovimiento(Ubicacion ubicacionVieja1, Ubicacion ubicacionVieja2, Ubicacion ubicacionVieja3){
+		this.getPieza3().rollbackMovimiento(ubicacionVieja1);
+		this.getPieza2().rollbackMovimiento(ubicacionVieja2);
+		this.getPieza1().rollbackMovimiento(ubicacionVieja3);
 	}
 
 	public Batallon desagrupar(){

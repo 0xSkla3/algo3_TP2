@@ -9,6 +9,7 @@ import edu.fiuba.algoChess.modelo.entidades.*;
 import edu.fiuba.algoChess.modelo.entorno.ObservadorTablero;
 import edu.fiuba.algoChess.modelo.entorno.Tablero;
 import edu.fiuba.algoChess.modelo.entorno.Ubicacion;
+import edu.fiuba.algoChess.modelo.excepciones.AccionAgrupableInvalidaException;
 import edu.fiuba.algoChess.modelo.excepciones.FaseDeJuegoInvalidaException;
 import edu.fiuba.algoChess.modelo.excepciones.OperacionInvalidaSobreObjetoNuloException;
 import lombok.Getter;
@@ -149,7 +150,7 @@ public class Juego {
 
 	public void actualizarRangos(){
 		this.tablero.getCampoDeBatalla().forEach((ubicacion, celda) -> {try{celda.getPiezaActual().actualizaRango(this.tablero);
-		}catch(OperacionInvalidaSobreObjetoNuloException e){}
+		}catch(OperacionInvalidaSobreObjetoNuloException | AccionAgrupableInvalidaException e){}
 		});
 	}
 }

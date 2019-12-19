@@ -102,14 +102,10 @@ public abstract class Pieza extends Movible implements Batalloneable {
 
 	public void moverPiezaDeBatallon( Tablero campoDeBatalla, Ubicacion ubicacion){
 		this.vida.stateComportarse();
-		try {
 			Ubicacion ubicacionVieja = this.getUbicacion();
-			campoDeBatalla.ubicarEnCeldaFaseInicial(this, ubicacion);
+			campoDeBatalla.ubicarEnCeldaFaseJuego(this, ubicacion);
 			campoDeBatalla.eliminar(ubicacionVieja);
 			this.setUbicacion(ubicacion);
-		}catch (CeldaYaOcupadaException ex){
-			throw new CeldaYaOcupadaException("no se puede ubicar pieza por estar el casillero ocupado");
-		}
 	}
 
 	public Rango actualizaRango(Tablero tablero){
