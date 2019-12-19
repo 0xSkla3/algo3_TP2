@@ -122,12 +122,6 @@ public class BatallonUtil extends Batallon {
 		}
 	}
 
-	private void deshacerMovimiento(Ubicacion ubicacionVieja1, Ubicacion ubicacionVieja2, Ubicacion ubicacionVieja3){
-		this.getPieza3().rollbackMovimiento(ubicacionVieja1);
-		this.getPieza2().rollbackMovimiento(ubicacionVieja2);
-		this.getPieza1().rollbackMovimiento(ubicacionVieja3);
-	}
-
 	public Batallon desagrupar(){
 		this.pieza1.setBatallonActual(new BatallonNull());
 		this.pieza2.setBatallonActual(new BatallonNull());
