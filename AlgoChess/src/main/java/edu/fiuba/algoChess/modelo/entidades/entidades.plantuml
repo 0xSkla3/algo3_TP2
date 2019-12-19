@@ -11,10 +11,6 @@ title __ENTIDADES's Class Diagram__\n
           + ejecutarComportamientoPorDistancia(DistanciaLejana, Pieza):
       }
 
-
-  
-
-
       class edu.fiuba.algoChess.modelo.entidades.Curandero {
           - curacion : Curacion
           + atacar(Pieza)
@@ -24,11 +20,9 @@ title __ENTIDADES's Class Diagram__\n
           + ejecutarComportamientoPorDistancia(DistanciaLejana, Pieza)
       }
 
-
-  
-
-
       class edu.fiuba.algoChess.modelo.entidades.Jinete {
+          - ataqueCercano : AtaqueNormal
+          - ataqueMedio : AtaqueNormal
           - danioCercano : double
           - danioMedio : double
           - distanciaAReconocerEnTerreno : int
@@ -39,10 +33,6 @@ title __ENTIDADES's Class Diagram__\n
           + ejecutarComportamientoPorDistancia(DistanciaMedia, Pieza)
           + ejecutarComportamientoPorDistancia(DistanciaLejana, Pieza)
       }
-
-
-  
-
 
       abstract class edu.fiuba.algoChess.modelo.entidades.Movible {
           + mover(Tablero, Ubicacion):
@@ -56,10 +46,6 @@ title __ENTIDADES's Class Diagram__\n
           + moverseAbajo(Tablero):
           + moverseArriba(Tablero):
       }
-
-
-  
-
 
       abstract class edu.fiuba.algoChess.modelo.entidades.Pieza {
           # costo : int
@@ -99,11 +85,8 @@ title __ENTIDADES's Class Diagram__\n
           + pisar(Celda, Pieza):
           + recibirAtaque(Ataque):
           + soldadosInmediatosSePuedenUnir(): boolean
+          + unirABatallonDeSoldado(ArrayList<Pieza>): ArrayList<Pieza>
       }
-
-
-  
-
 
       class edu.fiuba.algoChess.modelo.entidades.PiezaNull {
           + actualizaPiezasEnRango(Pieza):
@@ -125,54 +108,29 @@ title __ENTIDADES's Class Diagram__\n
           + soldadosInmediatosSePuedenUnir(): boolean
       }
 
-
-  
-
-
       class edu.fiuba.algoChess.modelo.entidades.Soldado {
+          - ataqueCercano : AtaqueNormal
           - danioCercano : int
           + actualizaRango(Tablero):
           + actualizaRangoInmediato(Pieza, Tablero): Rango
-          + aniadirSoldadoAliadoStack()
-          + aniadirTodoMenosSoldadoAlStack()
-          + darDeAltaBatallon()
-          + ejecutarComportamientoPorDistancia()
-          + ejecutarComportamientoPorDistancia()
-          + ejecutarComportamientoPorDistancia()
-          + getAtaqueCercano()
-          + getDanio()
-          + getDanioCercano()
-          + getSoldadosContiguos()
-          + getSoldadosEquipo()
-          + moverPiezaDeBatallon()
-          + setAtaqueCercano()
-          + setDanioCercano()
-          + setRango()
-          + soldadosInmediatosSePuedenUnir()
-          + unirABatallonDeSoldado()
+          + aniadirSoldadoAliadoStack(ArrayList<Pieza>, Pieza): ArrayList<Pieza>
+          + aniadirTodoMenosSoldadoAlStack(ArrayList<Pieza>): ArrayList<Pieza>
+          + darDeAltaBatallon(): Batallon
+          + ejecutarComportamientoPorDistancia(DistanciaCercana, Pieza):
+          + ejecutarComportamientoPorDistancia(DistanciaMedia, Pieza):
+          + ejecutarComportamientoPorDistancia(DistanciaLejana, Pieza):
+          + moverPiezaDeBatallon(Tablero, Ubicacion):
+          + soldadosInmediatosSePuedenUnir(): boolean
+          + unirABatallonDeSoldado(ArrayList<Pieza>): ArrayList<Pieza>
       }
 
-
-  
-
   edu.fiuba.algoChess.modelo.entidades.Catapulta -up-|> edu.fiuba.algoChess.modelo.entidades.Pieza
-  edu.fiuba.algoChess.modelo.entidades.Catapulta o-- edu.fiuba.algoChess.modelo.comportamientos.AtaqueCatapulta : ataque
   edu.fiuba.algoChess.modelo.entidades.Curandero -up-|> edu.fiuba.algoChess.modelo.entidades.Pieza
-  edu.fiuba.algoChess.modelo.entidades.Curandero o-- edu.fiuba.algoChess.modelo.comportamientos.Curacion : curacion
   edu.fiuba.algoChess.modelo.entidades.Jinete -up-|> edu.fiuba.algoChess.modelo.entidades.Pieza
-  edu.fiuba.algoChess.modelo.entidades.Jinete o-- edu.fiuba.algoChess.modelo.comportamientos.AtaqueNormal : ataqueCercano
-  edu.fiuba.algoChess.modelo.entidades.Jinete o-- edu.fiuba.algoChess.modelo.comportamientos.Ataque : ataqueMedio
   edu.fiuba.algoChess.modelo.entidades.Pieza .up.|> edu.fiuba.algoChess.modelo.batallones.Batalloneable
   edu.fiuba.algoChess.modelo.entidades.Pieza -up-|> edu.fiuba.algoChess.modelo.entidades.Movible
-  edu.fiuba.algoChess.modelo.entidades.Pieza o-- edu.fiuba.algoChess.modelo.bandos.Bando : bando
-  edu.fiuba.algoChess.modelo.entidades.Pieza o-- edu.fiuba.algoChess.modelo.bandos.Bando : bandoCeldaActual
-  edu.fiuba.algoChess.modelo.entidades.Pieza o-- edu.fiuba.algoChess.modelo.entorno.DistanciaRelativa : calculadorDistancia
-  edu.fiuba.algoChess.modelo.entidades.Pieza o-- edu.fiuba.algoChess.modelo.rangos.Rango : rango
-  edu.fiuba.algoChess.modelo.entidades.Pieza o-- edu.fiuba.algoChess.modelo.entorno.Ubicacion : ubicacion
-  edu.fiuba.algoChess.modelo.entidades.Pieza o-- edu.fiuba.algoChess.modelo.salud.Salud : vida
   edu.fiuba.algoChess.modelo.entidades.PiezaNull -up-|> edu.fiuba.algoChess.modelo.entidades.Pieza
   edu.fiuba.algoChess.modelo.entidades.Soldado -up-|> edu.fiuba.algoChess.modelo.entidades.Pieza
-  edu.fiuba.algoChess.modelo.entidades.Soldado o-- edu.fiuba.algoChess.modelo.comportamientos.AtaqueNormal : ataqueCercano
 
 
 @enduml

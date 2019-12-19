@@ -1,5 +1,6 @@
 package edu.fiuba.algoChess.interfaz.vista;
 
+import edu.fiuba.algoChess.modelo.entidades.*;
 import edu.fiuba.algoChess.modelo.excepciones.CeldaYaOcupadaException;
 import edu.fiuba.algoChess.modelo.excepciones.UbicacionEnSectorInvalidoException;
 import edu.fiuba.algoChess.modelo.juego.Juego;
@@ -103,7 +104,19 @@ public class PantallaPrincipal {
 				this.mapView.registrarControlador(null);
 
 				try {
-					juego.crearPieza(nombrePieza, ubicacion);
+					Pieza piezaACrear;
+					if (nombrePieza.contains("Soldado"))
+						piezaACrear = new Soldado(ubicacion, juego.getBandoActivo(), juego.getTablero());
+					else if (nombrePieza.contains("Catapulta"))
+						piezaACrear = new Catapulta(ubicacion,  juego.getBandoActivo(), juego.getTablero());
+					else if (nombrePieza.contains("Jinete"))
+						piezaACrear = new Jinete(ubicacion,  juego.getBandoActivo(), juego.getTablero());
+					else if (nombrePieza.contains("Curandero"))
+						piezaACrear = new Curandero(ubicacion,  juego.getBandoActivo(), juego.getTablero());
+					else
+						piezaACrear = new PiezaNull();
+
+					juego.crearPieza(piezaACrear);
 					ReproductorSonidos.reproducir("coin");
 					this.cambioTurno(head);
 				} catch (UbicacionEnSectorInvalidoException exc) {

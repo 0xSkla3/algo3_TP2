@@ -27,6 +27,7 @@ public class Celda {
 		this.piezaActual = new PiezaNull();
 		this.sectorDelJugador = bando;
 	}
+
     public void guardarFaseInicial(Pieza piezaAUbicar) {
 		this.getSectorDelJugador().pisarSiBandoCorrecto(this, piezaAUbicar, piezaAUbicar.getBando());
     }

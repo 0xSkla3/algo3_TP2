@@ -47,8 +47,6 @@ public class Juego {
 	@Getter
 	Boolean finDeJuego = false;
 
-	private ObservadorTablero observadorTablero;
-
 	public Juego(String nombreJugador1, String nombreJugador2) {
 			Bando bando1 = new BandoJugador1();
 			Bando bando2 = new BandoJugador2();
@@ -66,27 +64,13 @@ public class Juego {
 			this.finDeJuego = false;
 		}
 
-	public Pieza crearPieza (String nombre, Ubicacion ubicacion){
-		if(finDeJuego || segundaEtapa)
+	public void crearPieza (Pieza pieza){
+		if(finDeJuego || segundaEtapa) {
 			throw new FaseDeJuegoInvalidaException("Fase de juego incorrecta");
-		Pieza pieza;
-
-		//FIXME
-
-		if (nombre.contains("Soldado"))
-			pieza = new Soldado(ubicacion, this.bandoActivo, this.tablero);
-		else if (nombre.contains("Catapulta"))
-			pieza = new Catapulta(ubicacion, this.bandoActivo, this.tablero);
-		else if (nombre.contains("Jinete"))
-			pieza = new Jinete(ubicacion, this.bandoActivo, this.tablero);
-		else if (nombre.contains("Curandero"))
-			pieza = new Curandero(ubicacion, this.bandoActivo, this.tablero);
-		else
-			return new PiezaNull();
+		}
 
 		this.getPiezasEnTablero().add(pieza);
 		this.jugadorActivo.adquirirPieza(pieza);
-		return pieza;
 	}
 
 	public void atacar (Pieza atacante, Pieza atacado){
@@ -106,11 +90,6 @@ public class Juego {
 
 	public void curar (Curandero curador, Pieza curado){
 		curador.curar(curado);
-	}
-
-	public Pieza obtenerPiezaAPartirDeUbicacion(Ubicacion ubicacionPiezaObjetivo) {
-		Pieza retorno = new PiezaNull();
-		return this.getPiezasEnTablero().stream().filter(pieza -> ubicacionPiezaObjetivo.equals(pieza.getUbicacion())).findFirst().orElse(retorno);
 	}
 
 	public void pasarTurno(){

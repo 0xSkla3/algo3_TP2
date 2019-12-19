@@ -2,149 +2,68 @@
 
 title __ENTORNO's Class Diagram__\n
 
-  namespace edu.fiuba.algoChess {
-    namespace modelo.entorno {
       class edu.fiuba.algoChess.modelo.entorno.Celda {
-          + Celda()
-          + Celda()
-          + Celda()
+          - piezaActual : Pieza
+          - sectorDelJugador : Bando
           + eliminar()
-          + getPiezaActual()
-          + getSectorDelJugador()
-          + guardarFaseInicial()
-          + guardarFaseJuego()
-          + obtenerBandoDePieza()
-          + setPiezaActual()
-          + setSectorDelJugador()
-          + ubicar()
+          + guardarFaseInicial(Pieza):
+          + guardarFaseJuego(Pieza):
+          + obtenerBandoDePieza(): Bando
+          + ubicar(Pieza):
       }
-    }
-  }
-  
 
-  namespace edu.fiuba.algoChess {
-    namespace modelo.entorno {
       class edu.fiuba.algoChess.modelo.entorno.CeldaNull {
-          ~ CeldaNull()
       }
-    }
-  }
-  
 
-  namespace edu.fiuba.algoChess {
-    namespace modelo.entorno {
       class edu.fiuba.algoChess.modelo.entorno.DistanciaCercana {
-          + ejecutarComportamientoPorDistancia()
+          + ejecutarComportamientoPorDistancia(Pieza, Pieza):
       }
-    }
-  }
-  
 
-  namespace edu.fiuba.algoChess {
-    namespace modelo.entorno {
       class edu.fiuba.algoChess.modelo.entorno.DistanciaLejana {
-          + ejecutarComportamientoPorDistancia()
+          + ejecutarComportamientoPorDistancia(Pieza, Pieza):
       }
-    }
-  }
-  
 
-  namespace edu.fiuba.algoChess {
-    namespace modelo.entorno {
       class edu.fiuba.algoChess.modelo.entorno.DistanciaMedia {
-          + ejecutarComportamientoPorDistancia()
+          + ejecutarComportamientoPorDistancia(Pieza, Pieza):
       }
-    }
-  }
-  
 
-  namespace edu.fiuba.algoChess {
-    namespace modelo.entorno {
       class edu.fiuba.algoChess.modelo.entorno.DistanciaRelativa {
-          + DistanciaRelativa()
+          {static} + calcularDistanciaRelativa(Ubicacion, Ubicacion)
           + ejecutarComportamientoPorDistancia()
-          {static} + getDistanciaRelativa()
       }
-    }
-  }
-  
 
-  namespace edu.fiuba.algoChess {
-    namespace modelo.entorno {
       class edu.fiuba.algoChess.modelo.entorno.ObservadorTablero {
-          {static} # tablero : Tablero
-          + ObservadorTablero()
-          + obtenerCelda()
-          + obtenerPieza()
-          + setTablero()
+          {static} - tablero : Tablero
+          + obtenerCelda(Ubicacion): Celda
+          + obtenerPieza(Ubicacion): Pieza
       }
-    }
-  }
-  
 
-  namespace edu.fiuba.algoChess {
-    namespace modelo.entorno {
       class edu.fiuba.algoChess.modelo.entorno.Tablero {
+          - jugadorActivo : Jugador
           - campoDeBatalla : Map<Ubicacion, Celda>
-          + Tablero()
-          + asignarSectores()
-          + eliminar()
-          + getCampoDeBatalla()
-          + getCelda()
-          + getJugadorActivo()
-          + inicializarTablero()
-          + setCampoDeBatalla()
-          + setJugadorActivo()
-          + ubicarEnCeldaFaseInicial()
-          + ubicarEnCeldaFaseJuego()
-          - inicializarObservadorTablero()
+          + asignarSectores(Bando, Bando):
+          + eliminar(Ubicacion):
+          + inicializarTablero(Bando, Bando):
+          + ubicarEnCeldaFaseInicial(Pieza, Ubicacion):
+          + ubicarEnCeldaFaseJuego(Pieza, Ubicacion):
+          - inicializarObservadorTablero():
       }
-    }
-  }
-  
 
-  namespace edu.fiuba.algoChess {
-    namespace modelo.entorno {
       class edu.fiuba.algoChess.modelo.entorno.Ubicacion {
           - x : int
           - y : int
-          + Ubicacion()
-          + equals()
-          + getCoordenadaX()
-          + getCoordenadaY()
-          + getObservable()
-          + getUbicacionAbajo()
-          + getUbicacionArriba()
-          + getUbicacionDerecha()
-          + getUbicacionIzquierda()
-          + getX()
-          + getY()
-          + hashCode()
-          + obtenerCelda()
-          + obtenerPieza()
-          + reconocerTerrenoParaAtacarADistanciaMedia()
-          - reconocerAliadoAXDistancia()
-          - reconocerEnemigoAXDistancia()
+          - observador: ObservadorTablero
+          + obtenerCelda(Ubicacion): Celda
+          + obtenerPieza(Ubicacion): Pieza
+          + reconocerTerrenoParaAtacarADistanciaMedia(Jinete, int, Ubicacion, Bando):
+          - reconocerAliadoAXDistancia(Jinete, int, Ubicacion, Bando):
+          - reconocerEnemigoAXDistancia(Jinete, int, Ubicacion, Bando):
       }
-    }
-  }
-  
 
-  edu.fiuba.algoChess.modelo.entorno.Celda o-- edu.fiuba.algoChess.modelo.entidades.Pieza : piezaActual
-  edu.fiuba.algoChess.modelo.entorno.Celda o-- edu.fiuba.algoChess.modelo.bandos.Bando : sectorDelJugador
   edu.fiuba.algoChess.modelo.entorno.CeldaNull -up-|> edu.fiuba.algoChess.modelo.entorno.Celda
   edu.fiuba.algoChess.modelo.entorno.DistanciaCercana -up-|> edu.fiuba.algoChess.modelo.entorno.DistanciaRelativa
   edu.fiuba.algoChess.modelo.entorno.DistanciaLejana -up-|> edu.fiuba.algoChess.modelo.entorno.DistanciaRelativa
   edu.fiuba.algoChess.modelo.entorno.DistanciaMedia -up-|> edu.fiuba.algoChess.modelo.entorno.DistanciaRelativa
-  edu.fiuba.algoChess.modelo.entorno.Tablero o-- edu.fiuba.algoChess.modelo.juego.Jugador : jugadorActivo
-  edu.fiuba.algoChess.modelo.entorno.Ubicacion o-- edu.fiuba.algoChess.modelo.entorno.ObservadorTablero : observable
 
-
-right footer
-
-
-PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
-For more information about this tool, please contact philippe.mesmeur@gmail.com
-endfooter
 
 @enduml

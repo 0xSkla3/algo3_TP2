@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ObservadorTablero {
 
-    static protected Tablero tablero = null;
+    static private Tablero tablero = null;
 
     public void setTablero(Tablero tablero){
         this.tablero = tablero;
