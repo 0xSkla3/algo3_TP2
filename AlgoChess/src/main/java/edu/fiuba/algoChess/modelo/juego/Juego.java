@@ -124,6 +124,7 @@ public class Juego {
 		this.segundaEtapa = true;
 		this.jugadorActivo = jugador1;
 		this.bandoActivo = jugador1.getBando();
+		this.activoBando1 = true;
 	}
 
 	private void evaluarFinDeJuego() {
