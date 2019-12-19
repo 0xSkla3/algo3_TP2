@@ -1,0 +1,252 @@
+@startuml
+
+title __VISTA's Class Diagram__\n
+
+  namespace edu.fiuba.algoChess {
+    namespace interfaz.vista {
+      class edu.fiuba.algoChess.interfaz.vista.AlgoChessApp {
+          - button : Button
+          + handle()
+          {static} + main()
+          + start()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace interfaz.vista {
+      class edu.fiuba.algoChess.interfaz.vista.DialogoAlerta {
+          {static} + Alerta()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace interfaz.vista {
+      class edu.fiuba.algoChess.interfaz.vista.FinDeJuego {
+          - listaImage : HashMap<String, String>
+          - listaPiezas : HashMap<String, Class>
+          - stage : Stage
+          + FinDeJuego()
+          + head()
+          + iniciarFase()
+          + mensajeFin()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace interfaz.vista {
+      class edu.fiuba.algoChess.interfaz.vista.Inicio {
+          + Inicio()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace interfaz.vista {
+      class edu.fiuba.algoChess.interfaz.vista.MenuComportamiento {
+          + MenuComportamiento()
+          + menuAtacar()
+          + menuComportamientoCatapulta()
+          + menuComportamientoCurandero()
+          + menuComportamientoJinete()
+          + menuComportamientoSoldado()
+          + menuCurar()
+          - generarBatallon()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace interfaz.vista {
+      class edu.fiuba.algoChess.interfaz.vista.MenuMovimiento {
+          + MenuMovimiento()
+          + menuPopUp()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace interfaz.vista {
+      class edu.fiuba.algoChess.interfaz.vista.MenuPieza {
+          ~ piezaNombre : String
+          + MenuPieza()
+          + elegirMenuInteraccion()
+          + menuPopUp()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace interfaz.vista {
+      class edu.fiuba.algoChess.interfaz.vista.PantallaPrincipal {
+          - head : HBox
+          - listaImage : HashMap<String, String>
+          - listaPiezas : HashMap<String, Class>
+          - stage : Stage
+          + PantallaPrincipal()
+          + actualizarVista()
+          + cambioASegundaEtapa()
+          + cambioTurno()
+          + finalizar()
+          + getHead()
+          + getSegundaEtapa()
+          + getStage()
+          + head()
+          + initialPhase()
+          + menuPiece()
+          + terminarDeColocarPiezas()
+          + terminarJuego()
+          + turnOf()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace interfaz.vista {
+      class edu.fiuba.algoChess.interfaz.vista.SaludView {
+          {static} - ALTO_BARRA : int
+          {static} - ANCHO_BARRA : int
+          {static} - X_BARRA : int
+          {static} - Y_BARRA : int
+          - vidaMax : double
+          + SaludView()
+          + actualizarBarra()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace interfaz.vista {
+      class edu.fiuba.algoChess.interfaz.vista.SegundaEtapa {
+          - head : HBox
+          - stage : Stage
+          + SegundaEtapa()
+          + actualizarVista()
+          + cambioTurno()
+          + finalizar()
+          + head()
+          + iniciarFase()
+          + terminarJuego()
+          + turnOf()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace interfaz.vista {
+      class edu.fiuba.algoChess.interfaz.vista.VistaJugador {
+          - info : Text
+          - jugadorBox : VBox
+          - mostrarCreditos : boolean
+          - nombre : Text
+          + VistaJugador()
+          + actualizarVista()
+          + instanciarVista()
+          + setMostrarCreditos()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace interfaz.vista {
+      class edu.fiuba.algoChess.interfaz.vista.VistaPieza {
+          {static} - diccionarioImagenes : Map<String, String>
+          - piezaEscala : double
+          + VistaPieza()
+          + comportamientoAlTocarPieza()
+          + crearNodo()
+          + ejecutarAccionSegundaEtapa()
+          + getImageViewMax()
+          + getImageViewMin()
+          + mostrarDatosPiezaActual()
+          + searchImage()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace interfaz.vista {
+      class edu.fiuba.algoChess.interfaz.vista.VistaTablero {
+          + heigth : double
+          + panes : Pane[][]
+          + table : GridPane
+          + width : double
+          - tileHeigth : double
+          - tileWidth : double
+          + VistaTablero()
+          + actualizarVista()
+          + instanciarVista()
+      }
+    }
+  }
+  
+
+  edu.fiuba.algoChess.interfaz.vista.AlgoChessApp .up.|> javafx.event.EventHandler
+  edu.fiuba.algoChess.interfaz.vista.AlgoChessApp -up-|> javafx.application.Application
+  edu.fiuba.algoChess.interfaz.vista.AlgoChessApp o-- edu.fiuba.algoChess.interfaz.vista.Inicio : inicio
+  edu.fiuba.algoChess.interfaz.vista.AlgoChessApp o-- edu.fiuba.algoChess.modelo.juego.Juego : juego
+  edu.fiuba.algoChess.interfaz.vista.AlgoChessApp o-- edu.fiuba.algoChess.interfaz.vista.VistaTablero : mapView
+  edu.fiuba.algoChess.interfaz.vista.AlgoChessApp o-- edu.fiuba.algoChess.interfaz.vista.VistaPieza : player
+  edu.fiuba.algoChess.interfaz.vista.FinDeJuego o-- edu.fiuba.algoChess.modelo.juego.Juego : juego
+  edu.fiuba.algoChess.interfaz.vista.FinDeJuego o-- edu.fiuba.algoChess.interfaz.vista.VistaTablero : mapView
+  edu.fiuba.algoChess.interfaz.vista.FinDeJuego o-- edu.fiuba.algoChess.interfaz.vista.VistaJugador : player1
+  edu.fiuba.algoChess.interfaz.vista.FinDeJuego o-- edu.fiuba.algoChess.interfaz.vista.VistaJugador : player2
+  edu.fiuba.algoChess.interfaz.vista.FinDeJuego o-- edu.fiuba.algoChess.interfaz.vista.VistaJugador : turn
+  edu.fiuba.algoChess.interfaz.vista.Inicio -up-|> javafx.scene.layout.HBox
+  edu.fiuba.algoChess.interfaz.vista.MenuComportamiento o-- edu.fiuba.algoChess.modelo.entidades.Pieza : emisor
+  edu.fiuba.algoChess.interfaz.vista.MenuComportamiento o-- edu.fiuba.algoChess.modelo.juego.Juego : juego
+  edu.fiuba.algoChess.interfaz.vista.MenuComportamiento o-- edu.fiuba.algoChess.interfaz.vista.SegundaEtapa : segundaEtapa
+  edu.fiuba.algoChess.interfaz.vista.MenuMovimiento o-- edu.fiuba.algoChess.modelo.entidades.Pieza : pieza
+  edu.fiuba.algoChess.interfaz.vista.MenuMovimiento o-- edu.fiuba.algoChess.interfaz.vista.SegundaEtapa : segundaEtapa
+  edu.fiuba.algoChess.interfaz.vista.MenuMovimiento o-- edu.fiuba.algoChess.modelo.entorno.Tablero : tablero
+  edu.fiuba.algoChess.interfaz.vista.MenuPieza o-- edu.fiuba.algoChess.modelo.juego.Juego : juego
+  edu.fiuba.algoChess.interfaz.vista.MenuPieza o-- edu.fiuba.algoChess.interfaz.vista.MenuComportamiento : menuComportamiento
+  edu.fiuba.algoChess.interfaz.vista.MenuPieza o-- edu.fiuba.algoChess.interfaz.vista.MenuMovimiento : menuMovimiento
+  edu.fiuba.algoChess.interfaz.vista.MenuPieza o-- edu.fiuba.algoChess.modelo.entidades.Pieza : pieza
+  edu.fiuba.algoChess.interfaz.vista.MenuPieza o-- edu.fiuba.algoChess.interfaz.vista.SegundaEtapa : segundaEtapa
+  edu.fiuba.algoChess.interfaz.vista.PantallaPrincipal o-- edu.fiuba.algoChess.interfaz.vista.FinDeJuego : finDeJuego
+  edu.fiuba.algoChess.interfaz.vista.PantallaPrincipal o-- edu.fiuba.algoChess.modelo.juego.Juego : juego
+  edu.fiuba.algoChess.interfaz.vista.PantallaPrincipal o-- edu.fiuba.algoChess.interfaz.vista.VistaTablero : mapView
+  edu.fiuba.algoChess.interfaz.vista.PantallaPrincipal o-- edu.fiuba.algoChess.interfaz.vista.PantallaPrincipal : pantallaPrincipal
+  edu.fiuba.algoChess.interfaz.vista.PantallaPrincipal o-- edu.fiuba.algoChess.interfaz.vista.VistaJugador : player1
+  edu.fiuba.algoChess.interfaz.vista.PantallaPrincipal o-- edu.fiuba.algoChess.interfaz.vista.VistaJugador : player2
+  edu.fiuba.algoChess.interfaz.vista.PantallaPrincipal o-- edu.fiuba.algoChess.interfaz.vista.SegundaEtapa : segundaEtapa
+  edu.fiuba.algoChess.interfaz.vista.SaludView -up-|> javafx.scene.shape.Rectangle
+  edu.fiuba.algoChess.interfaz.vista.SegundaEtapa -up-|> javafx.scene.layout.HBox
+  edu.fiuba.algoChess.interfaz.vista.SegundaEtapa o-- edu.fiuba.algoChess.interfaz.vista.FinDeJuego : finDeJuego
+  edu.fiuba.algoChess.interfaz.vista.SegundaEtapa o-- edu.fiuba.algoChess.modelo.juego.Juego : juego
+  edu.fiuba.algoChess.interfaz.vista.SegundaEtapa o-- edu.fiuba.algoChess.interfaz.vista.VistaTablero : mapView
+  edu.fiuba.algoChess.interfaz.vista.SegundaEtapa o-- edu.fiuba.algoChess.interfaz.vista.VistaJugador : player1
+  edu.fiuba.algoChess.interfaz.vista.SegundaEtapa o-- edu.fiuba.algoChess.interfaz.vista.VistaJugador : player2
+  edu.fiuba.algoChess.interfaz.vista.VistaJugador o-- edu.fiuba.algoChess.modelo.juego.Jugador : jugador
+  edu.fiuba.algoChess.interfaz.vista.VistaPieza o-- edu.fiuba.algoChess.modelo.entidades.Pieza : pieza
+  edu.fiuba.algoChess.interfaz.vista.VistaPieza o-- edu.fiuba.algoChess.modelo.juego.Juego : juego
+  edu.fiuba.algoChess.interfaz.vista.VistaPieza o-- edu.fiuba.algoChess.interfaz.vista.PantallaPrincipal : pantallaPrincipal
+  edu.fiuba.algoChess.interfaz.vista.VistaPieza o-- edu.fiuba.algoChess.modelo.entorno.Tablero : tablero
+  edu.fiuba.algoChess.interfaz.vista.VistaTablero -up-|> javafx.scene.Group
+  edu.fiuba.algoChess.interfaz.vista.VistaTablero o-- edu.fiuba.algoChess.modelo.juego.Juego : juego
+  edu.fiuba.algoChess.interfaz.vista.VistaTablero o-- edu.fiuba.algoChess.interfaz.vista.PantallaPrincipal : pantallaPrincipal
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

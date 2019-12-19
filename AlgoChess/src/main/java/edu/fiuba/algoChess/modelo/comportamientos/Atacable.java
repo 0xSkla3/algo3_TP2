@@ -1,4 +1,5 @@
-package edu.fiuba.algoChess.modelo.comportamientos;
+/*package edu.fiuba.algoChess.modelo.comportamientos;
 
 public class Atacable {
 }
+*/

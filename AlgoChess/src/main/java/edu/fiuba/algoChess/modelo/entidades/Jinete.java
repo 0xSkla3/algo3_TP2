@@ -20,10 +20,6 @@ public class Jinete extends Pieza {
 	@Setter
 	private AtaqueNormal ataqueCercano;
 
-	public boolean piezaAliadaCercana;
-
-	public boolean piezaEnemigaCercana;
-
 	@Getter
 	@Setter
 	private int distanciaAReconocerEnTerreno = 2;
@@ -40,8 +36,6 @@ public class Jinete extends Pieza {
 		tablero.ubicarEnCeldaFaseInicial(this, ubicacion);
 		this.ataqueCercano = new AtaqueNormal(danioCercano);
 		this.ataqueMedio = new AtaqueNormal(danioMedio);
-		this.piezaEnemigaCercana = false;
-		this.piezaAliadaCercana = false;
 		this.distanciaAReconocerEnTerreno = 2;
 	}
 

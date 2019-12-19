@@ -45,12 +45,6 @@ public class Soldado extends Pieza {
 	}
 
 	@Override
-	public ArrayList<Pieza> unirABatallonDeSoldado(ArrayList<Pieza> stackDeUnion) {
-		stackDeUnion.add(this);
-		return stackDeUnion;
-	}
-
-	@Override
 	public ArrayList<Pieza> aniadirSoldadoAliadoStack(ArrayList<Pieza> stack, Pieza pieza) {
 		return pieza.bando.aniadirSoldadoAliadoAlStack(this, stack, this.bando);
 	}

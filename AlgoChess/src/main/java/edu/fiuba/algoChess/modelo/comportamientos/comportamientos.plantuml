@@ -1,0 +1,63 @@
+@startuml
+
+title __COMPORTAMIENTOS's Class Diagram__\n
+
+
+      abstract class edu.fiuba.algoChess.modelo.comportamientos.Ataque {
+          # C_extraSectorEnemigo : double
+          # danio : double
+          {abstract} + atacar(Pieza):
+          + hacerDanioSectorAliado(Herible): Salud
+          + hacerDanioSectorEnemigo(Herible): Salud
+          # daniar(Herible, double): Salud
+      }
+
+
+  
+
+
+      class edu.fiuba.algoChess.modelo.comportamientos.AtaqueCatapulta {
+          + atacar(Pieza):
+          + atacarAbajo(Pieza):
+          + atacarArriba(Pieza):
+          + atacarDerecha(Pieza):
+          + atacarIzquierda(Pieza):
+      }
+
+
+  
+
+
+
+      class edu.fiuba.algoChess.modelo.comportamientos.AtaqueNormal {
+          + atacar(Pieza):
+      }
+
+
+  
+
+
+
+      class edu.fiuba.algoChess.modelo.comportamientos.AtaqueNull {
+          + atacar(Pieza):
+      }
+
+
+  
+
+
+
+      class edu.fiuba.algoChess.modelo.comportamientos.Curacion {
+          # curacion : double
+          + curar(Pieza):
+      }
+
+
+  
+
+  edu.fiuba.algoChess.modelo.comportamientos.AtaqueCatapulta -up-|> edu.fiuba.algoChess.modelo.comportamientos.Ataque
+  edu.fiuba.algoChess.modelo.comportamientos.AtaqueNormal -up-|> edu.fiuba.algoChess.modelo.comportamientos.Ataque
+  edu.fiuba.algoChess.modelo.comportamientos.AtaqueNull -up-|> edu.fiuba.algoChess.modelo.comportamientos.Ataque
+
+
+@enduml

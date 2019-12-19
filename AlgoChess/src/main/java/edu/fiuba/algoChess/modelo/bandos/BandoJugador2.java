@@ -12,7 +12,7 @@ import edu.fiuba.algoChess.modelo.salud.Salud;
 
 import java.util.ArrayList;
 
-public class BandoJugador2 extends Bando {
+public class    BandoJugador2 extends Bando {
 
     @Override
     public void atacar(Pieza pieza, Ataque ataque, Bando bando){
@@ -41,7 +41,7 @@ public class BandoJugador2 extends Bando {
 
     @Override
     public void curar(Pieza pieza, Curacion curacion, BandoJugador2 bandojugador2){
-        pieza.aumentarVida(curacion.getValorCuracion());
+        curacion.curar(pieza);
     }
 
     @Override

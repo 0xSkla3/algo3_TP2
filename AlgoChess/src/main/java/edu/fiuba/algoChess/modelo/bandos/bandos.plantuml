@@ -1,0 +1,51 @@
+@startuml
+
+title __BANDOS's Class Diagram__\n
+
+
+      abstract class edu.fiuba.algoChess.modelo.bandos.Bando {
+          {abstract} + aniadirSoldadoAliadoAlStack(Pieza, ArrayList<Pieza>, Bando/BandoJugador1/BandoJugador2): ArrayList<Pieza>
+          {abstract} + atacar(Pieza, Ataque, Bando/BandoJugador1/BandoJugador2 ):
+          {abstract} + curar(Pieza, Curacion, Bando/BandoJugador1/BandoJugador2):
+          {abstract} + jineteReconocerEnemigoParaAtacarADistanciaMedia(Jinete, Bando/BandoJugador1/BandoJugador2):
+          {abstract} + jineteReconocerEnemigoParaAtacarADistanciaMedia(Jinete, Bando/BandoJugador1/BandoJugador2):
+          {abstract} + pisarSiBandoCorrecto(Celda, Pieza, Bando/BandoJugador1/BandoJugador2):
+          {abstract} + recibirAtaque(Herible, Ataque, Bando/BandoJugador1/BandoJugador2): Salud
+      }
+
+
+  
+
+
+      class edu.fiuba.algoChess.modelo.bandos.BandoJugador1 {
+           + aniadirSoldadoAliadoAlStack(Pieza, ArrayList<Pieza>, Bando/BandoJugador1/BandoJugador2): ArrayList<Pieza>
+           + atacar(Pieza, Ataque, Bando/BandoJugador1/BandoJugador2 ):
+           + curar(Pieza, Curacion, Bando/BandoJugador1/BandoJugador2):
+           + jineteReconocerEnemigoParaAtacarADistanciaMedia(Jinete, Bando/BandoJugador1/BandoJugador2):
+           + jineteReconocerEnemigoParaAtacarADistanciaMedia(Jinete, Bando/BandoJugador1/BandoJugador2):
+           + pisarSiBandoCorrecto(Celda, Pieza, Bando/BandoJugador1/BandoJugador2):
+           + recibirAtaque(Herible, Ataque, Bando/BandoJugador1/BandoJugador2): Salud
+      }
+
+
+  
+
+
+      class edu.fiuba.algoChess.modelo.bandos.BandoJugador2 {
+           + aniadirSoldadoAliadoAlStack(Pieza, ArrayList<Pieza>, Bando/BandoJugador1/BandoJugador2): ArrayList<Pieza>
+           + atacar(Pieza, Ataque, Bando/BandoJugador1/BandoJugador2 ):
+           + curar(Pieza, Curacion, Bando/BandoJugador1/BandoJugador2):
+           + jineteReconocerEnemigoParaAtacarADistanciaMedia(Jinete, Bando/BandoJugador1/BandoJugador2):
+           + jineteReconocerEnemigoParaAtacarADistanciaMedia(Jinete, Bando/BandoJugador1/BandoJugador2):
+           + pisarSiBandoCorrecto(Celda, Pieza, Bando/BandoJugador1/BandoJugador2):
+           + recibirAtaque(Herible, Ataque, Bando/BandoJugador1/BandoJugador2): Salud
+       }
+
+
+
+
+  edu.fiuba.algoChess.modelo.bandos.BandoJugador1 -up-|> edu.fiuba.algoChess.modelo.bandos.Bando
+  edu.fiuba.algoChess.modelo.bandos.BandoJugador2 -up-|> edu.fiuba.algoChess.modelo.bandos.Bando
+
+
+@enduml

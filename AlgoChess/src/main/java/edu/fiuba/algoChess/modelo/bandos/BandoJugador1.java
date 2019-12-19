@@ -37,7 +37,7 @@ public class BandoJugador1 extends Bando{
 
     @Override
     public void curar(Pieza pieza, Curacion curacion, BandoJugador1 bandojugador1){
-        pieza.aumentarVida(curacion.getValorCuracion());
+        curacion.curar(pieza);
     }
 
     @Override

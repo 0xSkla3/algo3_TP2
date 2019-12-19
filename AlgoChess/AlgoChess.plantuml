@@ -1,0 +1,821 @@
+@startuml
+
+title __ALGOCHESS's Class Diagram__\n
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.bandos {
+      abstract class edu.fiuba.algoChess.modelo.bandos.Bando {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.bandos {
+      class edu.fiuba.algoChess.modelo.bandos.BandoJugador1 {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.bandos {
+      class edu.fiuba.algoChess.modelo.bandos.BandoJugador2 {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.batallones {
+      abstract class edu.fiuba.algoChess.modelo.batallones.Batallon {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.batallones {
+      class edu.fiuba.algoChess.modelo.batallones.BatallonNull {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.batallones {
+      class edu.fiuba.algoChess.modelo.batallones.BatallonUtil {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.batallones {
+      interface edu.fiuba.algoChess.modelo.batallones.Batalloneable {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.comportamientos {
+      class edu.fiuba.algoChess.modelo.comportamientos.Atacable {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.comportamientos {
+      abstract class edu.fiuba.algoChess.modelo.comportamientos.Ataque {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.comportamientos {
+      class edu.fiuba.algoChess.modelo.comportamientos.AtaqueCatapulta {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.comportamientos {
+      class edu.fiuba.algoChess.modelo.comportamientos.AtaqueNormal {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.comportamientos {
+      class edu.fiuba.algoChess.modelo.comportamientos.AtaqueNull {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.comportamientos {
+      class edu.fiuba.algoChess.modelo.comportamientos.Curacion {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.entidades {
+      class edu.fiuba.algoChess.modelo.entidades.Catapulta {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.entidades {
+      class edu.fiuba.algoChess.modelo.entidades.Curandero {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.entidades {
+      class edu.fiuba.algoChess.modelo.entidades.Jinete {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.entidades {
+      abstract class edu.fiuba.algoChess.modelo.entidades.Movible {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.entidades {
+      abstract class edu.fiuba.algoChess.modelo.entidades.Pieza {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.entidades {
+      class edu.fiuba.algoChess.modelo.entidades.PiezaNull {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.entidades {
+      class edu.fiuba.algoChess.modelo.entidades.Soldado {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.entorno {
+      class edu.fiuba.algoChess.modelo.entorno.Celda {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.entorno {
+      class edu.fiuba.algoChess.modelo.entorno.CeldaNull {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.entorno {
+      class edu.fiuba.algoChess.modelo.entorno.DistanciaCercana {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.entorno {
+      class edu.fiuba.algoChess.modelo.entorno.DistanciaLejana {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.entorno {
+      class edu.fiuba.algoChess.modelo.entorno.DistanciaMedia {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.entorno {
+      class edu.fiuba.algoChess.modelo.entorno.DistanciaRelativa {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.entorno {
+      class edu.fiuba.algoChess.modelo.entorno.ObservadorTablero {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.entorno {
+      class edu.fiuba.algoChess.modelo.entorno.Tablero {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.entorno {
+      class edu.fiuba.algoChess.modelo.entorno.Ubicacion {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.AtaqueInvalidoException {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.FueraDeRangoParaEjecutarComportamientoException {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoExisteNingunCasilleroParaLaUbicacionDadaException {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoHayBatallonFormadoException {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoPuedeInteractuarseConAlgoNoVivo {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeActualizarElBandoDeUnaPiezaNull {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeActualizarElRangoDeUnBatallon {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeActualizarElRangoDeUnRangoNull {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeActualizarElRangoDeUnaPiezaNull {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeAgruparUnBatallon {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeAgruparUnaPiezaDistintaDeSoldado {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeAtacarPiezaNull {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeAtacarUnAliadoException {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeCrearUnBatallonDePiezaDistintaASoldado {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeCurarUnaCatapultaException {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeCurarUnaUnidadEnemigaException {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeDarDeAltaUnBatallonDeJinetes {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeDarDeAltaUnBatallonDePiezaNull {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeDarDeAltaUnBatallonDeRangoNulo {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeDarDeAltaUnBatallonYaCreado {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeEliminarPorqueEstaVacioException {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeMoverUnBatallonNull {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeMoverUnGrupoParaUnaPiezaUnica {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeMoverUnaPiezaUnicaParaUnGrupo {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeObtenerElEquipoDeUnBatallonNull {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeObtenerElEquipoDeUnRangoNull {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeObtenerElEquipoDeUnaPiezaNoAgrupable {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeObtenerElRangoDeUnaPiezaNoAgrupable {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeObtenerUnaPiezaDeCeldaaNull {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeObtenerUnaPiezaDeUnBatallonNull {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeObtenerUnaPiezaDeUnaEntidadNoAgrupada {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeObtenerrElRangoDeUnaPiezaNull {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedePreguntarElBandoAUnaPiezaNull {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeSetearUnaPiezaDeUnaEntidadNoAgrupada {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeUbicarPiezaEnSectoRival {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.OperacionInvalidaException {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.PiezaActualNoFormaBatallonDeSoldadosException {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.UnCuranderoNoPuedeHacerUnBatallon {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.juego {
+      class edu.fiuba.algoChess.modelo.juego.EstadoFaseInicial {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.juego {
+      class edu.fiuba.algoChess.modelo.juego.EstadoFaseJuego {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.juego {
+      abstract class edu.fiuba.algoChess.modelo.juego.EstadoJuego {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.juego {
+      class edu.fiuba.algoChess.modelo.juego.Juego {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.juego {
+      class edu.fiuba.algoChess.modelo.juego.Jugador {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.juego {
+      interface edu.fiuba.algoChess.modelo.juego.Turno {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.juego {
+      class edu.fiuba.algoChess.modelo.juego.TurnoFinal {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.juego {
+      class edu.fiuba.algoChess.modelo.juego.TurnoJugador1 {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.juego {
+      class edu.fiuba.algoChess.modelo.juego.TurnoJugador2 {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.rangos {
+      interface edu.fiuba.algoChess.modelo.rangos.Agrupable {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.rangos {
+      interface edu.fiuba.algoChess.modelo.rangos.Rango {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.rangos {
+      class edu.fiuba.algoChess.modelo.rangos.RangoCercano {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.rangos {
+      abstract class edu.fiuba.algoChess.modelo.rangos.RangoInmediato {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.rangos {
+      class edu.fiuba.algoChess.modelo.rangos.RangoInmediatoNull {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.rangos {
+      class edu.fiuba.algoChess.modelo.rangos.RangoJinete {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.rangos {
+      class edu.fiuba.algoChess.modelo.rangos.RangoNull {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.rangos {
+      class edu.fiuba.algoChess.modelo.rangos.RangoSoldado {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.salud {
+      interface edu.fiuba.algoChess.modelo.salud.Curable {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.salud {
+      interface edu.fiuba.algoChess.modelo.salud.Herible {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.salud {
+      abstract class edu.fiuba.algoChess.modelo.salud.Salud {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.salud {
+      class edu.fiuba.algoChess.modelo.salud.SaludLlena {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.salud {
+      class edu.fiuba.algoChess.modelo.salud.SaludMedia {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.salud {
+      class edu.fiuba.algoChess.modelo.salud.SaludMuerto {
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.salud {
+      interface edu.fiuba.algoChess.modelo.salud.StateVive {
+      }
+    }
+  }
+  
+
+  edu.fiuba.algoChess.modelo.bandos.BandoJugador1 -up-|> edu.fiuba.algoChess.modelo.bandos.Bando
+  edu.fiuba.algoChess.modelo.bandos.BandoJugador2 -up-|> edu.fiuba.algoChess.modelo.bandos.Bando
+  edu.fiuba.algoChess.modelo.batallones.Batallon -up-|> edu.fiuba.algoChess.modelo.entidades.Movible
+  edu.fiuba.algoChess.modelo.batallones.Batallon o-- edu.fiuba.algoChess.modelo.entidades.Pieza : pieza1
+  edu.fiuba.algoChess.modelo.batallones.Batallon o-- edu.fiuba.algoChess.modelo.entidades.Pieza : pieza2
+  edu.fiuba.algoChess.modelo.batallones.Batallon o-- edu.fiuba.algoChess.modelo.entidades.Pieza : pieza3
+  edu.fiuba.algoChess.modelo.batallones.BatallonNull -up-|> edu.fiuba.algoChess.modelo.batallones.Batallon
+  edu.fiuba.algoChess.modelo.batallones.BatallonUtil -up-|> edu.fiuba.algoChess.modelo.batallones.Batallon
+  edu.fiuba.algoChess.modelo.comportamientos.AtaqueCatapulta -up-|> edu.fiuba.algoChess.modelo.comportamientos.Ataque
+  edu.fiuba.algoChess.modelo.comportamientos.AtaqueNormal -up-|> edu.fiuba.algoChess.modelo.comportamientos.Ataque
+  edu.fiuba.algoChess.modelo.comportamientos.AtaqueNull -up-|> edu.fiuba.algoChess.modelo.comportamientos.Ataque
+  edu.fiuba.algoChess.modelo.comportamientos.Curacion o-- edu.fiuba.algoChess.modelo.entorno.DistanciaRelativa : distanciaRelativa
+  edu.fiuba.algoChess.modelo.entidades.Catapulta -up-|> edu.fiuba.algoChess.modelo.entidades.Pieza
+  edu.fiuba.algoChess.modelo.entidades.Catapulta o-- edu.fiuba.algoChess.modelo.comportamientos.AtaqueCatapulta : ataque
+  edu.fiuba.algoChess.modelo.entidades.Curandero -up-|> edu.fiuba.algoChess.modelo.entidades.Pieza
+  edu.fiuba.algoChess.modelo.entidades.Curandero o-- edu.fiuba.algoChess.modelo.comportamientos.Curacion : curacion
+  edu.fiuba.algoChess.modelo.entidades.Jinete -up-|> edu.fiuba.algoChess.modelo.entidades.Pieza
+  edu.fiuba.algoChess.modelo.entidades.Jinete o-- edu.fiuba.algoChess.modelo.comportamientos.AtaqueNormal : ataqueCercano
+  edu.fiuba.algoChess.modelo.entidades.Jinete o-- edu.fiuba.algoChess.modelo.comportamientos.Ataque : ataqueMedio
+  edu.fiuba.algoChess.modelo.entidades.Pieza .up.|> edu.fiuba.algoChess.modelo.batallones.Batalloneable
+  edu.fiuba.algoChess.modelo.entidades.Pieza -up-|> edu.fiuba.algoChess.modelo.entidades.Movible
+  edu.fiuba.algoChess.modelo.entidades.Pieza o-- edu.fiuba.algoChess.modelo.bandos.Bando : bando
+  edu.fiuba.algoChess.modelo.entidades.Pieza o-- edu.fiuba.algoChess.modelo.bandos.Bando : bandoCeldaActual
+  edu.fiuba.algoChess.modelo.entidades.Pieza o-- edu.fiuba.algoChess.modelo.entorno.DistanciaRelativa : calculadorDistancia
+  edu.fiuba.algoChess.modelo.entidades.Pieza o-- edu.fiuba.algoChess.modelo.rangos.Rango : rango
+  edu.fiuba.algoChess.modelo.entidades.Pieza o-- edu.fiuba.algoChess.modelo.entorno.Ubicacion : ubicacion
+  edu.fiuba.algoChess.modelo.entidades.Pieza o-- edu.fiuba.algoChess.modelo.salud.Salud : vida
+  edu.fiuba.algoChess.modelo.entidades.PiezaNull -up-|> edu.fiuba.algoChess.modelo.entidades.Pieza
+  edu.fiuba.algoChess.modelo.entidades.Soldado -up-|> edu.fiuba.algoChess.modelo.entidades.Pieza
+  edu.fiuba.algoChess.modelo.entidades.Soldado o-- edu.fiuba.algoChess.modelo.comportamientos.AtaqueNormal : ataqueCercano
+  edu.fiuba.algoChess.modelo.entorno.Celda o-- edu.fiuba.algoChess.modelo.entidades.Pieza : piezaActual
+  edu.fiuba.algoChess.modelo.entorno.Celda o-- edu.fiuba.algoChess.modelo.bandos.Bando : sectorDelJugador
+  edu.fiuba.algoChess.modelo.entorno.CeldaNull -up-|> edu.fiuba.algoChess.modelo.entorno.Celda
+  edu.fiuba.algoChess.modelo.entorno.DistanciaCercana -up-|> edu.fiuba.algoChess.modelo.entorno.DistanciaRelativa
+  edu.fiuba.algoChess.modelo.entorno.DistanciaLejana -up-|> edu.fiuba.algoChess.modelo.entorno.DistanciaRelativa
+  edu.fiuba.algoChess.modelo.entorno.DistanciaMedia -up-|> edu.fiuba.algoChess.modelo.entorno.DistanciaRelativa
+  edu.fiuba.algoChess.modelo.entorno.Tablero o-- edu.fiuba.algoChess.modelo.juego.Jugador : jugadorActivo
+  edu.fiuba.algoChess.modelo.entorno.Ubicacion o-- edu.fiuba.algoChess.modelo.entorno.ObservadorTablero : observable
+  edu.fiuba.algoChess.modelo.juego.EstadoFaseInicial -up-|> edu.fiuba.algoChess.modelo.juego.EstadoJuego
+  edu.fiuba.algoChess.modelo.juego.EstadoFaseJuego -up-|> edu.fiuba.algoChess.modelo.juego.EstadoJuego
+  edu.fiuba.algoChess.modelo.juego.Juego o-- edu.fiuba.algoChess.modelo.bandos.Bando : bandoActivo
+  edu.fiuba.algoChess.modelo.juego.Juego o-- edu.fiuba.algoChess.modelo.juego.Jugador : jugador1
+  edu.fiuba.algoChess.modelo.juego.Juego o-- edu.fiuba.algoChess.modelo.juego.Jugador : jugador2
+  edu.fiuba.algoChess.modelo.juego.Juego o-- edu.fiuba.algoChess.modelo.juego.Jugador : jugadorActivo
+  edu.fiuba.algoChess.modelo.juego.Juego o-- edu.fiuba.algoChess.modelo.entorno.ObservadorTablero : observadorTablero
+  edu.fiuba.algoChess.modelo.juego.Juego o-- edu.fiuba.algoChess.modelo.entorno.Tablero : tablero
+  edu.fiuba.algoChess.modelo.juego.Jugador o-- edu.fiuba.algoChess.modelo.bandos.Bando : bando
+  edu.fiuba.algoChess.modelo.juego.Jugador o-- edu.fiuba.algoChess.modelo.juego.Turno : turno
+  edu.fiuba.algoChess.modelo.juego.TurnoFinal .up.|> edu.fiuba.algoChess.modelo.juego.Turno
+  edu.fiuba.algoChess.modelo.juego.TurnoJugador1 .up.|> edu.fiuba.algoChess.modelo.juego.Turno
+  edu.fiuba.algoChess.modelo.juego.TurnoJugador2 .up.|> edu.fiuba.algoChess.modelo.juego.Turno
+  edu.fiuba.algoChess.modelo.rangos.RangoCercano .up.|> edu.fiuba.algoChess.modelo.rangos.Rango
+  edu.fiuba.algoChess.modelo.rangos.RangoInmediato .up.|> edu.fiuba.algoChess.modelo.rangos.Rango
+  edu.fiuba.algoChess.modelo.rangos.RangoInmediato o-- edu.fiuba.algoChess.modelo.entorno.Celda : abajo
+  edu.fiuba.algoChess.modelo.rangos.RangoInmediato o-- edu.fiuba.algoChess.modelo.entorno.Celda : actual
+  edu.fiuba.algoChess.modelo.rangos.RangoInmediato o-- edu.fiuba.algoChess.modelo.entorno.Celda : arriba
+  edu.fiuba.algoChess.modelo.rangos.RangoInmediato o-- edu.fiuba.algoChess.modelo.entorno.Celda : derecha
+  edu.fiuba.algoChess.modelo.rangos.RangoInmediato o-- edu.fiuba.algoChess.modelo.entorno.Celda : izquierda
+  edu.fiuba.algoChess.modelo.rangos.RangoInmediatoNull -up-|> edu.fiuba.algoChess.modelo.rangos.RangoNull
+  edu.fiuba.algoChess.modelo.rangos.RangoJinete .up.|> edu.fiuba.algoChess.modelo.rangos.Rango
+  edu.fiuba.algoChess.modelo.rangos.RangoJinete o-- edu.fiuba.algoChess.modelo.rangos.RangoCercano : rangoCercanoJinete
+  edu.fiuba.algoChess.modelo.rangos.RangoJinete o-- edu.fiuba.algoChess.modelo.rangos.RangoInmediato : rangoInmediatoJinete
+  edu.fiuba.algoChess.modelo.rangos.RangoNull .up.|> edu.fiuba.algoChess.modelo.rangos.Rango
+  edu.fiuba.algoChess.modelo.rangos.RangoSoldado .up.|> edu.fiuba.algoChess.modelo.rangos.Rango
+  edu.fiuba.algoChess.modelo.rangos.RangoSoldado -up-|> edu.fiuba.algoChess.modelo.rangos.RangoInmediato
+  edu.fiuba.algoChess.modelo.salud.Salud .up.|> edu.fiuba.algoChess.modelo.salud.Curable
+  edu.fiuba.algoChess.modelo.salud.Salud .up.|> edu.fiuba.algoChess.modelo.salud.Herible
+  edu.fiuba.algoChess.modelo.salud.Salud .up.|> edu.fiuba.algoChess.modelo.salud.StateVive
+  edu.fiuba.algoChess.modelo.salud.SaludLlena -up-|> edu.fiuba.algoChess.modelo.salud.Salud
+  edu.fiuba.algoChess.modelo.salud.SaludMedia -up-|> edu.fiuba.algoChess.modelo.salud.Salud
+  edu.fiuba.algoChess.modelo.salud.SaludMuerto -up-|> edu.fiuba.algoChess.modelo.salud.Salud
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

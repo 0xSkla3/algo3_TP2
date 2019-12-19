@@ -1,0 +1,365 @@
+@startuml
+
+title __EXCEPCIONES's Class Diagram__\n
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.AtaqueInvalidoException {
+          + AtaqueInvalidoException()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.FueraDeRangoParaEjecutarComportamientoException {
+          + FueraDeRangoParaEjecutarComportamientoException()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoExisteNingunCasilleroParaLaUbicacionDadaException {
+          + NoExisteNingunCasilleroParaLaUbicacionDadaException()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoHayBatallonFormadoException {
+          + NoHayBatallonFormadoException()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoPuedeInteractuarseConAlgoNoVivo {
+          + NoPuedeInteractuarseConAlgoNoVivo()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeActualizarElBandoDeUnaPiezaNull {
+          + NoSePuedeActualizarElBandoDeUnaPiezaNull()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeActualizarElRangoDeUnBatallon {
+          + NoSePuedeActualizarElRangoDeUnBatallon()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeActualizarElRangoDeUnRangoNull {
+          + NoSePuedeActualizarElRangoDeUnRangoNull()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeActualizarElRangoDeUnaPiezaNull {
+          + NoSePuedeActualizarElRangoDeUnaPiezaNull()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeAgruparUnBatallon {
+          + NoSePuedeAgruparUnBatallon()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeAgruparUnaPiezaDistintaDeSoldado {
+          + NoSePuedeAgruparUnaPiezaDistintaDeSoldado()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeAtacarPiezaNull {
+          + NoSePuedeAtacarPiezaNull()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeAtacarUnAliadoException {
+          + NoSePuedeAtacarUnAliadoException()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeCrearUnBatallonDePiezaDistintaASoldado {
+          + NoSePuedeCrearUnBatallonDePiezaDistintaASoldado()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeCurarUnaCatapultaException {
+          + NoSePuedeCurarUnaCatapultaException()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeCurarUnaUnidadEnemigaException {
+          + NoSePuedeCurarUnaUnidadEnemigaException()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeDarDeAltaUnBatallonDeJinetes {
+          + NoSePuedeDarDeAltaUnBatallonDeJinetes()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeDarDeAltaUnBatallonDePiezaNull {
+          + NoSePuedeDarDeAltaUnBatallonDePiezaNull()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeDarDeAltaUnBatallonDeRangoNulo {
+          + NoSePuedeDarDeAltaUnBatallonDeRangoNulo()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeDarDeAltaUnBatallonYaCreado {
+          + NoSePuedeDarDeAltaUnBatallonYaCreado()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeEliminarPorqueEstaVacioException {
+          + NoSePuedeEliminarPorqueEstaVacioException()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeMoverUnBatallonNull {
+          + NoSePuedeMoverUnBatallonNull()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeMoverUnGrupoParaUnaPiezaUnica {
+          + NoSePuedeMoverUnGrupoParaUnaPiezaUnica()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeMoverUnaPiezaUnicaParaUnGrupo {
+          + NoSePuedeMoverUnaPiezaUnicaParaUnGrupo()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeObtenerElEquipoDeUnBatallonNull {
+          + NoSePuedeObtenerElEquipoDeUnBatallonNull()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeObtenerElEquipoDeUnRangoNull {
+          + NoSePuedeObtenerElEquipoDeUnRangoNull()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeObtenerElEquipoDeUnaPiezaNoAgrupable {
+          + NoSePuedeObtenerElEquipoDeUnaPiezaNoAgrupable()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeObtenerElRangoDeUnaPiezaNoAgrupable {
+          + NoSePuedeObtenerElRangoDeUnaPiezaNoAgrupable()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeObtenerUnaPiezaDeCeldaaNull {
+          + NoSePuedeObtenerUnaPiezaDeCeldaaNull()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeObtenerUnaPiezaDeUnBatallonNull {
+          + NoSePuedeObtenerUnaPiezaDeUnBatallonNull()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeObtenerUnaPiezaDeUnaEntidadNoAgrupada {
+          + NoSePuedeObtenerUnaPiezaDeUnaEntidadNoAgrupada()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeObtenerrElRangoDeUnaPiezaNull {
+          + NoSePuedeObtenerrElRangoDeUnaPiezaNull()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedePreguntarElBandoAUnaPiezaNull {
+          + NoSePuedePreguntarElBandoAUnaPiezaNull()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeSetearUnaPiezaDeUnaEntidadNoAgrupada {
+          + NoSePuedeSetearUnaPiezaDeUnaEntidadNoAgrupada()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeUbicarPiezaEnSectoRival {
+          + NoSePuedeUbicarPiezaEnSectoRival()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.NoSePuedeUbicarPorqueEstaOcupadoException {
+          + NoSePuedeUbicarPorqueEstaOcupadoException()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.OperacionInvalidaException {
+          + OperacionInvalidaException()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.PiezaActualNoFormaBatallonDeSoldadosException {
+          + PiezaActualNoFormaBatallonDeSoldadosException()
+      }
+    }
+  }
+  
+
+  namespace edu.fiuba.algoChess {
+    namespace modelo.excepciones {
+      class edu.fiuba.algoChess.modelo.excepciones.UnCuranderoNoPuedeHacerUnBatallon {
+          + UnCuranderoNoPuedeHacerUnBatallon()
+      }
+    }
+  }
+  
+
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

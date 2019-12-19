@@ -6,14 +6,14 @@ import edu.fiuba.algoChess.modelo.entidades.Pieza;
 public class Curacion {
 
 	protected double curacion;
-	protected DistanciaRelativa distanciaRelativa;
 
 	public Curacion(double curacion){
 		this.curacion = curacion;
 	}
 
-	public void ejecutarComportamiento(Pieza pieza, Pieza otraPieza){
-	};
+	public void curar(Pieza pieza){
+		pieza.aumentarVida(curacion);
+	}
 
 	public double getValorCuracion(){
 		return curacion;
