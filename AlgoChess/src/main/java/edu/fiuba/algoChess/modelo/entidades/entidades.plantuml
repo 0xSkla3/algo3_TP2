@@ -127,7 +127,6 @@ title __ENTIDADES's Class Diagram__\n
   edu.fiuba.algoChess.modelo.entidades.Catapulta -up-|> edu.fiuba.algoChess.modelo.entidades.Pieza
   edu.fiuba.algoChess.modelo.entidades.Curandero -up-|> edu.fiuba.algoChess.modelo.entidades.Pieza
   edu.fiuba.algoChess.modelo.entidades.Jinete -up-|> edu.fiuba.algoChess.modelo.entidades.Pieza
-  edu.fiuba.algoChess.modelo.entidades.Pieza .up.|> edu.fiuba.algoChess.modelo.batallones.Batalloneable
   edu.fiuba.algoChess.modelo.entidades.Pieza -up-|> edu.fiuba.algoChess.modelo.entidades.Movible
   edu.fiuba.algoChess.modelo.entidades.PiezaNull -up-|> edu.fiuba.algoChess.modelo.entidades.Pieza
   edu.fiuba.algoChess.modelo.entidades.Soldado -up-|> edu.fiuba.algoChess.modelo.entidades.Pieza

@@ -18,15 +18,6 @@ public abstract class Salud implements Curable, Herible, StateVive {
 	@Override
 	public abstract Salud curar(double salud);
 
-	public Salud morir(){
-		this.valorActual = 0.0;
-		return new SaludMuerto();
-	}
-
-	public Salud llenar(){
-		return new SaludLlena(this.valorCompleto);
-	}
-
 	public void stateComportarse() {
 		//No se comporta
 	}
