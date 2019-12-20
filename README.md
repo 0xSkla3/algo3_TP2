@@ -1,6 +1,8 @@
 ## Trabajo práctico final Algoritmos 3 (AlgoChess) 
 ### Comenzando 🚀
 Este es el repositorio oficial de nuestro equipo de algoritmos 3
+#### Informe del trabajo
+https://www.overleaf.com/read/vznftjwvsznj
 #### Cómo configurar el Intellij para correr el juego
 Para correr el trabajo, es necesario utilizar la siguiente configuracion de la JVM:
 
