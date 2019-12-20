@@ -3,6 +3,7 @@ package edu.fiuba.algoChess.modelo.entidades;
 import edu.fiuba.algoChess.modelo.bandos.Bando;
 import edu.fiuba.algoChess.modelo.comportamientos.AtaqueCatapulta;
 import edu.fiuba.algoChess.modelo.entorno.*;
+import edu.fiuba.algoChess.modelo.excepciones.CatapultaNoSePuedeMoverException;
 import edu.fiuba.algoChess.modelo.excepciones.FueraDeRangoException;
 import edu.fiuba.algoChess.modelo.excepciones.InteraccionInvalidaException;
 
@@ -38,6 +39,11 @@ public class Catapulta extends Pieza {
 
 	public AtaqueCatapulta getAtaque(){
 		return this.ataque;
+	}
+
+	@Override
+	public void mover( Tablero campoDeBatalla, Ubicacion ubicacion) {
+		throw new CatapultaNoSePuedeMoverException("La catapulta no puede moverse");
 	}
 
 }
